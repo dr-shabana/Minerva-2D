@@ -8,7 +8,7 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15
 import "../textinput"
 import "../overlays"
-import org.krita.components 1.0
+import org.minerva2d.components 1.0
 
 /*
     \qmltype ParseSpinBoxContentItem

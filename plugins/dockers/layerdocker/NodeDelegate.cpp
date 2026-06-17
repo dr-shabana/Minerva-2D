@@ -30,7 +30,7 @@
 #include "kis_node_view_color_scheme.h"
 #include "kis_icon_utils.h"
 #include "kis_layer_properties_icons.h"
-#include "krita_utils.h"
+#include "minerva2d_utils.h"
 #include "kis_config_notifier.h"
 #include <kis_painting_tweaks.h>
 
@@ -254,9 +254,9 @@ void NodeDelegate::drawFrame(QPainter *p, const QStyleOptionViewItem &option, co
 
     //// For debugging purposes only
     p->setPen(Qt::blue);
-    //KritaUtils::renderExactRect(p, iconsRectR);
-    //KritaUtils::renderExactRect(p, textRect(option, index));
-    //KritaUtils::renderExactRect(p, visibilityRect);
+    //MinervaUtils::renderExactRect(p, iconsRectR);
+    //MinervaUtils::renderExactRect(p, textRect(option, index));
+    //MinervaUtils::renderExactRect(p, visibilityRect);
 
     p->setPen(oldPen);
 }
@@ -312,7 +312,7 @@ void NodeDelegate::drawThumbnail(QPainter *p, const QStyleOptionViewItem &option
     p->setOpacity(oldOpacity); // restore old opacity
 
     QRect borderRect = kisGrowRect(imageRectLowRes, 1).translated(offset);
-    KritaUtils::renderExactRect(p, borderRect, scm.gridColor(option, d->view));
+    MinervaUtils::renderExactRect(p, borderRect, scm.gridColor(option, d->view));
 }
 
 QRect NodeDelegate::iconsRect(const QStyleOptionViewItem &option, const QModelIndex &index) const
@@ -875,7 +875,7 @@ void NodeDelegate::drawVisibilityIcon(QPainter *p, const QStyleOptionViewItem &o
     //// For debugging purposes only
 // //     // p->save();
 // //     // p->setPen(Qt::blue);
-// //     // KritaUtils::renderExactRect(p, visibilityClickRect(option, index));
+// //     // MinervaUtils::renderExactRect(p, visibilityClickRect(option, index));
 // //     // p->restore();
 }
 

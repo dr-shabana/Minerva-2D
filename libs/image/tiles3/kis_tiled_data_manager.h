@@ -309,7 +309,7 @@ public:
      * extended. There are no guards: if the area covers more pixels
      * than there are bytes in the arrays, krita will happily fill
      * your paint device with areas of memory you never wanted to be
-     * read. Krita may also crash.
+     * read. Minerva may also crash.
      */
     void writePlanarBytes(QVector<quint8*> planes, QVector<qint32> channelsizes, qint32 x, qint32 y, qint32 w, qint32 h);
 

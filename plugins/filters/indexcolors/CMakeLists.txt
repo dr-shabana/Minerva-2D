@@ -2,4 +2,4 @@ set(INDEXCOLORS_SOURCE kiswdgindexcolors.cpp indexcolors.cpp indexcolorpalette.c
 ki18n_wrap_ui(INDEXCOLORS_SOURCE kiswdgindexcolors.ui)
 kis_add_library(kritaindexcolors MODULE ${INDEXCOLORS_SOURCE})
 target_link_libraries(kritaindexcolors kritaui)
-install(TARGETS kritaindexcolors          DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
+install(TARGETS kritaindexcolors          DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})

@@ -350,7 +350,7 @@ void KisAnimTimelineFramesModel::slotCurrentNodeChanged(KisNodeSP node)
     KisNodeDummy *dummy = m_d->dummiesFacade->dummyForNode(node);
     if (!dummy) {
         // It's perfectly normal that dummyForNode returns 0; that happens
-        // when views get activated while Krita is closing down.
+        // when views get activated while Minerva is closing down.
         return;
     }
     
@@ -586,7 +586,7 @@ Qt::DropActions KisAnimTimelineFramesModel::supportedDropActions() const
 QStringList KisAnimTimelineFramesModel::mimeTypes() const
 {
     QStringList types;
-    types << QLatin1String("application/x-krita-frame");
+    types << QLatin1String("application/x-minerva2d-frame");
     return types;
 }
 
@@ -631,7 +631,7 @@ QMimeData *KisAnimTimelineFramesModel::mimeDataExtended(const QModelIndexList &i
     }
 
     stream << int(copyPolicy);
-    data->setData("application/x-krita-frame", encoded);
+    data->setData("application/x-minerva2d-frame", encoded);
 
     return data;
 }
@@ -672,7 +672,7 @@ bool KisAnimTimelineFramesModel::dropMimeDataExtended(const QMimeData *data, Qt:
     if ((action != Qt::MoveAction && action != Qt::CopyAction && action != Qt::LinkAction) ||
         !parent.isValid()) return result;
 
-    QByteArray encoded = data->data("application/x-krita-frame");
+    QByteArray encoded = data->data("application/x-minerva2d-frame");
     QDataStream stream(&encoded, QIODevice::ReadOnly);
 
     int uuidLenRoot = 0;
@@ -696,7 +696,7 @@ bool KisAnimTimelineFramesModel::dropMimeDataExtended(const QMimeData *data, Qt:
     if (!srcImage) {
         KisPart *kisPartInstance = KisPart::instance();
         kisPartInstance->currentMainwindow()->viewManager()->showFloatingMessage(
-                    i18n("Dropped frames are not available in this Krita instance")
+                    i18n("Dropped frames are not available in this Minerva instance")
                     , QIcon());
         return false;
     }

@@ -8,7 +8,7 @@
 
 #include <kis_image.h>
 #include <kundo2magicstring.h>
-#include "krita_utils.h"
+#include "minerva2d_utils.h"
 #include "kis_layer_utils.h"
 #include "kis_pointer_utils.h"
 #include "KisRunnableStrokeJobUtils.h"
@@ -56,8 +56,8 @@ QList<KisStrokeJobData*> KisSyncLodCacheStrokeStrategy::createJobsData(KisImageW
 void KisSyncLodCacheStrokeStrategy::createJobsData(QVector<KisStrokeJobData *> &jobs, KisNodeSP imageRoot, KisUpdatesFacade *updatesFacade, int levelOfDetail, KisPaintDeviceList extraDevices)
 {
     using KisLayerUtils::recursiveApplyNodes;
-    using KritaUtils::splitRegionIntoPatches;
-    using KritaUtils::optimalPatchSize;
+    using MinervaUtils::splitRegionIntoPatches;
+    using MinervaUtils::optimalPatchSize;
 
     using SharedData = QHash<KisPaintDeviceSP, QSharedPointer<KisPaintDevice::LodDataStruct>>;
     using SharedDataSP = QSharedPointer<SharedData>;
@@ -71,26 +71,26 @@ void KisSyncLodCacheStrokeStrategy::createJobsData(QVector<KisStrokeJobData *> &
              deviceList << node->getLodCapableDevices();
         });
 
-    KritaUtils::makeContainerUnique(deviceList);
+    MinervaUtils::makeContainerUnique(deviceList);
 
-    KritaUtils::addJobBarrierNoCancel(jobs, [updatesFacade] () {
+    MinervaUtils::addJobBarrierNoCancel(jobs, [updatesFacade] () {
         updatesFacade->blockUpdates();
     });
 
-    KritaUtils::addJobBarrier(jobs, [sharedData, deviceList, levelOfDetail] () mutable {
+    MinervaUtils::addJobBarrier(jobs, [sharedData, deviceList, levelOfDetail] () mutable {
         Q_FOREACH (KisPaintDeviceSP device, deviceList) {
             sharedData->insert(device, toQShared(device->createLodDataStruct(levelOfDetail)));
         }
     });
 
-    KritaUtils::addJobSequential(jobs, [](){});
+    MinervaUtils::addJobSequential(jobs, [](){});
 
     Q_FOREACH (KisPaintDeviceSP device, deviceList) {
         KisRegion region = device->regionForLodSyncing();
         QVector<QRect> rects = splitRegionIntoPatches(region, optimalPatchSize());
 
         Q_FOREACH (const QRect &rc, rects) {
-            KritaUtils::addJobConcurrent(jobs, [sharedData, device, rc] () mutable {
+            MinervaUtils::addJobConcurrent(jobs, [sharedData, device, rc] () mutable {
                 KIS_ASSERT(sharedData->contains(device));
 
                 KisPaintDevice::LodDataStruct *data = sharedData->value(device).data();
@@ -99,16 +99,16 @@ void KisSyncLodCacheStrokeStrategy::createJobsData(QVector<KisStrokeJobData *> &
         }
     }
 
-    KritaUtils::addJobSequential(jobs, [](){});
+    MinervaUtils::addJobSequential(jobs, [](){});
 
     recursiveApplyNodes(imageRoot,
         [&jobs](KisNodeSP node) {
-             KritaUtils::addJobConcurrent(jobs, [node] () mutable {
+             MinervaUtils::addJobConcurrent(jobs, [node] () mutable {
                  node->syncLodCache();
              });
         });
 
-    KritaUtils::addJobSequential(jobs, [sharedData] () mutable {
+    MinervaUtils::addJobSequential(jobs, [sharedData] () mutable {
         auto it = sharedData->begin();
         auto end = sharedData->end();
 
@@ -118,7 +118,7 @@ void KisSyncLodCacheStrokeStrategy::createJobsData(QVector<KisStrokeJobData *> &
         }
     });
 
-    KritaUtils::addJobSequentialNoCancel(jobs, [updatesFacade] () {
+    MinervaUtils::addJobSequentialNoCancel(jobs, [updatesFacade] () {
         updatesFacade->unblockUpdates();
     });
 }

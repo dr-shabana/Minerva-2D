@@ -29,7 +29,7 @@
  *
  * Note that the KisMemoryLeakTracker is currently only available on Linux,
  * and translate to NOOP on other platforms. It is also just a debug tool,
- * and should not be used in a production build of krita.
+ * and should not be used in a production build of minerva2d.
  */
 class KRITAGLOBAL_EXPORT KisMemoryLeakTracker
 {

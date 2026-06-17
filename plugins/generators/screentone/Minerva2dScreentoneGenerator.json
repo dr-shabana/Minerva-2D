@@ -1,0 +1,9 @@
+{
+    "Id": "Screentone Generator",
+    "Type": "Service",
+    "X-KDE-Library": "MinervaScreentoneGenerator",
+    "X-KDE-ServiceTypes": [
+        "Minerva/Generator"
+    ],
+    "X-Minerva-Version": "28"
+}

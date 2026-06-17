@@ -306,7 +306,7 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>Krita</string>
+   <string>Minerva</string>
   </property>
   <property name="windowOpacity">
    <double>1.000000000000000</double>
@@ -371,7 +371,7 @@
       <enum>Qt::AutoText</enum>
      </property>
      <property name="pixmap">
-      <pixmap>../../2.8/krita/data/splash/splash_screen.xpm</pixmap>
+      <pixmap>../../2.8/minerva2d/data/splash/splash_screen.xpm</pixmap>
      </property>
      <property name="scaledContents">
       <bool>false</bool>

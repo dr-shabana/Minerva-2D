@@ -313,7 +313,7 @@ public:
         for(int i = 0; i < NUM_CYCLES; i++) {
             if(i % 3 == 0) {
                 m_nastyChild->setVisible(visibility++ & 0x1);
-                // dbgKrita << "visibility" << i << m_nastyChild->visible();
+                // dbgMinerva << "visibility" << i << m_nastyChild->visible();
             }
             else if (i%3 == 1){
                 KoProperties props;
@@ -325,7 +325,7 @@ public:
                 Q_FOREACH (KisNodeSP node, visibleNodes) {
                     m_nastyChild->setVisible(visibility++ & 0x1);
                 }
-                // dbgKrita << visibleNodes;
+                // dbgMinerva << visibleNodes;
             }
             else {
                 Q_ASSERT(m_victimNode->firstChild());
@@ -412,7 +412,7 @@ public:
             }
 
             if (i % 1000 == 0) {
-                //dbgKrita << "Alive";
+                //dbgMinerva << "Alive";
             }
         }
     }

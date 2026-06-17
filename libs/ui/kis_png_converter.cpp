@@ -1156,9 +1156,9 @@ KisImportExportErrorCode KisPNGConverter::buildFile(QIODevice* iodevice, const Q
 
         dbgFile << "Trying to store annotation of type " << (*it) -> type() << " of size " << (*it) -> annotation() . size();
 
-        if ((*it) -> type().startsWith(QString("krita_attribute:"))) { //
+        if ((*it) -> type().startsWith(QString("minerva2d_attribute:"))) { //
             // Attribute
-            // XXX: it should be possible to save krita_attributes in the \"CHUNKs\""
+            // XXX: it should be possible to save minerva2d_attributes in the \"CHUNKs\""
             dbgFile << "cannot save this annotation : " << (*it) -> type();
         } else if ((*it)->type() == "kpp_version" || (*it)->type() == "kpp_preset" ) {
             dbgFile << "Saving preset information " << (*it)->description();

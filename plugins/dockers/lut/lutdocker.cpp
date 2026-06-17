@@ -28,7 +28,7 @@
 namespace OCIO = OCIO_NAMESPACE;
 
 
-K_PLUGIN_FACTORY_WITH_JSON(LutDockerPluginFactory, "krita_lutdocker.json", registerPlugin<LutDockerPlugin>();)
+K_PLUGIN_FACTORY_WITH_JSON(LutDockerPluginFactory, "minerva2d_lutdocker.json", registerPlugin<LutDockerPlugin>();)
 
 class LutDockerDockFactory : public KoDockFactoryBase {
 public:

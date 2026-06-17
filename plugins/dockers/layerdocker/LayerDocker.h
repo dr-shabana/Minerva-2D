@@ -14,12 +14,12 @@
 /**
  * Template of view plugin
  */
-class KritaLayerDockerPlugin : public QObject
+class MinervaLayerDockerPlugin : public QObject
 {
     Q_OBJECT
 public:
-    KritaLayerDockerPlugin(QObject *parent, const QVariantList &);
-    ~KritaLayerDockerPlugin() override;
+    MinervaLayerDockerPlugin(QObject *parent, const QVariantList &);
+    ~MinervaLayerDockerPlugin() override;
 
 };
 

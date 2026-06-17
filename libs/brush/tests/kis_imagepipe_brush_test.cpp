@@ -28,7 +28,7 @@
 #define COMPARE_ALL(brush, method)                                      \
     Q_FOREACH (KisGbrBrushSP child, brush->brushes()) {           \
         if(brush->method() != child->method()) {                        \
-            dbgKrita << "Failing method:" << #method                    \
+            dbgMinerva << "Failing method:" << #method                    \
                      << "brush index:"                                  \
                      << brush->brushes().indexOf(child);      \
             QCOMPARE(brush->method(), child->method());                 \

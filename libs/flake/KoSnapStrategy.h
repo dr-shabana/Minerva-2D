@@ -128,7 +128,7 @@ private:
     QPointF m_boxPoints[5];
 };
 
-// KoGuidesData has been moved into Krita. Please port this class!
+// KoGuidesData has been moved into Minerva. Please port this class!
 //
 /// snaps to line guides
 // class KRITAFLAKE_EXPORT LineGuideSnapStrategy : public KoSnapStrategy

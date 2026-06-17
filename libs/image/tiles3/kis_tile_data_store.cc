@@ -42,7 +42,7 @@ qint64 __preclone_miss_age = 0;
 #define DEBUG_COUNT_PRECLONE_HIT(td) __preclone_hit++
 #define DEBUG_COUNT_PRECLONE_MISS(td) __preclone_miss++; __preclone_miss_user_count+=td->numUsers(); __preclone_miss_age+=td->age()
 #define DEBUG_REPORT_PRECLONE_EFFICIENCY()                      \
-    dbgKrita << "Hits:" << __preclone_hit                       \
+    dbgMinerva << "Hits:" << __preclone_hit                       \
              << "of" << __preclone_hit + __preclone_miss        \
              << "("                                             \
              << qreal(__preclone_hit) / (__preclone_hit + __preclone_miss)       \
@@ -73,8 +73,8 @@ KisTileDataStore::~KisTileDataStore()
     m_swapper.terminateSwapper();
 
     if (numTiles() > 0) {
-        errKrita << "Warning: some tiles have leaked:";
-        errKrita << "\tTiles in memory:" << numTilesInMemory() << "\n"
+        errMinerva << "Warning: some tiles have leaked:";
+        errMinerva << "\tTiles in memory:" << numTilesInMemory() << "\n"
                  << "\tTotal tiles:" << numTiles();
     }
 }
@@ -213,7 +213,7 @@ void KisTileDataStore::freeTileData(KisTileData *td)
 
 void KisTileDataStore::ensureTileDataLoaded(KisTileData *td)
 {
-//    dbgKrita << "#### SWAP MISS! ####" << td << ppVar(td->mementoed()) << ppVar(td->age()) << ppVar(td->numUsers());
+//    dbgMinerva << "#### SWAP MISS! ####" << td << ppVar(td->mementoed()) << ppVar(td->age()) << ppVar(td->numUsers());
     checkFreeMemory();
 
     td->m_swapLock.lockForRead();
@@ -342,8 +342,8 @@ void KisTileDataStore::debugSwapAll()
 
     endIteration(iter);
 
-//    dbgKrita << "Number of tiles:" << numTiles();
-//    dbgKrita << "Tiles in memory:" << numTilesInMemory();
+//    dbgMinerva << "Number of tiles:" << numTiles();
+//    dbgMinerva << "Tiles in memory:" << numTilesInMemory();
 //    m_swappedStore.debugStatistics();
 }
 

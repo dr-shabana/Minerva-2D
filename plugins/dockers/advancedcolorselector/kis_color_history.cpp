@@ -91,7 +91,7 @@ KisColorSelectorBase *KisColorHistory::createPopup() const
 
 void KisColorHistory::addColorToHistory(const KoColor &color)
 {
-    // don't add color in erase mode. See https://bugs.kde.org/show_bug.cgi?id=298940
+    // don't add color in erase mode. See https://github.com/dr-shabana/Minerva-2D/issues/show_bug.cgi?id=298940
     if (m_resourceProvider && m_resourceProvider->currentCompositeOp() == COMPOSITE_ERASE) return;
 
     colorHistoryModel()->addColor(color);

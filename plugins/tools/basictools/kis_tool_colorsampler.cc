@@ -269,7 +269,7 @@ void KisToolColorSampler::displaySampledColor(const KoColor &color)
         }
 
 
-        if (qEnvironmentVariableIsSet("KRITA_DEBUG_DISPLAY_COLOR")) {
+        if (qEnvironmentVariableIsSet("MINERVA2D_DEBUG_DISPLAY_COLOR")) {
             KisCanvas2 *kritaCanvas = dynamic_cast<KisCanvas2*>(canvas());
             KIS_ASSERT(kritaCanvas);
             KoColor newColor = kritaCanvas->displayColorConverter()->applyDisplayFiltering(color, Float32BitsColorDepthID);
@@ -293,7 +293,7 @@ QWidget* KisToolColorSampler::createOptionWidget()
     m_optionsWidget->setObjectName(toolId() + " option widget");
     m_optionsWidget->listViewChannels->setSortingEnabled(false);
 
-    // See https://bugs.kde.org/show_bug.cgi?id=316896
+    // See https://github.com/dr-shabana/Minerva-2D/issues/show_bug.cgi?id=316896
     QWidget *specialSpacer = new QWidget(m_optionsWidget);
     specialSpacer->setObjectName("SpecialSpacer");
     specialSpacer->setFixedSize(0, 0);

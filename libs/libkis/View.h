@@ -324,7 +324,7 @@ Application.activeWindow().activeView().setForeGroundColor(color)
      *
 @code
 from krita import *
-w = Krita.instance().activeWindow()
+w = Minerva.instance().activeWindow()
 v = w.activeView()
 selected_nodes = v.selectedNodes()
 print(selected_nodes)

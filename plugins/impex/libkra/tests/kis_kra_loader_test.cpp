@@ -40,7 +40,7 @@ void KisKraLoaderTest::initTestCase()
 void KisKraLoaderTest::testLoading()
 {
     QScopedPointer<KisDocument> doc(KisPart::instance()->createDocument());
-    doc->loadNativeFormat(QString(FILES_DATA_DIR) + '/' + "load_test.kra");
+    doc->loadNativeFormat(QString(FILES_DATA_DIR) + '/' + "load_test.m2d");
     KisImageSP image = doc->image();
     image->waitForDone();
     QCOMPARE(image->nlayers(), 12);
@@ -65,8 +65,8 @@ void testObligeSingleChildImpl(bool transpDefaultPixel)
 {
 
     QString id = !transpDefaultPixel ?
-        "single_layer_no_channel_flags_nontransp_def_pixel.kra" :
-        "single_layer_no_channel_flags_transp_def_pixel.kra";
+        "single_layer_no_channel_flags_nontransp_def_pixel.m2d" :
+        "single_layer_no_channel_flags_transp_def_pixel.m2d";
 
     QString fileName = TestUtil::fetchDataFileLazy(id);
 
@@ -106,7 +106,7 @@ void KisKraLoaderTest::testObligeSingleChildNonTranspPixel()
 void KisKraLoaderTest::testLoadAnimated()
 {
     QScopedPointer<KisDocument> doc(KisPart::instance()->createDocument());
-    doc->loadNativeFormat(QString(FILES_DATA_DIR) + '/' + "load_test_animation.kra");
+    doc->loadNativeFormat(QString(FILES_DATA_DIR) + '/' + "load_test_animation.m2d");
     KisImageSP image = doc->image();
 
     KisNodeSP node1 = image->root()->firstChild();

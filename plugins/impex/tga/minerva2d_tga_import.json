@@ -1,0 +1,13 @@
+{
+    "Id": "Minerva TGA Import Filter",
+    "NoDisplay": "true",
+    "Type": "Service",
+    
+    "X-KDE-Import": "image/x-tga",
+    "X-KDE-Library": "kritatgaimport",
+    "X-KDE-ServiceTypes": [
+        "Minerva/FileFilter"
+    ],
+    "X-KDE-Weight": 1,
+    "X-KDE-Extensions" : "tga"
+}

@@ -1,5 +1,5 @@
 /*
- * This file is part of Krita
+ * This file is part of Minerva
  *
  * SPDX-FileCopyrightText: 2016 Spencer Brown <sbrown655@gmail.com>
  * SPDX-FileCopyrightText: 2020 Deif Lou <ginoba@gmail.com>

@@ -26,7 +26,7 @@ namespace
 int versionFromPlugin(const KoJsonTrader::Plugin &plugin)
 {
     QJsonObject json = plugin.metaData().value("MetaData").toObject();
-    QVariant version = json.value("X-Krita-Version");
+    QVariant version = json.value("X-Minerva-Version");
     return version.toString().toInt();
 };
 

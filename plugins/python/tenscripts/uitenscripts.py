@@ -13,13 +13,13 @@ except:
                                  QLabel, QDialogButtonBox)
     from PyQt5.QtGui import QKeySequence
 from . import tenscriptsdialog
-from krita import Krita, FileDialog
+from krita import Minerva, FileDialog
 from builtins import i18n, Application
 
 class UITenScripts(object):
 
     def __init__(self):
-        self.kritaInstance = Krita.instance()
+        self.kritaInstance = Minerva.instance()
         self.mainDialog = tenscriptsdialog.TenScriptsDialog(
             self, self.kritaInstance.activeWindow().qwindow())
 
@@ -51,7 +51,7 @@ class UITenScripts(object):
 
         self.layout.addWidget(
             QLabel(i18n("Shortcuts are configurable through the <i>Keyboard Shortcuts</i> "
-                        "interface in Krita's settings.")))
+                        "interface in Minerva's settings.")))
 
         self.layout.addWidget(self.buttonBox)
 

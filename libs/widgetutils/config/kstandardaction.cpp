@@ -97,7 +97,7 @@ QAction *create(StandardAction id, const QObject *recvr, const char *slot, QObje
         case Preferences:
         case AboutApp:
         case HelpContents: {
-            // in Krita we have the application name baked into the translation
+            // in Minerva we have the application name baked into the translation
             // string, so just fetch it directly
             sLabel = i18nc("action", pInfo->psLabel);
         }

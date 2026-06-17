@@ -41,7 +41,7 @@ public:
     /**
      * @brief defaultTxt2
      * Generate a default txt2 varianthash. This includes stuff like Kinsoku sets
-     * default fonts and other things that might be expected but Krita doesn't write itself.
+     * default fonts and other things that might be expected but Minerva doesn't write itself.
      * @return a default txt2 hash.
      */
     static QVariantHash defaultTxt2();

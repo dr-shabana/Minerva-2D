@@ -19,7 +19,7 @@
  *
  * SPDX-License-Identifier: MIT
  *
- * This version is part of Krita. Based on Pixman's implementation in commits
+ * This version is part of Minerva. Based on Pixman's implementation in commits
  * cb2ec4268fbde0df3b588ce5cbe2e43e0465452 and
  * ddcc41b999562efdd9f88daa51ffbf39782748b5.
  *

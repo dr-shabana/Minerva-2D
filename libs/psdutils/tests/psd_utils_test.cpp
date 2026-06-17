@@ -314,7 +314,7 @@ void PSDUtilsTest::test_psdread_pascalstring()
         buf.open(QBuffer::ReadOnly);
         QVERIFY(psdread_pascalstring<psd_byte_order::psdLittleEndian>(buf, r, 2));
         QCOMPARE(r, s);
-        dbgKrita << buf.bytesAvailable();
+        dbgMinerva << buf.bytesAvailable();
         QVERIFY(buf.bytesAvailable() == 0);
     }
 
@@ -357,7 +357,7 @@ void PSDUtilsTest::test_psdread_pascalstring()
         buf.open(QBuffer::ReadOnly);
         QVERIFY(psdread_pascalstring(buf, r, 2));
         QCOMPARE(r, s);
-        dbgKrita << buf.bytesAvailable();
+        dbgMinerva << buf.bytesAvailable();
         QVERIFY(buf.bytesAvailable() == 0);
     }
 }

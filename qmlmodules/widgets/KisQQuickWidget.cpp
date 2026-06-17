@@ -87,7 +87,7 @@ KisQQuickWidget::~KisQQuickWidget()
 {
     /// Prevent accessing destroyed objects in QML engine
     /// See:
-    ///   * https://invent.kde.org/graphics/krita/-/commit/d8676f4e9cac1a8728e73fec3ff1df1763c713b7
+    ///   * https://invent.kde.org/graphics/minerva2d/-/commit/d8676f4e9cac1a8728e73fec3ff1df1763c713b7
     ///   * https://bugreports.qt.io/browse/QTBUG-81247
     setParent(nullptr);
 }

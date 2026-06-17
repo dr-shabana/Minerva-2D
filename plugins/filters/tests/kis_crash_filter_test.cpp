@@ -33,7 +33,7 @@ bool KisCrashFilterTest::applyFilter(const KoColorSpace * cs,  KisFilterSP f)
 
     QFile file(QString(FILES_DATA_DIR) + '/' + f->id() + ".cfg");
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        dbgKrita << "creating new file for " << f->id();
+        dbgMinerva << "creating new file for " << f->id();
         if (file.open(QIODevice::WriteOnly | QIODevice::Text)) {
             QTextStream out(&file);
             KisPortingUtils::setUtf8OnStream(out);
@@ -48,7 +48,7 @@ bool KisCrashFilterTest::applyFilter(const KoColorSpace * cs,  KisFilterSP f)
         s = in.readAll();
         kfc->fromXML(s);
     }
-    dbgKrita << f->id() << ", " << cs->id() << ", " << cs->profile()->name();// << kfc->toXML() << "\n";
+    dbgMinerva << f->id() << ", " << cs->id() << ", " << cs->profile()->name();// << kfc->toXML() << "\n";
 
     {
         kfc->createLocalResourcesSnapshot(KisGlobalResourcesInterface::instance());
@@ -101,7 +101,7 @@ void KisCrashFilterTest::testCrashFilters()
         else
             failures << *it;
     }
-    dbgKrita << "Success: " << successes;
+    dbgMinerva << "Success: " << successes;
     if (failures.size() > 0) {
         QFAIL(QString("Failed filters:\n\t %1").arg(failures.join("\n\t")).toLatin1());
     }

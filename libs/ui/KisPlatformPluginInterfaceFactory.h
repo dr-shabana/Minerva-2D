@@ -18,9 +18,9 @@ class QWindow;
 class KisSurfaceColorManagerInterface;
 class KisExtendedModifiersMapperPluginInterface;
 
-#if KRITA_USE_SURFACE_COLOR_MANAGEMENT_API
+#if MINERVA2D_USE_SURFACE_COLOR_MANAGEMENT_API
 class KisSurfaceColorManagementInfo;
-#endif /* KRITA_USE_SURFACE_COLOR_MANAGEMENT_API */
+#endif /* MINERVA2D_USE_SURFACE_COLOR_MANAGEMENT_API */
 
 class KRITAUI_EXPORT KisPlatformPluginInterfaceFactory {
 public:
@@ -28,17 +28,17 @@ public:
 
     static KisPlatformPluginInterfaceFactory* instance();
 
-#if KRITA_USE_SURFACE_COLOR_MANAGEMENT_API
+#if MINERVA2D_USE_SURFACE_COLOR_MANAGEMENT_API
     /**
      * Creates an instance of the color manager interface using the platform plugin
      *
      * If the current platform plugin doesn't profide this interface, returns nullptr
      */
     KisSurfaceColorManagerInterface *createSurfaceColorManager(QWindow *nativeWindow);
-#endif /* KRITA_USE_SURFACE_COLOR_MANAGEMENT_API */
+#endif /* MINERVA2D_USE_SURFACE_COLOR_MANAGEMENT_API */
 
     /**
-     * Returns true if Krita is running on a system that manages the color
+     * Returns true if Minerva is running on a system that manages the color
      * space of the underlying surface. If it is true, the canvas should use
      * KisCanvasSurfaceColorSpaceManager and all other windows should use
      * KisSRGBSurfaceColorSpaceManager to set up the color space properly.

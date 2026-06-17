@@ -35,7 +35,7 @@
 #include <kis_iterator_ng.h>
 #include <KisSequentialIteratorProgress.h>
 
-K_PLUGIN_FACTORY_WITH_JSON(KritaWaveFilterFactory, "kritawavefilter.json", registerPlugin<KritaWaveFilter>();)
+K_PLUGIN_FACTORY_WITH_JSON(MinervaWaveFilterFactory, "kritawavefilter.json", registerPlugin<MinervaWaveFilter>();)
 
 class KisWaveCurve
 {
@@ -84,13 +84,13 @@ public:
     }
 private:
     int m_amplitude, m_wavelength, m_shift;
-}; KritaWaveFilter::KritaWaveFilter(QObject *parent, const QVariantList &)
+}; MinervaWaveFilter::MinervaWaveFilter(QObject *parent, const QVariantList &)
         : QObject(parent)
 {
     KisFilterRegistry::instance()->add(new KisFilterWave());
 }
 
-KritaWaveFilter::~KritaWaveFilter()
+MinervaWaveFilter::~MinervaWaveFilter()
 {
 }
 

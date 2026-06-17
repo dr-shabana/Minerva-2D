@@ -17,7 +17,7 @@
     </text>
     
     <text id="test1ttb" transform="translate(180,10)"
-        font-family="Krita_Test_Unicode_Variation_A" fill="blue" font-size="15" 
+        font-family="Minerva_Test_Unicode_Variation_A" fill="blue" font-size="15" 
           writing-mode="vertical-rl"><textPath href="#path-vertical">ああ&#x82A6;&#x82A6;&#x82A6;&#x82A6;あああ&#x82A6;</textPath>
     </text>
 

@@ -17,7 +17,7 @@ class QByteArray;
 class KisResourcesInterfacePrivate;
 
 /**
- * @brief a provider-like interface class for accessing resource sources in Krita.
+ * @brief a provider-like interface class for accessing resource sources in Minerva.
  *
  * Main differences to KoResourceServer and KisResourceModel:
  *

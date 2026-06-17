@@ -172,7 +172,7 @@ bool KisPaletteModel::dropMimeData(const QMimeData *data, Qt::DropAction action,
 {
     Q_UNUSED(row);
     Q_UNUSED(column);
-    if (!data->hasFormat("krita/x-colorsetentry") && !data->hasFormat("krita/x-colorsetgroup")) {
+    if (!data->hasFormat("minerva2d/x-colorsetentry") && !data->hasFormat("minerva2d/x-colorsetgroup")) {
         return false;
     }
     if (action == Qt::IgnoreAction) {
@@ -182,9 +182,9 @@ bool KisPaletteModel::dropMimeData(const QMimeData *data, Qt::DropAction action,
     QModelIndex finalIndex = parent;
     if (!finalIndex.isValid()) { return false; }
 
-    if (data->hasFormat("krita/x-colorsetgroup")) {
+    if (data->hasFormat("minerva2d/x-colorsetgroup")) {
         QScopedValueRollback editMarker(m_editing, true);
-        QByteArray encodedData = data->data("krita/x-colorsetgroup");
+        QByteArray encodedData = data->data("minerva2d/x-colorsetgroup");
         QDataStream stream(&encodedData, QIODevice::ReadOnly);
 
         while (!stream.atEnd()) {
@@ -211,8 +211,8 @@ bool KisPaletteModel::dropMimeData(const QMimeData *data, Qt::DropAction action,
     }
 
 
-    if (data->hasFormat("krita/x-colorsetentry")) {
-        QByteArray encodedData = data->data("krita/x-colorsetentry");
+    if (data->hasFormat("minerva2d/x-colorsetentry")) {
+        QByteArray encodedData = data->data("minerva2d/x-colorsetentry");
         QString oldGroupName;
         int oriRow;
         int oriColumn;
@@ -244,7 +244,7 @@ QMimeData *KisPaletteModel::mimeData(const QModelIndexList &indexes) const
     QDataStream stream(&encodedData, QIODevice::WriteOnly);
     QModelIndex index = indexes.last();
     if (index.isValid() && qvariant_cast<bool>(index.data(CheckSlotRole))) {
-        QString mimeTypeName = "krita/x-colorsetentry";
+        QString mimeTypeName = "minerva2d/x-colorsetentry";
         if (qvariant_cast<bool>(index.data(IsGroupNameRole))==false) {
             KisSwatch entry = getSwatch(index);
             QString groupName = qvariant_cast<QString>(index.data(KisPaletteModel::GroupNameRole));
@@ -253,7 +253,7 @@ QMimeData *KisPaletteModel::mimeData(const QModelIndexList &indexes) const
                                 rowNumberInGroup(index.row()),
                                 index.column());
         } else {
-            mimeTypeName = "krita/x-colorsetgroup";
+            mimeTypeName = "minerva2d/x-colorsetgroup";
             QString groupName = qvariant_cast<QString>(index.data(GroupNameRole));
             stream << groupName;
         }
@@ -265,7 +265,7 @@ QMimeData *KisPaletteModel::mimeData(const QModelIndexList &indexes) const
 
 QStringList KisPaletteModel::mimeTypes() const
 {
-    return QStringList() << "krita/x-colorsetentry" << "krita/x-colorsetgroup";
+    return QStringList() << "minerva2d/x-colorsetentry" << "minerva2d/x-colorsetgroup";
 }
 
 Qt::DropActions KisPaletteModel::supportedDropActions() const
@@ -421,7 +421,7 @@ void KisPaletteModel::slotPaletteModified()
 {
     /**
      * Until we implement resource->convertToSerializable() we should
-     * explicitly convert all the palettes into Krita internal format
+     * explicitly convert all the palettes into Minerva internal format
      */
     if (m_colorSet->paletteType() != KoColorSet::KPL || m_colorSet->paletteType() != KoColorSet::GPL) {
         m_colorSet->setPaletteType(KoColorSet::KPL);

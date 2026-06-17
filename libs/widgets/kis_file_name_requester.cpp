@@ -91,11 +91,11 @@ void KisFileNameRequester::slotSelectFile()
     }
 
     const QString basePath =
-        KritaUtils::resolveAbsoluteFilePath(QStandardPaths::writableLocation(QStandardPaths::PicturesLocation),
+        MinervaUtils::resolveAbsoluteFilePath(QStandardPaths::writableLocation(QStandardPaths::PicturesLocation),
                                             m_basePath);
 
     const QString filePath =
-        KritaUtils::resolveAbsoluteFilePath(basePath, m_ui->txtFileName->text());
+        MinervaUtils::resolveAbsoluteFilePath(basePath, m_ui->txtFileName->text());
 
     dialog.setDefaultDir(filePath, true);
     dialog.setMimeTypeFilters(m_mime_filter_list, m_mime_default_filter);

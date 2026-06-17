@@ -11,7 +11,7 @@
 #include "kis_image_animation_interface.h"
 #include "kis_node.h"
 #include "kis_image.h"
-#include "krita_utils.h"
+#include "minerva2d_utils.h"
 
 #include "kis_full_refresh_walker.h"
 #include "kis_async_merger.h"
@@ -133,7 +133,7 @@ void KisRegenerateFrameStrokeStrategy::initStrokeCallback()
     }
     if (m_d->type == EXTERNAL_FRAME) {
         if (!image->animationInterface()->hasAnimation()) {
-            warnKrita << "KisRegenerateFrameStrokeStrategy::initStrokeCallback(): WARNING: trying to"
+            warnMinerva << "KisRegenerateFrameStrokeStrategy::initStrokeCallback(): WARNING: trying to"
                       << "regenerate an external frame on a non-animated image, that will cause"
                       << "a useless consumption of memory";
         }
@@ -243,8 +243,8 @@ void KisRegenerateFrameStrokeStrategy::resumeStrokeCallback()
 
 QList<KisStrokeJobData*> KisRegenerateFrameStrokeStrategy::createJobsData(KisImageWSP _image)
 {
-    using KritaUtils::splitRectIntoPatches;
-    using KritaUtils::optimalPatchSize;
+    using MinervaUtils::splitRectIntoPatches;
+    using MinervaUtils::optimalPatchSize;
     KisImageSP image = _image;
 
     const QRect cropRect = image->bounds();

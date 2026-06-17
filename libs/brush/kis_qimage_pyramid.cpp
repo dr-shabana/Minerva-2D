@@ -189,9 +189,9 @@ void KisQImagePyramid::calculateParams(KisDabShape shape,
         {
             QRect testingRect = roundRect(transform.mapRect(baseBounds));
             if (testingRect != expectedDstRect) {
-                warnKrita << "WARNING: expected and real dab rects do not coincide!";
-                warnKrita << "         expected rect:" << expectedDstRect;
-                warnKrita << "         real rect:    " << testingRect;
+                warnMinerva << "WARNING: expected and real dab rects do not coincide!";
+                warnMinerva << "         expected rect:" << expectedDstRect;
+                warnMinerva << "         real rect:    " << testingRect;
             }
         }
 #endif

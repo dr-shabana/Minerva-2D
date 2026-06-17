@@ -261,7 +261,7 @@ bool KisGbrBrush::init()
         setHasColorAndTransparency(!image.allGray());
     }
     else {
-        warnKrita << filename()  << "WARNING: loading of GBR brushes with" << bh.bytes << "bytes per pixel is not supported";
+        warnMinerva << filename()  << "WARNING: loading of GBR brushes with" << bh.bytes << "bytes per pixel is not supported";
         return false;
     }
 

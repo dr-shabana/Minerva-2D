@@ -8,8 +8,8 @@ kis_add_library(kritatoolpolygon MODULE ${kritatoolpolygon_SOURCES})
 
 target_link_libraries(kritatoolpolygon kritaui)
 
-install(TARGETS kritatoolpolygon  DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
+install(TARGETS kritatoolpolygon  DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})
 
 install( FILES
     KisToolPolygon.action
-DESTINATION  ${KDE_INSTALL_DATADIR}/krita/actions)
+DESTINATION  ${KDE_INSTALL_DATADIR}/minerva2d/actions)

@@ -1,5 +1,5 @@
 /*
- *  kis_tool_polygon.h - part of Krita
+ *  kis_tool_polygon.h - part of Minerva
  *
  *  SPDX-FileCopyrightText: 2004 Michael Thaler <michael Thaler@physik.tu-muenchen.de>
  *
@@ -43,8 +43,8 @@ public:
             : KisToolPolyLineFactoryBase("KisToolPolygon") {
         setToolTip(i18n("Polygon Tool: Shift-mouseclick ends the polygon."));
         setSection(ToolBoxSection::Shape);
-        setActivationShapeId(KRITA_TOOL_ACTIVATION_ID);
-        setIconName(koIconNameCStr("krita_tool_polygon"));
+        setActivationShapeId(MINERVA2D_TOOL_ACTIVATION_ID);
+        setIconName(koIconNameCStr("minerva2d_tool_polygon"));
         setPriority(4);
     }
 

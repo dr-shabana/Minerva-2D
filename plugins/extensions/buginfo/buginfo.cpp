@@ -14,7 +14,7 @@
 #include <kis_icon.h>
 #include <KisViewManager.h>
 #include <kis_action.h>
-#include "DlgKritaLog.h"
+#include "DlgMinervaLog.h"
 #include "DlgSysInfo.h"
 
 #ifdef Q_OS_ANDROID
@@ -25,7 +25,7 @@
 #include "DlgCrashLog.h"
 #endif
 
-#if KRITA_USE_SURFACE_COLOR_MANAGEMENT_API
+#if MINERVA2D_USE_SURFACE_COLOR_MANAGEMENT_API
 #include "DlgColorManagementInfo.h"
 #endif
 
@@ -37,10 +37,10 @@ BugInfo::BugInfo(QObject *parent, const QVariantList &)
 {
     KisAction *actionBug  = createAction("buginfo");
     KisAction *actionSys  = createAction("sysinfo");
-    connect(actionBug, SIGNAL(triggered()), this, SLOT(slotKritaLog()));
+    connect(actionBug, SIGNAL(triggered()), this, SLOT(slotMinervaLog()));
     connect(actionSys, SIGNAL(triggered()), this, SLOT(slotSysInfo()));
 
-#if KRITA_USE_SURFACE_COLOR_MANAGEMENT_API
+#if MINERVA2D_USE_SURFACE_COLOR_MANAGEMENT_API
     KisAction *actionColorManagement  = createAction("color_management_report");
     connect(actionColorManagement, SIGNAL(triggered()), this, SLOT(slotColorManagement()));
 #endif
@@ -61,10 +61,10 @@ BugInfo::~BugInfo()
 {
 }
 
-void BugInfo::slotKritaLog()
+void BugInfo::slotMinervaLog()
 {
-    DlgKritaLog dlgKritaLog(viewManager()->mainWindowAsQWidget());
-    dlgKritaLog.exec();
+    DlgMinervaLog dlgMinervaLog(viewManager()->mainWindowAsQWidget());
+    dlgMinervaLog.exec();
 }
 
 void BugInfo::slotSysInfo()
@@ -89,7 +89,7 @@ void BugInfo::slotCrashLog()
 }
 #endif
 
-#if KRITA_USE_SURFACE_COLOR_MANAGEMENT_API
+#if MINERVA2D_USE_SURFACE_COLOR_MANAGEMENT_API
 void BugInfo::slotColorManagement()
 {
     DlgColorManagementInfo dlg(viewManager()->mainWindowAsQWidget());

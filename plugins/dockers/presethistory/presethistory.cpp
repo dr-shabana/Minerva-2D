@@ -13,7 +13,7 @@
 
 #include "presethistory_dock.h"
 
-K_PLUGIN_FACTORY_WITH_JSON(PresetHistoryPluginFactory, "krita_presethistory.json", registerPlugin<PresetHistoryPlugin>();)
+K_PLUGIN_FACTORY_WITH_JSON(PresetHistoryPluginFactory, "minerva2d_presethistory.json", registerPlugin<PresetHistoryPlugin>();)
 
 class PresetHistoryDockFactory : public KoDockFactoryBase
 {

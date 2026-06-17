@@ -23,7 +23,7 @@
 #include <kundo2command.h>
 #include <KoStore.h>
 #include <KoStoreDevice.h>
-#include <krita_utils.h>
+#include <minerva2d_utils.h>
 #include <kis_coordinates_converter.h>
 #include <kis_dom_utils.h>
 #include <SvgUtil.h>
@@ -37,7 +37,7 @@
 
 struct KisReferenceImage::Private : public QSharedData
 {
-    // Filename within .kra (for embedding)
+    // Filename within .m2d (for embedding)
     QString internalFilename;
 
     // File on disk (for linking)
@@ -89,7 +89,7 @@ struct KisReferenceImage::Private : public QSharedData
             KisPart::instance()->removeDocument(doc);
         }
 
-        // See https://bugs.kde.org/show_bug.cgi?id=416515 -- a jpeg image
+        // See https://github.com/dr-shabana/Minerva-2D/issues/show_bug.cgi?id=416515 -- a jpeg image
         // loaded into a qimage cannot be saved to png unless we explicitly
         // convert the colorspace of the QImage
 #if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
@@ -110,7 +110,7 @@ struct KisReferenceImage::Private : public QSharedData
 
     void updateCache() {
         if (saturation < 1.0) {
-            cachedImage = KritaUtils::convertQImageToGrayA(image);
+            cachedImage = MinervaUtils::convertQImageToGrayA(image);
 
             if (saturation > 0.0) {
                 QPainter gc2(&cachedImage);
@@ -189,7 +189,7 @@ KisReferenceImage * KisReferenceImage::fromFile(const QString &filename, const K
         delete reference;
 
         if (parent) {
-            QMessageBox::critical(parent, i18nc("@title:window", "Krita"), i18n("Could not load %1.", filename));
+            QMessageBox::critical(parent, i18nc("@title:window", "Minerva"), i18n("Could not load %1.", filename));
         }
 
         return nullptr;

@@ -2,10 +2,10 @@
     "Icon": "",
     "Id": "Path Shapes",
     "Type": "Service",
-    "X-Krita-Version": "28",
-    "X-KDE-Library": "krita_shape_paths",
+    "X-Minerva-Version": "28",
+    "X-KDE-Library": "minerva2d_shape_paths",
     "X-KDE-PluginInfo-Name": "pathshapes",
     "X-KDE-ServiceTypes": [
-        "Krita/Shape"
+        "Minerva/Shape"
     ]
 }

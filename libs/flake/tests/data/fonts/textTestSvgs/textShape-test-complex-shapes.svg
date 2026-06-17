@@ -53,7 +53,7 @@
     
     <use id="ref-notclosed" fill="cornflowerblue" fill-opacity="0.2" xlink:href="#notclosed" stroke="cornflowerblue" transform="translate(5,255)" />
     <text id="test-notclosed" transform="translate(5,255)" style="shape-inside: url(#notclosed);"
-          font-family="Krita_Test_Unicode_Variation_A"
+          font-family="Minerva_Test_Unicode_Variation_A"
         writing-mode="vertical-rl" fill="blue" font-size="10">あああああ&#x82A6;&#x82A6;&#x82A6;&#x82A6;&#x82A6;&#x82A6;ああああああ
     </text>
     

@@ -1,5 +1,5 @@
 /*
- *  kis_tool_transform.h - part of Krita
+ *  kis_tool_transform.h - part of Minerva
  *
  *  SPDX-FileCopyrightText: 2004 Boudewijn Rempt <boud@valdyas.org>
  *  SPDX-FileCopyrightText: 2005 C. Boemann <cbo@boemann.dk>
@@ -369,10 +369,10 @@ public:
             : KisToolPaintFactoryBase("KisToolTransform") {
         setToolTip(i18n("Transform a layer or a selection"));
         setSection(ToolBoxSection::Transform);
-        setIconName(koIconNameCStr("krita_tool_transform"));
+        setIconName(koIconNameCStr("minerva2d_tool_transform"));
         setShortcut(QKeySequence(Qt::CTRL | Qt::Key_T));
         setPriority(2);
-        setActivationShapeId(KRITA_TOOL_ACTIVATION_ID);
+        setActivationShapeId(MINERVA2D_TOOL_ACTIVATION_ID);
     }
 
     ~KisToolTransformFactory() override {}

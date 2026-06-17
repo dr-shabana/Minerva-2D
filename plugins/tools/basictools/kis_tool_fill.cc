@@ -46,7 +46,7 @@
 #include <processing/fill_processing_visitor.h>
 #include <kis_command_utils.h>
 #include <kis_layer_utils.h>
-#include <krita_utils.h>
+#include <minerva2d_utils.h>
 #include <kis_stroke_strategy_undo_command_based.h>
 #include <commands_new/kis_processing_command.h>
 #include <commands_new/kis_update_command.h>
@@ -510,7 +510,7 @@ void KisToolFill::slotUpdateFill()
     KIS_SAFE_ASSERT_RECOVER_RETURN(m_fillStrokeId);
 
     if (m_effectiveFillMode == FillMode_FillContiguousRegion) {
-        addFillingOperation(KritaUtils::rasterizePolylineDDA(m_seedPoints));
+        addFillingOperation(MinervaUtils::rasterizePolylineDDA(m_seedPoints));
         // clear to not re-add the segments, but retain the last point to maintain continuity
         m_seedPoints = {m_seedPoints.last()};
     } else {

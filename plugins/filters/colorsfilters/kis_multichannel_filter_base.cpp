@@ -1,5 +1,5 @@
 /*
- * This file is part of Krita
+ * This file is part of Minerva
  *
  * SPDX-FileCopyrightText: 2018 Jouni Pentikainen <joupent@gmail.com>
  *
@@ -209,7 +209,7 @@ void KisMultiChannelFilterConfiguration::fromXML(const QDomElement& root)
     }
 
     /**
-     * In Krita 2.9 we stored alpha channel under a separate tag, so we
+     * In Minerva 2.9 we stored alpha channel under a separate tag, so we
      * should addend it separately if present
      */
     if (numTransfersWithAlpha > numTransfers) {
@@ -486,10 +486,10 @@ void KisMultiChannelConfigWidget::setConfiguration(const KisPropertiesConfigurat
             return;
         }
     } else if (cfg->curves().size() > m_virtualChannels.size()) {
-        QMessageBox::warning(this, i18nc("@title:window", "Krita"), i18n("The current configuration was created for a different colorspace and cannot be used. All curves will be reset."));
-        warnKrita << "WARNING: trying to load a curve with invalid number of channels!";
-        warnKrita << "WARNING:   expected:" << m_virtualChannels.size();
-        warnKrita << "WARNING:        got:" << cfg->curves().size();
+        QMessageBox::warning(this, i18nc("@title:window", "Minerva"), i18n("The current configuration was created for a different colorspace and cannot be used. All curves will be reset."));
+        warnMinerva << "WARNING: trying to load a curve with invalid number of channels!";
+        warnMinerva << "WARNING:   expected:" << m_virtualChannels.size();
+        warnMinerva << "WARNING:        got:" << cfg->curves().size();
         return;
     } else {
         if (cfg->curves().size() == m_virtualChannels.size()) {
@@ -513,8 +513,8 @@ void KisMultiChannelConfigWidget::setConfiguration(const KisPropertiesConfigurat
 
             /**
              * Adjust the layout of channels in the configuration to the layout of the
-             * current version of Krita. When we pass number of loaded channels
-             * to getVirtualChannels() it automatically detects the version of Krita
+             * current version of Minerva. When we pass number of loaded channels
+             * to getVirtualChannels() it automatically detects the version of Minerva
              * the configuration was created in.
              */
             QVector<VirtualChannelInfo> detectedCurves = KisMultiChannelUtils::getVirtualChannels(targetColorSpace, cfg->curves().size());
@@ -529,16 +529,16 @@ void KisMultiChannelConfigWidget::setConfiguration(const KisPropertiesConfigurat
                     const int dstIndex = std::distance(m_virtualChannels.begin(), dstIt);
                     m_curves[dstIndex] = cfg->curves()[srcIndex];
                 } else {
-                    warnKrita << "WARNING: failed to find mapping of the channel in the filter configuration:";
-                    warnKrita << "WARNING:   channel:" << ppVar(detectedIt->name()) << ppVar(detectedIt->type())<< ppVar(detectedIt->pixelIndex());
-                    warnKrita << "WARNING:";
+                    warnMinerva << "WARNING: failed to find mapping of the channel in the filter configuration:";
+                    warnMinerva << "WARNING:   channel:" << ppVar(detectedIt->name()) << ppVar(detectedIt->type())<< ppVar(detectedIt->pixelIndex());
+                    warnMinerva << "WARNING:";
 
                     for (auto it = detectedCurves.begin(); it != detectedCurves.end(); ++it) {
-                        warnKrita << "WARNING:   detected channels" << std::distance(detectedCurves.begin(), it) << ":" << it->name();
+                        warnMinerva << "WARNING:   detected channels" << std::distance(detectedCurves.begin(), it) << ":" << it->name();
                     }
 
                     for (auto it = m_virtualChannels.begin(); it != m_virtualChannels.end(); ++it) {
-                        warnKrita << "WARNING:   read channels" << std::distance(m_virtualChannels.begin(), it) << ":" << it->name();
+                        warnMinerva << "WARNING:   read channels" << std::distance(m_virtualChannels.begin(), it) << ":" << it->name();
                     }
                 }
             }

@@ -1,0 +1,9 @@
+{
+    "Id": "Dodge and Burn Filter",
+    "Type": "Service",
+    "X-KDE-Library": "kritadodgeburn",
+    "X-KDE-ServiceTypes": [
+        "Minerva/Filter"
+    ],
+    "X-Minerva-Version": "28"
+}

@@ -1,7 +1,7 @@
-Here is a list of guidelines that we follow when developing CI pipeline for Krita:
+Here is a list of guidelines that we follow when developing CI pipeline for Minerva:
 
 0) Indentation: use 2 spaces to indent the YAML code. It differs from the style we use 
-   for C++ code in Krita. We just follow the style that Sysadmins use in their scripts.
+   for C++ code in Minerva. We just follow the style that Sysadmins use in their scripts.
 
    Options for VSCode:
 
@@ -38,11 +38,11 @@ Here is a list of guidelines that we follow when developing CI pipeline for Krit
       variables:
         KDECI_BUILD_TYPE: Release # simple string -> unquoted
         KDECI_EXTRA_CMAKE_ARGS: -DHIDE_SAFE_ASSERTS=OFF # simple string -> unquoted
-        KDECI_CC_CACHE: "C:\\Gitlab\\Caches\\krita-windows" # Windows path -> quoted
+        KDECI_CC_CACHE: "C:\\Gitlab\\Caches\\minerva2d-windows" # Windows path -> quoted
 
     linux-build:
       variables:
-        KDECI_CC_CACHE: /mnt/caches/krita-appimage/ # Linux path -> unquoted
+        KDECI_CC_CACHE: /mnt/caches/minerva2d-appimage/ # Linux path -> unquoted
     ```
 
 4) Boolean values passed to our CI scripts should be (unquoted) `True` or `False` strings.

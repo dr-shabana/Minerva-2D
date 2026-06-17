@@ -1,5 +1,5 @@
 /*
- * This file is part of Krita
+ * This file is part of Minerva
  *
  * SPDX-FileCopyrightText: 2006 Cyrille Berger <cberger@cberger.net>
  *
@@ -12,12 +12,12 @@
 #include <QObject>
 #include <QVariant>
 
-class KritaExtensionsColors : public QObject
+class MinervaExtensionsColors : public QObject
 {
     Q_OBJECT
 public:
-    KritaExtensionsColors(QObject *parent, const QVariantList &);
-    ~KritaExtensionsColors() override;
+    MinervaExtensionsColors(QObject *parent, const QVariantList &);
+    ~MinervaExtensionsColors() override;
 };
 
 #endif

@@ -6,13 +6,13 @@ keeping track of the layer boundaries and then resize
 the image to the unity of all boundaries.
 """
 
-from krita import Krita
+from krita import Minerva
 try:
     from PyQt6.QtCore import QRect
 except:
     from PyQt5.QtCore import QRect
 
-d = Krita.instance().activeDocument()
+d = Minerva.instance().activeDocument()
 w = d.width()
 h = d.height()
 x = d.xOffset()

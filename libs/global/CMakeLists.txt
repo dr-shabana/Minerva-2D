@@ -80,7 +80,7 @@ generate_export_header(kritaglobal BASE_NAME kritaglobal)
 
 target_link_libraries(kritaglobal 
     PUBLIC
-        kritaversion
+        minerva2dversion
         Qt${QT_MAJOR_VERSION}::Core 
         Qt${QT_MAJOR_VERSION}::Gui 
         Qt${QT_MAJOR_VERSION}::Widgets 
@@ -117,7 +117,7 @@ if(APPLE)
 endif ()
 
 set_target_properties(kritaglobal PROPERTIES
-    VERSION ${GENERIC_KRITA_LIB_VERSION} SOVERSION ${GENERIC_KRITA_LIB_SOVERSION}
+    VERSION ${GENERIC_MINERVA2D_LIB_VERSION} SOVERSION ${GENERIC_MINERVA2D_LIB_SOVERSION}
 )
 
 install(TARGETS kritaglobal  ${INSTALL_TARGETS_DEFAULT_ARGS})

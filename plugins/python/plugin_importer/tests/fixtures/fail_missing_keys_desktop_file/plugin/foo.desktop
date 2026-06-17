@@ -1,4 +1,4 @@
 [Desktop Entry]
 Type=Service
-ServiceTypes=Krita/PythonPlugin
+ServiceTypes=Minerva/PythonPlugin
 Name=Foo

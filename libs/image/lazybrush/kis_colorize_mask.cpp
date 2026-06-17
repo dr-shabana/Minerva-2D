@@ -33,7 +33,7 @@
 #include "kis_post_execution_undo_adapter.h"
 #include "kis_command_utils.h"
 #include "kis_processing_applicator.h"
-#include "krita_utils.h"
+#include "minerva2d_utils.h"
 #include <KisFakeRunnableStrokeJobsExecutor.h>
 #include <KisRunnableStrokeJobData.h>
 #include <KisRunnableStrokeJobUtils.h>
@@ -190,7 +190,7 @@ void KisColorizeMask::initializeCompositeOp()
 
     const qreal samplePortion = 0.1;
     const qreal alphaPortion =
-        KritaUtils::estimatePortionOfTransparentPixels(parentLayer->original(),
+        MinervaUtils::estimatePortionOfTransparentPixels(parentLayer->original(),
                                                        image->bounds(),
                                                        samplePortion);
 
@@ -737,7 +737,7 @@ void KisColorizeMask::mergeToLayerThreaded(KisNodeSP layer, KUndo2Command *paren
 {
     // Just fake threaded merging. It is not supported for the colorize mask.
 
-    KritaUtils::addJobSequential(*jobs,
+    MinervaUtils::addJobSequential(*jobs,
         [=] () {
             this->mergeToLayerUnthreaded(layer, parentCommand, transactionText, timedID);
         }

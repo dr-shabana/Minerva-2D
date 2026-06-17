@@ -6,9 +6,9 @@ set ( ImageShape_SRCS
     ImageShapeFactory.cpp
 )
 
-kis_add_library(krita_shape_image MODULE ${ImageShape_SRCS})
+kis_add_library(minerva2d_shape_image MODULE ${ImageShape_SRCS})
 
-target_link_libraries(krita_shape_image kritaflake kritawidgets KF${KF_MAJOR}::I18n )
+target_link_libraries(minerva2d_shape_image kritaflake kritawidgets KF${KF_MAJOR}::I18n )
 
-install(TARGETS krita_shape_image DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
+install(TARGETS minerva2d_shape_image DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})
 

@@ -53,18 +53,18 @@ KisCachedGradientShapeStrategy::KisCachedGradientShapeStrategy(const QRect &rc,
     int numSamplesY = std::ceil(qreal(rc.height()) / yStep);
 
     if (numSamplesX < 2 || numSamplesY < 2) {
-        warnKrita;
-        warnKrita << "############";
-        warnKrita << "WARNING: KisCachedGradientShapeStrategy numSamplesX/Y is too small!"  << ppVar(numSamplesX) << ppVar(numSamplesY);
-        warnKrita << "WARNING:" << ppVar(rc) << ppVar(xStep) << ppVar(yStep);
-        warnKrita << "WARNING:" << ppVar(numSamplesX) << ppVar(numSamplesY);
+        warnMinerva;
+        warnMinerva << "############";
+        warnMinerva << "WARNING: KisCachedGradientShapeStrategy numSamplesX/Y is too small!"  << ppVar(numSamplesX) << ppVar(numSamplesY);
+        warnMinerva << "WARNING:" << ppVar(rc) << ppVar(xStep) << ppVar(yStep);
+        warnMinerva << "WARNING:" << ppVar(numSamplesX) << ppVar(numSamplesY);
 
         numSamplesX = qMax(numSamplesX, 2);
         numSamplesY = qMax(numSamplesY, 2);
 
-        warnKrita << "WARNING: adjusting:" << ppVar(numSamplesX) << ppVar(numSamplesY);
-        warnKrita << "############";
-        warnKrita;
+        warnMinerva << "WARNING: adjusting:" << ppVar(numSamplesX) << ppVar(numSamplesY);
+        warnMinerva << "############";
+        warnMinerva;
     }
 
     m_d->spline.reset(new KisBSpline2D(xStart, xEnd, numSamplesX, Natural,

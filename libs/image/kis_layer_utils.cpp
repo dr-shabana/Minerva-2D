@@ -45,7 +45,7 @@
 #include "commands/kis_node_compositeop_command.h"
 #include <KisDelayedUpdateNodeInterface.h>
 #include <KisCroppedOriginalLayerInterface.h>
-#include "krita_utils.h"
+#include "minerva2d_utils.h"
 #include "kis_image_signal_router.h"
 #include "kis_sequential_iterator.h"
 #include "kis_transparency_mask.h"
@@ -155,7 +155,7 @@ namespace Private {
              * If source layer is not animated, then just merge that into the current frame
              * only. See the other part of this feature in mergeDown() itself
              *
-             * See https://bugs.kde.org/show_bug.cgi?id=475550
+             * See https://github.com/dr-shabana/Minerva-2D/issues/show_bug.cgi?id=475550
              */
             if (!frames.isEmpty() && !currLayer->isAnimated()) {
                 frames.insert(image->animationInterface()->currentTime());
@@ -796,7 +796,7 @@ namespace Private {
     struct SplitAlphaCommand : public KUndo2Command  {
         SplitAlphaCommand(SplitAlphaToMaskInfoSP info)
             : m_info(info) {
-            m_cached = new KisPaintDevice(*m_info->node->paintDevice(), KritaUtils::CopyAllFrames);
+            m_cached = new KisPaintDevice(*m_info->node->paintDevice(), MinervaUtils::CopyAllFrames);
         }
 
         void redo() override {
@@ -822,7 +822,7 @@ namespace Private {
             KisPaintDeviceSP srcDevice = m_info->node->paintDevice();
 
             if (srcDevice->framesInterface()) { //Swap contents of all frames to reflect the pre-operation state.
-                KisPaintDeviceSP tempPD = new KisPaintDevice(*m_cached, KritaUtils::CopySnapshot);
+                KisPaintDeviceSP tempPD = new KisPaintDevice(*m_cached, MinervaUtils::CopySnapshot);
                 Q_FOREACH(const int& frame, srcDevice->framesInterface()->frames() ) {
                     if (m_cached->framesInterface()->frames().contains(frame)) {
                         m_cached->framesInterface()->writeFrameToDevice(frame, tempPD);
@@ -1175,7 +1175,7 @@ namespace Private {
             }
         }
         nodesToRemove += KisNodeList(extraNodesToRemove.begin(), extraNodesToRemove.end());
-        KritaUtils::filterContainer<KisNodeList>(nodesToRemove,
+        MinervaUtils::filterContainer<KisNodeList>(nodesToRemove,
                                                  [nodesToHide](KisNodeSP node) {
                                                      return !nodesToHide.contains(node);
                                                  });
@@ -1520,7 +1520,7 @@ namespace Private {
                      * on the layer below. To merge the source into all the frames, just
                      * make the source animated.
                      *
-                     * See https://bugs.kde.org/show_bug.cgi?id=475550
+                     * See https://github.com/dr-shabana/Minerva-2D/issues/show_bug.cgi?id=475550
                      */
                     const bool skipMergingSourceLayer = !layer->isAnimated() &&
                             frame != currentTimeOnStart;
@@ -1896,7 +1896,7 @@ namespace Private {
      *         layer is set to Normal, so the user could clearly see that he should
      *         choose the correct blending mode.
      *
-     * Krita uses the second approach: after merge operation, the image should look
+     * Minerva uses the second approach: after merge operation, the image should look
      * as if nothing has happened (if it is technically possible).
      */
     void mergeMultipleLayersImpl(KisImageSP image, KisNodeList mergedNodes, KisNodeSP putAfter,

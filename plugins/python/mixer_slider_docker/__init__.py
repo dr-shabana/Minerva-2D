@@ -1,7 +1,7 @@
 #
 #  SPDX-FileCopyrightText: 2019 Tusooa Zhu <tusooa@vista.aero>
 #
-#  This file is part of Krita-docker-color-slider.
+#  This file is part of Minerva-docker-color-slider.
 #
 #  SPDX-License-Identifier: GPL-3.0-or-later
 #

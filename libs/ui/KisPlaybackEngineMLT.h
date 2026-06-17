@@ -28,7 +28,7 @@ enum PlaybackMode {
  * that uses MLT (Media Lovin' Toolkit) to drive image frame changes and animation audio
  * with (hopefully) close to frame-perfect synchronization.
  *
- * If MLT is unavailable or unwanted, Krita can instead use KisPlaybackEngineQT
+ * If MLT is unavailable or unwanted, Minerva can instead use KisPlaybackEngineQT
  * which may be simpler but has different characteristics and is not designed with
  * audio-video synchronization in mind.
  */
@@ -94,7 +94,7 @@ public:
 private:
     /**
      * @brief Sets up an MLT::Producer object in response to audio being
-     * added to a Krita document or when canvas changes.
+     * added to a Minerva document or when canvas changes.
      * @param file: An optional file to be loaded by MLT.
      */
     void setupProducer(boost::optional<QFileInfo> file);

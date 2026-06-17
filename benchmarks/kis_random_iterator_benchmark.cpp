@@ -181,7 +181,7 @@ void KisRandomIteratorBenchmark::benchmarkTileByTileWrite()
     int yUnprocessed = int(TEST_IMAGE_HEIGHT) % int(TEST_AREA_HEIGHT);
     if ((xUnprocessed) != 0 || (yUnprocessed) != 0)
     {
-        dbgKrita << "There will be some unprocessed pixels! Test area differs from the image size";
+        dbgMinerva << "There will be some unprocessed pixels! Test area differs from the image size";
     }
     
     KisRandomAccessorSP it = m_device->createRandomAccessorNG();

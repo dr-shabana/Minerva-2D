@@ -188,11 +188,11 @@ QStringList KisImportExportManager::supportedMimeTypes(Direction direction)
 {
     // Find the right mimetype by the extension
     QSet<QString> mimeTypes;
-    //    mimeTypes << KisDocument::nativeFormatMimeType() << "application/x-krita-paintoppreset" << "image/openraster";
+    //    mimeTypes << KisDocument::nativeFormatMimeType() << "application/x-minerva2d-paintoppreset" << "image/openraster";
 
     if (direction == KisImportExportManager::Import) {
         if (m_importMimeTypes.isEmpty()) {
-            QList<KoJsonTrader::Plugin> list = KoJsonTrader::instance()->query("Krita/FileFilter", "");
+            QList<KoJsonTrader::Plugin> list = KoJsonTrader::instance()->query("Minerva/FileFilter", "");
             Q_FOREACH(const KoJsonTrader::Plugin &loader, list) {
                 QJsonObject json = loader.metaData().value("MetaData").toObject();
                 Q_FOREACH(const QString &mimetype, json.value("X-KDE-Import").toString().split(",", Qt::SkipEmptyParts)) {
@@ -207,7 +207,7 @@ QStringList KisImportExportManager::supportedMimeTypes(Direction direction)
     }
     else if (direction == KisImportExportManager::Export) {
         if (m_exportMimeTypes.isEmpty()) {
-            QList<KoJsonTrader::Plugin> list = KoJsonTrader::instance()->query("Krita/FileFilter", "");
+            QList<KoJsonTrader::Plugin> list = KoJsonTrader::instance()->query("Minerva/FileFilter", "");
             Q_FOREACH(const KoJsonTrader::Plugin &loader, list) {
                 QJsonObject json = loader.metaData().value("MetaData").toObject();
                 Q_FOREACH(const QString &mimetype, json.value("X-KDE-Export").toString().split(",", Qt::SkipEmptyParts)) {
@@ -227,7 +227,7 @@ KisImportExportFilter *KisImportExportManager::filterForMimeType(const QString &
 {
     int weight = -1;
     KisImportExportFilter *filter = 0;
-    QList<KoJsonTrader::Plugin>list = KoJsonTrader::instance()->query("Krita/FileFilter", "");
+    QList<KoJsonTrader::Plugin>list = KoJsonTrader::instance()->query("Minerva/FileFilter", "");
 
     Q_FOREACH(const KoJsonTrader::Plugin &loader, list) {
         QJsonObject json = loader.metaData().value("MetaData").toObject();
@@ -363,7 +363,7 @@ KisImportExportManager::ConversionResult KisImportExportManager::convert(KisImpo
 
     if (!d->updater.isNull()) {
         // WARNING: The updater is not guaranteed to be persistent! If you ever want
-        // to add progress reporting to "Save also as .kra", make sure you create
+        // to add progress reporting to "Save also as .m2d", make sure you create
         // a separate KoProgressUpdater for that!
 
         // WARNING2: the failsafe completion of the updater happens in the destructor
@@ -618,7 +618,7 @@ bool KisImportExportManager::askUserAboutExportConfiguration(
 
         error += "</ul>";
 
-        QMessageBox::critical(KisPart::instance()->currentMainwindow(), i18nc("@title:window", "Krita: Export Error"), error);
+        QMessageBox::critical(KisPart::instance()->currentMainwindow(), i18nc("@title:window", "Minerva: Export Error"), error);
         return false;
     }
 
@@ -682,7 +682,7 @@ bool KisImportExportManager::askUserAboutExportConfiguration(
 
         QCheckBox *chkAlsoAsKra = 0;
         if (showWarnings && !warnings.isEmpty()) {
-            chkAlsoAsKra = new QCheckBox(i18n("Also save your image as a Krita file."));
+            chkAlsoAsKra = new QCheckBox(i18n("Also save your image as a Minerva file."));
             chkAlsoAsKra->setChecked(KisConfig(true).readEntry<bool>("AlsoSaveAsKra", false));
             layout->addWidget(chkAlsoAsKra);
         }
@@ -818,7 +818,7 @@ KisImportExportErrorCode KisImportExportManager::doExportImpl(const QString &loc
     if (filter->supportsIO() && !file.open(QFile::WriteOnly)) {
 #else
     QFileInfo fi(location);
-    QTemporaryFile file(QDir::tempPath() + "/.XXXXXX.kra");
+    QTemporaryFile file(QDir::tempPath() + "/.XXXXXX.m2d");
     if (filter->supportsIO() && !file.open()) {
 #endif
         KisImportExportErrorCannotWrite result(getFileOpenError(file));
@@ -915,7 +915,7 @@ KisImportExportErrorCode KisImportExportManager::doExportImpl(const QString &loc
             file.close();
             QFile target(location);
             if (target.exists()) {
-                // There should already be a .kra~ backup
+                // There should already be a .m2d~ backup
                 target.remove();
             }
             if (!file.copy(location)) {
@@ -944,7 +944,7 @@ QString KisImportExportManager::getAlsoAsKraLocation(const QString location) con
 #ifdef Q_OS_ANDROID
     return getUriForAdditionalFile(location, nullptr);
 #else
-    return location + ".kra";
+    return location + ".m2d";
 #endif
 }
 

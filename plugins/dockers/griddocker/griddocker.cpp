@@ -12,7 +12,7 @@
 #include <KoDockFactoryBase.h>
 #include <KoDockRegistry.h>
 
-K_PLUGIN_FACTORY_WITH_JSON(GridDockerPluginFactory, "krita_griddocker.json", registerPlugin<GridDockerPlugin>();)
+K_PLUGIN_FACTORY_WITH_JSON(GridDockerPluginFactory, "minerva2d_griddocker.json", registerPlugin<GridDockerPlugin>();)
 
 class GridDockerDockFactory : public KoDockFactoryBase {
 public:

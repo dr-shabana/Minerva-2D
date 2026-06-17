@@ -31,8 +31,8 @@ KisAdjustmentLayer::KisAdjustmentLayer(KisImageWSP image,
 {
     // by default Adjustment Layers have a copy composition,
     // which is more natural for users
-    // https://bugs.kde.org/show_bug.cgi?id=324505
-    // https://bugs.kde.org/show_bug.cgi?id=294122
+    // https://github.com/dr-shabana/Minerva-2D/issues/show_bug.cgi?id=324505
+    // https://github.com/dr-shabana/Minerva-2D/issues/show_bug.cgi?id=294122
     // demand the opposite from each other...
     //
     // also see a comment in KisLayerUtils::mergeMultipleLayersImpl()

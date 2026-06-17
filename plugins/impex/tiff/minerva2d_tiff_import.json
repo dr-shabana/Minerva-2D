@@ -1,0 +1,14 @@
+{
+    "Icon": "",
+    "Id": "Minerva TIFF Import Filter",
+    "NoDisplay": "true",
+    "Type": "Service",
+    
+    "X-KDE-Import": "image/tiff",
+    "X-KDE-Library": "kritatiffimport",
+    "X-KDE-ServiceTypes": [
+        "Minerva/FileFilter"
+    ],
+    "X-KDE-Weight": 1,
+    "X-KDE-Extensions" : "tif,tiff"
+}

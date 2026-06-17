@@ -567,7 +567,7 @@ void KisPSDTest::testSaveLayerStylesWithPatternMulti()
 
 void KisPSDTest::testOpeningFromOpenCanvas()
 {
-    QFileInfo sourceFileInfo(QString(FILES_DATA_DIR) + '/' + "test_krita_psd_from_opencanvas.psd");
+    QFileInfo sourceFileInfo(QString(FILES_DATA_DIR) + '/' + "test_minerva2d_psd_from_opencanvas.psd");
 
     Q_ASSERT(sourceFileInfo.exists());
 
@@ -599,7 +599,7 @@ void KisPSDTest::testOpeningAllFormats()
             //continue;
         }
 
-        //dbgKrita << "Opening" << ppVar(sourceFileInfo.fileName());
+        //dbgMinerva << "Opening" << ppVar(sourceFileInfo.fileName());
 
         QSharedPointer<KisDocument> doc = openPsdDocument(sourceFileInfo);
 
@@ -611,7 +611,7 @@ void KisPSDTest::testOpeningAllFormats()
                 shouldFailTheTest = true;
             }
 
-            errKrita << "FAILED to open" << sourceFileInfo.fileName();
+            errMinerva << "FAILED to open" << sourceFileInfo.fileName();
             continue;
         }
 
@@ -643,12 +643,12 @@ void KisPSDTest::testSavingAllFormats()
             //continue;
         }
 
-        dbgKrita << "Opening" << ppVar(sourceFileInfo.fileName());
+        dbgMinerva << "Opening" << ppVar(sourceFileInfo.fileName());
 
         QSharedPointer<KisDocument> doc = openPsdDocument(sourceFileInfo);
 
         if (!doc->image()) {
-            errKrita << "FAILED to open" << sourceFileInfo.fileName();
+            errMinerva << "FAILED to open" << sourceFileInfo.fileName();
             continue;
         }
 
@@ -668,7 +668,7 @@ void KisPSDTest::testSavingAllFormats()
 
         QFileInfo dstFileInfo(QDir::currentPath() + '/' + tempPsdName);
 
-        dbgKrita << "Saving" << ppVar(dstFileInfo.fileName());
+        dbgMinerva << "Saving" << ppVar(dstFileInfo.fileName());
 
         bool retval = doc->exportDocumentSync(dstFileInfo.absoluteFilePath(), "image/vnd.adobe.photoshop");
         QVERIFY(retval);

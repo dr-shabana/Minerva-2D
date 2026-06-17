@@ -43,7 +43,7 @@ class QAction;
  * Note for Android: to get a debug view of where the text input is at the
  * operating system level, you can set an environment variable:
  *
- *     qputenv("KRITA_ANDROID_EDIT_TEXT_DEBUG_DRAW", "1")
+ *     qputenv("MINERVA2D_ANDROID_EDIT_TEXT_DEBUG_DRAW", "1")
  */
 
 class KRITATOOLSVGTEXT_EXPORT SvgTextCursor : public KoToolSelection, public KoSvgTextShape::TextCursorChangeListener
@@ -231,7 +231,7 @@ public:
 
     /**
      * @brief mergePropertiesIntoSelection
-     * Within Krita's SVG/CSS text system, it is possible to apply incomplete
+     * Within Minerva's SVG/CSS text system, it is possible to apply incomplete
      * properties to a whole range. In that case, only the existing properties
      * are applied. Properties can also be removed this way.
      *

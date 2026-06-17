@@ -247,7 +247,7 @@ bool KoGamutMask::loadFromDevice(QIODevice *dev, KisResourcesInterfaceSP resourc
     QBuffer buf(&d->data);
     buf.open(QBuffer::ReadOnly);
 
-    QScopedPointer<KoStore> store(KoStore::createStore(&buf, KoStore::Read, "application/x-krita-gamutmask", KoStore::Zip));
+    QScopedPointer<KoStore> store(KoStore::createStore(&buf, KoStore::Read, "application/x-minerva2d-gamutmask", KoStore::Zip));
     if (!store || store->bad()) return false;
 
     bool storeOpened = store->open("gamutmask.svg");
@@ -335,7 +335,7 @@ QList<KoShape*> KoGamutMask::koShapes() const
 
 bool KoGamutMask::saveToDevice(QIODevice *dev) const
 {
-    KoStore* store(KoStore::createStore(dev, KoStore::Write, "application/x-krita-gamutmask", KoStore::Zip));
+    KoStore* store(KoStore::createStore(dev, KoStore::Write, "application/x-minerva2d-gamutmask", KoStore::Zip));
     if (!store || store->bad()) return false;
 
     QList<KoShape*> shapes = koShapes();

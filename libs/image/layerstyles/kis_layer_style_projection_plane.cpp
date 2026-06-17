@@ -22,7 +22,7 @@
 #include "kis_painter.h"
 #include "kis_ls_utils.h"
 #include "KisLayerStyleKnockoutBlower.h"
-#include "krita_utils.h"
+#include "minerva2d_utils.h"
 
 struct Q_DECL_HIDDEN KisLayerStyleProjectionPlane::Private
 {
@@ -271,10 +271,10 @@ void KisLayerStyleProjectionPlane::apply(KisPainter *painter, const QRect &rect)
                 m_d->applyComplexPlane(painter, plane, rect, originalClone);
             }
 
-            KritaUtils::ThresholdMode sourceThresholdMode =
+            MinervaUtils::ThresholdMode sourceThresholdMode =
                 !m_d->strokeStyle->isEmpty() ?
                 m_d->strokeStyle->sourcePlaneOpacityThresholdRequirement() :
-                KritaUtils::ThresholdNone;
+                MinervaUtils::ThresholdNone;
 
             if (m_d->hasOverlayStyles()) {
                 KisCachedSelection::Guard s1(m_d->cachedSelection);
@@ -287,14 +287,14 @@ void KisLayerStyleProjectionPlane::apply(KisPainter *painter, const QRect &rect)
 
                 {
                     KisPainter overlayPainter(sourceProjection);
-                    sourcePlane->applyMaxOutAlpha(&overlayPainter, rect, KritaUtils::ThresholdMaxOut);
+                    sourcePlane->applyMaxOutAlpha(&overlayPainter, rect, MinervaUtils::ThresholdMaxOut);
 
                     Q_FOREACH (const KisAbstractProjectionPlaneSP plane, m_d->stylesOverlay) {
                         plane->apply(&overlayPainter, rect);
                     }
                 }
 
-                KritaUtils::thresholdOpacityAlpha8(knockoutSelection->pixelSelection(), rect, sourceThresholdMode);
+                MinervaUtils::thresholdOpacityAlpha8(knockoutSelection->pixelSelection(), rect, sourceThresholdMode);
 
                 KisLayerStyleKnockoutBlower blower;
                 blower.setKnockoutSelection(knockoutSelection);

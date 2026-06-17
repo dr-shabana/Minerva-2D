@@ -4,7 +4,7 @@
 #[=======================================================================[
 
 This CMake file builds a patched libraqm as a static library to be linked from
-Krita (libkritaflake). We use FetchContent to download a copy of the unmodified
+Minerva (libkritaflake). We use FetchContent to download a copy of the unmodified
 libraqm source and patch it locally.
 
 FetchContent provides a way to use existing source instead of a downloaded copy.

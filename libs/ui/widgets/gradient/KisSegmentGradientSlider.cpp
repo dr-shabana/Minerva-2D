@@ -22,7 +22,7 @@
 #include <resources/KoSegmentGradient.h>
 #include <KisGradientWidgetsUtils.h>
 #include <KisDlgInternalColorSelector.h>
-#include <krita_utils.h>
+#include <minerva2d_utils.h>
 #include <kconfiggroup.h>
 #include <ksharedconfig.h>
 

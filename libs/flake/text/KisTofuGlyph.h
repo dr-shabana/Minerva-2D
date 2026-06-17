@@ -17,7 +17,7 @@
  * Some applications (Firefox for example) take it further and, instead of
  * showing a hollow rectangle, actually print the hex representation of the
  * Unicode codepoint inside the rectangle, as a missing glyph indicator.
- * KisTofuGlyph does exactly this for Krita.
+ * KisTofuGlyph does exactly this for Minerva.
  */
 namespace KisTofuGlyph
 {

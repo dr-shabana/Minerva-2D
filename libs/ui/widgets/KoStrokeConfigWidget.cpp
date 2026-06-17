@@ -61,7 +61,7 @@
 #include "kis_acyclic_signal_connector.h"
 #include <kis_signal_compressor.h>
 
-// Krita
+// Minerva
 #include "kis_double_parse_unit_spin_box.h"
 
 class CapNJoinMenu : public QMenu

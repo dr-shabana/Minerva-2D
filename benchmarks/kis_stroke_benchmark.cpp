@@ -450,11 +450,11 @@ inline void KisStrokeBenchmark::benchmarkLine(QString presetFileName)
 
 void KisStrokeBenchmark::benchmarkCircle(QString presetFileName)
 {
-    dbgKrita << "(circle)preset : " << presetFileName;
+    dbgMinerva << "(circle)preset : " << presetFileName;
 
     KisPaintOpPresetSP preset(new KisPaintOpPreset(m_dataPath + presetFileName));
     if (!preset->load(KisGlobalResourcesInterface::instance())){
-        dbgKrita << "Preset was not loaded";
+        dbgMinerva << "Preset was not loaded";
         return;
     }
 
@@ -506,10 +506,10 @@ void KisStrokeBenchmark::benchmarkRandomLines(QString presetFileName)
     KisPaintOpPresetSP preset(new KisPaintOpPreset(m_dataPath + presetFileName));
     bool loadedOk = preset->load(KisGlobalResourcesInterface::instance());
     if (!loadedOk){
-        dbgKrita << "The preset was not loaded correctly. Done.";
+        dbgMinerva << "The preset was not loaded correctly. Done.";
         return;
     }else{
-        dbgKrita << "preset : " << presetFileName;
+        dbgMinerva << "preset : " << presetFileName;
     }
 
     m_painter->setPaintOpPreset(preset, m_layer, m_image);
@@ -535,10 +535,10 @@ void KisStrokeBenchmark::benchmarkRectangle(QString presetFileName)
     KisPaintOpPresetSP preset(new KisPaintOpPreset(m_dataPath + presetFileName));
     bool loadedOk = preset->load(KisGlobalResourcesInterface::instance());
     if (!loadedOk){
-        dbgKrita << "The preset was not loaded correctly. Done.";
+        dbgMinerva << "The preset was not loaded correctly. Done.";
         return;
     }else{
-        dbgKrita << "preset : " << presetFileName;
+        dbgMinerva << "preset : " << presetFileName;
     }
     m_painter->setPaintOpPreset(preset, m_layer, m_image);
 
@@ -564,10 +564,10 @@ void KisStrokeBenchmark::benchmarkStroke(QString presetFileName)
     KisPaintOpPresetSP preset(new KisPaintOpPreset(m_dataPath + presetFileName));
     bool loadedOk = preset->load(KisGlobalResourcesInterface::instance());
     if (!loadedOk){
-        dbgKrita << "The preset was not loaded correctly. Done.";
+        dbgMinerva << "The preset was not loaded correctly. Done.";
         return;
     } else {
-        dbgKrita << "preset : " << presetFileName;
+        dbgMinerva << "preset : " << presetFileName;
     }
 
     m_painter->setPaintOpPreset(preset, m_layer, m_image);
@@ -579,7 +579,7 @@ void KisStrokeBenchmark::benchmarkStroke(QString presetFileName)
     }
 
 #ifdef SAVE_OUTPUT
-    dbgKrita << "Saving output " << m_outputPath + presetFileName + ".png";
+    dbgMinerva << "Saving output " << m_outputPath + presetFileName + ".png";
     m_layer->paintDevice()->convertToQImage(0).save(m_outputPath + presetFileName + OUTPUT_FORMAT);
 #endif
 }

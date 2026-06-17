@@ -63,7 +63,7 @@ public:
 };
 
 /**
- * A utility class for loading various shaders we use in Krita. It provides
+ * A utility class for loading various shaders we use in Minerva. It provides
  * specific methods for shaders that pick the correct vertex and fragment files
  * depending on the availability of OpenGL3. Additionally, it provides a generic
  * shader loading method to prevent duplication.

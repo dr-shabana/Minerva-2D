@@ -65,7 +65,7 @@ bool memoryIsFilled(quint8 c, quint8 *mem, qint32 size)
 {
     for(; size > 0; size--)
         if(*(mem++) != c) {
-            dbgKrita << "Expected" << c << "but found" << *(mem-1);
+            dbgMinerva << "Expected" << c << "but found" << *(mem-1);
             return false;
         }
 

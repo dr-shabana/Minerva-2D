@@ -1,0 +1,9 @@
+{
+    "Id": "Shear Image Plugin",
+    "Type": "Service",
+    "X-KDE-Library": "kritashearimage",
+    "X-KDE-ServiceTypes": [
+        "Minerva/ViewPlugin"
+    ],
+    "X-Minerva-Version": "28"
+}

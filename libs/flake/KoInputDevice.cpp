@@ -61,7 +61,7 @@ bool KoInputDevice::isMouse() const
 {
     // sometimes, the system gives us tablet events with NoDevice or UnknownPointer. This is
     // likely an XInput2 bug. However, assuming that if cannot identify the tablet device we've
-    // actually got a mouse is reasonable. See https://bugs.kde.org/show_bug.cgi?id=283130.
+    // actually got a mouse is reasonable. See https://github.com/dr-shabana/Minerva-2D/issues/show_bug.cgi?id=283130.
     return d->mouse || d->device == KoInputDevice::InputDevice::Unknown
             || d->pointer == KoInputDevice::Pointer::Unknown;
 }

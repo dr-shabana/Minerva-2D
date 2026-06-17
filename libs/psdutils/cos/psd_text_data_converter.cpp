@@ -765,7 +765,7 @@ QString PsdTextDataConverter::stylesForPSDParagraphSheet(QVariantHash PSDParagra
             unsupportedStyles << key;
             continue;
         }  else if (key == "/KinsokuOrder") {
-            // might be 0 = pushInFirst, 1 = pushOutFirst, 2 = pushOutOnly, if so, Krita only supports 2.
+            // might be 0 = pushInFirst, 1 = pushOutFirst, 2 = pushOutOnly, if so, Minerva only supports 2.
             unsupportedStyles << key;
             continue;
         } else if (key == "/EveryLineComposer") {

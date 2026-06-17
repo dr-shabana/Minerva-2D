@@ -31,7 +31,7 @@
 #include <KisAnimatedBrushAnnotation.h>
 #include <KisGlobalResourcesInterface.h>
 
-K_PLUGIN_FACTORY_WITH_JSON(KisBrushImportFactory, "krita_brush_import.json", registerPlugin<KisBrushImport>();)
+K_PLUGIN_FACTORY_WITH_JSON(KisBrushImportFactory, "minerva2d_brush_import.json", registerPlugin<KisBrushImport>();)
 
 KisBrushImport::KisBrushImport(QObject *parent, const QVariantList &) : KisImportExportFilter(parent)
 {

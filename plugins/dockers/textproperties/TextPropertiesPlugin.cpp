@@ -38,30 +38,30 @@
 #include "TextPropertyConfigModel.h"
 #include "TextPropertiesCanvasObserver.h"
 
-K_PLUGIN_FACTORY_WITH_JSON(TextPropertiesPluginFactory, "krita_textproperties.json", registerPlugin<TextPropertiesPlugin>();)
+K_PLUGIN_FACTORY_WITH_JSON(TextPropertiesPluginFactory, "minerva2d_textproperties.json", registerPlugin<TextPropertiesPlugin>();)
 
 KIS_DECLARE_STATIC_INITIALIZER {
-    qmlRegisterType<TextPropertiesCanvasObserver>("org.krita.flake.text", 1, 0, "TextPropertiesCanvasObserver");
-    qmlRegisterType<KoSvgTextPropertiesModel>("org.krita.flake.text", 1, 0, "KoSvgTextPropertiesModel");
-    qmlRegisterType<CssLengthPercentageModel>("org.krita.flake.text", 1, 0, "CssLengthPercentageModel");
-    qmlRegisterType<LineHeightModel>("org.krita.flake.text", 1, 0, "LineHeightModel");
-    qmlRegisterType<TextIndentModel>("org.krita.flake.text", 1, 0, "TextIndentModel");
-    qmlRegisterType<TabSizeModel>("org.krita.flake.text", 1, 0, "TabSizeModel");
-    qmlRegisterType<TextTransformModel>("org.krita.flake.text", 1, 0, "TextTransformModel");
-    qmlRegisterType<CssFontStyleModel>("org.krita.flake.text", 1, 0, "CssFontStyleModel");
-    qmlRegisterType<FontVariantLigaturesModel>("org.krita.flake.text", 1, 0, "FontVariantLigaturesModel");
-    qmlRegisterType<FontVariantNumericModel>("org.krita.flake.text", 1, 0, "FontVariantNumericModel");
-    qmlRegisterType<FontVariantEastAsianModel>("org.krita.flake.text", 1, 0, "FontVariantEastAsianModel");
-    qmlRegisterUncreatableMetaObject(KoSvgText::staticMetaObject, "org.krita.flake.text", 1, 0, "KoSvgText", "Error: Namespace with enums");
+    qmlRegisterType<TextPropertiesCanvasObserver>("org.minerva2d.flake.text", 1, 0, "TextPropertiesCanvasObserver");
+    qmlRegisterType<KoSvgTextPropertiesModel>("org.minerva2d.flake.text", 1, 0, "KoSvgTextPropertiesModel");
+    qmlRegisterType<CssLengthPercentageModel>("org.minerva2d.flake.text", 1, 0, "CssLengthPercentageModel");
+    qmlRegisterType<LineHeightModel>("org.minerva2d.flake.text", 1, 0, "LineHeightModel");
+    qmlRegisterType<TextIndentModel>("org.minerva2d.flake.text", 1, 0, "TextIndentModel");
+    qmlRegisterType<TabSizeModel>("org.minerva2d.flake.text", 1, 0, "TabSizeModel");
+    qmlRegisterType<TextTransformModel>("org.minerva2d.flake.text", 1, 0, "TextTransformModel");
+    qmlRegisterType<CssFontStyleModel>("org.minerva2d.flake.text", 1, 0, "CssFontStyleModel");
+    qmlRegisterType<FontVariantLigaturesModel>("org.minerva2d.flake.text", 1, 0, "FontVariantLigaturesModel");
+    qmlRegisterType<FontVariantNumericModel>("org.minerva2d.flake.text", 1, 0, "FontVariantNumericModel");
+    qmlRegisterType<FontVariantEastAsianModel>("org.minerva2d.flake.text", 1, 0, "FontVariantEastAsianModel");
+    qmlRegisterUncreatableMetaObject(KoSvgText::staticMetaObject, "org.minerva2d.flake.text", 1, 0, "KoSvgText", "Error: Namespace with enums");
 
-    qmlRegisterType<FontStyleModel>("org.krita.flake.text", 1, 0, "FontStyleModel");
-    qmlRegisterType<FontAxesModel>("org.krita.flake.text", 1, 0, "FontAxesModel");
-    qmlRegisterType<OpenTypeFeatureFilterModel>("org.krita.flake.text", 1, 0, "OpenTypeFeatureFilterModel");
-    qmlRegisterType<OpenTypeFeatureModel>("org.krita.flake.text", 1, 0, "OpenTypeFeatureModel");
-    qmlRegisterType<CssQmlUnitConverter>("org.krita.flake.text", 1, 0, "CssQmlUnitConverter");
-    qmlRegisterType<LocaleHandler>("org.krita.flake.text", 1, 0, "LocaleHandler");
-    qmlRegisterType<TextPropertyConfigModel>("org.krita.flake.text", 1, 0, "TextPropertyConfigModel");
-    qmlRegisterType<TextPropertyConfigFilterModel>("org.krita.flake.text", 1, 0, "TextPropertyConfigFilterModel");
+    qmlRegisterType<FontStyleModel>("org.minerva2d.flake.text", 1, 0, "FontStyleModel");
+    qmlRegisterType<FontAxesModel>("org.minerva2d.flake.text", 1, 0, "FontAxesModel");
+    qmlRegisterType<OpenTypeFeatureFilterModel>("org.minerva2d.flake.text", 1, 0, "OpenTypeFeatureFilterModel");
+    qmlRegisterType<OpenTypeFeatureModel>("org.minerva2d.flake.text", 1, 0, "OpenTypeFeatureModel");
+    qmlRegisterType<CssQmlUnitConverter>("org.minerva2d.flake.text", 1, 0, "CssQmlUnitConverter");
+    qmlRegisterType<LocaleHandler>("org.minerva2d.flake.text", 1, 0, "LocaleHandler");
+    qmlRegisterType<TextPropertyConfigModel>("org.minerva2d.flake.text", 1, 0, "TextPropertyConfigModel");
+    qmlRegisterType<TextPropertyConfigFilterModel>("org.minerva2d.flake.text", 1, 0, "TextPropertyConfigFilterModel");
 }
 
 class TextPropertiesDockFactory : public KoDockFactoryBase {

@@ -17,7 +17,7 @@
 /**
  * @brief The GroupLayer class
  * A group layer is a layer that can contain other layers.
- * In Krita, layers within a group layer are composited
+ * In Minerva, layers within a group layer are composited
  * first before they are added into the composition code for where
  * the group is in the stack. This has a significant effect on how
  * it is interpreted for blending modes.
@@ -38,7 +38,7 @@ public:
 public Q_SLOTS:
 
     /**
-     * @brief type Krita has several types of nodes, split in layers and masks. Group
+     * @brief type Minerva has several types of nodes, split in layers and masks. Group
      * layers can contain other layers, any layer can contain masks.
      *
      * @return grouplayer

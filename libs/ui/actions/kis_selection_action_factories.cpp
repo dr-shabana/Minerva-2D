@@ -626,7 +626,7 @@ void KisStrokeSelectionActionFactory::run(KisViewManager *view, const StrokeSele
     QPainterPath outline = pixelSelection->outlineCache();
     QColor color = params.color.toQColor();
 
-    KisNodeSP currentNode = view->canvasResourceProvider()->resourceManager()->resource(KoCanvasResource::CurrentKritaNode).value<KisNodeWSP>();
+    KisNodeSP currentNode = view->canvasResourceProvider()->resourceManager()->resource(KoCanvasResource::CurrentMinervaNode).value<KisNodeWSP>();
     if (!currentNode->inherits("KisShapeLayer") && currentNode->paintDevice()) {
         KoCanvasResourceProvider * rManager = view->canvasResourceProvider()->resourceManager();
         KisToolShapeUtils::StrokeStyle strokeStyle =  KisToolShapeUtils::StrokeStyleForeground;
@@ -682,7 +682,7 @@ void KisStrokeBrushSelectionActionFactory::run(KisViewManager *view, const Strok
         pixelSelection->recalculateOutlineCache();
     }
 
-    KisNodeSP currentNode = view->canvasResourceProvider()->resourceManager()->resource(KoCanvasResource::CurrentKritaNode).value<KisNodeWSP>();
+    KisNodeSP currentNode = view->canvasResourceProvider()->resourceManager()->resource(KoCanvasResource::CurrentMinervaNode).value<KisNodeWSP>();
     if (!currentNode->inherits("KisShapeLayer") && currentNode->paintDevice())
     {
         KoCanvasResourceProvider * rManager = view->canvasResourceProvider()->resourceManager();

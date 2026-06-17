@@ -35,12 +35,12 @@ public:
     /**
      * Copy the selection
      */
-    KisPixelSelection(const KisPixelSelection& rhs, KritaUtils::DeviceCopyMode copyMode = KritaUtils::CopySnapshot);
+    KisPixelSelection(const KisPixelSelection& rhs, MinervaUtils::DeviceCopyMode copyMode = MinervaUtils::CopySnapshot);
 
     /**
      * Create a new selection using the content of copySource as the mask.
      */
-    KisPixelSelection(const KisPaintDeviceSP copySource, KritaUtils::DeviceCopyMode copyMode = KritaUtils::CopySnapshot, KisSelectionWSP parentSelection = KisSelectionWSP());
+    KisPixelSelection(const KisPaintDeviceSP copySource, MinervaUtils::DeviceCopyMode copyMode = MinervaUtils::CopySnapshot, KisSelectionWSP parentSelection = KisSelectionWSP());
 
     ~KisPixelSelection() override;
 

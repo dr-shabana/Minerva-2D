@@ -36,7 +36,7 @@ public:
 };
 
 /**
- * Migrates Krita profile version 5 to 6
+ * Migrates Minerva profile version 5 to 6
  */
 class KisInputProfileMigrator5To6 : public KisInputProfileMigrator
 {

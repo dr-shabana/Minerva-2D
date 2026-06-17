@@ -200,7 +200,7 @@ void KisQPainterCanvas::notifyImageColorSpaceChanged(const KoColorSpace *cs)
 void KisQPainterCanvas::setWrapAroundViewingMode(bool value)
 {
     Q_UNUSED(value);
-    dbgKrita << "Wrap around viewing mode not implemented in QPainter Canvas.";
+    dbgMinerva << "Wrap around viewing mode not implemented in QPainter Canvas.";
     return;
 }
 
@@ -212,7 +212,7 @@ bool KisQPainterCanvas::wrapAroundViewingMode() const
 void KisQPainterCanvas::setWrapAroundViewingModeAxis(WrapAroundAxis value)
 {
     Q_UNUSED(value);
-    dbgKrita << "Wrap around viewing mode not implemented in QPainter Canvas.";
+    dbgMinerva << "Wrap around viewing mode not implemented in QPainter Canvas.";
     return;
 }
 

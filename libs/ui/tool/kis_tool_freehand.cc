@@ -1,5 +1,5 @@
 /*
- *  kis_tool_freehand.cc - part of Krita
+ *  kis_tool_freehand.cc - part of Minerva
  *
  *  SPDX-FileCopyrightText: 2003-2007 Boudewijn Rempt <boud@valdyas.org>
  *  SPDX-FileCopyrightText: 2004 Bart Coppens <kde@bartcoppens.be>
@@ -26,7 +26,7 @@
 //pop up palette
 #include <kis_canvas_resource_provider.h>
 
-// Krita/image
+// Minerva/image
 #include <kis_layer.h>
 #include <kis_paint_layer.h>
 #include <kis_painter.h>
@@ -36,7 +36,7 @@
 #include <brushengine/KisOptimizedBrushOutline.h>
 
 
-// Krita/ui
+// Minerva/ui
 #include "kis_abstract_perspective_grid.h"
 #include "kis_config.h"
 #include "kis_config_notifier.h"

@@ -93,7 +93,7 @@ void KisCustomPattern::slotAddPredefined()
 {
     if (!m_pattern) return;
 
-    // Save in the directory that is likely to be: ~/.kde/share/apps/krita/patterns
+    // Save in the directory that is likely to be: ~/.kde/share/apps/minerva2d/patterns
     // a unique file with this pattern name
     QString dir = KoResourceServerProvider::instance()->patternServer()->saveLocation();
 
@@ -123,7 +123,7 @@ void KisCustomPattern::slotAddPredefined()
     bool overwrite = false;
     if (fi.exists()) {
         if (hadToChangeFilename) { // if not, the File Dialog would show the warning
-            if (QMessageBox::warning(this,  i18nc("@title:window", "Krita"), i18n("This pattern already exists. Do you want to overwrite it?"), QMessageBox::Yes | QMessageBox::No) == QMessageBox::Yes) {
+            if (QMessageBox::warning(this,  i18nc("@title:window", "Minerva"), i18n("This pattern already exists. Do you want to overwrite it?"), QMessageBox::Yes | QMessageBox::No) == QMessageBox::Yes) {
                 overwrite = true;
             }
         } else { // the File Dialog showed the warning and the user said "yeah fine"

@@ -14,6 +14,6 @@ kis_add_library(kritaroundmarkerpaintop MODULE ${kritaroundmarkerpaintop_SOURCES
 target_link_libraries(kritaroundmarkerpaintop kritalibpaintop)
 
 
-install(TARGETS kritaroundmarkerpaintop DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
-install( FILES  krita_roundmarkerop.svg DESTINATION ${KDE_INSTALL_DATADIR}/krita/images)
+install(TARGETS kritaroundmarkerpaintop DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})
+install( FILES  minerva2d_roundmarkerop.svg DESTINATION ${KDE_INSTALL_DATADIR}/minerva2d/images)
 

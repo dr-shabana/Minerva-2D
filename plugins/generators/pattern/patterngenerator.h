@@ -1,5 +1,5 @@
 /*
- * This file is part of Krita
+ * This file is part of Minerva
  *
  * SPDX-FileCopyrightText: 2006 Cyrille Berger <cberger@cberger.net>
  *
@@ -15,12 +15,12 @@
 
 class KisConfigWidget;
 
-class KritaPatternGenerator : public QObject
+class MinervaPatternGenerator : public QObject
 {
     Q_OBJECT
 public:
-    KritaPatternGenerator(QObject *parent, const QVariantList &);
-    ~KritaPatternGenerator() override;
+    MinervaPatternGenerator(QObject *parent, const QVariantList &);
+    ~MinervaPatternGenerator() override;
 };
 
 class PatternGenerator : public KisGenerator

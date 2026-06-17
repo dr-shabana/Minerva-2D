@@ -33,12 +33,12 @@
     
 
     <text id="emojiTest" transform="translate(300,15)"
-        font-family="Krita_Test_Unicode_Variation_A, DejaVu Sans" fill="blue" font-size="15" 
+        font-family="Minerva_Test_Unicode_Variation_A, DejaVu Sans" fill="blue" font-size="15" 
           writing-mode="vertical-rl" text-anchor="start" inline-size="60">🃋あ😪&#x82A6;🐮あ&#x82A6;🁠あ😻
     </text>
 
     <text id="test-font-size-ttb" transform="translate(340,15)"
-        font-family="Krita_Test_Unicode_Variation_A, DejaVu Sans" fill="blue" font-size="15" 
+        font-family="Minerva_Test_Unicode_Variation_A, DejaVu Sans" fill="blue" font-size="15" 
           writing-mode="vertical-lr" text-anchor="start" inline-size="60">ああ<tspan style="font-size:2em; fill: red;">&#x82A6;&#x82A6;</tspan>あ&#x82A6;あ&#x82A6;ああ
     </text>
 

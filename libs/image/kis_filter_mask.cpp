@@ -115,7 +115,7 @@ QRect KisFilterMask::decorateRect(KisPaintDeviceSP &src,
         KisFilterRegistry::instance()->value(filterConfig->name());
 
     if (!filter) {
-        warnKrita << "Could not retrieve filter \"" << filterConfig->name() << "\"";
+        warnMinerva << "Could not retrieve filter \"" << filterConfig->name() << "\"";
         return QRect();
     }
 

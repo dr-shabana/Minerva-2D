@@ -71,7 +71,7 @@ public:
     /**
      * Create a new selection using the content of copySource as the mask.
      */
-    KisSelection(const KisPaintDeviceSP copySource, KritaUtils::DeviceCopyMode copyMode, KisDefaultBoundsBaseSP defaultBounds, KisImageResolutionProxySP resolutionProxy);
+    KisSelection(const KisPaintDeviceSP copySource, MinervaUtils::DeviceCopyMode copyMode, KisDefaultBoundsBaseSP defaultBounds, KisImageResolutionProxySP resolutionProxy);
 
     /**
      * The paint device of the pixel selection should report

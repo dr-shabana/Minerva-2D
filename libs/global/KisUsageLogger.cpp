@@ -21,7 +21,7 @@
 #include <QThread>
 #include <QApplication>
 #include <klocalizedstring.h>
-#include <KritaVersionWrapper.h>
+#include <MinervaVersionWrapper.h>
 #include <QGuiApplication>
 #include <QStyle>
 #include <QStyleFactory>
@@ -63,8 +63,8 @@ KisUsageLogger::KisUsageLogger()
     if (!QFileInfo(QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation)).exists()) {
         QDir().mkpath(QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation));
     }
-    d->logFile.setFileName(QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/krita.log");
-    d->sysInfoFile.setFileName(QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/krita-sysinfo.log");
+    d->logFile.setFileName(QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/minerva2d.log");
+    d->sysInfoFile.setFileName(QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/minerva2d-sysinfo.log");
 
     QFileInfo fi(d->logFile.fileName());
     if (fi.size() > 100 * 1000 * 1000) { // 100 mb seems a reasonable max
@@ -107,9 +107,9 @@ QString KisUsageLogger::basicSystemInfo()
 
     // NOTE: This is intentionally not translated!
 
-    // Krita version info
-    systemInfo.append("Krita\n");
-    systemInfo.append("\n Version: ").append(KritaVersionWrapper::versionString(true));
+    // Minerva version info
+    systemInfo.append("Minerva\n");
+    systemInfo.append("\n Version: ").append(MinervaVersionWrapper::versionString(true));
 #ifdef Q_OS_WIN
     {
         using namespace KisWindowsPackageUtils;
@@ -263,15 +263,15 @@ void KisUsageLogger::writeHeader()
 
     s_instance->d->logFile.write(sessionHeader.toUtf8());
 
-    QString KritaAndQtVersion;
-    KritaAndQtVersion.append("Krita Version: ").append(KritaVersionWrapper::versionString(true))
+    QString MinervaAndQtVersion;
+    MinervaAndQtVersion.append("Minerva Version: ").append(MinervaVersionWrapper::versionString(true))
             .append(", Qt version compiled: ").append(QT_VERSION_STR)
             .append(", loaded: ").append(qVersion())
             .append(". Process ID: ")
             .append(QString::number(qApp->applicationPid())).append("\n");
 
-    KritaAndQtVersion.append("-- -- -- -- -- -- -- --\n");
-    s_instance->d->logFile.write(KritaAndQtVersion.toUtf8());
+    MinervaAndQtVersion.append("-- -- -- -- -- -- -- --\n");
+    s_instance->d->logFile.write(MinervaAndQtVersion.toUtf8());
     s_instance->d->logFile.flush();
     log(QString("Style: %1. Available styles: %2")
         .arg(qApp->style()->objectName(),
@@ -329,7 +329,7 @@ void KisUsageLogger::rotateLog()
         QString log = QString::fromUtf8(d->logFile.readAll());
         if (!log.split(s_sectionHeader).last().contains("CLOSING SESSION")) {
             log.append("\nKRITA DID NOT CLOSE CORRECTLY\n");
-            QString crashLog = QStandardPaths::writableLocation(QStandardPaths::GenericConfigLocation) + QStringLiteral("/kritacrash.log");
+            QString crashLog = QStandardPaths::writableLocation(QStandardPaths::GenericConfigLocation) + QStringLiteral("/minerva2dcrash.log");
             QFile f(crashLog);
             if (f.open(QFile::ReadOnly)) {
                 QString crashes = QString::fromUtf8(f.readAll());

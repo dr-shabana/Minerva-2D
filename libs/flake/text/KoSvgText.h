@@ -1093,7 +1093,7 @@ struct ResolutionHandler {
     bool roundToPixelVertical = false;
 
     const qreal freeTypePixel = 64.0; // 64 ints to a pixel for freetype, also called "26.6 fp" in the docs.
-    const qreal pointInInch = 72.0; // PostScript points, Krita's vector unit.
+    const qreal pointInInch = 72.0; // PostScript points, Minerva's vector unit.
 
     qreal freeTypePixelToPointFactor(const bool x = true) const;
 

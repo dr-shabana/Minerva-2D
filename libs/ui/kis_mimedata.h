@@ -49,7 +49,7 @@ public:
     /**
      * KisMimeData provides the following formats if a node has been set:
      * <ul>
-     * <li>application/x-krita-node-internal-pointer: requests a pointer to a Krita node.
+     * <li>application/x-minerva2d-node-internal-pointer: requests a pointer to a Minerva node.
      * <li>application/x-qt-image: fallback for other applications, returns a QImage of the
      * current node's paintdevice
      * <li>application/zip: allows drop targets that can handle zip files to open the data
@@ -91,7 +91,7 @@ private:
                                           KisImageWSP image);
 
     /**
-     * Try load the node, which belongs to the same Krita instance,
+     * Try load the node, which belongs to the same Minerva instance,
      * that is can be fetched without serialization
      */
     static KisNodeList tryLoadInternalNodes(const QMimeData *data,

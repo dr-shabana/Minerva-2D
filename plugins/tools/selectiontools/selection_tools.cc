@@ -1,5 +1,5 @@
 /*
- * selection_tools.cc -- Part of Krita
+ * selection_tools.cc -- Part of Minerva
  *
  * SPDX-FileCopyrightText: 2004 Boudewijn Rempt (boud@valdyas.org)
  *

@@ -98,7 +98,7 @@ void KisSharedPtrTest::testCopy2()
         TestClassSP instanceSP(instance);
         {
             // Copy the shared pointer; refcount should be 2 by now.
-            // This happens a lot in Krita code!
+            // This happens a lot in Minerva code!
             TestClassSP instanceSP2(instanceSP.data());
         }
         // Even though the second owner of the pointer has gone out of
@@ -143,7 +143,7 @@ void KisSharedPtrTest::testWeakSP()
         TestClassWSP instanceWSP(instance);
         {
             // Copy the shared pointer; refcount should be 2 by now.
-            // This happens a lot in Krita code!
+            // This happens a lot in Minerva code!
             TestClassSP instanceSP(instance);
         }
         // The wsp doesn't prevent the sp from deleting the instance
@@ -162,7 +162,7 @@ void KisSharedPtrTest::testBoolOnInvalidWeakPointer()
     TestClassWSP instanceWSP(instance);
     {
         // Copy the shared pointer; refcount should be 2 by now.
-        // This happens a lot in Krita code!
+        // This happens a lot in Minerva code!
         TestClassSP instanceSP(instance);
     }
 

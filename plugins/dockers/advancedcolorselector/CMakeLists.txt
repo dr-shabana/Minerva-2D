@@ -1,4 +1,4 @@
-set(KRITA_COLORSELECTORNG_SOURCES
+set(MINERVA2D_COLORSELECTORNG_SOURCES
     colorselectorng.cpp
     kis_color_selector_ng_dock.cpp
     kis_color_selector_ng_docker_widget.cpp
@@ -27,17 +27,17 @@ set(KRITA_COLORSELECTORNG_SOURCES
     KisColorPatchesTableView.cpp
 )
 
-ki18n_wrap_ui(KRITA_COLORSELECTORNG_SOURCES
+ki18n_wrap_ui(MINERVA2D_COLORSELECTORNG_SOURCES
     wdg_color_selector_settings.ui
 )
 
-kis_add_library(kritacolorselectorng MODULE ${KRITA_COLORSELECTORNG_SOURCES})
+kis_add_library(kritacolorselectorng MODULE ${MINERVA2D_COLORSELECTORNG_SOURCES})
 
 target_link_libraries(kritacolorselectorng kritaui)
 
-install(TARGETS kritacolorselectorng  DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
+install(TARGETS kritacolorselectorng  DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})
 
 install( FILES  kis_colselng_color_patches.png
 		kis_colselng_color_triangle.png
 		kis_colselng_my_paint_shade_selector.png
-                DESTINATION ${KDE_INSTALL_DATADIR}/krita/pics)
+                DESTINATION ${KDE_INSTALL_DATADIR}/minerva2d/pics)

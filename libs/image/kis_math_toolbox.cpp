@@ -114,7 +114,7 @@ bool KisMathToolbox::getToDoubleChannelPtr(QList<KoChannelInfo *> cis, QVector<P
             f[k] = toDouble<qint16>;
             break;
         default:
-            warnKrita << "Unsupported value type in KisMathToolbox";
+            warnMinerva << "Unsupported value type in KisMathToolbox";
             return false;
         }
     }
@@ -177,7 +177,7 @@ bool KisMathToolbox::getFromDoubleChannelPtr(QList<KoChannelInfo *> cis, QVector
             f[k] = fromDouble<qint16>;
             break;
         default:
-            warnKrita << "Unsupported value type in KisMathToolbox";
+            warnMinerva << "Unsupported value type in KisMathToolbox";
             return false;
         }
     }
@@ -212,7 +212,7 @@ bool KisMathToolbox::getFromDoubleCheckNullChannelPtr(QList<KoChannelInfo *> cis
             f[k] = fromDoubleCheckNull<qint16>;
             break;
         default:
-            warnKrita << "Unsupported value type in KisMathToolbox";
+            warnMinerva << "Unsupported value type in KisMathToolbox";
             return false;
         }
     }

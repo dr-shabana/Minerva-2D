@@ -30,7 +30,7 @@ void KisOcioDisplayFilterTest::test()
     QSharedPointer<OcioDisplayFilter> filter(new OcioDisplayFilter(egInterface));
 
     QString configFile = TestUtil::fetchDataFileLazy("./psyfiTestingConfig-master/config.ocio");
-    dbgKrita << ppVar(configFile);
+    dbgMinerva << ppVar(configFile);
 
     Q_ASSERT(QFile::exists(configFile));
 
@@ -53,11 +53,11 @@ void KisOcioDisplayFilterTest::test()
 
     filter->updateProcessor();
 
-    dbgKrita << ppVar(filter->inputColorSpaceName);
-    dbgKrita << ppVar(filter->displayDevice);
-    dbgKrita << ppVar(filter->view);
-    dbgKrita << ppVar(filter->gamma);
-    dbgKrita << ppVar(filter->exposure);
+    dbgMinerva << ppVar(filter->inputColorSpaceName);
+    dbgMinerva << ppVar(filter->displayDevice);
+    dbgMinerva << ppVar(filter->view);
+    dbgMinerva << ppVar(filter->gamma);
+    dbgMinerva << ppVar(filter->exposure);
 
     const KoColorSpace *paintingCS =
             KoColorSpaceRegistry::instance()->colorSpace(RGBAColorModelID.id(), Float32BitsColorDepthID.id(), 0);
@@ -66,7 +66,7 @@ void KisOcioDisplayFilterTest::test()
     image->convertImageColorSpace(paintingCS, KoColorConversionTransformation::internalRenderingIntent(), KoColorConversionTransformation::internalConversionFlags());
     image->waitForDone();
 
-    dbgKrita << ppVar(paintingCS) << ppVar(image->root()->firstChild()->colorSpace());
+    dbgMinerva << ppVar(paintingCS) << ppVar(image->root()->firstChild()->colorSpace());
 
     KoCanvasResourceProvider *resourceManager =
             utils::createResourceManager(image,
@@ -74,31 +74,31 @@ void KisOcioDisplayFilterTest::test()
 
     KisDisplayColorConverter converter(resourceManager, 0);
 
-    dbgKrita << ppVar(image->root()->firstChild());
+    dbgMinerva << ppVar(image->root()->firstChild());
 
     QVariant v;
     v.setValue(KisNodeWSP(image->root()->firstChild()));
-    resourceManager->setResource(KoCanvasResource::CurrentKritaNode, v);
+    resourceManager->setResource(KoCanvasResource::CurrentMinervaNode, v);
 
     converter.setDisplayFilter(filter);
-    dbgKrita << ppVar(converter.paintingColorSpace());
+    dbgMinerva << ppVar(converter.paintingColorSpace());
 
     {
         QColor refColor(255, 128, 0);
         KoColor realColor = converter.approximateFromRenderedQColor(refColor);
         QColor roundTripColor = converter.toQColor(realColor);
 
-        dbgKrita << ppVar(refColor);
-        dbgKrita << ppVar(realColor.colorSpace()) << ppVar(KoColor::toQString(realColor));
-        dbgKrita << ppVar(roundTripColor);
+        dbgMinerva << ppVar(refColor);
+        dbgMinerva << ppVar(realColor.colorSpace()) << ppVar(KoColor::toQString(realColor));
+        dbgMinerva << ppVar(roundTripColor);
     }
 
     {
         KoColor realColor(Qt::red, paintingCS);
         QColor roundTripColor = converter.toQColor(realColor);
 
-        dbgKrita << ppVar(realColor.colorSpace()) << ppVar(KoColor::toQString(realColor));
-        dbgKrita << ppVar(roundTripColor);
+        dbgMinerva << ppVar(realColor.colorSpace()) << ppVar(KoColor::toQString(realColor));
+        dbgMinerva << ppVar(roundTripColor);
     }
 
 }

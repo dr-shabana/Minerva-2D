@@ -12,7 +12,7 @@ kis_add_library(kritabrushexport MODULE ${kritabrushexport_PART_SRCS})
 
 target_link_libraries(kritabrushexport kritalibbrush kritalibpaintop kritaui kritaimpex)
 
-install(TARGETS kritabrushexport  DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
+install(TARGETS kritabrushexport  DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})
 
 set(kritabrushimport_PART_SRCS
     kis_brush_import.cpp
@@ -25,6 +25,6 @@ kis_add_library(kritabrushimport MODULE ${kritabrushimport_PART_SRCS})
 
 target_link_libraries(kritabrushimport kritalibbrush kritaui)
 
-install(TARGETS kritabrushimport  DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
+install(TARGETS kritabrushimport  DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})
 
-install(FILES krita_brush.desktop  DESTINATION ${KDE_INSTALL_APPDIR})
+install(FILES minerva2d_brush.desktop  DESTINATION ${KDE_INSTALL_APPDIR})

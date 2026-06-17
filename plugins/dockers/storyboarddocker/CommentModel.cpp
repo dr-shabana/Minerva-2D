@@ -168,7 +168,7 @@ bool StoryboardCommentModel::moveRows(const QModelIndex &sourceParent, int sourc
 QStringList StoryboardCommentModel::mimeTypes() const
 {
     QStringList types;
-    types << QLatin1String("application/x-krita-storyboard");
+    types << QLatin1String("application/x-minerva2d-storyboard");
     return types;
 }
 
@@ -187,7 +187,7 @@ QMimeData *StoryboardCommentModel::mimeData(const QModelIndexList &indexes) cons
         }
     }
 
-    mimeData->setData("application/x-krita-storyboard", encodeData); //default mimetype
+    mimeData->setData("application/x-minerva2d-storyboard", encodeData); //default mimetype
     return mimeData;
 }
 
@@ -197,8 +197,8 @@ bool StoryboardCommentModel::dropMimeData(const QMimeData *data, Qt::DropAction 
     if (action == Qt::IgnoreAction) {
         return false;
     }
-    if (action == Qt::MoveAction && data->hasFormat("application/x-krita-storyboard")) {
-        QByteArray bytes = data->data("application/x-krita-storyboard");
+    if (action == Qt::MoveAction && data->hasFormat("application/x-minerva2d-storyboard")) {
+        QByteArray bytes = data->data("application/x-minerva2d-storyboard");
         QDataStream stream(&bytes, QIODevice::ReadOnly);
 
         if (parent.isValid()) {

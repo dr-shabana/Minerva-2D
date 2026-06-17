@@ -71,8 +71,8 @@ private:
     const int MAX_FRAMES = 9999;
 };
 
-/** @brief Krita's Animation Curves Docker.
- * This is the GUI heart of Krita's scalar animation workflow.
+/** @brief Minerva's Animation Curves Docker.
+ * This is the GUI heart of Minerva's scalar animation workflow.
  */
 class KisAnimCurvesDocker : public QDockWidget, public KisMainwindowObserver
 {

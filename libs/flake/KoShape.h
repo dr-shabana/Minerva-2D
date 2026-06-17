@@ -257,7 +257,7 @@ public:
 
     /**
      * Get the united bounding box of a group of shapes. This is a utility
-     * function used in many places in Krita.
+     * function used in many places in Minerva.
      */
     static QRectF boundingRect(const QList<KoShape*> &shapes);
 

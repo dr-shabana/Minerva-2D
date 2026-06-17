@@ -46,7 +46,7 @@
 #include "kis_selection.h"
 
 #include "InfoObject.h"
-#include "Krita.h"
+#include "Minerva.h"
 #include "Node.h"
 #include "Channel.h"
 #include "Filter.h"
@@ -566,7 +566,7 @@ QByteArray Node::pixelDataAtTime(int x, int y, int w, int h, int time) const
     if (!rkc) return ba;
     KisRasterKeyframeSP frame = rkc->keyframeAt<KisRasterKeyframe>(time);
     if (!frame) return ba;
-    KisPaintDeviceSP dev = new KisPaintDevice(*d->node->paintDevice(), KritaUtils::DeviceCopyMode::CopySnapshot);
+    KisPaintDeviceSP dev = new KisPaintDevice(*d->node->paintDevice(), MinervaUtils::DeviceCopyMode::CopySnapshot);
     if (!dev) return ba;
 
     frame->writeFrameToDevice(dev);
@@ -665,7 +665,7 @@ bool Node::save(const QString &filename, double xRes, double yRes, const InfoObj
                                   projection->compositionSourceColorSpace(),
                                   d->node->name());
     dst->setResolution(xRes, yRes);
-    doc->setFileBatchMode(Krita::instance()->batchmode());
+    doc->setFileBatchMode(Minerva::instance()->batchmode());
     doc->setCurrentImage(dst);
     KisPaintLayer* paintLayer = new KisPaintLayer(dst, "paint device", d->node->opacity());
     paintLayer->paintDevice()->makeCloneFrom(projection, bounds);

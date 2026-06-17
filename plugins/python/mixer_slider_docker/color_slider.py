@@ -1,7 +1,7 @@
 '''
     SPDX-FileCopyrightText: 2019 Tusooa Zhu <tusooa@vista.aero>
 
-    This file is part of Krita-docker-color-slider.
+    This file is part of Minerva-docker-color-slider.
 
     SPDX-License-Identifier: GPL-3.0-or-later
 '''
@@ -44,9 +44,9 @@ class ColorSlider(QWidget):
         '''
         Update the slider to a gradient between the two colors.
 
-        The painting of the slider comes from the program Krita. The original code can be accessed
+        The painting of the slider comes from the program Minerva. The original code can be accessed
         at the following URL.
-        https://github.com/KDE/krita/blob/master/plugins/dockers/advancedcolorselector/kis_shade_selector_line.cpp
+        https://github.com/KDE/minerva2d/blob/master/plugins/dockers/advancedcolorselector/kis_shade_selector_line.cpp
         '''
         if self.need_redraw:
             patch_count = self.width()

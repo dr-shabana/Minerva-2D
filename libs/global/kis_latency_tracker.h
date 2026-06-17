@@ -4,8 +4,8 @@
  *  SPDX-License-Identifier: GPL-2.0-or-later
  */
 
-#ifndef KRITA_KIS_SCALAR_TRACKER_H
-#define KRITA_KIS_SCALAR_TRACKER_H
+#ifndef MINERVA2D_KIS_SCALAR_TRACKER_H
+#define MINERVA2D_KIS_SCALAR_TRACKER_H
 
 #include "kis_shared.h"
 #include <kritaglobal_export.h>
@@ -157,4 +157,4 @@ protected:
     virtual qint64 currentTimestamp() const = 0;
 };
 
-#endif //KRITA_KIS_SCALAR_TRACKER_H
+#endif //MINERVA2D_KIS_SCALAR_TRACKER_H

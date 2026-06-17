@@ -228,7 +228,7 @@ KisSpacingInformation KisGridPaintOp::paintAt(const KisPaintInformation& info)
 
 #ifdef BENCHMARK
     int msec = time.elapsed();
-    dbgKrita << msec << " ms/dab " << "[average: " << m_total / (qreal)m_count << "]";
+    dbgMinerva << msec << " ms/dab " << "[average: " << m_total / (qreal)m_count << "]";
     m_total += msec;
     m_count++;
 #endif

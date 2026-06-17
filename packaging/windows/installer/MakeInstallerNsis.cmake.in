@@ -1,11 +1,11 @@
 cmake_minimum_required(VERSION 3.0 FATAL_ERROR)
 
-if(NOT IS_DIRECTORY "${KRITA_PACKAGE_ROOT}")
-    message(FATAL_ERROR "KRITA_PACKAGE_ROOT not set")
+if(NOT IS_DIRECTORY "${MINERVA2D_PACKAGE_ROOT}")
+    message(FATAL_ERROR "MINERVA2D_PACKAGE_ROOT not set")
 endif()
 
 if(NOT DEFINED OUTPUT_FILEPATH)
-    set(OUTPUT_FILEPATH "${CMAKE_CURRENT_BINARY_DIR}/krita-setup-x64.exe")
+    set(OUTPUT_FILEPATH "${CMAKE_CURRENT_BINARY_DIR}/minerva2d-setup-x64.exe")
 endif()
 
 if(NOT DEFINED DOWNLOAD_DIR)
@@ -20,7 +20,7 @@ if(NOT DEFINED NO_DOWNLOAD_NSIS)
     if(EXISTS "${CMAKE_CURRENT_BINARY_DIR}/nsis-${DOWNLOAD_NSIS_VERSION}")
         file(REMOVE_RECURSE "${CMAKE_CURRENT_BINARY_DIR}/nsis-${DOWNLOAD_NSIS_VERSION}")
     endif()
-    file(DOWNLOAD "https://files.kde.org/krita/build/dependencies/nsis-${DOWNLOAD_NSIS_VERSION}.zip"
+    file(DOWNLOAD "https://files.kde.org/minerva2d/build/dependencies/nsis-${DOWNLOAD_NSIS_VERSION}.zip"
         "${DOWNLOAD_DIR}/nsis-${DOWNLOAD_NSIS_VERSION}.zip"
         EXPECTED_HASH SHA1=d0cf5c1397d3ffb5cf6643fbff46457e05a48312
     )
@@ -64,15 +64,15 @@ message(STATUS "NSIS version ${MAKENSIS_VERSION}")
 
 
 # Check if package contains debug symbols
-file(TO_CMAKE_PATH "${KRITA_PACKAGE_ROOT}" KRITA_PACKAGE_ROOT_PATCHED)
+file(TO_CMAKE_PATH "${MINERVA2D_PACKAGE_ROOT}" MINERVA2D_PACKAGE_ROOT_PATCHED)
 set(is_msvc @MSVC@)
 if (is_msvc)
     file(GLOB_RECURSE globForDebugFiles
-        "${KRITA_PACKAGE_ROOT_PATCHED}/*.pdb"
+        "${MINERVA2D_PACKAGE_ROOT_PATCHED}/*.pdb"
     )
 else ()
     file(GLOB_RECURSE globForDebugFiles
-        "${KRITA_PACKAGE_ROOT_PATCHED}/*.debug"
+        "${MINERVA2D_PACKAGE_ROOT_PATCHED}/*.debug"
     )
 endif()
 if(globForDebugFiles)
@@ -92,65 +92,65 @@ if(globForDebugFiles)
 			endif()
 		endforeach()
     else()
-        message(FATAL_ERROR "${KRITA_PACKAGE_ROOT} seems to contain debug symbols. Set REMOVE_DEBUG to true if you want to remove them.")
+        message(FATAL_ERROR "${MINERVA2D_PACKAGE_ROOT} seems to contain debug symbols. Set REMOVE_DEBUG to true if you want to remove them.")
     endif()
 endif()
 
 
 # Download installer script package
 message(STATUS "Downloading NSIS script package...")
-if(EXISTS "${CMAKE_CURRENT_BINARY_DIR}/krita-nsis")
-    file(REMOVE_RECURSE "${CMAKE_CURRENT_BINARY_DIR}/krita-nsis")
+if(EXISTS "${CMAKE_CURRENT_BINARY_DIR}/minerva2d-nsis")
+    file(REMOVE_RECURSE "${CMAKE_CURRENT_BINARY_DIR}/minerva2d-nsis")
 endif()
-# From https://github.com/alvinhochun/KritaShellExtension/releases/tag/v1.2.4d
-file(DOWNLOAD "https://files.kde.org/krita/build/dependencies/krita-nsis-v1.2.4d.zip"
-    "${DOWNLOAD_DIR}/krita-nsis.zip"
+# From https://github.com/alvinhochun/MinervaShellExtension/releases/tag/v1.2.4d
+file(DOWNLOAD "https://files.kde.org/minerva2d/build/dependencies/minerva2d-nsis-v1.2.4d.zip"
+    "${DOWNLOAD_DIR}/minerva2d-nsis.zip"
     EXPECTED_HASH SHA256=163a7fa0a6b36fdaf2447042780965346f746ca5fed8237e51b2f08e53c4cd4f
 )
-execute_process(COMMAND ${CMAKE_COMMAND} -E tar xfz "${DOWNLOAD_DIR}/krita-nsis.zip"
+execute_process(COMMAND ${CMAKE_COMMAND} -E tar xfz "${DOWNLOAD_DIR}/minerva2d-nsis.zip"
     WORKING_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}"
     RESULT_VARIABLE result_extract
 )
 if(NOT result_extract EQUAL 0)
-    message(FATAL_ERROR "Failed to extract krita-nsis package")
+    message(FATAL_ERROR "Failed to extract minerva2d-nsis package")
 endif()
-if(NOT IS_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/krita-nsis")
-    message(FATAL_ERROR "Failed to find krita-nsis after extracting")
+if(NOT IS_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/minerva2d-nsis")
+    message(FATAL_ERROR "Failed to find minerva2d-nsis after extracting")
 endif()
 
 
 # We supply our own freshly-generated icons, so no need for the bundled ones.
 file(REMOVE
-    "${CMAKE_CURRENT_BINARY_DIR}/krita-nsis/krita.ico"
-    "${CMAKE_CURRENT_BINARY_DIR}/krita-nsis/kritafile.ico"
+    "${CMAKE_CURRENT_BINARY_DIR}/minerva2d-nsis/minerva2d.ico"
+    "${CMAKE_CURRENT_BINARY_DIR}/minerva2d-nsis/minerva2dfile.ico"
 )
 
-# Place Krita installer files in the right place
+# Place Minerva installer files in the right place
 file(COPY "${CMAKE_CURRENT_LIST_DIR}/installer/"
-    DESTINATION "${CMAKE_CURRENT_BINARY_DIR}/krita-nsis/"
+    DESTINATION "${CMAKE_CURRENT_BINARY_DIR}/minerva2d-nsis/"
     FILES_MATCHING PATTERN "*"
 )
 
 
 # Build installer
 message(STATUS "Building installer...")
-set(KRITA_VERSION_NUMBER "@KRITA_STABLE_VERSION_MAJOR@.@KRITA_STABLE_VERSION_MINOR@.@KRITA_VERSION_RELEASE@.@KRITA_VERSION_REVISION@")
-set(KRITA_VERSION_STRING "@KRITA_VERSION_STRING@")
-set(KRITA_GIT_SHA1_STRING "@KRITA_GIT_SHA1_STRING@")
-if(KRITA_GIT_SHA1_STRING)
-    set(KRITA_VERSION_STRING "${KRITA_VERSION_STRING} (git ${KRITA_GIT_SHA1_STRING})")
+set(MINERVA2D_VERSION_NUMBER "@MINERVA2D_STABLE_VERSION_MAJOR@.@MINERVA2D_STABLE_VERSION_MINOR@.@MINERVA2D_VERSION_RELEASE@.@MINERVA2D_VERSION_REVISION@")
+set(MINERVA2D_VERSION_STRING "@MINERVA2D_VERSION_STRING@")
+set(MINERVA2D_GIT_SHA1_STRING "@MINERVA2D_GIT_SHA1_STRING@")
+if(MINERVA2D_GIT_SHA1_STRING)
+    set(MINERVA2D_VERSION_STRING "${MINERVA2D_VERSION_STRING} (git ${MINERVA2D_GIT_SHA1_STRING})")
 endif()
 execute_process(COMMAND "${TOOL_MAKENSIS}"
-    "/DKRITA_INSTALLER_64"
-    "/DKRITA_VERSION=${KRITA_VERSION_NUMBER}"
-    "/DKRITA_VERSION_DISPLAY=${KRITA_VERSION_STRING}"
-    "/DKRITA_INSTALLER_OUTPUT_DIR="
-    "/DKRITA_INSTALLER_OUTPUT_NAME=${OUTPUT_FILEPATH}"
-    "/DKRITA_PACKAGE_ROOT=${KRITA_PACKAGE_ROOT}"
+    "/DMINERVA2D_INSTALLER_64"
+    "/DMINERVA2D_VERSION=${MINERVA2D_VERSION_NUMBER}"
+    "/DMINERVA2D_VERSION_DISPLAY=${MINERVA2D_VERSION_STRING}"
+    "/DMINERVA2D_INSTALLER_OUTPUT_DIR="
+    "/DMINERVA2D_INSTALLER_OUTPUT_NAME=${OUTPUT_FILEPATH}"
+    "/DMINERVA2D_PACKAGE_ROOT=${MINERVA2D_PACKAGE_ROOT}"
     "/XSetCompressor /SOLID lzma"
     "/V3"
     "/INPUTCHARSET" "UTF8"
-    "${CMAKE_CURRENT_BINARY_DIR}/krita-nsis/installer_krita.nsi"
+    "${CMAKE_CURRENT_BINARY_DIR}/minerva2d-nsis/installer_minerva2d.nsi"
     RESULT_VARIABLE result_makensis
 )
 if(NOT result_makensis EQUAL 0)

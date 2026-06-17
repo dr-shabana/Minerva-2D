@@ -133,12 +133,12 @@ target_include_directories(kritawidgetutils
 generate_export_header(kritawidgetutils BASE_NAME kritawidgetutils)
 
 if (HAVE_DBUS)
-   set (KRITA_WIDGET_UTILS_EXTRA_LIBS ${KRITA_WIDGET_UTILS_EXTRA_LIBS} Qt${QT_MAJOR_VERSION}::DBus)
+   set (MINERVA2D_WIDGET_UTILS_EXTRA_LIBS ${MINERVA2D_WIDGET_UTILS_EXTRA_LIBS} Qt${QT_MAJOR_VERSION}::DBus)
 endif ()
 
 if (APPLE)
     find_library(FOUNDATION_LIBRARY Foundation)
-    set(KRITA_WIDGET_UTILS_EXTRA_LIBS ${KRITA_WIDGET_UTILS_EXTRA_LIBS} ${FOUNDATION_LIBRARY})
+    set(MINERVA2D_WIDGET_UTILS_EXTRA_LIBS ${MINERVA2D_WIDGET_UTILS_EXTRA_LIBS} ${FOUNDATION_LIBRARY})
     target_include_directories(kritawidgetutils PRIVATE
     $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../macosutils>
     )
@@ -168,7 +168,7 @@ target_link_libraries(kritawidgetutils
         KF${KF_MAJOR}::WidgetsAddons
         kritaplugin
         
-        ${KRITA_WIDGET_UTILS_EXTRA_LIBS}
+        ${MINERVA2D_WIDGET_UTILS_EXTRA_LIBS}
 )
 
 if (QT_MAJOR_VERSION STREQUAL "6")
@@ -176,7 +176,7 @@ if (QT_MAJOR_VERSION STREQUAL "6")
 endif()
 
 set_target_properties(kritawidgetutils
-    PROPERTIES VERSION ${GENERIC_KRITA_LIB_VERSION} SOVERSION ${GENERIC_KRITA_LIB_SOVERSION}
+    PROPERTIES VERSION ${GENERIC_MINERVA2D_LIB_VERSION} SOVERSION ${GENERIC_MINERVA2D_LIB_SOVERSION}
 )
 
 install(TARGETS kritawidgetutils ${INSTALL_TARGETS_DEFAULT_ARGS})

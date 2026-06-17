@@ -65,13 +65,13 @@ bool KoResourceBundleManifest::load(QIODevice *device)
     int errorLine;
     int errorColumn;
     if (!manifestDocument.setContent(device, true, &errorMessage, &errorLine, &errorColumn)) {
-        warnKrita << "Error parsing manifest" << errorMessage
+        warnMinerva << "Error parsing manifest" << errorMessage
                   << "line" << errorLine
                   << "column" << errorColumn;
 #else
     QDomDocument::ParseResult result = manifestDocument.setContent(device, QDomDocument::ParseOption::UseNamespaceProcessing);
     if (!result) {
-        warnKrita << "Error parsing manifest" << result.errorMessage
+        warnMinerva << "Error parsing manifest" << result.errorMessage
                   << "line" << result.errorLine
                   << "column" << result.errorColumn;
 #endif
@@ -86,7 +86,7 @@ bool KoResourceBundleManifest::load(QIODevice *device)
     QDomElement e = root.firstChildElement("file-entry");
     for (; !e.isNull(); e = e.nextSiblingElement("file-entry")) {
         if (!parseFileEntry(e)) {
-            warnKrita << "Skipping invalid manifest entry"
+            warnMinerva << "Skipping invalid manifest entry"
                       << "line" << e.lineNumber();
         }
     }
@@ -105,7 +105,7 @@ bool KoResourceBundleManifest::parseFileEntry(const QDomElement &e)
     QString md5sum    = e.attributeNS(KoXmlNS::manifest, "md5sum");
     QString version   = e.attributeNS(KoXmlNS::manifest, "version");
 
-    if (fullPath == "/" && mediaType == "application/x-krita-resourcebundle") {
+    if (fullPath == "/" && mediaType == "application/x-minerva2d-resourcebundle") {
         // The manifest always contains an entry for the bundle root.
         // This is not a resource, so skip it without indicating failure.
         return true;
@@ -139,7 +139,7 @@ bool KoResourceBundleManifest::save(QIODevice *device)
        manifestWriter.startElement("manifest:manifest");
        manifestWriter.addAttribute("xmlns:manifest", KoXmlNS::manifest);
        manifestWriter.addAttribute("manifest:version", "1.2");
-       manifestWriter.addManifestEntry("/", "application/x-krita-resourcebundle");
+       manifestWriter.addManifestEntry("/", "application/x-minerva2d-resourcebundle");
 
        Q_FOREACH (QString resourceType, m_resources.keys()) {
            Q_FOREACH (const ResourceReference &resource, m_resources[resourceType].values()) {

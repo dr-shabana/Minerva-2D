@@ -14,4 +14,4 @@ target_link_libraries(kritaxmp
         LibExiv2::LibExiv2
 )
 
-install(TARGETS kritaxmp DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
+install(TARGETS kritaxmp DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})

@@ -16,7 +16,7 @@
  * @brief The DockWidgetFactoryBase class is the base class for plugins that want
  * to add a dock widget to every window. You do not need to implement this class
  * yourself, but create a DockWidget implementation and then add the DockWidgetFactory
- * to the Krita instance like this:
+ * to the Minerva instance like this:
  *
  * @code
  * class HelloDocker(DockWidget):

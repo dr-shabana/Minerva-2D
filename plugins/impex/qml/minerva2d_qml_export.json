@@ -1,0 +1,13 @@
+{
+    "Icon": "",
+    "Id": "Minerva QML Export Filter",
+    "NoDisplay": "true",
+    "Type": "Service",
+    "X-KDE-Export": "text/x-qml",
+    "X-KDE-Library": "kritaqmlexport",
+    "X-KDE-ServiceTypes": [
+        "Minerva/FileFilter"
+    ],
+    "X-KDE-Weight": 1,
+    "X-KDE-Extensions" : "qml"
+}

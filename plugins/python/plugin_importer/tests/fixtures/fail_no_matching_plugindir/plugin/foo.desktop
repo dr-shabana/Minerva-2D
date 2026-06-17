@@ -1,5 +1,5 @@
 [Desktop Entry]
 Type=Service
-ServiceTypes=Krita/PythonPlugin
+ServiceTypes=Minerva/PythonPlugin
 X-KDE-Library=wrong_name
 Name=Foo

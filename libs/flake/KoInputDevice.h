@@ -212,7 +212,7 @@ public:
      * Return the unique tablet id as registered by QTabletEvents. Note that this
      * id can change randomly, so it's not dependable.
      *
-     * See https://bugs.kde.org/show_bug.cgi?id=407659
+     * See https://github.com/dr-shabana/Minerva-2D/issues/show_bug.cgi?id=407659
      */
     qint64 uniqueTabletId() const;
 

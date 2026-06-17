@@ -22,7 +22,7 @@ kis_add_library(kritapsdimport MODULE ${kritapsdimport_SOURCES})
 
 target_link_libraries(kritapsdimport kritapsd_static kritaglobal kritaui KF${KF_MAJOR}::I18n)
 
-install(TARGETS kritapsdimport DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
+install(TARGETS kritapsdimport DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})
 
 #
 # export
@@ -37,6 +37,6 @@ kis_add_library(kritapsdexport MODULE ${kritapsdexport_SOURCES})
 
 target_link_libraries(kritapsdexport kritapsd_static kritaui kritapsd kritaimpex kritastore)
 
-install(TARGETS kritapsdexport DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
+install(TARGETS kritapsdexport DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})
 
-install(FILES krita_psd.desktop DESTINATION ${KDE_INSTALL_APPDIR})
+install(FILES minerva2d_psd.desktop DESTINATION ${KDE_INSTALL_APPDIR})

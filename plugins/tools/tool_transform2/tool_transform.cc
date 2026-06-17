@@ -1,5 +1,5 @@
 /*
- * tool_transform.cc -- Part of Krita
+ * tool_transform.cc -- Part of Minerva
  *
  * SPDX-FileCopyrightText: 2004 Boudewijn Rempt (boud@valdyas.org)
  *

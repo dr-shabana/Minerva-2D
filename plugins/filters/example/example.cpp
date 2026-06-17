@@ -27,15 +27,15 @@
 #include "KoColorModelStandardIds.h"
 #include "kis_filter_configuration.h"
 
-K_PLUGIN_FACTORY_WITH_JSON(KritaExampleFactory, "kritaexample.json", registerPlugin<KritaExample>();)
+K_PLUGIN_FACTORY_WITH_JSON(MinervaExampleFactory, "kritaexample.json", registerPlugin<MinervaExample>();)
 
-KritaExample::KritaExample(QObject *parent, const QVariantList &)
+MinervaExample::MinervaExample(QObject *parent, const QVariantList &)
         : QObject(parent)
 {
     KisFilterRegistry::instance()->add(KisFilterSP(new KisFilterInvert()));
 }
 
-KritaExample::~KritaExample()
+MinervaExample::~MinervaExample()
 {
 }
 

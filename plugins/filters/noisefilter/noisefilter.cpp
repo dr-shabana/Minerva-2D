@@ -26,16 +26,16 @@
 #include "ui_wdgnoiseoptions.h"
 
 
-K_PLUGIN_FACTORY_WITH_JSON(KritaNoiseFilterFactory, "kritanoisefilter.json", registerPlugin<KritaNoiseFilter>();)
+K_PLUGIN_FACTORY_WITH_JSON(MinervaNoiseFilterFactory, "kritanoisefilter.json", registerPlugin<MinervaNoiseFilter>();)
 
-KritaNoiseFilter::KritaNoiseFilter(QObject *parent, const QVariantList &)
+MinervaNoiseFilter::MinervaNoiseFilter(QObject *parent, const QVariantList &)
         : QObject(parent)
 {
     KisFilterRegistry::instance()->add(new KisFilterNoise());
 
 }
 
-KritaNoiseFilter::~KritaNoiseFilter()
+MinervaNoiseFilter::~MinervaNoiseFilter()
 {
 }
 

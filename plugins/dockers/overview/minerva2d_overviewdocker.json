@@ -1,0 +1,9 @@
+{
+    "Id": "Overview Docker",
+    "Type": "Service",
+    "X-KDE-Library": "kritaoverviewdocker",
+    "X-KDE-ServiceTypes": [
+        "Minerva/Dock"
+    ],
+    "X-Minerva-Version": "28"
+}

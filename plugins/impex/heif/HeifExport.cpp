@@ -49,7 +49,7 @@ using heif::Error;
 
 class KisExternalLayer;
 
-K_PLUGIN_FACTORY_WITH_JSON(ExportFactory, "krita_heif_export.json", registerPlugin<HeifExport>();)
+K_PLUGIN_FACTORY_WITH_JSON(ExportFactory, "minerva2d_heif_export.json", registerPlugin<HeifExport>();)
 
 HeifExport::HeifExport(QObject *parent, const QVariantList &) : KisImportExportFilter(parent)
 {
@@ -231,7 +231,7 @@ KisImportExportErrorCode HeifExport::convert(KisDocument *document, QIODevice *i
 
         encoder.set_lossy_quality(quality);
         if (lossless) {
-            //https://invent.kde.org/graphics/krita/-/merge_requests/530#note_169521
+            //https://invent.kde.org/graphics/minerva2d/-/merge_requests/530#note_169521
             encoder.set_lossy_quality(100);
         }
         encoder.set_lossless(lossless);
@@ -573,7 +573,7 @@ void KisWdgOptionsHeif::setConfiguration(const KisPropertiesConfigurationSP cfg)
             
             conversionOptionsList << i18nc("Color space option plus transfer function name", "Keep colorants, encode SMPTE ST 428");
             toolTipList << i18nc("@tooltip", "The image will be linearized first, and then encoded with SMPTE ST 428."
-                                            " Krita always opens images like these as linear floating point, this option is there to reverse that");
+                                            " Minerva always opens images like these as linear floating point, this option is there to reverse that");
             conversionOptionName << "ApplySMPTE428";
         }
 

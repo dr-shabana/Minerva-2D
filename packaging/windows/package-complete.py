@@ -3,7 +3,7 @@
 # SPDX-FileCopyrightText: 2021 L. E. Segovia <amy@amyspark.me>
 # SPDX-License-Identifier: GPL-2.0-or-later
 
-# This Python script is meant to prepare a Krita package folder to be zipped or
+# This Python script is meant to prepare a Minerva package folder to be zipped or
 # to be a base for the installer.
 
 import argparse
@@ -68,11 +68,11 @@ basic_options.add_argument(
 
 path_options = parser.add_argument_group("Path options")
 path_options.add_argument("--src-dir", action='store',
-                          help="Specify Krita source dir. If unspecified, this will be determined from the script location")
+                          help="Specify Minerva source dir. If unspecified, this will be determined from the script location")
 path_options.add_argument("--deps-install-dir", action='store',
                           help="Specify deps install dir")
-path_options.add_argument("--krita-install-dir", action='store',
-                          help="Specify Krita install dir")
+path_options.add_argument("--minerva2d-install-dir", action='store',
+                          help="Specify Minerva install dir")
 
 special_options = parser.add_argument_group("Special options")
 special_options.add_argument("--pre-zip-hook", action='store',
@@ -149,27 +149,27 @@ if os.environ.get("WindowsSdkDir") is None and os.environ.get("ProgramFiles(x86)
     os.environ["WindowsSdkDir"] = "{}\\Windows Kits\\10".format(
         os.environ["ProgramFiles(x86)"])
 
-KRITA_SRC_DIR = None
+MINERVA2D_SRC_DIR = None
 
 if args.src_dir is not None:
-    KRITA_SRC_DIR = args.src_dir
+    MINERVA2D_SRC_DIR = args.src_dir
 
-if KRITA_SRC_DIR is None:
+if MINERVA2D_SRC_DIR is None:
     _temp = sys.argv[0]
     if os.path.dirname(_temp).endswith("\\packaging\\windows"):
         _base = pathlib.PurePath(_temp)
         if os.path.isfile(f"{_base.parents[2]}\\CMakeLists.txt"):
-            if os.path.isfile(f"{_base.parents[2]}\\libs\\version\\kritaversion.h.cmake"):
-                KRITA_SRC_DIR = os.path.realpath(_base.parents[2])
-                logger.info("Script is running inside Krita source dir")
+            if os.path.isfile(f"{_base.parents[2]}\\libs\\version\\minerva2dversion.h.cmake"):
+                MINERVA2D_SRC_DIR = os.path.realpath(_base.parents[2])
+                logger.info("Script is running inside Minerva source dir")
 
-if KRITA_SRC_DIR is None:
+if MINERVA2D_SRC_DIR is None:
     if args.no_interactive:
-        KRITA_SRC_DIR = prompt_for_dir("Provide path of Krita src dir")
-    if KRITA_SRC_DIR is None:
-        logger.error("Krita src dir not found!")
+        MINERVA2D_SRC_DIR = prompt_for_dir("Provide path of Minerva src dir")
+    if MINERVA2D_SRC_DIR is None:
+        logger.error("Minerva src dir not found!")
         sys.exit(102)
-logger.info(f"Krita src: {KRITA_SRC_DIR}")
+logger.info(f"Minerva src: {MINERVA2D_SRC_DIR}")
 
 DEPS_INSTALL_DIR = None
 
@@ -188,28 +188,28 @@ if DEPS_INSTALL_DIR is None:
         sys.exit(102)
 logger.info(f"Deps install dir: {DEPS_INSTALL_DIR}")
 
-KRITA_INSTALL_DIR = None
+MINERVA2D_INSTALL_DIR = None
 
-if args.krita_install_dir is not None:
-    KRITA_INSTALL_DIR = args.krita_install_dir
-if KRITA_INSTALL_DIR is None:
-    KRITA_INSTALL_DIR = f"{os.getcwd()}\\_install"
-    logger.info(f"Using default Krita install dir: {KRITA_INSTALL_DIR}")
+if args.minerva2d_install_dir is not None:
+    MINERVA2D_INSTALL_DIR = args.minerva2d_install_dir
+if MINERVA2D_INSTALL_DIR is None:
+    MINERVA2D_INSTALL_DIR = f"{os.getcwd()}\\_install"
+    logger.info(f"Using default Minerva install dir: {MINERVA2D_INSTALL_DIR}")
     if not args.no_interactive:
         status = choice()
         if not status:
-            KRITA_INSTALL_DIR = prompt_for_dir(
-                "Provide path of Krita install dir")
-    if KRITA_INSTALL_DIR is None:
-        logger.error("Krita install dir not set!")
+            MINERVA2D_INSTALL_DIR = prompt_for_dir(
+                "Provide path of Minerva install dir")
+    if MINERVA2D_INSTALL_DIR is None:
+        logger.error("Minerva install dir not set!")
         sys.exit(102)
-logger.info(f"Krita install dir: {KRITA_INSTALL_DIR}")
+logger.info(f"Minerva install dir: {MINERVA2D_INSTALL_DIR}")
 
 # Simple checking
 if not os.path.isdir(DEPS_INSTALL_DIR):
     logger.error("Cannot find the deps install folder!")
     sys.exit(1)
-if not os.path.isdir(KRITA_INSTALL_DIR):
+if not os.path.isdir(MINERVA2D_INSTALL_DIR):
     logger.error("Cannot find the krita install folder!")
     sys.exit(1)
 # Amyspark: paths with spaces are automagically handled by Python!
@@ -307,7 +307,7 @@ for arg in ("objdump", "llvm-objdump"):
 if not OBJDUMP:
     logger.error("objdump is not working.")
     sys.exit(1)
-output = subprocess.check_output(fr"{OBJDUMP} -f {KRITA_INSTALL_DIR}\bin\krita.exe", text=True)
+output = subprocess.check_output(fr"{OBJDUMP} -f {MINERVA2D_INSTALL_DIR}\bin\minerva2d.exe", text=True)
 targetArchLines = output.splitlines()
 
 TARGET_ARCH_LINE = ""
@@ -402,7 +402,7 @@ elif IS_LLVM_MINGW:
         asanLibName = 'libclang_rt.asan_dynamic-x86_64'
         os.environ['STDLIBS_DIR'] = fr"{os.environ['MINGW_BIN_DIR']}\..\x86_64-w64-mingw32\bin"
 
-    output = subprocess.check_output(fr"{OBJDUMP} -p {KRITA_INSTALL_DIR}\bin\krita.exe", text=True)
+    output = subprocess.check_output(fr"{OBJDUMP} -p {MINERVA2D_INSTALL_DIR}\bin\minerva2d.exe", text=True)
 
     if re.search(asanLibName, output):
         logger.info('The package contains ASAN, packaging the ASAN runtime as well!')
@@ -415,7 +415,7 @@ elif IS_LLVM_MINGW:
             logger.info(f'Copying symbolizer lib: {filePath}')
             shutil.copy(filePath, fr"{pkg_root}\bin")
     else:
-        logger.info('No ASAN was found in the Krita binary, skipping its packaging...')
+        logger.info('No ASAN was found in the Minerva binary, skipping its packaging...')
 
 else:
     if not IS_x64:
@@ -433,29 +433,29 @@ for lib in os.environ['STDLIBS'].split(" "):
 
 logger.info("")
 logger.info("Copying files...")
-# krita.exe
-shutil.copy(f"{KRITA_INSTALL_DIR}\\bin\\krita.exe", f"{pkg_root}\\bin\\")
-shutil.copy(f"{KRITA_INSTALL_DIR}\\bin\\krita.com", f"{pkg_root}\\bin\\")
-if os.path.isfile(f"{KRITA_INSTALL_DIR}\\bin\\krita.pdb"):
-    shutil.copy(f"{KRITA_INSTALL_DIR}\\bin\\krita.pdb", f"{pkg_root}\\bin\\")
-# kritarunner.exe
-if os.path.isfile(f"{KRITA_INSTALL_DIR}\\bin\\kritarunner.exe"):
-    shutil.copy(f"{KRITA_INSTALL_DIR}\\bin\\kritarunner.exe", f"{pkg_root}\\bin\\")
-    if os.path.isfile(f"{KRITA_INSTALL_DIR}\\bin\\kritarunner.pdb"):
-        shutil.copy(f"{KRITA_INSTALL_DIR}\\bin\\kritarunner.pdb",
+# minerva2d.exe
+shutil.copy(f"{MINERVA2D_INSTALL_DIR}\\bin\\minerva2d.exe", f"{pkg_root}\\bin\\")
+shutil.copy(f"{MINERVA2D_INSTALL_DIR}\\bin\\minerva2d.com", f"{pkg_root}\\bin\\")
+if os.path.isfile(f"{MINERVA2D_INSTALL_DIR}\\bin\\minerva2d.pdb"):
+    shutil.copy(f"{MINERVA2D_INSTALL_DIR}\\bin\\minerva2d.pdb", f"{pkg_root}\\bin\\")
+# minerva2drunner.exe
+if os.path.isfile(f"{MINERVA2D_INSTALL_DIR}\\bin\\minerva2drunner.exe"):
+    shutil.copy(f"{MINERVA2D_INSTALL_DIR}\\bin\\minerva2drunner.exe", f"{pkg_root}\\bin\\")
+    if os.path.isfile(f"{MINERVA2D_INSTALL_DIR}\\bin\\minerva2drunner.pdb"):
+        shutil.copy(f"{MINERVA2D_INSTALL_DIR}\\bin\\minerva2drunner.pdb",
                     f"{pkg_root}\\bin\\")
-    shutil.copy(f"{KRITA_INSTALL_DIR}\\bin\\kritarunner.com",
+    shutil.copy(f"{MINERVA2D_INSTALL_DIR}\\bin\\minerva2drunner.com",
                 f"{pkg_root}\\bin\\")
-if os.path.isfile(f"{KRITA_INSTALL_DIR}\\bin\\FreehandStrokeBenchmark.exe"):
-    shutil.copy(f"{KRITA_INSTALL_DIR}\\bin\\FreehandStrokeBenchmark.exe", f"{pkg_root}\\bin\\")
+if os.path.isfile(f"{MINERVA2D_INSTALL_DIR}\\bin\\FreehandStrokeBenchmark.exe"):
+    shutil.copy(f"{MINERVA2D_INSTALL_DIR}\\bin\\FreehandStrokeBenchmark.exe", f"{pkg_root}\\bin\\")
     MergeFolders.merge_folders(f"{DEPS_INSTALL_DIR}\\bin\\data\\", f"{pkg_root}\\bin\\data\\")
 
 # qt.conf -- to specify the location to Qt translations
-shutil.copy(fr"{KRITA_SRC_DIR}\packaging\windows\qt.conf", fr"{pkg_root}\bin")
+shutil.copy(fr"{MINERVA2D_SRC_DIR}\packaging\windows\qt.conf", fr"{pkg_root}\bin")
 # DLLs from bin/
 logger.info("Copying all DLLs except Qt5/Qt6 * from bin/")
-files = glob.glob(f"{KRITA_INSTALL_DIR}\\bin\\*.dll")
-pdbs = glob.glob(f"{KRITA_INSTALL_DIR}\\bin\\*.pdb")
+files = glob.glob(f"{MINERVA2D_INSTALL_DIR}\\bin\\*.dll")
+pdbs = glob.glob(f"{MINERVA2D_INSTALL_DIR}\\bin\\*.pdb")
 for f in itertools.chain(files, pdbs):
     if not os.path.basename(f).startswith("Qt5") and not os.path.basename(f).startswith("Qt6"):
         shutil.copy(f, f"{pkg_root}\\bin")
@@ -496,13 +496,13 @@ for f in files:
     if not os.path.basename(f).startswith("qt_help"):
         shutil.copy(f, f"{pkg_root}\\bin\\translations")
 
-# Krita plugins
-MergeFolders.merge_folders(f"{KRITA_INSTALL_DIR}\\lib\\kritaplugins\\", f"{pkg_root}\\lib\\kritaplugins\\")
+# Minerva plugins
+MergeFolders.merge_folders(f"{MINERVA2D_INSTALL_DIR}\\lib\\kritaplugins\\", f"{pkg_root}\\lib\\kritaplugins\\")
 
-if os.path.isdir(f"{DEPS_INSTALL_DIR}\\lib\\krita-python-libs"):
-    MergeFolders.merge_folders(f"{DEPS_INSTALL_DIR}\\lib\\krita-python-libs", f"{pkg_root}\\lib\\krita-python-libs")
-if os.path.isdir(f"{KRITA_INSTALL_DIR}\\lib\\krita-python-libs"):
-    MergeFolders.merge_folders(f"{KRITA_INSTALL_DIR}\\lib\\krita-python-libs", f"{pkg_root}\\lib\\krita-python-libs")
+if os.path.isdir(f"{DEPS_INSTALL_DIR}\\lib\\minerva2d-python-libs"):
+    MergeFolders.merge_folders(f"{DEPS_INSTALL_DIR}\\lib\\minerva2d-python-libs", f"{pkg_root}\\lib\\minerva2d-python-libs")
+if os.path.isdir(f"{MINERVA2D_INSTALL_DIR}\\lib\\minerva2d-python-libs"):
+    MergeFolders.merge_folders(f"{MINERVA2D_INSTALL_DIR}\\lib\\minerva2d-python-libs", f"{pkg_root}\\lib\\minerva2d-python-libs")
 if os.path.isdir(f"{DEPS_INSTALL_DIR}\\lib\\site-packages"):
     MergeFolders.merge_folders(f"{DEPS_INSTALL_DIR}\\lib\\site-packages", f"{pkg_root}\\lib\\site-packages")
 
@@ -514,11 +514,11 @@ MergeFolders.merge_folders(f"{DEPS_INSTALL_DIR}\\share\\mlt", f"{pkg_root}\\shar
 MergeFolders.merge_folders(f"{DEPS_INSTALL_DIR}\\etc\\fonts", f"{pkg_root}\\etc\\fonts")
 
 # Share
-MergeFolders.merge_folders(f"{KRITA_INSTALL_DIR}\\share\\color", f"{pkg_root}\\share\\color")
-MergeFolders.merge_folders(f"{KRITA_INSTALL_DIR}\\share\\color-schemes", f"{pkg_root}\\share\\color-schemes")
-MergeFolders.merge_folders(f"{KRITA_INSTALL_DIR}\\share\\icons", f"{pkg_root}\\share\\icons")
-MergeFolders.merge_folders(f"{KRITA_INSTALL_DIR}\\share\\krita", f"{pkg_root}\\share\\krita")
-MergeFolders.merge_folders(f"{KRITA_INSTALL_DIR}\\share\\kritaplugins", f"{pkg_root}\\share\\kritaplugins")
+MergeFolders.merge_folders(f"{MINERVA2D_INSTALL_DIR}\\share\\color", f"{pkg_root}\\share\\color")
+MergeFolders.merge_folders(f"{MINERVA2D_INSTALL_DIR}\\share\\color-schemes", f"{pkg_root}\\share\\color-schemes")
+MergeFolders.merge_folders(f"{MINERVA2D_INSTALL_DIR}\\share\\icons", f"{pkg_root}\\share\\icons")
+MergeFolders.merge_folders(f"{MINERVA2D_INSTALL_DIR}\\share\\krita", f"{pkg_root}\\share\\krita")
+MergeFolders.merge_folders(f"{MINERVA2D_INSTALL_DIR}\\share\\kritaplugins", f"{pkg_root}\\share\\kritaplugins")
 
 if useQt6Build:
     MergeFolders.merge_folders(f"{DEPS_INSTALL_DIR}\\share\\kf6", f"{pkg_root}\\share\\kf6")
@@ -528,15 +528,15 @@ else:
 MergeFolders.merge_folders(f"{DEPS_INSTALL_DIR}\\share\\mime", f"{pkg_root}\\share\\mime")
 # Python libs are copied by share\krita above
 # Copy locale to bin
-MergeFolders.merge_folders(f"{KRITA_INSTALL_DIR}\\share\\locale", f"{pkg_root}\\bin\\locale")
+MergeFolders.merge_folders(f"{MINERVA2D_INSTALL_DIR}\\share\\locale", f"{pkg_root}\\bin\\locale")
 MergeFolders.merge_folders(f"{DEPS_INSTALL_DIR}\\share\\locale", f"{pkg_root}\\bin\\locale")
 
 # Copy shortcut link from source (can't create it dynamically)
-shutil.copy(f"{KRITA_SRC_DIR}\\packaging\\windows\\krita.lnk", pkg_root)
+shutil.copy(f"{MINERVA2D_SRC_DIR}\\packaging\\windows\\minerva2d.lnk", pkg_root)
 shutil.copy(
-    f"{KRITA_SRC_DIR}\\packaging\\windows\\krita-minimal.lnk", pkg_root)
+    f"{MINERVA2D_SRC_DIR}\\packaging\\windows\\minerva2d-minimal.lnk", pkg_root)
 shutil.copy(
-    f"{KRITA_SRC_DIR}\\packaging\\windows\\krita-animation.lnk", pkg_root)
+    f"{MINERVA2D_SRC_DIR}\\packaging\\windows\\minerva2d-animation.lnk", pkg_root)
 
 # QML deployment:
 #
@@ -550,10 +550,10 @@ shutil.copy(
 # we don't pass it explicitly and let it be deduced by windeployqt using qtpath
 # executable.
 
-# Here we should list all the folders/plugins in Krita that have
-# .qml files inside. Theoretically, we can just pass the entire Krita's
+# Here we should list all the folders/plugins in Minerva that have
+# .qml files inside. Theoretically, we can just pass the entire Minerva's
 # source tree, but I'm not sure it is a good idea.
-QMLDIR_ARGS = ["--qmldir", fr"{KRITA_SRC_DIR}\plugins\dockers\textproperties"]
+QMLDIR_ARGS = ["--qmldir", fr"{MINERVA2D_SRC_DIR}\plugins\dockers\textproperties"]
 
 # A safeguard for the case when KDE_INSTALL_USE_QT_SYS_PATHS is not properly 
 # activated on Windows and the QML modules are installed into a default KDE's
@@ -562,10 +562,10 @@ QMLDIR_ARGS = ["--qmldir", fr"{KRITA_SRC_DIR}\plugins\dockers\textproperties"]
 # to the build or check if you have non-standard qt.conf in your installation 
 # root.
 
-if os.path.isdir(fr"{KRITA_INSTALL_DIR}\lib\qml"):
-    logger.error("Some of Krita's QML modules were installed in an incorrect location")
-    logger.error(fr"    actual path: {KRITA_INSTALL_DIR}\lib\qml")
-    logger.error(fr"    expected path: {KRITA_INSTALL_DIR}\qml")
+if os.path.isdir(fr"{MINERVA2D_INSTALL_DIR}\lib\qml"):
+    logger.error("Some of Minerva's QML modules were installed in an incorrect location")
+    logger.error(fr"    actual path: {MINERVA2D_INSTALL_DIR}\lib\qml")
+    logger.error(fr"    expected path: {MINERVA2D_INSTALL_DIR}\qml")
     exit(103)
 
 if os.path.isdir(fr"{DEPS_INSTALL_DIR}\lib\qml"):
@@ -585,13 +585,13 @@ if useQt6Build:
         "-gui", "-core", "-core5compat", "-openglwidgets", "-svgwidgets", "-opengl",
         "-concurrent", "-network", "-printsupport", "-svg",
         "-xml", "-sql", "-qml", "-quick", "-quickwidgets", *verboseOption,
-        f"{pkg_root}\\bin\\krita.exe", f"{pkg_root}\\bin\\krita.dll"])
+        f"{pkg_root}\\bin\\minerva2d.exe", f"{pkg_root}\\bin\\minerva2d.dll"])
 else:
     verboseOption = ["-verbose", "2"] if useVerbosePackagingLog else []
     run_subprocess_checked(
         ["windeployqt.exe", *QMLDIR_ARGS, "--release", "-gui", "-core", "-concurrent", "-network", "-printsupport", "-svg",
         "-xml", "-sql", "-qml", "-quick", "-quickwidgets", *verboseOption,
-        f"{pkg_root}\\bin\\krita.exe", f"{pkg_root}\\bin\\krita.dll"])
+        f"{pkg_root}\\bin\\minerva2d.exe", f"{pkg_root}\\bin\\minerva2d.dll"])
 
 # ffmpeg
 if os.path.exists(f"{DEPS_INSTALL_DIR}\\bin\\ffmpeg.exe"):
@@ -700,10 +700,10 @@ if not os.environ.get('KRITACI_SKIP_SPLIT_DEBUG', '0').lower() in ['true', '1', 
             return status.returncode
         return 0
 
-    split_debug(fr"{pkg_root}\bin\krita.exe", r"bin\krita.exe")
-    split_debug(fr"{pkg_root}\bin\krita.com", r"bin\krita.com")
-    split_debug(fr"{pkg_root}\bin\kritarunner.exe", r"bin\kritarunner.exe")
-    split_debug(fr"{pkg_root}\bin\kritarunner.com", r"bin\kritarunner.com")
+    split_debug(fr"{pkg_root}\bin\minerva2d.exe", r"bin\minerva2d.exe")
+    split_debug(fr"{pkg_root}\bin\minerva2d.com", r"bin\minerva2d.com")
+    split_debug(fr"{pkg_root}\bin\minerva2drunner.exe", r"bin\minerva2drunner.exe")
+    split_debug(fr"{pkg_root}\bin\minerva2drunner.com", r"bin\minerva2drunner.com")
     split_debug(fr"{pkg_root}\bin\ffmpeg.exe", r"bin\ffmpeg.exe")
     split_debug(fr"{pkg_root}\bin\ffprobe.exe", r"bin\ffmprobe.exe")
     # Find all DLLs
@@ -711,10 +711,10 @@ if not os.environ.get('KRITACI_SKIP_SPLIT_DEBUG', '0').lower() in ['true', '1', 
     for f in files:
         split_debug(f, os.path.relpath(f, pkg_root))
     # Find all Python native modules
-    files = glob.glob(fr"{pkg_root}\share\krita\pykrita\**\*.pyd", recursive=True)
+    files = glob.glob(fr"{pkg_root}\share\minerva2d\pyminerva2d\**\*.pyd", recursive=True)
     for f in files:
         split_debug(f, os.path.relpath(f, pkg_root))
-    files = glob.glob(fr"{pkg_root}\lib\krita-python-libs\**\*.pyd", recursive=True)
+    files = glob.glob(fr"{pkg_root}\lib\minerva2d-python-libs\**\*.pyd", recursive=True)
     for f in files:
         split_debug(f, os.path.relpath(f, pkg_root))
     files = glob.glob(fr"{pkg_root}\lib\site-packages\**\*.pyd", recursive=True)
@@ -749,7 +749,7 @@ if not os.environ.get('KRITACI_SKIP_DEBUG_PACKAGE', '0').lower() in ['true', '1'
         f"{pkg_name}-dbg.zip", "-r", f"{pkg_root}\\*.debug"])
 
 logger.info("")
-logger.info(f"Krita packaged as {pkg_name}.zip")
+logger.info(f"Minerva packaged as {pkg_name}.zip")
 if os.path.isfile(f"{pkg_name}-dbg.zip"):
     logger.info(f"Debug info packaged as {pkg_name}-dbg.zip")
 logger.info(f"Packaging dir is {pkg_root}")

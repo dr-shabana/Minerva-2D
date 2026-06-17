@@ -1,5 +1,5 @@
 /*
- * This file is part of Krita
+ * This file is part of Minerva
  *
  * SPDX-FileCopyrightText: 2006 Cyrille Berger <cberger@cberger.net>
  *
@@ -31,7 +31,7 @@
 #include <KoProgressUpdater.h>
 
 
-K_PLUGIN_FACTORY_WITH_JSON(KritaFastColorTransferFactory, "kritafastcolortransfer.json", registerPlugin<FastColorTransferPlugin>();)
+K_PLUGIN_FACTORY_WITH_JSON(MinervaFastColorTransferFactory, "kritafastcolortransfer.json", registerPlugin<FastColorTransferPlugin>();)
 
 
 FastColorTransferPlugin::FastColorTransferPlugin(QObject *parent, const QVariantList &)

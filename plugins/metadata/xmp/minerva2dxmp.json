@@ -1,0 +1,9 @@
+{
+    "Id": "XMP",
+    "Type": "Service",
+    "X-KDE-Library": "kritaxmp",
+    "X-KDE-ServiceTypes": [
+        "Minerva/Metadata"
+    ],
+    "X-Minerva-Version": "28"
+}

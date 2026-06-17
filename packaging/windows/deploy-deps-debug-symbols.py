@@ -98,7 +98,7 @@ if not args.no_interactive:
         exit(255)
     print("")
 
-# Glob all PDBs for Krita binaries
+# Glob all PDBs for Minerva binaries
 
 print("Listing all available PDB files...")
 

@@ -39,15 +39,15 @@
 #include <KoUpdater.h>
 #include <KisGlobalResourcesInterface.h>
 
-K_PLUGIN_FACTORY_WITH_JSON(KritaThresholdFactory, "kritathreshold.json", registerPlugin<KritaThreshold>();)
+K_PLUGIN_FACTORY_WITH_JSON(MinervaThresholdFactory, "kritathreshold.json", registerPlugin<MinervaThreshold>();)
 
-KritaThreshold::KritaThreshold(QObject *parent, const QVariantList &)
+MinervaThreshold::MinervaThreshold(QObject *parent, const QVariantList &)
     : QObject(parent)
 {
     KisFilterRegistry::instance()->add(new KisFilterThreshold());
 }
 
-KritaThreshold::~KritaThreshold()
+MinervaThreshold::~MinervaThreshold()
 {
 }
 

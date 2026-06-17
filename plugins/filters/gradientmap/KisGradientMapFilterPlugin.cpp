@@ -13,7 +13,7 @@
 #include "KisGradientMapFilter.h"
 #include "KisGradientMapFilterPlugin.h"
 
-K_PLUGIN_FACTORY_WITH_JSON(KritaGradientMapFilterFactory, "KritaGradientMapFilter.json", registerPlugin<KisGradientMapFilterPlugin>();)
+K_PLUGIN_FACTORY_WITH_JSON(MinervaGradientMapFilterFactory, "MinervaGradientMapFilter.json", registerPlugin<KisGradientMapFilterPlugin>();)
 
 KisGradientMapFilterPlugin::KisGradientMapFilterPlugin(QObject *parent, const QVariantList &)
     : QObject(parent)

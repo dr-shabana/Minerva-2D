@@ -65,7 +65,7 @@
 #include "kis_node_dummies_graph.h"
 #include "kis_mimedata.h"
 #include "kis_layer_utils.h"
-#include "krita_utils.h"
+#include "minerva2d_utils.h"
 #include "kis_shape_layer.h"
 #include "kis_keyframe_channel.h"
 #include "kis_raster_keyframe_channel.h"
@@ -614,7 +614,7 @@ void KisNodeManager::changeIsolationRoot(KisNodeSP isolationRoot)
 
 void KisNodeManager::handleExternalIsolationChange()
 {
-    // It might be that we have multiple Krita windows open. In such a case
+    // It might be that we have multiple Minerva windows open. In such a case
     // only the currently active one should restart isolated mode
     if (!m_d->view->mainWindowAsQWidget()->isActiveWindow()) return;
 
@@ -747,7 +747,7 @@ void KisNodeManager::convertNode(const QString &nodeType)
     } else if (nodeType == "KisFileLayer") {
         m_d->layerManager.convertLayerToFileLayer(activeNode);
     } else {
-        warnKrita << "Unsupported node conversion type:" << nodeType;
+        warnMinerva << "Unsupported node conversion type:" << nodeType;
     }
 }
 
@@ -849,11 +849,11 @@ void KisNodeManager::slotUiActivatedNode(KisNodeSP node)
                 << "PathTool";
 
         QStringList pixelTools = QStringList()
-                << "KritaShape/KisToolBrush"
-                << "KritaShape/KisToolDyna"
-                << "KritaShape/KisToolMultiBrush"
-                << "KritaFill/KisToolFill"
-                << "KritaFill/KisToolGradient";
+                << "MinervaShape/KisToolBrush"
+                << "MinervaShape/KisToolDyna"
+                << "MinervaShape/KisToolMultiBrush"
+                << "MinervaFill/KisToolFill"
+                << "MinervaFill/KisToolGradient";
 
         KisSelectionMask *selectionMask = dynamic_cast<KisSelectionMask*>(node.data());
         const bool nodeHasVectorAbilities = node->inherits("KisShapeLayer") ||
@@ -866,7 +866,7 @@ void KisNodeManager::slotUiActivatedNode(KisNodeSP node)
         }
         else {
             if (vectorTools.contains(KoToolManager::instance()->activeToolId())) {
-                KoToolManager::instance()->switchToolRequested("KritaShape/KisToolBrush");
+                KoToolManager::instance()->switchToolRequested("MinervaShape/KisToolBrush");
             }
         }
     }
@@ -1315,7 +1315,7 @@ void KisNodeManager::Private::saveDeviceAsImage(KisPaintDeviceSP device,
 
     if (!doc->exportDocumentSync(filename, mimefilter.toLatin1())) {
         QMessageBox::warning(qApp->activeWindow(),
-                             i18nc("@title:window", "Krita"),
+                             i18nc("@title:window", "Minerva"),
                              i18n("Could not save the layer. %1", doc->errorMessage().toUtf8().data()),
                              QMessageBox::Ok);
 
@@ -1327,7 +1327,7 @@ void KisNodeManager::saveNodeAsImage()
     KisNodeSP node = activeNode();
 
     if (!node) {
-        warnKrita << "BUG: Save Node As Image was called without any node selected";
+        warnMinerva << "BUG: Save Node As Image was called without any node selected";
         return;
     }
 
@@ -1378,7 +1378,7 @@ void KisNodeManager::saveVectorLayerAsImage()
 
     SvgWriter writer(shapes);
     if (!writer.save(filename, sizeInPt, true)) {
-        QMessageBox::warning(qApp->activeWindow(), i18nc("@title:window", "Krita"), i18n("Could not save to svg: %1", filename));
+        QMessageBox::warning(qApp->activeWindow(), i18nc("@title:window", "Minerva"), i18n("Could not save to svg: %1", filename));
     }
 }
 
@@ -1731,7 +1731,7 @@ void KisNodeManager::quickUngroup()
         KisNodeList allChildNodes = parent->childNodes(QStringList(), KoProperties());
         KisNodeList allSelectedNodes = selectedNodes();
 
-        const bool removeParent = KritaUtils::compareListsUnordered(allChildNodes, allSelectedNodes);
+        const bool removeParent = MinervaUtils::compareListsUnordered(allChildNodes, allSelectedNodes);
 
         if (checkCanMoveLayers(allSelectedNodes, parent)) {
             KisNodeJugglerCompressed *juggler = m_d->lazyGetJuggler(actionName);
@@ -1750,7 +1750,7 @@ void KisNodeManager::selectLayersImpl(const KoProperties &props, const KoPropert
 
     KisNodeList selectedNodes = this->selectedNodes();
 
-    if (KritaUtils::compareListsUnordered(nodes, selectedNodes)) {
+    if (MinervaUtils::compareListsUnordered(nodes, selectedNodes)) {
         nodes = KisLayerUtils::findNodesWithProps(image->root(), invertedProps, true);
     }
 

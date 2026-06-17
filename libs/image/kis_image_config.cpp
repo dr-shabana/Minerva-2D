@@ -39,7 +39,7 @@ KisImageConfig::KisImageConfig(bool readOnly)
         KIS_SAFE_ASSERT_RECOVER_RETURN(qApp->thread() == QThread::currentThread());
     }
 #ifdef Q_OS_MACOS
-    // clear /var/folders/ swap path set by old broken Krita swap implementation in order to use new default swap dir.
+    // clear /var/folders/ swap path set by old broken Minerva swap implementation in order to use new default swap dir.
     QString swap = m_config.readEntry("swaplocation", "");
     if (swap.startsWith("/var/folders/")) {
         m_config.deleteEntry("swaplocation");
@@ -52,7 +52,7 @@ KisImageConfig::~KisImageConfig()
     if (m_readOnly) return;
 
     if (qApp->thread() != QThread::currentThread()) {
-        dbgKrita << "KisImageConfig: requested config synchronization from nonGUI thread! Called from" << kisBacktrace();
+        dbgMinerva << "KisImageConfig: requested config synchronization from nonGUI thread! Called from" << kisBacktrace();
         return;
     }
 
@@ -235,9 +235,9 @@ QString KisImageConfig::safelyGetWritableTempLocation(const QString &suffix, con
     // tell us otherwise.
 
     // the other option here would be to use a "garbled name" temp file (i.e. no name
-    // KRITA_SWAP_FILE_XXXXXX) in an obscure /var/folders place, which is not
+    // MINERVA2D_SWAP_FILE_XXXXXX) in an obscure /var/folders place, which is not
     // nice to the user. having a clearly named swap file in the home folder is
-    // much nicer to Krita's users.
+    // much nicer to Minerva's users.
 
     // NOTE: QStandardPaths::AppLocalDataLocation on macos sandboxed envs
     // does not return writable locations at all times, using QDir static methods
@@ -285,7 +285,7 @@ QString KisImageConfig::safelyGetWritableTempLocation(const QString &suffix, con
          * (yes, there is a hacky-global-variable workaround, but let's be safe)
          */
         QTemporaryFile tempFile;
-        tempFile.setFileTemplate(location + '/' + "krita_test_swap_location");
+        tempFile.setFileTemplate(location + '/' + "minerva2d_test_swap_location");
         if (tempFile.open() && !tempFile.fileName().isEmpty()) {
             chosenLocation = location;
             break;
@@ -480,12 +480,12 @@ int KisImageConfig::totalRAM()
         error = 0;
     }
     else {
-        dbgKrita << "sysctl(\"hw.memsize\") raised error" << strerror(errno);
+        dbgMinerva << "sysctl(\"hw.memsize\") raised error" << strerror(errno);
     }
 #endif
 
     if (error) {
-        warnKrita << "Cannot get the size of your RAM. Using 1 GiB by default.";
+        warnMinerva << "Cannot get the size of your RAM. Using 1 GiB by default.";
     }
 
     return totalMemory;

@@ -1,5 +1,5 @@
 /*
- * This file is part of Krita
+ * This file is part of Minerva
  *
  * SPDX-FileCopyrightText: 2020 L. E. Segovia <amy@amyspark.me>
  *
@@ -46,7 +46,7 @@ KisWdgSeExpr::KisWdgSeExpr(QWidget *parent)
     m_widget->dirtyPresetIndicatorButton->setIcon(KisIconUtils::loadIcon("warning"));
     m_widget->dirtyPresetIndicatorButton->setToolTip(i18n("The settings for this preset have changed from their default."));
 
-    KisDialogStateSaver::restoreState(m_widget->txtEditor, "krita/generators/seexpr");
+    KisDialogStateSaver::restoreState(m_widget->txtEditor, "minerva2d/generators/seexpr");
     // Manually restore SeExpr state. KisDialogStateSaver uses setPlainText, not text itself
     m_widget->txtEditor->setExpr(m_widget->txtEditor->exprTe->toPlainText());
 
@@ -98,7 +98,7 @@ KisWdgSeExpr::KisWdgSeExpr(QWidget *parent)
 
 KisWdgSeExpr::~KisWdgSeExpr()
 {
-    KisDialogStateSaver::saveState(m_widget->txtEditor, "krita/generators/seexpr");
+    KisDialogStateSaver::saveState(m_widget->txtEditor, "minerva2d/generators/seexpr");
     KisConfig(false).writeEntry("seExpr/splitLayoutState", m_widget->splitter->saveState()); // save splitter state
     KisConfig(false).writeEntry("seExpr/selectedTab", m_widget->tabWidget->currentIndex()); // save currently selected tab
 

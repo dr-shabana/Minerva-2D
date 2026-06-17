@@ -31,7 +31,7 @@ generate_export_header(kritalibbrush BASE_NAME kritabrush EXPORT_MACRO_NAME BRUS
 target_link_libraries(kritalibbrush kritaimage Qt${QT_MAJOR_VERSION}::Svg kritamultiarch lager)
 
 set_target_properties(kritalibbrush PROPERTIES
-    VERSION ${GENERIC_KRITA_LIB_VERSION} SOVERSION ${GENERIC_KRITA_LIB_SOVERSION}
+    VERSION ${GENERIC_MINERVA2D_LIB_VERSION} SOVERSION ${GENERIC_MINERVA2D_LIB_SOVERSION}
 )
 
 install(TARGETS kritalibbrush  ${INSTALL_TARGETS_DEFAULT_ARGS})

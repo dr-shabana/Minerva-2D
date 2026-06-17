@@ -19,7 +19,7 @@
 #include "kis_shape_layer.h"
 #include <KoShapeControllerBase.h>
 
-K_PLUGIN_FACTORY_WITH_JSON(SVGImportFactory, "krita_svg_import.json", registerPlugin<KisSVGImport>();)
+K_PLUGIN_FACTORY_WITH_JSON(SVGImportFactory, "minerva2d_svg_import.json", registerPlugin<KisSVGImport>();)
 
 KisSVGImport::KisSVGImport(QObject *parent, const QVariantList &) : KisImportExportFilter(parent)
 {

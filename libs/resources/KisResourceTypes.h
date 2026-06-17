@@ -39,7 +39,7 @@ namespace ResourceSubType {
     KRITARESOURCES_EXPORT extern const QString PngBrushes;
     KRITARESOURCES_EXPORT extern const QString SegmentedGradients;
     KRITARESOURCES_EXPORT extern const QString StopGradients;
-    KRITARESOURCES_EXPORT extern const QString KritaPaintOpPresets;
+    KRITARESOURCES_EXPORT extern const QString MinervaPaintOpPresets;
     KRITARESOURCES_EXPORT extern const QString MyPaintPaintOpPresets;
 }
 

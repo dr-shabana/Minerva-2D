@@ -1,0 +1,9 @@
+{
+    "Id": "Raindrops Filter",
+    "Type": "Service",
+    "X-KDE-Library": "kritaraindropsfilter",
+    "X-KDE-ServiceTypes": [
+        "Minerva/Filter"
+    ],
+    "X-Minerva-Version": "28"
+}

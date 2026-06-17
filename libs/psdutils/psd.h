@@ -482,7 +482,7 @@ private:
 private:
     bool m_effectEnabled; // Effect enabled
 
-    QString m_blendMode; // already in Krita format!
+    QString m_blendMode; // already in Minerva format!
     KoColor m_color;
     KoColor m_nativeColor;
     qint32 m_opacity; // Opacity as a percent (0...100)
@@ -975,11 +975,11 @@ private:
     quint8 m_glossContourLookupTable[256];
     bool m_glossAntiAliased;
 
-    QString m_highlightBlendMode; // already in Krita format
+    QString m_highlightBlendMode; // already in Minerva format
     KoColor m_highlightColor;
     qint32 m_highlightOpacity; // Highlight opacity as a percent
 
-    QString m_shadowBlendMode; // already in Krita format
+    QString m_shadowBlendMode; // already in Minerva format
     KoColor m_shadowColor;
     qint32 m_shadowOpacity; // Shadow opacity as a percent
 

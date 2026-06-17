@@ -223,13 +223,13 @@ void PaletteDockerDock::slotExportPalette(KoColorSetSP palette)
     KoFileDialog dialog(this, KoFileDialog::SaveFile, "Save Palette");
     dialog.setCaption(i18n("Export Palette"));
     dialog.setDefaultDir(palette->filename());
-    dialog.setMimeTypeFilters(QStringList() << "application/x-krita-palette");
+    dialog.setMimeTypeFilters(QStringList() << "application/x-minerva2d-palette");
     QString newPath;
     if ((newPath = dialog.filename()).isEmpty()) { return; }
 
     QFile file(newPath);
     if (!file.open(QIODevice::WriteOnly)) {
-        warnKrita << "Could not open the file for writing:" << newPath;
+        warnMinerva << "Could not open the file for writing:" << newPath;
         return;
     }
     if (palette->saveToDevice(&file)) {
@@ -237,7 +237,7 @@ void PaletteDockerDock::slotExportPalette(KoColorSetSP palette)
             i18nc("Floating message about exporting successful", "Palette exported successfully"), QIcon(),
             500, KisFloatingMessage::Low);
     } else {
-        warnKrita << "Could export to the file:" << newPath;
+        warnMinerva << "Could export to the file:" << newPath;
     }
 }
 
@@ -394,7 +394,7 @@ void PaletteDockerDock::slotUpdateLblPaletteName()
         }
         m_actSavePalette.data()->setEnabled(isGlobal);
         if (isGlobal) {
-            m_actSavePalette.data()->setToolTip(i18nc("@tooltip", "Save palette explicitly, will also happen automatically on exiting Krita."));
+            m_actSavePalette.data()->setToolTip(i18nc("@tooltip", "Save palette explicitly, will also happen automatically on exiting Minerva."));
         }
         else {
             m_actSavePalette.data()->setToolTip(i18nc("@tooltip", "Saving for document palettes is done by saving the document."));

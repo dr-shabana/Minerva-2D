@@ -1,0 +1,9 @@
+{
+    "Id": "Grid Docker",
+    "Type": "Service",
+    "X-KDE-Library": "kritagriddocker",
+    "X-KDE-ServiceTypes": [
+        "Minerva/Dock"
+    ],
+    "X-Minerva-Version": "28"
+}

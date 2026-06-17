@@ -73,7 +73,7 @@ protected:
 };
 
 /**
- * KisShapeLayerCanvas is a special canvas implementation that Krita
+ * KisShapeLayerCanvas is a special canvas implementation that Minerva
  * uses for non-krita shapes to request updates on.
  *
  * Do NOT give this canvas to tools or to the KoCanvasController, it's

@@ -42,7 +42,7 @@ KisPaintOpRegistry::~KisPaintOpRegistry()
 
 void KisPaintOpRegistry::initRegistry()
 {
-    KoPluginLoader::instance()->load("Krita/Paintop");
+    KoPluginLoader::instance()->load("Minerva/Paintop");
 }
 
 KisPaintOpRegistry* KisPaintOpRegistry::instance()
@@ -67,7 +67,7 @@ void KisPaintOpRegistry::preinitializePaintOpIfNeeded(const KisPaintOpPresetSP p
 KisPaintOp * KisPaintOpRegistry::paintOp(const QString & id, const KisPaintOpSettingsSP settings, KisPainter * painter, KisNodeSP node, KisImageSP image) const
 {
     if (painter == 0) {
-        warnKrita << " KisPaintOpRegistry::paintOp painter is null";
+        warnMinerva << " KisPaintOpRegistry::paintOp painter is null";
         return 0;
     }
 
@@ -80,7 +80,7 @@ KisPaintOp * KisPaintOpRegistry::paintOp(const QString & id, const KisPaintOpSet
             return op;
         }
     }
-    warnKrita << "Could not create paintop for factory" << id << "with settings" << settings;
+    warnMinerva << "Could not create paintop for factory" << id << "with settings" << settings;
     return 0;
 }
 

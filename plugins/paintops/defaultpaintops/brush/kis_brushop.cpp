@@ -27,7 +27,7 @@
 #include <kis_brush_based_paintop_settings.h>
 #include <kis_lod_transform.h>
 #include <kis_paintop_plugin_utils.h>
-#include "krita_utils.h"
+#include "minerva2d_utils.h"
 #include "kis_algebra_2d.h"
 #include <KisDabRenderingExecutor.h>
 #include <KisDabCacheUtils.h>
@@ -168,7 +168,7 @@ void KisBrushOp::addMirroringJobs(Qt::Orientation direction,
                                   UpdateSharedStateSP state,
                                   QVector<KisRunnableStrokeJobData*> &jobs)
 {
-    KritaUtils::addJobSequential(jobs, nullptr);
+    MinervaUtils::addJobSequential(jobs, nullptr);
 
     /**
      * Some KisRenderedDab may share their devices, so we should mirror them
@@ -180,7 +180,7 @@ void KisBrushOp::addMirroringJobs(Qt::Orientation direction,
     for (KisRenderedDab &dab : state->dabsQueue) {
         const bool skipMirrorPixels = prevDabDevice && prevDabDevice == dab.device;
 
-        KritaUtils::addJobConcurrent(jobs,
+        MinervaUtils::addJobConcurrent(jobs,
             [state, &dab, direction, skipMirrorPixels] () {
                 state->painter->mirrorDab(direction, &dab, skipMirrorPixels);
             }
@@ -189,12 +189,12 @@ void KisBrushOp::addMirroringJobs(Qt::Orientation direction,
         prevDabDevice = dab.device;
     }
 
-    KritaUtils::addJobSequential(jobs, nullptr);
+    MinervaUtils::addJobSequential(jobs, nullptr);
 
     for (QRect &rc : rects) {
         state->painter->mirrorRect(direction, &rc);
 
-        KritaUtils::addJobConcurrent(jobs,
+        MinervaUtils::addJobConcurrent(jobs,
             [rc, state] () {
                 state->painter->bltFixed(rc, state->dabsQueue);
             }
@@ -295,7 +295,7 @@ std::pair<int, bool> KisBrushOp::doAsynchronousUpdate(QVector<KisRunnableStrokeJ
         state->dabRenderingTimer.start();
 
         Q_FOREACH (const QRect &rc, rects) {
-            KritaUtils::addJobConcurrent(jobs,
+            MinervaUtils::addJobConcurrent(jobs,
                 [rc, state] () {
                     state->painter->bltFixed(rc, state->dabsQueue);
                 }
@@ -320,7 +320,7 @@ std::pair<int, bool> KisBrushOp::doAsynchronousUpdate(QVector<KisRunnableStrokeJ
             addMirroringJobs(Qt::Horizontal, rects, state, jobs);
         }
 
-        KritaUtils::addJobSequential(jobs,
+        MinervaUtils::addJobSequential(jobs,
                 [state, this, someDabsAreStillInQueue] () {
                     Q_FOREACH(const QRect &rc, state->allDirtyRects) {
                         state->painter->addDirtyRect(rc);

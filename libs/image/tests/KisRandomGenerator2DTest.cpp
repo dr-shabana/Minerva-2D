@@ -40,7 +40,7 @@ void KisRandomGenerator2DTest::twoCalls(quint64 seed)
     KisRandomGenerator2D rand1(seed);
     for (int y = 0; y < 100; y++) {
         for (int x = 0; x < 100; x++) {
-            dbgKrita <<  rand1.randomAt(x, y) << rand1.randomAt(x, y);
+            dbgMinerva <<  rand1.randomAt(x, y) << rand1.randomAt(x, y);
             QCOMPARE(rand1.randomAt(x, y), rand1.randomAt(x, y));
             QVERIFY(fabs(rand1.doubleRandomAt(x, y) - rand1.doubleRandomAt(x, y)) < 1e-5);
         }

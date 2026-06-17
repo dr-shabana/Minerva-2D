@@ -10,8 +10,8 @@ confinement: strict
 apps:
   krita:
     common-id: org.kde.krita
-    desktop: usr/share/applications/org.kde.krita.desktop
-    command: usr/bin/krita
+    desktop: usr/share/applications/org.kde.minerva2d.desktop
+    command: usr/bin/minerva2d
     extensions:
       - kde-neon-6
     plugs:
@@ -210,7 +210,7 @@ parts:
       - -DENABLE_TESTING=OFF
       - -DBUILD_TESTING=OFF
       - -DKDE_SKIP_TEST_SETTINGS=ON
-      - -DBUILD_KRITA_QT_DESIGNER_PLUGINS=OFF
+      - -DBUILD_MINERVA2D_QT_DESIGNER_PLUGINS=OFF
       - -DBUILD_WITH_QT6=ON
       - -DALLOW_UNSTABLE=QT6
       - "-DCMAKE_FIND_ROOT_PATH=$CRAFT_STAGE\\;/snap/kde-qt6-core24-sdk/current\\;/snap/kf6-core24-sdk/current;/snap/kde-pyside6-core24-sdk/current\\;/usr"
@@ -267,7 +267,7 @@ parts:
       - kde-qt6-core24-sdk/latest/stable
       - kde-pyside6-core24-sdk/latest/stable
     parse-info:
-      - usr/share/metainfo/org.kde.krita.appdata.xml
+      - usr/share/metainfo/org.kde.minerva2d.appdata.xml
     stage-packages:
       - libexiv2-27
       - libfftw3-double3

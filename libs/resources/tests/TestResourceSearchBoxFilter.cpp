@@ -1,4 +1,4 @@
-/*  This file is part of the Krita project
+/*  This file is part of the Minerva project
 
     SPDX-FileCopyrightText: 2019 Agata Cacko <cacko.azh@gmail.com>
 

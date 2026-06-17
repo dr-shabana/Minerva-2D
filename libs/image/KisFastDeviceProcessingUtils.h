@@ -10,7 +10,7 @@
 #include "kis_random_accessor_ng.h"
 #include <KoAlwaysInline.h>
 
-namespace KritaUtils {
+namespace MinervaUtils {
 
 
 /**

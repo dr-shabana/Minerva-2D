@@ -180,7 +180,7 @@ void KisAnimTimelineTimeHeader::paintEvent(QPaintEvent *e)
     end = qMax(tmp, end);
 
     ///////////////////////////////////////////////////
-    /// Krita specific code. We should update in spans!
+    /// Minerva specific code. We should update in spans!
 
     const int spanStart = start - start % m_d->fps;
     const int spanEnd = end - end % m_d->fps + m_d->fps - 1;
@@ -188,7 +188,7 @@ void KisAnimTimelineTimeHeader::paintEvent(QPaintEvent *e)
     start = spanStart;
     end = qMin(count() - 1, spanEnd);
 
-    /// End of Krita specific code
+    /// End of Minerva specific code
     ///////////////////////////////////////////////////
 
     QRect currentSectionRect;

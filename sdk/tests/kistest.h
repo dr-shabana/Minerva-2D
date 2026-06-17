@@ -112,7 +112,7 @@ namespace {
 void addResourceTypes()
 {
 #if defined(TESTRESOURCES) || defined(TESTPIGMENT) || defined (TESTFLAKE) || defined(TESTIMAGE) || defined(TESTBRUSH) || defined(TESTUI)
-    // All Krita's resource types
+    // All Minerva's resource types
     KoResourcePaths::addAssetType("markers", "data", "/styles/");
     KoResourcePaths::addAssetType("kis_pics", "data", "/pics/");
     KoResourcePaths::addAssetType("kis_images", "data", "/images/");
@@ -122,12 +122,12 @@ void addResourceTypes()
     KoResourcePaths::addAssetType("psd_layer_style_collections", "data", "/asl");
     KoResourcePaths::addAssetType("kis_shortcuts", "data", "/shortcuts/");
     KoResourcePaths::addAssetType("kis_actions", "data", "/actions");
-    KoResourcePaths::addAssetType("kis_actions", "data", "/pykrita");
+    KoResourcePaths::addAssetType("kis_actions", "data", "/pyminerva2d");
     KoResourcePaths::addAssetType("icc_profiles", "data", "/color/icc");
     KoResourcePaths::addAssetType("icc_profiles", "data", "/profiles/");
     KoResourcePaths::addAssetType("tags", "data", "/tags/");
     KoResourcePaths::addAssetType("templates", "data", "/templates");
-    KoResourcePaths::addAssetType("pythonscripts", "data", "/pykrita");
+    KoResourcePaths::addAssetType("pythonscripts", "data", "/pyminerva2d");
     KoResourcePaths::addAssetType("preset_icons", "data", "/preset_icons");
 
     // Make directories for all resources we can save, and tags
@@ -150,7 +150,7 @@ void addResourceTypes()
     d.mkpath(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + "/tasksets/");
     d.mkpath(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + "/workspaces/");
     d.mkpath(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + "/input/");
-    d.mkpath(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + "/pykrita/");
+    d.mkpath(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + "/pyminerva2d/");
     d.mkpath(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + "/symbols/");
     d.mkpath(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + "/color-schemes/");
     d.mkpath(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + "/preset_icons/");
@@ -207,16 +207,16 @@ void registerResources()
 
 #if defined (TESTFLAKE) || defined(TESTIMAGE) || defined(TESTBRUSH) || defined(TESTUI)
 #if defined HAVE_SEEXPR
-    reg->add(new KisResourceLoader<KisSeExprScript>(ResourceType::SeExprScripts, ResourceType::SeExprScripts, i18n("SeExpr Scripts"), QStringList() << "application/x-krita-seexpr-script"));
+    reg->add(new KisResourceLoader<KisSeExprScript>(ResourceType::SeExprScripts, ResourceType::SeExprScripts, i18n("SeExpr Scripts"), QStringList() << "application/x-minerva2d-seexpr-script"));
 #endif
-    reg->add(new KisResourceLoader<KoGamutMask>(ResourceType::GamutMasks, ResourceType::GamutMasks, i18n("Gamut masks"), QStringList() << "application/x-krita-gamutmasks"));
+    reg->add(new KisResourceLoader<KoGamutMask>(ResourceType::GamutMasks, ResourceType::GamutMasks, i18n("Gamut masks"), QStringList() << "application/x-minerva2d-gamutmasks"));
     reg->add(new KisResourceLoader<KoSvgSymbolCollectionResource>(ResourceType::Symbols, ResourceType::Symbols, i18n("SVG symbol libraries"), QStringList() << "image/svg+xml"));
     reg->add(new KisResourceLoader<KoFontFamily>(ResourceType::FontFamilies, ResourceType::FontFamilies, i18n("Font Families"), QStringList() << "application/x-font-ttf" << "application/x-font-otf"));
 #endif
 
 
 #if defined(TESTIMAGE) || defined(TESTBRUSH) || defined(TESTUI)
-     reg->add(new KisResourceLoader<KisPaintOpPreset>(ResourceType::PaintOpPresets, ResourceType::PaintOpPresets, i18n("Brush presets"), QStringList() << "application/x-krita-paintoppreset"));
+     reg->add(new KisResourceLoader<KisPaintOpPreset>(ResourceType::PaintOpPresets, ResourceType::PaintOpPresets, i18n("Brush presets"), QStringList() << "application/x-minerva2d-paintoppreset"));
      reg->add(new KisResourceLoader<KisPSDLayerStyle>(ResourceType::LayerStyles,
                                                      ResourceType::LayerStyles,
                                                      ResourceType::LayerStyles,
@@ -233,9 +233,9 @@ void registerResources()
 #endif
 
 #if defined(TESTUI)
-    reg->add(new KisResourceLoader<KisWindowLayoutResource>(ResourceType::WindowLayouts, ResourceType::WindowLayouts, i18n("Window layouts"), QStringList() << "application/x-krita-windowlayout"));
-    reg->add(new KisResourceLoader<KisSessionResource>(ResourceType::Sessions, ResourceType::Sessions, i18n("Sessions"), QStringList() << "application/x-krita-session"));
-    reg->add(new KisResourceLoader<KisWorkspaceResource>(ResourceType::Workspaces, ResourceType::Workspaces, i18n("Workspaces"), QStringList() << "application/x-krita-workspace"));
+    reg->add(new KisResourceLoader<KisWindowLayoutResource>(ResourceType::WindowLayouts, ResourceType::WindowLayouts, i18n("Window layouts"), QStringList() << "application/x-minerva2d-windowlayout"));
+    reg->add(new KisResourceLoader<KisSessionResource>(ResourceType::Sessions, ResourceType::Sessions, i18n("Sessions"), QStringList() << "application/x-minerva2d-session"));
+    reg->add(new KisResourceLoader<KisWorkspaceResource>(ResourceType::Workspaces, ResourceType::Workspaces, i18n("Workspaces"), QStringList() << "application/x-minerva2d-workspace"));
 #endif
 
 #if defined(TESTRESOURCES) || defined(TESTPIGMENT) || defined (TESTFLAKE) || defined(TESTBRUSH) || defined(TESTIMAGE) || defined(TESTUI)
@@ -243,7 +243,7 @@ void registerResources()
         qFatal("Could not initialize the resource cachedb");
     }
 
-    KisResourceLocator::instance()->initialize(KoResourcePaths::getApplicationRoot() + "/share/krita");
+    KisResourceLocator::instance()->initialize(KoResourcePaths::getApplicationRoot() + "/share/minerva2d");
 #endif
 
 }
@@ -255,8 +255,8 @@ int main(int argc, char *argv[]) \
     QLocale::setDefault(QLocale(QLocale::English, QLocale::UnitedStates)); \
     qputenv("QT_LOGGING_RULES", ""); \
     QStandardPaths::setTestModeEnabled(true); \
-    qputenv("EXTRA_RESOURCE_DIRS", QByteArray(KRITA_RESOURCE_DIRS_FOR_TESTS)); \
-    qputenv("KRITA_PLUGIN_PATH", QByteArray(KRITA_PLUGINS_DIR_FOR_TESTS)); \
+    qputenv("EXTRA_RESOURCE_DIRS", QByteArray(MINERVA2D_RESOURCE_DIRS_FOR_TESTS)); \
+    qputenv("MINERVA2D_PLUGIN_PATH", QByteArray(MINERVA2D_PLUGINS_DIR_FOR_TESTS)); \
     QApplication app(argc, argv); \
     app.setAttribute(Qt::AA_Use96Dpi, true); \
     QTEST_DISABLE_KEYPAD_NAVIGATION \
@@ -274,8 +274,8 @@ int main(int argc, char *argv[]) \
     qputenv("LANGUAGE", "en"); \
     QLocale::setDefault(QLocale(QLocale::English, QLocale::UnitedStates)); \
     qputenv("QT_LOGGING_RULES", ""); \
-    qputenv("EXTRA_RESOURCE_DIRS", QByteArray(KRITA_RESOURCE_DIRS_FOR_TESTS)); \
-    qputenv("KRITA_PLUGIN_PATH", QByteArray(KRITA_PLUGINS_DIR_FOR_TESTS)); \
+    qputenv("EXTRA_RESOURCE_DIRS", QByteArray(MINERVA2D_RESOURCE_DIRS_FOR_TESTS)); \
+    qputenv("MINERVA2D_PLUGIN_PATH", QByteArray(MINERVA2D_PLUGINS_DIR_FOR_TESTS)); \
     KisSynchronizedConnectionBase::setAutoModeForUnittestsEnabled(true); \
     QStandardPaths::setTestModeEnabled(true); \
     QApplication app(argc, argv); \

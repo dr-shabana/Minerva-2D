@@ -24,7 +24,7 @@
 
 #include "specificcolorselector_dock.h"
 
-K_PLUGIN_FACTORY_WITH_JSON(SpecificColorSelectorPluginFactory, "krita_specificcolorselector.json", registerPlugin<SpecificColorSelectorPlugin>();)
+K_PLUGIN_FACTORY_WITH_JSON(SpecificColorSelectorPluginFactory, "minerva2d_specificcolorselector.json", registerPlugin<SpecificColorSelectorPlugin>();)
 
 class SpecificColorSelectorDockFactory : public KoDockFactoryBase
 {

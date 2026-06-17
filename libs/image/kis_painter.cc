@@ -49,7 +49,7 @@
 #include <KoColorSpaceMaths.h>
 #include "kis_lod_transform.h"
 #include "kis_algebra_2d.h"
-#include "krita_utils.h"
+#include "minerva2d_utils.h"
 
 
 // Maximum distance from a Bezier control point to the line through the start
@@ -558,7 +558,7 @@ void KisPainter::bitBltWithFixedSelection(qint32 dstX, qint32 dstY,
     try {
         dstBytes = new quint8[srcWidth * srcHeight * d->device->pixelSize()];
     } catch (const std::bad_alloc&) {
-        warnKrita << "KisPainter::bitBltWithFixedSelection std::bad_alloc for " << srcWidth << " * " << srcHeight << " * " << d->device->pixelSize() << "dst bytes";
+        warnMinerva << "KisPainter::bitBltWithFixedSelection std::bad_alloc for " << srcWidth << " * " << srcHeight << " * " << d->device->pixelSize() << "dst bytes";
         return;
     }
 
@@ -569,7 +569,7 @@ void KisPainter::bitBltWithFixedSelection(qint32 dstX, qint32 dstY,
     try {
         srcBytes = new quint8[srcWidth * srcHeight * srcDev->pixelSize()];
     } catch (const std::bad_alloc&) {
-        warnKrita << "KisPainter::bitBltWithFixedSelection std::bad_alloc for " << srcWidth << " * " << srcHeight << " * " << d->device->pixelSize() << "src bytes";
+        warnMinerva << "KisPainter::bitBltWithFixedSelection std::bad_alloc for " << srcWidth << " * " << srcHeight << " * " << d->device->pixelSize() << "src bytes";
         return;
     }
 
@@ -603,7 +603,7 @@ void KisPainter::bitBltWithFixedSelection(qint32 dstX, qint32 dstY,
         try {
             mergedSelectionBytes = new quint8[ totalBytes ];
         } catch (const std::bad_alloc&) {
-            warnKrita << "KisPainter::bitBltWithFixedSelection std::bad_alloc for " << srcWidth << " * " << srcHeight << " * " << d->device->pixelSize() << "total bytes";
+            warnMinerva << "KisPainter::bitBltWithFixedSelection std::bad_alloc for " << srcWidth << " * " << srcHeight << " * " << d->device->pixelSize() << "total bytes";
             return;
         }
 
@@ -974,7 +974,7 @@ void KisPainter::bltFixed(qint32 dstX, qint32 dstY,
     try {
          dstBytes = new quint8[srcWidth * srcHeight * d->device->pixelSize()];
     } catch (const std::bad_alloc&) {
-        warnKrita << "KisPainter::bltFixed std::bad_alloc for " << srcWidth << " * " << srcHeight << " * " << d->device->pixelSize() << "total bytes";
+        warnMinerva << "KisPainter::bltFixed std::bad_alloc for " << srcWidth << " * " << srcHeight << " * " << d->device->pixelSize() << "total bytes";
         return;
     }
     d->device->readBytes(dstBytes, dstX, dstY, srcWidth, srcHeight);
@@ -1063,7 +1063,7 @@ void KisPainter::bltFixedWithFixedSelection(qint32 dstX, qint32 dstY,
     try {
         dstBytes = new quint8[srcWidth * srcHeight * d->device->pixelSize()];
     } catch (const std::bad_alloc&) {
-        warnKrita << "KisPainter::bltFixedWithFixedSelection std::bad_alloc for " << srcWidth << " * " << srcHeight << " * " << d->device->pixelSize() << "total bytes";
+        warnMinerva << "KisPainter::bltFixedWithFixedSelection std::bad_alloc for " << srcWidth << " * " << srcHeight << " * " << d->device->pixelSize() << "total bytes";
         return;
     }
     d->device->readBytes(dstBytes, dstX, dstY, srcWidth, srcHeight);
@@ -1094,7 +1094,7 @@ void KisPainter::bltFixedWithFixedSelection(qint32 dstX, qint32 dstY,
         try {
             mergedSelectionBytes = new quint8[ totalBytes ];
         } catch (const std::bad_alloc&) {
-            warnKrita << "KisPainter::bltFixedWithFixedSelection std::bad_alloc for " << totalBytes << "total bytes";
+            warnMinerva << "KisPainter::bltFixedWithFixedSelection std::bad_alloc for " << totalBytes << "total bytes";
             delete[] dstBytes;
             return;
         }
@@ -2785,7 +2785,7 @@ void KisPainter::setPaintOpPreset(KisPaintOpPresetSP preset, KisNodeSP node, Kis
         d->paintOp = paintop;
     }
     else {
-        warnKrita << "Could not create paintop for preset " << preset->name();
+        warnMinerva << "Could not create paintop for preset " << preset->name();
     }
 }
 
@@ -3082,7 +3082,7 @@ void KisPainter::mirrorRect(Qt::Orientation direction, QRect *rc) const
     KisLodTransform t(d->device);
     QPoint effectiveAxesCenter = t.map(d->axesCenter).toPoint();
 
-    KritaUtils::mirrorRect(direction, effectiveAxesCenter, rc);
+    MinervaUtils::mirrorRect(direction, effectiveAxesCenter, rc);
 }
 
 void KisPainter::mirrorDab(Qt::Orientation direction, KisRenderedDab *dab, bool skipMirrorPixels) const
@@ -3090,22 +3090,22 @@ void KisPainter::mirrorDab(Qt::Orientation direction, KisRenderedDab *dab, bool 
     KisLodTransform t(d->device);
     QPointF effectiveAxesCenter = t.map(d->axesCenter);
 
-    KritaUtils::mirrorDab(direction, effectiveAxesCenter, dab, skipMirrorPixels);
+    MinervaUtils::mirrorDab(direction, effectiveAxesCenter, dab, skipMirrorPixels);
 }
 
 namespace {
 
 inline void mirrorOneObject(Qt::Orientation dir, const QPointF &center, QRect *rc) {
-    KritaUtils::mirrorRect(dir, center, rc);
+    MinervaUtils::mirrorRect(dir, center, rc);
 }
 
 inline void mirrorOneObject(Qt::Orientation dir, const QPointF &center, QPointF *pt) {
-    KritaUtils::mirrorPoint(dir, center, pt);
+    MinervaUtils::mirrorPoint(dir, center, pt);
 }
 
 inline void mirrorOneObject(Qt::Orientation dir, const QPointF &center, QPair<QPointF, QPointF> *pair) {
-    KritaUtils::mirrorPoint(dir, center, &pair->first);
-    KritaUtils::mirrorPoint(dir, center, &pair->second);
+    MinervaUtils::mirrorPoint(dir, center, &pair->first);
+    MinervaUtils::mirrorPoint(dir, center, &pair->second);
 }
 }
 

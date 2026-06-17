@@ -8,7 +8,7 @@
 
 #include <QBitArray>
 
-#include "krita_utils.h"
+#include "minerva2d_utils.h"
 #include "kis_paint_device.h"
 #include "kis_lazy_fill_tools.h"
 #include "kis_gaussian_kernel.h"
@@ -123,7 +123,7 @@ void KisColorizeStrokeStrategy::addKeyStroke(KisPaintDeviceSP dev, const KoColor
 
 void KisColorizeStrokeStrategy::initStrokeCallback()
 {
-    using namespace KritaUtils;
+    using namespace MinervaUtils;
 
     QVector<KisRunnableStrokeJobData*> jobs;
 
@@ -230,7 +230,7 @@ void KisColorizeStrokeStrategy::initStrokeCallback()
 
         Q_FOREACH (const QRect &rc, patchRects) {
             addJobConcurrent(jobs, [this, rc] () {
-                KritaUtils::filterAlpha8Device(m_d->heightMap, rc,
+                MinervaUtils::filterAlpha8Device(m_d->heightMap, rc,
                                                [](quint8 pixel) {
                                                    return quint8(255 - pixel);
                                                });

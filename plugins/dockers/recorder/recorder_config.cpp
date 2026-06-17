@@ -23,7 +23,7 @@ const QString keyThreads = "recorder/threads";
 const QString keyRealTimeCaptureMode = "recorder/realtimecapturemode";
 const QString keyRecordIsolateLayerMode = "recorder/recordisolatelayermode";
 const QString keyRecordAutomatically = "recorder/recordautomatically";
-const QString defaultSnapshotDirectory = QDir::homePath() % QDir::separator() % "KritaRecorder";
+const QString defaultSnapshotDirectory = QDir::homePath() % QDir::separator() % "MinervaRecorder";
 }
 
 RecorderConfig::RecorderConfig(bool readOnly)

@@ -16,4 +16,4 @@ add_subdirectory( tool_knife )
 
 install( FILES
     tools.action
-DESTINATION  ${KDE_INSTALL_DATADIR}/krita/actions)
+DESTINATION  ${KDE_INSTALL_DATADIR}/minerva2d/actions)

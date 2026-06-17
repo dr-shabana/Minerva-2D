@@ -1,5 +1,5 @@
 /*
- * This file is part of Krita
+ * This file is part of Minerva
  *
  * SPDX-FileCopyrightText: 2018 Jouni Pentikainen <joupent@gmail.com>
  * SPDX-FileCopyrightText: 2020 L. E. Segovia <amy@amyspark.me>

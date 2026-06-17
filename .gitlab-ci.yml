@@ -16,9 +16,9 @@ variables:
   DEPS_REPO_BRANCH_NAME_MACOS: 'master'
   DEPS_REPO_BRANCH_NAME_ANDROID: 'master'
 
-  VM_IMAGE_NAME_WINDOWS: 'storage.kde.org/vm-images/krita-windows-clang21-twinpy'
-  VM_IMAGE_NAME_LINUX: 'storage.kde.org/vm-images/krita-appimage-2204'
-  VM_IMAGE_NAME_ANDROID: 'storage.kde.org/vm-images/krita-android-sdk35-2204'
+  VM_IMAGE_NAME_WINDOWS: 'storage.kde.org/vm-images/minerva2d-windows-clang21-twinpy'
+  VM_IMAGE_NAME_LINUX: 'storage.kde.org/vm-images/minerva2d-appimage-2204'
+  VM_IMAGE_NAME_ANDROID: 'storage.kde.org/vm-images/minerva2d-android-sdk35-2204'
 
   # The name of python executable that will be used for initializing
   # the initial virtual envioronment. After venv is initialized, the chosen
@@ -59,7 +59,7 @@ variables:
 
 .ci-artifacts-with-packages-mixin:
   artifacts:
-    name: krita-$CI_COMMIT_REF_SLUG-$CI_COMMIT_REF_NAME
+    name: minerva2d-$CI_COMMIT_REF_SLUG-$CI_COMMIT_REF_NAME
     expire_in: 10 days
     when: always
     paths:
@@ -69,9 +69,9 @@ variables:
       - "_build/CMakeFiles/CMakeConfigureLog.yaml"
       - "_build/CMakeCache.txt"
       # Windows packages
-      - "krita-*.zip"
-      - "krita-*-setup.exe"
-      - "krita-*.msix"
+      - "minerva2d-*.zip"
+      - "minerva2d-*-setup.exe"
+      - "minerva2d-*.msix"
       # Linux, MacOS and Android packages
       - "_packaging"
       # Logs from MacOS signer/notarizer
@@ -86,7 +86,7 @@ variables:
 # they are uploaded to CDN
 .ci-artifacts-without-packages-mixin:
   artifacts:
-    name: krita-$CI_COMMIT_REF_SLUG-$CI_COMMIT_REF_NAME-no-packages
+    name: minerva2d-$CI_COMMIT_REF_SLUG-$CI_COMMIT_REF_NAME-no-packages
     expire_in: 10 days
     when: always
     paths:
@@ -124,7 +124,7 @@ workflow:
       when: never
     # Build branches too
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
-    - if: $CI_COMMIT_BRANCH =~ /^krita\//
+    - if: $CI_COMMIT_BRANCH =~ /^minerva2d\//
     - if: $CI_COMMIT_BRANCH =~ $release_branch_pattern
 
 .clang_format:

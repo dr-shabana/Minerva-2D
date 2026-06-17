@@ -98,13 +98,13 @@
 #include <KoIcon.h>
 
 #include <config-use-surface-color-management-api.h>
-#if KRITA_USE_SURFACE_COLOR_MANAGEMENT_API
+#if MINERVA2D_USE_SURFACE_COLOR_MANAGEMENT_API
 
 #include <surfacecolormanagement/KisSurfaceColorManagerInterface.h>
 #include <KisCanvasSurfaceColorSpaceManager.h>
 #include <KisRootSurfaceInfoProxy.h>
 
-#endif /* KRITA_USE_SURFACE_COLOR_MANAGEMENT_API */
+#endif /* MINERVA2D_USE_SURFACE_COLOR_MANAGEMENT_API */
 
 #include <KisPlatformPluginInterfaceFactory.h>
 #include <KisMultiSurfaceStateManager.h>
@@ -184,7 +184,7 @@ public:
         , regionOfInterestUpdateCompressor(100, KisSignalCompressor::FIRST_INACTIVE)
         , referencesBoundsUpdateCompressor(100, KisSignalCompressor::FIRST_INACTIVE)
     {
-#if KRITA_USE_SURFACE_COLOR_MANAGEMENT_API
+#if MINERVA2D_USE_SURFACE_COLOR_MANAGEMENT_API
         if (KisPlatformPluginInterfaceFactory::instance()->surfaceColorManagedByOS()) {
             rootSurfaceInfoProxy = new KisRootSurfaceInfoProxy(view, q);
             multiSurfaceSetupManager.setRootSurfaceInfoProxy(rootSurfaceInfoProxy);
@@ -226,7 +226,7 @@ public:
     KisToolProxy toolProxy;
     KisPrescaledProjectionSP prescaledProjection;
 
-#if !KRITA_QT_HAS_UPDATE_COMPRESSION_PATCH
+#if !MINERVA2D_QT_HAS_UPDATE_COMPRESSION_PATCH
     KisSignalCompressor canvasUpdateCompressor;
 #endif
     QRect savedCanvasProjectionUpdateRect;
@@ -261,7 +261,7 @@ public:
     int isBatchUpdateActive = 0;
 
 
-#if KRITA_USE_SURFACE_COLOR_MANAGEMENT_API
+#if MINERVA2D_USE_SURFACE_COLOR_MANAGEMENT_API
     QScopedPointer<KisCanvasSurfaceColorSpaceManager> surfaceColorManager;
     KisRootSurfaceInfoProxy *rootSurfaceInfoProxy;
 #endif
@@ -287,7 +287,7 @@ public:
         int canvasScreenNumber = qApp->screens().indexOf(view->currentScreen());
 
         if (canvasScreenNumber < 0) {
-            warnKrita << "Couldn't detect screen that Krita belongs to..." << ppVar(view->currentScreen());
+            warnMinerva << "Couldn't detect screen that Minerva belongs to..." << ppVar(view->currentScreen());
             canvasScreenNumber = 0;
         }
         return canvasScreenNumber;
@@ -338,7 +338,7 @@ KisCanvas2::KisCanvas2(KisCoordinatesConverter *coordConverter, KoCanvasResource
 
     KisImageConfig config(false);
 
-#if !KRITA_QT_HAS_UPDATE_COMPRESSION_PATCH
+#if !MINERVA2D_QT_HAS_UPDATE_COMPRESSION_PATCH
     m_d->canvasUpdateCompressor.setDelay(1000 / config.fpsLimit());
     m_d->canvasUpdateCompressor.setMode(KisSignalCompressor::FIRST_ACTIVE);
 #endif
@@ -389,7 +389,7 @@ void KisCanvas2::setup()
     connect(kritaShapeController, SIGNAL(currentLayerChanged(const KoShapeLayer*)),
             selectedShapesProxy(), SIGNAL(currentLayerChanged(const KoShapeLayer*)));
 
-#if !KRITA_QT_HAS_UPDATE_COMPRESSION_PATCH
+#if !MINERVA2D_QT_HAS_UPDATE_COMPRESSION_PATCH
     connect(&m_d->canvasUpdateCompressor, SIGNAL(timeout()), SLOT(slotDoCanvasUpdate()));
 #endif
 
@@ -475,7 +475,7 @@ void KisCanvas2::setCanvasWidget(KisAbstractCanvasWidget *widget)
     }
 
 
-#if KRITA_USE_SURFACE_COLOR_MANAGEMENT_API
+#if MINERVA2D_USE_SURFACE_COLOR_MANAGEMENT_API
     /**
      * Load platform plugin for surface color management and set
      * the surface color space to sRGB exactly
@@ -507,7 +507,7 @@ void KisCanvas2::setCanvasWidget(KisAbstractCanvasWidget *widget)
                         &KisCanvas2::slotSurfaceFormatChanged);
             }
         } else {
-            qWarning() << "WARNING: created non-native Krita canvas on managed platform,"
+            qWarning() << "WARNING: created non-native Minerva canvas on managed platform,"
                        << "its color space will be limited to sRGB";
         }
     }
@@ -711,7 +711,7 @@ KoUnit KisCanvas2::unit() const
     KisImageWSP image = m_d->view->image();
     if (image) {
         if (!qFuzzyCompare(image->xRes(), image->yRes())) {
-            warnKrita << "WARNING: resolution of the image is anisotropic"
+            warnMinerva << "WARNING: resolution of the image is anisotropic"
                        << ppVar(image->xRes())
                        << ppVar(image->yRes());
         }
@@ -780,7 +780,7 @@ void KisCanvas2::createCanvas(bool useOpenGL)
     KisConfig cfg(true);
 
     if (useOpenGL && !KisOpenGL::hasOpenGL()) {
-        warnKrita << "Tried to create OpenGL widget when system doesn't have OpenGL\n";
+        warnMinerva << "Tried to create OpenGL widget when system doesn't have OpenGL\n";
         useOpenGL = false;
     }
 
@@ -788,7 +788,7 @@ void KisCanvas2::createCanvas(bool useOpenGL)
         createOpenGLCanvas();
         if (cfg.canvasState() == "OPENGL_FAILED") {
             // Creating the opengl canvas failed, fall back
-            warnKrita << "OpenGL Canvas initialization returned OPENGL_FAILED. Falling back to QPainter.";
+            warnMinerva << "OpenGL Canvas initialization returned OPENGL_FAILED. Falling back to QPainter.";
             createQPainterCanvas();
         }
     } else {
@@ -1167,7 +1167,7 @@ void KisCanvas2::requestCanvasUpdateMaybeCompressed()
     * If Qt has our custom patch for global updates compression, then we shouldn't do
     * our own compression here in the canvas. Everything will be done in Qt.
     */
-#if !KRITA_QT_HAS_UPDATE_COMPRESSION_PATCH
+#if !MINERVA2D_QT_HAS_UPDATE_COMPRESSION_PATCH
     m_d->canvasUpdateCompressor.start();
 #else
     slotDoCanvasUpdate();
@@ -1177,7 +1177,7 @@ void KisCanvas2::requestCanvasUpdateMaybeCompressed()
 void KisCanvas2::slotDoCanvasUpdate()
 {
 
-#if !KRITA_QT_HAS_UPDATE_COMPRESSION_PATCH
+#if !MINERVA2D_QT_HAS_UPDATE_COMPRESSION_PATCH
     /**
      * WARNING: in isBusy() we access openGL functions without making the painting
      * context current. We hope that currently active context will be Qt's one,
@@ -1516,7 +1516,7 @@ void KisCanvas2::KisCanvas2Private::assignChangedMultiSurfaceState(const KisMult
 {
     assignChangedMultiSurfaceStateSkipCanvasSurface(newState);
 
-#if KRITA_USE_SURFACE_COLOR_MANAGEMENT_API
+#if MINERVA2D_USE_SURFACE_COLOR_MANAGEMENT_API
 
     if (surfaceColorManager) {
         surfaceColorManager->setDisplayConfigOptions(newState.surfaceMode, newState.multiConfig.options());
@@ -1527,7 +1527,7 @@ void KisCanvas2::KisCanvas2Private::assignChangedMultiSurfaceState(const KisMult
 
 void KisCanvas2::slotSurfaceFormatChanged(const KisDisplayConfig &config)
 {
-#if KRITA_USE_SURFACE_COLOR_MANAGEMENT_API
+#if MINERVA2D_USE_SURFACE_COLOR_MANAGEMENT_API
 
     KIS_SAFE_ASSERT_RECOVER_RETURN(m_d->multiSurfaceState);
     if (m_d->multiSurfaceState->multiConfig.canvasDisplayConfig() == config) return;
@@ -1538,8 +1538,8 @@ void KisCanvas2::slotSurfaceFormatChanged(const KisDisplayConfig &config)
 
             const QString warningMessage = i18n(
                 "WARNING: HDR mode was activated on surface working in 8-bit mode!\n"
-                "Please activate 10-bit mode in Krita's Preferences dialog and restart "
-                "Krita to avoid color banding!");
+                "Please activate 10-bit mode in Minerva's Preferences dialog and restart "
+                "Minerva to avoid color banding!");
 
             m_d->view->showFloatingMessage(warningMessage, koIcon("warning"), 7000, KisFloatingMessage::High);
             warnOpenGL.noquote() << QString(warningMessage).replace('\n', ' ');
@@ -1568,7 +1568,7 @@ KisCanvasDecorationSP KisCanvas2::decoration(const QString& id) const
 QPoint KisCanvas2::documentOrigin() const
 {
     /**
-     * In Krita we don't use document origin anymore.
+     * In Minerva we don't use document origin anymore.
      * All the centering when needed (vastScrolling < 0.5) is done
      * automatically by the KisCoordinatesConverter.
      */
@@ -1699,7 +1699,7 @@ KisInputActionGroupsMaskInterface::SharedInterface KisCanvas2::inputActionGroups
 
 QString KisCanvas2::colorManagementReport() const
 {
-#if KRITA_USE_SURFACE_COLOR_MANAGEMENT_API
+#if MINERVA2D_USE_SURFACE_COLOR_MANAGEMENT_API
     QString report;
     QDebug str(&report);
 

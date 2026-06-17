@@ -24,7 +24,7 @@ inline bool shouldUseLock()
      */
     return true;
 # else
-    static const bool s_shouldUseLock = qEnvironmentVariableIsSet("KRITA_USE_STRICT_OPENGL_CONTEXT_SWITCH");
+    static const bool s_shouldUseLock = qEnvironmentVariableIsSet("MINERVA2D_USE_STRICT_OPENGL_CONTEXT_SWITCH");
     return s_shouldUseLock;
 # endif
 }

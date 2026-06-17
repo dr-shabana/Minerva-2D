@@ -15,7 +15,7 @@
  * It will position and scale the text centered in the bounds of the items.
  * 
  * This is nowhere near as fast as a regular Text item, as Qt has a glyph
- * cache, while Krita's system paints paths directly.
+ * cache, while Minerva's system paints paths directly.
  */
 
 class SvgTextLabel : public QQuickPaintedItem

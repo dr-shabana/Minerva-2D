@@ -87,7 +87,7 @@ public:
         : KisSelectionToolFactoryBase("KisToolSelectPath") {
         setToolTip(i18n("Bezier Curve Selection Tool"));
         setSection(ToolBoxSection::Select);
-        setActivationShapeId(KRITA_TOOL_ACTIVATION_ID);
+        setActivationShapeId(MINERVA2D_TOOL_ACTIVATION_ID);
         setIconName(koIconNameCStr("tool_path_selection"));
         setPriority(6);
     }

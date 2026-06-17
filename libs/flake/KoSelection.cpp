@@ -14,7 +14,7 @@
 #include "KoShapeGroup.h"
 #include "KoPointerEvent.h"
 #include "kis_algebra_2d.h"
-#include "krita_container_utils.h"
+#include "minerva2d_container_utils.h"
 
 #include <QPainter>
 
@@ -168,7 +168,7 @@ const QList<KoShape *> KoSelection::selectedVisibleShapes() const
 {
     QList<KoShape*> shapes = selectedShapes();
 
-    KritaUtils::filterContainer (shapes, [](KoShape *shape) {
+    MinervaUtils::filterContainer (shapes, [](KoShape *shape) {
         return shape->isVisible();
     });
 
@@ -179,7 +179,7 @@ const QList<KoShape *> KoSelection::selectedEditableShapes() const
 {
     QList<KoShape*> shapes = selectedShapes();
 
-    KritaUtils::filterContainer (shapes, [](KoShape *shape) {
+    MinervaUtils::filterContainer (shapes, [](KoShape *shape) {
         return shape->isShapeEditable();
     });
 

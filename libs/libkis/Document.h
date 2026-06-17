@@ -29,8 +29,8 @@
 class KisDocument;
 
 /**
- * The Document class encapsulates a Krita Document/Image. A Krita document is an Image with
- * a filename. Libkis does not differentiate between a document and an image, like Krita does
+ * The Document class encapsulates a Minerva Document/Image. A Minerva document is an Image with
+ * a filename. Libkis does not differentiate between a document and an image, like Minerva does
  * internally.
  */
 class KRITALIBKIS_EXPORT Document : public QObject
@@ -126,7 +126,7 @@ public Q_SLOTS:
      * <ul>
      * <li>U8: unsigned 8 bits integer, the most common type</li>
      * <li>U16: unsigned 16 bits integer</li>
-     * <li>F16: half, 16 bits floating point. Only available if Krita was built with OpenEXR</li>
+     * <li>F16: half, 16 bits floating point. Only available if Minerva was built with OpenEXR</li>
      * <li>F32: 32 bits floating point</li>
      * </ul>
      * @return the color depth.
@@ -182,7 +182,7 @@ public Q_SLOTS:
      * <ul>
      * <li>U8: unsigned 8 bits integer, the most common type</li>
      * <li>U16: unsigned 16 bits integer</li>
-     * <li>F16: half, 16 bits floating point. Only available if Krita was built with OpenEXR</li>
+     * <li>F16: half, 16 bits floating point. Only available if Minerva was built with OpenEXR</li>
      * <li>F32: 32 bits floating point</li>
      * </ul>
      * @param colorProfile a valid color profile for this color model and color depth combination.
@@ -212,7 +212,7 @@ public Q_SLOTS:
      * @return a string containing a valid XML document with the right information about the document
      * and author. The DTD can be found here:
      *
-     * https://phabricator.kde.org/source/krita/browse/master/krita/dtd/
+     * https://phabricator.kde.org/source/minerva2d/browse/master/minerva2d/dtd/
      *
      * @code
      * <?xml version="1.0" encoding="UTF-8"?>
@@ -257,7 +257,7 @@ public Q_SLOTS:
      * @param document A string containing a valid XML document that conforms to the document-info DTD
      * that can be found here:
      *
-     * https://phabricator.kde.org/source/krita/browse/master/krita/dtd/
+     * https://phabricator.kde.org/source/minerva2d/browse/master/minerva2d/dtd/
      */
     void setDocumentInfo(const QString &document);
 
@@ -410,7 +410,7 @@ public Q_SLOTS:
     QByteArray pixelData(int x, int y, int w, int h) const;
 
     /**
-     * @brief close Close the document: remove it from Krita's internal list of documents and
+     * @brief close Close the document: remove it from Minerva's internal list of documents and
      * close all views. If the document is modified, you should save it first. There will be
      * no prompt for saving.
      *
@@ -493,7 +493,7 @@ public Q_SLOTS:
     * @param xres the new xres
     * @param yres the new yres
     * @param strategy the scaling strategy. There's several ones amongst these that aren't available in the regular UI.
-    * The list of filters is extensible and can be retrieved with Krita::filter
+    * The list of filters is extensible and can be retrieved with Minerva::filter
     * <ul>
     * <li>Hermite</li>
     * <li>Bicubic - Adds pixels using the color of surrounding pixels. Produces smoother tonal gradations than Bilinear.</li>
@@ -619,7 +619,7 @@ print(root.childNodes())
      *
      * @code
      * from krita import *
-     * d = Krita.instance().activeDocument()
+     * d = Minerva.instance().activeDocument()
      * i = InfoObject();
      * i.setProperty("pattern", "Cross01.pat")
      * s = Selection();
@@ -928,8 +928,8 @@ print(root.childNodes())
 
     /**
      * @brief Allow to activate/deactivate autosave for document
-     * When activated, it will use default Krita autosave settings
-     * It means that even when autosave is set to True, under condition Krita will not proceed to automatic save of document:
+     * When activated, it will use default Minerva autosave settings
+     * It means that even when autosave is set to True, under condition Minerva will not proceed to automatic save of document:
      * - autosave is globally deactivated
      * - document is read-only
      *
@@ -944,10 +944,10 @@ print(root.childNodes())
      * @brief Return autosave status for document
      * Notes:
      * - returned value is Autosave flag value
-     *   Even if autosave is set to True, under condition Krita will not proceed to automatic save of document:
+     *   Even if autosave is set to True, under condition Minerva will not proceed to automatic save of document:
      *   - autosave is globally deactivated
      *   - document is read-only
-     * - When autosave is set to False, Krita never execute automatic save for document
+     * - When autosave is set to False, Minerva never execute automatic save for document
      *
      * @return True if autosave is active, otherwise False
      */
@@ -966,7 +966,7 @@ print(root.childNodes())
      * To modify/set guides property on a document
 @code
 # get document (create one or get active one for example)
-newDoc = Krita.instance().createDocument(500, 500, "Test", "RGBA", "U8", "", 300)
+newDoc = Minerva.instance().createDocument(500, 500, "Test", "RGBA", "U8", "", 300)
 
 # retrieve document guides configuration
 newDocGuides = newDoc.guidesConfig()
@@ -998,7 +998,7 @@ newDoc.setGuidesConfig(newDocGuides)
      * To modify/set grid property on a document
 @code
 # get document (create one or get active one for example)
-newDoc = Krita.instance().createDocument(500, 500, "Test", "RGBA", "U8", "", 300)
+newDoc = Minerva.instance().createDocument(500, 500, "Test", "RGBA", "U8", "", 300)
 
 # retrieve document grid configuration
 newDocGrid = newDoc.gridConfig()
@@ -1037,11 +1037,11 @@ newDoc.setGridConfig(newDocGrid)
 
     /**
      * @brief Set a list of audio tracks for document
-     * Note: the function allows to add more than one file while from Krita's UI, importing a file
+     * Note: the function allows to add more than one file while from Minerva's UI, importing a file
      * will replace the complete list
      *
      * The reason why this method let the ability to provide more than one file is related to
-     * the internal's Krita method from KisDocument class:
+     * the internal's Minerva method from KisDocument class:
      * void KisDocument::setAudioTracks(QVector<QFileInfo> f)
      *
      * @param files List of absolute path/file name of audio files
@@ -1051,7 +1051,7 @@ newDoc.setGridConfig(newDocGrid)
 
 private:
 
-    friend class Krita;
+    friend class Minerva;
     friend class Window;
     friend class Filter;
     friend class View;

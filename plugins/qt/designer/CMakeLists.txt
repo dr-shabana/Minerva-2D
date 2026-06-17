@@ -5,11 +5,11 @@ find_package(Qt${QT_MAJOR_VERSION} ${MIN_QT_VERSION}
 
 include_directories(${Qt${QT_MAJOR_VERSION}Designer_INCLUDE_DIRS})
 
-set(KritaDesignerPlugin_SOURCES
+set(MinervaDesignerPlugin_SOURCES
     KisColorSpaceSelectorPlugin.cpp
-    KritaDesignerPluginCollection.cpp
+    MinervaDesignerPluginCollection.cpp
 )
 
-kis_add_library(kritadesignerplugin MODULE ${KritaDesignerPlugin_SOURCES})
+kis_add_library(kritadesignerplugin MODULE ${MinervaDesignerPlugin_SOURCES})
 
 target_link_libraries(kritadesignerplugin kritaui)

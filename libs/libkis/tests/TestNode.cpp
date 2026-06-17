@@ -7,9 +7,9 @@
 #include <QColor>
 #include <QDataStream>
 
-#include <KritaVersionWrapper.h>
+#include <MinervaVersionWrapper.h>
 #include <Node.h>
-#include <Krita.h>
+#include <Minerva.h>
 
 #include <KoColorSpaceRegistry.h>
 #include <KoColorProfile.h>
@@ -30,7 +30,7 @@ void TestNode::testSetColorSpace()
     KisImageSP image = new KisImage(0, 100, 100, KoColorSpaceRegistry::instance()->rgb8(), "test");
     KisNodeSP layer = new KisPaintLayer(image, "test1", 255);
     NodeSP node = NodeSP(Node::createNode(image, layer));
-    QStringList profiles = Krita().profiles("GRAYA", "U16");
+    QStringList profiles = Minerva().profiles("GRAYA", "U16");
     node->setColorSpace("GRAYA", "U16", profiles.first());
     QCOMPARE(layer->colorSpace()->colorModelId().id() , "GRAYA");
     QCOMPARE(layer->colorSpace()->colorDepthId().id() , "U16");
@@ -42,7 +42,7 @@ void TestNode::testSetColorProfile()
     KisImageSP image = new KisImage(0, 100, 100, KoColorSpaceRegistry::instance()->rgb8(), "test");
     KisNodeSP layer = new KisPaintLayer(image, "test1", 255);
     NodeSP node = NodeSP(Node::createNode(image, layer));
-    QStringList profiles = Krita().profiles("RGBA", "U8");
+    QStringList profiles = Minerva().profiles("RGBA", "U8");
     Q_FOREACH(const QString &profile, profiles) {
         node->setColorProfile(profile);
         QVERIFY(layer->colorSpace()->profile()->name() == profile);

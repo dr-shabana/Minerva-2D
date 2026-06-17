@@ -46,7 +46,7 @@ int CSVReadLine::nextLine(QIODevice *io)
             retval= 1;
         }
     } catch(KisAslReaderUtils::ASLParseException &e) {
-        warnKrita << "WARNING: CSV:" << e.what();
+        warnMinerva << "WARNING: CSV:" << e.what();
         retval= -1; //error
     }
     return retval;

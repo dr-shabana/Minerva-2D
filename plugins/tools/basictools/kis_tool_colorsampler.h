@@ -120,13 +120,13 @@ class KisToolColorSamplerFactory : public KoToolFactoryBase
 {
 public:
     KisToolColorSamplerFactory()
-            : KoToolFactoryBase("KritaSelected/KisToolColorSampler") {
+            : KoToolFactoryBase("MinervaSelected/KisToolColorSampler") {
         setToolTip(i18n("Color Sampler Tool"));
         setSection(ToolBoxSection::Fill);
         setPriority(2);
-        setIconName(koIconNameCStr("krita_tool_color_sampler"));
+        setIconName(koIconNameCStr("minerva2d_tool_color_sampler"));
         setShortcut(QKeySequence(Qt::Key_P));
-        setActivationShapeId(KRITA_TOOL_ACTIVATION_ID);
+        setActivationShapeId(MINERVA2D_TOOL_ACTIVATION_ID);
     }
 
     ~KisToolColorSamplerFactory() override {}

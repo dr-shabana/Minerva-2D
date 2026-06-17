@@ -586,7 +586,7 @@ QPainterPath BoundingBoxSnapStrategy::decoration(const KoViewConverter &converte
     return decoration;
 }
 
-// KoGuidesData has been moved into Krita. Please port this class!
+// KoGuidesData has been moved into Minerva. Please port this class!
 
 // LineGuideSnapStrategy::LineGuideSnapStrategy()
 //     : KoSnapStrategy(KoSnapGuide::GuideLineSnapping)

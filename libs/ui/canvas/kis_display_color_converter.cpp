@@ -65,7 +65,7 @@ struct KisDisplayColorConverter::Private
     mutable const KoColorSpace *cachedQtWidgetsColorSpace = 0;
     mutable const KoColorSpace *cachedOpenGLSurfaceColorSpace = 0;
 
-    // this color space will never change during the run of Krita
+    // this color space will never change during the run of Minerva
     mutable const KoColorSpace *cachedIntermediateColorSpace = 0;
 
     void notifyDisplayConfigurationChanged() {
@@ -350,7 +350,7 @@ void KisDisplayColorConverter::Private::updateIntermediateFgColor(const KoColor 
 
 void KisDisplayColorConverter::Private::slotCanvasResourceChanged(int key, const QVariant &v)
 {
-    if (key == KoCanvasResource::CurrentKritaNode) {
+    if (key == KoCanvasResource::CurrentMinervaNode) {
         KisNodeSP currentNode = v.value<KisNodeWSP>();
         setCurrentNode(currentNode);
     } else if (useOcio() && key == KoCanvasResource::ForegroundColor) {
@@ -841,7 +841,7 @@ KoColor KisDisplayColorConverter::fromHslF(qreal h, qreal s, qreal l, qreal a)
     // generate HSL from sRGB!
     QColor qcolor(QColor::fromHslF(h, s, l, a));
     if (!qcolor.isValid()) {
-        warnKrita << "Could not construct valid color from h" << h << "s" << s << "l" << l << "a" << a;
+        warnMinerva << "Could not construct valid color from h" << h << "s" << s << "l" << l << "a" << a;
         qcolor = Qt::black;
     }
     return m_d->approximateFromQColor(qcolor);

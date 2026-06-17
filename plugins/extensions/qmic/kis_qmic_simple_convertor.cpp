@@ -45,7 +45,7 @@ public:
     void
     transform(const quint8 *src, quint8 *dst, qint32 nPixels) const override
     {
-        const float gmicUnitValue2KritaUnitValue =
+        const float gmicUnitValue2MinervaUnitValue =
             m_gmicUnitValue / KoColorSpaceMathsTraits<float>::unitValue;
 
         const auto *srcPixel = reinterpret_cast<const RGBPixel *>(src);
@@ -53,13 +53,13 @@ public:
 
         while (nPixels > 0) {
             dstPixel->red =
-                SCALE_TO_FLOAT(srcPixel->red) * gmicUnitValue2KritaUnitValue;
+                SCALE_TO_FLOAT(srcPixel->red) * gmicUnitValue2MinervaUnitValue;
             dstPixel->green =
-                SCALE_TO_FLOAT(srcPixel->green) * gmicUnitValue2KritaUnitValue;
+                SCALE_TO_FLOAT(srcPixel->green) * gmicUnitValue2MinervaUnitValue;
             dstPixel->blue =
-                SCALE_TO_FLOAT(srcPixel->blue) * gmicUnitValue2KritaUnitValue;
+                SCALE_TO_FLOAT(srcPixel->blue) * gmicUnitValue2MinervaUnitValue;
             dstPixel->alpha =
-                SCALE_TO_FLOAT(srcPixel->alpha) * gmicUnitValue2KritaUnitValue;
+                SCALE_TO_FLOAT(srcPixel->alpha) * gmicUnitValue2MinervaUnitValue;
 
             --nPixels;
             ++srcPixel;
@@ -87,18 +87,18 @@ public:
             reinterpret_cast<const KoRgbF32Traits::Pixel *>(src);
         auto *dstPixel = reinterpret_cast<RGBPixel *>(dst);
 
-        const float gmicUnitValue2KritaUnitValue =
+        const float gmicUnitValue2MinervaUnitValue =
             KoColorSpaceMathsTraits<float>::unitValue / m_gmicUnitValue;
 
         while (nPixels > 0) {
             dstPixel->red =
-                SCALE_FROM_FLOAT(srcPixel->red * gmicUnitValue2KritaUnitValue);
+                SCALE_FROM_FLOAT(srcPixel->red * gmicUnitValue2MinervaUnitValue);
             dstPixel->green = SCALE_FROM_FLOAT(srcPixel->green
-                                               * gmicUnitValue2KritaUnitValue);
+                                               * gmicUnitValue2MinervaUnitValue);
             dstPixel->blue =
-                SCALE_FROM_FLOAT(srcPixel->blue * gmicUnitValue2KritaUnitValue);
+                SCALE_FROM_FLOAT(srcPixel->blue * gmicUnitValue2MinervaUnitValue);
             dstPixel->alpha = SCALE_FROM_FLOAT(srcPixel->alpha
-                                               * gmicUnitValue2KritaUnitValue);
+                                               * gmicUnitValue2MinervaUnitValue);
 
             --nPixels;
             ++srcPixel;
@@ -129,16 +129,16 @@ public:
             reinterpret_cast<const KoRgbF32Traits::Pixel *>(src);
         auto *dstPixel = reinterpret_cast<RGBPixel *>(dst);
 
-        const float gmicUnitValue2KritaUnitValue =
+        const float gmicUnitValue2MinervaUnitValue =
             KoColorSpaceMathsTraits<float>::unitValue / m_gmicUnitValue;
         // warning: green and blue channels on input contain random data!!! see
         // that we copy only one channel when gmic image has grayscale
         // colorspace
         while (nPixels > 0) {
             dstPixel->red = dstPixel->green = dstPixel->blue =
-                SCALE_FROM_FLOAT(srcPixel->red * gmicUnitValue2KritaUnitValue);
+                SCALE_FROM_FLOAT(srcPixel->red * gmicUnitValue2MinervaUnitValue);
             dstPixel->alpha = SCALE_FROM_FLOAT(srcPixel->alpha
-                                               * gmicUnitValue2KritaUnitValue);
+                                               * gmicUnitValue2MinervaUnitValue);
 
             --nPixels;
             ++srcPixel;
@@ -169,16 +169,16 @@ public:
             reinterpret_cast<const KoRgbF32Traits::Pixel *>(src);
         auto *dstPixel = reinterpret_cast<RGBPixel *>(dst);
 
-        const float gmicUnitValue2KritaUnitValue =
+        const float gmicUnitValue2MinervaUnitValue =
             KoColorSpaceMathsTraits<float>::unitValue / m_gmicUnitValue;
         // warning: green and blue channels on input contain random data!!! see
         // that we copy only one channel when gmic image has grayscale
         // colorspace
         while (nPixels > 0) {
             dstPixel->red = dstPixel->green = dstPixel->blue =
-                SCALE_FROM_FLOAT(srcPixel->red * gmicUnitValue2KritaUnitValue);
+                SCALE_FROM_FLOAT(srcPixel->red * gmicUnitValue2MinervaUnitValue);
             dstPixel->alpha = SCALE_FROM_FLOAT(srcPixel->green
-                                               * gmicUnitValue2KritaUnitValue);
+                                               * gmicUnitValue2MinervaUnitValue);
 
             --nPixels;
             ++srcPixel;
@@ -255,7 +255,7 @@ createTransformationFromGmic(const KoColorSpace *colorSpace,
 {
     KoColorTransformation *colorTransformation = nullptr;
     if (colorSpace->colorModelId() != RGBAColorModelID) {
-        dbgKrita << "Unsupported color space for fast pixel transformation to "
+        dbgMinerva << "Unsupported color space for fast pixel transformation to "
                     "gmic pixel format"
                  << colorSpace->id();
         return nullptr;
@@ -322,7 +322,7 @@ createTransformationFromGmic(const KoColorSpace *colorSpace,
                     gmicUnitValue);
         }
     } else {
-        dbgKrita << "Unsupported color space " << colorSpace->id()
+        dbgMinerva << "Unsupported color space " << colorSpace->id()
                  << " for fast pixel transformation to gmic pixel format";
         return nullptr;
     }
@@ -335,7 +335,7 @@ createTransformation(const KoColorSpace *colorSpace)
 {
     KoColorTransformation *colorTransformation = nullptr;
     if (colorSpace->colorModelId() != RGBAColorModelID) {
-        dbgKrita << "Unsupported color space for fast pixel transformation to "
+        dbgMinerva << "Unsupported color space for fast pixel transformation to "
                     "gmic pixel format"
                  << colorSpace->id();
         return nullptr;
@@ -358,7 +358,7 @@ createTransformation(const KoColorSpace *colorSpace)
         colorTransformation =
             new KisColorToFloatConvertor<quint8, KoBgrTraits<quint8>>();
     } else {
-        dbgKrita << "Unsupported color space " << colorSpace->id()
+        dbgMinerva << "Unsupported color space " << colorSpace->id()
                  << " for fast pixel transformation to gmic pixel format";
         return nullptr;
     }
@@ -789,7 +789,7 @@ void KisQmicSimpleConvertor::convertFromGmicImage(const KisQMicImage &gmicImage,
     const auto conversionFlags =
         KoColorConversionTransformation::internalConversionFlags();
 
-    // Krita needs rgba in 0.0...1.0
+    // Minerva needs rgba in 0.0...1.0
     const float multiplied =
         KoColorSpaceMathsTraits<float>::unitValue / gmicMaxChannelValue;
 
@@ -1069,7 +1069,7 @@ void KisQmicSimpleConvertor::convertFromQImage(const QImage &image,
     }
     default: {
         Q_ASSERT(false);
-        dbgKrita << "Unexpected gmic image format";
+        dbgMinerva << "Unexpected gmic image format";
         break;
     }
     }

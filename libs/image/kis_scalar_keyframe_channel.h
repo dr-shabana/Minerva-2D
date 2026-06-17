@@ -108,13 +108,13 @@ private:
  * subclass that stores and manages KisScalarKeyframes.
  *
  * This class maps units of time (in frames) to points along a curve for
- * the animation of various interpolated scalar parameters within Krita.
+ * the animation of various interpolated scalar parameters within Minerva.
  * Each scalar channel can be provided with default values and interpolation modes,
  * as well as an optional ScalarKeyframeLimits object that can be used
  * to limit the range of possible values.
  *
  * Generally, each scalar channel will be represented as an individual curve
- * within Krita's KisAnimationCurvesDocker.
+ * within Minerva's KisAnimationCurvesDocker.
 */
 class KRITAIMAGE_EXPORT KisScalarKeyframeChannel : public KisKeyframeChannel
 {

@@ -275,7 +275,7 @@ bool KisPlaybackEngine::dropFrames() const
 
 int KisPlaybackEngine::frameWrap(int frame, int startFrame, int endFrame)
 {
-    // Since Krita has always considered the end frame as inclusive, we need
+    // Since Minerva has always considered the end frame as inclusive, we need
     // to make sure our wrap method respects that as well.
     const int inclusiveEndFrame = endFrame + 1;
     frame = ((frame - startFrame) % (inclusiveEndFrame - startFrame)) + startFrame;

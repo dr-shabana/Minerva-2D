@@ -12,7 +12,7 @@
 #include <KoDockFactoryBase.h>
 #include <KoDockRegistry.h>
 
-K_PLUGIN_FACTORY_WITH_JSON(OverviewDockerPluginFactory, "krita_overviewdocker.json", registerPlugin<OverviewDockerPlugin>();)
+K_PLUGIN_FACTORY_WITH_JSON(OverviewDockerPluginFactory, "minerva2d_overviewdocker.json", registerPlugin<OverviewDockerPlugin>();)
 
 class OverviewDockerDockFactory : public KoDockFactoryBase {
 public:

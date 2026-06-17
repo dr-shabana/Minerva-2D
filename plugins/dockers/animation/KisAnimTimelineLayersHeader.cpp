@@ -95,7 +95,7 @@ void KisAnimTimelineLayersHeader::paintSection(QPainter *painter, const QRect &a
     pinArea.setHeight(pinWidth); // Square to width.
     pinArea.translate(0, difference / 2); // Center.
 
-    QIcon icon = KisIconUtils::loadIcon("krita_tool_reference_images");
+    QIcon icon = KisIconUtils::loadIcon("minerva2d_tool_reference_images");
     QRect iconRect = pinArea - QMargins(5,5,5,5);
 
     if (!isPinned) {

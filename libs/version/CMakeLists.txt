@@ -1,19 +1,19 @@
-# generate kritaversion.h
-configure_file(kritaversion.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/kritaversion.h)
+# generate minerva2dversion.h
+configure_file(minerva2dversion.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/minerva2dversion.h)
 
 # generate kritagitversion.h
-configure_file(kritagitversion.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/kritagitversion.h)
+configure_file(kritagitversion.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/minerva2dgitversion.h)
 
-set(kritaversion_LIB_SRCS
-    KritaVersionWrapper.cpp
+set(minerva2dversion_LIB_SRCS
+    MinervaVersionWrapper.cpp
 )
 
-kis_add_library(kritaversion SHARED ${kritaversion_LIB_SRCS})
-target_link_libraries(kritaversion Qt${QT_MAJOR_VERSION}::Core)
-generate_export_header(kritaversion BASE_NAME kritaversion)
+kis_add_library(minerva2dversion SHARED ${minerva2dversion_LIB_SRCS})
+target_link_libraries(minerva2dversion Qt${QT_MAJOR_VERSION}::Core)
+generate_export_header(minerva2dversion BASE_NAME minerva2dversion)
 
-set_target_properties(kritaversion PROPERTIES
-    VERSION ${GENERIC_KRITA_LIB_VERSION} SOVERSION ${GENERIC_KRITA_LIB_SOVERSION}
+set_target_properties(minerva2dversion PROPERTIES
+    VERSION ${GENERIC_MINERVA2D_LIB_VERSION} SOVERSION ${GENERIC_MINERVA2D_LIB_SOVERSION}
 )
-install(TARGETS kritaversion ${INSTALL_TARGETS_DEFAULT_ARGS} )
+install(TARGETS minerva2dversion ${INSTALL_TARGETS_DEFAULT_ARGS} )
 

@@ -1,0 +1,10 @@
+{
+    "Id": "Halftone Filter",
+    "Type": "Service",
+    "X-KDE-Library": "MinervaHalftoneFilter",
+    "X-KDE-ServiceTypes": [
+        "Minerva/Filter"
+    ],
+    "X-Minerva-Version": "28"
+}
+

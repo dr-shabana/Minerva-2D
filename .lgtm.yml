@@ -1,5 +1,5 @@
 #
-# .lgtml.yml configuration file for C++ analysis of Krita on https://lgtm.com/projects/g/KDE/krita/
+# .lgtml.yml configuration file for C++ analysis of Minerva on https://lgtm.com/projects/g/KDE/minerva2d/
 #
 path_classifiers:
     test:

@@ -38,7 +38,7 @@
 
 #include "kis_debug.h"
 
-#include "KisMLTProducerKrita.h"
+#include "KisMLTProducerMinerva.h"
 
 
 //#define MLT_LOG_REDIRECTION
@@ -161,7 +161,7 @@ struct KisPlaybackEngineMLT::Private {
 #endif /* MLT_LOG_REDIRECTION */
 
         // Register our backend plugin
-        registerKritaMLTProducer(repository.data());
+        registerMinervaMLTProducer(repository.data());
 
         profile.reset(new Mlt::Profile());
         profile->set_frame_rate(24, 1);
@@ -399,7 +399,7 @@ void KisPlaybackEngineMLT::setupProducer(boost::optional<QFileInfo> file)
     }
 
     //First, assign to "count" producer.
-    m_d->canvasProducers[activeCanvas()] = QSharedPointer<Mlt::Producer>(new Mlt::Producer(*m_d->profile, "krita_play_chunk", "count"));
+    m_d->canvasProducers[activeCanvas()] = QSharedPointer<Mlt::Producer>(new Mlt::Producer(*m_d->profile, "minerva2d_play_chunk", "count"));
 
     //If we have a file and the file has a valid producer, use that. Otherwise, stick to our "default" producer.
     if (file.has_value()) {
@@ -407,16 +407,16 @@ void KisPlaybackEngineMLT::setupProducer(boost::optional<QFileInfo> file)
 
 #ifdef Q_OS_ANDROID
             new Mlt::Producer(*m_d->profile,
-                              "krita_play_chunk",
+                              "minerva2d_play_chunk",
                               KisAndroidFileProxy::getFileFromContentUri(file->absoluteFilePath()).toUtf8().data()));
 #else
-        new Mlt::Producer(*m_d->profile, "krita_play_chunk", file->absoluteFilePath().toUtf8().data()));
+        new Mlt::Producer(*m_d->profile, "minerva2d_play_chunk", file->absoluteFilePath().toUtf8().data()));
 #endif
         if (producer->is_valid()) {
             m_d->canvasProducers[activeCanvas()] = producer;
         } else {
             // SANITY CHECK: Check that the MLT plugins and resources are where the program expects them to be.
-            // HINT -- Check krita/main.cc's mlt environment variable setup for appimage.
+            // HINT -- Check minerva2d/main.cc's mlt environment variable setup for appimage.
             KIS_SAFE_ASSERT_RECOVER_NOOP(qEnvironmentVariableIsSet("MLT_REPOSITORY"));
             KIS_SAFE_ASSERT_RECOVER_NOOP(qEnvironmentVariableIsSet("MLT_PROFILES_PATH"));
             KIS_SAFE_ASSERT_RECOVER_NOOP(qEnvironmentVariableIsSet("MLT_PRESETS_PATH"));

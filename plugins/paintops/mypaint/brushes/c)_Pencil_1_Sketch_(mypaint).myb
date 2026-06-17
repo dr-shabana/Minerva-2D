@@ -1,7 +1,7 @@
 {
-    "comment": "MyPaint brush file for Krita, Made by Ramon Miranda (CC-0_1.0) Sketch 1 - Concept Design pack - Copyright: Author: Ramón Miranda <mirandagraphic@gmail.com>", 
+    "comment": "MyPaint brush file for Minerva, Made by Ramon Miranda (CC-0_1.0) Sketch 1 - Concept Design pack - Copyright: Author: Ramón Miranda <mirandagraphic@gmail.com>", 
     "group": "", 
-    "parent_brush_name": "krita/c)_Pencil_1_Sketch_(mypaint)", 
+    "parent_brush_name": "minerva2d/c)_Pencil_1_Sketch_(mypaint)", 
     "settings": {
         "anti_aliasing": {
             "base_value": 1.0, 

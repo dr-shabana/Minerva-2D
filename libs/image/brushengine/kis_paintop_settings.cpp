@@ -155,7 +155,7 @@ KisPaintOpSettingsSP KisPaintOpSettings::createMaskingSettings() const
          * WARNING: cropping is a workaround for too big brushes due to
          * the proportional scaling using shift+drag gesture.
          *
-         * See this bug: https://bugs.kde.org/show_bug.cgi?id=423572
+         * See this bug: https://github.com/dr-shabana/Minerva-2D/issues/show_bug.cgi?id=423572
          *
          * TODO:
          *

@@ -1,0 +1,15 @@
+[Desktop Entry]
+Type=Service
+ServiceTypes=Krita/PythonPlugin
+X-KDE-Library=minerva2d_agent
+X-KDE-PluginInfo-Author=Dr. Shabana
+X-KDE-PluginInfo-Email=
+X-KDE-PluginInfo-Name=minerva2d_agent
+X-KDE-PluginInfo-Version=0.1.0
+X-KDE-PluginInfo-Website=https://github.com/dr-shabana/Minerva-2D
+X-KDE-PluginInfo-Category=python
+X-KDE-PluginInfo-Depends=
+X-KDE-PluginInfo-License=GPL-3.0
+X-KDE-PluginInfo-EnabledByDefault=true
+Name=Minerva 2D Agent
+Comment=AI-powered digital painting assistant for Minerva 2D

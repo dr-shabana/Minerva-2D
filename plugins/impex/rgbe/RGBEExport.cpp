@@ -37,7 +37,7 @@
 
 #include "kis_wdg_options_rgbe.h"
 
-K_PLUGIN_FACTORY_WITH_JSON(ExportFactory, "krita_rgbe_export.json", registerPlugin<RGBEExport>();)
+K_PLUGIN_FACTORY_WITH_JSON(ExportFactory, "minerva2d_rgbe_export.json", registerPlugin<RGBEExport>();)
 
 namespace RGBE
 {
@@ -190,7 +190,7 @@ KisImportExportErrorCode RGBEExport::convert(KisDocument *document, QIODevice *i
         // Write header
         QByteArray header;
         header.append("#?RADIANCE\n");
-        header.append("# Created with Krita RGBE Export\n");
+        header.append("# Created with Minerva RGBE Export\n");
         header.append("FORMAT=32-bit_rle_rgbe\n\n");
         header.append(QStringLiteral("-Y %1 +X %2\n").arg(image->height()).arg(image->width()).toUtf8());
 

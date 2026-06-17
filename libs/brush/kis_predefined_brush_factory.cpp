@@ -121,18 +121,18 @@ std::variant<KisBrushModel::BrushData, KoResourceSignature> KisPredefinedBrushFa
         const bool hasAutoAdjustMidPoint = element.hasAttribute("AutoAdjustMidPoint");
 
         /**
-         * In Krita 4.x releases there was a bug that caused lightness
+         * In Minerva 4.x releases there was a bug that caused lightness
          * adjustments to be applied to the brush **twice**. It happened
          * due to the fact that copy-ctor called brushTipImage() virtual
          * method instead of just copying the image itself.
          *
-         * In Krita 5 we should open these brushes in somewhat the same way.
+         * In Minerva 5 we should open these brushes in somewhat the same way.
          * The problem is that we cannot convert the numbers precisely, because
          * after applying a piecewise-linear function twice we get a
          * quadratic function. So we fall-back to a blunt parameters scaling,
          * which gives result that is just "good enough".
          *
-         * NOTE: AutoAdjustMidPoint option appeared only in Krita 5, so it
+         * NOTE: AutoAdjustMidPoint option appeared only in Minerva 5, so it
          * automatically means the adjustments should be applied in the new way.
          */
         if (adjustmentVersion < 2 && !hasAutoAdjustMidPoint) {
@@ -141,7 +141,7 @@ std::variant<KisBrushModel::BrushData, KoResourceSignature> KisPredefinedBrushFa
             contrastAdjustment *= 2.0;
 
             /**
-             * In Krita we also changed formula for contrast calculation in
+             * In Minerva we also changed formula for contrast calculation in
              * negative part, so we need to convert that as well.
              */
             if (contrastAdjustment < 0) {
@@ -158,9 +158,9 @@ std::variant<KisBrushModel::BrushData, KoResourceSignature> KisPredefinedBrushFa
 
     auto legacyBrushApplication = [] (KisColorfulBrush *colorfulBrush, bool forceColorToAlpha) {
         /**
-         * In Krita versions before 4.4 series "ColorAsMask" could
+         * In Minerva versions before 4.4 series "ColorAsMask" could
          * be overridden to false when the brush had no **color**
-         * inside. That changed in Krita 4.4.x series, when
+         * inside. That changed in Minerva 4.4.x series, when
          * "brushApplication" replaced all the automatic heuristics
          */
         return (colorfulBrush && colorfulBrush->hasColorAndTransparency() && !forceColorToAlpha) ? IMAGESTAMP : ALPHAMASK;
@@ -184,7 +184,7 @@ std::variant<KisBrushModel::BrushData, KoResourceSignature> KisPredefinedBrushFa
     }
     else {
         /**
-         * In Krita versions before 4.4 series we used to automatically select
+         * In Minerva versions before 4.4 series we used to automatically select
          * the brush application depending on the presence of the color in the
          * brush, even when there was no "ColorAsMask" field.
          */

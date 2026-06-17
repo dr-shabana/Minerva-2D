@@ -14,7 +14,7 @@ class KisLongPressEventFilter : public QObject
 {
     Q_OBJECT
 public:
-    static constexpr char ENABLED_PROPERTY[] = "KRITA_LONG_PRESS";
+    static constexpr char ENABLED_PROPERTY[] = "MINERVA2D_LONG_PRESS";
 
     explicit KisLongPressEventFilter(QObject *parent = nullptr);
 

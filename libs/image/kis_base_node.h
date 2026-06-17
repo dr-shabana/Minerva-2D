@@ -495,7 +495,7 @@ public:
     /**
      * Sets a color label index associated to the layer.  The actual
      * color of the label and the number of available colors is
-     * defined by Krita GUI configuration.
+     * defined by Minerva GUI configuration.
      */
     void setColorLabelIndex(int index);
 
@@ -563,7 +563,7 @@ protected:
     /**
      * FIXME: This method is a workaround for getting parent node
      * on a level of KisBaseNode. In fact, KisBaseNode should inherit
-     * KisNode (in terms of current Krita) to be able to traverse
+     * KisNode (in terms of current Minerva) to be able to traverse
      * the node stack
      */
     virtual KisBaseNodeSP parentCallback() const {

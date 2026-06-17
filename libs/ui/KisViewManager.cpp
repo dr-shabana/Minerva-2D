@@ -1,5 +1,5 @@
 /*
- *  This file is part of KimageShop^WKrayon^WKrita
+ *  This file is part of KimageShop^WKrayon^WMinerva
  *
  *  SPDX-FileCopyrightText: 1999 Matthias Elter <me@kde.org>
  *  SPDX-FileCopyrightText: 1999 Michael Koch <koch@kde.org>
@@ -917,7 +917,7 @@ void KisViewManager::blockUntilOperationsFinishedForced(KisImageSP image)
 void KisViewManager::slotCreateTemplate()
 {
     if (!document()) return;
-    KisTemplateCreateDia::createTemplate( QStringLiteral("templates/"), ".kra", document(), mainWindow());
+    KisTemplateCreateDia::createTemplate( QStringLiteral("templates/"), ".m2d", document(), mainWindow());
 }
 
 void KisViewManager::slotCreateCopy()
@@ -1408,7 +1408,7 @@ void KisViewManager::switchCanvasOnly(bool toggled)
              * apply the application of the saved state directly. We need to
              * postpone that via the events queue.
              *
-             * See https://bugs.kde.org/show_bug.cgi?id=475973
+             * See https://github.com/dr-shabana/Minerva-2D/issues/show_bug.cgi?id=475973
              */
             QTimer::singleShot(0, this, [this] () {
                 this->mainWindow()->restoreState(d->canvasStateInCanvasOnlyMode);
@@ -1490,8 +1490,8 @@ void KisViewManager::openResourcesDirectory()
         // Similar text is also used in kis_dlg_preferences.cc
 
         mbox.setText(i18nc("@info resource folder",
-            "<p>You are using the Microsoft Store package version of Krita. "
-            "Even though Krita can be configured to place resources under the "
+            "<p>You are using the Microsoft Store package version of Minerva. "
+            "Even though Minerva can be configured to place resources under the "
             "user AppData location, Windows may actually store the files "
             "inside a private app location.</p>\n"
             "<p>You should check both locations to determine where "

@@ -32,7 +32,7 @@ void KisHatchingPaintOpSettings::initializeTwin(KisPaintOpSettingsSP settings) c
 
     QMap<QString, QVariant>::const_iterator i;
     for (i = rofl.constBegin(); i != rofl.constEnd(); ++i)
-        dbgKrita << i.key() << ":" << i.value();
+        dbgMinerva << i.key() << ":" << i.value();
     /----------DO NOT REMOVE----------------*/
 
     KisHatchingPaintOpSettings *convenienttwin = static_cast<KisHatchingPaintOpSettings*>(settings.data());

@@ -23,7 +23,7 @@ dependencies {
 ext {
     abi = System.getenv('ANDROID_ABI') ?: project.ext.properties['abi']
     ndkpath = System.getenv('KDECI_ANDROID_NDK_ROOT') ?: project.ext.properties['ndk.dir']  // TODO: Newer versions of Qt do support this dir
-    installPrefix = System.getenv('KRITA_INSTALL_PREFIX')
+    installPrefix = System.getenv('MINERVA2D_INSTALL_PREFIX')
 
     // Note about qtResPath vs qt5AndroidDir:
     //
@@ -34,7 +34,7 @@ ext {
     //
     // tldr; at one time, either qt5AndroidDir or qtResPath is valid and points
     //       to the same files
-    qtResPath = System.getenv('KRITA_BUILD_APPBUNDLE') ? 'extra-bundle-deps/android/java' : ""
+    qtResPath = System.getenv('MINERVA2D_BUILD_APPBUNDLE') ? 'extra-bundle-deps/android/java' : ""
 }
 
 tasks.register('configure') {
@@ -46,7 +46,7 @@ tasks.register('configure') {
 
         def libs = new File(installPrefix, 'lib')
         if (!libs.exists()) {
-            throw new FileNotFoundException('Krita libraries not found, please check if -p=krita-bin finished without errors')
+            throw new FileNotFoundException('Minerva libraries not found, please check if -p=minerva2d-bin finished without errors')
         }
     }
 }
@@ -194,7 +194,7 @@ android {
 
     /**
      * This version does **not** correspond to the patch version
-     * of Krita. Instead, it is just incremented for every public
+     * of Minerva. Instead, it is just incremented for every public
      * (including alpha and beta) release of versionMajor.versionMinor
      * branch
      */
@@ -214,8 +214,8 @@ android {
         minSdkVersion 24
         versionCode project.ext.constant * 1000000 + versionMajor * 10000 + versionMinor * 100 + versionRelease
         versionName "5.4.0-prealpha"
-        def unstableSuffix = System.getenv('KRITA_UNSTABLE_PACKAGE_SUFFIX')
-        archivesBaseName = System.getenv('KRITA_BUILD_APPBUNDLE') ? "krita-$versionName$unstableSuffix" : "krita-$abi-$versionName$unstableSuffix"
+        def unstableSuffix = System.getenv('MINERVA2D_UNSTABLE_PACKAGE_SUFFIX')
+        archivesBaseName = System.getenv('MINERVA2D_BUILD_APPBUNDLE') ? "minerva2d-$versionName$unstableSuffix" : "minerva2d-$abi-$versionName$unstableSuffix"
     }
     buildFeatures {
         renderScript true

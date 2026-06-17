@@ -94,16 +94,16 @@ class KisToolMultiBrushFactory : public KisToolBrushFactory
 
 public:
     KisToolMultiBrushFactory()
-        : KisToolBrushFactory("KritaShape/KisToolMultiBrush") {
+        : KisToolBrushFactory("MinervaShape/KisToolMultiBrush") {
 
         setToolTip(i18n("Multibrush Tool"));
 
         // Temporarily
         setSection(ToolBoxSection::Shape);
-        setIconName(koIconNameCStr("krita_tool_multihand"));
+        setIconName(koIconNameCStr("minerva2d_tool_multihand"));
         setShortcut(QKeySequence(Qt::Key_Q));
         setPriority(11);
-        setActivationShapeId(KRITA_TOOL_ACTIVATION_ID);
+        setActivationShapeId(MINERVA2D_TOOL_ACTIVATION_ID);
     }
 
     ~KisToolMultiBrushFactory() override {}

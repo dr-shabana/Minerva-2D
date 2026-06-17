@@ -20,7 +20,7 @@
 #include "kis_color_balance_adjustment.h"
 #include "kis_desaturate_adjustment.h"
 
-K_PLUGIN_FACTORY_WITH_JSON(ExtensionsPluginFactory, "krita_colorspaces_extensions_plugin.json", registerPlugin<ExtensionsPlugin>();)
+K_PLUGIN_FACTORY_WITH_JSON(ExtensionsPluginFactory, "minerva2d_colorspaces_extensions_plugin.json", registerPlugin<ExtensionsPlugin>();)
 
 ExtensionsPlugin::ExtensionsPlugin(QObject *parent, const QVariantList &)
 {

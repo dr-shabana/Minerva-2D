@@ -1,5 +1,5 @@
 /*
- *  kis_tool_select_contiguous - part of Krayon^WKrita
+ *  kis_tool_select_contiguous - part of Krayon^WMinerva
  *
  *  SPDX-FileCopyrightText: 1999 Michael Koch <koch@kde.org>
  *  SPDX-FileCopyrightText: 2002 Patrick Julien <freak@codepimps.org>

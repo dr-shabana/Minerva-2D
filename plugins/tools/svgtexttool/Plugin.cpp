@@ -20,13 +20,13 @@
 #include "SvgTextToolOptionsModel.h"
 #include "SvgTextToolOptionsManager.h"
 
-K_PLUGIN_FACTORY_WITH_JSON(PluginFactory, "krita_tool_svgtext.json", registerPlugin<Plugin>();)
+K_PLUGIN_FACTORY_WITH_JSON(PluginFactory, "minerva2d_tool_svgtext.json", registerPlugin<Plugin>();)
 
 KIS_DECLARE_STATIC_INITIALIZER {
-    qmlRegisterType<GlyphPaletteProxyModel>("org.krita.tools.text", 1, 0, "GlyphPaletteProxyModel");
+    qmlRegisterType<GlyphPaletteProxyModel>("org.minerva2d.tools.text", 1, 0, "GlyphPaletteProxyModel");
 
-    qmlRegisterType<SvgTextToolOptionsModel>("org.krita.tools.text", 1, 0, "SvgTextToolOptionsModel");
-    qmlRegisterType<SvgTextToolOptionsManager>("org.krita.tools.text", 1, 0, "SvgTextToolOptionsManager");
+    qmlRegisterType<SvgTextToolOptionsModel>("org.minerva2d.tools.text", 1, 0, "SvgTextToolOptionsModel");
+    qmlRegisterType<SvgTextToolOptionsManager>("org.minerva2d.tools.text", 1, 0, "SvgTextToolOptionsManager");
 }
 Plugin::Plugin(QObject *parent, const QVariantList &)
     : QObject(parent)

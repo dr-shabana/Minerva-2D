@@ -16,9 +16,9 @@ kis_add_library(kritatangentnormalpaintop MODULE ${kritatangentnormalpaintop_SOU
 
 target_link_libraries(kritatangentnormalpaintop kritalibpaintop)
 
-install(TARGETS kritatangentnormalpaintop  DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
+install(TARGETS kritatangentnormalpaintop  DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})
 ########### install files ###############
 
-install( FILES  krita-tangentnormal.png DESTINATION ${KDE_INSTALL_DATADIR}/krita/images)
-install( FILES  krita-tangentnormal-preview.png DESTINATION ${KDE_INSTALL_DATADIR}/krita/images)
+install( FILES  minerva2d-tangentnormal.png DESTINATION ${KDE_INSTALL_DATADIR}/minerva2d/images)
+install( FILES  minerva2d-tangentnormal-preview.png DESTINATION ${KDE_INSTALL_DATADIR}/minerva2d/images)
 

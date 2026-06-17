@@ -1,5 +1,5 @@
 /*
- * This file is part of Krita
+ * This file is part of Minerva
  *
  * SPDX-FileCopyrightText: 2021 L. E. Segovia <amy@amyspark.me>
  *
@@ -39,7 +39,7 @@
 #include "kis_wdg_options_webp.h"
 #include "kis_webp_export.h"
 
-K_PLUGIN_FACTORY_WITH_JSON(KisWebPExportFactory, "krita_webp_export.json", registerPlugin<KisWebPExport>();)
+K_PLUGIN_FACTORY_WITH_JSON(KisWebPExportFactory, "minerva2d_webp_export.json", registerPlugin<KisWebPExport>();)
 
 KisWebPExport::KisWebPExport(QObject *parent, const QVariantList &)
     : KisImportExportFilter(parent)
@@ -303,7 +303,7 @@ KisImportExportErrorCode KisWebPExport::convert(KisDocument *document, QIODevice
                         frames->keyframeAt<KisRasterKeyframe>(i);
                     KisPaintDeviceSP dev = new KisPaintDevice(
                         *image->projection(),
-                        KritaUtils::DeviceCopyMode::CopySnapshot);
+                        MinervaUtils::DeviceCopyMode::CopySnapshot);
                     frameData->writeFrameToDevice(dev);
 
                     KisPaintDeviceSP dst;

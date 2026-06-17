@@ -7,8 +7,8 @@ source kundo2_aware_xgettext.sh
 
 $EXTRACTRC `find . -name \*.ui | grep -v '/tests/'` >> rc.cpp
 RCFILES=`find . -name \*.xmlgui                                               \
-	| grep -v krita/sketch/KritaSketchWin.xmlgui                          \
-	| grep -v krita/gemini/KritaGeminiWin.xmlgui
+	| grep -v minerva2d/sketch/MinervaSketchWin.xmlgui                          \
+	| grep -v minerva2d/gemini/MinervaGeminiWin.xmlgui
          `
 $EXTRACTRC $RCFILES >> rc.cpp
 
@@ -21,12 +21,12 @@ perl extracti18n.pl >> rc.cpp
 # Ignore sdk/templates which contains templates for writing future plugins.
 # Also ignore crashreporter, it has it's own catalog
 # None of the placeholder strings inside will be seen by users.
-kundo2_aware_xgettext krita.pot rc.cpp \
+kundo2_aware_xgettext minerva2d.pot rc.cpp \
                   `find . -name \*.cc -o -name \*.h  -o -name \*.cpp -o -name \*.qml | \
-                  grep -v '/tests/' | grep -v './sdk/templates' | grep -v './krita/crashreporter/'`
+                  grep -v '/tests/' | grep -v './sdk/templates' | grep -v './minerva2d/crashreporter/'`
 
 # Extract the messages in Python plugins.
-$XGETTEXT -L Python `find . -name \*.py` -j -o $podir/krita.pot
+$XGETTEXT -L Python `find . -name \*.py` -j -o $podir/minerva2d.pot
 
 # Clean up
 rm -f rc.cpp

@@ -35,7 +35,7 @@ QStringList subtractiveBlendingModesInCmyk()
      * CMYK properly. These modes automatically invert the channels
      * before blending when used for CMYK color space.
      *
-     * This is a behavior-change in Krita 5.2
+     * This is a behavior-change in Minerva 5.2
      */
 
     QStringList ids;

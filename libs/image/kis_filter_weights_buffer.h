@@ -33,10 +33,10 @@ static bool checkForAsymmetricZeros = false;
                 if ((m_filterWeights[i].weight[j] && !m_filterWeights[i].weight[idx2]) || \
                     (!m_filterWeights[i].weight[j] && m_filterWeights[i].weight[idx2])) { \
                                                                         \
-                    dbgKrita << "*******";                              \
-                    dbgKrita << "Non-symmetric zero found:" << centerSrc; \
-                    dbgKrita << "Weight" << j << ":" << m_filterWeights[i].weight[j]; \
-                    dbgKrita << "Weight" << idx2 << ":" << m_filterWeights[i].weight[idx2]; \
+                    dbgMinerva << "*******";                              \
+                    dbgMinerva << "Non-symmetric zero found:" << centerSrc; \
+                    dbgMinerva << "Weight" << j << ":" << m_filterWeights[i].weight[j]; \
+                    dbgMinerva << "Weight" << idx2 << ":" << m_filterWeights[i].weight[idx2]; \
                     qFatal("Non-symmetric zero -> fail");               \
                 }                                                       \
             }                                                           \
@@ -57,19 +57,19 @@ static bool checkForAsymmetricZeros = false;
 #ifdef DEBUG_ENABLED
 #define DEBUG_ALL()                                                     \
     do {                                                                \
-        dbgKrita << "************** i =" << i;                          \
-        dbgKrita << ppVar(centerSrc);                                   \
-        dbgKrita << ppVar(centerIndex);                                 \
-        dbgKrita << ppVar(beginSrc) << ppVar(endSrc);                   \
-        dbgKrita << ppVar(beginDst) << ppVar(endDst);                   \
-        dbgKrita << ppVar(scaledIter) << ppVar(scaledInc);              \
-        dbgKrita << ppVar(span);                                        \
-        dbgKrita << "===";                                              \
+        dbgMinerva << "************** i =" << i;                          \
+        dbgMinerva << ppVar(centerSrc);                                   \
+        dbgMinerva << ppVar(centerIndex);                                 \
+        dbgMinerva << ppVar(beginSrc) << ppVar(endSrc);                   \
+        dbgMinerva << ppVar(beginDst) << ppVar(endDst);                   \
+        dbgMinerva << ppVar(scaledIter) << ppVar(scaledInc);              \
+        dbgMinerva << ppVar(span);                                        \
+        dbgMinerva << "===";                                              \
     } while (0)
 
 #define DEBUG_SAMPLE()                                                  \
     do {                                                                \
-        dbgKrita << ppVar(scaledIter) << ppVar(t);                      \
+        dbgMinerva << ppVar(scaledIter) << ppVar(t);                      \
     } while (0)
 #else
 #define DEBUG_ALL() Q_UNUSED(beginDst); Q_UNUSED(endDst);

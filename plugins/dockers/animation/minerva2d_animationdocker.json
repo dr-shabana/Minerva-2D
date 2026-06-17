@@ -1,0 +1,9 @@
+{
+    "Id": "Animation Docker",
+    "Type": "Service",
+    "X-KDE-Library": "kritaanimationdocker",
+    "X-KDE-ServiceTypes": [
+        "Minerva/Dock"
+    ],
+    "X-Minerva-Version": "28"
+}

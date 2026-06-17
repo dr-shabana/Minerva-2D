@@ -20,7 +20,7 @@
 #include <QByteArray>
 #include <QMessageBox>
 
-#include <KritaVersionWrapper.h>
+#include <MinervaVersionWrapper.h>
 
 #include <klocalizedstring.h>
 #include <KisBackup.h>
@@ -45,7 +45,7 @@ const QString METADATA_STORAGES = "storages";
 const QString KisResourceCacheDb::resourceCacheDbFilename { "resourcecache.sqlite" };
 const QString KisResourceCacheDb::databaseVersion { "0.0.18" };
 QStringList KisResourceCacheDb::storageTypes { QStringList() };
-QStringList KisResourceCacheDb::disabledBundles { QStringList() << "Krita_3_Default_Resources.bundle" };
+QStringList KisResourceCacheDb::disabledBundles { QStringList() << "Minerva_3_Default_Resources.bundle" };
 
 bool KisResourceCacheDb::s_valid {false};
 QString KisResourceCacheDb::s_lastError {QString()};
@@ -80,7 +80,7 @@ bool updateSchemaVersion()
             return false;
         }
         q.addBindValue(KisResourceCacheDb::databaseVersion);
-        q.addBindValue(KritaVersionWrapper::versionString());
+        q.addBindValue(MinervaVersionWrapper::versionString());
         q.addBindValue(QDateTime::currentDateTimeUtc().toSecsSinceEpoch());
         if (!q.exec()) {
             warnDbMigration << "Could not insert the current version" << q.lastError() << q.boundValues();
@@ -224,7 +224,7 @@ QSqlError createDatabase(const QString &location)
             {
                 QSqlQuery q(
                     "SELECT database_version\n"
-                    ",      krita_version\n"
+                    ",      minerva2d_version\n"
                     ",      creation_date\n"
                     "FROM version_information\n"
                     "ORDER BY id\n"
@@ -350,7 +350,7 @@ QSqlError createDatabase(const QString &location)
                 }
 
                 if (schemaIsOutDated) {
-                    QMessageBox::critical(0, i18nc("@title:window", "Krita"), i18n("The resource database scheme has changed. Krita will backup your database and create a new database."));
+                    QMessageBox::critical(0, i18nc("@title:window", "Minerva"), i18n("The resource database scheme has changed. Minerva will backup your database and create a new database."));
                     if (QVersionNumber::compare(oldSchemaVersionNumber, QVersionNumber::fromString("0.0.14")) > 0) {
                         KisResourceLocator::instance()->saveTags();
                     }
@@ -363,7 +363,7 @@ QSqlError createDatabase(const QString &location)
         }
 
         if (allTablesPresent && !schemaIsOutDated) {
-            KisUsageLogger::log(QString("Database is up to date. Version: %1, created by Krita %2, at %3")
+            KisUsageLogger::log(QString("Database is up to date. Version: %1, created by Minerva %2, at %3")
                                 .arg(schemaVersion)
                                 .arg(kritaVersion)
                                 .arg(QDateTime::fromSecsSinceEpoch(creationDate).toString()));
@@ -1149,7 +1149,7 @@ bool KisResourceCacheDb::addResource(KisResourceStorageSP storage, QDateTime tim
 
     QString translationContext;
     if (storage->type() == KisResourceStorage::StorageType::Bundle) {
-        translationContext = "./krita/data/bundles/" + KisResourceLocator::instance()->makeStorageLocationRelative(storage->location())
+        translationContext = "./minerva2d/data/bundles/" + KisResourceLocator::instance()->makeStorageLocationRelative(storage->location())
                 + ":" + resourceType + "/" + resource->filename();
     } else if (storage->location() == "memory") {
         translationContext = "memory/" + resourceType + "/" + resource->filename();
@@ -1157,7 +1157,7 @@ bool KisResourceCacheDb::addResource(KisResourceStorageSP storage, QDateTime tim
     else if (resource->filename().endsWith(".myb", Qt::CaseInsensitive)) {
         translationContext = "./plugins/paintops/mypaint/brushes/" + resource->filename();
     } else {
-        translationContext = "./krita/data/" + resourceType + "/" + resource->filename();
+        translationContext = "./minerva2d/data/" + resourceType + "/" + resource->filename();
     }
 
     {
@@ -1948,7 +1948,7 @@ bool KisResourceCacheDb::synchronizeStorage(KisResourceStorageSP storage)
     }
 
     if (!q.first()) {
-        // This is a new storage, the user must have dropped it in the path before restarting Krita, so add it.
+        // This is a new storage, the user must have dropped it in the path before restarting Minerva, so add it.
         debugResource << "Adding storage to the database:" << storage;
         if (!addStorage(storage, false)) {
             qWarning() << "Could not add new storage" << storage->name() << "to the database";
@@ -2341,17 +2341,17 @@ bool KisResourceCacheDb::getForeignKeysStateImpl()
 
 void KisResourceCacheDb::synchronizeForeignKeysState()
 {
-#ifdef KRITA_STABLE
+#ifdef MINERVA2D_STABLE
     bool useForeignKeys = false;
-    KisUsageLogger::log("INFO: detected stable build of Krita, foreign_keys constraint will be disabled");
+    KisUsageLogger::log("INFO: detected stable build of Minerva, foreign_keys constraint will be disabled");
 #else
     bool useForeignKeys = true;
-    KisUsageLogger::log("INFO: detected unstable build of Krita, foreign_keys constraint will be enabled");
+    KisUsageLogger::log("INFO: detected unstable build of Minerva, foreign_keys constraint will be enabled");
 #endif
 
-    if (qEnvironmentVariableIsSet("KRITA_OVERRIDE_USE_FOREIGN_KEYS")) {
-        useForeignKeys = qEnvironmentVariableIntValue("KRITA_OVERRIDE_USE_FOREIGN_KEYS") > 0;
-        KisUsageLogger::log("INFO: foreign_keys constraint was overridden by KRITA_OVERRIDE_USE_FOREIGN_KEYS: " + QString::number(useForeignKeys));
+    if (qEnvironmentVariableIsSet("MINERVA2D_OVERRIDE_USE_FOREIGN_KEYS")) {
+        useForeignKeys = qEnvironmentVariableIntValue("MINERVA2D_OVERRIDE_USE_FOREIGN_KEYS") > 0;
+        KisUsageLogger::log("INFO: foreign_keys constraint was overridden by MINERVA2D_OVERRIDE_USE_FOREIGN_KEYS: " + QString::number(useForeignKeys));
     }
 
     try {

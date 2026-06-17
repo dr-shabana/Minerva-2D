@@ -115,7 +115,7 @@ void ResourceImporter::importResources(QString startPath)
         startPath = QStandardPaths::writableLocation(QStandardPaths::HomeLocation);
     }
 
-    KoFileDialog dialog(m_widgetParent, KoFileDialog::OpenFiles, "krita_resources");
+    KoFileDialog dialog(m_widgetParent, KoFileDialog::OpenFiles, "minerva2d_resources");
     dialog.setDefaultDir(startPath);
     dialog.setCaption(i18nc("Resource Importer file dialog title", "Import Resources and Resource Libraries"));
     dialog.setMimeTypeFilters(m_allMimetypes);
@@ -288,7 +288,7 @@ void ResourceImporter::importResources(QString startPath)
 
 void ResourceImporter::prepareTypesMaps()
 {
-    m_storagesMimetypes = QStringList() << "application/x-krita-bundle"
+    m_storagesMimetypes = QStringList() << "application/x-minerva2d-bundle"
                                         << "image/x-adobe-brushlibrary"
                                         << "application/x-photoshop-style-library";
 

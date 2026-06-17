@@ -242,7 +242,7 @@ void KoFileDialog::createFileDialog()
 #ifdef Q_OS_MACOS
         allowModal = optionDontUseNative;
 //        if ( d->proposedFileName.isEmpty() ) {
-//            d->fileDialog->selectFile("untitled.kra");
+//            d->fileDialog->selectFile("untitled.m2d");
 //        } else {
 //            d->fileDialog->selectFile(d->proposedFileName);
 //        }
@@ -265,7 +265,7 @@ QString KoFileDialog::filename()
 
 #ifdef Q_OS_ANDROID
     if (d->type == SaveFile) {
-        QString extension = ".kra";
+        QString extension = ".m2d";
         QInputDialog mimeSelector;
         mimeSelector.setLabelText(i18n("Save As:"));
         mimeSelector.setComboBoxItems(d->filterList);
@@ -305,7 +305,7 @@ QString KoFileDialog::filename()
             break;
         }
 
-        // The Android native file selector does not know to add the .kra
+        // The Android native file selector does not know to add the .m2d
         // extension (MIME type not registered), so just skip the whole file
         // suffix check for Android.
 #ifndef Q_OS_ANDROID
@@ -350,7 +350,7 @@ QString KoFileDialog::filename()
                 }
             }
             QMessageBox::warning(d->parent, d->caption,
-                i18n("The selected file name does not have a file extension that Krita understands.\n"
+                i18n("The selected file name does not have a file extension that Minerva understands.\n"
                      "Make sure the file name ends in '.%1' for example.", extension));
             retryNeeded = true;
 
@@ -522,9 +522,9 @@ void KoFileDialog::setMimeTypeFilters(const QStringList &mimeTypeList, QString d
 
     if (!allSupported.isEmpty()) {
         FilterData allFilter {};
-        if (allSupported.contains("*.kra")) {
-            allSupported.remove("*.kra ");
-            allSupported.prepend("*.kra ");
+        if (allSupported.contains("*.m2d")) {
+            allSupported.remove("*.m2d ");
+            allSupported.prepend("*.m2d ");
             allFilter.defaultSuffix = QStringLiteral("kra");
         } else if (!defaultFilter.fullLine.isEmpty()) {
             const QString suffixToMove = QString("*.") + defaultFilter.defaultSuffix + " ";

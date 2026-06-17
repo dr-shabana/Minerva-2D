@@ -21,8 +21,8 @@ DlgColorManagementInfo::DlgColorManagementInfo(QWidget *parent)
     initialize();
 
     KPluginFactory *factory = KoPluginLoader::instance()->loadSinglePlugin(
-        std::make_pair("X-Krita-PlatformId", QGuiApplication::platformName()),
-        "Krita/PlatformPlugin");
+        std::make_pair("X-Minerva-PlatformId", QGuiApplication::platformName()),
+        "Minerva/PlatformPlugin");
 
     if (factory) {
         m_outputColorInfoInterface.reset(
@@ -60,12 +60,12 @@ QString DlgColorManagementInfo::originalFileName()
 
 QString DlgColorManagementInfo::defaultNewFileName()
 {
-    return "KritaColorManagementInformation.txt";
+    return "MinervaColorManagementInformation.txt";
 }
 
 QString DlgColorManagementInfo::captionText()
 {
-    return i18nc("Caption of the dialog with color management information for bug reports", "Krita Color Management Information: please paste this information to the bug report");
+    return i18nc("Caption of the dialog with color management information for bug reports", "Minerva Color Management Information: please paste this information to the bug report");
 }
 
 QString DlgColorManagementInfo::replacementWarningText()
@@ -81,9 +81,9 @@ QString DlgColorManagementInfo::replacementWarningText()
 #include <kis_canvas2.h>
 #include <KisPlatformPluginInterfaceFactory.h>
 
-QString DlgColorManagementInfo::infoText(QSettings& kritarc)
+QString DlgColorManagementInfo::infoText(QSettings& minerva2drc)
 {
-    Q_UNUSED(kritarc)
+    Q_UNUSED(minerva2drc)
 
     QString report;
     QDebug s(&report);

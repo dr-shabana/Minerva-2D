@@ -1,5 +1,5 @@
 /*
- *  LayerBox.h - part of Krita aka Krayon aka KimageShop
+ *  LayerBox.h - part of Minerva aka Krayon aka KimageShop
  *
  *  SPDX-FileCopyrightText: 2002 Patrick Julien <freak@codepimps.org>
  *  SPDX-FileCopyrightText: 2006 Gábor Lehel <illissius@gmail.com>

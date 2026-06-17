@@ -8,7 +8,7 @@
 
 #include <filter/kis_filter.h>
 #include <filter/kis_filter_configuration.h>
-#include <krita_utils.h>
+#include <minerva2d_utils.h>
 #include <kis_layer_utils.h>
 #include <kis_raster_keyframe_channel.h>
 #include <kis_transaction.h>
@@ -127,7 +127,7 @@ private:
 
 };
 
-using namespace KritaUtils;
+using namespace MinervaUtils;
 
 KisFilterStrokeStrategy::KisFilterStrokeStrategy(KisFilterSP filter, KisFilterConfigurationSP filterConfig, KisResourcesSnapshotSP resources)
     : KisFilterStrokeStrategy(filter, filterConfig, resources, toQShared(new ExternalCancelUpdatesStorage()))
@@ -248,8 +248,8 @@ void KisFilterStrokeStrategy::doStrokeCallback(KisStrokeJobData *data)
 
             if (shared->filter()->supportsThreading()) {
                 // Split stroke into patches...
-                QSize size = KritaUtils::optimalPatchSize();
-                QVector<QRect> patches = KritaUtils::splitRectIntoPatches(shared->processRect, size);
+                QSize size = MinervaUtils::optimalPatchSize();
+                QVector<QRect> patches = MinervaUtils::splitRectIntoPatches(shared->processRect, size);
 
                 Q_FOREACH (const QRect &patch, patches) {
                     if (!patch.isEmpty()) {
@@ -326,7 +326,7 @@ void KisFilterStrokeStrategy::doStrokeCallback(KisStrokeJobData *data)
 
 void KisFilterStrokeStrategy::cancelStrokeCallback()
 {
-    using namespace KritaUtils;
+    using namespace MinervaUtils;
 
     const bool shouldIssueCancellationUpdates = m_d->cancelledUpdates->shouldIssueCancellationUpdates;
 

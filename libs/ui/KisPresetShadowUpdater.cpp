@@ -162,7 +162,7 @@ void KisPresetShadowUpdater::slotStartPresetPreparation()
             image->addSpontaneousJob(job);
         } else {
             /// a fallback solution when a preset is selected on
-            /// Krita loading, when there is no image present
+            /// Minerva loading, when there is no image present
 
             KoResourceCacheInterfaceSP cacheInterface =
                 toQShared(new KoResourceCacheStorage());

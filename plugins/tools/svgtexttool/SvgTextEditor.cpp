@@ -382,7 +382,7 @@ void SvgTextEditor::setModified(bool modified)
 void SvgTextEditor::dialogButtonClicked(QAbstractButton *button)
 {
     if (m_textEditorWidget.buttons->standardButton(button) == QDialogButtonBox::Discard) {
-        if (QMessageBox::warning(this, i18nc("@title:window", "Krita"), i18n("You have modified the text. Discard changes?"), QMessageBox::Yes | QMessageBox::No) == QMessageBox::Yes) {
+        if (QMessageBox::warning(this, i18nc("@title:window", "Minerva"), i18n("You have modified the text. Discard changes?"), QMessageBox::Yes | QMessageBox::No) == QMessageBox::Yes) {
             close();
         }
     }

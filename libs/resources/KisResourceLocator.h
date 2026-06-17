@@ -27,7 +27,7 @@
  * object.
  *
  * The resource location is configurable, but there is only one location
- * where Krita will look for resources.
+ * where Minerva will look for resources.
  */
 class KRITARESOURCES_EXPORT KisResourceLocator : public QObject
 {
@@ -35,7 +35,7 @@ class KRITARESOURCES_EXPORT KisResourceLocator : public QObject
 public:
 
     // The configuration key that holds the resource location
-    // for this installation of Krita. The location is
+    // for this installation of Minerva. The location is
     // QStandardPaths::AppDataLocation by default, but that
     // can be changed.
     static const QString resourceLocationKey;
@@ -56,7 +56,7 @@ public:
      * @brief initialize Setup the resource locator for use.
      *
      * @param installationResourcesLocation the place where the resources
-     * that come packaged with Krita reside.
+     * that come packaged with Minerva reside.
      */
     LocatorError initialize(const QString &installationResourcesLocation);
 
@@ -150,7 +150,7 @@ Q_SIGNALS:
     /// Emitted when a storage is resynchronized using KisresourceCacheDb::synchronizeStorage()
     ///
     /// if \p isBulkResynchronization then this resynchronization happened as a part
-    /// of bulk resynchronization at the start of Krita. At the end of this bulk
+    /// of bulk resynchronization at the start of Minerva. At the end of this bulk
     /// action storagesBulkSynchronizationFinished() will be emitted as well.
     void storageResynchronized(const QString &storage, bool isBulkResynchronization);
 
@@ -358,16 +358,16 @@ private:
     KisResourceLocator operator=(const KisResourceLocator&);
 
     enum class InitializationStatus {
-        Unknown,      // We don't know whether Krita has run on this system for this resource location yet
+        Unknown,      // We don't know whether Minerva has run on this system for this resource location yet
         Initialized,  // Everything is ready to start synchronizing the database
-        FirstRun,     // Krita hasn't run for this resource location yet
-        FirstUpdate,  // Krita was installed, but it's a version from before the resource locator existed, only user-defined resources are present
-        Updating      // Krita is updating from an older version with resource locator
+        FirstRun,     // Minerva hasn't run for this resource location yet
+        FirstUpdate,  // Minerva was installed, but it's a version from before the resource locator existed, only user-defined resources are present
+        Updating      // Minerva is updating from an older version with resource locator
     };
 
     LocatorError firstTimeInstallation(InitializationStatus initializationStatus, const QString &installationResourcesLocation);
 
-    // Synchronize on restarting Krita to see whether the user has added any storages or resources to the resources location
+    // Synchronize on restarting Minerva to see whether the user has added any storages or resources to the resources location
     bool synchronizeDb();
 
     void findStorages();

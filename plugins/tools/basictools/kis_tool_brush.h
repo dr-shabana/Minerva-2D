@@ -141,16 +141,16 @@ class KisToolBrushFactory : public KisToolPaintFactoryBase
 
 public:
     KisToolBrushFactory()
-            : KisToolPaintFactoryBase("KritaShape/KisToolBrush") {
+            : KisToolPaintFactoryBase("MinervaShape/KisToolBrush") {
 
         setToolTip(i18n("Freehand Brush Tool"));
 
         // Temporarily
         setSection(ToolBoxSection::Shape);
-        setIconName(koIconNameCStr("krita_tool_freehand"));
+        setIconName(koIconNameCStr("minerva2d_tool_freehand"));
         setShortcut(QKeySequence(Qt::Key_B));
         setPriority(0);
-        setActivationShapeId(KRITA_TOOL_ACTIVATION_ID);
+        setActivationShapeId(MINERVA2D_TOOL_ACTIVATION_ID);
     }
 
     KisToolBrushFactory(const QString &id)

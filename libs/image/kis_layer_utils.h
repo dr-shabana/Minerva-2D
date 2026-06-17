@@ -103,7 +103,7 @@ namespace KisLayerUtils
         struct KRITAIMAGE_EXPORT SharedStorage {
             /**
              * For some reason the absence of a destructor in the SharedStorage
-             * makes Krita crash on exit. Seems like some compiler weirdness... (DK)
+             * makes Minerva crash on exit. Seems like some compiler weirdness... (DK)
              */
             ~SharedStorage();
             int value;

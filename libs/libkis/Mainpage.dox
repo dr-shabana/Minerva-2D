@@ -17,11 +17,11 @@
  */
 
 /**
-  \mainpage libkis: Krita Scripting and Plugin Wrapper Library
+  \mainpage libkis: Minerva Scripting and Plugin Wrapper Library
 
-  Libkis is a QObject-based wrapper around Krita's internal libraries.
+  Libkis is a QObject-based wrapper around Minerva's internal libraries.
   The wrapper can be used from C++ plugins that do not need the
-  advanced and volatile internal libraries of Krita, or can be bound
+  advanced and volatile internal libraries of Minerva, or can be bound
   to scripting languages like Python or Javascript.
 
   All classes are based on QObject, so QMetaObject introspection can
@@ -43,7 +43,7 @@
      <li>Add menu items, toolbar items and docker palettes
   </ul>
 
-  The reference implementation of scripting in Krita is implemented
+  The reference implementation of scripting in Minerva is implemented
   in Python 3. All examples in the documentation for scripting will be
   provided using Python, although the api documentation is generated
   from C++ header files and shows c++ syntax for arguments.
@@ -51,9 +51,9 @@
   Autostarting Scripts
   ====================
 
-  Autostarting scripts or script-based plugins are scripts that Krita
-  loads on startup. You can add autostarting scripts to Krita by placing
-  them in the pykrita folder in the resources folder: go to settings/
+  Autostarting scripts or script-based plugins are scripts that Minerva
+  loads on startup. You can add autostarting scripts to Minerva by placing
+  them in the pyminerva2d folder in the resources folder: go to settings/
   manage resources and press the Open Resources Folder to open your
   local resources folder.
 
@@ -63,13 +63,13 @@
 @code
     [Desktop Entry]
     Type=Service
-    ServiceTypes=Krita/PythonPlugin
+    ServiceTypes=Minerva/PythonPlugin
     X-KDE-Library=hello
     Name=Hello World
-    Comment=Basic plugin to test PyKrita
+    Comment=Basic plugin to test PyMinerva
 @endcode
 
-  The Python code itself should be placed in the pykrita/hello folder.
+  The Python code itself should be placed in the pyminerva2d/hello folder.
   Your Python plugin needs to be a module, so needs to have a `__init__.py`
   file:
 
@@ -78,15 +78,15 @@
     from .hello import *
 @endcode
 
-Krita is a Qt-based application. In principle, you can use any Python
+Minerva is a Qt-based application. In principle, you can use any Python
 binding to Qt as long as it's using exactly the same version of Qt
-that Krita uses. In our examples we will be using [PyQt](https://www.riverbankcomputing.com/software/pyqt/intro).
+that Minerva uses. In our examples we will be using [PyQt](https://www.riverbankcomputing.com/software/pyqt/intro).
 
-The easiest access to the Krita api is by simply importing the "krita"
+The easiest access to the Minerva api is by simply importing the "krita"
 module. This automatically adds two built-ins: Scripter and Application.
 
-This is an alias for Krita.instance(), which is the first place from
-which to access the running Krita instance.
+This is an alias for Minerva.instance(), which is the first place from
+which to access the running Minerva instance.
 
 @code
 from PyQt5.QtGui import *
@@ -108,27 +108,27 @@ class HelloExtension(Extension):
       action = window.createAction("Hello")
       action.triggered.connect(hello)
 
-Krita.instance().addExtension(HelloExtension(Krita.instance()))
+Minerva.instance().addExtension(HelloExtension(Minerva.instance()))
 @endcode
 
 
-The Krita Object Model
+The Minerva Object Model
 ======================
 
-The starting point is the @see Krita class, which provides a singleton
-object for easy reference. From the Krita class, a hierarchy is provided
+The starting point is the @see Minerva class, which provides a singleton
+object for easy reference. From the Minerva class, a hierarchy is provided
 where you can access windows, lviews, documents, nodes and channels.
 
-You can access the Krita class as
+You can access the Minerva class as
 
- * Krita.instance()
+ * Minerva.instance()
  * Application
  * Scripter
 
 For ease of use.
 
-The Document class is provided to allow access to the images Krita has
-loaded. *Note*: internally, Krita distinguishes between images and documents.
+The Document class is provided to allow access to the images Minerva has
+loaded. *Note*: internally, Minerva distinguishes between images and documents.
 
 A document contains an image and knows the filename of the image, the image
 itself only knows about the layers and masks it contains. The generic
@@ -139,11 +139,11 @@ a generator layer, a clone layer, a paint layer or a transform mask, a selection
 mask, a transparency mask or a colorize mask. You can change some properties
 of Nodes, but not all of them.
 
-The Window class is provided to allow access to the windows and views Krita
+The Window class is provided to allow access to the windows and views Minerva
 has open. A given Document can be shown in more than one View, and in more than
 one Window. You can open and close windows and views.
 
  */
 
-// DOXYGEN_SET_PROJECT_NAME = Krita
+// DOXYGEN_SET_PROJECT_NAME = Minerva
 // DOXYGEN_SET_IGNORE_PREFIX = Kis Ko K

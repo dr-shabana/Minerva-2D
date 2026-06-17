@@ -16,7 +16,7 @@
 #include "PaintingResources.h"
 
 /**
- * Node represents a layer or mask in a Krita image's Node hierarchy. Group layers can contain
+ * Node represents a layer or mask in a Minerva image's Node hierarchy. Group layers can contain
  * other layers and masks; layers can contain masks.
  *
  */
@@ -116,7 +116,7 @@ public Q_SLOTS:
      * <ul>
      * <li>U8: unsigned 8 bits integer, the most common type</li>
      * <li>U16: unsigned 16 bits integer</li>
-     * <li>F16: half, 16 bits floating point. Only available if Krita was built with OpenEXR</li>
+     * <li>F16: half, 16 bits floating point. Only available if Minerva was built with OpenEXR</li>
      * <li>F32: 32 bits floating point</li>
      * </ul>
      * @return the color depth.
@@ -168,7 +168,7 @@ public Q_SLOTS:
      * <ul>
      * <li>U8: unsigned 8 bits integer, the most common type</li>
      * <li>U16: unsigned 16 bits integer</li>
-     * <li>F16: half, 16 bits floating point. Only available if Krita was built with OpenEXR</li>
+     * <li>F16: half, 16 bits floating point. Only available if Minerva was built with OpenEXR</li>
      * <li>F32: 32 bits floating point</li>
      * </ul>
      * @param colorProfile a valid color profile for this color model and color depth combination.
@@ -176,7 +176,7 @@ public Q_SLOTS:
     bool setColorSpace(const QString &colorModel, const QString &colorDepth, const QString &colorProfile);
 
     /**
-     * @brief Krita layers can be animated, i.e., have frames.
+     * @brief Minerva layers can be animated, i.e., have frames.
      * @return return true if the layer has frames. Currently, the scripting framework
      * does not give access to the animation features.
      */
@@ -211,14 +211,14 @@ public Q_SLOTS:
     /**
      * Sets a color label index associated to the layer.  The actual
      * color of the label and the number of available colors is
-     * defined by Krita GUI configuration.
+     * defined by Minerva GUI configuration.
      */
     int colorLabel() const;
 
     /**
      * @brief setColorLabel sets a color label index associated to the layer.  The actual
      * color of the label and the number of available colors is
-     * defined by Krita GUI configuration.
+     * defined by Minerva GUI configuration.
      * @param index an integer corresponding to the set of available color labels.
      */
     void setColorLabel(int index);
@@ -278,7 +278,7 @@ public Q_SLOTS:
     Node* parentNode() const;
 
     /**
-     * @brief type Krita has several types of nodes, split in layers and masks. Group
+     * @brief type Minerva has several types of nodes, split in layers and masks. Group
      * layers can contain other layers, any layer can contain masks.
      *
      * @return The type of the node. Valid types are:
@@ -297,7 +297,7 @@ public Q_SLOTS:
      *  <li>colorizemask
      * </ul>
      *
-     * If the Node object isn't wrapping a valid Krita layer or mask object, and
+     * If the Node object isn't wrapping a valid Minerva layer or mask object, and
      * empty string is returned.
      */
     virtual QString type() const;
@@ -436,7 +436,7 @@ public Q_SLOTS:
      * those layer types will silently do nothing.
      *
      * @param value the byte array representing the pixels. There must be enough bytes available.
-     * Krita will take the raw pointer from the QByteArray and start reading, not stopping before
+     * Minerva will take the raw pointer from the QByteArray and start reading, not stopping before
      * (number of channels * size of channel * w * h) bytes are read.
      *
      * @param x the x position to start writing from

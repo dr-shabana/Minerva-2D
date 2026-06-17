@@ -1,5 +1,5 @@
 /*
- * tool_polyline.cc -- Part of Krita
+ * tool_polyline.cc -- Part of Minerva
  *
  * SPDX-FileCopyrightText: 2004 Michael Thaler <michael.thaler@physik.tu-muenchen.de>
  *

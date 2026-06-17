@@ -2,7 +2,7 @@ set(CMAKE_THREAD_PREFER_PTHREAD TRUE)
 set(THREADS_PREFER_PTHREAD_FLAG TRUE)
 find_package(Threads REQUIRED)
 
-set(KRITA_RECORDERDOCKER_SOURCES
+set(MINERVA2D_RECORDERDOCKER_SOURCES
     recorder_const.cpp
     recorder_config.cpp
     recorder_export_config.cpp
@@ -17,7 +17,7 @@ set(KRITA_RECORDERDOCKER_SOURCES
     recorderdocker_dock.cpp
 )
 
-ki18n_wrap_ui(KRITA_RECORDERDOCKER_SOURCES
+ki18n_wrap_ui(MINERVA2D_RECORDERDOCKER_SOURCES
     recorderdocker.ui
     recorder_export.ui
     recorder_profile_settings.ui
@@ -27,10 +27,10 @@ ki18n_wrap_ui(KRITA_RECORDERDOCKER_SOURCES
 install(FILES
     recorder.action
 
-    DESTINATION ${KDE_INSTALL_DATADIR}/krita/actions
+    DESTINATION ${KDE_INSTALL_DATADIR}/minerva2d/actions
 )
 
-kis_add_library(kritarecorderdocker MODULE ${KRITA_RECORDERDOCKER_SOURCES})
+kis_add_library(kritarecorderdocker MODULE ${MINERVA2D_RECORDERDOCKER_SOURCES})
 target_link_libraries(kritarecorderdocker kritaui Threads::Threads)
 
-install(TARGETS kritarecorderdocker  DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
+install(TARGETS kritarecorderdocker  DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})

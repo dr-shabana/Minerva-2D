@@ -24,8 +24,8 @@ class QVersionNumber;
 #include "KoColor.h"
 
 /**
- * Load old-style 1.x .kra files. Updated for 2.0, let's try to stay
- * compatible. But 2.0 won't be able to save 1.x .kra files unless we
+ * Load old-style 1.x .m2d files. Updated for 2.0, let's try to stay
+ * compatible. But 2.0 won't be able to save 1.x .m2d files unless we
  * implement an export filter.
  */
 class KRITALIBKRA_EXPORT KisKraLoader
@@ -68,7 +68,7 @@ public:
 
     /// Returns the name of the image as defined in maindoc.xml. This might
     /// be different from the name of the image as used in the path to the
-    /// layers, because before Krita 4.2, under some circumstances, this
+    /// layers, because before Minerva 4.2, under some circumstances, this
     /// string is in utf8, but the paths were stored in a different encoding.
     QString imageName() const;
 

@@ -9,7 +9,7 @@ import copy
 import glob
 
 # Capture our command line parameters
-parser = argparse.ArgumentParser(description='A script for building Krita Windows package on CI')
+parser = argparse.ArgumentParser(description='A script for building Minerva Windows package on CI')
 parser.add_argument('--skip-debug-package', default=False, action='store_true')
 parser.add_argument('--build-installers', default=False, action='store_true')
 parser.add_argument('--release-package-naming', default=False, action='store_true')
@@ -42,13 +42,13 @@ depsPath = os.path.abspath('_install')
 srcPath = os.path.abspath(os.getcwd())
 
 if arguments.skip_debug_package:
-    os.environ['KRITA_SKIP_DEBUG_PACKAGE'] = '1'
+    os.environ['MINERVA2D_SKIP_DEBUG_PACKAGE'] = '1'
 
 kritaVersionString = ''
 
-with open(os.path.join(buildPath, "libs/version/kritaversion.h"), "r") as fp:
+with open(os.path.join(buildPath, "libs/version/minerva2dversion.h"), "r") as fp:
     for line in fp:
-        if line.strip().startswith('#define KRITA_VERSION_STRING'):
+        if line.strip().startswith('#define MINERVA2D_VERSION_STRING'):
             kritaVersionString = line.split()[-1].strip('\"')
             print ('krita version: {}'.format(kritaVersionString))
             break
@@ -57,7 +57,7 @@ with open(os.path.join(buildPath, "libs/version/kritaversion.h"), "r") as fp:
 unstablePackageSuffix = '-{}'.format(os.environ['CI_COMMIT_SHORT_SHA']) \
     if not arguments.release_package_naming else ''
 
-packageName = 'krita-x64-{}{}'.format(kritaVersionString, unstablePackageSuffix)
+packageName = 'minerva2d-x64-{}{}'.format(kritaVersionString, unstablePackageSuffix)
 hookFile = os.path.join(srcPath, 'build-tools', 'ci-scripts', 'sign-windows-package-at-notary-service.py')
 
 commandToRun = ' '.join([sys.executable,
@@ -67,7 +67,7 @@ commandToRun = ' '.join([sys.executable,
                          '--package-name', packageName,
                          '--src-dir',  srcPath,
                          '--deps-install-dir', depsPath,
-                         '--krita-install-dir', depsPath,
+                         '--minerva2d-install-dir', depsPath,
                          f'--pre-zip-hook \"{hookFile}\"' if signPackages else ''
                         ])
 
@@ -90,7 +90,7 @@ if arguments.build_installers:
     commandToRun = ' '.join(['cmake',
                             '-DREMOVE_DEBUG=ON',
                             '-DOUTPUT_FILEPATH={}'.format(installerFileName),
-                            '-DKRITA_PACKAGE_ROOT={}'.format(packageFolder),
+                            '-DMINERVA2D_PACKAGE_ROOT={}'.format(packageFolder),
                             '-P', os.path.join(depsPath, 'MakeinstallerNsis.cmake')
                             ])
 
@@ -102,7 +102,7 @@ if arguments.build_installers:
         print("## Failed to build the installer")
         sys.exit(1)
 
-    shutil.move(os.path.join(installerFolder, 'krita-nsis', installerFileName), os.getcwd())
+    shutil.move(os.path.join(installerFolder, 'minerva2d-nsis', installerFileName), os.getcwd())
 
     if signPackages:
         commandToRun = ' '.join([sys.executable, '-u',
@@ -136,8 +136,8 @@ if arguments.build_installers:
 
     msixEnvironment = copy.deepcopy(dict(os.environ))
 
-    msixEnvironment['KRITA_DIR'] = packageFolder
-    msixEnvironment['KRITA_SHELLEX'] = os.path.join(srcPath, '_installer', 'krita-nsis')
+    msixEnvironment['MINERVA2D_DIR'] = packageFolder
+    msixEnvironment['MINERVA2D_SHELLEX'] = os.path.join(srcPath, '_installer', 'minerva2d-nsis')
     msixEnvironment['OUTPUT_DIR'] = msixFolder
 
     # build_msix.py populates this directory itself
@@ -145,7 +145,7 @@ if arguments.build_installers:
         shutil.rmtree(os.path.join(packageFolder, 'shellex'))
 
     commandToRun = ' '.join([sys.executable, '-u',
-                            os.path.join(depsPath, 'krita-msix', 'build_msix.py')
+                            os.path.join(depsPath, 'minerva2d-msix', 'build_msix.py')
                             ])
 
     # Run the command
@@ -156,7 +156,7 @@ if arguments.build_installers:
         print("## Failed to build the MSIX package")
         sys.exit(1)
 
-    shutil.move(os.path.join(msixFolder, 'krita.msix'),
+    shutil.move(os.path.join(msixFolder, 'minerva2d.msix'),
                 os.path.join(os.getcwd(), '{}-unsigned.msix'.format(packageName)))
 
     for f in glob.iglob(os.path.join(msixFolder, '*.log')):

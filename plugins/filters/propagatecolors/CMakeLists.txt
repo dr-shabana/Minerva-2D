@@ -13,12 +13,12 @@ install(
     TARGETS
     kritapropagatecolors
     DESTINATION 
-    ${KRITA_PLUGIN_INSTALL_DIR}
+    ${MINERVA2D_PLUGIN_INSTALL_DIR}
 )
 
 install(
     FILES
     propagatecolors.action
     DESTINATION
-    ${KDE_INSTALL_DATADIR}/krita/actions
+    ${KDE_INSTALL_DATADIR}/minerva2d/actions
 )

@@ -12,5 +12,5 @@ generate_export_header(kritatoollazybrush BASE_NAME kritatoollazybrush)
 
 target_link_libraries(kritatoollazybrush kritaui)
 
-install(TARGETS kritatoollazybrush  DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
+install(TARGETS kritatoollazybrush  DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})
 

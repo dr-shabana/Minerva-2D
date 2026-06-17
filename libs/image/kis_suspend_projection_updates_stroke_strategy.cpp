@@ -9,7 +9,7 @@
 #include "kis_suspend_projection_updates_stroke_strategy.h"
 
 #include <kis_image.h>
-#include <krita_utils.h>
+#include <minerva2d_utils.h>
 #include <kis_projection_updates_filter.h>
 #include "kis_image_signal_router.h"
 #include "kis_image_animation_interface.h"
@@ -352,7 +352,7 @@ struct KisSuspendProjectionUpdatesStrokeStrategy::Private
             m_strategy->m_d->accumulatedDirtyRects =
                 KisPaintOpUtils::splitAndFilterDabRect(totalRect,
                                                        totalDirtyRects,
-                                                       KritaUtils::optimalPatchSize().width());
+                                                       MinervaUtils::optimalPatchSize().width());
 
             image->signalRouter()->emitNotifyBatchUpdateStarted();
 

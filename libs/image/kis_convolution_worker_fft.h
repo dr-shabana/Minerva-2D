@@ -486,11 +486,11 @@ private:
     {
         KisConvolutionWorkerFFTLock::fftwMutex.lock();
         QString filename(QDir::homePath() + "/log_" + f + ".txt");
-        dbgKrita << "Log File Name: " << filename;
+        dbgMinerva << "Log File Name: " << filename;
         QFile file (filename);
         if (!file.open(QIODevice::WriteOnly | QIODevice::Truncate | QIODevice::Text))
         {
-            dbgKrita << "Failed";
+            dbgMinerva << "Failed";
             KisConvolutionWorkerFFTLock::fftwMutex.unlock();
             return;
         }

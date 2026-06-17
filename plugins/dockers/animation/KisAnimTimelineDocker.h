@@ -79,8 +79,8 @@ private:
 };
 
 
-/** @brief Krita's Animation Timeline Docker.
- * This is the GUI heart of Krita's traditional animation workflow,
+/** @brief Minerva's Animation Timeline Docker.
+ * This is the GUI heart of Minerva's traditional animation workflow,
  * and is where artists can configure, edit, scrub and play their animation.
  *
  * Currently interacts with the TimelineFramesView/Model as well as

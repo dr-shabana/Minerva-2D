@@ -178,14 +178,14 @@ WaylandSurfaceDescription WaylandSurfaceDescription::fromSurfaceDescription(cons
     using namespace KisSurfaceColorimetry;
 
     if (std::holds_alternative<NamedPrimaries>(rhs.colorSpace.primaries)) {
-        desc.namedContainer = primariesKritaToWayland(std::get<NamedPrimaries>(rhs.colorSpace.primaries));
+        desc.namedContainer = primariesMinervaToWayland(std::get<NamedPrimaries>(rhs.colorSpace.primaries));
     } else {
         desc.container = WaylandPrimaries::fromColorimetry(
             std::get<Colorimetry>(rhs.colorSpace.primaries));
     }
 
     if (std::holds_alternative<NamedTransferFunction>(rhs.colorSpace.transferFunction)) {
-        desc.tfNamed = transferFunctionKritaToWayland(std::get<NamedTransferFunction>(rhs.colorSpace.transferFunction));
+        desc.tfNamed = transferFunctionMinervaToWayland(std::get<NamedTransferFunction>(rhs.colorSpace.transferFunction));
     } else {
         desc.tfGamma = std::get<uint32_t>(rhs.colorSpace.transferFunction);
     }
@@ -251,7 +251,7 @@ QDebug operator<<(QDebug dbg, const WaylandSurfaceDescription &data) {
     return dbg.space();
 }
 
-QtWayland::wp_color_manager_v1::primaries primariesKritaToWayland(KisSurfaceColorimetry::NamedPrimaries primaries)
+QtWayland::wp_color_manager_v1::primaries primariesMinervaToWayland(KisSurfaceColorimetry::NamedPrimaries primaries)
 {
     using namespace KisSurfaceColorimetry;
     using primaries_type = QtWayland::wp_color_manager_v1::primaries;
@@ -273,7 +273,7 @@ QtWayland::wp_color_manager_v1::primaries primariesKritaToWayland(KisSurfaceColo
     return primaries_type::primaries_srgb;
 }
 
-QtWayland::wp_color_manager_v1::transfer_function transferFunctionKritaToWayland(KisSurfaceColorimetry::NamedTransferFunction transferFunction)
+QtWayland::wp_color_manager_v1::transfer_function transferFunctionMinervaToWayland(KisSurfaceColorimetry::NamedTransferFunction transferFunction)
 {
     using namespace KisSurfaceColorimetry;
     using transfer_function_type = QtWayland::wp_color_manager_v1::transfer_function;
@@ -301,7 +301,7 @@ QtWayland::wp_color_manager_v1::transfer_function transferFunctionKritaToWayland
     return transfer_function_type::transfer_function_srgb;
 }
 
-QtWayland::wp_color_manager_v1::render_intent renderIntentKritaToWayland(KisSurfaceColorimetry::RenderIntent intent)
+QtWayland::wp_color_manager_v1::render_intent renderIntentMinervaToWayland(KisSurfaceColorimetry::RenderIntent intent)
 {
     using namespace KisSurfaceColorimetry;
 

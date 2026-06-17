@@ -18,9 +18,9 @@
 
 class KisKeyframeChannel;
 
-/** @brief Krita's base keyframe class.
+/** @brief Minerva's base keyframe class.
  * Mainly contained by KisKeyframeChannels.
- * A core part of Krita's animation bankend.
+ * A core part of Minerva's animation bankend.
  */
 class KRITAIMAGE_EXPORT KisKeyframe : public QObject {
     Q_OBJECT

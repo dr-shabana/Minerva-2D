@@ -14,4 +14,4 @@ target_link_libraries(kritaexif
         LibExiv2::LibExiv2
 )
 
-install(TARGETS kritaexif DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
+install(TARGETS kritaexif DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})

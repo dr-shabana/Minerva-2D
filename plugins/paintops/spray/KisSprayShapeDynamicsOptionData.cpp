@@ -11,7 +11,7 @@
 
 const QString SHAPE_DYNAMICS_VERSION = "ShapeDynamicsVersion";
 
-// Old Krita 2.2.x strings for backward compatibility
+// Old Minerva 2.2.x strings for backward compatibility
 const QString SPRAYSHAPE_RANDOM_SIZE = "SprayShape/randomSize";
 const QString SPRAYSHAPE_FIXED_ROTATION = "SprayShape/fixedRotation";
 const QString SPRAYSHAPE_FIXED_ANGEL = "SprayShape/fixedAngle";
@@ -39,7 +39,7 @@ const QString SHAPE_DYNAMICS_DRAWING_ANGLE_WEIGHT = "ShapeDynamics/followDrawing
 
 bool KisSprayShapeDynamicsOptionData::read(const KisPropertiesConfiguration *settings)
 {
-	// Krita 2.2
+	// Minerva 2.2
 	if (settings->getString(SHAPE_DYNAMICS_VERSION, "2.2") == "2.2") {
 		randomSize = settings->getBool(SPRAYSHAPE_RANDOM_SIZE);
 		// rotation
@@ -52,7 +52,7 @@ bool KisSprayShapeDynamicsOptionData::read(const KisPropertiesConfiguration *set
 		followCursorWeight = settings->getDouble(SPRAYSHAPE_FOLLOW_CURSOR_WEIGHT);
 		followDrawingAngleWeight = settings->getDouble(SPRAYSHAPE_DRAWING_ANGLE_WEIGHT);
 	}
-	// Krita latest
+	// Minerva latest
 	else {
 		enabled = settings->getBool(SHAPE_DYNAMICS_ENABLED);
 		// particle type size

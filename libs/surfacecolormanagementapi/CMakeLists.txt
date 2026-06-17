@@ -17,7 +17,7 @@ target_link_libraries(kritasurfacecolormanagementapi
     ${QT_QTCORE_LIBRARY})
 
 set_target_properties(kritasurfacecolormanagementapi PROPERTIES
-    VERSION ${GENERIC_KRITA_LIB_VERSION} SOVERSION ${GENERIC_KRITA_LIB_SOVERSION}
+    VERSION ${GENERIC_MINERVA2D_LIB_VERSION} SOVERSION ${GENERIC_MINERVA2D_LIB_SOVERSION}
 )
 
 install(TARGETS kritasurfacecolormanagementapi  ${INSTALL_TARGETS_DEFAULT_ARGS})

@@ -12,7 +12,7 @@
 #include <KoDockFactoryBase.h>
 #include <KoDockRegistry.h>
 
-K_PLUGIN_FACTORY_WITH_JSON(PresetDockerPluginFactory, "krita_presetdocker.json", registerPlugin<PresetDockerPlugin>();)
+K_PLUGIN_FACTORY_WITH_JSON(PresetDockerPluginFactory, "minerva2d_presetdocker.json", registerPlugin<PresetDockerPlugin>();)
 
 class PresetDockerDockFactory : public KoDockFactoryBase {
 public:

@@ -6,7 +6,7 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.15
-import org.krita.flake.text 1.0
+import org.minerva2d.flake.text 1.0
 
 TextPropertyBase {
     propertyTitle: i18nc("@title:group", "Text Rendering");

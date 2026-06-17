@@ -29,7 +29,7 @@
 #include <KisKineticScroller.h>
 #include <KisGlobalResourcesInterface.h>
 
-// From krita/ui
+// From minerva2d/ui
 #include "kis_bookmarked_configurations_editor.h"
 #include "kis_bookmarked_filter_configurations_model.h"
 #include "kis_filters_model.h"
@@ -190,7 +190,7 @@ void KisFilterSelectorWidget::setFilter(KisFilterSP f, KisFilterConfigurationSP 
     Q_ASSERT(f);
     Q_ASSERT(d->filtersModel);
     setWindowTitle(f->name());
-    dbgKrita << "setFilter: " << f;
+    dbgMinerva << "setFilter: " << f;
     d->currentFilter = f;
     delete d->currentCentralWidget;
 

@@ -26,7 +26,7 @@ KisColorManager::KisColorManager()
     : QObject()
     , d(new Private(this))
 {
-    //dbgKrita << "ColorManager started";
+    //dbgMinerva << "ColorManager started";
     connect(d->colord, SIGNAL(changed(QString)), this, SIGNAL(changed(QString)));
 }
 

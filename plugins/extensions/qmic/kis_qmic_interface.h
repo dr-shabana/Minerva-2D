@@ -1,5 +1,5 @@
 /*
- * This file is part of Krita
+ * This file is part of Minerva
  *
  * SPDX-FileCopyrightText: 2020 L. E. Segovia <amy@amyspark.me>
  *
@@ -21,7 +21,7 @@
 class KisQmicApplicator;
 class KisViewManager;
 
-#define KRITA_QMIC_INTERFACE_VERSION 0x05010001
+#define MINERVA2D_QMIC_INTERFACE_VERSION 0x05010001
 
 struct KRITAQMICINTERFACE_EXPORT KisQMicImage {
     QMutex m_mutex;

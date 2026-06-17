@@ -14,4 +14,4 @@ target_link_libraries(kritaiptc
         LibExiv2::LibExiv2
 )
 
-install(TARGETS kritaiptc DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
+install(TARGETS kritaiptc DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})

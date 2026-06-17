@@ -23,7 +23,7 @@
 #include "kis_image_config.h"
 #include "kis_config_notifier.h"
 #include "kis_image.h"
-#include "krita_utils.h"
+#include "minerva2d_utils.h"
 
 #include "kis_coordinates_converter.h"
 #include "kis_projection_backend.h"
@@ -221,7 +221,7 @@ void KisPrescaledProjection::viewportMoved(const QPointF &offset)
         QRect imageRect =
             m_d->coordinatesConverter->viewportToImage(rect).toAlignedRect();
         QVector<QRect> patches =
-            KritaUtils::splitRectIntoPatches(imageRect, m_d->updatePatchSize);
+            MinervaUtils::splitRectIntoPatches(imageRect, m_d->updatePatchSize);
 
         Q_FOREACH (const QRect& rc, patches) {
             QRect viewportPatch =
@@ -294,7 +294,7 @@ void KisPrescaledProjection::preScale()
         m_d->coordinatesConverter->viewportToImage(viewportRect).toAlignedRect();
 
     QVector<QRect> patches =
-        KritaUtils::splitRectIntoPatches(imageRect, m_d->updatePatchSize);
+        MinervaUtils::splitRectIntoPatches(imageRect, m_d->updatePatchSize);
 
     Q_FOREACH (const QRect& rc, patches) {
         QRect viewportPatch = m_d->coordinatesConverter->imageToViewport(rc).toAlignedRect();

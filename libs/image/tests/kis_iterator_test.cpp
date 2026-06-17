@@ -29,7 +29,7 @@ void KisIteratorTest::allCsApplicator(void (KisIteratorTest::* funcPtr)(const Ko
 
     Q_FOREACH (const KoColorSpace* cs, colorspaces) {
 
-        dbgKrita << "Testing with" << cs->id();
+        dbgMinerva << "Testing with" << cs->id();
 
         if (cs->id() != "GRAYU16") // No point in testing extend for GRAYU16
             (this->*funcPtr)(cs);
@@ -374,7 +374,7 @@ public:
                     qint32 rowStride = iter->rowStride(x, y);
                     iter->moveTo(x, y);
 
-                    // dbgKrita << "BitBlt:" << ppVar(x) << ppVar(y)
+                    // dbgMinerva << "BitBlt:" << ppVar(x) << ppVar(y)
                     //          << ppVar(columns) << ppVar(rows)
                     //          << ppVar(rowStride);
 
@@ -451,7 +451,7 @@ void KisIteratorTest::stressTest()
 
     for(int i = 0; i< NUM_THREADS; i++) {
         QRect rc = QRect(double(i) / NUM_THREADS * 2000, 0, 2000 / NUM_THREADS, 2000);
-//        dbgKrita << rc;
+//        dbgMinerva << rc;
 
         DataReaderThread *reader = new DataReaderThread(device, rc);
         threadPool.start(reader);

@@ -148,7 +148,7 @@ void KisOpenGL::initialize()
 
 #ifdef Q_OS_WIN
 
-    if (!qEnvironmentVariableIsSet("KRITA_UNLOCK_TEXTURE_BUFFERS") &&
+    if (!qEnvironmentVariableIsSet("MINERVA2D_UNLOCK_TEXTURE_BUFFERS") &&
         openGLCheckResult->rendererString().toUpper().contains("ANGLE")) {
 
         // Angle should always be openGLES...
@@ -263,8 +263,8 @@ void KisOpenGL::initialize()
      * onto the canvas.
      *
      * See bugs:
-     *   https://bugs.kde.org/show_bug.cgi?id=361709
-     *   https://bugs.kde.org/show_bug.cgi?id=401940
+     *   https://github.com/dr-shabana/Minerva-2D/issues/show_bug.cgi?id=361709
+     *   https://github.com/dr-shabana/Minerva-2D/issues/show_bug.cgi?id=401940
      */
 
     if (cfg.assistantsDrawMode() == KisConfig::ASSISTANTS_DRAW_MODE_LARGE_PIXMAP_CACHE) {
@@ -313,7 +313,7 @@ void KisOpenGL::initializeContext(QOpenGLContext *ctx)
         g_glInvalidateBufferData = (PFNGLINVALIDATEBUFFERDATAPROC)ctx->getProcAddress("glInvalidateBufferData");
     }
 
-    QFile log(QStandardPaths::writableLocation(QStandardPaths::TempLocation) + "/krita-opengl.txt");
+    QFile log(QStandardPaths::writableLocation(QStandardPaths::TempLocation) + "/minerva2d-opengl.txt");
     if (log.open(QFile::WriteOnly)) {
         QString vendor((const char*)f->glGetString(GL_VENDOR));
         log.write(vendor.toLatin1());
@@ -460,15 +460,15 @@ KisOpenGL::OpenGLRenderers KisOpenGL::getSupportedOpenGLRenderers()
 KisOpenGL::OpenGLRenderer KisOpenGL::getUserPreferredOpenGLRendererConfig()
 {
     const QString configPath = QStandardPaths::writableLocation(QStandardPaths::GenericConfigLocation);
-    QSettings kritarc(configPath + QStringLiteral("/kritadisplayrc"), QSettings::IniFormat);
-    return convertConfigToOpenGLRenderer(kritarc.value("OpenGLRenderer", "auto").toString());
+    QSettings minerva2drc(configPath + QStringLiteral("/minerva2ddisplayrc"), QSettings::IniFormat);
+    return convertConfigToOpenGLRenderer(minerva2drc.value("OpenGLRenderer", "auto").toString());
 }
 
 void KisOpenGL::setUserPreferredOpenGLRendererConfig(KisOpenGL::OpenGLRenderer renderer)
 {
     const QString configPath = QStandardPaths::writableLocation(QStandardPaths::GenericConfigLocation);
-    QSettings kritarc(configPath + QStringLiteral("/kritadisplayrc"), QSettings::IniFormat);
-    kritarc.setValue("OpenGLRenderer", KisOpenGL::convertOpenGLRendererToConfig(renderer));
+    QSettings minerva2drc(configPath + QStringLiteral("/minerva2ddisplayrc"), QSettings::IniFormat);
+    minerva2drc.setValue("OpenGLRenderer", KisOpenGL::convertOpenGLRendererToConfig(renderer));
 }
 
 QString KisOpenGL::convertOpenGLRendererToConfig(KisOpenGL::OpenGLRenderer renderer)
@@ -561,7 +561,7 @@ QOpenGLContext::OpenGLModuleType determineOpenGLImplementation(const RendererInf
     switch (info.first) {
     case QSurfaceFormat::OpenGLES:
 #if defined(Q_OS_WINDOWS)
-        // https://invent.kde.org/szaman/qtbase/-/blob/krita/5.15/src/plugins/platforms/windows/qwindowsintegration.cpp#L425
+        // https://invent.kde.org/szaman/qtbase/-/blob/minerva2d/5.15/src/plugins/platforms/windows/qwindowsintegration.cpp#L425
         switch (info.second) {
         case KisOpenGL::AngleRendererD3d11:
         case KisOpenGL::AngleRendererD3d9:
@@ -579,10 +579,10 @@ QOpenGLContext::OpenGLModuleType determineOpenGLImplementation(const RendererInf
 #endif
     case QSurfaceFormat::DefaultRenderableType:
 #ifdef Q_OS_WIN
-    // https://invent.kde.org/szaman/qtbase/-/blob/krita/5.15/src/plugins/platforms/windows/qwindowsglcontext.cpp#L1117
+    // https://invent.kde.org/szaman/qtbase/-/blob/minerva2d/5.15/src/plugins/platforms/windows/qwindowsglcontext.cpp#L1117
         return QOpenGLContext::LibGL;
 #else
-    // https://invent.kde.org/szaman/qtbase/-/blob/krita/5.15/src/plugins/platforms/xcb/gl_integrations/xcb_glx/qglxintegration.cpp#L246
+    // https://invent.kde.org/szaman/qtbase/-/blob/minerva2d/5.15/src/plugins/platforms/xcb/gl_integrations/xcb_glx/qglxintegration.cpp#L246
 #if defined(QT_OPENGL_ES_2)
     return QOpenGLContext::LibGLES;
 #else
@@ -591,9 +591,9 @@ QOpenGLContext::OpenGLModuleType determineOpenGLImplementation(const RendererInf
 #endif
     case QSurfaceFormat::OpenGL:
     default:
-        // https://invent.kde.org/szaman/qtbase/-/blob/krita/5.15/src/plugins/platforms/windows/qwindowsglcontext.cpp#L1117
+        // https://invent.kde.org/szaman/qtbase/-/blob/minerva2d/5.15/src/plugins/platforms/windows/qwindowsglcontext.cpp#L1117
         KIS_SAFE_ASSERT_RECOVER_RETURN_VALUE(info.first != QSurfaceFormat::OpenVG, QOpenGLContext::LibGL);
-        // https://invent.kde.org/szaman/qtbase/-/blob/krita/5.15/src/gui/kernel/qplatformintegration.cpp#L547
+        // https://invent.kde.org/szaman/qtbase/-/blob/minerva2d/5.15/src/gui/kernel/qplatformintegration.cpp#L547
         return QOpenGLContext::LibGL;
     };
 }
@@ -936,7 +936,7 @@ KisOpenGL::RendererConfig KisOpenGL::selectSurfaceConfig(KisOpenGL::OpenGLRender
             {KisSurfaceColorSpaceWrapper::scRGBColorSpace, 16},
             {KisSurfaceColorSpaceWrapper::bt2020PQColorSpace, 10}
         });
-#elif KRITA_USE_SURFACE_COLOR_MANAGEMENT_API
+#elif MINERVA2D_USE_SURFACE_COLOR_MANAGEMENT_API
     std::vector<std::pair<KisSurfaceColorSpaceWrapper, int>> formatSymbolPairs(
         {
             {KisSurfaceColorSpaceWrapper::DefaultColorSpace, 8},
@@ -1013,7 +1013,7 @@ KisOpenGL::RendererConfig KisOpenGL::selectSurfaceConfig(KisOpenGL::OpenGLRender
 #endif
 
     if (!info) {
-        dbgOpenGL << "Failed to probe default openGL format! No openGL support will be available in Krita";
+        dbgOpenGL << "Failed to probe default openGL format! No openGL support will be available in Minerva";
         return KisOpenGL::RendererConfig();
     }
 
@@ -1049,7 +1049,7 @@ KisOpenGL::RendererConfig KisOpenGL::selectSurfaceConfig(KisOpenGL::OpenGLRender
     compareOp.setPreferredRendererByUser(preferredRenderer);
     compareOp.setOpenGLESBlacklisted(false); // We cannot blacklist ES drivers atm
 
-#if KRITA_USE_SURFACE_COLOR_MANAGEMENT_API
+#if MINERVA2D_USE_SURFACE_COLOR_MANAGEMENT_API
     // 10-bit is the default, 8-bit is set explicitly by the user
     compareOp.setUserPreferredBitDepth(preferredCanvasSurfaceBitMode == KisConfig::CanvasSurfaceBitDepthMode::Depth8Bit ? 8 : 10);
 #else

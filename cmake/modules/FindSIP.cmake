@@ -42,7 +42,7 @@ ELSE(SIP_VERSION)
       set(_path_list_separator ";")
   endif()
 
-  set(all_paths ${KRITA_PYTHONPATH_V4} ${KRITA_PYTHONPATH_V5} $ENV{PYTHONPATH})
+  set(all_paths ${MINERVA2D_PYTHONPATH_V4} ${MINERVA2D_PYTHONPATH_V5} $ENV{PYTHONPATH})
   list(REMOVE_ITEM all_paths "")
   list(JOIN all_paths "${_path_list_separator}" _pyqt5_python_path)
 

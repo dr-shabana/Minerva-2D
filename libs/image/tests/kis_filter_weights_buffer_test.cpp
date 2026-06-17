@@ -18,7 +18,7 @@
 
 void checkWeightsBuffer(KisFilterStrategy *filter, qreal scale)
 {
-    dbgKrita << "Testing:" << filter->name() << "Scale:" << scale;
+    dbgMinerva << "Testing:" << filter->name() << "Scale:" << scale;
 
     KisFilterWeightsBuffer buf(filter, scale);
 
@@ -49,14 +49,14 @@ void checkWeightsBuffer(KisFilterStrategy *filter, qreal scale)
             if (v1 != v2) {
 
 #ifdef DEBUG_ENABLED
-                dbgKrita << "*******";
-                dbgKrita << "Weight" << fp1 << "|" << i << ":" << v1;
-                dbgKrita << "Weight" << fp2 << "|" << idx2 << ":" << v2;
+                dbgMinerva << "*******";
+                dbgMinerva << "Weight" << fp1 << "|" << i << ":" << v1;
+                dbgMinerva << "Weight" << fp2 << "|" << idx2 << ":" << v2;
 #endif /* DEBUG_ENABLED */
 
                 if (!(span & 0x1) && (qAbs(v1 - v2) <= (0.5 * span))) {
 #ifdef DEBUG_ENABLED
-                    dbgKrita << "Symmetry is wrong due to evenly-sized kernel or rounding. It's ok. Accepting.";
+                    dbgMinerva << "Symmetry is wrong due to evenly-sized kernel or rounding. It's ok. Accepting.";
 #endif /* DEBUG_ENABLED */
                 } else {
                     QFAIL("Wrong weight symmetry");

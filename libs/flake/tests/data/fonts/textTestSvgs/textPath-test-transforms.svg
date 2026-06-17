@@ -35,16 +35,16 @@
     </text>
     
     <text id="test1ttb" transform="translate(180,20)"
-        font-family="Krita_Test_Unicode_Variation_A" fill="blue" font-size="15" 
+        font-family="Minerva_Test_Unicode_Variation_A" fill="blue" font-size="15" 
           writing-mode="vertical-rl" dx="0 -10 -10 10 10 0 -10 -10 10 10 0 -10 -10 10 10 0"><textPath href="#path-vertical">ああ&#x82A6;&#x82A6;&#x82A6;&#x82A6;あああ&#x82A6;</textPath>
     </text>
     <!-- According to SVG 2 textlayout algorithm: "The ‘x’ attribute is ignored for vertical text on a path. " So this shouldn't have any effect-->
     <text id="test2ttb" transform="translate(200,20)"
-        font-family="Krita_Test_Unicode_Variation_A" fill="red" font-size="15" 
+        font-family="Minerva_Test_Unicode_Variation_A" fill="red" font-size="15" 
           writing-mode="vertical-rl" x="0 -10 -10 10 10 0 -10 -10 10 10 0 -10 -10 10 10 0"><textPath href="#path-vertical">ああ&#x82A6;&#x82A6;&#x82A6;&#x82A6;あああ&#x82A6;</textPath>
     </text>
     <text id="test3ttb" transform="translate(240,20)"
-        font-family="Krita_Test_Unicode_Variation_A" fill="green" font-size="15" 
+        font-family="Minerva_Test_Unicode_Variation_A" fill="green" font-size="15" 
           writing-mode="vertical-rl" rotate="0 -30 -30 -30 -30 30 30 30 30 0 -30 -30 -30 -30 30 30 30 30 0 -30 -30 -30 -30 30 30 30 30 0"><textPath href="#path-vertical">ああ&#x82A6;&#x82A6;&#x82A6;&#x82A6;あああ&#x82A6;</textPath>
     </text>
 

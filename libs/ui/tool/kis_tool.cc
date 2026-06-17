@@ -157,7 +157,7 @@ void KisTool::canvasResourceChanged(int key, const QVariant & v)
     case(KoCanvasResource::CurrentGeneratorConfiguration):
         d->currentGenerator = static_cast<KisFilterConfiguration*>(v.value<void *>());
         break;
-    case(KoCanvasResource::CurrentKritaNode):
+    case(KoCanvasResource::CurrentMinervaNode):
         resetCursorStyle();
         break;
     default:
@@ -331,7 +331,7 @@ void KisTool::updateCanvasViewRect(const QRectF &viewRect)
 
 KisImageWSP KisTool::image() const
 {
-    // For now, krita tools only work in krita, not for a krita shape. Krita shapes are for 2.1
+    // For now, krita tools only work in krita, not for a krita shape. Minerva shapes are for 2.1
     KisCanvas2 * kisCanvas = dynamic_cast<KisCanvas2*>(canvas());
     if (kisCanvas) {
         return kisCanvas->currentImage();
@@ -369,7 +369,7 @@ KisPaintOpPresetSP KisTool::currentPaintOpPreset()
 
 KisNodeSP KisTool::currentNode() const
 {
-    KisNodeSP node = canvas()->resourceManager()->resource(KoCanvasResource::CurrentKritaNode).value<KisNodeWSP>();
+    KisNodeSP node = canvas()->resourceManager()->resource(KoCanvasResource::CurrentMinervaNode).value<KisNodeWSP>();
     return node;
 }
 

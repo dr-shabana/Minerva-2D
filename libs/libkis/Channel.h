@@ -15,7 +15,7 @@
 #include <kis_node.h>
 
 /**
- * A Channel represents a single channel in a Node. Krita does not
+ * A Channel represents a single channel in a Node. Minerva does not
  * use channels to store local selections: these are strictly the
  * color and alpha channels.
  */
@@ -64,7 +64,7 @@ public:
     /**
      * Read the values of the channel into the a byte array for each pixel in the rect from the Node this channel is part of, and returns it.
      *
-     * Note that if Krita is built with OpenEXR and the Node has the 16 bits floating point channel depth type, Krita returns
+     * Note that if Minerva is built with OpenEXR and the Node has the 16 bits floating point channel depth type, Minerva returns
      * 32 bits float for every channel; the libkis scripting API does not support half.
      */
     QByteArray pixelData(const QRect &rect) const;
@@ -73,7 +73,7 @@ public:
      * @brief setPixelData writes the given data to the relevant channel in the Node. This is only possible for Nodes
      * that have a paintDevice, so nothing will happen when trying to write to e.g. a group layer.
      *
-     * Note that if Krita is built with OpenEXR and the Node has the 16 bits floating point channel depth type, Krita expects
+     * Note that if Minerva is built with OpenEXR and the Node has the 16 bits floating point channel depth type, Minerva expects
      * to be given a 4 byte, 32 bits float for every channel; the libkis scripting API does not support half.
      *
      * @param value a byte array with exactly enough bytes.

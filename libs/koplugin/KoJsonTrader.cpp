@@ -32,8 +32,8 @@ struct KoJsonTrader::PluginCacheEntry
 
 KoJsonTrader::KoJsonTrader()
 {
-    // Allow a command line variable KRITA_PLUGIN_PATH to override the automatic search
-    m_pluginPath = QProcessEnvironment::systemEnvironment().value("KRITA_PLUGIN_PATH");
+    // Allow a command line variable MINERVA2D_PLUGIN_PATH to override the automatic search
+    m_pluginPath = QProcessEnvironment::systemEnvironment().value("MINERVA2D_PLUGIN_PATH");
 
     if (m_pluginPath.isEmpty() ||
         !(QFileInfo(m_pluginPath).exists() && QFileInfo(m_pluginPath).isDir())) {
@@ -43,7 +43,7 @@ KoJsonTrader::KoJsonTrader()
         QDir appDir(qApp->applicationDirPath());
         appDir.cdUp();
 #ifdef Q_OS_MACOS
-        // Help Krita run without deployment
+        // Help Minerva run without deployment
         QDir d(appDir);
         d.cd("../../../");
         searchDirs << d;
@@ -93,8 +93,8 @@ KoJsonTrader::KoJsonTrader()
                     }
 
                     // on debian at least the actual libdir is a subdir named like "lib/x86_64-linux-gnu"
-                    // so search there for the Krita subdir which will contain our plugins
-                    // FIXME: what are the chances of there being more than one Krita install with different arch and compiler ABI?
+                    // so search there for the Minerva subdir which will contain our plugins
+                    // FIXME: what are the chances of there being more than one Minerva install with different arch and compiler ABI?
                     Q_FOREACH (const QFileInfo &subInfo, libDir.entryInfoList(QDir::Dirs | QDir::NoDotAndDotDot)) {
                         QDir subDir(subInfo.absoluteFilePath());
                         if (subDir.cd("kritaplugins")) {

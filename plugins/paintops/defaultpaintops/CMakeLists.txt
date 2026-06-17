@@ -32,9 +32,9 @@ kis_add_library(kritadefaultpaintops MODULE defaultpaintops_plugin.cc)
 
 target_link_libraries(kritadefaultpaintops kritadefaultpaintops_static)
 
-install(TARGETS kritadefaultpaintops  DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
+install(TARGETS kritadefaultpaintops  DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})
 install( FILES
-    krita-paintbrush.png
-    krita-eraser.png
-    krita-duplicate.png
-     DESTINATION ${KDE_INSTALL_DATADIR}/krita/images)
+    minerva2d-paintbrush.png
+    minerva2d-eraser.png
+    minerva2d-duplicate.png
+     DESTINATION ${KDE_INSTALL_DATADIR}/minerva2d/images)

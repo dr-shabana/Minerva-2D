@@ -29,15 +29,15 @@
 #include "kis_wdg_color.h"
 #include "ui_wdgcoloroptions.h"
 
-K_PLUGIN_FACTORY_WITH_JSON(KritaColorGeneratorFactory, "kritacolorgenerator.json", registerPlugin<KritaColorGenerator>();)
+K_PLUGIN_FACTORY_WITH_JSON(MinervaColorGeneratorFactory, "kritacolorgenerator.json", registerPlugin<MinervaColorGenerator>();)
 
-KritaColorGenerator::KritaColorGenerator(QObject *parent, const QVariantList &)
+MinervaColorGenerator::MinervaColorGenerator(QObject *parent, const QVariantList &)
         : QObject(parent)
 {
     KisGeneratorRegistry::instance()->add(new KisColorGenerator());
 }
 
-KritaColorGenerator::~KritaColorGenerator()
+MinervaColorGenerator::~MinervaColorGenerator()
 {
 }
 

@@ -1,5 +1,5 @@
 /*
- * This file is part of Krita
+ * This file is part of Minerva
  *
  *  SPDX-FileCopyrightText: 2006 Cyrille Berger <cberger@cberger.net>
  *  SPDX-FileCopyrightText: 2009 Edward Apap <schumifer@hotmail.com>
@@ -26,7 +26,7 @@
 #include "kis_random_sub_accessor.h"
 #include "kis_selection.h"
 #include <kis_iterator_ng.h>
-#include "krita_utils.h"
+#include "minerva2d_utils.h"
 #include "kis_progress_update_helper.h"
 #include "kis_painter.h"
 #include "kis_image.h"
@@ -73,7 +73,7 @@ void KisPerspectiveTransformWorker::fillParams(const QRectF &srcRect,
     newBounds = newBounds.intersected(clipRect);
     QPainterPath path;
     path.addPolygon(newBounds);
-    *dstRegion = KritaUtils::splitPath(path);
+    *dstRegion = MinervaUtils::splitPath(path);
     *dstClipPolygon = newBounds;
 }
 

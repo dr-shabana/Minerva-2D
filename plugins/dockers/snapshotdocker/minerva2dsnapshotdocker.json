@@ -1,0 +1,9 @@
+{
+    "Id": "Minerva Snapshot Docker plugin",
+    "Type": "Service",
+    "X-KDE-Library": "kritasnapshotdocker",
+    "X-KDE-ServiceTypes": [
+        "Minerva/Dock"
+    ],
+    "X-Minerva-Version": "28"
+}

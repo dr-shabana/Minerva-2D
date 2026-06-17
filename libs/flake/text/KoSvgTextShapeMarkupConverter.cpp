@@ -1152,7 +1152,7 @@ QString convertFormatUnderlineToSvg(QTextCharFormat format)
     if (format.fontUnderline()) {
         line.append("underline");
         if (format.underlineStyle() != QTextCharFormat::SingleUnderline) {
-            warnFile << "Krita only supports solid underline style";
+            warnFile << "Minerva only supports solid underline style";
         }
     }
 
@@ -1192,7 +1192,7 @@ QString KoSvgTextShapeMarkupConverter::style(QTextCharFormat format,
         if (propertyId == QTextCharFormat::FontPointSize ||
             propertyId == QTextCharFormat::FontPixelSize) {
 
-            // in Krita we unify point size and pixel size of the font
+            // in Minerva we unify point size and pixel size of the font
 
             c.append("font-size").append(":")
                     .append(format.properties()[propertyId].toString());

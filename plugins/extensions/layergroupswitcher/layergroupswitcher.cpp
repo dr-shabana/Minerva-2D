@@ -1,5 +1,5 @@
 /*
- * layergroupswitcher.cpp -- Part of Krita
+ * layergroupswitcher.cpp -- Part of Minerva
  *
  * SPDX-FileCopyrightText: 2013 Boudewijn Rempt (boud@valdyas.org)
  *

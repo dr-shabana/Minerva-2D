@@ -1,5 +1,5 @@
 /*
- * imagesplit.h -- Part of Krita
+ * imagesplit.h -- Part of Minerva
  *
  * SPDX-FileCopyrightText: 2004 Boudewijn Rempt (boud@valdyas.org)
  * SPDX-FileCopyrightText: 2011 Srikanth Tiyyagura <srikanth.tulasiram@gmail.com>

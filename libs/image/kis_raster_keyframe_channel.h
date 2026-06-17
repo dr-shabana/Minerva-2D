@@ -61,7 +61,7 @@ private:
  * this channel's associated KisPaintDevice.
  *
  * Often, a raster channel will be represented by an individual track
- * with Krita's KisAnimationTimelineDocker.
+ * with Minerva's KisAnimationTimelineDocker.
 */
 class KRITAIMAGE_EXPORT KisRasterKeyframeChannel : public KisKeyframeChannel
 {

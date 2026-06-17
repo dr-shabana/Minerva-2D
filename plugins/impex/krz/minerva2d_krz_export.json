@@ -1,0 +1,13 @@
+{
+    "Icon": "",
+    "Id": "Minerva Archival Export Filter",
+    "NoDisplay": "true",
+    "Type": "Service",
+    "X-KDE-Export": "application/x-minerva2d-archive",
+    "X-KDE-Library": "kritakrzexport",
+    "X-KDE-ServiceTypes": [
+        "Minerva/FileFilter"
+    ],
+    "X-KDE-Weight": 1,
+    "X-KDE-Extensions" : "krz"
+}

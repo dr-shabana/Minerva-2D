@@ -1,0 +1,9 @@
+{
+    "Id": "Curve brush",
+    "Type": "Service",
+    "X-KDE-Library": "kritacurvepaintop",
+    "X-KDE-ServiceTypes": [
+        "Minerva/Paintop"
+    ],
+    "X-Minerva-Version": "28"
+}

@@ -12,7 +12,7 @@
 #include <KoDockFactoryBase.h>
 #include <KoDockRegistry.h>
 
-K_PLUGIN_FACTORY_WITH_JSON(RecorderDockerPluginFactory, "krita_recorderdocker.json",
+K_PLUGIN_FACTORY_WITH_JSON(RecorderDockerPluginFactory, "minerva2d_recorderdocker.json",
                            registerPlugin<RecorderDockerPlugin>();)
 
 class RecorderDockerDockFactory : public KoDockFactoryBase

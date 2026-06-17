@@ -116,16 +116,16 @@ private:
     void updateClones(KisNodeSP node) {
         /**
          * TODO: completely remove these clone updates code
-         *       in Krita 6
+         *       in Minerva 6
          *
          * These updates should actually be issued by
          * KisBaseRectsWalker::registerCloneNotification(), so
          * we disable then for now. If no reports about broken
-         * clones arrive until Krita 6, just remove this
+         * clones arrive until Minerva 6, just remove this
          * (deprecated?) code.
          */
 
-        if (qEnvironmentVariableIsSet("KRITA_ENABLE_CLONE_UPDATES_IN_APPLICATOR")) {
+        if (qEnvironmentVariableIsSet("MINERVA2D_ENABLE_CLONE_UPDATES_IN_APPLICATOR")) {
             // simple tail-recursive iteration
             KisNodeSP prevNode = node->lastChild();
             while(prevNode) {
@@ -252,7 +252,7 @@ struct StrategyWithStatusPromise : KisStrokeStrategyUndoCommandBased
     void cancelStrokeCallback() override {
         QVector<KisStrokeJobData *> jobs;
         cancelStrokeCallbackImpl(jobs);
-        KritaUtils::addJobBarrier(jobs, [this] () { m_successfullyCompleted.set_value(false);});
+        MinervaUtils::addJobBarrier(jobs, [this] () { m_successfullyCompleted.set_value(false);});
         addMutatedJobs(jobs);
     }
 

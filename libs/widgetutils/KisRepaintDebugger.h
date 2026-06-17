@@ -19,7 +19,7 @@ class QRect;
  * A utility class to aid debugging widget or surface redraws. It lets you
  * paint out the update rects and makes it obvious by cycling between colors
  * with sharp contrast for each paint. This class is controlled globally by
- * the environment variable KRITA_DEBUG_REPAINT. KisRepaintDebugger will only
+ * the environment variable MINERVA2D_DEBUG_REPAINT. KisRepaintDebugger will only
  * work when this environment variable is set to `1`.
  *
  * For optimal effect, one of the `paint` methods shall be called at the end
@@ -38,7 +38,7 @@ class KRITAWIDGETUTILS_EXPORT KisRepaintDebugger
 public:
     /**
      * Whether KisRepaintDebugger is enabled globally. This is controlled
-     * by the environment variable KRITA_DEBUG_REPAINT.
+     * by the environment variable MINERVA2D_DEBUG_REPAINT.
      */
     static bool enabled();
 

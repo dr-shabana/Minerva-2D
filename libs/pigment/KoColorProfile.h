@@ -110,7 +110,7 @@ public:
      */
     virtual bool isSuitableForInput() const = 0;
     /**
-     * @return true if you can use this profile can be used in Krita
+     * @return true if you can use this profile can be used in Minerva
      */
     virtual bool isSuitableForWorkspace() const = 0;
     /**

@@ -31,7 +31,7 @@ void KisWaylandRegistry::registry_global(uint32_t name, const QString &interface
 
 bool KisWaylandRegistry::globalExists(const QString& interface)
 {
-    if (qEnvironmentVariable("KRITA_FORCE_WAYLAND_INTERFACES").split(u',').contains(interface)) {
+    if (qEnvironmentVariable("MINERVA2D_FORCE_WAYLAND_INTERFACES").split(u',').contains(interface)) {
         return true;
     }
 

@@ -1,0 +1,9 @@
+{
+    "Id": "Preset History Docker",
+    "Type": "Service",
+    "X-KDE-Library": "kritapresethistory",
+    "X-KDE-ServiceTypes": [
+        "Minerva/Dock"
+    ],
+    "X-Minerva-Version": "28"
+}

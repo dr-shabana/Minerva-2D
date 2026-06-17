@@ -105,7 +105,7 @@ def writeJson(configDictionary = {}):
 
     # 
 
-    basedata["appID"] = "Krita"
+    basedata["appID"] = "Minerva"
     basedata["lastModified"] = QDateTime.currentDateTimeUtc().toString(Qt.DateFormat.ISODate)
     basedata["ComicBookInfo/1.0"] = metadata
     

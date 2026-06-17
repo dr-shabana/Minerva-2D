@@ -157,7 +157,7 @@ else()
             else() 
                 set(abi_version "13.0")
             endif()
-            set(sip_disabled_features "[\"Krita_Qt5\"]")
+            set(sip_disabled_features "[\"Minerva_Qt5\"]")
         else()
             set(abi_version "12.8")
             set(sip_disabled_features "[]")
@@ -212,9 +212,9 @@ else()
             ${CMAKE_CURRENT_BINARY_DIR}/pyproject.toml
         )
         if (WIN32)
-            set(_krita_python_path "${KRITA_PYTHONPATH_V5};$ENV{PYTHONPATH}")
+            set(_minerva2d_python_path "${MINERVA2D_PYTHONPATH_V5};$ENV{PYTHONPATH}")
         else()
-            set(_krita_python_path "${KRITA_PYTHONPATH_V5}:$ENV{PYTHONPATH}")
+            set(_minerva2d_python_path "${MINERVA2D_PYTHONPATH_V5}:$ENV{PYTHONPATH}")
         endif()
 
         add_custom_command(
@@ -222,7 +222,7 @@ else()
                 ${CMAKE_COMMAND} -E echo "Generating SIP 5+ bindings for ${MODULE_NAME}..."
             COMMAND
                 ${CMAKE_COMMAND} -E env
-                "PYTHONPATH=${_krita_python_path}"
+                "PYTHONPATH=${_minerva2d_python_path}"
                 ${Python_EXECUTABLE}
                 ${sip_generate}
                 --build-dir ${CMAKE_CURRENT_SIP_OUTPUT_DIR}
@@ -230,7 +230,7 @@ else()
                 --concatenate ${SIP_CONCAT_PARTS}
             COMMAND
                 ${CMAKE_COMMAND} -E env
-                "PYTHONPATH=${_krita_python_path}"
+                "PYTHONPATH=${_minerva2d_python_path}"
                 ${Python_EXECUTABLE}
                 ${join_files} 
                 ${_sip_output_stubs} ${SIP_EXTRA_STUBS} 

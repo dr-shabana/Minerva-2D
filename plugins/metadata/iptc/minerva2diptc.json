@@ -1,0 +1,7 @@
+{
+    "Id" : "IPTC",
+    "Type" : "Service",
+    "X-KDE-Library" : "kritaiptc",
+    "X-KDE-ServiceTypes" : ["Minerva/Metadata"],
+    "X-Minerva-Version" : "28"
+}

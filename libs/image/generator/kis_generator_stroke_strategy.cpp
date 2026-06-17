@@ -1,5 +1,5 @@
 /*
- * This file is part of Krita
+ * This file is part of Minerva
  *
  * SPDX-FileCopyrightText: 2020 L. E. Segovia <amy@amyspark.me>
  *
@@ -11,7 +11,7 @@
 #include <kis_processing_information.h>
 #include <kis_processing_visitor.h>
 #include <kis_selection.h>
-#include <krita_utils.h>
+#include <minerva2d_utils.h>
 
 #include "kis_generator_stroke_strategy.h"
 
@@ -28,7 +28,7 @@ KisGeneratorStrokeStrategy::KisGeneratorStrokeStrategy()
 
 QVector<KisStrokeJobData *>KisGeneratorStrokeStrategy::createJobsData(const KisGeneratorLayerSP layer, QSharedPointer<boost::none_t> cookie, const KisGeneratorSP f, const KisPaintDeviceSP dev, const QRegion &region, const KisFilterConfigurationSP filterConfig)
 {
-    using namespace KritaUtils;
+    using namespace MinervaUtils;
 
     QVector<KisStrokeJobData *> jobsData;
 

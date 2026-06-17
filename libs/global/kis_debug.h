@@ -14,7 +14,7 @@
 /**
  * To show debug output, start krita like:
  *
- * QT_LOGGING_RULES="*.*=false;krita.metadata.*=true;krita.file.*=true"
+ * QT_LOGGING_RULES="*.*=false;minerva2d.metadata.*=true;minerva2d.file.*=true"
  *
  */
 
@@ -42,7 +42,7 @@ extern const KRITAGLOBAL_EXPORT QLoggingCategory &_41018();
 
 #define dbgResources qCDebug(_30009)
 #define dbgDbMigration qCDebug(_30010)
-#define dbgKrita qCDebug(_41000)
+#define dbgMinerva qCDebug(_41000)
 #define dbgImage qCDebug(_41001)
 #define dbgRegistry qCDebug(_41002)
 #define dbgTools qCDebug(_41003)
@@ -64,7 +64,7 @@ extern const KRITAGLOBAL_EXPORT QLoggingCategory &_41018();
 
 #define infoResources qCInfo(_30009)
 #define infoDbMigration qCInfo(_30010)
-#define infoKrita qCInfo(_41000)
+#define infoMinerva qCInfo(_41000)
 #define infoImage qCInfo(_41001)
 #define infoRegistry qCInfo(_41002)
 #define infoTools qCInfo(_41003)
@@ -84,7 +84,7 @@ extern const KRITAGLOBAL_EXPORT QLoggingCategory &_41018();
 
 #define warnResources qCWarning(_30009)
 #define warnDbMigration qCWarning(_30010)
-#define warnKrita qCWarning(_41000)
+#define warnMinerva qCWarning(_41000)
 #define warnImage qCWarning(_41001)
 #define warnRegistry qCWarning(_41002)
 #define warnTools qCWarning(_41003)
@@ -104,7 +104,7 @@ extern const KRITAGLOBAL_EXPORT QLoggingCategory &_41018();
 
 #define errResources qCCritical(_30009)
 #define errDbMigration qCCritical(_30010)
-#define errKrita qCCritical(_41000)
+#define errMinerva qCCritical(_41000)
 #define errImage qCCritical(_41001)
 #define errRegistry qCCritical(_41002)
 #define errTools qCCritical(_41003)
@@ -125,7 +125,7 @@ extern const KRITAGLOBAL_EXPORT QLoggingCategory &_41018();
 // Qt does not yet define qCFatal (TODO: this is an oversight, submit a patch upstream)
 /*
 #define fatalResources qCFatal(_30009)
-#define fatalKrita qCFatal(_41000)
+#define fatalMinerva qCFatal(_41000)
 #define fatalImage qCFatal(_41001)
 #define fatalRegistry qCFatal(_41002)
 #define fatalTools qCFatal(_41003)
@@ -158,7 +158,7 @@ KRITAGLOBAL_EXPORT QString kisBacktrace();
 #if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
 #  ifndef QT_NO_DEBUG
 #    undef Q_ASSERT
-#    define Q_ASSERT(cond) if(!(cond)) { errKrita.noquote() << kisBacktrace(); qt_assert(#cond,__FILE__,__LINE__); } qt_noop()
+#    define Q_ASSERT(cond) if(!(cond)) { errMinerva.noquote() << kisBacktrace(); qt_assert(#cond,__FILE__,__LINE__); } qt_noop()
 #  endif
 #endif
 

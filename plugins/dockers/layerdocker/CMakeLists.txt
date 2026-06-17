@@ -43,4 +43,4 @@ set(kritalayerdocker_SOURCES
 kis_add_library(kritalayerdocker MODULE ${kritalayerdocker_SOURCES})
 
 target_link_libraries(kritalayerdocker kritaui kritalayerdocker_static)
-install(TARGETS kritalayerdocker  DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
+install(TARGETS kritalayerdocker  DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})

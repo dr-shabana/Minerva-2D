@@ -24,11 +24,11 @@ WGColorPreviewToolTip::WGColorPreviewToolTip(QWidget *parent)
     setWindowFlags(Qt::ToolTip | Qt::NoDropShadowWindowHint);
     setAttribute(Qt::WA_TranslucentBackground);
     resize(100, 150);
-    QString iconFile(":/dark_krita_tool_freehand.svg");
+    QString iconFile(":/dark_minerva2d_tool_freehand.svg");
     if (QFile(iconFile).exists()) {
         m_brushIcon.addFile(iconFile, QSize(16, 16));
     }
-    iconFile = ":/light_krita_tool_freehand.svg";
+    iconFile = ":/light_minerva2d_tool_freehand.svg";
     if (QFile(iconFile).exists()) {
         m_brushIcon.addFile(iconFile, QSize(16, 16), QIcon::Normal, QIcon::On);
     }

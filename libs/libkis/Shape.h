@@ -15,7 +15,7 @@
 
 /**
  * @brief The Shape class
- * The shape class is a wrapper around Krita's vector objects.
+ * The shape class is a wrapper around Minerva's vector objects.
  *
  * Some example code to parse through interesting information in a given vector layer with shapes.
  * @code

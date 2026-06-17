@@ -31,7 +31,7 @@
 #include "KisPaintopSettingsIds.h"
 #include <KisResourceTypes.h>
 #include <KisResourceModelProvider.h>
-#include <krita_container_utils.h>
+#include <minerva2d_container_utils.h>
 #include <KoResourceCacheInterface.h>
 
 #include <KoStore.h>
@@ -346,7 +346,7 @@ void KisPaintOpPreset::fromXML(const QDomElement& presetElt, KisResourcesInterfa
     KisPaintOpSettingsSP settings = KisPaintOpRegistry::instance()->createSettings(id, resourcesInterface);
     if (!settings) {
         setValid(false);
-        warnKrita << "Could not load settings for preset" << paintopid;
+        warnMinerva << "Could not load settings for preset" << paintopid;
         return;
     }
 
@@ -429,7 +429,7 @@ void KisPaintOpPreset::updateLinkedResourcesMetaData()
             }
         }
 
-        KritaUtils::makeContainerUnique(resourceFileNames);
+        MinervaUtils::makeContainerUnique(resourceFileNames);
 
         if (!resourceFileNames.isEmpty()) {
             addMetaData("dependent_resources_filenames", resourceFileNames);

@@ -43,8 +43,8 @@ static QStringList cleanup(const QStringList &pathList)
         QString location = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation);
         // we have to ensure that the location has a trailing separator, because otherwise when we'll do startsWith
         // check it will skip paths that start have the same path but different directory name. E.g:
-        // ~/.local/share/krita -> AppDataLocation
-        // ~/.local/share/krita3 -> custom location, but this will be skipped in getRidOfAppDataLocation.
+        // ~/.local/share/minerva2d -> AppDataLocation
+        // ~/.local/share/minerva2d3 -> custom location, but this will be skipped in getRidOfAppDataLocation.
         if (location.back() == '/') {
             return location;
         } else {
@@ -110,8 +110,8 @@ QString getInstallationPrefix() {
     appPath.chop(QString("MacOS/").length());
     dbgResources << "2" << appPath;
 
-    bool makeInstall = QDir(appPath + "/../../../share/kritaplugins").exists();
-    bool inBundle = QDir(appPath + "/Resources/kritaplugins").exists();
+    bool makeInstall = QDir(appPath + "/../../../share/minerva2dplugins").exists();
+    bool inBundle = QDir(appPath + "/Resources/minerva2dplugins").exists();
 
     QString bundlePath;
 
@@ -128,8 +128,8 @@ QString getInstallationPrefix() {
         // This needs krita to be installed.
         QString envInstallPath = qgetenv("KIS_TEST_PREFIX_PATH");
         if (!envInstallPath.isEmpty() && (
-                    QDir(envInstallPath + "/share/kritaplugins").exists()
-                    || QDir(envInstallPath + "/Resources/kritaplugins").exists() ))
+                    QDir(envInstallPath + "/share/minerva2dplugins").exists()
+                    || QDir(envInstallPath + "/Resources/minerva2dplugins").exists() ))
         {
             bundlePath = envInstallPath;
         }
@@ -308,7 +308,7 @@ void KoResourcePaths::getAllUserResourceFoldersLocationsForWindowsStore(QString 
     const QString appDataGeneralDirPath = appDataGeneralDir.path();
     if (resourceDir.absolutePath().contains(appDataGeneralDirPath, Qt::CaseInsensitive)) {
         // resource folder location is inside appdata, so it can cause issues
-        // from inside of Krita, we can't determine whether it uses genuine %AppData% or the private Windows Store one
+        // from inside of Minerva, we can't determine whether it uses genuine %AppData% or the private Windows Store one
         // so, half of the time, a custom folder inside %AppData% wouldn't work
         // we can't fix that, we can only inform users about it or prevent them from choosing such folder
         // in any case, here we need to return both folders: inside normal appdata and the private one
@@ -464,7 +464,7 @@ QString KoResourcePaths::findResourceInternal(const QString &type, const QString
     if (resource.isEmpty() || !QFile::exists(resource)) {
         QString approot = getApplicationRoot();
         Q_FOREACH (const QString &alias, aliases) {
-            resource = approot + "/share/krita/" + alias + '/' + fileName;
+            resource = approot + "/share/minerva2d/" + alias + '/' + fileName;
             if (QFile::exists(resource)) {
                 break;
             }
@@ -547,8 +547,8 @@ QStringList KoResourcePaths::findDirsInternal(const QString &type)
 #ifdef Q_OS_MACOS
         dbgResources << "MAC:" << getApplicationRoot();
         QStringList bundlePaths;
-        bundlePaths << getApplicationRoot() + "/share/krita/" + alias;
-        bundlePaths << getApplicationRoot() + "/../share/krita/" + alias;
+        bundlePaths << getApplicationRoot() + "/share/minerva2d/" + alias;
+        bundlePaths << getApplicationRoot() + "/../share/minerva2d/" + alias;
         dbgResources << "bundlePaths" << bundlePaths;
         appendResources(&dirs, bundlePaths, true);
         Q_ASSERT(!dirs.isEmpty());
@@ -556,7 +556,7 @@ QStringList KoResourcePaths::findDirsInternal(const QString &type)
 
         QStringList fallbackPaths;
         fallbackPaths << getApplicationRoot() + "/share/" + alias;
-        fallbackPaths << getApplicationRoot() + "/share/krita/" + alias;
+        fallbackPaths << getApplicationRoot() + "/share/minerva2d/" + alias;
         appendResources(&dirs, fallbackPaths, true);
 
     }
@@ -629,7 +629,7 @@ QStringList KoResourcePaths::findAllResourcesInternal(const QString &type,
         } else {
             dirs << QStandardPaths::locateAll(d->mapTypeToQStandardPaths(type), alias, QStandardPaths::LocateDirectory)
                  << getInstallationPrefix() + "share/" + alias + "/"
-                 << getInstallationPrefix() + "share/krita/" + alias + "/";
+                 << getInstallationPrefix() + "share/minerva2d/" + alias + "/";
         }
 
         Q_FOREACH (const QString &dir, dirs) {
@@ -641,13 +641,13 @@ QStringList KoResourcePaths::findAllResourcesInternal(const QString &type,
 
     dbgResources << "\tresources also from aliases:" << resources.size();
 
-    // if the original filter is "input/*", we only want share/input/* and share/krita/input/* here, but not
+    // if the original filter is "input/*", we only want share/input/* and share/minerva2d/input/* here, but not
     // share/*. therefore, use _filter here instead of filter which was split into alias and "*".
     QFileInfo fi(_filter);
 
     QStringList prefixResources;
     prefixResources << filesInDir(getInstallationPrefix() + "share/" + fi.path(), fi.fileName(), false);
-    prefixResources << filesInDir(getInstallationPrefix() + "share/krita/" + fi.path(), fi.fileName(), false);
+    prefixResources << filesInDir(getInstallationPrefix() + "share/minerva2d/" + fi.path(), fi.fileName(), false);
     appendResources(&resources, prefixResources, true);
 
     dbgResources << "\tresources from installation:" << resources.size();
@@ -668,7 +668,7 @@ QStringList KoResourcePaths::resourceDirsInternal(const QString &type)
 
         aliasDirs << getInstallationPrefix() + "share/" + alias + "/"
                   << QStandardPaths::locateAll(d->mapTypeToQStandardPaths(type), alias, QStandardPaths::LocateDirectory);
-        aliasDirs << getInstallationPrefix() + "share/krita/" + alias + "/"
+        aliasDirs << getInstallationPrefix() + "share/minerva2d/" + alias + "/"
                   << QStandardPaths::locateAll(d->mapTypeToQStandardPaths(type), alias, QStandardPaths::LocateDirectory);
 
         appendResources(&resourceDirs, aliasDirs, true);
@@ -701,7 +701,7 @@ QString KoResourcePaths::saveLocationInternal(const QString &type, const QString
     // on Android almost all config locations we save to are app specific,
     // and don't end with "krita".
     if (!path.endsWith("krita") && useStandardLocation) {
-        path += "/krita";
+        path += "/minerva2d";
     }
 #endif
 

@@ -1,8 +1,8 @@
 #!/bin/env python3
 
 #
-# WARNING: the file is copied from krita-ci-utilities repo, please keep it in sync
-# from https://invent.kde.org/packaging/krita-ci-utilities/-/blob/master/components/MergeFolders.py?ref_type=heads
+# WARNING: the file is copied from minerva2d-ci-utilities repo, please keep it in sync
+# from https://invent.kde.org/packaging/minerva2d-ci-utilities/-/blob/master/components/MergeFolders.py?ref_type=heads
 #
 
 import shutil

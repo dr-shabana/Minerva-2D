@@ -17,7 +17,7 @@
 #include <testutil.h>
 #include <testui.h>
 
-#include "KritaTransformMaskStubs.h"
+#include "MinervaTransformMaskStubs.h"
 #include "KisDumbTransformMaskParams.h"
 
 #include "config-limit-long-tests.h"

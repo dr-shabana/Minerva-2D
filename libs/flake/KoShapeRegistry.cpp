@@ -58,10 +58,10 @@ void KoShapeRegistry::Private::init(KoShapeRegistry *q)
     KoPluginLoader::PluginsConfig config;
     config.blacklist = "FlakePluginsDisabled";
     config.group = "krita";
-    KoPluginLoader::instance()->load(QString::fromLatin1("Krita/Flake"),
+    KoPluginLoader::instance()->load(QString::fromLatin1("Minerva/Flake"),
                                      config);
     config.blacklist = "ShapePluginsDisabled";
-    KoPluginLoader::instance()->load(QString::fromLatin1("Krita/Shape"),
+    KoPluginLoader::instance()->load(QString::fromLatin1("Minerva/Shape"),
                                      config);
 
     // Also add our hard-coded basic shapes

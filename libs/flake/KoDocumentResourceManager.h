@@ -67,7 +67,7 @@ enum DocumentResource {
     FlowStart = 3000,        ///< Base number for Flow specific values.
     PlanStart = 4000,        ///< Base number for Plan specific values.
     StageStart = 5000,       ///< Base number for Stage specific values.
-    KritaStart = 6000,       ///< Base number for Krita specific values.
+    MinervaStart = 6000,       ///< Base number for Minerva specific values.
     SheetsStart = 7000,      ///< Base number for Sheets specific values.
     WordsStart = 8000,       ///< Base number for Words specific values.
     KoPageAppStart = 9000,   ///< Base number for KoPageApp specific values.

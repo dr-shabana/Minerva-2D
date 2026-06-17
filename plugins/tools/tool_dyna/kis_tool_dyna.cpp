@@ -1,5 +1,5 @@
 /*
- *  kis_tool_dyna.cpp - part of Krita
+ *  kis_tool_dyna.cpp - part of Minerva
  *
  *  SPDX-FileCopyrightText: 2009-2011 Lukáš Tvrdý <LukasT.dev@gmail.com>
  *

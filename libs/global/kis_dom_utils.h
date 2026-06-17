@@ -20,7 +20,7 @@
 
 #include "kritaglobal_export.h"
 #include "kis_debug.h"
-#include "krita_container_utils.h"
+#include "minerva2d_container_utils.h"
 #include "KisPortingUtils.h"
 
 class QVector3D;
@@ -68,7 +68,7 @@ namespace KisDomUtils {
         }
 
         if (!ok_locale && ok == nullptr) {
-            warnKrita << "WARNING: KisDomUtils::toInt failed:" << ppVar(str);
+            warnMinerva << "WARNING: KisDomUtils::toInt failed:" << ppVar(str);
             value = 0;
         }
 
@@ -101,7 +101,7 @@ namespace KisDomUtils {
         }
 
         if (!ok_locale && ok == nullptr) {
-            warnKrita << "WARNING: KisDomUtils::toDouble failed:" << ppVar(str);
+            warnMinerva << "WARNING: KisDomUtils::toDouble failed:" << ppVar(str);
             value = 0.0;
         }
 
@@ -176,7 +176,7 @@ void saveValue(QDomElement *parent, const QString &tag, T value)
  * \see loadValue()
  */
 template <template <class...> class Container, typename T, typename ...Args>
-typename std::enable_if<KritaUtils::is_container<Container<T, Args...>>::value, void>::type
+typename std::enable_if<MinervaUtils::is_container<Container<T, Args...>>::value, void>::type
 saveValue(QDomElement *parent, const QString &tag, const Container<T, Args...> &array)
 {
     QDomDocument doc = parent->ownerDocument();
@@ -265,7 +265,7 @@ loadValue(const QDomElement &parent, T *value, const E &/*env*/) {
  */
 
 template <template <class ...> class Container, typename T, typename E, typename ...Args>
-typename std::enable_if<KritaUtils::is_appendable_container<Container<T, Args...>>::value, bool>::type
+typename std::enable_if<MinervaUtils::is_appendable_container<Container<T, Args...>>::value, bool>::type
 loadValue(const QDomElement &e, Container<T, Args...> *array, const E &env = std::tuple<>())
 {
     if (!Private::checkType(e, "array")) return false;
@@ -281,7 +281,7 @@ loadValue(const QDomElement &e, Container<T, Args...> *array, const E &env = std
 }
 
 template <template <class ...> class Container, typename T, typename E, typename F, typename ...Args>
-typename std::enable_if<KritaUtils::is_appendable_container<Container<T, Args...>>::value, bool>::type
+typename std::enable_if<MinervaUtils::is_appendable_container<Container<T, Args...>>::value, bool>::type
 loadValue(const QDomElement &e, Container<T, Args...> *array, const E &env1, const F &env2)
 {
     if (!Private::checkType(e, "array")) return false;

@@ -1,5 +1,5 @@
 /*
- * KDE. Krita Project.
+ * KDE. Minerva Project.
  *
  * SPDX-FileCopyrightText: 2021 Deif Lou <ginoba@gmail.com>
  *
@@ -27,7 +27,7 @@ QStringList screentoneShapeNames(int pattern)
     if (pattern == KisScreentonePatternType_Dots) {
         return QStringList()
             << i18nc("Screentone Pattern - Round Dots", "Round")
-            << i18nc("Screentone Pattern - Ellipse Dots (Krita 4 legacy version)", "Ellipse (Legacy)")
+            << i18nc("Screentone Pattern - Ellipse Dots (Minerva 4 legacy version)", "Ellipse (Legacy)")
             << i18nc("Screentone Pattern - Ellipse Dots", "Ellipse")
             << i18nc("Screentone Pattern - Diamond Dots", "Diamond")
             << i18nc("Screentone Pattern - Square Dots", "Square");

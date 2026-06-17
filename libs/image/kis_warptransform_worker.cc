@@ -1,5 +1,5 @@
 /*
- *  kis_warptransform_worker.cc -- part of Krita
+ *  kis_warptransform_worker.cc -- part of Minerva
  *
  *  SPDX-FileCopyrightText: 2010 Marc Pegon <pe.marc@free.fr>
  *
@@ -258,7 +258,7 @@ void KisWarpTransformWorker::run(KisPaintDeviceSP srcDev, KisPaintDeviceSP dstDe
     polygonOp.finalize();
 }
 
-#include "krita_utils.h"
+#include "minerva2d_utils.h"
 
 QRect KisWarpTransformWorker::approxChangeRect(const QRect &rc)
 {

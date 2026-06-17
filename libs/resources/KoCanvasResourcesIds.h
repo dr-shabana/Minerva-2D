@@ -22,14 +22,14 @@ enum CanvasResourceId {
     ShowSectionBounds, ///< Paint of sections bounds ?
     ShowInlineObjectVisualization, ///< paint a different  background for inline objects
     ApplicationSpeciality, ///< Special features and limitations of the application
-    KritaStart = 6000,       ///< Base number for Krita specific values.
-    HdrExposure = KritaStart + 1,
+    MinervaStart = 6000,       ///< Base number for Minerva specific values.
+    HdrExposure = MinervaStart + 1,
     CurrentPattern,
     CurrentGamutMask,
     GamutMaskActive,
     CurrentGradient,
     CurrentDisplayProfile,
-    CurrentKritaNode,
+    CurrentMinervaNode,
     CurrentPaintOpPreset,
     CurrentPaintOpPresetCache, ///< the cache associated with the currently active preset (this cache may be different per canvas if the preset depends on the canvas resources)
     CurrentPaintOpPresetName,

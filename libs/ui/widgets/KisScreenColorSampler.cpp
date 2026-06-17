@@ -89,7 +89,7 @@ KisScreenColorSampler::~KisScreenColorSampler()
 
 void KisScreenColorSampler::updateIcons()
 {
-    m_d->screenColorSamplerButton->setIcon(kisIcon("krita_tool_color_sampler"));
+    m_d->screenColorSamplerButton->setIcon(kisIcon("minerva2d_tool_color_sampler"));
 }
 
 KoColor KisScreenColorSampler::currentColor()
@@ -159,7 +159,7 @@ void KisScreenColorSampler::cancel()
 
 KoColor KisScreenColorSampler::grabScreenColor(const QPoint &p)
 {
-     // First check whether we're clicking on a Krita window for some real color sampling
+     // First check whether we're clicking on a Minerva window for some real color sampling
     if (m_d->performRealColorSamplingOfCanvas) {
         Q_FOREACH(KisView *view, KisPart::instance()->views()) {
             const KisCanvas2 *canvas = view->canvasBase();

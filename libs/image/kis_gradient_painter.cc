@@ -28,7 +28,7 @@
 #include "kis_gradient_shape_strategy.h"
 #include "kis_polygonal_gradient_shape_strategy.h"
 #include "kis_cached_gradient_shape_strategy.h"
-#include "krita_utils.h"
+#include "minerva2d_utils.h"
 #include "KoMixColorsOp.h"
 #include <KisDitherOp.h>
 #include <KoCachedGradient.h>
@@ -1044,7 +1044,7 @@ KisGradientShapeStrategy* createPolygonShapeStrategy(const QPainterPath &path, c
                             boundingRect.height() >= 3);
 
     const qreal step =
-        qMin(qreal(8.0), KritaUtils::maxDimensionPortion(boundingRect, 0.01, 2));
+        qMin(qreal(8.0), MinervaUtils::maxDimensionPortion(boundingRect, 0.01, 2));
 
     return new KisCachedGradientShapeStrategy(boundingRect, step, step, strategy);
 }
@@ -1071,7 +1071,7 @@ void KisGradientPainter::precalculateShape()
         path.addRect(device()->defaultBounds()->bounds());
     }
 
-    QList<QPainterPath> splitPaths = KritaUtils::splitDisjointPaths(path);
+    QList<QPainterPath> splitPaths = MinervaUtils::splitDisjointPaths(path);
 
     Q_FOREACH (const QPainterPath &subpath, splitPaths) {
         QRect boundingRect = subpath.boundingRect().toAlignedRect();

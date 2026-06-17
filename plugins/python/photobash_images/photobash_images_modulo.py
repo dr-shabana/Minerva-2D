@@ -1,5 +1,5 @@
-# Photobash Images is a Krita plugin to get CC0 images based on a search,
-# straight from the Krita Interface. Useful for textures and concept art!
+# Photobash Images is a Minerva plugin to get CC0 images based on a search,
+# straight from the Minerva Interface. Useful for textures and concept art!
 # Copyright (C) 2020  Pedro Reis.
 #
 # This program is free software: you can redistribute it and/or modify
@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from krita import Krita
+from krita import Minerva
 try:
     from PyQt6.QtGui import QPolygon, QPainter, QPen, QBrush, QImage, QPixmap, QDrag, QPalette
     from PyQt6.QtCore import Qt, QPoint, QMimeData, QUrl, QSize, pyqtSignal
@@ -112,7 +112,7 @@ def customMouseMoveEvent(self, event):
     mimedata.setUrls([url])
 
     # create appropriate res image that will placed
-    doc = Krita.instance().activeDocument()
+    doc = Minerva.instance().activeDocument()
 
     # Saving a non-existent document causes crashes, so lets check for that first.
     if doc is None:

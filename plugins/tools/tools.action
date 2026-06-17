@@ -2,8 +2,8 @@
 <ActionCollection version="2" name="Tools">
   <Actions category="tool-shortcuts">
     <text>Tool Shortcuts</text>
-    <Action name="KritaShape/KisToolDyna">
-      <icon>krita_tool_dyna</icon>
+    <Action name="MinervaShape/KisToolDyna">
+      <icon>minerva2d_tool_dyna</icon>
       <text>Dynamic Brush Tool</text>
       <whatsThis/>
       <toolTip>Dynamic Brush Tool</toolTip>
@@ -12,8 +12,8 @@
       <isCheckable>false</isCheckable>
       <statusTip/>
     </Action>
-    <Action name="KritaShape/KisToolRectangle">
-      <icon>krita_tool_rectangle</icon>
+    <Action name="MinervaShape/KisToolRectangle">
+      <icon>minerva2d_tool_rectangle</icon>
       <text>Rectangle Tool</text>
       <whatsThis/>
       <toolTip>Rectangle Tool</toolTip>
@@ -22,8 +22,8 @@
       <isCheckable>false</isCheckable>
       <statusTip/>
     </Action>
-    <Action name="KritaShape/KisToolMultiBrush">
-      <icon>krita_tool_multihand</icon>
+    <Action name="MinervaShape/KisToolMultiBrush">
+      <icon>minerva2d_tool_multihand</icon>
       <text>Multibrush Tool</text>
       <whatsThis/>
       <toolTip>Multibrush Tool</toolTip>
@@ -32,8 +32,8 @@
       <isCheckable>false</isCheckable>
       <statusTip/>
     </Action>
-    <Action name="KritaShape/KisToolLazyBrush">
-      <icon>krita_tool_lazybrush</icon>
+    <Action name="MinervaShape/KisToolLazyBrush">
+      <icon>minerva2d_tool_lazybrush</icon>
       <text>Colorize Mask Tool</text>
       <whatsThis/>
       <toolTip>Colorize Mask Tool</toolTip>
@@ -41,8 +41,8 @@
       <shortcut/>
       <statusTip/>
     </Action>
-    <Action name="KritaShape/KisToolSmartPatch">
-      <icon>krita_tool_smart_patch</icon>
+    <Action name="MinervaShape/KisToolSmartPatch">
+      <icon>minerva2d_tool_smart_patch</icon>
       <text>Smart Patch Tool</text>
       <whatsThis/>
       <toolTip>Smart Patch Tool</toolTip>
@@ -69,8 +69,8 @@
       <isCheckable>false</isCheckable>
       <statusTip/>
     </Action>
-    <Action name="KritaSelected/KisToolColorSampler">
-      <icon>krita_tool_color_sampler</icon>
+    <Action name="MinervaSelected/KisToolColorSampler">
+      <icon>minerva2d_tool_color_sampler</icon>
       <text>Color Sampler</text>
       <whatsThis/>
       <toolTip>Sample a color from the image or current layer</toolTip>
@@ -79,8 +79,8 @@
       <isCheckable>false</isCheckable>
       <statusTip/>
     </Action>
-    <Action name="KritaFill/KisToolFill">
-      <icon>krita_tool_color_fill</icon>
+    <Action name="MinervaFill/KisToolFill">
+      <icon>minerva2d_tool_color_fill</icon>
       <text>Fill Tool</text>
       <whatsThis/>
       <toolTip>Fill a contiguous area of color with a color, or fill a selection.</toolTip>
@@ -89,8 +89,8 @@
       <isCheckable>false</isCheckable>
       <statusTip/>
     </Action>
-    <Action name="KritaShape/KisToolLine">
-      <icon>krita_tool_line</icon>
+    <Action name="MinervaShape/KisToolLine">
+      <icon>minerva2d_tool_line</icon>
       <text>Line Tool</text>
       <whatsThis/>
       <toolTip>Line Tool</toolTip>
@@ -99,8 +99,8 @@
       <isCheckable>false</isCheckable>
       <statusTip/>
     </Action>
-    <Action name="KritaShape/KisToolEllipse">
-      <icon>krita_tool_ellipse</icon>
+    <Action name="MinervaShape/KisToolEllipse">
+      <icon>minerva2d_tool_ellipse</icon>
       <text>Ellipse Tool</text>
       <whatsThis/>
       <toolTip>Ellipse Tool</toolTip>
@@ -109,8 +109,8 @@
       <isCheckable>false</isCheckable>
       <statusTip/>
     </Action>
-    <Action name="KritaShape/KisToolBrush">
-      <icon>krita_tool_freehand</icon>
+    <Action name="MinervaShape/KisToolBrush">
+      <icon>minerva2d_tool_freehand</icon>
       <text>Freehand Brush Tool</text>
       <whatsThis/>
       <toolTip>Freehand Brush Tool</toolTip>
@@ -119,8 +119,8 @@
       <isCheckable>false</isCheckable>
       <statusTip/>
     </Action>
-    <Action name="KritaFill/KisToolGradient">
-      <icon>krita_tool_gradient</icon>
+    <Action name="MinervaFill/KisToolGradient">
+      <icon>minerva2d_tool_gradient</icon>
       <text>Gradient Tool</text>
       <whatsThis/>
       <toolTip>Draw a gradient.</toolTip>
@@ -129,8 +129,8 @@
       <isCheckable>false</isCheckable>
       <statusTip/>
     </Action>
-    <Action name="KritaShape/KisToolMeasure">
-      <icon>krita_tool_measure</icon>
+    <Action name="MinervaShape/KisToolMeasure">
+      <icon>minerva2d_tool_measure</icon>
       <text>Measurement Tool</text>
       <whatsThis/>
       <toolTip>Measure the distance between two points</toolTip>
@@ -139,8 +139,8 @@
       <isCheckable>false</isCheckable>
       <statusTip/>
     </Action>
-    <Action name="KritaTransform/KisToolMove">
-      <icon>krita_tool_move</icon>
+    <Action name="MinervaTransform/KisToolMove">
+      <icon>minerva2d_tool_move</icon>
       <text>Move Tool</text>
       <whatsThis/>
       <toolTip>Move a layer</toolTip>
@@ -180,7 +180,7 @@
       <statusTip/>
     </Action>
     <Action name="ToolReferenceImages">
-      <icon>krita_tool_reference_images</icon>
+      <icon>minerva2d_tool_reference_images</icon>
       <text>Reference Images Tool</text>
       <whatsThis/>
       <toolTip>Reference Images Tool</toolTip>
@@ -189,7 +189,7 @@
       <isCheckable>false</isCheckable>
       <statusTip/>
     </Action>
-	<Action name="KritaShape/KisToolKnife">
+	<Action name="MinervaShape/KisToolKnife">
       <icon>tool_comic_panel</icon>
       <text>Comic Panel Editing Tool</text>
       <whatsThis/>

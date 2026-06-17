@@ -18,7 +18,7 @@
 #include <kconfiggroup.h>
 #include <ksharedconfig.h>
 
-#include <KritaVersionWrapper.h>
+#include <MinervaVersionWrapper.h>
 
 #include <KisResourceCacheDb.h>
 #include <KisResourceLocator.h>
@@ -50,7 +50,7 @@ void TestResourceLocator::initTestCase()
     // disable database migration debug messages to avoid bloating the output
     const_cast<QLoggingCategory&>(_30010()).setEnabled(QtDebugMsg, false);
     const_cast<QLoggingCategory&>(_30010()).setEnabled(QtInfoMsg, false);
-    qputenv("KRITA_OVERRIDE_USE_FOREIGN_KEYS", "1");
+    qputenv("MINERVA2D_OVERRIDE_USE_FOREIGN_KEYS", "1");
 
     ResourceTestHelper::initTestDb();
 
@@ -76,7 +76,7 @@ void TestResourceLocator::init()
 void TestResourceLocator::testForeignKeysAreEnabled()
 {
     /// in the TestResourceLocator unittest the foreign keys should be enabled
-    /// explicitly by KRITA_OVERRIDE_USE_FOREIGN_KEYS
+    /// explicitly by MINERVA2D_OVERRIDE_USE_FOREIGN_KEYS
 
     try {
 
@@ -103,11 +103,11 @@ void TestResourceLocator::testLocatorInitialization()
         QVERIFY(dstDir.entryList(QDir::Files | QDir::NoDotAndDotDot) == srcDir.entryList(QDir::Files | QDir::NoDotAndDotDot));
     }
 
-    QFile f(m_dstLocation + '/' + "KRITA_RESOURCE_VERSION");
+    QFile f(m_dstLocation + '/' + "MINERVA2D_RESOURCE_VERSION");
     QVERIFY(f.exists());
     KIS_ASSERT(f.open(QFile::ReadOnly));
     QVersionNumber version = QVersionNumber::fromString(QString::fromUtf8(f.readAll()));
-    QVERIFY(version == QVersionNumber::fromString(KritaVersionWrapper::versionString()));
+    QVERIFY(version == QVersionNumber::fromString(MinervaVersionWrapper::versionString()));
 
     {
         QSqlQuery query;

@@ -13,7 +13,7 @@
 #include <kis_assert.h>
 #include <kis_global.h>
 #include <psd_utils.h>
-#include "krita_container_utils.h"
+#include "minerva2d_container_utils.h"
 
 #include <KoCanvasResourcesInterface.h>
 #include <KoAbstractGradient.h>
@@ -460,7 +460,7 @@ QList<int> KisPSDLayerStyle::requiredCanvasResources() const
         addCanvasResources(stroke()->gradient(resourcesInterface()));
     }
 
-    KritaUtils::makeContainerUnique(result);
+    MinervaUtils::makeContainerUnique(result);
 
     return result;
 }

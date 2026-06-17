@@ -18,6 +18,6 @@ kis_add_library(kritahatchingpaintop MODULE ${kritahatchingpaintop_SOURCES})
 
 target_link_libraries(kritahatchingpaintop kritalibpaintop)
 
-install(TARGETS kritahatchingpaintop  DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
-install( FILES  krita-hatching.png DESTINATION ${KDE_INSTALL_DATADIR}/krita/images)
+install(TARGETS kritahatchingpaintop  DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})
+install( FILES  minerva2d-hatching.png DESTINATION ${KDE_INSTALL_DATADIR}/minerva2d/images)
 

@@ -143,7 +143,7 @@ int KisSwatchGroup::columnCount() const {
 
 KisSwatch KisSwatchGroup::getSwatch(int column, int row) const
 {
-    // This is perfectly normal when Krita gets initialized, so it needs an if, not an assert.
+    // This is perfectly normal when Minerva gets initialized, so it needs an if, not an assert.
     // Getting -1, -1 is not a coding error.
     if (row < 0 || column < 0) return KisSwatch();
 

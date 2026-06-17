@@ -175,7 +175,7 @@ void KisLiquifyTransformWorkerTest::testPointsQImage()
 
     QPointF newOffset;
     QImage result = worker.runOnQImage(image, QPointF(10, 10), imageToThumbTransform, &newOffset);
-    dbgKrita << ppVar(newOffset);
+    dbgMinerva << ppVar(newOffset);
 
 
     TestUtil::checkQImage(result, "liquify_transform_test", "liquify_qimage", "resultImage");
@@ -267,7 +267,7 @@ QImage convertPaintDeviceTo16BitQImage(KisPaintDeviceSP dev, QSize size) {
     try {
         data = new quint8 [size.width() * size.height() * dev->pixelSize()];
     } catch (const std::bad_alloc&) {
-        warnKrita << "KisPaintDevice::convertToQImage std::bad_alloc for " << size << " * " << dev->pixelSize();
+        warnMinerva << "KisPaintDevice::convertToQImage std::bad_alloc for " << size << " * " << dev->pixelSize();
         //delete[] data; // data is not allocated, so don't free it
         return QImage();
     }

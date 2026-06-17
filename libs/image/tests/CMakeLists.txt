@@ -5,7 +5,7 @@
 # extend range of affected cmake versions as needed
 if(NOT ${CMAKE_VERSION} VERSION_LESS 3.1.3 AND
    NOT ${CMAKE_VERSION} VERSION_GREATER 3.2.3)
-    message(WARNING "Skipping krita/image/tests, CMake in at least versions 3.1.3 - 3.2.3 seems to have a problem with automoc.  \n(FRIENDLY REMINDER: PLEASE DON'T BREAK THE TESTS!)")
+    message(WARNING "Skipping minerva2d/image/tests, CMake in at least versions 3.1.3 - 3.2.3 seems to have a problem with automoc.  \n(FRIENDLY REMINDER: PLEASE DON'T BREAK THE TESTS!)")
     set (HAVE_FAILING_CMAKE TRUE)
 else()
     set (HAVE_FAILING_CMAKE FALSE)
@@ -150,7 +150,7 @@ kis_add_test(
     LINK_LIBRARIES kritaimage kritatestsdk ${QUAZIP_LIBRARIES}
     )
 
-krita_add_broken_unit_tests(
+minerva2d_add_broken_unit_tests(
     kis_perspective_transform_worker_test.cpp
     LINK_LIBRARIES kritaimage kritatestsdk
     )

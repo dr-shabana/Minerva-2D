@@ -5,7 +5,7 @@
 #include "TestShape.h"
 #include <simpletest.h>
 
-#include <KritaVersionWrapper.h>
+#include <MinervaVersionWrapper.h>
 
 #include <kis_image.h>
 #include <kis_shape_layer.h>
@@ -34,10 +34,10 @@ void TestShape::initTestCase()
 
     QList<Shape*> shapeList = vNode->addShapesFromSvg(R"quote(<?xml version="1.0" standalone="no"?>
         <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
-        <!-- Created using Krita: https://krita.org -->
+        <!-- Created using Minerva: https://minerva2d.org -->
         <svg xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink"
-            xmlns:krita="http://krita.org/namespaces/svg/krita"
+            xmlns:krita="http://minerva2d.org/namespaces/svg/minerva2d"
             xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
             width="307.2pt"
             height="307.2pt"

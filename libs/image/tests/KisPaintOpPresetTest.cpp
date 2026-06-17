@@ -164,7 +164,7 @@ void KisPaintOpPresetTest::testConflictingEmbeddedPatterns()
         QCOMPARE(loadedPattern->name(), "stripes-pat.png");
         QCOMPARE(loadedPattern->md5Sum(), "d3bc7abb7136295578c6b3af3da02fcc");
 
-        // Krita should reuse the same pattern object
+        // Minerva should reuse the same pattern object
         QCOMPARE(loadedPattern->resourceId(), verticalPatternResourceId);
     }
 

@@ -51,9 +51,9 @@
 #include <kis_config_notifier.h>
 
 #include <KisPlatformPluginInterfaceFactory.h>
-#if KRITA_USE_SURFACE_COLOR_MANAGEMENT_API
+#if MINERVA2D_USE_SURFACE_COLOR_MANAGEMENT_API
 #include <KisRootSurfaceInfoProxy.h>
-#endif /* KRITA_USE_SURFACE_COLOR_MANAGEMENT_API */
+#endif /* MINERVA2D_USE_SURFACE_COLOR_MANAGEMENT_API */
 
 namespace {
 class KisUpdateSchedulerLockAdapter
@@ -212,7 +212,7 @@ KisScratchPad::KisScratchPad(QWidget *parent)
     QScreen *screen = m_screenMigrationTracker->currentScreenSafe();
     const int canvasScreenNumber = qApp->screens().indexOf(screen);
 
-#if KRITA_USE_SURFACE_COLOR_MANAGEMENT_API
+#if MINERVA2D_USE_SURFACE_COLOR_MANAGEMENT_API
     if (KisPlatformPluginInterfaceFactory::instance()->surfaceColorManagedByOS()) {
         // proxy's lifetime is managed by QObject hierarchy
         KisRootSurfaceInfoProxy *rootSurfaceInfoProxy = new KisRootSurfaceInfoProxy(this, this);

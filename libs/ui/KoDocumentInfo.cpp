@@ -21,7 +21,7 @@
 #include <kuser.h>
 #include <kemailsettings.h>
 
-#include <KritaVersionWrapper.h>
+#include <MinervaVersionWrapper.h>
 
 
 KoDocumentInfo::KoDocumentInfo(QObject *parent) : QObject(parent)
@@ -247,7 +247,7 @@ void KoDocumentInfo::updateParameters()
         return;
     }
 
-    KConfig config("kritarc");
+    KConfig config("minerva2drc");
     config.reparseConfiguration();
     KConfigGroup appAuthorGroup(&config, "Author");
     QString profile = appAuthorGroup.readEntry("active-profile", "");

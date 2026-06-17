@@ -1,0 +1,9 @@
+{
+    "Id": "Round Corners Filter",
+    "Type": "Service",
+    "X-KDE-Library": "kritaroundcornersfilter",
+    "X-KDE-ServiceTypes": [
+        "Minerva/Filter"
+    ],
+    "X-Minerva-Version": "28"
+}

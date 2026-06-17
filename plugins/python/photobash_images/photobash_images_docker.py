@@ -1,5 +1,5 @@
-# Photobash Images is a Krita plugin to get CC0 images based on a search,
-# straight from the Krita Interface. Useful for textures and concept art!
+# Photobash Images is a Minerva plugin to get CC0 images based on a search,
+# straight from the Minerva Interface. Useful for textures and concept art!
 # Copyright (C) 2020  Pedro Reis.
 #
 # This program is free software: you can redistribute it and/or modify
@@ -16,7 +16,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 
-from krita import Krita, DockWidget, FileDialog
+from krita import Minerva, DockWidget, FileDialog
 from builtins import Application, i18n, i18nc
 import copy
 import math
@@ -340,7 +340,7 @@ class PhotobashDocker(DockWidget):
             return
         
         # Get the document:
-        doc = Krita.instance().activeDocument()
+        doc = Minerva.instance().activeDocument()
 
         # Saving a non-existent document causes crashes, so lets check for that first.
         if doc is None:
@@ -370,8 +370,8 @@ class PhotobashDocker(DockWidget):
         QApplication.clipboard().setImage(image)
 
         # Place Image and Refresh Canvas
-        Krita.instance().action('edit_paste').trigger()
-        Krita.instance().activeDocument().refreshProjection()
+        Minerva.instance().action('edit_paste').trigger()
+        Minerva.instance().activeDocument().refreshProjection()
 
     def checkPath(self, path):
         if not os.path.isfile(path):
@@ -396,7 +396,7 @@ class PhotobashDocker(DockWidget):
             self.updateImages()
             return 
 
-        document = Krita.instance().openDocument(path)
+        document = Minerva.instance().openDocument(path)
         Application.activeWindow().addView(document)
 
     def placeReference(self, path):
@@ -412,7 +412,7 @@ class PhotobashDocker(DockWidget):
         mimedata.setImageData(image)
 
         QApplication.clipboard().setImage(image)
-        Krita.instance().action('paste_as_reference').trigger()
+        Minerva.instance().action('paste_as_reference').trigger()
 
     def openPreview(self, path):
         self.imageWidget.setImage(path, self.getImage(path))

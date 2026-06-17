@@ -49,15 +49,15 @@ public:
 
     /**
      * The main function in the KoJsonTrader class. It tries to automatically
-     * locate the base path containing Krita plugins. It attempts to do so in
+     * locate the base path containing Minerva plugins. It attempts to do so in
      * the current application directory qApp->applicationDirPath().
      *
-     * The environment variable KRITA_PLUGIN_PATH overrides the automatic search
+     * The environment variable MINERVA2D_PLUGIN_PATH overrides the automatic search
      * path when the algorithm is insufficient. Try setting this if the
      * "LittleCMS color management plugin is not installed" error appears.
      *
      * A better algorithm or another solution could be a welcome alternative.
-     * One thing that might help would be to build all Krita plugins in a single
+     * One thing that might help would be to build all Minerva plugins in a single
      * `plugins` folder, so that an installation step is unnecessary to put them
      * together in a single folder here. Another solution might be to construct
      * several QPluginLoaders.

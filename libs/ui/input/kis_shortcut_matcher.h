@@ -219,7 +219,7 @@ public:
      * Resets the internal state of the matcher, tries to resync it to the state
      * passed via argument and activates the prepared action if possible.
      *
-     * This synchronization happens when the user hovers Krita windows,
+     * This synchronization happens when the user hovers Minerva windows,
      * **without** having keyboard focus set to it (therefore matcher cannot
      * get key press and release events), and is also used for various other fixes.
      */
@@ -244,7 +244,7 @@ public:
     bool hasPolledKeys();
 
     /**
-     * Krita lost focus, it means that all the running actions should be ended
+     * Minerva lost focus, it means that all the running actions should be ended
      * forcefully.
      */
     void lostFocusEvent(const QPointF &localPos);

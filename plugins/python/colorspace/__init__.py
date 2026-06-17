@@ -5,4 +5,4 @@
 import krita
 from .colorspace import ColorSpaceExtension
 
-Scripter.addExtension(ColorSpaceExtension(krita.Krita.instance()))
+Scripter.addExtension(ColorSpaceExtension(minerva2d.Minerva.instance()))

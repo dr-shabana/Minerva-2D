@@ -155,7 +155,7 @@ void KisKShortcutSchemesEditor::exportShortcutsScheme()
     KoFileDialog dialog(m_dialog, KoFileDialog::SaveFile, "ExportShortcuts");
     dialog.setCaption(i18n("Export Shortcuts"));
     dialog.setDefaultDir(proposedPath);
-    dialog.setMimeTypeFilters(QStringList() << "application/x-krita-shortcuts", "application/x-krita-shortcuts");
+    dialog.setMimeTypeFilters(QStringList() << "application/x-minerva2d-shortcuts", "application/x-minerva2d-shortcuts");
     QString path = dialog.filename();
 
     if (!path.isEmpty()) {
@@ -171,7 +171,7 @@ void KisKShortcutSchemesEditor::saveCustomShortcuts()
     KoFileDialog dialog(m_dialog, KoFileDialog::SaveFile, "SaveCustomShortcuts");
     dialog.setCaption(i18n("Save Shortcuts"));
     dialog.setDefaultDir(proposedPath);
-    dialog.setMimeTypeFilters(QStringList() << "application/x-krita-shortcuts", "application/x-krita-shortcuts");
+    dialog.setMimeTypeFilters(QStringList() << "application/x-minerva2d-shortcuts", "application/x-minerva2d-shortcuts");
     QString path = dialog.filename();
 
     if (!path.isEmpty()) {
@@ -189,7 +189,7 @@ void KisKShortcutSchemesEditor::loadCustomShortcuts()
     KoFileDialog dialog(m_dialog, KoFileDialog::ImportFile, "ImportShortcuts");
     dialog.setCaption(i18n("Import Shortcuts"));
     dialog.setDefaultDir(proposedPath);
-    dialog.setMimeTypeFilters(QStringList() << "application/x-krita-shortcuts", "application/x-krita-shortcuts");
+    dialog.setMimeTypeFilters(QStringList() << "application/x-minerva2d-shortcuts", "application/x-minerva2d-shortcuts");
     QString path = dialog.filename();
 
     if (path.isEmpty()) {
@@ -210,7 +210,7 @@ void KisKShortcutSchemesEditor::importShortcutsScheme()
     KoFileDialog dialog(m_dialog, KoFileDialog::ImportFile, "ImportShortcuts");
     dialog.setCaption(i18n("Import Shortcuts"));
     dialog.setDefaultDir(proposedPath);
-    dialog.setMimeTypeFilters(QStringList() << "application/x-krita-shortcuts", "application/x-krita-shortcuts");
+    dialog.setMimeTypeFilters(QStringList() << "application/x-minerva2d-shortcuts", "application/x-minerva2d-shortcuts");
     QString path = dialog.filename();
 
     if (path.isEmpty()) {

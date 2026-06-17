@@ -4,8 +4,8 @@
  * SPDX-License-Identifier: LGPL-2.0-or-later
  */
 
-#ifndef KRITA_KISREFERENCEIMAGESLAYER_H
-#define KRITA_KISREFERENCEIMAGESLAYER_H
+#ifndef MINERVA2D_KISREFERENCEIMAGESLAYER_H
+#define MINERVA2D_KISREFERENCEIMAGESLAYER_H
 
 #include "kis_shape_layer.h"
 
@@ -65,4 +65,4 @@ private:
 typedef KisSharedPtr<KisReferenceImagesLayer> KisReferenceImagesLayerSP;
 
 
-#endif //KRITA_KISREFERENCEIMAGESLAYER_H
+#endif //MINERVA2D_KISREFERENCEIMAGESLAYER_H

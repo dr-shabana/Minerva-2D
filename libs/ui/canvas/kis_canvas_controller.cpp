@@ -20,7 +20,7 @@
 #include "kis_image.h"
 #include "KisViewManager.h"
 #include "KisView.h"
-#include "krita_utils.h"
+#include "minerva2d_utils.h"
 #include "kis_config.h"
 #include "kis_signal_compressor_with_param.h"
 #include "kis_config_notifier.h"
@@ -276,7 +276,7 @@ void KisCanvasController::Private::showRotationValueOnCanvas()
     view->viewManager()->
         showFloatingRotationMessage(
             i18nc("floating message about rotation", "Rotation: %1° ",
-                  KritaUtils::prettyFormatReal(rotationAngle)));
+                  MinervaUtils::prettyFormatReal(rotationAngle)));
 }
 
 void KisCanvasController::beginCanvasRotation()

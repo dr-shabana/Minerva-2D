@@ -122,7 +122,7 @@ void KisGlobalTest::testDeduplicateFileName()
         return !existingFiles.contains(name);
     };
 
-    const QString result = KritaUtils::deduplicateFileName(fileName, separator, fileAllowedCallback);
+    const QString result = MinervaUtils::deduplicateFileName(fileName, separator, fileAllowedCallback);
 
     QCOMPARE(result, expectedResult);
 }

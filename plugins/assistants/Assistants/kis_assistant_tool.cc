@@ -1437,7 +1437,7 @@ void KisAssistantTool::loadAssistants()
     KoFileDialog dialog(m_canvas->viewManager()->mainWindowAsQWidget(), KoFileDialog::OpenFile, "OpenAssistant");
     dialog.setCaption(i18n("Select an Assistant"));
     dialog.setDefaultDir(QStandardPaths::writableLocation(QStandardPaths::PicturesLocation));
-    dialog.setMimeTypeFilters(QStringList() << "application/x-krita-assistant", "application/x-krita-assistant");
+    dialog.setMimeTypeFilters(QStringList() << "application/x-minerva2d-assistant", "application/x-minerva2d-assistant");
     QString filename = dialog.filename();
 
     QFile file(filename);
@@ -1578,10 +1578,10 @@ void KisAssistantTool::loadAssistants()
         assistant.clear();
     }
     if (xml.hasError()) {
-        QMessageBox::warning(qApp->activeWindow(), i18nc("@title:window", "Krita"), xml.errorString());
+        QMessageBox::warning(qApp->activeWindow(), i18nc("@title:window", "Minerva"), xml.errorString());
     }
     if (errors) {
-        QMessageBox::warning(qApp->activeWindow(), i18nc("@title:window", "Krita"), i18n("Errors were encountered. Not all assistants were successfully loaded."));
+        QMessageBox::warning(qApp->activeWindow(), i18nc("@title:window", "Minerva"), i18n("Errors were encountered. Not all assistants were successfully loaded."));
     }
 
     KUndo2Command *command = new EditAssistantsCommand(m_canvas, m_origAssistantList, KisPaintingAssistant::cloneAssistantList(m_canvas->paintingAssistantsDecoration()->assistants()));
@@ -1671,7 +1671,7 @@ void KisAssistantTool::saveAssistants()
     KoFileDialog dialog(m_canvas->viewManager()->mainWindowAsQWidget(), KoFileDialog::SaveFile, "OpenAssistant");
     dialog.setCaption(i18n("Save Assistant"));
     dialog.setDefaultDir(QStandardPaths::writableLocation(QStandardPaths::PicturesLocation));
-    dialog.setMimeTypeFilters(QStringList() << "application/x-krita-assistant", "application/x-krita-assistant");
+    dialog.setMimeTypeFilters(QStringList() << "application/x-minerva2d-assistant", "application/x-minerva2d-assistant");
     QString filename = dialog.filename();
     if (filename.isEmpty()) return;
 
@@ -1691,7 +1691,7 @@ QWidget *KisAssistantTool::createOptionWidget()
 
         KConfigGroup cfg = KSharedConfig::openConfig()->group(toolId());
 
-        // See https://bugs.kde.org/show_bug.cgi?id=316896
+        // See https://github.com/dr-shabana/Minerva-2D/issues/show_bug.cgi?id=316896
         QWidget *specialSpacer = new QWidget(m_optionsWidget);
         specialSpacer->setObjectName("SpecialSpacer");
         specialSpacer->setFixedSize(0, 0);

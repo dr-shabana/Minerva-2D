@@ -100,7 +100,7 @@ KoColorSetSP KisPaletteEditor::addPalette()
     layout->addRow(i18n("New palette name:"), le);
 
     QComboBox *cmbPaletteType = new QComboBox();
-    cmbPaletteType->addItem(i18nc("Palette File Type", "Krita Palette (KPL)"));
+    cmbPaletteType->addItem(i18nc("Palette File Type", "Minerva Palette (KPL)"));
     cmbPaletteType->addItem(i18nc("Palette File Type", "GIMP Palette (GPL)"));
     layout->addRow(cmbPaletteType);
 
@@ -141,7 +141,7 @@ KoColorSetSP KisPaletteEditor::importPalette()
     dialog.setCaption(i18n("Import Palette"));
 
     dialog.setDefaultDir(QDir::homePath());
-    dialog.setMimeTypeFilters(QStringList() << "application/x-krita-palette" << "application/x-gimp-color-palette");
+    dialog.setMimeTypeFilters(QStringList() << "application/x-minerva2d-palette" << "application/x-gimp-color-palette");
 
     QString filename = dialog.filename();
     if (filename.isEmpty()) {

@@ -31,7 +31,7 @@
 #include <KisResourceModel.h>
 #include <KoMD5Generator.h>
 
-#include <KritaVersionWrapper.h>
+#include <MinervaVersionWrapper.h>
 
 #include <kis_debug.h>
 #include <KisGlobalResourcesInterface.h>
@@ -41,7 +41,7 @@ KoResourceBundle::KoResourceBundle(QString const& fileName)
     : m_filename(fileName),
       m_bundleVersion("1")
 {
-    m_metadata[KisResourceStorage::s_meta_generator] = "Krita (" + KritaVersionWrapper::versionString(true) + ")";
+    m_metadata[KisResourceStorage::s_meta_generator] = "Minerva (" + MinervaVersionWrapper::versionString(true) + ")";
 }
 
 KoResourceBundle::~KoResourceBundle()
@@ -56,7 +56,7 @@ QString KoResourceBundle::defaultFileExtension() const
 bool KoResourceBundle::load()
 {
     if (m_filename.isEmpty()) return false;
-    QScopedPointer<KoStore> resourceStore(KoStore::createStore(m_filename, KoStore::Read, "application/x-krita-resourcebundle", KoStore::Zip));
+    QScopedPointer<KoStore> resourceStore(KoStore::createStore(m_filename, KoStore::Read, "application/x-minerva2d-resourcebundle", KoStore::Zip));
 
     if (!resourceStore || resourceStore->bad()) {
         qWarning() << "Could not open store on bundle" << m_filename;
@@ -195,7 +195,7 @@ bool KoResourceBundle::save()
     QDir bundleDir = KoResourcePaths::saveLocation("data", "bundles");
     bundleDir.cdUp();
 
-    QScopedPointer<KoStore> store(KoStore::createStore(m_filename, KoStore::Write, "application/x-krita-resourcebundle", KoStore::Zip));
+    QScopedPointer<KoStore> store(KoStore::createStore(m_filename, KoStore::Write, "application/x-minerva2d-resourcebundle", KoStore::Zip));
 
     if (!store || store->bad()) return false;
 
@@ -466,7 +466,7 @@ bool KoResourceBundle::exportResource(const QString &resourceType, const QString
 {
     if (m_filename.isEmpty()) return false;
 
-    QScopedPointer<KoStore> resourceStore(KoStore::createStore(m_filename, KoStore::Read, "application/x-krita-resourcebundle", KoStore::Zip));
+    QScopedPointer<KoStore> resourceStore(KoStore::createStore(m_filename, KoStore::Read, "application/x-minerva2d-resourcebundle", KoStore::Zip));
 
     if (!resourceStore || resourceStore->bad()) {
         qWarning() << "Could not open store on bundle" << m_filename;
@@ -490,7 +490,7 @@ bool KoResourceBundle::loadResource(KoResourceSP resource)
 
     const QString resourceType = resource->resourceType().first;
 
-    QScopedPointer<KoStore> resourceStore(KoStore::createStore(m_filename, KoStore::Read, "application/x-krita-resourcebundle", KoStore::Zip));
+    QScopedPointer<KoStore> resourceStore(KoStore::createStore(m_filename, KoStore::Read, "application/x-minerva2d-resourcebundle", KoStore::Zip));
 
     if (!resourceStore || resourceStore->bad()) {
         qWarning() << "Could not open store on bundle" << m_filename;
@@ -535,7 +535,7 @@ QString KoResourceBundle::resourceMd5(const QString &url)
 
     if (m_filename.isEmpty()) return result;
 
-    QScopedPointer<KoStore> resourceStore(KoStore::createStore(m_filename, KoStore::Read, "application/x-krita-resourcebundle", KoStore::Zip));
+    QScopedPointer<KoStore> resourceStore(KoStore::createStore(m_filename, KoStore::Read, "application/x-minerva2d-resourcebundle", KoStore::Zip));
 
     if (!resourceStore || resourceStore->bad()) {
         qWarning() << "Could not open store on bundle" << m_filename;

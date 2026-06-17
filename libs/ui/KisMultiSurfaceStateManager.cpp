@@ -22,12 +22,12 @@ KisMultiSurfaceStateManager::~KisMultiSurfaceStateManager()
 {
 }
 
-#if KRITA_USE_SURFACE_COLOR_MANAGEMENT_API
+#if MINERVA2D_USE_SURFACE_COLOR_MANAGEMENT_API
 void KisMultiSurfaceStateManager::setRootSurfaceInfoProxy(KisRootSurfaceInfoProxy *proxy)
 {
     m_rootSurfaceInfoProxy = proxy;
 }
-#endif /* KRITA_USE_SURFACE_COLOR_MANAGEMENT_API */
+#endif /* MINERVA2D_USE_SURFACE_COLOR_MANAGEMENT_API */
 
 KisMultiSurfaceStateManager::State KisMultiSurfaceStateManager::createInitializingConfig(bool isCanvasOpenGL, int screenId, KisProofingConfigurationSP proofingConfig) const
 {
@@ -49,17 +49,17 @@ KisMultiSurfaceStateManager::State KisMultiSurfaceStateManager::createInitializi
         multiConfig.uiProfile = KoColorSpaceRegistry::instance()->p709SRGBProfile();
 
     } else if (KisPlatformPluginInterfaceFactory::instance()->surfaceColorManagedByOS()) {
-#if KRITA_USE_SURFACE_COLOR_MANAGEMENT_API
+#if MINERVA2D_USE_SURFACE_COLOR_MANAGEMENT_API
         KIS_SAFE_ASSERT_RECOVER_NOOP(m_rootSurfaceInfoProxy);
         if (m_rootSurfaceInfoProxy) {
             multiConfig.canvasProfile = m_rootSurfaceInfoProxy->rootSurfaceProfile();
             multiConfig.uiProfile = m_rootSurfaceInfoProxy->rootSurfaceProfile();
         }
 #else
-        KIS_SAFE_ASSERT_RECOVER_NOOP(0 && "managed surface mode is active, but Krita is compiled without it!");
+        KIS_SAFE_ASSERT_RECOVER_NOOP(0 && "managed surface mode is active, but Minerva is compiled without it!");
         multiConfig.canvasProfile = KoColorSpaceRegistry::instance()->p709SRGBProfile();
         multiConfig.uiProfile = KoColorSpaceRegistry::instance()->p709SRGBProfile();
-#endif /* KRITA_USE_SURFACE_COLOR_MANAGEMENT_API */
+#endif /* MINERVA2D_USE_SURFACE_COLOR_MANAGEMENT_API */
     } else {
         const KoColorProfile *profile = cfg.displayProfile(screenId);
         KIS_SAFE_ASSERT_RECOVER(profile) {

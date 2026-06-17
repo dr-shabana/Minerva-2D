@@ -12,7 +12,7 @@ def osAwareExecutable(filename):
     return filename if os.name != 'nt' else filename + ".exe"
 
 def osAwareSuffix():
-    return os.path.join("lib", "python3.8", "site-packages","sipconfig.py") if os.name != 'nt' else os.path.join("lib","krita-python-libs","sipconfig.py")
+    return os.path.join("lib", "python3.8", "site-packages","sipconfig.py") if os.name != 'nt' else os.path.join("lib","minerva2d-python-libs","sipconfig.py")
 
 try:
     import sipbuild

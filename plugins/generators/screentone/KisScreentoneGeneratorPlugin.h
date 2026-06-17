@@ -1,5 +1,5 @@
 /*
- * KDE. Krita Project.
+ * KDE. Minerva Project.
  *
  * SPDX-FileCopyrightText: 2021 Deif Lou <ginoba@gmail.com>
  *

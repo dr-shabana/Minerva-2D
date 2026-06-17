@@ -48,8 +48,8 @@ KoSubpathJoinCommand::KoSubpathJoinCommand(const KoPathPointData &pointData1, co
     KoPathPoint * point1 = pathShape->pointByIndex(m_pointData1.pointIndex);
     KoPathPoint * point2 = pathShape->pointByIndex(m_pointData2.pointIndex);
 
-    m_savedControlPoint1 = KritaUtils::fetchControlPoint(point1, m_reverse & ReverseFirst);
-    m_savedControlPoint2 = KritaUtils::fetchControlPoint(point2, !(m_reverse & ReverseSecond));
+    m_savedControlPoint1 = MinervaUtils::fetchControlPoint(point1, m_reverse & ReverseFirst);
+    m_savedControlPoint2 = MinervaUtils::fetchControlPoint(point2, !(m_reverse & ReverseSecond));
 
     m_oldProperties1 = point1->properties();
     m_oldProperties2 = point2->properties();
@@ -76,11 +76,11 @@ void KoSubpathJoinCommand::redo()
     // at the symmetric position to the exiting one
 
     if (closeSubpathMode()) {
-        KritaUtils::makeSymmetric(point1, false);
-        KritaUtils::makeSymmetric(point2, true);
+        MinervaUtils::makeSymmetric(point1, false);
+        MinervaUtils::makeSymmetric(point2, true);
     } else {
-        KritaUtils::makeSymmetric(point1, !(m_reverse & ReverseFirst));
-        KritaUtils::makeSymmetric(point2, m_reverse & ReverseSecond);
+        MinervaUtils::makeSymmetric(point1, !(m_reverse & ReverseFirst));
+        MinervaUtils::makeSymmetric(point2, m_reverse & ReverseSecond);
     }
 
     if (closeSubpathMode()) {
@@ -134,11 +134,11 @@ void KoSubpathJoinCommand::undo()
 
     // restore the old end points
     if (closeSubpathMode()) {
-        KritaUtils::restoreControlPoint(point1, true, m_savedControlPoint1);
-        KritaUtils::restoreControlPoint(point2, false, m_savedControlPoint2);
+        MinervaUtils::restoreControlPoint(point1, true, m_savedControlPoint1);
+        MinervaUtils::restoreControlPoint(point2, false, m_savedControlPoint2);
     } else {
-        KritaUtils::restoreControlPoint(point1, m_reverse & ReverseFirst, m_savedControlPoint1);
-        KritaUtils::restoreControlPoint(point2, !(m_reverse & ReverseSecond), m_savedControlPoint2);
+        MinervaUtils::restoreControlPoint(point1, m_reverse & ReverseFirst, m_savedControlPoint1);
+        MinervaUtils::restoreControlPoint(point2, !(m_reverse & ReverseSecond), m_savedControlPoint2);
     }
 
     point1->setProperties(m_oldProperties1);

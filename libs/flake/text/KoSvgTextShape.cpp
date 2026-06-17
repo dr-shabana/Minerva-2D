@@ -1759,7 +1759,7 @@ bool KoSvgTextShape::saveSvg(SvgSavingContext &context)
                 if (!context.strippedTextMode()) {
                     context.shapeWriter().addAttribute("id", context.getID(this));
 
-                    // save the version to distinguish from the buggy Krita version
+                    // save the version to distinguish from the buggy Minerva version
                     // 2: Wrong font-size.
                     // 3: Wrong font-size-adjust.
                     context.shapeWriter().addAttribute("krita:textVersion", 3);

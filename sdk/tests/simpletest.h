@@ -13,8 +13,8 @@
     QLocale::setDefault(QLocale(QLocale::English, QLocale::UnitedStates)); \
     QStandardPaths::setTestModeEnabled(true); \
     KisSynchronizedConnectionBase::setAutoModeForUnittestsEnabled(true); \
-    qputenv("EXTRA_RESOURCE_DIRS", QByteArray(KRITA_RESOURCE_DIRS_FOR_TESTS)); \
-    qputenv("KRITA_PLUGIN_PATH", QByteArray(KRITA_PLUGINS_DIR_FOR_TESTS)); \
+    qputenv("EXTRA_RESOURCE_DIRS", QByteArray(MINERVA2D_RESOURCE_DIRS_FOR_TESTS)); \
+    qputenv("MINERVA2D_PLUGIN_PATH", QByteArray(MINERVA2D_PLUGINS_DIR_FOR_TESTS)); \
     QApplication app(argc, argv); \
     app.setAttribute(Qt::AA_Use96Dpi, true); \
     /*QLocale en_US(QLocale::English, QLocale::UnitedStates); \

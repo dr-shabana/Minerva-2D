@@ -85,7 +85,7 @@ inline void writeVarString(const QString &value, QIODevice &device)
     SAFE_WRITE_EX(byteOrder, device, lenTag);
 
     if (!device.write(value.toLatin1().data(), value.length())) {
-        warnKrita << "WARNING: ASL: Failed to write ASL string" << ppVar(value);
+        warnMinerva << "WARNING: ASL: Failed to write ASL string" << ppVar(value);
         return;
     }
 }
@@ -99,7 +99,7 @@ inline void writePascalString(const QString &value, QIODevice &device)
     SAFE_WRITE_EX(byteOrder, device, lenTag);
 
     if (!device.write(value.toLatin1().data(), value.length())) {
-        warnKrita << "WARNING: ASL: Failed to write ASL string" << ppVar(value);
+        warnMinerva << "WARNING: ASL: Failed to write ASL string" << ppVar(value);
         return;
     }
 }
@@ -116,7 +116,7 @@ inline void writeFixedString(const QString &value, QIODevice &device)
     }
 
     if (!device.write(data.data(), value.length())) {
-        warnKrita << "WARNING: ASL: Failed to write ASL string" << ppVar(value);
+        warnMinerva << "WARNING: ASL: Failed to write ASL string" << ppVar(value);
         return;
     }
 }
@@ -135,8 +135,8 @@ inline QString getPatternUuidLazy(const KoPatternSP pattern)
     }
 
     if (uuid.isNull()) {
-        warnKrita << "WARNING: Saved pattern doesn't have a UUID, generating...";
-        warnKrita << ppVar(patternFileName) << ppVar(pattern->name());
+        warnMinerva << "WARNING: Saved pattern doesn't have a UUID, generating...";
+        warnMinerva << ppVar(patternFileName) << ppVar(pattern->name());
         uuid = QUuid::createUuid();
     }
 
@@ -204,7 +204,7 @@ public:
             SAFE_WRITE_EX(byteOrder, m_device, realObjectSize);
             m_device.seek(currentPos);
         } catch (ASLWriteException &e) {
-            warnKrita << PREPEND_METHOD(e.what());
+            warnMinerva << PREPEND_METHOD(e.what());
         }
     }
 

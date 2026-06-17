@@ -17,7 +17,7 @@ class KisActionManager;
 
 /**
  *  KisAction, inheriting from QWidgetAction, is a convenience class for GUI
- *  actions, with Krita's configuration system and GUI states. A widget like a
+ *  actions, with Minerva's configuration system and GUI states. A widget like a
  *  "save" button may be enabled/disabled, hidden or shown depending on the
  *  state of the application, e.g. whether the image currently being viewed was
  *  modified since it was opened.
@@ -36,7 +36,7 @@ public:
 
     /**
      * If you re-order these, you must change the associated values in
-     * krita.action and kritamenu.action!
+     * minerva2d.action and minerva2dmenu.action!
      */
     enum ActivationFlag {
         NONE                        = 0x0000, ///< Always activate

@@ -1,5 +1,5 @@
 /*
- *  kis_tool_select_rectangular.cc -- part of Krita
+ *  kis_tool_select_rectangular.cc -- part of Minerva
  *
  *  SPDX-FileCopyrightText: 1999 Michael Koch <koch@kde.org>
  *  SPDX-FileCopyrightText: 2001 John Califf <jcaliff@compuzone.net>

@@ -147,7 +147,7 @@ DlgDbExplorer::DlgDbExplorer(QWidget *parent)
         versionModel->setTable("version_information");
         versionModel->setHeaderData(0, Qt::Horizontal, i18n("Id"));
         versionModel->setHeaderData(1, Qt::Horizontal, i18n("Database version"));
-        versionModel->setHeaderData(2, Qt::Horizontal, i18n("Krita version"));
+        versionModel->setHeaderData(2, Qt::Horizontal, i18n("Minerva version"));
         versionModel->setHeaderData(3, Qt::Horizontal, i18n("Upgrade date"));
         versionModel->addDateTimeColumn(3);
         delegate->addDateTimeColumn(3);
@@ -155,7 +155,7 @@ DlgDbExplorer::DlgDbExplorer(QWidget *parent)
 
         const QSqlRecord r = versionModel->record(0);
         m_page->lblDatabaseVersion->setText(r.value(1).toString());
-        m_page->lblKritaVersion->setText(r.value(2).toString());
+        m_page->lblMinervaVersion->setText(r.value(2).toString());
         m_page->lblCreationDate->setText(QDateTime::fromSecsSinceEpoch(r.value(3).value<int>()).toString());
 
         m_page->tableSchema->setModel(versionModel);

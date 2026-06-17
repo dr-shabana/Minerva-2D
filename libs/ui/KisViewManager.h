@@ -67,7 +67,7 @@ public:
      */
     virtual KisKActionCollection* actionCollection() const;
 
-public:  // Krita specific interfaces
+public:  // Minerva specific interfaces
 
     void setCurrentView(KisView *view);
 

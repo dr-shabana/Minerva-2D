@@ -183,9 +183,9 @@ void KisMask::Private::initSelectionImpl(KisSelectionSP copyFrom, KisLayerSP par
         selection->setDefaultBounds(new KisMaskDefaultBounds(parentLayer));
         selection->setResolutionProxy(copyFrom->resolutionProxy()->createOrCloneDetached(image));
     } else if (copyFromDevice) {
-        KritaUtils::DeviceCopyMode copyMode =
+        MinervaUtils::DeviceCopyMode copyMode =
             q->inherits("KisFilterMask") || q->inherits("KisTransparencyMask") ?
-            KritaUtils::CopyAllFrames : KritaUtils::CopySnapshot;
+            MinervaUtils::CopyAllFrames : MinervaUtils::CopySnapshot;
 
         selection = new KisSelection(copyFromDevice, copyMode,
                                      new KisMaskDefaultBounds(parentLayer),

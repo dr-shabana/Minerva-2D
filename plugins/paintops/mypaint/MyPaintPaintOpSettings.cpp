@@ -98,7 +98,7 @@ void KisMyPaintOpSettings::setPaintOpAngle(qreal value)
     }
 
     /**
-     * All brushes are rotated in Krita counterclockwise,
+     * All brushes are rotated in Minerva counterclockwise,
      * so we should invert the value for MyPaint
      */
     value = 180.0 - value;

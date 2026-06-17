@@ -25,9 +25,9 @@
 
 #include <Eigen/Core>
 
-K_PLUGIN_FACTORY_WITH_JSON(KritaConvolutionFiltersFactory, "kritaconvolutionfilters.json", registerPlugin<KritaConvolutionFilters>();)
+K_PLUGIN_FACTORY_WITH_JSON(MinervaConvolutionFiltersFactory, "kritaconvolutionfilters.json", registerPlugin<MinervaConvolutionFilters>();)
 
-KritaConvolutionFilters::KritaConvolutionFilters(QObject *parent, const QVariantList &)
+MinervaConvolutionFilters::MinervaConvolutionFilters(QObject *parent, const QVariantList &)
         : QObject(parent)
 {
     KisFilterRegistry * manager = KisFilterRegistry::instance();
@@ -40,7 +40,7 @@ KritaConvolutionFilters::KritaConvolutionFilters(QObject *parent, const QVariant
     manager->add(new KisEmbossHorizontalFilter());
 }
 
-KritaConvolutionFilters::~KritaConvolutionFilters()
+MinervaConvolutionFilters::~MinervaConvolutionFilters()
 {
 }
 

@@ -108,7 +108,7 @@ KoColorTransformation* KisBurnShadowsAdjustmentFactory::createTransformation(con
 {
     KoColorTransformation * adj;
     if (colorSpace->colorModelId() != RGBAColorModelID) {
-        dbgKrita << "Unsupported color space " << colorSpace->id() << " in KisBurnShadowsAdjustment::createTransformation";
+        dbgMinerva << "Unsupported color space " << colorSpace->id() << " in KisBurnShadowsAdjustment::createTransformation";
         return 0;
     }
     if (colorSpace->colorDepthId() == Integer8BitsColorDepthID) {
@@ -124,7 +124,7 @@ KoColorTransformation* KisBurnShadowsAdjustmentFactory::createTransformation(con
     } else if (colorSpace->colorDepthId() == Float32BitsColorDepthID) {
         adj = new KisBurnShadowsAdjustment< float, KoRgbTraits < float > >();
     } else {
-        dbgKrita << "Unsupported color space " << colorSpace->id() << " in KisBurnShadowsAdjustment::createTransformation";
+        dbgMinerva << "Unsupported color space " << colorSpace->id() << " in KisBurnShadowsAdjustment::createTransformation";
         return 0;
     }
     adj->setParameters(parameters);

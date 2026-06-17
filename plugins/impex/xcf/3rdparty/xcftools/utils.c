@@ -38,7 +38,7 @@ vFatalGeneric(int status,const char *format, va_list args)
       fputc('\n',stderr);
     }
   }
-  /* don't exit here - Krita can't handle errors otherwise */
+  /* don't exit here - Minerva can't handle errors otherwise */
   /* exit(status); */
 }
 
@@ -104,7 +104,7 @@ gpl_blurb(void)
   fprintf(stderr,PACKAGE_STRING "\n");
   fprintf(stderr,
           _("Type \"%s -h\" to get an option summary.\n"),progname);
-  /* don't exit here - Krita will close otherwise */
+  /* don't exit here - Minerva will close otherwise */
   /* exit(1) ; */
 }
 

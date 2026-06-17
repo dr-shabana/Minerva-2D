@@ -23,7 +23,7 @@ set_dmgfolder_props() {
             set shows item info of theViewOptions to false
             set icon size of theViewOptions to 96
             set background picture of theViewOptions to file ".background:%s"
-            set position of item "krita.app" of container window to {344, 216}
+            set position of item "minerva2d.app" of container window to {344, 216}
             set position of item "Applications" of container window to {590, 216}
             set position of item "Terms of Use" of container window to {163, 216}
             set position of item ".background" of container window to {1300,64}
@@ -58,7 +58,7 @@ get_dmgfolder_props() {
                 log v_arr
                 set v_icons to icon size of theViewOptions
                 log v_icons
-                set v_pos_k to position of item "krita.app" of container window
+                set v_pos_k to position of item "minerva2d.app" of container window
                 log v_pos_k
                 set v_pos_ap to position of item "Applications" of container window
                 log v_pos_ap
@@ -90,7 +90,7 @@ print_osascript_cmd() {
         set shows item info of theViewOptions to false
         set icon size of theViewOptions to %s
         set background picture of theViewOptions to file ".background:%%s"
-        set position of item "krita.app" of container window to {%s}
+        set position of item "minerva2d.app" of container window to {%s}
         set position of item "Applications" of container window to {%s}
         set position of item "Terms of Use" of container window to {%s}
         set position of item ".background" of container window to {%s}
@@ -164,9 +164,9 @@ if [[ ${1} = "set" ]]; then
         mkdir "${DMG_STYLE_DIR}/Terms of Use"
         mkdir "${DMG_STYLE_DIR}/.background"
         mkdir "${DMG_STYLE_DIR}/.fseventsd"
-        ln -s "${BUILDROOT}/krita/packaging/macos/KritaIcon.icns" "${DMG_STYLE_DIR}/.VolumeIcon.icns"
+        ln -s "${BUILDROOT}/minerva2d/packaging/macos/MinervaIcon.icns" "${DMG_STYLE_DIR}/.VolumeIcon.icns"
         ln -s "/Applications" "${DMG_STYLE_DIR}/Applications"
-        ln -s "${KIS_INSTALL_DIR}/bin/krita.app" "${DMG_STYLE_DIR}/krita.app"
+        ln -s "${KIS_INSTALL_DIR}/bin/minerva2d.app" "${DMG_STYLE_DIR}/minerva2d.app"
     fi
 
     ## check background validity

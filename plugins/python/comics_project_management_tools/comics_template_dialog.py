@@ -105,7 +105,7 @@ class comics_template_dialog(QDialog):
     def fill_templates(self):
         self.templates.clear()
         for entry in os.scandir(self.templateDirectory):
-            if entry.name.endswith('.kra') and entry.is_file():
+            if entry.name.endswith('.m2d') and entry.is_file():
                 name = os.path.relpath(entry.path, self.templateDirectory)
                 self.templates.addItem(name)
         if self.templates.model().rowCount() > 0:
@@ -116,11 +116,11 @@ class comics_template_dialog(QDialog):
         create = comics_template_create(self.templateDirectory)
 
         if create.exec() == QDialog.DialogCode.Accepted:
-            if (create.prepare_krita_file()):
+            if (create.prepare_minerva2d_file()):
                 self.fill_templates()
 
     def slot_import_template(self):
-        filenames = FileDialog.getOpenFileNames(caption=i18n("Which files should be added to the template folder?"), directory=self.templateDirectory, filter=str(i18n("Krita files") + "(*.kra)"))
+        filenames = FileDialog.getOpenFileNames(caption=i18n("Which files should be added to the template folder?"), directory=self.templateDirectory, filter=str(i18n("Minerva files") + "(*.m2d)"))
         if not filenames: return
         for file in filenames:
             shutil.copy2(file, self.templateDirectory)
@@ -290,7 +290,7 @@ class comics_template_create(QDialog):
             self.currentColor = dialog.currentColor()
             self.updateImagePreview()
 
-    def prepare_krita_file(self):
+    def prepare_minerva2d_file(self):
         wBase = max(self.widthUnit.pixelsForUnit(self.spn_width.value(), self.DPI.value()), 1)
         bL = self.bleedLeftUnit.pixelsForUnit(self.bleedLeft.value(), self.DPI.value())
         bR = self.bleedRightUnit.pixelsForUnit(self.bleedRight.value(), self.DPI.value())
@@ -358,7 +358,7 @@ class comics_template_create(QDialog):
         template.setGuidesLocked(True)
         template.refreshProjection()
 
-        self.urlSavedTemplate = os.path.join(self.templateDirectory, self.templateName.text() + ".kra")
+        self.urlSavedTemplate = os.path.join(self.templateDirectory, self.templateName.text() + ".m2d")
         success = template.exportImage(self.urlSavedTemplate, InfoObject())
         print("CPMT: Template", self.templateName.text(), "made and saved.")
         template.waitForDone()

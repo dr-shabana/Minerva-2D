@@ -58,7 +58,7 @@ public:
     {
         setToolTip(i18n("Similar Color Selection Tool"));
         setSection(ToolBoxSection::Select);
-        setActivationShapeId(KRITA_TOOL_ACTIVATION_ID);
+        setActivationShapeId(MINERVA2D_TOOL_ACTIVATION_ID);
         setIconName(koIconNameCStr("tool_similar_selection"));
         setPriority(5);
     }

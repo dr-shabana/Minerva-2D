@@ -180,7 +180,7 @@ class comic_page_delegate(QStyledItemDelegate):
 
 
 """
-This is a Krita docker called 'Comics Manager'.
+This is a Minerva docker called 'Comics Manager'.
 
 It allows people to create comics project files, load those files, add pages, remove pages, move pages, manage the metadata,
 and finally export the result.
@@ -349,7 +349,7 @@ class comics_project_manager_docker(DockWidget):
         self.path_to_config = selectedFile
         if os.path.exists(self.path_to_config) is True:
             if os.access(self.path_to_config, os.W_OK) is False:
-                QMessageBox.warning(None, i18n("Config cannot be used"), i18n("Krita doesn't have write access to this folder, so new files cannot be made. Please configure the folder access or move the project to a folder that can be written to."), QMessageBox.StandardButton.Ok)
+                QMessageBox.warning(None, i18n("Config cannot be used"), i18n("Minerva doesn't have write access to this folder, so new files cannot be made. Please configure the folder access or move the project to a folder that can be written to."), QMessageBox.StandardButton.Ok)
                 return
             configFile = open(self.path_to_config, "r", newline="", encoding="utf-16")
             self.setupDictionary = json.load(configFile)
@@ -536,7 +536,7 @@ class comics_project_manager_docker(DockWidget):
 
     def slot_add_page_from_url(self):
         # get the pages.
-        urlList = FileDialog.getOpenFileNames(caption=i18n("Which existing pages to add?"), directory=self.projecturl, filter=str(i18n("Krita files") + "(*.kra)"))
+        urlList = FileDialog.getOpenFileNames(caption=i18n("Which existing pages to add?"), directory=self.projecturl, filter=str(i18n("Minerva files") + "(*.m2d)"))
         if not urlList: return
 
         # get the existing pages list.
@@ -654,7 +654,7 @@ class comics_project_manager_docker(DockWidget):
             extraUnderscore = "_"
         self.setupDictionary['pageNumber'] += 1
         pageName = str(self.setupDictionary["projectName"]).replace(" ", "_") + extraUnderscore + str(format(self.setupDictionary['pageNumber'], "03d"))
-        url = os.path.join(str(self.setupDictionary["pagesLocation"]), pageName + ".kra")
+        url = os.path.join(str(self.setupDictionary["pagesLocation"]), pageName + ".m2d")
 
         # open the page by opening the template and resaving it, or just opening it.
         absoluteUrl = os.path.join(self.projecturl, url)
@@ -663,7 +663,7 @@ class comics_project_manager_docker(DockWidget):
         else:
             booltemplateExists = os.path.isfile(os.path.join(self.projecturl, templateUrl))
             if booltemplateExists is False:
-                path = FileDialog.getOpenFileName(caption=i18n("Which image should be the basis for the new page?"), directory=self.projecturl, filter=str(i18n("Krita files") + "(*.kra)"))
+                path = FileDialog.getOpenFileName(caption=i18n("Which image should be the basis for the new page?"), directory=self.projecturl, filter=str(i18n("Minerva files") + "(*.m2d)"))
                 if not path: return
                 templateUrl = os.path.relpath(path, self.projecturl)
             newPage = Application.openDocument(os.path.join(self.projecturl, templateUrl))
@@ -724,7 +724,7 @@ class comics_project_manager_docker(DockWidget):
             print("CPMT: done")
 
     """
-    Open a page in the pagesmodel in Krita.
+    Open a page in the pagesmodel in Minerva.
     """
 
     def slot_open_page(self, index):
@@ -852,7 +852,7 @@ class comics_project_manager_docker(DockWidget):
         # Since QTimer cannot take any arguments, we need to keep a list of files to update.
         # Otherwise only the last file would be updated and all subsequent calls
         #   of `slot_check_for_page_update` would not know which files to update now.
-        # https://bugs.kde.org/show_bug.cgi?id=426701
+        # https://github.com/dr-shabana/Minerva-2D/issues/show_bug.cgi?id=426701
         self.updateurls.append(url)
         QTimer.singleShot(200, Qt.TimerType.CoarseTimer, self.slot_check_for_page_update)
 
@@ -869,7 +869,7 @@ class comics_project_manager_docker(DockWidget):
                             self.pagesModel.removeRow(index.row())
                             return
                         else:
-                            # Krita will trigger the filesystemwatcher when doing backupfiles,
+                            # Minerva will trigger the filesystemwatcher when doing backupfiles,
                             # so ensure the file is still watched if it exists.
                             self.pagesWatcher.addPath(url)
                         pageItem = self.pagesModel.itemFromIndex(index)

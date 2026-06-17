@@ -19,7 +19,7 @@ public:
     ~WGColorSelectorPlugin() override;
 };
 
-K_PLUGIN_FACTORY_WITH_JSON(WGColorSelectorPluginFactory, "krita_widegamutcolorselector.json", registerPlugin<WGColorSelectorPlugin>();)
+K_PLUGIN_FACTORY_WITH_JSON(WGColorSelectorPluginFactory, "minerva2d_widegamutcolorselector.json", registerPlugin<WGColorSelectorPlugin>();)
 
 class WGColorSelectorDockFactory : public KoDockFactoryBase
 {

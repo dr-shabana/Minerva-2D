@@ -106,7 +106,7 @@ namespace {
         return node.text();
     }
 
-    // Use Krita debug logging categories instead of KDE's default qDebug() for
+    // Use Minerva debug logging categories instead of KDE's default qDebug() for
     // harmless empty strings and translations
     QString quietlyTranslate(const QDomElement &s) {
         if (s.isNull() || s.text().isEmpty()) {
@@ -333,7 +333,7 @@ bool KisActionRegistry::propertizeAction(const QString &name, QAction * a)
         QString iconText  = getChildContent_i18n("iconText");
         bool isCheckable  = getChildContent(actionXml, "isCheckable") == QString("true");
 
-        a->setObjectName(name); // This is helpful, should be added more places in Krita
+        a->setObjectName(name); // This is helpful, should be added more places in Minerva
         if (!icon.isEmpty()) {
             a->setIcon(KisIconUtils::loadIcon(icon.toLatin1()));
             a->setProperty("iconName", QVariant::fromValue(icon)); // test

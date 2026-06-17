@@ -41,7 +41,7 @@ struct KisBrushExportOptions {
 };
 
 
-K_PLUGIN_FACTORY_WITH_JSON(KisBrushExportFactory, "krita_brush_export.json", registerPlugin<KisBrushExport>();)
+K_PLUGIN_FACTORY_WITH_JSON(KisBrushExportFactory, "minerva2d_brush_export.json", registerPlugin<KisBrushExport>();)
 
 KisBrushExport::KisBrushExport(QObject *parent, const QVariantList &) : KisImportExportFilter(parent)
 {

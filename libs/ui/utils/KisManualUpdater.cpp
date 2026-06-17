@@ -7,7 +7,7 @@
 
 #include "KisManualUpdater.h"
 #include <KisMultiFeedRSSModel.h>
-#include <KritaVersionWrapper.h>
+#include <MinervaVersionWrapper.h>
 
 #include <QModelIndex>
 #include <QRegularExpression>
@@ -18,7 +18,7 @@
 
 
 KisManualUpdater::KisManualUpdater()
-    : m_currentVersion(KritaVersionWrapper::versionString())
+    : m_currentVersion(MinervaVersionWrapper::versionString())
 {
     m_rssModel.reset(new MultiFeedRssModel());
 }
@@ -32,7 +32,7 @@ KisManualUpdater::KisManualUpdater(MultiFeedRssModel* rssModel, QString &current
 void KisManualUpdater::checkForUpdate()
 {
     connect(m_rssModel.data(), SIGNAL(feedDataChanged()), this, SLOT(rssDataChanged()));
-    m_rssModel->addFeed(QLatin1String("https://krita.org/en/feed/"));
+    m_rssModel->addFeed(QLatin1String("https://minerva2d.org/en/feed/"));
 }
 
 void KisManualUpdater::rssDataChanged()

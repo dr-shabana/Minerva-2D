@@ -1,5 +1,5 @@
 /*
- * hairy_paintop_plugin.cc -- Part of Krita
+ * hairy_paintop_plugin.cc -- Part of Minerva
  *
  * SPDX-FileCopyrightText: 2008 Lukáš Tvrdý (lukast.dev@gmail.com)
  *
@@ -27,7 +27,7 @@ HairyPaintOpPlugin::HairyPaintOpPlugin(QObject *parent, const QVariantList &)
     : QObject(parent)
 {
     KisPaintOpRegistry *r = KisPaintOpRegistry::instance();
-    r->add(new KisSimplePaintOpFactory<KisHairyPaintOp, KisHairyPaintOpSettings, KisHairyPaintOpSettingsWidget>("hairybrush", i18n("Bristle"), KisPaintOpFactory::categoryStable(), "krita-sumi.png", QString(), QStringList(), 4));
+    r->add(new KisSimplePaintOpFactory<KisHairyPaintOp, KisHairyPaintOpSettings, KisHairyPaintOpSettingsWidget>("hairybrush", i18n("Bristle"), KisPaintOpFactory::categoryStable(), "minerva2d-sumi.png", QString(), QStringList(), 4));
 
 }
 

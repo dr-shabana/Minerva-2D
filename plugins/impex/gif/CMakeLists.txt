@@ -11,7 +11,7 @@ kis_add_library(kritagifexport MODULE ${kritagifexport_SOURCES})
 
 target_link_libraries(kritagifexport kritaui kritaimpex ${GIF_LIBRARY})
 
-install(TARGETS kritagifexport  DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
+install(TARGETS kritagifexport  DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})
 
 set(kritagifimport_SOURCES
     kis_gif_import.cpp
@@ -24,6 +24,6 @@ kis_add_library(kritagifimport MODULE ${kritagifimport_SOURCES})
 
 target_link_libraries(kritagifimport kritaui ${GIF_LIBRARY})
 
-install(TARGETS kritagifimport  DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
+install(TARGETS kritagifimport  DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})
 
-install(FILES krita_gif.desktop DESTINATION ${KDE_INSTALL_APPDIR})
+install(FILES minerva2d_gif.desktop DESTINATION ${KDE_INSTALL_APPDIR})

@@ -568,7 +568,7 @@ QVector<LineBox> flowTextInShapes(const KoSvgTextProperties &properties,
                 indentLine = false;
             }
             // Not adding indent to the (first) word box means it'll overflow if there's no room,
-            // but being too strict might end with the whole text disappearing. Given Krita's text layout is
+            // but being too strict might end with the whole text disappearing. Given Minerva's text layout is
             // in an interactive context, ugly result might be more communicative than all text disappearing.
             bool ind = textIndentInfo.hanging? !indentLine: indentLine;
             QPointF indent = ind? textIndent: QPointF();

@@ -1099,7 +1099,7 @@ void writeStat(KisLazyFillGraph &graph,
 
 #include "kis_paint_device_debug_utils.h"
 #include "kis_gaussian_kernel.h"
-#include "krita_utils.h"
+#include "minerva2d_utils.h"
 
 KisPaintDeviceSP loadTestImage(const QString &name, bool convertToAlpha)
 {
@@ -1314,23 +1314,23 @@ void KisLazyBrushTest::testEstimateTransparentPixels()
 
     qreal value = 0.0;
 
-    value = KritaUtils::estimatePortionOfTransparentPixels(dev, totalRect, 0.1);
+    value = MinervaUtils::estimatePortionOfTransparentPixels(dev, totalRect, 0.1);
     QCOMPARE(value, 1.0);
 
     dev->fill(QRect(0,0,25,50), KoColor(Qt::red, dev->colorSpace()));
-    value = KritaUtils::estimatePortionOfTransparentPixels(dev, totalRect, 0.1);
+    value = MinervaUtils::estimatePortionOfTransparentPixels(dev, totalRect, 0.1);
     QVERIFY(qAbs(value - 0.75) < 0.05);
 
     dev->fill(QRect(25,0,25,50), KoColor(Qt::green, dev->colorSpace()));
-    value = KritaUtils::estimatePortionOfTransparentPixels(dev, totalRect, 0.1);
+    value = MinervaUtils::estimatePortionOfTransparentPixels(dev, totalRect, 0.1);
     QVERIFY(qAbs(value - 0.5) < 0.05);
 
     dev->fill(QRect(25,50,25,50), KoColor(Qt::blue, dev->colorSpace()));
-    value = KritaUtils::estimatePortionOfTransparentPixels(dev, totalRect, 0.1);
+    value = MinervaUtils::estimatePortionOfTransparentPixels(dev, totalRect, 0.1);
     QVERIFY(qAbs(value - 0.25) < 0.05);
 
     dev->fill(QRect(0,50,25,50), KoColor(Qt::blue, dev->colorSpace()));
-    value = KritaUtils::estimatePortionOfTransparentPixels(dev, totalRect, 0.1);
+    value = MinervaUtils::estimatePortionOfTransparentPixels(dev, totalRect, 0.1);
     QCOMPARE(value, 0.0);
 }
 

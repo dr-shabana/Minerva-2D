@@ -1,5 +1,5 @@
 /*
- *  dlg_colorrange.cc - part of KimageShop^WKrayon^WKrita
+ *  dlg_colorrange.cc - part of KimageShop^WKrayon^WMinerva
  *
  *  SPDX-FileCopyrightText: 2004 Boudewijn Rempt <boud@valdyas.org>
  *

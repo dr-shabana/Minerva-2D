@@ -7,7 +7,7 @@
 #ifndef KOCLIPMASKAPPLICATOR_H
 #define KOCLIPMASKAPPLICATOR_H
 
-#include <krita_xsimd_macos_workaround.h>
+#include <minerva2d_xsimd_macos_workaround.h>
 
 #include <KoStreamedMath.h>
 #include <KoClipMaskApplicatorBase.h>

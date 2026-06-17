@@ -18,7 +18,7 @@ KisCurveOptionData::KisCurveOptionData(const QString &prefix,
                                isChecked ? *isChecked : checkability == Checkability::NotCheckable,
                                valueRange.first,
                                valueRange.second,
-                               new KisKritaSensorPack(checkability))
+                               new KisMinervaSensorPack(checkability))
 {
 }
 
@@ -30,12 +30,12 @@ KisCurveOptionData::KisCurveOptionData(const KoID &id,
 {
 }
 
-KisKritaSensorData &KisCurveOptionData::sensorStruct()
+KisMinervaSensorData &KisCurveOptionData::sensorStruct()
 {
-    return dynamic_cast<KisKritaSensorPack *>(sensorData.data())->sensorsStruct();
+    return dynamic_cast<KisMinervaSensorPack *>(sensorData.data())->sensorsStruct();
 }
 
-const KisKritaSensorData &KisCurveOptionData::sensorStruct() const
+const KisMinervaSensorData &KisCurveOptionData::sensorStruct() const
 {
-    return dynamic_cast<const KisKritaSensorPack*>(sensorData.constData())->constSensorsStruct();
+    return dynamic_cast<const KisMinervaSensorPack*>(sensorData.constData())->constSensorsStruct();
 }

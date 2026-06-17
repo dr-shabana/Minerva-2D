@@ -1,5 +1,5 @@
 /*
- *  kis_tool_select_elliptical.h - part of Krayon^WKrita
+ *  kis_tool_select_elliptical.h - part of Krayon^WMinerva
  *
  *  SPDX-FileCopyrightText: 2000 John Califf <jcaliff@compuzone.net>
  *  SPDX-FileCopyrightText: 2002 Patrick Julien <freak@codepimps.org>
@@ -48,7 +48,7 @@ public:
     {
         setToolTip(i18n("Elliptical Selection Tool"));
         setSection(ToolBoxSection::Select);
-        setActivationShapeId(KRITA_TOOL_ACTIVATION_ID);
+        setActivationShapeId(MINERVA2D_TOOL_ACTIVATION_ID);
         setIconName(koIconNameCStr("tool_elliptical_selection"));
         setShortcut(QKeySequence(Qt::Key_J));
         setPriority(1);

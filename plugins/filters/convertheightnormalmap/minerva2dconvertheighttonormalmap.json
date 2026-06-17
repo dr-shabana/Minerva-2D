@@ -1,0 +1,9 @@
+{
+    "Id": "Convert Height To Normal Map Filter",
+    "Type": "Service",
+    "X-KDE-Library": "kritaconvertheighttonormalmap",
+    "X-KDE-ServiceTypes": [
+        "Minerva/Filter"
+    ],
+    "X-Minerva-Version": "40"
+}

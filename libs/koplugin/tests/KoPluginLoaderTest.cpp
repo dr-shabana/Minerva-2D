@@ -20,7 +20,7 @@
 void KoPluginLoaderTest::initTestCase()
 {
     qDebug() << QT_STRINGIFY(DUMMY_PLUGINS_PATH);
-    qputenv("KRITA_PLUGIN_PATH", QT_STRINGIFY(DUMMY_PLUGINS_PATH));
+    qputenv("MINERVA2D_PLUGIN_PATH", QT_STRINGIFY(DUMMY_PLUGINS_PATH));
 }
 
 void KoPluginLoaderTest::testLoadSinglePlugin_data()
@@ -42,7 +42,7 @@ void KoPluginLoaderTest::testLoadSinglePlugin()
 
     KoPluginLoader *loader = KoPluginLoader::instance();
 
-    KPluginFactory *factory = loader->loadSinglePlugin(requestedPluginId, "Krita/DummyPlugin");
+    KPluginFactory *factory = loader->loadSinglePlugin(requestedPluginId, "Minerva/DummyPlugin");
     QVERIFY(factory);
 
     std::unique_ptr<DummyTrivialInterface> plugin1(factory->create<DummyTrivialInterface>());
@@ -78,7 +78,7 @@ void KoPluginLoaderTest::testLoadAll()
     std::unique_ptr<QObject> parent(new QObject);
 
     KoPluginLoader *loader = KoPluginLoader::instance();
-    loader->load("Krita/DummyPlugin", config, parent.get(), false);
+    loader->load("Minerva/DummyPlugin", config, parent.get(), false);
 
     std::vector<std::pair<QString, int>> childrenIds;
     for (QObject *obj : parent->children()) {

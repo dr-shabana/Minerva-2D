@@ -86,7 +86,7 @@ void KisFFMpegWrapper::startNonBlocking(const KisFFMpegWrapperSettings &settings
 
     if (!settings.logPath.isEmpty()) {
         QString sessionRenderLogPath(settings.logPath);
-        // Logs FULL history of Krita session render operations.
+        // Logs FULL history of Minerva session render operations.
         QFile sessionRenderLog(sessionRenderLogPath);
 
         // Make directory..
@@ -371,7 +371,7 @@ void KisFFMpegWrapper::fixUpNonEmbeddedProcessEnvironment(const QString &process
 #ifdef Q_OS_LINUX
 
     /**
-     * We are embedding our own dynamically linked ffmpeg into Krita's appimage
+     * We are embedding our own dynamically linked ffmpeg into Minerva's appimage
      * and add that to the environment using LD_LIBRARY_PATH variable. If the user
      * has his/her own ffmpeg installed into the system, our libraries in
      * LD_LIBRARY_PATH may cause conflicts, so we should remove our environment
@@ -457,7 +457,7 @@ QJsonObject KisFFMpegWrapper::findProcessPath(const QString &processName, const 
         proposedPaths << customLocation + '/' + processName;
     }
 
-    // Krita-bundled..
+    // Minerva-bundled..
     proposedPaths << KoResourcePaths::getApplicationRoot() + '/' + "bin" + '/' + processName;
 
     // OS-specific..

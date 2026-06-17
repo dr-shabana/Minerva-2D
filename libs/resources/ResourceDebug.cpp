@@ -8,7 +8,7 @@
 
 const QLoggingCategory &RESOURCE_LOG() \
 {
-    static const QLoggingCategory category("krita.lib.resource", QtInfoMsg);
+    static const QLoggingCategory category("minerva2d.lib.resource", QtInfoMsg);
     return category;
 }
 

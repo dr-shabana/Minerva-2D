@@ -13,17 +13,17 @@
 #include <filter/kis_color_transformation_configuration.h>
 #include <qmath.h>
 
-K_PLUGIN_FACTORY_WITH_JSON(KritaASCCDLFactory,
+K_PLUGIN_FACTORY_WITH_JSON(MinervaASCCDLFactory,
                            "kritaasccdl.json",
-                           registerPlugin<KritaASCCDL>();)
+                           registerPlugin<MinervaASCCDL>();)
 
 
-KritaASCCDL::KritaASCCDL(QObject *parent, const QVariantList &) : QObject(parent)
+MinervaASCCDL::MinervaASCCDL(QObject *parent, const QVariantList &) : QObject(parent)
 {
     KisFilterRegistry::instance()->add(KisFilterSP(new KisFilterASCCDL()));
 }
 
-KritaASCCDL::~KritaASCCDL()
+MinervaASCCDL::~MinervaASCCDL()
 {
 
 }

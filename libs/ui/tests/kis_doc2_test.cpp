@@ -19,7 +19,7 @@
 #include <KisViewManager.h>
 #include <kis_config.h>
 #include <testui.h>
-#include "KritaTransformMaskStubs.h"
+#include "MinervaTransformMaskStubs.h"
 
 
 void silenceReignsSupreme(QtMsgType /*type*/, const QMessageLogContext &/*context*/, const QString &/*msg*/)
@@ -34,8 +34,8 @@ void KisDocumentTest::initTestCase()
 
 void KisDocumentTest::testOpenImageTwiceInSameDoc()
 {
-    QString fname2 = QString(FILES_DATA_DIR) + '/' + "load_test.kra";
-    QString fname = QString(FILES_DATA_DIR) + '/' + "load_test2.kra";
+    QString fname2 = QString(FILES_DATA_DIR) + '/' + "load_test.m2d";
+    QString fname = QString(FILES_DATA_DIR) + '/' + "load_test2.m2d";
 
 
     Q_ASSERT(!fname.isEmpty());

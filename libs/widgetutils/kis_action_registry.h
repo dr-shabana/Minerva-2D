@@ -23,7 +23,7 @@ class KisShortcutsDialog;
 
 /**
  * KisActionRegistry is intended to manage the global action configuration data
- * for Krita. The data come from four sources:
+ * for Minerva. The data come from four sources:
  * - .action files, containing static action configuration data in XML format,
  * - .rc configuration files, originally from XMLGUI and now in WidgetUtils,
  * - kritashortcutsrc, containing temporary shortcut configuration, and

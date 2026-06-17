@@ -651,7 +651,7 @@ QSharedPointer<KoVectorPatternBackground> SvgParser::parsePattern(const QDomElem
     }
 
     /**
-     * In Krita shapes X,Y coordinates are baked into the shape global transform, but
+     * In Minerva shapes X,Y coordinates are baked into the shape global transform, but
      * the pattern should be painted in "user" coordinates. Therefore, we should handle
      * this offset separately.
      *
@@ -703,7 +703,7 @@ QSharedPointer<KoVectorPatternBackground> SvgParser::parsePattern(const QDomElem
     QList<KoShape*> patternShapes = parseContainer(e);
 
     if (pattHelper->contentCoordinates() == KoFlake::UserSpaceOnUse) {
-        // In Krita we normalize the shapes, bake this transform into the pattern shapes
+        // In Minerva we normalize the shapes, bake this transform into the pattern shapes
 
         const QPointF offset = bakeShapeOffset(pattHelper->patternTransform(), extraShapeOffset);
 
@@ -713,7 +713,7 @@ QSharedPointer<KoVectorPatternBackground> SvgParser::parsePattern(const QDomElem
     }
 
     if (pattHelper->referenceCoordinates() == KoFlake::UserSpaceOnUse) {
-        // In Krita we normalize the shapes, bake this transform into reference rect
+        // In Minerva we normalize the shapes, bake this transform into reference rect
         // NOTE: this is possible *only* when pattern transform is not perspective
         //       (which is always true for SVG)
 
@@ -1084,7 +1084,7 @@ QGradient* prepareGradientForShape(const SvgGradientHelper *gradient,
         }
     }
 
-    // TODO: all gradients in Krita are rendered in a premultiplied-alpha
+    // TODO: all gradients in Minerva are rendered in a premultiplied-alpha
     //       mode, which is against SVG standard. We need to fix that. Though
     //       it requires deepeer changes, than just mere setting of the
     //       QGradient's interpolation mode on loading.
@@ -1111,7 +1111,7 @@ SvgMeshGradient* prepareMeshGradientForShape(SvgGradientHelper *gradient,
         // So, transform is called multiple times on the mesh and that's not nice
         resultGradient->setTransform(gradient->transform() * relativeToShape);
     } else {
-        // NOTE: Krita's shapes use their own coordinate system. Where origin is at the top left
+        // NOTE: Minerva's shapes use their own coordinate system. Where origin is at the top left
         // of the SHAPE. All the mesh patches will be rendered in the global 'user' coordinate system
         // where the origin is at the top left of the LAYER/DOCUMENT.
 
@@ -1759,10 +1759,10 @@ KoShape *SvgParser::parseTextElement(const QDomElement &e, KoSvgTextShape *merge
         static const KoID warning("warn_text_version_1",
                                   i18nc("warning while loading SVG text",
                                         "The document has vector text created "
-                                        "in Krita 4.x. When you save the document, "
+                                        "in Minerva 4.x. When you save the document, "
                                         "the text object will be converted into "
-                                        "Krita 5 format that will no longer be "
-                                        "compatible with Krita 4.x"));
+                                        "Minerva 5 format that will no longer be "
+                                        "compatible with Minerva 4.x"));
 
         if (!m_warnings.contains(warning)) {
             m_warnings << warning;

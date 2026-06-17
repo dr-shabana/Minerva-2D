@@ -48,12 +48,12 @@ public:
     explicit DockWidget();
     ~DockWidget() override;
 
-protected Q_SLOTS: // Krita API
+protected Q_SLOTS: // Minerva API
 
     void setCanvas(KoCanvasBase* canvas) override;
     void unsetCanvas() override;
 
-protected Q_SLOTS: // PyKrita API
+protected Q_SLOTS: // PyMinerva API
 
     /**
      * @@return the canvas object that this docker is currently associated with

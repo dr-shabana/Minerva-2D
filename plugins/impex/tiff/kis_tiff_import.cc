@@ -84,7 +84,7 @@ struct KisTiffBasicInfo {
 };
 
 K_PLUGIN_FACTORY_WITH_JSON(TIFFImportFactory,
-                           "krita_tiff_import.json",
+                           "minerva2d_tiff_import.json",
                            registerPlugin<KisTIFFImport>();)
 
 QPair<QString, QString> getColorSpaceForColorType(uint16_t sampletype,
@@ -493,7 +493,7 @@ KisImportExportErrorCode KisTIFFImport::readImageFromPsdRecords(
                 QString compositeOp = psd_blendmode_to_composite_op(
                     layerRecord->infoBlocks.sectionDividerBlendMode);
 
-                // Krita doesn't support pass-through blend
+                // Minerva doesn't support pass-through blend
                 // mode. Instead it is just a property of a group
                 // layer, so flip it
                 if (compositeOp == COMPOSITE_PASS_THROUGH) {
@@ -515,10 +515,10 @@ KisImportExportErrorCode KisTIFFImport::readImageFromPsdRecords(
                  * See bug: 357559
                  */
 
-                warnKrita << "WARNING: Provided PSD has unbalanced group "
+                warnMinerva << "WARNING: Provided PSD has unbalanced group "
                           << "layer markers. Some masks and/or layers can "
                           << "be lost while loading this file. Please "
-                          << "report a bug to Krita developers and attach "
+                          << "report a bug to Minerva developers and attach "
                           << "this file to the bugreport\n"
                           << "    " << ppVar(layerRecord->layerName) << "\n"
                           << "    "

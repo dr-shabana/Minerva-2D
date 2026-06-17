@@ -112,59 +112,59 @@ kis_add_test(move_selection_stroke_test.cpp  ../../../sdk/tests/stroke_testing_u
 ##### Tests that currently fail and should be fixed #####
 
 # Works under Linux but does not work under Windows
-krita_add_broken_unit_test(
+minerva2d_add_broken_unit_test(
     kis_painting_assistants_decoration_test.cpp ../../../sdk/tests/testutil.cpp
     TEST_NAME KisPaintingAssistantsDecorationTest
     LINK_LIBRARIES kritaui kritatestsdk
     )
 
-krita_add_broken_unit_test( kis_clipboard_test.cpp
+minerva2d_add_broken_unit_test( kis_clipboard_test.cpp
     TEST_NAME KisClipboardTest
     LINK_LIBRARIES kritaui kritatestsdk
     )
 
-krita_add_broken_unit_test( freehand_stroke_test.cpp  $<TARGET_PROPERTY:kritatestsdk,SOURCE_DIR>/stroke_testing_utils.cpp
+minerva2d_add_broken_unit_test( freehand_stroke_test.cpp  $<TARGET_PROPERTY:kritatestsdk,SOURCE_DIR>/stroke_testing_utils.cpp
     TEST_NAME FreehandStrokeTest
     LINK_LIBRARIES kritaui kritatestsdk
     )
 
-krita_add_broken_unit_test( FreehandStrokeBenchmark.cpp  $<TARGET_PROPERTY:kritatestsdk,SOURCE_DIR>/stroke_testing_utils.cpp
+minerva2d_add_broken_unit_test( FreehandStrokeBenchmark.cpp  $<TARGET_PROPERTY:kritatestsdk,SOURCE_DIR>/stroke_testing_utils.cpp
     TEST_NAME FreehandStrokeBenchmark
     LINK_LIBRARIES kritaui kritatestsdk
     )
 
-krita_add_broken_unit_test( KisPaintOnTransparencyMaskTest.cpp  $<TARGET_PROPERTY:kritatestsdk,SOURCE_DIR>/stroke_testing_utils.cpp
+minerva2d_add_broken_unit_test( KisPaintOnTransparencyMaskTest.cpp  $<TARGET_PROPERTY:kritatestsdk,SOURCE_DIR>/stroke_testing_utils.cpp
     TEST_NAME KisPaintOnTransparencyMaskTest
     LINK_LIBRARIES kritaui kritatestsdk
     )
 
-krita_add_broken_unit_test( fill_processing_visitor_test.cpp  $<TARGET_PROPERTY:kritatestsdk,SOURCE_DIR>/stroke_testing_utils.cpp
+minerva2d_add_broken_unit_test( fill_processing_visitor_test.cpp  $<TARGET_PROPERTY:kritatestsdk,SOURCE_DIR>/stroke_testing_utils.cpp
     TEST_NAME FillProcessingVisitorTest
     LINK_LIBRARIES kritaui kritatestsdk
     )
 
-krita_add_broken_unit_test( filter_stroke_test.cpp ../../../sdk/tests/stroke_testing_utils.cpp
+minerva2d_add_broken_unit_test( filter_stroke_test.cpp ../../../sdk/tests/stroke_testing_utils.cpp
     TEST_NAME FilterStrokeTest
     LINK_LIBRARIES kritaui kritatestsdk
     )
 
-krita_add_broken_unit_test( kis_selection_manager_test.cpp
+minerva2d_add_broken_unit_test( kis_selection_manager_test.cpp
     TEST_NAME KisSelectionManagerTest
     LINK_LIBRARIES kritaui kritatestsdk
     )
 #set_tests_properties(libs-ui-KisSelectionManagerTest PROPERTIES TIMEOUT 300)
 
-krita_add_broken_unit_test( kis_node_manager_test.cpp
+minerva2d_add_broken_unit_test( kis_node_manager_test.cpp
     TEST_NAME KisNodeManagerTest
     LINK_LIBRARIES kritaui kritatestsdk
     )
 
-krita_add_broken_unit_test( kis_action_manager_test.cpp
+minerva2d_add_broken_unit_test( kis_action_manager_test.cpp
     TEST_NAME KisActionManagerTest
     LINK_LIBRARIES kritaui kritatestsdk
     )
 
-krita_add_broken_unit_test( kis_categories_mapper_test.cpp testing_categories_mapper.cpp
+minerva2d_add_broken_unit_test( kis_categories_mapper_test.cpp testing_categories_mapper.cpp
     TEST_NAME KisCategoriesMapperTest
     LINK_LIBRARIES kritaui kritatestsdk
     )

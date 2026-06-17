@@ -209,7 +209,7 @@ void KisOverlayPaintDeviceWrapper::readRects(const QVector<QRect> &rects)
 
             if (!croppedRect.isEmpty()) {
 
-                KritaUtils::processTwoDevicesWithStrides(croppedRect,
+                MinervaUtils::processTwoDevicesWithStrides(croppedRect,
                                                          srcIt, dstIt,
                     [this] (const quint8 *src, int srcRowStride,
                             quint8 *dst, int dstRowStride,
@@ -255,7 +255,7 @@ void KisOverlayPaintDeviceWrapper::writeRects(const QVector<QRect> &rects, int i
         KisRandomAccessorSP dstIt = destinationDevice->createRandomAccessorNG();
 
         Q_FOREACH (const QRect &rc, rects) {
-            KritaUtils::processTwoDevicesWithStrides(rc,
+            MinervaUtils::processTwoDevicesWithStrides(rc,
                                                      srcIt, dstIt,
                 [this] (const quint8 *src, int srcRowStride,
                         quint8 *dst, int dstRowStride,

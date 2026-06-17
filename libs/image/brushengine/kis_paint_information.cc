@@ -404,7 +404,7 @@ qreal KisPaintInformation::drawingAngle(bool considerLockedAngle) const
     if (d->drawingAngleOverride) return *d->drawingAngleOverride;
 
     if (!d->directionHistoryInfo) {
-        warnKrita << "KisPaintInformation::drawingAngleSafe()" << "DirectionHistoryInfo object is not available";
+        warnMinerva << "KisPaintInformation::drawingAngleSafe()" << "DirectionHistoryInfo object is not available";
         return 0.0;
     }
 
@@ -430,7 +430,7 @@ QPointF KisPaintInformation::drawingDirectionVector() const
 qreal KisPaintInformation::drawingDistance() const
 {
     if (!d->directionHistoryInfo) {
-        warnKrita << "KisPaintInformation::drawingDistance()" << "DirectionHistoryInfo object is not available";
+        warnMinerva << "KisPaintInformation::drawingDistance()" << "DirectionHistoryInfo object is not available";
         return 1.0;
     }
 
@@ -447,7 +447,7 @@ qreal KisPaintInformation::drawingDistance() const
 qreal KisPaintInformation::maxPressure() const
 {
     if (!d->directionHistoryInfo) {
-        warnKrita << "KisPaintInformation::maxPressure()" << "DirectionHistoryInfo object is not available";
+        warnMinerva << "KisPaintInformation::maxPressure()" << "DirectionHistoryInfo object is not available";
         return d->pressure;
     }
 
@@ -487,7 +487,7 @@ qreal KisPaintInformation::currentTime() const
 int KisPaintInformation::currentDabSeqNo() const
 {
     if (!d->directionHistoryInfo) {
-        warnKrita << "KisPaintInformation::currentDabSeqNo()" << "DirectionHistoryInfo object is not available";
+        warnMinerva << "KisPaintInformation::currentDabSeqNo()" << "DirectionHistoryInfo object is not available";
         return 0;
     }
 
@@ -497,7 +497,7 @@ int KisPaintInformation::currentDabSeqNo() const
 qreal KisPaintInformation::totalStrokeLength() const
 {
     if (!d->directionHistoryInfo) {
-        warnKrita << "KisPaintInformation::totalStrokeLength()" << "DirectionHistoryInfo object is not available";
+        warnMinerva << "KisPaintInformation::totalStrokeLength()" << "DirectionHistoryInfo object is not available";
         return 0;
     }
 
@@ -660,7 +660,7 @@ qreal KisPaintInformation::tiltDirection(const KisPaintInformation& info, bool n
         /**
          * When the stylus is in fully vertical position, stick it
          * to a "neutral position", which is a 3 o'clock tilt of the stylus
-         * as defined in the Krita documentation.
+         * as defined in the Minerva documentation.
          *
          * The normal 0 deg position as returned from Qt is at 6 o'clock
          * tilt of the stylus

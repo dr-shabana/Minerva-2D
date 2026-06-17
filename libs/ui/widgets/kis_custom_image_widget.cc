@@ -288,7 +288,7 @@ KisDocument* KisCustomImageWidget::createNewImage()
 
             int result =
                 QMessageBox::warning(this,
-                                     i18nc("@title:window", "Krita"),
+                                     i18nc("@title:window", "Minerva"),
                                      i18n("Linear gamma RGB color spaces are not supposed to be used "
                                           "in 8-bit integer modes. It is suggested to use 16-bit integer "
                                           "or any floating point colorspace for linear profiles.\n\n"
@@ -297,10 +297,10 @@ KisDocument* KisCustomImageWidget::createNewImage()
                                      QMessageBox::Ok | QMessageBox::Cancel, QMessageBox::Cancel);
 
             if (result == QMessageBox::Cancel) {
-                dbgKrita << "Model RGB8" << "NOT SUPPORTED";
-                dbgKrita << ppVar(cs->name());
-                dbgKrita << ppVar(cs->profile()->name());
-                dbgKrita << ppVar(cs->profile()->info());
+                dbgMinerva << "Model RGB8" << "NOT SUPPORTED";
+                dbgMinerva << ppVar(cs->name());
+                dbgMinerva << ppVar(cs->profile()->name());
+                dbgMinerva << ppVar(cs->profile()->info());
                 return 0;
             }
         }
@@ -430,7 +430,7 @@ void KisCustomImageWidget::saveAsPredefined()
     QFile f(saveLocation + '/' + fileName.replace(' ', '_').replace('(', '_').replace(')', '_').replace(':', '_') + ".predefinedimage");
 
     if (!f.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
-        QMessageBox::warning(this, i18nc("@title:window", "Krita"),
+        QMessageBox::warning(this, i18nc("@title:window", "Minerva"),
             i18n("Could not save %1.\nReason: %2.", f.fileName(), f.errorString()));
         return;
     }

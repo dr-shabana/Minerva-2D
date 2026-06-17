@@ -26,7 +26,7 @@
 
 #include <tga.h>
 
-K_PLUGIN_FACTORY_WITH_JSON(KisTGAImportFactory, "krita_tga_import.json", registerPlugin<KisTGAImport>();)
+K_PLUGIN_FACTORY_WITH_JSON(KisTGAImportFactory, "minerva2d_tga_import.json", registerPlugin<KisTGAImport>();)
 
 KisTGAImport::KisTGAImport(QObject *parent, const QVariantList &)
     : KisImportExportFilter(parent)
@@ -52,9 +52,9 @@ static QDataStream & operator>> (QDataStream & s, TgaHeader & head)
     s >> head.pixel_size;
     s >> head.flags;
 
-    /*dbgKrita << "id_length: " << head.id_length << " - colormap_type: " << head.colormap_type << " - image_type: " << head.image_type;
-    dbgKrita << "colormap_index: " << head.colormap_index << " - colormap_length: " << head.colormap_length << " - colormap_size: " << head.colormap_size;
-    dbgKrita << "x_origin: " << head.x_origin << " - y_origin: " << head.y_origin << " - width:" << head.width << " - height:" << head.height << " - pixelsize: " << head.pixel_size << " - flags: " << head.flags;*/
+    /*dbgMinerva << "id_length: " << head.id_length << " - colormap_type: " << head.colormap_type << " - image_type: " << head.image_type;
+    dbgMinerva << "colormap_index: " << head.colormap_index << " - colormap_length: " << head.colormap_length << " - colormap_size: " << head.colormap_size;
+    dbgMinerva << "x_origin: " << head.x_origin << " - y_origin: " << head.y_origin << " - width:" << head.width << " - height:" << head.height << " - pixelsize: " << head.pixel_size << " - flags: " << head.flags;*/
 
     return s;
 }

@@ -1,9 +1,9 @@
 {
-    "comment": "MyPaint brush file for Krita, Made by Ramon Miranda (CC-0_1.0) Medium-Marker - Concept Design pack - Copyright: Author: Ramón Miranda <mirandagraphic@gmail.com>",
+    "comment": "MyPaint brush file for Minerva, Made by Ramon Miranda (CC-0_1.0) Medium-Marker - Concept Design pack - Copyright: Author: Ramón Miranda <mirandagraphic@gmail.com>",
     "description": "",
     "group": "",
     "notes": "",
-    "parent_brush_name": "krita/e)_Marker_Medium_(mypaint)",
+    "parent_brush_name": "minerva2d/e)_Marker_Medium_(mypaint)",
     "settings": {
         "anti_aliasing": {
             "base_value": 0.0,

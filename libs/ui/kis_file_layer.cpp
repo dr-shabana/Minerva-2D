@@ -189,7 +189,7 @@ void KisFileLayer::openFile() const
             fileAlreadyOpen = true;
         }
     }
-    if (qEnvironmentVariableIsSet("KRITA_ENABLE_ASSERT_TESTS")) {
+    if (qEnvironmentVariableIsSet("MINERVA2D_ENABLE_ASSERT_TESTS")) {
         ENTER_FUNCTION() << ppVar(m_filename);
         if (m_filename.toLower() == "crash_me_with_safe_assert") {
             KIS_SAFE_ASSERT_RECOVER_NOOP(0 && "safe assert for testing purposes");
@@ -352,7 +352,7 @@ KUndo2Command* KisFileLayer::crop(const QRect & rect)
 
 KUndo2Command* KisFileLayer::transform(const QTransform &/*transform*/)
 {
-    warnKrita << "WARNING: File Layer does not support transformations!" << name();
+    warnMinerva << "WARNING: File Layer does not support transformations!" << name();
     return 0;
 }
 

@@ -1,0 +1,9 @@
+{
+    "Id": "Knife Tool",
+    "Type": "Service",
+    "X-KDE-Library": "kritatoolknife",
+    "X-KDE-ServiceTypes": [
+        "Minerva/Tool"
+    ],
+    "X-Minerva-Version": "28"
+}

@@ -1,5 +1,5 @@
 /*
- * curvepaintop_plugin.cc -- Part of Krita
+ * curvepaintop_plugin.cc -- Part of Minerva
  *
  * SPDX-FileCopyrightText: 2008 Lukáš Tvrdý (lukast.dev@gmail.com)
  *
@@ -27,7 +27,7 @@ CurvePaintOpPlugin::CurvePaintOpPlugin(QObject *parent, const QVariantList &)
     : QObject(parent)
 {
     KisPaintOpRegistry *r = KisPaintOpRegistry::instance();
-    r->add(new KisSimplePaintOpFactory<KisCurvePaintOp, KisCurvePaintOpSettings, KisCurvePaintOpSettingsWidget>("curvebrush", i18n("Curve"), KisPaintOpFactory::categoryStable(), "krita-curve.png", QString(), QStringList(), 9));
+    r->add(new KisSimplePaintOpFactory<KisCurvePaintOp, KisCurvePaintOpSettings, KisCurvePaintOpSettingsWidget>("curvebrush", i18n("Curve"), KisPaintOpFactory::categoryStable(), "minerva2d-curve.png", QString(), QStringList(), 9));
 
 }
 

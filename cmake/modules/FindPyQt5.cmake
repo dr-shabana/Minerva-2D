@@ -41,7 +41,7 @@ ELSE(EXISTS PYQT5_VERSION)
     get_filename_component(LIBQT5CORE_PATH ${LIBQT5CORE_PATH} PATH)
     get_filename_component(MINGW_PATH ${CMAKE_CXX_COMPILER} PATH)
 
-    set(_pyqt5_python_path "${KRITA_PYTHONPATH_V4};${KRITA_PYTHONPATH_V5};$ENV{PYTHONPATH}")
+    set(_pyqt5_python_path "${MINERVA2D_PYTHONPATH_V4};${MINERVA2D_PYTHONPATH_V5};$ENV{PYTHONPATH}")
 
     EXECUTE_PROCESS(COMMAND ${CMAKE_COMMAND} -E env
       "PYTHONPATH=${_pyqt5_python_path}"
@@ -49,7 +49,7 @@ ELSE(EXISTS PYQT5_VERSION)
       ${Python_EXECUTABLE} ${_find_pyqt5_py}
       OUTPUT_VARIABLE pyqt5_config)
   else (WIN32)
-    set(_pyqt5_python_path "${KRITA_PYTHONPATH_V4}:${KRITA_PYTHONPATH_V5}:$ENV{PYTHONPATH}")
+    set(_pyqt5_python_path "${MINERVA2D_PYTHONPATH_V4}:${MINERVA2D_PYTHONPATH_V5}:$ENV{PYTHONPATH}")
 
     EXECUTE_PROCESS(COMMAND ${CMAKE_COMMAND} -E env 
       "PYTHONPATH=${_pyqt5_python_path}"

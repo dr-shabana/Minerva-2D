@@ -36,9 +36,9 @@ class KoCanvasController;
 
 
 /**
- * @brief Main window for Krita
+ * @brief Main window for Minerva
  *
- * This class is used to represent a main window within a Krita session. Each
+ * This class is used to represent a main window within a Minerva session. Each
  * main window contains a menubar and some toolbars, and potentially several
  * views of several canvases.
  *
@@ -59,7 +59,7 @@ public:
 public:
 
     /**
-     *  Initializes a Krita main window (with its basic GUI etc.).
+     *  Initializes a Minerva main window (with its basic GUI etc.).
      */
     explicit KisMainWindow(QUuid id = QUuid());
 
@@ -405,7 +405,7 @@ private Q_SLOTS:
     void closeCurrentWindow();
     void checkSanity();
 
-    /// Quits Krita with error message from m_errorMessage.
+    /// Quits Minerva with error message from m_errorMessage.
     void showErrorAndDie();
 
     void initializeGeometry();

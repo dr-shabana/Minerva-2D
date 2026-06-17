@@ -22,7 +22,7 @@
 #include <kis_paint_layer.h>
 #include <kis_config_widget.h>
 
-K_PLUGIN_FACTORY_WITH_JSON(KisQImageIOExportFactory, "krita_qimageio_export.json", registerPlugin<KisQImageIOExport>();)
+K_PLUGIN_FACTORY_WITH_JSON(KisQImageIOExportFactory, "minerva2d_qimageio_export.json", registerPlugin<KisQImageIOExport>();)
 
 class KisWdgOptionsQImageIO : public KisConfigWidget, public Ui::KisWdgOptionsQImageIO
 {

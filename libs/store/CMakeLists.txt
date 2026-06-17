@@ -17,7 +17,7 @@ generate_export_header(kritastore BASE_NAME kritastore)
 
 target_link_libraries(kritastore 
     PRIVATE
-        kritaversion 
+        minerva2dversion 
         kritaglobal 
         KF${KF_MAJOR}::ConfigCore
         Qt${QT_MAJOR_VERSION}::Xml 
@@ -26,7 +26,7 @@ target_link_libraries(kritastore
 )
 
 set_target_properties(kritastore PROPERTIES
-    VERSION ${GENERIC_KRITA_LIB_VERSION} SOVERSION ${GENERIC_KRITA_LIB_SOVERSION}
+    VERSION ${GENERIC_MINERVA2D_LIB_VERSION} SOVERSION ${GENERIC_MINERVA2D_LIB_SOVERSION}
 )
 install(TARGETS kritastore ${INSTALL_TARGETS_DEFAULT_ARGS} )
 

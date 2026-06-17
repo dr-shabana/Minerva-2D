@@ -25,7 +25,7 @@
 #include "strokes/move_selection_stroke_strategy.h"
 #include "kis_resources_snapshot.h"
 #include "kis_action_registry.h"
-#include "krita_utils.h"
+#include "minerva2d_utils.h"
 
 #include <KisViewManager.h>
 #include <KisDocument.h>
@@ -64,7 +64,7 @@ KisToolMove::KisToolMove(KoCanvasBase *canvas)
 
     m_optionsWidget = new MoveToolOptionsWidget(nullptr, currentImage()->xRes(), toolId());
 
-    // See https://bugs.kde.org/show_bug.cgi?id=316896
+    // See https://github.com/dr-shabana/Minerva-2D/issues/show_bug.cgi?id=316896
     QWidget *specialSpacer = new QWidget(m_optionsWidget);
     specialSpacer->setObjectName("SpecialSpacer");
     specialSpacer->setFixedSize(0, 0);
@@ -302,7 +302,7 @@ bool KisToolMove::tryEndPreviousStroke(const KisNodeList &nodes)
 
     bool strokeEnded = false;
 
-    if (!KritaUtils::compareListsUnordered(nodes, m_currentlyProcessingNodes)) {
+    if (!MinervaUtils::compareListsUnordered(nodes, m_currentlyProcessingNodes)) {
         endStroke();
         strokeEnded = true;
     }

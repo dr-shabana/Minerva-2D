@@ -1,7 +1,7 @@
 {
     "comment": "MyPaint brush file −Knife− from the classic kit of Libmypaint, Copyright 2005-2016 Martin Renold and the MyPaint Development Team, GPL-2+", 
     "group": "", 
-    "parent_brush_name": "krita/e)_Marker_Plain_(mypaint)", 
+    "parent_brush_name": "minerva2d/e)_Marker_Plain_(mypaint)", 
     "settings": {
         "anti_aliasing": {
             "base_value": 0.0, 

@@ -50,28 +50,28 @@
     
 
     <text id="test1ttb" transform="translate(300,5)" line-height="1.0"
-        font-family="Krita_Test_Unicode_Variation_A" fill="blue" font-size="15" 
+        font-family="Minerva_Test_Unicode_Variation_A" fill="blue" font-size="15" 
           writing-mode="vertical-rl" text-anchor="sstart" inline-size="60">ああ&#x82A6;&#x82A6;あ&#x82A6;あ&#x82A6;ああ&#x82A6;あああ
     </text>
     <text id="test2ttb" transform="translate(300,100)" line-height="1.0"
-        font-family="Krita_Test_Unicode_Variation_A" fill="blue" font-size="15" 
+        font-family="Minerva_Test_Unicode_Variation_A" fill="blue" font-size="15" 
           writing-mode="vertical-rl" text-anchor="middle" inline-size="60">ああ&#x82A6;&#x82A6;あ&#x82A6;あ&#x82A6;ああ&#x82A6;あああ
     </text>
     <text id="test3ttb" transform="translate(300,195)" line-height="1.0"
-        font-family="Krita_Test_Unicode_Variation_A" fill="blue" font-size="15" 
+        font-family="Minerva_Test_Unicode_Variation_A" fill="blue" font-size="15" 
           writing-mode="vertical-rl" text-anchor="end" inline-size="60">ああ&#x82A6;&#x82A6;あ&#x82A6;あ&#x82A6;ああ&#x82A6;あああ
     </text>
     
     <text id="test1-lr-ttb" transform="translate(340,5)" line-height="1.0"
-        font-family="Krita_Test_Unicode_Variation_A" fill="blue" font-size="15" 
+        font-family="Minerva_Test_Unicode_Variation_A" fill="blue" font-size="15" 
           writing-mode="vertical-lr" text-anchor="start" inline-size="60">ああ&#x82A6;&#x82A6;あ&#x82A6;あ&#x82A6;ああ&#x82A6;あああ
     </text>
     <text id="test2-lr-ttb" transform="translate(340,100)" line-height="1.0"
-        font-family="Krita_Test_Unicode_Variation_A" fill="blue" font-size="15" 
+        font-family="Minerva_Test_Unicode_Variation_A" fill="blue" font-size="15" 
           writing-mode="vertical-lr" text-anchor="middle" inline-size="60">ああ&#x82A6;&#x82A6;あ&#x82A6;あ&#x82A6;ああ&#x82A6;あああ
     </text>
     <text id="test3-lr-ttb" transform="translate(340,195)" line-height="1.0"
-        font-family="Krita_Test_Unicode_Variation_A" fill="blue" font-size="15" 
+        font-family="Minerva_Test_Unicode_Variation_A" fill="blue" font-size="15" 
           writing-mode="vertical-lr" text-anchor="end" inline-size="60">ああ&#x82A6;&#x82A6;あ&#x82A6;あ&#x82A6;ああ&#x82A6;あああ
     </text>
 

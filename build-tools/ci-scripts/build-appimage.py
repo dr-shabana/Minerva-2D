@@ -19,7 +19,7 @@ def makePathRelative(path):
     return path[1:]
 
 packagingPath = os.path.abspath('_packaging')
-appdirPath = os.path.join(packagingPath, 'krita.appdir')
+appdirPath = os.path.join(packagingPath, 'minerva2d.appdir')
 downloadsPath = os.path.join(packagingPath, 'download')
 buildPath = os.path.abspath('_build')
 depsPath = os.path.abspath('_install')
@@ -37,10 +37,10 @@ filesToMove = os.listdir(stagingRoot)
 for file in filesToMove:
     shutil.move(os.path.join(stagingRoot, file), os.path.join(appdirPath, 'usr'))
 
-os.environ['KRITA_APPDIR_PATH'] = appdirPath
-os.environ['KRITA_DOWNLOADS_PATH'] = downloadsPath
-os.environ['KRITA_BUILD_PATH'] = buildPath
-os.environ['KRITA_DEPS_PATH'] = depsPath
+os.environ['MINERVA2D_APPDIR_PATH'] = appdirPath
+os.environ['MINERVA2D_DOWNLOADS_PATH'] = downloadsPath
+os.environ['MINERVA2D_BUILD_PATH'] = buildPath
+os.environ['MINERVA2D_DEPS_PATH'] = depsPath
 
 commandToRun = ' '.join(['./packaging/linux/appimage/build-image.sh', packagingPath, os.path.abspath('.')])
 

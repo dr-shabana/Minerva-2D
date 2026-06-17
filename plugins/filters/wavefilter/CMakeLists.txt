@@ -12,5 +12,5 @@ kis_add_library(kritawavefilter MODULE ${kritawavefilter_SOURCES})
 
 target_link_libraries(kritawavefilter kritaui)
 
-install(TARGETS kritawavefilter  DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
+install(TARGETS kritawavefilter  DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})
 

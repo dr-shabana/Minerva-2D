@@ -1,0 +1,9 @@
+{
+    "Id": "Pattern Docker",
+    "Type": "Service",
+    "X-KDE-Library": "kritapatterndocker",
+    "X-KDE-ServiceTypes": [
+        "Minerva/Dock"
+    ],
+    "X-Minerva-Version": "28"
+}

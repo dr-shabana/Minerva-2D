@@ -12,7 +12,7 @@
 
 #include <kis_mask_generator.h>
 #include "kis_brush_mask_applicator_base.h"
-#include "krita_utils.h"
+#include "minerva2d_utils.h"
 
 #include <testutil.h>
 

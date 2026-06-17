@@ -129,13 +129,13 @@
 #include <config-qt-patches-present.h>
 #include <config-use-surface-color-management-api.h>
 
-#if KRITA_USE_SURFACE_COLOR_MANAGEMENT_API
+#if MINERVA2D_USE_SURFACE_COLOR_MANAGEMENT_API
 
 #include <QWindow>
 #include <QPlatformSurfaceEvent>
 #include <KisSRGBSurfaceColorSpaceManager.h>
 
-#endif /* KRITA_USE_SURFACE_COLOR_MANAGEMENT_API */
+#endif /* MINERVA2D_USE_SURFACE_COLOR_MANAGEMENT_API */
 
 namespace {
 const QTime appStartTime(QTime::currentTime());
@@ -232,10 +232,10 @@ KisApplication::KisApplication(const QString &key, int &argc, char **argv)
     QCoreApplication::addLibraryPath(QCoreApplication::applicationDirPath());
 
 #ifndef Q_OS_MACOS
-    setWindowIcon(KisIconUtils::loadIcon("krita-branding"));
+    setWindowIcon(KisIconUtils::loadIcon("minerva2d-branding"));
 #endif
 
-    if (qgetenv("KRITA_NO_STYLE_OVERRIDE").isEmpty()) {
+    if (qgetenv("MINERVA2D_NO_STYLE_OVERRIDE").isEmpty()) {
 
 #if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
         QStringList styles = QStringList() << "haiku" << "macintosh" << "breeze" << "fusion";
@@ -288,10 +288,10 @@ KisApplication::KisApplication(const QString &key, int &argc, char **argv)
     KisSynchronizedConnectionBase::registerSynchronizedEventBarrier(std::bind(&KisApplication::processPostponedSynchronizationEvents, this));
 
 
-#if KRITA_USE_SURFACE_COLOR_MANAGEMENT_API
+#if MINERVA2D_USE_SURFACE_COLOR_MANAGEMENT_API
 
     /**
-     * Automatically assign sRGB color space to all Krita windows,
+     * Automatically assign sRGB color space to all Minerva windows,
      * which are not marked with a special tag.
      */
     struct PlatformWindowCreationFilter : QObject
@@ -307,7 +307,7 @@ KisApplication::KisApplication(const QString &key, int &argc, char **argv)
                  * Check for the special tag that is set for the windows that handle
                  * their color space themselves
                  */
-                if (watched->property("krita_skip_srgb_surface_manager_assignment").toBool()) {
+                if (watched->property("minerva2d_skip_srgb_surface_manager_assignment").toBool()) {
                     return false;
                 }
 
@@ -327,7 +327,7 @@ KisApplication::KisApplication(const QString &key, int &argc, char **argv)
     };
 
     this->installEventFilter(new PlatformWindowCreationFilter(this));
-#endif /* KRITA_USE_SURFACE_COLOR_MANAGEMENT_API */
+#endif /* MINERVA2D_USE_SURFACE_COLOR_MANAGEMENT_API */
 }
 
 #if defined(Q_OS_WIN) && defined(ENV32BIT)
@@ -366,7 +366,7 @@ void KisApplication::initializeGlobals(const KisApplicationArguments &args)
 
 void KisApplication::addResourceTypes()
 {
-    // All Krita's resource types
+    // All Minerva's resource types
     KoResourcePaths::addAssetType("markers", "data", "/styles/");
     KoResourcePaths::addAssetType("kis_pics", "data", "/pics/");
     KoResourcePaths::addAssetType("kis_images", "data", "/images/");
@@ -374,12 +374,12 @@ void KisApplication::addResourceTypes()
     KoResourcePaths::addAssetType("gmic_definitions", "data", "/gmic/");
     KoResourcePaths::addAssetType("kis_shortcuts", "data", "/shortcuts/");
     KoResourcePaths::addAssetType("kis_actions", "data", "/actions");
-    KoResourcePaths::addAssetType("kis_actions", "data", "/pykrita");
+    KoResourcePaths::addAssetType("kis_actions", "data", "/pyminerva2d");
     KoResourcePaths::addAssetType("icc_profiles", "data", "/color/icc");
     KoResourcePaths::addAssetType("icc_profiles", "data", "/profiles/");
     KoResourcePaths::addAssetType("tags", "data", "/tags/");
     KoResourcePaths::addAssetType("templates", "data", "/templates");
-    KoResourcePaths::addAssetType("pythonscripts", "data", "/pykrita");
+    KoResourcePaths::addAssetType("pythonscripts", "data", "/pyminerva2d");
     KoResourcePaths::addAssetType("preset_icons", "data", "/preset_icons");
 #if defined HAVE_SEEXPR
     KoResourcePaths::addAssetType(ResourceType::SeExprScripts, "data", "/seexpr_scripts/", true);
@@ -389,7 +389,7 @@ void KisApplication::addResourceTypes()
     KoResourcePaths::saveLocation("data", "/asl/", true);
     KoResourcePaths::saveLocation("data", "/css_styles/", true);
     KoResourcePaths::saveLocation("data", "/input/", true);
-    KoResourcePaths::saveLocation("data", "/pykrita/", true);
+    KoResourcePaths::saveLocation("data", "/pyminerva2d/", true);
     KoResourcePaths::saveLocation("data", "/color-schemes/", true);
     KoResourcePaths::saveLocation("data", "/preset_icons/", true);
     KoResourcePaths::saveLocation("data", "/preset_icons/tool_icons/", true);
@@ -415,8 +415,8 @@ bool KisApplication::registerResources()
 {
     KisResourceLoaderRegistry *reg = KisResourceLoaderRegistry::instance();
 
-    reg->add(new KisResourceLoader<KisPaintOpPreset>(ResourceSubType::KritaPaintOpPresets, ResourceType::PaintOpPresets, i18n("Brush presets"),
-                                                     QStringList() << "application/x-krita-paintoppreset"));
+    reg->add(new KisResourceLoader<KisPaintOpPreset>(ResourceSubType::MinervaPaintOpPresets, ResourceType::PaintOpPresets, i18n("Brush presets"),
+                                                     QStringList() << "application/x-minerva2d-paintoppreset"));
 
     reg->add(new KisResourceLoader<KisGbrBrush>(ResourceSubType::GbrBrushes, ResourceType::Brushes, i18n("Brush tips"), QStringList() << "image/x-gimp-brush"));
     reg->add(new KisResourceLoader<KisImagePipeBrush>(ResourceSubType::GihBrushes, ResourceType::Brushes, i18n("Brush tips"), QStringList() << "image/x-gimp-brush-animated"));
@@ -439,13 +439,13 @@ bool KisApplication::registerResources()
 
 
     reg->add(new KisResourceLoader<KoPattern>(ResourceType::Patterns, ResourceType::Patterns, i18n("Patterns"), {"application/x-gimp-pattern", "image/x-gimp-pat", "application/x-gimp-pattern", "image/bmp", "image/jpeg", "image/png", "image/tiff"}));
-    reg->add(new KisResourceLoader<KisWorkspaceResource>(ResourceType::Workspaces, ResourceType::Workspaces, i18n("Workspaces"), QStringList() << "application/x-krita-workspace"));
+    reg->add(new KisResourceLoader<KisWorkspaceResource>(ResourceType::Workspaces, ResourceType::Workspaces, i18n("Workspaces"), QStringList() << "application/x-minerva2d-workspace"));
     reg->add(new KisResourceLoader<KoSvgSymbolCollectionResource>(ResourceType::Symbols, ResourceType::Symbols, i18n("SVG symbol libraries"), QStringList() << "image/svg+xml"));
-    reg->add(new KisResourceLoader<KisWindowLayoutResource>(ResourceType::WindowLayouts, ResourceType::WindowLayouts, i18n("Window layouts"), QStringList() << "application/x-krita-windowlayout"));
-    reg->add(new KisResourceLoader<KisSessionResource>(ResourceType::Sessions, ResourceType::Sessions, i18n("Sessions"), QStringList() << "application/x-krita-session"));
-    reg->add(new KisResourceLoader<KoGamutMask>(ResourceType::GamutMasks, ResourceType::GamutMasks, i18n("Gamut masks"), QStringList() << "application/x-krita-gamutmasks"));
+    reg->add(new KisResourceLoader<KisWindowLayoutResource>(ResourceType::WindowLayouts, ResourceType::WindowLayouts, i18n("Window layouts"), QStringList() << "application/x-minerva2d-windowlayout"));
+    reg->add(new KisResourceLoader<KisSessionResource>(ResourceType::Sessions, ResourceType::Sessions, i18n("Sessions"), QStringList() << "application/x-minerva2d-session"));
+    reg->add(new KisResourceLoader<KoGamutMask>(ResourceType::GamutMasks, ResourceType::GamutMasks, i18n("Gamut masks"), QStringList() << "application/x-minerva2d-gamutmasks"));
 #if defined HAVE_SEEXPR
-    reg->add(new KisResourceLoader<KisSeExprScript>(ResourceType::SeExprScripts, ResourceType::SeExprScripts, i18n("SeExpr Scripts"), QStringList() << "application/x-krita-seexpr-script"));
+    reg->add(new KisResourceLoader<KisSeExprScript>(ResourceType::SeExprScripts, ResourceType::SeExprScripts, i18n("SeExpr Scripts"), QStringList() << "application/x-minerva2d-seexpr-script"));
 #endif
     // XXX: this covers only individual styles, not the library itself!
     reg->add(new KisResourceLoader<KisPSDLayerStyle>(ResourceType::LayerStyles,
@@ -466,13 +466,13 @@ bool KisApplication::registerResources()
 #endif
 
     if (!KisResourceCacheDb::initialize(databaseLocation)) {
-        QMessageBox::critical(qApp->activeWindow(), i18nc("@title:window", "Krita: Fatal error"), i18n("%1\n\nKrita will quit now.", KisResourceCacheDb::lastError()));
+        QMessageBox::critical(qApp->activeWindow(), i18nc("@title:window", "Minerva: Fatal error"), i18n("%1\n\nMinerva will quit now.", KisResourceCacheDb::lastError()));
     }
 
-    KisResourceLocator::LocatorError r = KisResourceLocator::instance()->initialize(KoResourcePaths::getApplicationRoot() + "/share/krita");
+    KisResourceLocator::LocatorError r = KisResourceLocator::instance()->initialize(KoResourcePaths::getApplicationRoot() + "/share/minerva2d");
     connect(KisResourceLocator::instance(), SIGNAL(progressMessage(const QString&)), this, SLOT(setSplashScreenLoadingText(const QString&)));
     if (r != KisResourceLocator::LocatorError::Ok && qApp->inherits("KisApplication")) {
-        QMessageBox::critical(qApp->activeWindow(), i18nc("@title:window", "Krita: Fatal error"), KisResourceLocator::instance()->errorMessages().join('\n') + i18n("\n\nKrita will quit now."));
+        QMessageBox::critical(qApp->activeWindow(), i18nc("@title:window", "Minerva: Fatal error"), KisResourceLocator::instance()->errorMessages().join('\n') + i18n("\n\nMinerva will quit now."));
         return false;
     }
     return true;
@@ -503,7 +503,7 @@ bool KisApplication::start(const KisApplicationArguments &args)
 
     if (isWow64() && !cfg.readEntry("WarnedAbout32Bits", false)) {
         QMessageBox::information(qApp->activeWindow(),
-                                 i18nc("@title:window", "Krita: Warning"),
+                                 i18nc("@title:window", "Minerva: Warning"),
                                  i18n("You are running a 32 bits build on a 64 bits Windows.\n"
                                       "This is not recommended.\n"
                                       "Please download and install the x64 build instead."));
@@ -546,7 +546,7 @@ bool KisApplication::start(const KisApplicationArguments &args)
     KConfigGroup group(KSharedConfig::openConfig(), "theme");
 #ifndef Q_OS_HAIKU
     Digikam::ThemeManager themeManager;
-    themeManager.setCurrentTheme(group.readEntry("Theme", "Krita dark"));
+    themeManager.setCurrentTheme(group.readEntry("Theme", "Minerva dark"));
 #endif
 
     ResetStarting resetStarting(d->splashScreen, args.filenames().count()); // remove the splash when done
@@ -650,9 +650,9 @@ bool KisApplication::start(const KisApplicationArguments &args)
     // Xiaomi workaround: their stylus inexplicably inputs page up and down keys
     // when pressing stylus buttons. This flag causes the Android platform
     // integration to turn those into right and middle clicks instead.
-#if KRITA_QT_HAS_ANDROID_EMULATE_MOUSE_BUTTONS_FOR_PAGE_UP_DOWN
+#if MINERVA2D_QT_HAS_ANDROID_EMULATE_MOUSE_BUTTONS_FOR_PAGE_UP_DOWN
     auto setPageUpDownMouseButtonEmulationWorkaround = [](bool enabled) {
-        QCoreApplication::setKritaAttribute(KRITA_QATTRIBUTE_ANDROID_EMULATE_MOUSE_BUTTONS_FOR_PAGE_UP_DOWN, enabled);
+        QCoreApplication::setMinervaAttribute(MINERVA2D_QATTRIBUTE_ANDROID_EMULATE_MOUSE_BUTTONS_FOR_PAGE_UP_DOWN, enabled);
     };
     connect(cfgNotifier,
             &KisConfigNotifier::sigUsePageUpDownMouseButtonEmulationWorkaroundChanged,
@@ -665,12 +665,12 @@ bool KisApplication::start(const KisApplicationArguments &args)
     // pressing the stylus button. This flag causes the Android platform
     // integration to turn it into middle clicks instead. Currently
     // unconditional because a setting requires translation-relevant text
-    // changes, but later versions of Krita let you toggle it like the Xiaomi
+    // changes, but later versions of Minerva let you toggle it like the Xiaomi
     // workarounds above.
-#if KRITA_QT_HAS_ANDROID_EMULATE_MOUSE_BUTTONS_FOR_HIGH_FUNCTION_KEYS
-    QCoreApplication::setKritaAttribute(KRITA_QATTRIBUTE_ANDROID_EMULATE_MOUSE_BUTTONS_FOR_HIGH_FUNCTION_KEYS, true);
+#if MINERVA2D_QT_HAS_ANDROID_EMULATE_MOUSE_BUTTONS_FOR_HIGH_FUNCTION_KEYS
+    QCoreApplication::setMinervaAttribute(MINERVA2D_QATTRIBUTE_ANDROID_EMULATE_MOUSE_BUTTONS_FOR_HIGH_FUNCTION_KEYS, true);
     auto setHighFunctionKeyMouseButtonEmulationWorkaround = [](bool enabled) {
-        // QCoreApplication::setKritaAttribute(KRITA_QATTRIBUTE_ANDROID_EMULATE_MOUSE_BUTTONS_FOR_HIGH_FUNCTION_KEYS, enabled);
+        // QCoreApplication::setMinervaAttribute(MINERVA2D_QATTRIBUTE_ANDROID_EMULATE_MOUSE_BUTTONS_FOR_HIGH_FUNCTION_KEYS, enabled);
     };
     connect(cfgNotifier,
             &KisConfigNotifier::sigUseHighFunctionKeyMouseButtonEmulationWorkaroundChanged,
@@ -683,9 +683,9 @@ bool KisApplication::start(const KisApplicationArguments &args)
     // connect the actual points that the tablet sampled with a straight line
     // and no pressure emulation, leading to jagged curves that don't get
     // smoothed out. This flag disables reading those historic events.
-#if KRITA_QT_HAS_ANDROID_IGNORE_HISTORIC_TABLET_EVENTS
+#if MINERVA2D_QT_HAS_ANDROID_IGNORE_HISTORIC_TABLET_EVENTS
     auto setIgnoreHistoricTabletEventsWorkaround = [](bool enabled) {
-        QCoreApplication::setKritaAttribute(KRITA_QATTRIBUTE_ANDROID_IGNORE_HISTORIC_TABLET_EVENTS, enabled);
+        QCoreApplication::setMinervaAttribute(MINERVA2D_QATTRIBUTE_ANDROID_IGNORE_HISTORIC_TABLET_EVENTS, enabled);
     };
     connect(cfgNotifier,
             &KisConfigNotifier::sigUseIgnoreHistoricTabletEventsWorkaroundChanged,
@@ -722,7 +722,7 @@ bool KisApplication::start(const KisApplicationArguments &args)
                 if (exportAs) {
                     QString outputMimetype = KisMimeDatabase::mimeTypeForFile(exportFileName, false);
                     if (outputMimetype == "application/octetstream") {
-                        dbgKrita << i18n("Mimetype not found, try using the -mimetype option") << Qt::endl;
+                        dbgMinerva << i18n("Mimetype not found, try using the -mimetype option") << Qt::endl;
                         return false;
                     }
 
@@ -731,13 +731,13 @@ bool KisApplication::start(const KisApplicationArguments &args)
                     bool result = doc->openPath(fileName);
 
                     if (!result) {
-                        errKrita << "Could not load " << fileName << ":" << doc->errorMessage();
+                        errMinerva << "Could not load " << fileName << ":" << doc->errorMessage();
                         QTimer::singleShot(0, this, SLOT(quit()));
                         return false;
                     }
 
                     if (exportFileName.isEmpty()) {
-                        errKrita << "Export destination is not specified for" << fileName << "Please specify export destination with --export-filename option";
+                        errMinerva << "Export destination is not specified for" << fileName << "Please specify export destination with --export-filename option";
                         QTimer::singleShot(0, this, SLOT(quit()));
                         return false;
                     }
@@ -748,7 +748,7 @@ bool KisApplication::start(const KisApplicationArguments &args)
                     doc->image()->waitForDone();
 
                     if (!doc->exportDocumentSync(exportFileName, outputMimetype.toLatin1())) {
-                        errKrita << "Could not export " << fileName << "to" << exportFileName << ":" << doc->errorMessage();
+                        errMinerva << "Could not export " << fileName << "to" << exportFileName << ":" << doc->errorMessage();
                     }
                     QTimer::singleShot(0, this, SLOT(quit()));
                     return true;
@@ -760,7 +760,7 @@ bool KisApplication::start(const KisApplicationArguments &args)
                     qApp->processEvents(); // For vector layers to be updated
                     
                     if (!doc->image()->animationInterface()->hasAnimation()) {
-                        errKrita << "This file has no animation." << Qt::endl;
+                        errMinerva << "This file has no animation." << Qt::endl;
                         QTimer::singleShot(0, this, SLOT(quit()));
                         return false;
                     }
@@ -783,7 +783,7 @@ bool KisApplication::start(const KisApplicationArguments &args)
                     qDebug() << ppVar(result);
 
                     if (result != KisAsyncAnimationFramesSaveDialog::RenderComplete) {
-                        errKrita << i18n("Failed to render animation frames!") << Qt::endl;
+                        errMinerva << i18n("Failed to render animation frames!") << Qt::endl;
                     }
 
                     QTimer::singleShot(0, this, SLOT(quit()));
@@ -816,25 +816,25 @@ bool KisApplication::start(const KisApplicationArguments &args)
                                     d->mainWindow->viewManager()->activeNode());
             }
             else{
-                QMessageBox::warning(qApp->activeWindow(), i18nc("@title:window", "Krita:Warning"),
+                QMessageBox::warning(qApp->activeWindow(), i18nc("@title:window", "Minerva:Warning"),
                                             i18n("Cannot add %1 as a file layer: the file does not exist.", fileLayer->path()));
             }
         }
         else if (this->isRunning()){
-            QMessageBox::warning(qApp->activeWindow(), i18nc("@title:window", "Krita:Warning"),
+            QMessageBox::warning(qApp->activeWindow(), i18nc("@title:window", "Minerva:Warning"),
                                 i18n("Cannot add the file layer: no document is open.\n\n"
 "You can create a new document using the --new-image option, or you can open an existing file.\n\n"
-"If you instead want to add the file layer to a document in an already running instance of Krita, check the \"Allow only one instance of Krita\" checkbox in the settings (Settings -> General -> Window)."));
+"If you instead want to add the file layer to a document in an already running instance of Minerva, check the \"Allow only one instance of Minerva\" checkbox in the settings (Settings -> General -> Window)."));
         }
         else {
-            QMessageBox::warning(qApp->activeWindow(), i18nc("@title:window", "Krita: Warning"),
+            QMessageBox::warning(qApp->activeWindow(), i18nc("@title:window", "Minerva: Warning"),
                                 i18n("Cannot add the file layer: no document is open.\n"
                                      "You can either create a new file using the --new-image option, or you can open an existing file."));
         }
     }
 
-    // fixes BUG:369308  - Krita crashing on splash screen when loading.
-    // trying to open a file before Krita has loaded can cause it to hang and crash
+    // fixes BUG:369308  - Minerva crashing on splash screen when loading.
+    // trying to open a file before Minerva has loaded can cause it to hang and crash
     if (d->splashScreen) {
         d->splashScreen->displayLinks(true);
         d->splashScreen->displayRecentFiles(true);
@@ -1075,7 +1075,7 @@ void KisApplication::executeRemoteArguments(QByteArray message, KisMainWindow *m
     if (!args.fileLayer().isEmpty()){
         if (argsCount > 0  && !documentCreated){
             //arg was passed but document was not created so don't add the file layer.
-            QMessageBox::warning(mainWindow, i18nc("@title:window", "Krita:Warning"),
+            QMessageBox::warning(mainWindow, i18nc("@title:window", "Minerva:Warning"),
                                             i18n("Couldn't open file %1",args.filenames().at(argsCount - 1)));
         }
         else if (mainWindow->viewManager()->image()){
@@ -1089,12 +1089,12 @@ void KisApplication::executeRemoteArguments(QByteArray message, KisMainWindow *m
                                     d->mainWindow->viewManager()->activeNode());
             }
             else{
-                QMessageBox::warning(mainWindow, i18nc("@title:window", "Krita:Warning"),
+                QMessageBox::warning(mainWindow, i18nc("@title:window", "Minerva:Warning"),
                                             i18n("Cannot add %1 as a file layer: the file does not exist.", fileLayer->path()));
             }
         }
         else {
-            QMessageBox::warning(mainWindow, i18nc("@title:window", "Krita:Warning"),
+            QMessageBox::warning(mainWindow, i18nc("@title:window", "Minerva:Warning"),
                                             i18n("Cannot add the file layer: no document is open."));
         }
     }
@@ -1154,13 +1154,13 @@ void KisApplication::checkAutosaveFiles()
     // we want to offer a restore for every one. Including a nice thumbnail!
 
     // Hidden autosave files
-    QStringList filters = QStringList() << QString(".krita-*-*-autosave.kra");
+    QStringList filters = QStringList() << QString(".minerva2d-*-*-autosave.m2d");
 
     // all autosave files for our application
     QStringList autosaveFiles = dir.entryList(filters, QDir::Files | QDir::Hidden);
 
     // Visible autosave files
-    filters = QStringList() << QString("krita-*-*-autosave.kra");
+    filters = QStringList() << QString("minerva2d-*-*-autosave.m2d");
     autosaveFiles += dir.entryList(filters, QDir::Files);
 
     // Allow the user to make their selection
@@ -1222,10 +1222,10 @@ bool KisApplication::createNewDocFromTemplate(const QString &fileName, KisMainWi
         }
 
         if (paths.isEmpty()) {
-            QMessageBox::critical(qApp->activeWindow(), i18nc("@title:window", "Krita"),
+            QMessageBox::critical(qApp->activeWindow(), i18nc("@title:window", "Minerva"),
                                   i18n("No template found for: %1", desktopName));
         } else if (paths.count() > 1) {
-            QMessageBox::critical(qApp->activeWindow(), i18nc("@title:window", "Krita"),
+            QMessageBox::critical(qApp->activeWindow(), i18nc("@title:window", "Minerva"),
                                   i18n("Too many templates found for: %1", desktopName));
         } else {
             templatePath = paths.at(0);
@@ -1241,7 +1241,7 @@ bool KisApplication::createNewDocFromTemplate(const QString &fileName, KisMainWi
             return true;
         }
         else {
-            QMessageBox::critical(qApp->activeWindow(), i18nc("@title:window", "Krita"),
+            QMessageBox::critical(qApp->activeWindow(), i18nc("@title:window", "Minerva"),
                                   i18n("Template %1 failed to load.", fileName));
         }
     }
@@ -1258,39 +1258,39 @@ void KisApplication::resetConfig()
     
     // find user settings file
     const QString configPath = QStandardPaths::writableLocation(QStandardPaths::GenericConfigLocation);
-    QString kritarcPath = configPath + QStringLiteral("/kritarc");
+    QString minerva2drcPath = configPath + QStringLiteral("/minerva2drc");
     
-    QFile kritarcFile(kritarcPath);
+    QFile minerva2drcFile(minerva2drcPath);
     
-    if (kritarcFile.exists()) {
-        if (kritarcFile.open(QFile::ReadWrite)) {
-            QString backupKritarcPath = kritarcPath + QStringLiteral(".backup");
+    if (minerva2drcFile.exists()) {
+        if (minerva2drcFile.open(QFile::ReadWrite)) {
+            QString backupMinervarcPath = minerva2drcPath + QStringLiteral(".backup");
     
-            QFile backupKritarcFile(backupKritarcPath);
+            QFile backupMinervarcFile(backupMinervarcPath);
     
-            if (backupKritarcFile.exists()) {
-                backupKritarcFile.remove();
+            if (backupMinervarcFile.exists()) {
+                backupMinervarcFile.remove();
             }
 
             QMessageBox::information(qApp->activeWindow(),
-                                 i18nc("@title:window", "Krita"),
-                                 i18n("Krita configurations reset!\n\n"
+                                 i18nc("@title:window", "Minerva"),
+                                 i18n("Minerva configurations reset!\n\n"
                                       "Backup file was created at: %1\n\n"
-                                      "Restart Krita for changes to take effect.",
-                                      backupKritarcPath),
+                                      "Restart Minerva for changes to take effect.",
+                                      backupMinervarcPath),
                                  QMessageBox::Ok, QMessageBox::Ok);
 
             // clear file
-            kritarcFile.rename(backupKritarcPath);
+            minerva2drcFile.rename(backupMinervarcPath);
 
-            kritarcFile.close();
+            minerva2drcFile.close();
         }
         else {
             QMessageBox::warning(qApp->activeWindow(),
-                                 i18nc("@title:window", "Krita"),
+                                 i18nc("@title:window", "Minerva"),
                                  i18n("Failed to clear %1\n\n"
                                       "Please make sure no other program is using the file and try again.",
-                                      kritarcPath),
+                                      minerva2drcPath),
                                  QMessageBox::Ok, QMessageBox::Ok);
         }
     }
@@ -1315,7 +1315,7 @@ void KisApplication::resetConfig()
 void KisApplication::askResetConfig()
 {
     bool ok = QMessageBox::question(qApp->activeWindow(),
-                                    i18nc("@title:window", "Krita"),
+                                    i18nc("@title:window", "Minerva"),
                                     i18n("Do you want to clear the settings file?"),
                                     QMessageBox::Yes | QMessageBox::No, QMessageBox::No) == QMessageBox::Yes;
     if (ok) {

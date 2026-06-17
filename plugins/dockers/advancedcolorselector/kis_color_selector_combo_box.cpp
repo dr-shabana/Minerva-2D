@@ -148,7 +148,7 @@ protected:
             parent->setConfiguration(m_lastActiveConfiguration);
             //setList(parent->m_model);
         }
-        //dbgKrita<<"mousepress";
+        //dbgMinerva<<"mousepress";
         hide();
         e->accept();
     }

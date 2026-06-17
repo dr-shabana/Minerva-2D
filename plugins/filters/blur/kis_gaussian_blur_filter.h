@@ -1,4 +1,4 @@
-/* This file is part of Krita
+/* This file is part of Minerva
  *
  * SPDX-FileCopyrightText: 2009 Edward Apap <schumifer@hotmail.com>
  *

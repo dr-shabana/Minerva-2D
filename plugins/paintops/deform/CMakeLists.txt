@@ -18,5 +18,5 @@ kis_add_library(kritadeformpaintop MODULE ${kritadeformpaintop_SOURCES})
 
 target_link_libraries(kritadeformpaintop kritaui kritalibpaintop)
 
-install(TARGETS kritadeformpaintop  DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
-install( FILES  krita-deform.png DESTINATION ${KDE_INSTALL_DATADIR}/krita/images )
+install(TARGETS kritadeformpaintop  DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})
+install( FILES  minerva2d-deform.png DESTINATION ${KDE_INSTALL_DATADIR}/minerva2d/images )

@@ -1,0 +1,10 @@
+{
+    "Id": "Text Properties Docker",
+    "Type": "Service",
+    "X-KDE-Library": "kritatextproperties",
+    "X-KDE-ServiceTypes": [
+        "Minerva/Dock"
+    ],
+    "X-Minerva-Version": "28"
+}
+ 

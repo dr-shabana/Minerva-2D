@@ -10,10 +10,10 @@
 #include "KisResourcesInterface.h"
 
 /**
- * @brief the main resource source in Krita
+ * @brief the main resource source in Minerva
  *
  * This class wraps KisResourceModel into a KisResourcesInterface and provides
- * all Krita resources to consumers.
+ * all Minerva resources to consumers.
  *
  * WARNING: this class should never be accessed in non-GUI thread
  */

@@ -323,7 +323,7 @@ void KisLayerManager::layerProperties()
             QString scalingFilterNew = dlg.scalingFilter();
 
             if(fileNameNew.isEmpty()){
-                QMessageBox::critical(m_view->mainWindow(), i18nc("@title:window", "Krita"), i18n("No file name specified"));
+                QMessageBox::critical(m_view->mainWindow(), i18nc("@title:window", "Minerva"), i18n("No file name specified"));
                 return;
             }
 
@@ -446,7 +446,7 @@ void KisLayerManager::copyLayerStyle()
         QMimeData *mimeData = new QMimeData;
 
         mimeData->setText(psdxml);
-        mimeData->setData("application/x-krita-layer-style", psdxml.toUtf8());
+        mimeData->setData("application/x-minerva2d-layer-style", psdxml.toUtf8());
 
         QGuiApplication::clipboard()->setMimeData(mimeData);
     }
@@ -463,7 +463,7 @@ void KisLayerManager::pasteLayerStyle()
     QString aslXml;
 
     if (KisClipboard::instance()->hasLayerStyles()) {
-        aslXml = QString::fromUtf8(QGuiApplication::clipboard()->mimeData()->data("application/x-krita-layer-style"));
+        aslXml = QString::fromUtf8(QGuiApplication::clipboard()->mimeData()->data("application/x-minerva2d-layer-style"));
     } else {
         aslXml = QGuiApplication::clipboard()->text();
     }
@@ -646,7 +646,7 @@ void KisLayerManager::adjustLayerPosition(KisNodeSP node, KisNodeSP activeNode, 
     }
 
     if (!parent) {
-        warnKrita << "KisLayerManager::adjustLayerPosition:"
+        warnMinerva << "KisLayerManager::adjustLayerPosition:"
                   << "No node accepted newly created node";
 
         parent = m_view->image()->root();
@@ -1041,7 +1041,7 @@ KisNodeSP KisLayerManager::addFileLayer(KisNodeSP activeNode)
         QString fileName = dlg.fileName();
 
         if(fileName.isEmpty()){
-            QMessageBox::critical(m_view->mainWindow(), i18nc("@title:window", "Krita"), i18n("No file name specified"));
+            QMessageBox::critical(m_view->mainWindow(), i18nc("@title:window", "Minerva"), i18n("No file name specified"));
             return 0;
         }
 

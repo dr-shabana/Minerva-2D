@@ -28,7 +28,7 @@ class KisWeakSharedPtr;
  * pointer just as you would use a real pointer.
  *
  * See also item 28 and 29 of More Effective C++ and
- * https://bugs.kde.org/show_bug.cgi?id=52261 as well as
+ * https://github.com/dr-shabana/Minerva-2D/issues/show_bug.cgi?id=52261 as well as
  * https://www.boost.org/libs/smart_ptr/shared_ptr.htm.
  *
  * Advantage of KisSharedPtr over boost pointer or QSharedPointer?
@@ -311,7 +311,7 @@ public:
      */
     inline T* data() {
         if (!isConsistent()) {
-            warnKrita.noquote() << kisBacktrace();
+            warnMinerva.noquote() << kisBacktrace();
             Q_ASSERT_X(0, "KisWeakSharedPtr", "Weak pointer is not valid!");
         }
 
@@ -323,7 +323,7 @@ public:
      */
     inline const T* data() const {
         if (!isConsistent()) {
-            warnKrita.noquote() << kisBacktrace();
+            warnMinerva.noquote() << kisBacktrace();
             Q_ASSERT_X(0, "KisWeakSharedPtr", "Weak pointer is not valid!");
         }
 
@@ -335,7 +335,7 @@ public:
      */
     inline const T* constData() const {
         if (!isConsistent()) {
-            warnKrita.noquote() << kisBacktrace();
+            warnMinerva.noquote() << kisBacktrace();
             Q_ASSERT_X(0, "KisWeakSharedPtr", "Weak pointer is not valid!");
         }
 
@@ -356,7 +356,7 @@ public:
 
     inline const T& operator*() const {
         if (!isValid()) {
-            warnKrita.noquote() << kisBacktrace();
+            warnMinerva.noquote() << kisBacktrace();
             Q_ASSERT_X(0, "KisWeakSharedPtr", "Weak pointer is not valid!");
         }
 
@@ -365,7 +365,7 @@ public:
 
     inline T& operator*() {
         if (!isValid()) {
-            warnKrita.noquote() << kisBacktrace();
+            warnMinerva.noquote() << kisBacktrace();
             Q_ASSERT_X(0, "KisWeakSharedPtr", "Weak pointer is not valid!");
         }
 
@@ -374,7 +374,7 @@ public:
 
     inline const T* operator->() const {
         if (!isValid()) {
-            warnKrita.noquote() << kisBacktrace();
+            warnMinerva.noquote() << kisBacktrace();
             Q_ASSERT_X(0, "KisWeakSharedPtr", "Weak pointer is not valid!");
         }
 
@@ -383,7 +383,7 @@ public:
 
     inline T* operator->() {
         if (!isValid()) {
-            warnKrita.noquote() << kisBacktrace();
+            warnMinerva.noquote() << kisBacktrace();
             Q_ASSERT_X(0, "KisWeakSharedPtr", "Weak pointer is not valid!");
         }
 

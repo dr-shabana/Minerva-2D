@@ -1,5 +1,5 @@
 /*
- *  dlg_feather_selection.cc - part of Krita
+ *  dlg_feather_selection.cc - part of Minerva
  *
  *  SPDX-FileCopyrightText: 2009 Edward Apap <schumifer@hotmail.com>
  *  SPDX-FileCopyrightText: 2013 Juan Palacios <jpalaciosdev@gmail.com>

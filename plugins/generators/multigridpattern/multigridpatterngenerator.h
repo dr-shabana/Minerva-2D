@@ -1,5 +1,5 @@
 /*
- * This file is part of Krita
+ * This file is part of Minerva
  *
  * SPDX-FileCopyrightText: 2020 Wolthera van Hövell tot Westerflier <griffinvalley@gmail.com>
  *
@@ -26,12 +26,12 @@ class KisConfigWidget;
  * With extra explanation here: https://www.schoengeometry.com/c-infintil.html
  */
 
-class KritaMultigridPatternGenerator : public QObject
+class MinervaMultigridPatternGenerator : public QObject
 {
     Q_OBJECT
 public:
-    KritaMultigridPatternGenerator(QObject *parent, const QVariantList &);
-    ~KritaMultigridPatternGenerator() override;
+    MinervaMultigridPatternGenerator(QObject *parent, const QVariantList &);
+    ~MinervaMultigridPatternGenerator() override;
 };
 
 struct KisMultiGridRhomb {

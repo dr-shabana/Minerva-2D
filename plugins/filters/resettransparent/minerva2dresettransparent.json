@@ -1,0 +1,9 @@
+{
+    "Id": "Reset Transparent Filter",
+    "Type": "Service",
+    "X-KDE-Library": "kritaresettransparent",
+    "X-KDE-ServiceTypes": [
+        "Minerva/Filter"
+    ],
+    "X-Minerva-Version": "28"
+}

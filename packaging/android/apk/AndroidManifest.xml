@@ -5,14 +5,14 @@
 
     <application android:hardwareAccelerated="true"
                  android:name="org.qtproject.qt5.android.bindings.QtApplication"
-                 android:label="Krita"
+                 android:label="Minerva"
                  android:icon="@mipmap/ic_launcher"
                  android:roundIcon="@mipmap/ic_launcher_round"
                  android:hasFragileUserData="true" >
 
         <activity android:configChanges="orientation|uiMode|screenLayout|screenSize|smallestScreenSize|layoutDirection|locale|fontScale|keyboard|keyboardHidden|navigation|mcc|mnc|density"
-                  android:name="org.krita.android.MainActivity"
-                  android:label="Krita"
+                  android:name="org.minerva2d.android.MainActivity"
+                  android:label="Minerva"
                   android:screenOrientation="unspecified"
                   android:resizeableActivity="true"
                   android:theme="@style/DefaultTheme"
@@ -62,13 +62,13 @@
                 <data android:mimeType="image/png" />
                 <data android:mimeType="image/gif" />
                 <data android:mimeType="image/tiff" />
-                <data android:mimeType="image/x-krita-raw" />
+                <data android:mimeType="image/x-minerva2d-raw" />
 
                 <data android:mimeType="text/csv" />
                 <data android:mimeType="application/x-krita" />
-                <data android:mimeType="application/x-krita-archive" />
+                <data android:mimeType="application/x-minerva2d-archive" />
                 <data android:mimeType="application/x-extension-exr" />
-                <data android:mimeType="application/x-krita-paintoppreset" />
+                <data android:mimeType="application/x-minerva2d-paintoppreset" />
                 <data android:mimeType="application/pdf" />
 
                 <data android:mimeType="image/jxl" />
@@ -84,7 +84,7 @@
                 <data android:mimeType="*/*" />
 
                 <!-- NOTE: if host and scheme aren't provided path attributes are ignored  -->
-                <data android:host="*" android:pathPattern=".*\\.kra.*"/>
+                <data android:host="*" android:pathPattern=".*\\.m2d.*"/>
                 <data android:host="*" android:pathPattern=".*\\.krz.*"/>
             </intent-filter>
 
@@ -98,7 +98,7 @@
                 <data android:scheme="content" />
 
                 <!-- NOTE: if host and scheme aren't provided path attributes are ignored  -->
-                <data android:host="*" android:pathPattern=".*\\.kra.*"/>
+                <data android:host="*" android:pathPattern=".*\\.m2d.*"/>
                 <data android:host="*" android:pathPattern=".*\\.krz.*"/>
             </intent-filter>
 

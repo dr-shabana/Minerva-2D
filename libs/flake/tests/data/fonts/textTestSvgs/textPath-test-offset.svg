@@ -37,52 +37,52 @@
     </text>
     
     <text id="test1ttb" transform="translate(180,20)"
-        font-family="Krita_Test_Unicode_Variation_A" fill="red" font-size="15" 
+        font-family="Minerva_Test_Unicode_Variation_A" fill="red" font-size="15" 
           writing-mode="vertical-rl"><textPath href="#path-vertical" startOffset="0%">あああ&#x82A6;&#x82A6;&#x82A6;&#x82A6;あああ</textPath>
     </text>
     <text id="test2ttb" transform="translate(200,20)"
-        font-family="Krita_Test_Unicode_Variation_A" fill="red" font-size="15" 
+        font-family="Minerva_Test_Unicode_Variation_A" fill="red" font-size="15" 
           writing-mode="vertical-rl"><textPath href="#path-vertical" startOffset="25%">あああ&#x82A6;&#x82A6;&#x82A6;&#x82A6;あああ</textPath>
     </text>
     <text id="test3ttb" transform="translate(220,20)"
-        font-family="Krita_Test_Unicode_Variation_A" fill="red" font-size="15" 
+        font-family="Minerva_Test_Unicode_Variation_A" fill="red" font-size="15" 
           writing-mode="vertical-rl"><textPath href="#path-vertical" startOffset="50%">あああ&#x82A6;&#x82A6;&#x82A6;&#x82A6;あああ</textPath>
     </text>
     <text id="test4ttb" transform="translate(240,20)"
-        font-family="Krita_Test_Unicode_Variation_A" fill="red" font-size="15" 
+        font-family="Minerva_Test_Unicode_Variation_A" fill="red" font-size="15" 
           writing-mode="vertical-rl"><textPath href="#path-vertical" startOffset="75%">あああ&#x82A6;&#x82A6;&#x82A6;&#x82A6;あああ</textPath>
     </text>
     <text id="test5ttb" transform="translate(200,20)"
-        font-family="Krita_Test_Unicode_Variation_A" fill="blue" font-size="15" 
+        font-family="Minerva_Test_Unicode_Variation_A" fill="blue" font-size="15" 
           writing-mode="vertical-rl"><textPath href="#path-vertical" startOffset="-75%">あああ&#x82A6;&#x82A6;&#x82A6;&#x82A6;あああ</textPath>
     </text>
     <text id="test6ttb" transform="translate(220,20)"
-        font-family="Krita_Test_Unicode_Variation_A" fill="blue" font-size="15" 
+        font-family="Minerva_Test_Unicode_Variation_A" fill="blue" font-size="15" 
           writing-mode="vertical-rl"><textPath href="#path-vertical" startOffset="-50%">あああ&#x82A6;&#x82A6;&#x82A6;&#x82A6;あああ</textPath>
     </text>
     <text id="test7ttb" transform="translate(240,20)"
-        font-family="Krita_Test_Unicode_Variation_A" fill="blue" font-size="15" 
+        font-family="Minerva_Test_Unicode_Variation_A" fill="blue" font-size="15" 
           writing-mode="vertical-rl"><textPath href="#path-vertical" startOffset="-25%">あああ&#x82A6;&#x82A6;&#x82A6;&#x82A6;あああ</textPath>
     </text>
     <!-- Absolute values tests -->
     <text id="test8ttb" transform="translate(260,20)"
-        font-family="Krita_Test_Unicode_Variation_A" fill="orange" font-size="15" 
+        font-family="Minerva_Test_Unicode_Variation_A" fill="orange" font-size="15" 
           writing-mode="vertical-rl"><textPath href="#path-vertical" startOffset="90">あああ&#x82A6;&#x82A6;&#x82A6;&#x82A6;あああ</textPath>
     </text>
     <text id="test9ttb" transform="translate(280,20)"
-        font-family="Krita_Test_Unicode_Variation_A" fill="orange" font-size="15" 
+        font-family="Minerva_Test_Unicode_Variation_A" fill="orange" font-size="15" 
           writing-mode="vertical-rl"><textPath href="#path-vertical" startOffset="45">あああ&#x82A6;&#x82A6;&#x82A6;&#x82A6;あああ</textPath>
     </text>
     <text id="test10ttb" transform="translate(300,20)"
-        font-family="Krita_Test_Unicode_Variation_A" fill="orange" font-size="15" 
+        font-family="Minerva_Test_Unicode_Variation_A" fill="orange" font-size="15" 
           writing-mode="vertical-rl"><textPath href="#path-vertical" startOffset="0">あああ&#x82A6;&#x82A6;&#x82A6;&#x82A6;あああ</textPath>
     </text>
     <text id="test11ttb" transform="translate(260,20)"
-        font-family="Krita_Test_Unicode_Variation_A" fill="purple" font-size="15" 
+        font-family="Minerva_Test_Unicode_Variation_A" fill="purple" font-size="15" 
           writing-mode="vertical-rl"><textPath href="#path-vertical" startOffset="-90">あああ&#x82A6;&#x82A6;&#x82A6;&#x82A6;あああ</textPath>
     </text>
     <text id="test12ttb" transform="translate(280,20)"
-        font-family="Krita_Test_Unicode_Variation_A" fill="purple" font-size="15" 
+        font-family="Minerva_Test_Unicode_Variation_A" fill="purple" font-size="15" 
           writing-mode="vertical-rl"><textPath href="#path-vertical" startOffset="-135">あああ&#x82A6;&#x82A6;&#x82A6;&#x82A6;あああ</textPath>
     </text>
 

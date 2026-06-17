@@ -32,11 +32,11 @@
 #include <KisPlatformPluginInterfaceFactory.h>
 
 #include <config-use-surface-color-management-api.h>
-#if KRITA_USE_SURFACE_COLOR_MANAGEMENT_API
+#if MINERVA2D_USE_SURFACE_COLOR_MANAGEMENT_API
 
 #include <KisRootSurfaceInfoProxy.h>
 
-#endif /* KRITA_USE_SURFACE_COLOR_MANAGEMENT_API */
+#endif /* MINERVA2D_USE_SURFACE_COLOR_MANAGEMENT_API */
 
 
 struct KisSmallColorWidget::Private {
@@ -59,9 +59,9 @@ struct KisSmallColorWidget::Private {
     bool hasHDR = false;
     bool hasHardwareHDR = false;
 
-#if KRITA_USE_SURFACE_COLOR_MANAGEMENT_API
+#if MINERVA2D_USE_SURFACE_COLOR_MANAGEMENT_API
     KisRootSurfaceInfoProxy *rootSurfaceInfoProxy = nullptr;
-#endif /* KRITA_USE_SURFACE_COLOR_MANAGEMENT_API */
+#endif /* MINERVA2D_USE_SURFACE_COLOR_MANAGEMENT_API */
 
     qreal effectiveRelativeDynamicRange() const {
         return hasHDR ? currentRelativeDynamicRange : 1.0;
@@ -72,11 +72,11 @@ struct KisSmallColorWidget::Private {
 
         if (KisOpenGLModeProber::instance()->useHDRMode()) {
             profile = KisOpenGLModeProber::instance()->rootSurfaceColorProfile();
-#if KRITA_USE_SURFACE_COLOR_MANAGEMENT_API
+#if MINERVA2D_USE_SURFACE_COLOR_MANAGEMENT_API
         } else if (KisPlatformPluginInterfaceFactory::instance()->surfaceColorManagedByOS()) {
             KIS_SAFE_ASSERT_RECOVER_RETURN_VALUE(rootSurfaceInfoProxy, profile);
             profile = rootSurfaceInfoProxy->rootSurfaceProfile();
-#endif /* KRITA_USE_SURFACE_COLOR_MANAGEMENT_API */
+#endif /* MINERVA2D_USE_SURFACE_COLOR_MANAGEMENT_API */
         } else {
             // we are a normal QWidget's surface
             profile = displayColorConverter->displayConfig().profile;
@@ -164,7 +164,7 @@ KisSmallColorWidget::KisSmallColorWidget(QWidget* parent)
 
     d->hasHardwareHDR = KisOpenGLModeProber::instance()->useHDRMode();
 
-#if KRITA_USE_SURFACE_COLOR_MANAGEMENT_API
+#if MINERVA2D_USE_SURFACE_COLOR_MANAGEMENT_API
     if (KisPlatformPluginInterfaceFactory::instance()->surfaceColorManagedByOS()) {
         /**
          * If the platform is managed, then it can potentially be HDR

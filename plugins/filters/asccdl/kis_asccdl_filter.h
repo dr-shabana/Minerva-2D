@@ -10,12 +10,12 @@
 #include <filter/kis_filter.h>
 #include "filter/kis_color_transformation_filter.h"
 
-class KritaASCCDL : public QObject
+class MinervaASCCDL : public QObject
 {
     Q_OBJECT
 public:
-    KritaASCCDL(QObject *parent, const QVariantList &);
-    ~KritaASCCDL() override;
+    MinervaASCCDL(QObject *parent, const QVariantList &);
+    ~MinervaASCCDL() override;
 };
 
 class KisFilterASCCDL: public KisColorTransformationFilter

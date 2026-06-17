@@ -235,12 +235,12 @@ KisInputManager::Private::Private(KisInputManager *qq)
      * In Linux distributions Qt is not patched, so we should
      * use workaround for them
      */
-#if defined Q_OS_LINUX &&  !KRITA_QT_HAS_UNBALANCED_KEY_PRESS_RELEASE_PATCH
+#if defined Q_OS_LINUX &&  !MINERVA2D_QT_HAS_UNBALANCED_KEY_PRESS_RELEASE_PATCH
     useUnbalancedKeyPressEventWorkaround = true;
 #endif
 
-    if (qEnvironmentVariableIsSet("KRITA_FIX_UNBALANCED_KEY_EVENTS")) {
-        useUnbalancedKeyPressEventWorkaround = qEnvironmentVariableIntValue("KRITA_FIX_UNBALANCED_KEY_EVENTS");
+    if (qEnvironmentVariableIsSet("MINERVA2D_FIX_UNBALANCED_KEY_EVENTS")) {
+        useUnbalancedKeyPressEventWorkaround = qEnvironmentVariableIntValue("MINERVA2D_FIX_UNBALANCED_KEY_EVENTS");
     }
 
     touchHoldTimer->setTimerType(Qt::CoarseTimer);
@@ -561,7 +561,7 @@ void KisInputManager::Private::addWheelShortcut(KisAbstractInputAction* action, 
 void KisInputManager::Private::addTouchShortcut(KisAbstractInputAction* action, int index, KisShortcutConfiguration::GestureAction gesture)
 {
     KisTouchShortcut *shortcut = new KisTouchShortcut(action, index, gesture);
-    dbgKrita << "TouchAction:" << action->name();
+    dbgMinerva << "TouchAction:" << action->name();
     switch(gesture) {
 #ifndef Q_OS_MACOS
     case KisShortcutConfiguration::OneFingerTap:
@@ -688,7 +688,7 @@ void KisInputManager::Private::allowMouseEvents()
      * Enter and FocusIn event and start the stroke. In such a case
      * we shouldn't unblock mouse events.
      *
-     * See https://bugs.kde.org/show_bug.cgi?id=417040
+     * See https://github.com/dr-shabana/Minerva-2D/issues/show_bug.cgi?id=417040
      *
      * PS:
      * Ideally, we should fix Qt to generate Enter/Leave and

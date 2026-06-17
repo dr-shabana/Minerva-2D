@@ -51,7 +51,7 @@ struct hash<KisWeakSharedPtr<T>>
 
 
 /**
- * Define lots of shared pointer versions of Krita classes.
+ * Define lots of shared pointer versions of Minerva classes.
  * Shared pointer classes have the advantage of near automatic
  * memory management (but beware of circular references)
  * These types should never be passed by reference,

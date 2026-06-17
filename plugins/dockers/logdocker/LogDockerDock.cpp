@@ -107,7 +107,7 @@ void kritaLoggerMessageHandler(QtMsgType type, const QMessageLogContext &context
  * connections when requested.
  * 
  * MessageHandler is a singleton, i.e. it will be reused by **all**
- * the logging dockers we have in any of Krita's windows.
+ * the logging dockers we have in any of Minerva's windows.
  */
 class MessageHandler : public QObject
 {
@@ -215,7 +215,7 @@ void LogDockerDock::clearLog()
 void LogDockerDock::saveLog()
 {
     KoFileDialog fileDialog(this, KoFileDialog::SaveFile, "logfile");
-    fileDialog.setDefaultDir(QStandardPaths::writableLocation(QStandardPaths::DesktopLocation) + "/" + QString("krita_%1.log").arg(QDateTime::currentDateTime().toString("yyyy-MM-ddThh")));
+    fileDialog.setDefaultDir(QStandardPaths::writableLocation(QStandardPaths::DesktopLocation) + "/" + QString("minerva2d_%1.log").arg(QDateTime::currentDateTime().toString("yyyy-MM-ddThh")));
     QString filename = fileDialog.filename();
     if (!filename.isEmpty()) {
         QFile f(filename);
@@ -223,7 +223,7 @@ void LogDockerDock::saveLog()
             f.write(txtLogViewer->document()->toPlainText().toUtf8());
             f.close();
         } else {
-            QMessageBox::warning(this, i18nc("@title:window", "Krita"),
+            QMessageBox::warning(this, i18nc("@title:window", "Minerva"),
                 i18n("Could not save %1.\nReason: %2.", f.fileName(), f.errorString()));
         }
     }
@@ -240,9 +240,9 @@ void LogDockerDock::settings()
 
     KConfigGroup cfg( KSharedConfig::openConfig(), "LogDocker");
 
-    QCheckBox *chkKrita = new QCheckBox(i18n("General"), page);
-    chkKrita->setChecked(cfg.readEntry("krita_41000", false));
-    layout->addWidget(chkKrita);
+    QCheckBox *chkMinerva = new QCheckBox(i18n("General"), page);
+    chkMinerva->setChecked(cfg.readEntry("minerva2d_41000", false));
+    layout->addWidget(chkMinerva);
 
     QCheckBox *chkResources = new QCheckBox(i18n("Resource Management"), page);
     chkResources->setChecked(cfg.readEntry("resources_30009", false));
@@ -320,7 +320,7 @@ void LogDockerDock::settings()
     if (dlg.exec()) {
         // Apply the new settings
         cfg.writeEntry("resources_30009", chkResources->isChecked());
-        cfg.writeEntry("krita_41000", chkKrita->isChecked());
+        cfg.writeEntry("minerva2d_41000", chkMinerva->isChecked());
         cfg.writeEntry("image_41001", chkImage->isChecked());
         cfg.writeEntry("registry_41002", chkRegistry->isChecked());
         cfg.writeEntry("tools_41003", chkTools->isChecked());
@@ -359,38 +359,38 @@ void LogDockerDock::applyCategories()
     QStringList filters;
     KConfigGroup cfg( KSharedConfig::openConfig(), "LogDocker");
 
-    filters << cfgToString("krita.general", cfg.readEntry("krita_41000", false));
-    filters << cfgToString("krita.lib.resources", cfg.readEntry("resources_30009", false));
-    filters << cfgToString("krita.core", cfg.readEntry("image_41001", false));
-    filters << cfgToString("krita.registry", cfg.readEntry("registry_41002", false));
+    filters << cfgToString("minerva2d.general", cfg.readEntry("minerva2d_41000", false));
+    filters << cfgToString("minerva2d.lib.resources", cfg.readEntry("resources_30009", false));
+    filters << cfgToString("minerva2d.core", cfg.readEntry("image_41001", false));
+    filters << cfgToString("minerva2d.registry", cfg.readEntry("registry_41002", false));
 
-    filters << cfgToString("krita.tools", cfg.readEntry("tools_41003", false));
-    filters << cfgToString("krita.lib.flake", cfg.readEntry("tools_41003", false));
+    filters << cfgToString("minerva2d.tools", cfg.readEntry("tools_41003", false));
+    filters << cfgToString("minerva2d.lib.flake", cfg.readEntry("tools_41003", false));
 
-    filters << cfgToString("krita.tiles", cfg.readEntry("tiles_41004", false));
-    filters << cfgToString("krita.filters", cfg.readEntry("filters_41005", false));
+    filters << cfgToString("minerva2d.tiles", cfg.readEntry("tiles_41004", false));
+    filters << cfgToString("minerva2d.filters", cfg.readEntry("filters_41005", false));
 
-    filters << cfgToString("krita.plugins", cfg.readEntry("plugins_41006", false));
-    filters << cfgToString("krita.lib.plugin", cfg.readEntry("plugins_41006", false));
+    filters << cfgToString("minerva2d.plugins", cfg.readEntry("plugins_41006", false));
+    filters << cfgToString("minerva2d.lib.plugin", cfg.readEntry("plugins_41006", false));
 
-    filters << cfgToString("krita.ui", cfg.readEntry("ui_41007", false));
-    filters << cfgToString("krita.widgets", cfg.readEntry("ui_41007", false));
-    filters << cfgToString("krita.widgetutils", cfg.readEntry("ui_41007", false));
+    filters << cfgToString("minerva2d.ui", cfg.readEntry("ui_41007", false));
+    filters << cfgToString("minerva2d.widgets", cfg.readEntry("ui_41007", false));
+    filters << cfgToString("minerva2d.widgetutils", cfg.readEntry("ui_41007", false));
 
-    filters << cfgToString("krita.file", cfg.readEntry("file_41008", false));
-    filters << cfgToString("krita.lib.store", cfg.readEntry("file_41008", false));
-    filters << cfgToString("krita.lib.odf", cfg.readEntry("file_41008", false));
+    filters << cfgToString("minerva2d.file", cfg.readEntry("file_41008", false));
+    filters << cfgToString("minerva2d.lib.store", cfg.readEntry("file_41008", false));
+    filters << cfgToString("minerva2d.lib.odf", cfg.readEntry("file_41008", false));
 
-    filters << cfgToString("krita.math", cfg.readEntry("math_41009", false));
-    filters << cfgToString("krita.grender", cfg.readEntry("render_41010", false));
-    filters << cfgToString("krita.scripting", cfg.readEntry("script_41011", false));
-    filters << cfgToString("krita.input", cfg.readEntry("input_41012", false));
-    filters << cfgToString("krita.action", cfg.readEntry("action_41013", false));
-    filters << cfgToString("krita.tablet", cfg.readEntry("tablet_41014", false));
-    filters << cfgToString("krita.opengl", cfg.readEntry("opengl_41015", false));
-    filters << cfgToString("krita.metadata", cfg.readEntry("metadata_41016", false));
+    filters << cfgToString("minerva2d.math", cfg.readEntry("math_41009", false));
+    filters << cfgToString("minerva2d.grender", cfg.readEntry("render_41010", false));
+    filters << cfgToString("minerva2d.scripting", cfg.readEntry("script_41011", false));
+    filters << cfgToString("minerva2d.input", cfg.readEntry("input_41012", false));
+    filters << cfgToString("minerva2d.action", cfg.readEntry("action_41013", false));
+    filters << cfgToString("minerva2d.tablet", cfg.readEntry("tablet_41014", false));
+    filters << cfgToString("minerva2d.opengl", cfg.readEntry("opengl_41015", false));
+    filters << cfgToString("minerva2d.metadata", cfg.readEntry("metadata_41016", false));
 
-    filters << cfgToString("krita.lib.pigment", cfg.readEntry("pigment", false));
+    filters << cfgToString("minerva2d.lib.pigment", cfg.readEntry("pigment", false));
 
     QLoggingCategory::setFilterRules(filters.join("\n"));
 }

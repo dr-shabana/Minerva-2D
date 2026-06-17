@@ -17,8 +17,8 @@ class KisRecoverNamedAutosaveDialog;
 /**
  * @brief The KisRecoverNamedAutosaveDialog class is a dialog to recover already existing files from autosave
  *
- * When the user saves a file, then works on it a bit more, and then Krita crashes or something else
- * unexpected happens that makes it impossible to close Krita correctly, often there is an autosave left behind
+ * When the user saves a file, then works on it a bit more, and then Minerva crashes or something else
+ * unexpected happens that makes it impossible to close Minerva correctly, often there is an autosave left behind
  * in the directory of the file. This dialog allows choosing whether to open the autosaved file or the original file.
  */
 class KisRecoverNamedAutosaveDialog : public QDialog

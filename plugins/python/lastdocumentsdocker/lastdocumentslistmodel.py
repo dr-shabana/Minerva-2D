@@ -6,7 +6,7 @@ try:
 except:
     from PyQt5.QtCore import QAbstractListModel, Qt, QSize
     from PyQt5.QtGui import QImage
-from krita import Krita
+from krita import Minerva
 import zipfile
 from pathlib import Path
 
@@ -17,7 +17,7 @@ class LastDocumentsListModel(QAbstractListModel):
         super(LastDocumentsListModel, self).__init__(parent)
 
         self.rootItem = ('Path',)
-        self.kritaInstance = Krita.instance()
+        self.kritaInstance = Minerva.instance()
         self.recentDocuments = []
         self.devicePixelRatioF = devicePixelRatioF
 
@@ -51,7 +51,7 @@ class LastDocumentsListModel(QAbstractListModel):
                 thumbnail = None
                 extension = Path(path).suffix
                 page = None
-                if extension == '.kra':
+                if extension == '.m2d':
                     page = zipfile.ZipFile(path, "r")
                     thumbnail = QImage.fromData(page.read("mergedimage.png"))
                     if thumbnail.isNull():

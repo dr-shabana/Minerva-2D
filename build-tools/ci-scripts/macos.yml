@@ -6,20 +6,20 @@
     - .ci-artifacts-with-packages-mixin
   variables:
     KDECI_BUILD_TYPE: Release
-    KDECI_CC_CACHE: /Users/gitlab/caches/krita-macos/ccache
-    KDECI_CACHE_PATH: /Users/gitlab/caches/krita-macos/artifacts
+    KDECI_CC_CACHE: /Users/gitlab/caches/minerva2d-macos/ccache
+    KDECI_CACHE_PATH: /Users/gitlab/caches/minerva2d-macos/artifacts
     KDECI_GITLAB_SERVER: https://invent.kde.org/
-    KDECI_PACKAGE_PROJECT: teams/ci-artifacts/krita-macos
-    EXTERNALS_DOWNLOAD_DIR: /Users/gitlab/caches/krita-macos/downloads
-    KDECI_REPO_METADATA_PATH: $CI_PROJECT_DIR/krita-deps-management/repo-metadata
+    KDECI_PACKAGE_PROJECT: teams/ci-artifacts/minerva2d-macos
+    EXTERNALS_DOWNLOAD_DIR: /Users/gitlab/caches/minerva2d-macos/downloads
+    KDECI_REPO_METADATA_PATH: $CI_PROJECT_DIR/minerva2d-deps-management/repo-metadata
     MACOSX_DEPLOYMENT_TARGET: "10.14"
     QMAKE_MACOSX_DEPLOYMENT_TARGET: "10.14"
-    CMAKE_TOOLCHAIN_FILE: $CI_PROJECT_DIR/krita-deps-management/tools/macos-toolchain-krita.cmake
+    CMAKE_TOOLCHAIN_FILE: $CI_PROJECT_DIR/minerva2d-deps-management/tools/macos-toolchain-minerva2d.cmake
     KDECI_EXTRA_CMAKE_ARGS: >
       -DHIDE_SAFE_ASSERTS=OFF
       -DBUILD_TESTING=ON
     # TODO: clear the folder
-    KDECI_CRAFT_DOWNLOADS: /Users/gitlab/caches/krita-macos/craft-downloads
+    KDECI_CRAFT_DOWNLOADS: /Users/gitlab/caches/minerva2d-macos/craft-downloads
 
     #KDECI_REMOVE_INSTALL_FOLDERS_AFTER_BUILD: True
 
@@ -36,32 +36,32 @@
 
   interruptible: true
   before_script:
-    - git clone https://invent.kde.org/packaging/krita-deps-management.git -b $EFFECTIVE_DEPS_REPO_BRANCH_NAME --depth=1
-    - git clone https://invent.kde.org/packaging/krita-ci-utilities.git krita-deps-management/ci-utilities --depth=1
+    - git clone https://invent.kde.org/packaging/minerva2d-deps-management.git -b $EFFECTIVE_DEPS_REPO_BRANCH_NAME --depth=1
+    - git clone https://invent.kde.org/packaging/minerva2d-ci-utilities.git minerva2d-deps-management/ci-utilities --depth=1
     - git clone https://invent.kde.org/sysadmin/ci-utilities.git --depth=1 upstream-ci-utilities
 
     - python3 -m venv venv --upgrade-deps
     - . venv/bin/activate
     # make sure venv doesn't take precedence over normal PATH search
     - unset VIRTUAL_ENV
-    - pip install -r krita-deps-management/requirements.txt
+    - pip install -r minerva2d-deps-management/requirements.txt
 
     # framework for signing, notarization and package upload
     - git clone https://invent.kde.org/sysadmin/ci-notary-service.git --depth=1
     - pip install -r ci-notary-service/requirements.txt
 
-    - python3 -u krita-deps-management/tools/download-macos-tools.py
-    - source _krita-tools/activate
+    - python3 -u minerva2d-deps-management/tools/download-macos-tools.py
+    - source _minerva2d-tools/activate
 
     - git config --global --add safe.directory $CI_PROJECT_DIR
 
   script:
-    - python3 -u krita-deps-management/tools/replace-branch-in-seed-file.py krita-deps-management/latest/krita-deps.yml -p -o branch-corrected-deps.yml -d $EFFECTIVE_DEPS_BRANCH_NAME
-    - python3 -u krita-deps-management/tools/generate-deps-file.py -s branch-corrected-deps.yml -o .kde-ci.yml
-    - python3 -u krita-deps-management/ci-utilities/run-ci-build.py --project $CI_PROJECT_NAME --branch $CI_COMMIT_REF_NAME --platform MacOS/Qt5/Shared --skip-publishing 2>&1 | tee build-krita.log
+    - python3 -u minerva2d-deps-management/tools/replace-branch-in-seed-file.py minerva2d-deps-management/latest/minerva2d-deps.yml -p -o branch-corrected-deps.yml -d $EFFECTIVE_DEPS_BRANCH_NAME
+    - python3 -u minerva2d-deps-management/tools/generate-deps-file.py -s branch-corrected-deps.yml -o .kde-ci.yml
+    - python3 -u minerva2d-deps-management/ci-utilities/run-ci-build.py --project $CI_PROJECT_NAME --branch $CI_COMMIT_REF_NAME --platform MacOS/Qt5/Shared --skip-publishing 2>&1 | tee build-minerva2d.log
 
     # firstly, build .app bundle and sign it
-    - python3 -u packaging/macos/macos-deploy.py --install-dir ./_install --output-dir $CI_PROJECT_DIR/_dmg --krita-source ./ | tee build-app.log
+    - python3 -u packaging/macos/macos-deploy.py --install-dir ./_install --output-dir $CI_PROJECT_DIR/_dmg --minerva2d-source ./ | tee build-app.log
 
     - python3 -u ci-notary-service/signmacapp.py --config upstream-ci-utilities/signing/signmacapp.ini $CI_PROJECT_DIR/_dmg/*.app 2>&1 | tee app-sign.log
     - python3 -u build-tools/ci-scripts/move-signing-logs.py --prefix app-sign_ --directory _dmg

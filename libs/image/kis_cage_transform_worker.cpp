@@ -15,7 +15,7 @@
 #include "kis_selection.h"
 #include "kis_painter.h"
 #include "kis_image.h"
-#include "krita_utils.h"
+#include "minerva2d_utils.h"
 
 #include <qnumeric.h>
 
@@ -196,7 +196,7 @@ QVector<QPointF> KisCageTransformWorker::Private::calculateTransformedPoints()
 
         if (qIsNaN(transformedPoints[i].x()) ||
             qIsNaN(transformedPoints[i].y())) {
-            warnKrita << "WARNING: One grid point has been removed from consideration" << validPoints[i];
+            warnMinerva << "WARNING: One grid point has been removed from consideration" << validPoints[i];
             transformedPoints[i] = validPoints[i];
         }
 

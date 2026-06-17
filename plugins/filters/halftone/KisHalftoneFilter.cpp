@@ -1,5 +1,5 @@
 /*
- * KDE. Krita Project.
+ * KDE. Minerva Project.
  *
  * SPDX-FileCopyrightText: 2020 Deif Lou <ginoba@gmail.com>
  *
@@ -28,15 +28,15 @@
 #include "KisHalftoneFilter.h"
 #include "KisHalftoneConfigWidget.h"
 
-K_PLUGIN_FACTORY_WITH_JSON(KritaHalftoneFactory, "KritaHalftone.json", registerPlugin<KritaHalftone>();)
+K_PLUGIN_FACTORY_WITH_JSON(MinervaHalftoneFactory, "MinervaHalftone.json", registerPlugin<MinervaHalftone>();)
 
-KritaHalftone::KritaHalftone(QObject *parent, const QVariantList &)
+MinervaHalftone::MinervaHalftone(QObject *parent, const QVariantList &)
     : QObject(parent)
 {
     KisFilterRegistry::instance()->add(new KisHalftoneFilter());
 }
 
-KritaHalftone::~KritaHalftone()
+MinervaHalftone::~MinervaHalftone()
 {}
 
 KisHalftoneFilter::KisHalftoneFilter()

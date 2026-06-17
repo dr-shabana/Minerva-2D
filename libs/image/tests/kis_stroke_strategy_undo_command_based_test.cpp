@@ -160,7 +160,7 @@ void KisStrokeStrategyUndoCommandBasedTest::stressTestSequentialCommands()
     image->waitForDone();
 
     QVERIFY(!counter);
-    dbgKrita << "Concurrency observed:" << hadConcurrency
+    dbgMinerva << "Concurrency observed:" << hadConcurrency
              << "/" << NUM_CHECKS * NUM_JOBS;
 }
 

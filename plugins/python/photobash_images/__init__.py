@@ -1,5 +1,5 @@
-# Photobash Images is a Krita plugin to get CC0 images based on a search,
-# straight from the Krita Interface. Useful for textures and concept art!
+# Photobash Images is a Minerva plugin to get CC0 images based on a search,
+# straight from the Minerva Interface. Useful for textures and concept art!
 # Copyright (C) 2020  Pedro Reis.
 #
 # This program is free software: you can redistribute it and/or modify
@@ -18,4 +18,4 @@
 from krita import *
 from .photobash_images_docker import *
 
-Krita.instance().addDockWidgetFactory(DockWidgetFactory("PhotobashDocker", DockWidgetFactoryBase.DockPosition.DockRight, PhotobashDocker))
+Minerva.instance().addDockWidgetFactory(DockWidgetFactory("PhotobashDocker", DockWidgetFactoryBase.DockPosition.DockRight, PhotobashDocker))

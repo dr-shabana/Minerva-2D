@@ -8,6 +8,6 @@ kis_add_library(kritapdfimport MODULE ${kritapdfimport_SOURCES})
 
 target_link_libraries(kritapdfimport kritaui Poppler::Qt${QT_MAJOR_VERSION})
 
-install(TARGETS kritapdfimport  DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
+install(TARGETS kritapdfimport  DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})
 
-install(FILES krita_pdf.desktop DESTINATION ${KDE_INSTALL_APPDIR})
+install(FILES minerva2d_pdf.desktop DESTINATION ${KDE_INSTALL_APPDIR})

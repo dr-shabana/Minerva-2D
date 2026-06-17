@@ -34,7 +34,7 @@
 #include <klocalizedstring.h>
 #include <kstandardaction.h>
 
-#include <kritaversion.h>
+#include <minerva2dversion.h>
 
 using namespace KDEPrivate;
 
@@ -231,8 +231,8 @@ void KisKHelpMenu::aboutKDE()
 
 void KisKHelpMenu::reportBug()
 {
-#ifdef KRITA_STABLE
-    QDesktopServices::openUrl(QUrl("https://docs.krita.org/en/untranslatable_pages/reporting_bugs.html"));
+#ifdef MINERVA2D_STABLE
+    QDesktopServices::openUrl(QUrl("https://docs.minerva2d.org/en/untranslatable_pages/reporting_bugs.html"));
 #else
     if (!d->mBugReport) {
         d->mBugReport = new KisKBugReport(d->mAboutData, d->mParent);

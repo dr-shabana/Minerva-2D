@@ -1,0 +1,10 @@
+{
+    "Icon": "",
+    "Id": "Random pick Filter",
+    "Type": "Service",
+    "X-KDE-Library": "kritarandompickfilter",
+    "X-KDE-ServiceTypes": [
+        "Minerva/Filter"
+    ],
+    "X-Minerva-Version": "28"
+}

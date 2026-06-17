@@ -400,7 +400,7 @@ bool GridConfigWidget::showRulers() const
 
 void GridConfigWidget::enableIsometricLegacyGrid(bool value)
 {
-    // this is related to bug: https://bugs.kde.org/show_bug.cgi?id=392526
+    // this is related to bug: https://github.com/dr-shabana/Minerva-2D/issues/show_bug.cgi?id=392526
     // not sure if it's still relevant?
     m_isIsometricGridEnabled = value;
 

@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2019 Rebecca Breu <rebecca@rbreu.de>
 
-# This file is part of Krita.
+# This file is part of Minerva.
 
 # SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -8,7 +8,7 @@ import html
 import os
 import tempfile
 
-from krita import Krita, Extension, FileDialog
+from krita import Minerva, Extension, FileDialog
 
 try:
     from PyQt6.QtWidgets import QMessageBox, QInputDialog
@@ -90,7 +90,7 @@ class PluginImporterExtension(Extension):
                 'true')
 
     def get_resources_dir(self):
-        return Krita.instance().getAppDataLocation()
+        return Minerva.instance().getAppDataLocation()
 
     def import_plugin_from_web(self):
         infotext = i18n(

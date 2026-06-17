@@ -16,7 +16,7 @@
 #include "kis_painter.h"
 #include "kis_image.h"
 
-#include "krita_utils.h"
+#include "minerva2d_utils.h"
 
 #include <boost/random/mersenne_twister.hpp>
 #include "kis_random_accessor_ng.h"
@@ -102,8 +102,8 @@ void KisLayerStyleFilterEnvironment::setupFinalPainter(KisPainter *gc,
                                                        const QBitArray &channelFlags) const
 {
     Q_ASSERT(m_d->sourceLayer);
-    gc->setOpacityF(KritaUtils::mergeOpacityF(qreal(opacity) / OPACITY_OPAQUE_U8, qreal(m_d->sourceLayer->opacity()) / OPACITY_OPAQUE_U8));
-    gc->setChannelFlags(KritaUtils::mergeChannelFlags(channelFlags, m_d->sourceLayer->channelFlags()));
+    gc->setOpacityF(MinervaUtils::mergeOpacityF(qreal(opacity) / OPACITY_OPAQUE_U8, qreal(m_d->sourceLayer->opacity()) / OPACITY_OPAQUE_U8));
+    gc->setChannelFlags(MinervaUtils::mergeChannelFlags(channelFlags, m_d->sourceLayer->channelFlags()));
 
 }
 

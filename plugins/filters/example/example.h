@@ -1,5 +1,5 @@
 /*
- * This file is part of Krita
+ * This file is part of Minerva
  *
  * SPDX-FileCopyrightText: 2004 Cyrille Berger <cberger@cberger.net>
  *
@@ -13,12 +13,12 @@
 #include <QVariant>
 #include "filter/kis_color_transformation_filter.h"
 
-class KritaExample : public QObject
+class MinervaExample : public QObject
 {
     Q_OBJECT
 public:
-    KritaExample(QObject *parent, const QVariantList &);
-    ~KritaExample() override;
+    MinervaExample(QObject *parent, const QVariantList &);
+    ~MinervaExample() override;
 };
 
 class KisFilterInvert : public KisColorTransformationFilter

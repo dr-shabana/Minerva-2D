@@ -9,17 +9,17 @@ import tempfile
 
 if not environ.get('OUTPUT_DIR'):
     environ['OUTPUT_DIR'] = fr"{os.getcwd()}\out"
-if not environ.get('KRITA_DIR'):
-    if not environ.get('KRITA_INSTALLER'):
-        print("ERROR: KRITA_DIR and KRITA_INSTALLER not specified, one of them must be set.")
+if not environ.get('MINERVA2D_DIR'):
+    if not environ.get('MINERVA2D_INSTALLER'):
+        print("ERROR: MINERVA2D_DIR and MINERVA2D_INSTALLER not specified, one of them must be set.")
         sys.exit(1)
 
-# For CI, define both KRITA_DIR and KRITA_SHELLEX.
-# Do not use KRITA_SHELLEX if building outside of CI, unless you
-# don't mind this script modifying the contents of KRITA_DIR.
-if environ.get('KRITA_INSTALLER'):
-    if environ.get('KRITA_SHELLEX'):
-        print("ERROR: KRITA_SHELLEX must not be set if using KRITA_INSTALLER.")
+# For CI, define both MINERVA2D_DIR and MINERVA2D_SHELLEX.
+# Do not use MINERVA2D_SHELLEX if building outside of CI, unless you
+# don't mind this script modifying the contents of MINERVA2D_DIR.
+if environ.get('MINERVA2D_INSTALLER'):
+    if environ.get('MINERVA2D_SHELLEX'):
+        print("ERROR: MINERVA2D_SHELLEX must not be set if using MINERVA2D_INSTALLER.")
         sys.exit(1)
 
 useVerbosePackagingLog = (os.environ.get('KRITACI_VERBOSE_PACKAGING', '0').lower() in ['true', '1', 't', 'y', 'yes'])
@@ -31,7 +31,7 @@ def find_on_path(variable, executable):
 
 # Begin
 
-print("*** Krita MSIX build script ***")
+print("*** Minerva MSIX build script ***")
 
 if (not environ.get('WindowsSdkDir')) and environ.get('ProgramFiles(x86)'):
     environ['WindowsSdkDir'] = fr"{environ['ProgramFiles(x86)']}\Windows Kits\10"
@@ -71,7 +71,7 @@ except FileExistsError:
     # just ignore
     pass
 
-if not environ['KRITA_DIR']:
+if not environ['MINERVA2D_DIR']:
 
     print("\n=== Step 0: Extract files from installer")
 
@@ -88,83 +88,83 @@ if not environ['KRITA_DIR']:
             sys.exit(102)
 
     os.mkdir(fr"{environ['OUTPUT_DIR']}\installer_content")
-    commandToRun = f"{environ['SEVENZIP_EXE']} x {environ['KRITA_INSTALLER']}"
+    commandToRun = f"{environ['SEVENZIP_EXE']} x {environ['MINERVA2D_INSTALLER']}"
     try:
         subprocess.check_call(commandToRun)
     except subprocess.CalledProcessError:
-        warnings.warn(f"ERROR failed to extract installer {environ['KRITA_INSTALLER']}")
+        warnings.warn(f"ERROR failed to extract installer {environ['MINERVA2D_INSTALLER']}")
         sys.exit(1)
-    environ['KRITA_DIR'] = fr"{environ['OUTPUT_DIR']}\installer_content"
-    shutil.rmtree(fr"{environ['KRITA_DIR']}\$PLUGINSDIR")
-    os.remove(fr"{environ['KRITA_DIR']}\uninstall.exe.nsis")
-    os.remove(fr"{environ['KRITA_DIR']}\uninstall.exe")
+    environ['MINERVA2D_DIR'] = fr"{environ['OUTPUT_DIR']}\installer_content"
+    shutil.rmtree(fr"{environ['MINERVA2D_DIR']}\$PLUGINSDIR")
+    os.remove(fr"{environ['MINERVA2D_DIR']}\uninstall.exe.nsis")
+    os.remove(fr"{environ['MINERVA2D_DIR']}\uninstall.exe")
 
 
     print("=== Step 0 done. ===")
 
 
-if environ.get('KRITA_SHELLEX'):
+if environ.get('MINERVA2D_SHELLEX'):
 
     print("\n=== Step 0: Copy files for shell extension")
 
-    shellex = fr"{environ['KRITA_DIR']}\shellex"
+    shellex = fr"{environ['MINERVA2D_DIR']}\shellex"
     try:
         os.mkdir(shellex)
     except:
         warnings.warn("ERROR mkdir shellex failed")
         sys.exit(1)
     try:
-        shutil.copy(fr"{environ['KRITA_SHELLEX']}\krita.ico", shellex)
+        shutil.copy(fr"{environ['MINERVA2D_SHELLEX']}\minerva2d.ico", shellex)
     except:
-        warnings.warn("ERROR copying krita.ico failed")
+        warnings.warn("ERROR copying minerva2d.ico failed")
         sys.exit(1)
     try:
-        shutil.copy(fr"{environ['KRITA_SHELLEX']}\kritafile.ico", shellex)
+        shutil.copy(fr"{environ['MINERVA2D_SHELLEX']}\kritafile.ico", shellex)
     except:
         warnings.warn("ERROR copying kritafile.ico failed")
         sys.exit(1)
     try:
-        shutil.copy(fr"{environ['KRITA_SHELLEX']}\kritashellex32.dll", shellex)
+        shutil.copy(fr"{environ['MINERVA2D_SHELLEX']}\kritashellex32.dll", shellex)
     except:
         warnings.warn("ERROR copying kritashellex32.dll failed")
         sys.exit(1)
     try:
-        shutil.copy(fr"{environ['KRITA_SHELLEX']}\kritashellex64.dll", shellex)
+        shutil.copy(fr"{environ['MINERVA2D_SHELLEX']}\kritashellex64.dll", shellex)
     except:
         warnings.warn("ERROR copying kritashellex64.dll failed")
         sys.exit(1)
     # Optional files:
     try:
-        shutil.copy(fr"{environ['KRITA_SHELLEX']}\kritashellex32.pdb", shellex)
+        shutil.copy(fr"{environ['MINERVA2D_SHELLEX']}\kritashellex32.pdb", shellex)
     except:
         pass
     try:
-        shutil.copy(fr"{environ['KRITA_SHELLEX']}\kritashellex64.pdb", shellex)
+        shutil.copy(fr"{environ['MINERVA2D_SHELLEX']}\kritashellex64.pdb", shellex)
     except:
         pass
 
     print("=== Step 0 done. ===")
 
 # Sanity checks:
-if not os.path.isfile(fr"{environ['KRITA_DIR']}\bin\krita.exe"):
-    warnings.warn(fr'ERROR: KRITA_DIR is set to "{environ["KRITA_DIR"]}" but {environ["KRITA_DIR"]}\bin\krita.exe" does not exist!')
+if not os.path.isfile(fr"{environ['MINERVA2D_DIR']}\bin\minerva2d.exe"):
+    warnings.warn(fr'ERROR: MINERVA2D_DIR is set to "{environ["MINERVA2D_DIR"]}" but {environ["MINERVA2D_DIR"]}\bin\minerva2d.exe" does not exist!')
     sys.exit(1)
-if not os.path.isfile(fr"{environ['KRITA_DIR']}\shellex\kritashellex64.dll"):
-    warnings.warn(fr'ERROR: "{environ["KRITA_DIR"]}\shellex\kritashellex64.dll" does not exist!')
+if not os.path.isfile(fr"{environ['MINERVA2D_DIR']}\shellex\kritashellex64.dll"):
+    warnings.warn(fr'ERROR: "{environ["MINERVA2D_DIR"]}\shellex\kritashellex64.dll" does not exist!')
     sys.exit(1)
-if os.path.isfile(fr"{environ['KRITA_DIR']}\bin\.debug"):
+if os.path.isfile(fr"{environ['MINERVA2D_DIR']}\bin\.debug"):
     warnings.warn("ERROR: Package dir seems to contain debug symbols [gcc/mingw].")
     sys.exit(1)
-if os.path.isfile(fr"{environ['KRITA_DIR']}\bin\*.pdb"):
+if os.path.isfile(fr"{environ['MINERVA2D_DIR']}\bin\*.pdb"):
     warnings.warn("ERROR: Package dir seems to contain debug symbols [msvc].")
     sys.exit(1)
-if os.path.isdir(fr"{environ['KRITA_DIR']}\$PLUGINSDIR"):
+if os.path.isdir(fr"{environ['MINERVA2D_DIR']}\$PLUGINSDIR"):
     warnings.warn("")
     sys.exit(1)
-if os.path.isfile(fr"{environ['KRITA_DIR']}\uninstall.exe.nsis"):
+if os.path.isfile(fr"{environ['MINERVA2D_DIR']}\uninstall.exe.nsis"):
     warnings.warn('ERROR: You did not remove "uninstall.exe.nsis."')
     sys.exit(1)
-if os.path.isfile(fr"{environ['KRITA_DIR']}\uninstall.exe*"):
+if os.path.isfile(fr"{environ['MINERVA2D_DIR']}\uninstall.exe*"):
     warnings.warn('ERROR: You did not remove "uninstall.exe*".')
     sys.exit(1)
 
@@ -195,11 +195,11 @@ with tempfile.NamedTemporaryFile(mode='w', delete=False) as OUT_TEMP:
     print(fr'"{scriptDir}\manifest.xml" "AppxManifest.xml"', file=OUT_TEMP)
     print(fr'"{environ["OUTPUT_DIR"]}\resources.pri" "Resources.pri"', file=OUT_TEMP)
 
-    # Krita application files:
-    for root, dirs, files in os.walk(environ['KRITA_DIR']):
+    # Minerva application files:
+    for root, dirs, files in os.walk(environ['MINERVA2D_DIR']):
         for file in files:
             f = os.path.join(root, file)
-            print(fr'"{f}" "krita\{os.path.relpath(f, environ["KRITA_DIR"])}"', file=OUT_TEMP)
+            print(fr'"{f}" "minerva2d\{os.path.relpath(f, environ["MINERVA2D_DIR"])}"', file=OUT_TEMP)
 
     # Assets:
     for root, dirs, files in os.walk(environ['ASSETS_DIR']):
@@ -220,7 +220,7 @@ r"""
 (this is a comment block...)
 
 For reference, the MSIX Packaging tool uses the following command arguments:
-    pack /v /o /l /nv /nfv /f "%UserProfile%\AppData\Local\Packages\Microsoft.MsixPackagingTool_8wekyb3d8bbwe\LocalState\DiagOutputDir\Logs\wox1ifkc.h0i.txt" /p "D:\dev\krita\msix\Krita-testing_4.3.0.0_x64__svcxxs8w6n55m.msix"
+    pack /v /o /l /nv /nfv /f "%UserProfile%\AppData\Local\Packages\Microsoft.MsixPackagingTool_8wekyb3d8bbwe\LocalState\DiagOutputDir\Logs\wox1ifkc.h0i.txt" /p "D:\dev\minerva2d\msix\Minerva-testing_4.3.0.0_x64__svcxxs8w6n55m.msix"
 
 The arguments stands for:
     pack: Creates a package.
@@ -233,7 +233,7 @@ The arguments stands for:
     /p <output package name>: Specifies the app package or bundle.
 """
 
-commandToRun = fr'"{environ["MAKEAPPX"]}" pack {"/v" if useVerbosePackagingLog else ""} /f "{environ["OUTPUT_DIR"]}\mapping.txt" /p "{environ["OUTPUT_DIR"]}\krita.msix" /o'
+commandToRun = fr'"{environ["MAKEAPPX"]}" pack {"/v" if useVerbosePackagingLog else ""} /f "{environ["OUTPUT_DIR"]}\mapping.txt" /p "{environ["OUTPUT_DIR"]}\minerva2d.msix" /o'
 try:
     print(f"Running: {commandToRun}")
     logPath = os.path.join(os.getcwd(), 'makeappx.log')
@@ -243,11 +243,11 @@ except subprocess.CalledProcessError:
     warnings.warn(f"ERROR running makeappx, see {logPath}")
     sys.exit(1)
     
-print(f"\nMSIX generated as {environ['OUTPUT_DIR']}\\krita.msix")
+print(f"\nMSIX generated as {environ['OUTPUT_DIR']}\\minerva2d.msix")
 
 if environ.get('SIGNTOOL_SIGN_FLAGS'):
     print("Signing MSIX...")
-    commandToRun = fr'"{environ["SIGNTOOL"]}" sign {environ["SIGNTOOL_SIGN_FLAGS"]} /fd sha256 "{environ["OUTPUT_DIR"]}\krita.msix"'
+    commandToRun = fr'"{environ["SIGNTOOL"]}" sign {environ["SIGNTOOL_SIGN_FLAGS"]} /fd sha256 "{environ["OUTPUT_DIR"]}\minerva2d.msix"'
     try:
         print(f"Running: {commandToRun}")
         subprocess.check_call(commandToRun)

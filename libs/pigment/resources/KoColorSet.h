@@ -73,7 +73,7 @@ public:
     /**
      * Load a color set from a file. This can be a Gimp
      * palette, a RIFF palette, a Photoshop palette,
-     * a Krita palette,
+     * a Minerva palette,
      * a Scribus palette or a SwatchBooker palette.
      */
     explicit KoColorSet(const QString &filename = QString());

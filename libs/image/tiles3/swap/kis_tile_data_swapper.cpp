@@ -22,8 +22,8 @@ const qint32 KisTileDataSwapper::DELAY = 0.7 * SEC;
 //#define DEBUG_SWAPPER
 
 #ifdef DEBUG_SWAPPER
-#define DEBUG_ACTION(action) dbgKrita << action
-#define DEBUG_VALUE(value) dbgKrita << "\t" << ppVar(value)
+#define DEBUG_ACTION(action) dbgMinerva << action
+#define DEBUG_VALUE(value) dbgMinerva << "\t" << ppVar(value)
 #else
 #define DEBUG_ACTION(action)
 #define DEBUG_VALUE(value)
@@ -91,7 +91,7 @@ void KisTileDataSwapper::run()
 
 void KisTileDataSwapper::checkFreeMemory()
 {
-//    dbgKrita <<"check memory: high limit -" << m_d->limits.emergencyThreshold() <<"in mem -" << m_d->store->numTilesInMemory();
+//    dbgMinerva <<"check memory: high limit -" << m_d->limits.emergencyThreshold() <<"in mem -" << m_d->store->numTilesInMemory();
     if(m_d->store->memoryMetric() > m_d->limits.emergencyThreshold())
         doJob();
 }

@@ -6,7 +6,7 @@ if (APPLE)
     list (APPEND SUPPORTED_LANGUAGES OBJC OBJCXX)
 endif()
 
-project(krita LANGUAGES ${SUPPORTED_LANGUAGES})
+project(minerva2d LANGUAGES ${SUPPORTED_LANGUAGES})
 message(STATUS "Using CMake version: ${CMAKE_VERSION}")
 
 # Select the Qt version we want to use
@@ -131,26 +131,26 @@ endif()
 #######################
 ######################
 if (BUILD_WITH_QT6)
-set(KRITA_VERSION_STRING "6.1.0-prealpha")
-set(KRITA_STABLE_VERSION_MAJOR 6)
-set(KRITA_STABLE_VERSION_MINOR 1)
+set(MINERVA2D_VERSION_STRING "6.1.0-prealpha")
+set(MINERVA2D_STABLE_VERSION_MAJOR 6)
+set(MINERVA2D_STABLE_VERSION_MINOR 1)
 else()
-# define common versions of Krita applications, used to generate kritaversion.h
+# define common versions of Minerva applications, used to generate minerva2dversion.h
 # update these version for every release:
-set(KRITA_VERSION_STRING "5.4.0-prealpha")
+set(MINERVA2D_VERSION_STRING "5.4.0-prealpha")
 # Major version: 3 for 3.x, 4 for 4.x, etc.
-set(KRITA_STABLE_VERSION_MAJOR 5)
+set(MINERVA2D_STABLE_VERSION_MAJOR 5)
 # Minor version: 0 for 4.0, 1 for 4.1, etc.
-set(KRITA_STABLE_VERSION_MINOR 4)
+set(MINERVA2D_STABLE_VERSION_MINOR 4)
 endif()
 
 # Bugfix release version, or 0 for before the first stable release
-set(KRITA_VERSION_RELEASE 0)
+set(MINERVA2D_VERSION_RELEASE 0)
 # the 4th digit, really only used for the Windows installer:
 # - [Pre-]Alpha: Starts from 0, increment 1 per release
 # - Beta: Starts from 50, increment 1 per release
 # - Stable: Set to 100, bump to 101 if emergency update is needed
-set(KRITA_VERSION_REVISION 0)
+set(MINERVA2D_VERSION_REVISION 0)
 
 # In MSI packages we cannot use the fourth digit for release numbering,
 # since this digit is used by Microsoft Store internally. Hence we cannot
@@ -158,32 +158,32 @@ set(KRITA_VERSION_REVISION 0)
 # use the same approach as on Android, we just number all the official
 # releases in the same X.Y.* branch sequentially. We use a simple formula
 # for that, e.g. 5.4.2.3 will be released as 5.4.10203.0.
-math(EXPR KRITA_MSI_VERSION_RELEASE_TRANSITIONAL "10000 + 100 * ${KRITA_VERSION_RELEASE} + ${KRITA_VERSION_REVISION}")
+math(EXPR MINERVA2D_MSI_VERSION_RELEASE_TRANSITIONAL "10000 + 100 * ${MINERVA2D_VERSION_RELEASE} + ${MINERVA2D_VERSION_REVISION}")
 
 # Uncomment the following if this is currently in the "stable" branch.
 # Do not uncomment for master branch.
-#set(KRITA_STABLE_BRANCH 1)
-set(KRITA_ALPHA 1) # uncomment only for Alpha
-#set(KRITA_BETA 1) # uncomment only for Beta
-#set(KRITA_RC 1) # uncomment only for RC
+#set(MINERVA2D_STABLE_BRANCH 1)
+set(MINERVA2D_ALPHA 1) # uncomment only for Alpha
+#set(MINERVA2D_BETA 1) # uncomment only for Beta
+#set(MINERVA2D_RC 1) # uncomment only for RC
 
-if(NOT DEFINED KRITA_ALPHA AND NOT DEFINED KRITA_BETA AND NOT DEFINED KRITA_RC)
-    set(KRITA_STABLE 1) # do not edit
+if(NOT DEFINED MINERVA2D_ALPHA AND NOT DEFINED MINERVA2D_BETA AND NOT DEFINED MINERVA2D_RC)
+    set(MINERVA2D_STABLE 1) # do not edit
 endif()
 
-message(STATUS "Krita version: ${KRITA_VERSION_STRING}")
+message(STATUS "Minerva version: ${MINERVA2D_VERSION_STRING}")
 
-# Define the generic version of the Krita libraries here
-# This makes it easy to advance it when the next Krita release comes.
+# Define the generic version of the Minerva libraries here
+# This makes it easy to advance it when the next Minerva release comes.
 #
-# In general Krita does **not** guarantee any binary compatibility over C++
+# In general Minerva does **not** guarantee any binary compatibility over C++
 # libraries between the releases, so there is not reason to update SOVERSION
 # too often.
 #
 # The only reason why we use SOVERSION is to allow multiple **major** versions
-# of Krita to coexist in the same installation, e.g. Krita 5 and Krita 6.
+# of Minerva to coexist in the same installation, e.g. Minerva 5 and Minerva 6.
 #
-# We don't support simultaneous installations of, say, Krita 5.1 and Krita 5.2
+# We don't support simultaneous installations of, say, Minerva 5.1 and Minerva 5.2
 # (one should use AppImage for things like that)
 #
 # Historical note:
@@ -193,41 +193,41 @@ message(STATUS "Krita version: ${KRITA_VERSION_STRING}")
 # different major releases did overlap; 2) the soversions of different bugfix
 # releases were the same, even tough they were not binary compatible.
 #
-# In Krita 6 we just stop updating SOVERSION on minor releases and declare that
+# In Minerva 6 we just stop updating SOVERSION on minor releases and declare that
 # we have no binary compatibility between releases.
 #
-# Krita 5.0: SOVERSION -> 17
-# Krita 5.1: SOVERSION -> 18
-# Krita 5.2: SOVERSION -> 19
-# Krita 5.3: SOVERSION -> 20
+# Minerva 5.0: SOVERSION -> 17
+# Minerva 5.1: SOVERSION -> 18
+# Minerva 5.2: SOVERSION -> 19
+# Minerva 5.3: SOVERSION -> 20
 #
-# Krita 6.x: SOVERSION -> 21
-# Krita 7.x: SOVERSION -> 22
+# Minerva 6.x: SOVERSION -> 21
+# Minerva 7.x: SOVERSION -> 22
 #
-if(KRITA_STABLE_VERSION_MAJOR EQUAL 5) 
-    # In Krita 5 days we increased the SOVERSION with every minor release
-    if(KRITA_STABLE_VERSION_MINOR LESS_EQUAL 3)
-        math(EXPR GENERIC_KRITA_LIB_VERSION_MAJOR "${KRITA_STABLE_VERSION_MINOR} + 17")
+if(MINERVA2D_STABLE_VERSION_MAJOR EQUAL 5) 
+    # In Minerva 5 days we increased the SOVERSION with every minor release
+    if(MINERVA2D_STABLE_VERSION_MINOR LESS_EQUAL 3)
+        math(EXPR GENERIC_MINERVA2D_LIB_VERSION_MAJOR "${MINERVA2D_STABLE_VERSION_MINOR} + 17")
     else()
-        set(GENERIC_KRITA_LIB_VERSION_MAJOR 20)
+        set(GENERIC_MINERVA2D_LIB_VERSION_MAJOR 20)
     endif()
-elseif(KRITA_STABLE_VERSION_MAJOR GREATER_EQUAL 6)
-    # In Krita 6 days we increased the SOVERSION only with every **major** release.
+elseif(MINERVA2D_STABLE_VERSION_MAJOR GREATER_EQUAL 6)
+    # In Minerva 6 days we increased the SOVERSION only with every **major** release.
     # We don't guarantee any ABI compatibility between the releases, so there is no
     # use increasing SOVERSION too often
-    math(EXPR GENERIC_KRITA_LIB_VERSION_MAJOR "${KRITA_STABLE_VERSION_MAJOR} - 6 + 21")
+    math(EXPR GENERIC_MINERVA2D_LIB_VERSION_MAJOR "${MINERVA2D_STABLE_VERSION_MAJOR} - 6 + 21")
 endif()
 
-set(GENERIC_KRITA_LIB_VERSION "${GENERIC_KRITA_LIB_VERSION_MAJOR}.0.0")
-set(GENERIC_KRITA_LIB_SOVERSION "${GENERIC_KRITA_LIB_VERSION_MAJOR}")
+set(GENERIC_MINERVA2D_LIB_VERSION "${GENERIC_MINERVA2D_LIB_VERSION_MAJOR}.0.0")
+set(GENERIC_MINERVA2D_LIB_SOVERSION "${GENERIC_MINERVA2D_LIB_VERSION_MAJOR}")
 
 LIST (APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake/modules")
 LIST (APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake/kde_macro")
 
 # fetch git revision for the current build
 
-set(KRITA_GIT_SHA1_STRING "")
-set(KRITA_GIT_BRANCH_STRING "")
+set(MINERVA2D_GIT_SHA1_STRING "")
+set(MINERVA2D_GIT_BRANCH_STRING "")
 
 include(GetGitRevisionDescription)
 get_git_head_hash(GIT_SHA1)
@@ -235,19 +235,19 @@ get_git_branch(GIT_BRANCH)
 
 if(GIT_SHA1)
    string(SUBSTRING ${GIT_SHA1} 0 7 GIT_SHA1)
-   set(KRITA_GIT_SHA1_STRING ${GIT_SHA1} CACHE STRING "Git commit of the current build" FORCE)
+   set(MINERVA2D_GIT_SHA1_STRING ${GIT_SHA1} CACHE STRING "Git commit of the current build" FORCE)
    if(NOT GIT_BRANCH)
        set(GIT_BRANCH "(detached HEAD)")
    endif()
-   set(KRITA_GIT_BRANCH_STRING ${GIT_BRANCH} CACHE STRING "Git branch of the current build" FORCE)
+   set(MINERVA2D_GIT_BRANCH_STRING ${GIT_BRANCH} CACHE STRING "Git branch of the current build" FORCE)
 endif()
 
 # create test make targets
 enable_testing()
 # collect list of broken tests, empty here to start fresh with each cmake run
-set(KRITA_BROKEN_TESTS "" CACHE INTERNAL "KRITA_BROKEN_TESTS")
+set(MINERVA2D_BROKEN_TESTS "" CACHE INTERNAL "MINERVA2D_BROKEN_TESTS")
 # Keep track of all test target (need special attention on macos)
-set(KRITA_TESTS_TARGET "" CACHE INTERNAL "KRITA_TESTS_TARGET")
+set(MINERVA2D_TESTS_TARGET "" CACHE INTERNAL "MINERVA2D_TESTS_TARGET")
 
  ############
 #############
@@ -328,25 +328,25 @@ option(USE_LOCK_FREE_HASH_TABLE "Use lock free hash table instead of blocking." 
 configure_file(config-hash-table-implementation.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-hash-table-implementation.h)
 add_feature_info("Lock free hash table" USE_LOCK_FREE_HASH_TABLE "Use lock free hash table instead of blocking.")
 
-option(FOUNDATION_BUILD "A Foundation build is a binary release build that can package some extra things like color themes. Linux distributions that build and install Krita into a default system location should not define this option to true." OFF)
-add_feature_info("Foundation Build" FOUNDATION_BUILD "A Foundation build is a binary release build that can package some extra things like color themes. Linux distributions that build and install Krita into a default system location should not define this option to true.")
+option(FOUNDATION_BUILD "A Foundation build is a binary release build that can package some extra things like color themes. Linux distributions that build and install Minerva into a default system location should not define this option to true." OFF)
+add_feature_info("Foundation Build" FOUNDATION_BUILD "A Foundation build is a binary release build that can package some extra things like color themes. Linux distributions that build and install Minerva into a default system location should not define this option to true.")
 
-option(KRITA_ENABLE_BROKEN_TESTS "Enable tests that are marked as broken" OFF)
-add_feature_info("Enable Broken Tests" KRITA_ENABLE_BROKEN_TESTS "Runs broken test when \"make test\" is invoked (use -DKRITA_ENABLE_BROKEN_TESTS=ON to enable).")
+option(MINERVA2D_ENABLE_BROKEN_TESTS "Enable tests that are marked as broken" OFF)
+add_feature_info("Enable Broken Tests" MINERVA2D_ENABLE_BROKEN_TESTS "Runs broken test when \"make test\" is invoked (use -DMINERVA2D_ENABLE_BROKEN_TESTS=ON to enable).")
 
 option(LIMIT_LONG_TESTS "Run long running unittests in a limited quick mode" ON)
 configure_file(config-limit-long-tests.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-limit-long-tests.h)
 add_feature_info("Limit long tests" LIMIT_LONG_TESTS "Run long running unittests in a limited quick mode")
 
-option(BUILD_KRITA_QT_DESIGNER_PLUGINS "Build Qt Designer plugins for Krita widgets" OFF)
-add_feature_info("Build Qt Designer plugins" BUILD_KRITA_QT_DESIGNER_PLUGINS "Builds Qt Designer plugins for Krita widgets (use -DBUILD_KRITA_QT_DESIGNER_PLUGINS=ON to enable).")
+option(BUILD_MINERVA2D_QT_DESIGNER_PLUGINS "Build Qt Designer plugins for Minerva widgets" OFF)
+add_feature_info("Build Qt Designer plugins" BUILD_MINERVA2D_QT_DESIGNER_PLUGINS "Builds Qt Designer plugins for Minerva widgets (use -DBUILD_MINERVA2D_QT_DESIGNER_PLUGINS=ON to enable).")
 
 option(ENABLE_UPDATERS "Enable updaters/update notifications" ON)
 configure_file(config-updaters.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-updaters.h)
 add_feature_info("Enable updaters" ENABLE_UPDATERS "Enable updaters/update notifications.")
 
-option(KRITA_ENABLE_PCH "Enable precompiled headers support" OFF)
-add_feature_info("Precompiled Headers" KRITA_ENABLE_PCH "precompiled headers make build process faster on some systems")
+option(MINERVA2D_ENABLE_PCH "Enable precompiled headers support" OFF)
+add_feature_info("Precompiled Headers" MINERVA2D_ENABLE_PCH "precompiled headers make build process faster on some systems")
 
 option(USE_EXTERNAL_RAQM "Fetch Raqm dependency online instead of the embedded one" OFF)
 
@@ -361,19 +361,19 @@ if (ECM_ENABLE_SANITIZERS MATCHES address)
     set(ADDRESS_SANITIZER_ENABLED TRUE)
 endif()
 
-add_feature_info("ASAN address sanitizer" ADDRESS_SANITIZER_ENABLED "crash Krita if it violates address access rules (-DECM_ENABLE_SANITIZERS=address)")
+add_feature_info("ASAN address sanitizer" ADDRESS_SANITIZER_ENABLED "crash Minerva if it violates address access rules (-DECM_ENABLE_SANITIZERS=address)")
 
-# We don't want people to accidentally build unstable Krita versions if they
+# We don't want people to accidentally build unstable Minerva versions if they
 # didn't mean to do so. This serves as an extra confirmation. You will get
 # errors during the configure step if you enable an unstable option.
 set(ALLOW_UNSTABLE "" CACHE STRING
-    "Semicolon-separated set of features that make Krita unstable, but you want to build with them anyway")
+    "Semicolon-separated set of features that make Minerva unstable, but you want to build with them anyway")
 string(TOUPPER "${ALLOW_UNSTABLE}" ALLOW_UNSTABLE)
 add_feature_info("Unstable features allowed" ON "${ALLOW_UNSTABLE}")
 
 if(BUILD_WITH_QT6 AND NOT "QT6" IN_LIST ALLOW_UNSTABLE)
     message(FATAL_ERROR
-        "Building Krita with Qt6 is not yet production-ready. Please don't "
+        "Building Minerva with Qt6 is not yet production-ready. Please don't "
         "package this and ship it as a stable version of the software.\n"
         "If you want to continue regardless, pass:\n"
         "    -DALLOW_UNSTABLE=QT6"
@@ -382,11 +382,11 @@ endif()
 
 # Branding. Available options: default, Beta, Plus, Next. Can be set from command line
 if ("${BRANDING}" STREQUAL "")
-    if (DEFINED KRITA_STABLE)
+    if (DEFINED MINERVA2D_STABLE)
         set(BRANDING "default")
-    elseif (DEFINED KRITA_BETA OR DEFINED KRITA_RC)
+    elseif (DEFINED MINERVA2D_BETA OR DEFINED MINERVA2D_RC)
         set(BRANDING "Beta")
-    elseif (DEFINED KRITA_STABLE_BRANCH)
+    elseif (DEFINED MINERVA2D_STABLE_BRANCH)
         # Alpha/pre-alpha in stable branch
         set(BRANDING "Plus")
     else ()
@@ -625,11 +625,11 @@ if (TARGET Qt::WaylandClient)
     endif()
 endif()
 
-option(KRITA_USE_SURFACE_COLOR_MANAGEMENT_API "Use per-surface color management API (e.g. when using Wayland)" ${HAVE_WAYLAND})
-add_feature_info("Enable per-surface color management API" KRITA_USE_SURFACE_COLOR_MANAGEMENT_API "adds support for an independent color space management for the canvas")
+option(MINERVA2D_USE_SURFACE_COLOR_MANAGEMENT_API "Use per-surface color management API (e.g. when using Wayland)" ${HAVE_WAYLAND})
+add_feature_info("Enable per-surface color management API" MINERVA2D_USE_SURFACE_COLOR_MANAGEMENT_API "adds support for an independent color space management for the canvas")
 
-if (NOT HAVE_WAYLAND AND KRITA_USE_SURFACE_COLOR_MANAGEMENT_API)
-    message(WARNING "KRITA_USE_SURFACE_COLOR_MANAGEMENT_API was set when there is no Wayland support, surface management will be useless as no plugins are built")
+if (NOT HAVE_WAYLAND AND MINERVA2D_USE_SURFACE_COLOR_MANAGEMENT_API)
+    message(WARNING "MINERVA2D_USE_SURFACE_COLOR_MANAGEMENT_API was set when there is no Wayland support, surface management will be useless as no plugins are built")
 endif()
 
 configure_file(config-use-surface-color-management-api.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-use-surface-color-management-api.h)
@@ -640,13 +640,13 @@ configure_file(config-use-surface-color-management-api.h.cmake ${CMAKE_CURRENT_B
 set(CMAKE_REQUIRED_INCLUDES ${Qt${QT_MAJOR_VERSION}Gui_INCLUDE_DIRS})
 set(CMAKE_REQUIRED_LIBRARIES ${Qt${QT_MAJOR_VERSION}Gui_LIBRARIES})
 
-check_cxx_symbol_exists(QT_HAS_ENTER_LEAVE_PATCH "QtGui/qevent.h" KRITA_QT_HAS_ENTER_LEAVE_PATCH)
+check_cxx_symbol_exists(QT_HAS_ENTER_LEAVE_PATCH "QtGui/qevent.h" MINERVA2D_QT_HAS_ENTER_LEAVE_PATCH)
 
 if (QT_MAJOR_VERSION STREQUAL "5")
     # in Qt5 we didn't have a separate definition for key-press/release patch
-    set(KRITA_QT_HAS_UNBALANCED_KEY_PRESS_RELEASE_PATCH ${KRITA_QT_HAS_ENTER_LEAVE_PATCH})
+    set(MINERVA2D_QT_HAS_UNBALANCED_KEY_PRESS_RELEASE_PATCH ${MINERVA2D_QT_HAS_ENTER_LEAVE_PATCH})
 else()
-    check_cxx_symbol_exists(QT_HAS_UNBALANCED_KEY_PRESS_RELEASE_PATCH "QtGui/qevent.h" KRITA_QT_HAS_UNBALANCED_KEY_PRESS_RELEASE_PATCH)
+    check_cxx_symbol_exists(QT_HAS_UNBALANCED_KEY_PRESS_RELEASE_PATCH "QtGui/qevent.h" MINERVA2D_QT_HAS_UNBALANCED_KEY_PRESS_RELEASE_PATCH)
 endif()
 
 unset(CMAKE_REQUIRED_INCLUDES)
@@ -655,7 +655,7 @@ unset(CMAKE_REQUIRED_LIBRARIES)
 
 if (QT_MAJOR_VERSION STREQUAL "5")
     # in Qt5 we didn't have a separate definition for key-press/release patch
-    set(KRITA_QT_HAS_UPDATE_COMPRESSION_PATCH FALSE)
+    set(MINERVA2D_QT_HAS_UPDATE_COMPRESSION_PATCH FALSE)
 else()
     set(CMAKE_REQUIRED_INCLUDES ${Qt6Gui_INCLUDE_DIRS} ${Qt6Gui_PRIVATE_INCLUDE_DIRS})
     set(CMAKE_REQUIRED_LIBRARIES ${Qt6Gui_LIBRARIES})
@@ -669,7 +669,7 @@ Q_UNUSED(x);
 return 0;
 }
 "
-    KRITA_QT_HAS_UPDATE_COMPRESSION_PATCH
+    MINERVA2D_QT_HAS_UPDATE_COMPRESSION_PATCH
     )
 
     unset(CMAKE_REQUIRED_INCLUDES)
@@ -677,14 +677,14 @@ return 0;
 
 endif()
 
-option(KRITA_QT_HAS_ENTER_LEAVE_PATCH "Qt has a custom patch for unbalanced enter/leave events" ON)
-add_feature_info("Qt: Unbalanced Enter/Leave patch" KRITA_QT_HAS_ENTER_LEAVE_PATCH "Krita will disable internal workarounds for unbalanced Enter/Leave")
+option(MINERVA2D_QT_HAS_ENTER_LEAVE_PATCH "Qt has a custom patch for unbalanced enter/leave events" ON)
+add_feature_info("Qt: Unbalanced Enter/Leave patch" MINERVA2D_QT_HAS_ENTER_LEAVE_PATCH "Minerva will disable internal workarounds for unbalanced Enter/Leave")
 
-option(KRITA_QT_HAS_UNBALANCED_KEY_PRESS_RELEASE_PATCH "Qt has a custom patch for unbalanced KeyPress/KeyRelease events in non-latin layouts" ON)
-add_feature_info("Qt: Unbalanced KeyPress/KeyRelease in non-latin layout patch" KRITA_QT_HAS_UNBALANCED_KEY_PRESS_RELEASE_PATCH "Krita will disable internal workarounds for unbalanced KeyPress/KeyRelease events")
+option(MINERVA2D_QT_HAS_UNBALANCED_KEY_PRESS_RELEASE_PATCH "Qt has a custom patch for unbalanced KeyPress/KeyRelease events in non-latin layouts" ON)
+add_feature_info("Qt: Unbalanced KeyPress/KeyRelease in non-latin layout patch" MINERVA2D_QT_HAS_UNBALANCED_KEY_PRESS_RELEASE_PATCH "Minerva will disable internal workarounds for unbalanced KeyPress/KeyRelease events")
 
-option(KRITA_QT_HAS_UPDATE_COMPRESSION_PATCH "Qt has a custom patch for limiting FPS to the screen framerate" ON)
-add_feature_info("Qt: Compressed updates patch" KRITA_QT_HAS_UPDATE_COMPRESSION_PATCH "Krita will compress the screen updates to the maximum FPS of available displays")
+option(MINERVA2D_QT_HAS_UPDATE_COMPRESSION_PATCH "Qt has a custom patch for limiting FPS to the screen framerate" ON)
+add_feature_info("Qt: Compressed updates patch" MINERVA2D_QT_HAS_UPDATE_COMPRESSION_PATCH "Minerva will compress the screen updates to the maximum FPS of available displays")
 
 
 #
@@ -798,38 +798,38 @@ endif (WIN32)
 CHECK_CXX_SOURCE_COMPILES("
 #include <QCoreApplication>
 int main(int argc, char *argv[]) {
-QCoreApplication::setKritaAttribute(KRITA_QATTRIBUTE_ANDROID_EMULATE_MOUSE_BUTTONS_FOR_PAGE_UP_DOWN);
+QCoreApplication::setMinervaAttribute(MINERVA2D_QATTRIBUTE_ANDROID_EMULATE_MOUSE_BUTTONS_FOR_PAGE_UP_DOWN);
 }
 "
-KRITA_QT_HAS_ANDROID_EMULATE_MOUSE_BUTTONS_FOR_PAGE_UP_DOWN
+MINERVA2D_QT_HAS_ANDROID_EMULATE_MOUSE_BUTTONS_FOR_PAGE_UP_DOWN
 )
 
 CHECK_CXX_SOURCE_COMPILES("
 #include <QCoreApplication>
 int main(int argc, char *argv[]) {
-QCoreApplication::setKritaAttribute(KRITA_QATTRIBUTE_ANDROID_IGNORE_HISTORIC_TABLET_EVENTS);
+QCoreApplication::setMinervaAttribute(MINERVA2D_QATTRIBUTE_ANDROID_IGNORE_HISTORIC_TABLET_EVENTS);
 }
 "
-KRITA_QT_HAS_ANDROID_IGNORE_HISTORIC_TABLET_EVENTS
+MINERVA2D_QT_HAS_ANDROID_IGNORE_HISTORIC_TABLET_EVENTS
 )
 
 CHECK_CXX_SOURCE_COMPILES("
 #include <QCoreApplication>
 int main(int argc, char *argv[]) {
-QCoreApplication::setKritaAttribute(KRITA_QATTRIBUTE_ANDROID_EMULATE_MOUSE_BUTTONS_FOR_HIGH_FUNCTION_KEYS);
+QCoreApplication::setMinervaAttribute(MINERVA2D_QATTRIBUTE_ANDROID_EMULATE_MOUSE_BUTTONS_FOR_HIGH_FUNCTION_KEYS);
 }
 "
-KRITA_QT_HAS_ANDROID_EMULATE_MOUSE_BUTTONS_FOR_HIGH_FUNCTION_KEYS
+MINERVA2D_QT_HAS_ANDROID_EMULATE_MOUSE_BUTTONS_FOR_HIGH_FUNCTION_KEYS
 )
 
 CHECK_CXX_SOURCE_COMPILES("
 #include <QScroller>
-#ifndef KRITA_QSCROLLER_PATCH
+#ifndef MINERVA2D_QSCROLLER_PATCH
 #error \"QScroller filter patch not present\"
 #endif
 int main(int argc, char *argv[]) {}
 "
-KRITA_QT_HAS_QSCROLLER_FILTER
+MINERVA2D_QT_HAS_QSCROLLER_FILTER
 )
 
 CHECK_CXX_SOURCE_COMPILES("
@@ -838,7 +838,7 @@ int main(int argc, char *argv[]) {
 return Qt::ANDROID_INPUT_PLATFORM_DATA_SOFT_INPUT_ADJUST_NOTHING;
 }
 "
-KRITA_QT_HAS_ANDROID_INPUT_PLATFORM_DATA_SOFT_INPUT_ADJUST_NOTHING
+MINERVA2D_QT_HAS_ANDROID_INPUT_PLATFORM_DATA_SOFT_INPUT_ADJUST_NOTHING
 )
 
 configure_file(config-qt-patches-present.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-qt-patches-present.h)
@@ -850,7 +850,7 @@ unset(CMAKE_REQUIRED_LIBRARIES)
 include (MacroAddFileDependencies)
 include (MacroBoolTo01)
 include (MacroEnsureOutOfSourceBuild)
-macro_ensure_out_of_source_build("Compiling Krita inside the source directory is not possible. Please refer to the build instruction https://community.kde.org/Krita#Build_Instructions")
+macro_ensure_out_of_source_build("Compiling Minerva inside the source directory is not possible. Please refer to the build instruction https://community.kde.org/Minerva#Build_Instructions")
 
 
 # Note: OPTIONAL_COMPONENTS does not seem to be reliable
@@ -861,7 +861,7 @@ set_package_properties(Qt${QT_MAJOR_VERSION}Quick PROPERTIES
         DESCRIPTION "QtQuick"
         URL "https://www.qt.io/"
         TYPE OPTIONAL
-        PURPOSE "Optionally used for the touch gui for Krita")
+        PURPOSE "Optionally used for the touch gui for Minerva")
 
 macro_bool_to_01(Qt${QT_MAJOR_VERSION}Quick_FOUND HAVE_QT_QUICK)
 
@@ -870,7 +870,7 @@ set_package_properties(Qt${QT_MAJOR_VERSION}QuickWidgets PROPERTIES
         DESCRIPTION "QtQuickWidgets"
         URL "https://www.qt.io/"
         TYPE OPTIONAL
-        PURPOSE "Optionally used for the touch gui for Krita")
+        PURPOSE "Optionally used for the touch gui for Minerva")
 
 if (Qt${QT_MAJOR_VERSION}QuickWidgets_FOUND)
     # This is needed because Qt dependencies aren't added by ECM but by androideployqt,
@@ -882,7 +882,7 @@ if (Qt${QT_MAJOR_VERSION}QuickWidgets_FOUND)
             DESCRIPTION "QtQuickControls"
             URL "https://www.qt.io/"
             TYPE OPTIONAL
-            PURPOSE "Optionally used for the touch gui for Krita")
+            PURPOSE "Optionally used for the touch gui for Minerva")
 
 endif()
 
@@ -941,7 +941,7 @@ add_compile_definitions(
     QT_DISABLE_DEPRECATED_BEFORE=0x050E00
 )
 
-add_definitions(-DTRANSLATION_DOMAIN=\"krita\")
+add_definitions(-DTRANSLATION_DOMAIN=\"minerva2d\")
 
 #
 # The reason for this mode is that the Debug mode disable inlining
@@ -950,8 +950,8 @@ if(CMAKE_COMPILER_IS_GNUCXX)
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}  -fext-numeric-literals")
 endif()
 
-option(KRITA_DEVS "For Krita developers. This modifies the DEBUG build type to use -O3 -g, while still enabling Q_ASSERT. This is necessary because the Qt5 cmake modules normally append QT_NO_DEBUG to any build type that is not labeled Debug")
-if (KRITA_DEVS)
+option(MINERVA2D_DEVS "For Minerva developers. This modifies the DEBUG build type to use -O3 -g, while still enabling Q_ASSERT. This is necessary because the Qt5 cmake modules normally append QT_NO_DEBUG to any build type that is not labeled Debug")
+if (MINERVA2D_DEVS)
     set(CMAKE_CXX_FLAGS_DEBUG "-O3 -g" CACHE STRING "" FORCE)
 endif()
 
@@ -1030,7 +1030,7 @@ endif(MINGW)
 # - https://invent.kde.org/frameworks/extra-cmake-modules/-/blob/v5.101.0/kde-modules/KDECompilerSettings.cmake#L502-526
 kde_enable_exceptions()
 
-function(krita_select_pch_file targetname pch_file_name)
+function(minerva2d_select_pch_file targetname pch_file_name)
     #TODO: make kritaimage and kritaglobal targets to link to its own PCH
 
     if (targetname STREQUAL "kritaglobal")
@@ -1054,7 +1054,7 @@ macro(kis_add_library)
     cmake_parse_arguments(REAL "" PCH_FILE "" ${ARGV} )
     add_library(${REAL_UNPARSED_ARGUMENTS})
 
-    if (KRITA_ENABLE_PCH)
+    if (MINERVA2D_ENABLE_PCH)
         # the second run strips out all the option supported by the function
         # to let the script to calculate the number of source files in
         # the library
@@ -1067,7 +1067,7 @@ macro(kis_add_library)
         list(GET REAL_UNPARSED_ARGUMENTS 0 NEW_LIBRARY_TARGET)
 
         if (NOT LOCAL_PCH_FILE)
-            krita_select_pch_file(${NEW_LIBRARY_TARGET} LOCAL_PCH_FILE)
+            minerva2d_select_pch_file(${NEW_LIBRARY_TARGET} LOCAL_PCH_FILE)
             #file(GENERATE OUTPUT "${CMAKE_BINARY_DIR}/out/${NEW_LIBRARY_TARGET}.txt" CONTENT ${LOCAL_PCH_FILE})
         endif()
 
@@ -1105,7 +1105,7 @@ if (ANDROID)
         message (FATAL_ERROR "ANDROID_SDK_ROOT argument is not set")
     endif()
 
-    set (KRITA_PLUGIN_INSTALL_DIR ${KDE_INSTALL_LIBDIR})
+    set (MINERVA2D_PLUGIN_INSTALL_DIR ${KDE_INSTALL_LIBDIR})
     # set (KDE_INSTALL_DATADIR ${CMAKE_INSTALL_PREFIX}/assets)
 
     # From ECM
@@ -1114,7 +1114,7 @@ if (ANDROID)
     # adapted for this.
     set(CMAKE_FIND_LIBRARY_SUFFIXES "_${CMAKE_ANDROID_ARCH_ABI}.so" ".so" ".a")
 else()
-    set (KRITA_PLUGIN_INSTALL_DIR ${KDE_INSTALL_LIBDIR}/kritaplugins)
+    set (MINERVA2D_PLUGIN_INSTALL_DIR ${KDE_INSTALL_LIBDIR}/minerva2dplugins)
 endif()
 
 
@@ -1139,8 +1139,8 @@ endif()
 
 if (MINGW AND CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
     string(REGEX REPLACE "([0-9])\\.([0-9])(\\.[0-9])?" "\\1"
-        KRITA_boost_COMPILER_VERSION ${CMAKE_CXX_COMPILER_VERSION})
-    set(Boost_COMPILER "mgw${KRITA_boost_COMPILER_VERSION}")
+        MINERVA2D_boost_COMPILER_VERSION ${CMAKE_CXX_COMPILER_VERSION})
+    set(Boost_COMPILER "mgw${MINERVA2D_boost_COMPILER_VERSION}")
 endif()
 
 find_package(Boost 1.69 REQUIRED)
@@ -1174,7 +1174,7 @@ find_package(GSL)
 set_package_properties(GSL PROPERTIES
     URL "https://www.gnu.org/software/gsl"
     TYPE RECOMMENDED
-    PURPOSE "Required by Krita's Transform tool.")
+    PURPOSE "Required by Minerva's Transform tool.")
 macro_bool_to_01(GSL_FOUND HAVE_GSL)
 configure_file(config-gsl.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-gsl.h )
 
@@ -1213,7 +1213,7 @@ set_package_properties(ZLIB PROPERTIES
     DESCRIPTION "Compression library"
     URL "https://www.zlib.net/"
     TYPE REQUIRED
-    PURPOSE "Required by Krita's PNG and PSD support")
+    PURPOSE "Required by Minerva's PNG and PSD support")
 macro_bool_to_01(ZLIB_FOUND HAVE_ZLIB)
 
 find_package(OpenEXR)
@@ -1227,7 +1227,7 @@ set_package_properties(TIFF PROPERTIES
     DESCRIPTION "TIFF Library and Utilities"
     URL "http://www.libtiff.org"
     TYPE OPTIONAL
-    PURPOSE "Required by the Krita TIFF filter")
+    PURPOSE "Required by the Minerva TIFF filter")
 include(CheckLibTIFFPSDSupport)
 configure_file(config-tiff.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-tiff.h)
 
@@ -1236,7 +1236,7 @@ set_package_properties(JPEG PROPERTIES
     DESCRIPTION "Free library for JPEG image compression. Note that libjpeg8 is NOT supported."
     URL "https://www.libjpeg-turbo.org"
     TYPE OPTIONAL
-    PURPOSE "Required by the Krita JPEG filter")
+    PURPOSE "Required by the Minerva JPEG filter")
 if (JPEG_FOUND)
     macro_bool_to_01(JPEG_FOUND HAVE_JPEG)
 endif()
@@ -1246,7 +1246,7 @@ set_package_properties(libjpeg-turbo PROPERTIES
     DESCRIPTION "libjpeg-turbo is a JPEG image codec that uses SIMD instructions (MMX, SSE2, AVX2, Neon, AltiVec) to accelerate baseline JPEG compression and decompression on x86, x86-64, Arm, and PowerPC systems, as well as progressive JPEG compression on x86 and x86-64 systems."
     URL "https://www.libjpeg-turbo.org"
     TYPE OPTIONAL
-    PURPOSE "Required by the Krita JPEG and TIFF filters")
+    PURPOSE "Required by the Minerva JPEG and TIFF filters")
 macro_bool_to_01(libjpeg-turbo_FOUND HAVE_JPEG_TURBO)
 configure_file(config-jpeg.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-jpeg.h )
 
@@ -1259,35 +1259,35 @@ set_package_properties(GIF PROPERTIES
     DESCRIPTION "Library for loading and saving gif files."
     URL "http://giflib.sourceforge.net/"
     TYPE OPTIONAL
-    PURPOSE "Required by the Krita GIF filter")
+    PURPOSE "Required by the Minerva GIF filter")
 
 find_package(HEIF "1.11.0")
 set_package_properties(HEIF PROPERTIES
     DESCRIPTION "Library for loading and saving heif files."
     URL "https://github.com/strukturag/libheif"
     TYPE OPTIONAL
-    PURPOSE "Required by the Krita HEIF filter")
+    PURPOSE "Required by the Minerva HEIF filter")
 
 find_package(OpenJPEG "2.3.0")
 set_package_properties(OpenJPEG PROPERTIES
     DESCRIPTION "Library for loading and saving jp2000 files."
     URL "https://www.openjpeg.org/"
     TYPE OPTIONAL
-    PURPOSE "Required by the Krita JP2000 filter")
+    PURPOSE "Required by the Minerva JP2000 filter")
 
 find_package(JPEGXL 0.7.0)
 set_package_properties(JPEGXL PROPERTIES
     DESCRIPTION "JPEG XL is a royalty-free raster-graphics file format that supports both lossy and lossless compression and is experimentally supported by Chrome, Firefox, and Edge."
     URL "https://github.com/libjxl/libjxl"
     TYPE OPTIONAL
-    PURPOSE "Required by the Krita JPEG-XL filter")
+    PURPOSE "Required by the Minerva JPEG-XL filter")
 
 find_package(FFTW3)
 set_package_properties(FFTW3 PROPERTIES
     DESCRIPTION "A fast, free C FFT library"
     URL "http://www.fftw.org/"
     TYPE OPTIONAL
-    PURPOSE "Required by the Krita for fast convolution operators and some G'Mic features")
+    PURPOSE "Required by the Minerva for fast convolution operators and some G'Mic features")
 macro_bool_to_01(FFTW3_FOUND HAVE_FFTW3)
 if (FFTW3_FOUND)
     # GMic uses the Threads library if available.
@@ -1299,7 +1299,7 @@ set_package_properties(OpenColorIO PROPERTIES
     DESCRIPTION "The OpenColorIO Library"
     URL "https://www.opencolorio.org"
     TYPE OPTIONAL
-    PURPOSE "Required by the Krita LUT docker")
+    PURPOSE "Required by the Minerva LUT docker")
 macro_bool_to_01(OpenColorIO_FOUND HAVE_OCIO)
 configure_file(config-ocio.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-ocio.h)
 
@@ -1307,7 +1307,7 @@ set_package_properties(PythonLibrary PROPERTIES
     DESCRIPTION "Python Library"
     URL "https://www.python.org"
     TYPE OPTIONAL
-    PURPOSE "Required by the Krita PyQt plugin")
+    PURPOSE "Required by the Minerva PyQt plugin")
 macro_bool_to_01(Python_Development_FOUND HAVE_PYTHONLIBS)
 
 find_package(SIP "4.19.13")
@@ -1315,7 +1315,7 @@ set_package_properties(SIP PROPERTIES
     DESCRIPTION "Support for generating SIP Python bindings"
     URL "https://github.com/Python-SIP/sip"
     TYPE OPTIONAL
-    PURPOSE "Required by the Krita PyQt plugin")
+    PURPOSE "Required by the Minerva PyQt plugin")
 macro_bool_to_01(SIP_FOUND HAVE_SIP)
 
 if (QT_MAJOR_VERSION STREQUAL "5")
@@ -1324,7 +1324,7 @@ if (QT_MAJOR_VERSION STREQUAL "5")
         DESCRIPTION "Python bindings for Qt5."
         URL "https://www.riverbankcomputing.com/software/pyqt/download"
         TYPE OPTIONAL
-        PURPOSE "Required by the Krita PyQt plugin")
+        PURPOSE "Required by the Minerva PyQt plugin")
     macro_bool_to_01(PYQT5_FOUND HAVE_PYQT5)
 
     set(PYQT_VERSION_TAG ${PYQT5_VERSION_TAG})
@@ -1338,7 +1338,7 @@ elseif (QT_MAJOR_VERSION STREQUAL "6")
         DESCRIPTION "Python bindings for Qt6."
         URL "https://www.riverbankcomputing.com/software/pyqt/download"
         TYPE OPTIONAL
-        PURPOSE "Required by the Krita PyQt plugin")
+        PURPOSE "Required by the Minerva PyQt plugin")
     macro_bool_to_01(PYQT6_FOUND HAVE_PYQT6)
 
     set(PYQT_VERSION_TAG ${PYQT6_VERSION_TAG})
@@ -1376,7 +1376,7 @@ if (QT_MAJOR_VERSION STREQUAL "5")
     if(Qt5Gui_OPENGL_IMPLEMENTATION)
         message(STATUS "Found QtGui OpenGL support")
     else()
-        message(FATAL_ERROR  "Did NOT find QtGui OpenGL support. Check your Qt configuration. You cannot build Krita without Qt OpenGL support.")
+        message(FATAL_ERROR  "Did NOT find QtGui OpenGL support. Check your Qt configuration. You cannot build Minerva without Qt OpenGL support.")
     endif()
 endif()
 
@@ -1405,7 +1405,7 @@ set_package_properties(LCMS2 PROPERTIES
     DESCRIPTION "LittleCMS Color management engine"
     URL "http://www.littlecms.com"
     TYPE REQUIRED
-    PURPOSE "Will be used for color management and is necessary for Krita")
+    PURPOSE "Will be used for color management and is necessary for Minerva")
 if(LCMS2_FOUND)
     if(NOT ${LCMS2_VERSION} VERSION_LESS 2.4 )
         set(HAVE_LCMS24 TRUE)
@@ -1446,7 +1446,7 @@ set_package_properties(xsimd PROPERTIES
     DESCRIPTION "C++ wrappers for SIMD intrinsics"
     URL "https://github.com/xtensor-stack/xsimd"
     TYPE REQUIRED
-    PURPOSE "Required by Krita for vectorization")
+    PURPOSE "Required by Minerva for vectorization")
 
 if (xsimd_FOUND)
     macro(ko_compile_for_all_implementations_no_scalar _objs _src)
@@ -1491,7 +1491,7 @@ set_package_properties(Poppler PROPERTIES
     DESCRIPTION "A PDF rendering library"
     URL "https://poppler.freedesktop.org/"
     TYPE OPTIONAL
-    PURPOSE "Required by the Krita PDF filter.")
+    PURPOSE "Required by the Minerva PDF filter.")
 
 ##
 ## Test for quazip
@@ -1554,7 +1554,7 @@ if (HarfBuzz_FOUND)
     list(APPEND ANDROID_EXTRA_LIBS ${HarfBuzz_LIBRARIES})
 endif()
 
-# Note: We now build a patched raqm from source with Krita.
+# Note: We now build a patched raqm from source with Minerva.
 
 ##
 ## Check for fontconfig
@@ -1603,12 +1603,12 @@ include(CheckAtomic)
 
  ############################
 #############################
-## Add Krita helper macros ##
+## Add Minerva helper macros ##
 #############################
 ############################
 
-include(KritaAddBrokenUnitTest)
-include(MacroKritaAddBenchmark)
+include(MinervaAddBrokenUnitTest)
+include(MacroMinervaAddBenchmark)
 
  ####################
 #####################
@@ -1644,13 +1644,13 @@ if(WIN32)
 endif()
 
 message("\nBroken tests:")
-foreach(tst ${KRITA_BROKEN_TESTS})
+foreach(tst ${MINERVA2D_BROKEN_TESTS})
     message("    * ${tst}")
 endforeach()
 
 if(APPLE)
     # fix macos test rpath
-    macos_test_fixrpath(${KRITA_TESTS_TARGET})
+    macos_test_fixrpath(${MINERVA2D_TESTS_TARGET})
 endif()
 
 feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
@@ -1667,12 +1667,12 @@ if (ANDROID)
 
   if (NOT (CMAKE_CXX_STANDARD_LIBRARIES MATCHES "[^ ]*c\\+\\+[^ ]*\\.so"))
 
-    set (KRITA_ANDROID_STL_PATH "${ANDROID_TOOLCHAIN_ROOT}/sysroot/usr/lib/${ECM_ANDROID_STL_ARCH}/lib${ANDROID_STL}.so")
-    if (NOT EXISTS ${KRITA_ANDROID_STL_PATH})
+    set (MINERVA2D_ANDROID_STL_PATH "${ANDROID_TOOLCHAIN_ROOT}/sysroot/usr/lib/${ECM_ANDROID_STL_ARCH}/lib${ANDROID_STL}.so")
+    if (NOT EXISTS ${MINERVA2D_ANDROID_STL_PATH})
       message(FATAL_ERROR "STL does not exist at the right location, please use NDK r20+")
     endif()
 
-    set (CMAKE_CXX_STANDARD_LIBRARIES "${CMAKE_CXX_STANDARD_LIBRARIES} \"${KRITA_ANDROID_STL_PATH}\"" CACHE STRING "" FORCE)
+    set (CMAKE_CXX_STANDARD_LIBRARIES "${CMAKE_CXX_STANDARD_LIBRARIES} \"${MINERVA2D_ANDROID_STL_PATH}\"" CACHE STRING "" FORCE)
   endif()
 endif()
 

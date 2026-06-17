@@ -80,7 +80,7 @@ KisToolPanFactory::KisToolPanFactory()
 {
     setToolTip(i18n("Pan Tool"));
     setSection(ToolBoxSection::Navigation);
-    setActivationShapeId(KRITA_TOOL_ACTIVATION_ID);
+    setActivationShapeId(MINERVA2D_TOOL_ACTIVATION_ID);
     setPriority(2);
     setIconName(koIconNameCStr("tool_pan"));
 }

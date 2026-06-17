@@ -164,7 +164,7 @@ void KisCloneLayerTest::testRemoveSourceLayer()
     delete cmd;
 
     // We are veeeery bad! Never do like this! >:)
-    dbgKrita << "Ref. count:" << group1->refCount();
+    dbgMinerva << "Ref. count:" << group1->refCount();
     KisNodeWSP group1_wsp = group1;
     KisNode *group1_ptr = group1.data();
     group1 = 0;
@@ -555,7 +555,7 @@ void KisCloneLayerTest::testUpdatesWhileHidden()
 }
 
 #include <kis_transform_mask.h>
-#include <KritaTransformMaskStubs.h>
+#include <MinervaTransformMaskStubs.h>
 #include <KisDumbTransformMaskParams.h>
 #include <KisTransformMaskTestingListener.h>
 

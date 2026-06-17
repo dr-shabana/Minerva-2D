@@ -857,7 +857,7 @@ KoColorTransformation* KisHSVAdjustmentFactory::createTransformation(const KoCol
 {
     KoColorTransformation * adj;
     if (colorSpace->colorModelId() != RGBAColorModelID) {
-        dbgKrita << "Unsupported color space " << colorSpace->id() << " in KisHSVAdjustmentFactory::createTransformation";
+        dbgMinerva << "Unsupported color space " << colorSpace->id() << " in KisHSVAdjustmentFactory::createTransformation";
         return 0;
     }
     if (colorSpace->colorDepthId() == Integer8BitsColorDepthID) {
@@ -873,7 +873,7 @@ KoColorTransformation* KisHSVAdjustmentFactory::createTransformation(const KoCol
     else if (colorSpace->colorDepthId() == Float32BitsColorDepthID) {
         adj = new KisHSVAdjustment< float, KoRgbTraits < float > >();
     } else {
-        dbgKrita << "Unsupported color space " << colorSpace->id() << " in KisHSVAdjustmentFactory::createTransformation";
+        dbgMinerva << "Unsupported color space " << colorSpace->id() << " in KisHSVAdjustmentFactory::createTransformation";
         return 0;
     }
     adj->setParameters(parameters);
@@ -901,7 +901,7 @@ KoColorTransformation* KisHSVCurveAdjustmentFactory::createTransformation(const 
 {
     KoColorTransformation * adj;
     if (colorSpace->colorModelId() != RGBAColorModelID) {
-        dbgKrita << "Unsupported color space " << colorSpace->id() << " in KisHSVCurveAdjustmentFactory::createTransformation";
+        dbgMinerva << "Unsupported color space " << colorSpace->id() << " in KisHSVCurveAdjustmentFactory::createTransformation";
         return 0;
     }
     if (colorSpace->colorDepthId() == Integer8BitsColorDepthID) {
@@ -917,7 +917,7 @@ KoColorTransformation* KisHSVCurveAdjustmentFactory::createTransformation(const 
     else if (colorSpace->colorDepthId() == Float32BitsColorDepthID) {
         adj = new KisHSVCurveAdjustment< float, KoRgbTraits < float > >();
     } else {
-        dbgKrita << "Unsupported color space " << colorSpace->id() << " in KisHSVCurveAdjustmentFactory::createTransformation";
+        dbgMinerva << "Unsupported color space " << colorSpace->id() << " in KisHSVCurveAdjustmentFactory::createTransformation";
         return 0;
     }
     adj->setParameters(parameters);

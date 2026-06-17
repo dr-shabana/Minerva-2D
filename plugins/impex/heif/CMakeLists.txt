@@ -16,7 +16,7 @@ kis_add_library(kritaheifimport MODULE ${kritaheifimport_SOURCES} ${__per_arch_h
 
 target_link_libraries(kritaheifimport kritaui kritalibkra HEIF::heif)
 
-install(TARGETS kritaheifimport  DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
+install(TARGETS kritaheifimport  DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})
 
 set(kritaheifexport_SOURCES
     HeifExport.cpp
@@ -30,6 +30,6 @@ kis_add_library(kritaheifexport MODULE ${kritaheifexport_SOURCES})
 
 target_link_libraries(kritaheifexport kritaui kritalibkra kritaimpex HEIF::heif)
 
-install(TARGETS kritaheifexport  DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
+install(TARGETS kritaheifexport  DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})
 
-install(FILES krita_heif.desktop DESTINATION ${KDE_INSTALL_APPDIR})
+install(FILES minerva2d_heif.desktop DESTINATION ${KDE_INSTALL_APPDIR})

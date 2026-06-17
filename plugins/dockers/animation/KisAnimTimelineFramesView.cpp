@@ -720,7 +720,7 @@ void KisAnimTimelineFramesView::slotPasteFrames(bool entireColumn)
     QClipboard *cb = QApplication::clipboard();
     const QMimeData *data = cb->mimeData();
 
-    if (data && data->hasFormat("application/x-krita-frame")) {
+    if (data && data->hasFormat("application/x-minerva2d-frame")) {
 
         bool dataMoved = false;
         bool result = m_d->model->dropMimeDataExtended(data, Qt::MoveAction, currentIndex, &dataMoved);

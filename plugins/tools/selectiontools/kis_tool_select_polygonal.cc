@@ -1,5 +1,5 @@
 /*
- *  kis_tool_select_polygonal.h - part of Krayon^WKrita
+ *  kis_tool_select_polygonal.h - part of Krayon^WMinerva
  *
  *  SPDX-FileCopyrightText: 2000 John Califf <jcaliff@compuzone.net>
  *  SPDX-FileCopyrightText: 2002 Patrick Julien <freak@codepimps.org>

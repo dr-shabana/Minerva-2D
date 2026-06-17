@@ -19,7 +19,7 @@
 
 #include <resources/KoStopGradient.h>
 
-#include "krita_utils.h"
+#include "minerva2d_utils.h"
 #include <kis_algebra_2d.h>
 #include <testutil.h>
 
@@ -194,7 +194,7 @@ void KisGradientPainterTest::testFindShapedExtremums()
         KisPolygonalGradientShapeStrategy::testingCalculatePathCenter(
             4, path, 2.0, true);
 
-    dbgKrita << ppVar(center);
+    dbgMinerva << ppVar(center);
 
     QVERIFY(path.contains(center));
 }
@@ -224,7 +224,7 @@ void KisGradientPainterTest::testSplitDisjointPaths()
         //srcImage.save("src_disjoint_paths.png");
     }
 
-    QList<QPainterPath> result = KritaUtils::splitDisjointPaths(path);
+    QList<QPainterPath> result = MinervaUtils::splitDisjointPaths(path);
 
     {
         QImage dstImage(450, 250, QImage::Format_ARGB32);
@@ -301,16 +301,16 @@ void KisGradientPainterTest::testCachedStrategy()
             accum(relError);
 
             if (relError > maxRelError) {
-                //dbgKrita << ppVar(x) << ppVar(y) << ppVar(value) << ppVar(ref) << ppVar(relError);
+                //dbgMinerva << ppVar(x) << ppVar(y) << ppVar(value) << ppVar(ref) << ppVar(relError);
             }
         }
     }
 
-    dbgKrita << ppVar(count(accum));
-    dbgKrita << ppVar(mean(accum));
-    dbgKrita << ppVar(variance(accum));
-    dbgKrita << ppVar((min)(accum));
-    dbgKrita << ppVar((max)(accum));
+    dbgMinerva << ppVar(count(accum));
+    dbgMinerva << ppVar(mean(accum));
+    dbgMinerva << ppVar(variance(accum));
+    dbgMinerva << ppVar((min)(accum));
+    dbgMinerva << ppVar((max)(accum));
 
     qreal varError = variance(accum);
     QVERIFY(varError < maxRelError);

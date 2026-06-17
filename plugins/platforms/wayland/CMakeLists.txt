@@ -22,7 +22,7 @@ int main(int, char *[]) {
     return 0;
 }
 "
-    KRITA_QT_HAS_XKB_CONTEXT_IN_NATIVE_INTERFACE
+    MINERVA2D_QT_HAS_XKB_CONTEXT_IN_NATIVE_INTERFACE
     )
 
 unset(CMAKE_REQUIRED_INCLUDES)
@@ -37,11 +37,11 @@ configure_file(config-qt-wayland-patches-present.h.cmake ${CMAKE_CURRENT_BINARY_
 set(kritaplatformpluginwayland_LIB_SRCS
     KisWaylandKeyboardWatcher.cpp
     KisExtendedModifiersMapperWayland.cpp
-    KritaPlatformPluginWayland.cpp
+    MinervaPlatformPluginWayland.cpp
     KisWaylandRegistry.cpp
 )
 
-if (KRITA_USE_SURFACE_COLOR_MANAGEMENT_API)
+if (MINERVA2D_USE_SURFACE_COLOR_MANAGEMENT_API)
     list(APPEND kritaplatformpluginwayland_LIB_SRCS
          waylandcolormanagement/KisWaylandAPIColorManager.cpp
          waylandcolormanagement/KisWaylandAPIImageDescription.cpp
@@ -60,7 +60,7 @@ set(kritaplatformpluginwayland_WAYLAND_PROTOCOLS
     "${CMAKE_CURRENT_SOURCE_DIR}/protocols/wayland.xml"
 )
 
-if (KRITA_USE_SURFACE_COLOR_MANAGEMENT_API)
+if (MINERVA2D_USE_SURFACE_COLOR_MANAGEMENT_API)
     list(APPEND kritaplatformpluginwayland_WAYLAND_PROTOCOLS
          "${CMAKE_CURRENT_SOURCE_DIR}/protocols/color-management-v1.xml")
 endif()
@@ -86,12 +86,12 @@ target_link_libraries(kritaplatformpluginwayland
         kritaui
 )
 
-if (KRITA_USE_SURFACE_COLOR_MANAGEMENT_API)
+if (MINERVA2D_USE_SURFACE_COLOR_MANAGEMENT_API)
     target_link_libraries(kritaplatformpluginwayland
         PRIVATE
         kritasurfacecolormanagementapi
     )
 endif()
 
-install(TARGETS kritaplatformpluginwayland DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
+install(TARGETS kritaplatformpluginwayland DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})
 

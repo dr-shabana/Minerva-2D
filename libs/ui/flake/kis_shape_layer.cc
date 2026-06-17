@@ -553,7 +553,7 @@ bool KisShapeLayer::isShapeEditable(bool recursive) const
 }
 
 // we do not override KoShape::setGeometryProtected() as we consider
-// the user not being able to access the layer shape from Krita UI!
+// the user not being able to access the layer shape from Minerva UI!
 
 void KisShapeLayer::forceUpdateTimedNode()
 {
@@ -605,7 +605,7 @@ QList<KoShape *> KisShapeLayer::createShapesFromSvg(QIODevice *device, const QSt
 
     QDomDocument doc = SvgParser::createDocumentFromSvg(device, &errorMsg, &errorLine, &errorColumn);
     if (doc.isNull()) {
-        errKrita << "Parsing error in contents.svg! Aborting!" << Qt::endl
+        errMinerva << "Parsing error in contents.svg! Aborting!" << Qt::endl
         << " In line: " << errorLine << ", column: " << errorColumn << Qt::endl
         << " Error message: " << errorMsg << Qt::endl;
 
@@ -627,7 +627,7 @@ QList<KoShape *> KisShapeLayer::createShapesFromSvg(QIODevice *device, const QSt
          * as "legacy" files with the bug.
          *
          * The tag is not needed when loading from pure SVG, because
-         * most probably they were not saved by a buggy Krita version.
+         * most probably they were not saved by a buggy Minerva version.
          */
         parser.setDefaultKraTextVersion(1);
     }
@@ -679,7 +679,7 @@ bool KisShapeLayer::loadSvg(QIODevice *device, const QString &baseXmlDir, QStrin
 bool KisShapeLayer::loadLayer(KoStore* store, QStringList *warnings)
 {
     if (!store) {
-        warnKrita << "No store backend";
+        warnMinerva << "No store backend";
         return false;
     }
 

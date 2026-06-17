@@ -1,5 +1,5 @@
 /*
- * tool_crop.cc -- Part of Krita
+ * tool_crop.cc -- Part of Minerva
  *
  * SPDX-FileCopyrightText: 2004 Boudewijn Rempt (boud@valdyas.org)
  *

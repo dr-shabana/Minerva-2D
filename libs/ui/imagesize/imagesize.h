@@ -1,5 +1,5 @@
 /*
- * imagesize.h -- Part of Krita
+ * imagesize.h -- Part of Minerva
  *
  * SPDX-FileCopyrightText: 2004 Boudewijn Rempt (boud@valdyas.org)
  *

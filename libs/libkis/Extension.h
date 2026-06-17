@@ -13,11 +13,11 @@
 #include <Window.h>
 
 /**
- * An Extension is the base for classes that extend Krita. An Extension
+ * An Extension is the base for classes that extend Minerva. An Extension
  * is loaded on startup, when the setup() method will be executed.
  *
- * The extension instance should be added to the Krita Application object
- * using Krita.instance().addViewExtension or Application.addViewExtension
+ * The extension instance should be added to the Minerva Application object
+ * using Minerva.instance().addViewExtension or Application.addViewExtension
  * or Scripter.addViewExtension.
  *
  * Example:
@@ -33,7 +33,7 @@
  *     super().__init__(parent)
  *
  * def hello(self):
- *     QMessageBox.information(QWidget(), "Test", "Hello! This is Krita " + Application.version())
+ *     QMessageBox.information(QWidget(), "Test", "Hello! This is Minerva " + Application.version())
  *
  * def setup(self):
  *     qDebug("Hello Setup")
@@ -42,7 +42,7 @@
  *     action = window.createAction("hello")
  *     action.triggered.connect(self.hello)
  *
- * Scripter.addExtension(HelloExtension(Krita.instance()))
+ * Scripter.addExtension(HelloExtension(Minerva.instance()))
  *
  * @endcode
  */
@@ -60,7 +60,7 @@ public:
 
     /**
      * Override this function to setup your Extension. You can use it to integrate
-     * with the Krita application instance.
+     * with the Minerva application instance.
      */
     virtual void setup() = 0;
 

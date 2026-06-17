@@ -52,7 +52,7 @@ QPointF VanishingPointAssistant::project(const QPointF& pt, const QPointF& strok
         }
     }
 
-    //dbgKrita<<strokeBegin<< ", " <<*handles()[0];
+    //dbgMinerva<<strokeBegin<< ", " <<*handles()[0];
     QLineF snapLine = QLineF(*handles()[0], strokeBegin);
 
 

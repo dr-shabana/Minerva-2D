@@ -16,7 +16,7 @@
 
 #include "kis_jpeg_converter.h"
 
-K_PLUGIN_FACTORY_WITH_JSON(JPEGImportFactory, "krita_jpeg_import.json", registerPlugin<KisJPEGImport>();)
+K_PLUGIN_FACTORY_WITH_JSON(JPEGImportFactory, "minerva2d_jpeg_import.json", registerPlugin<KisJPEGImport>();)
 
 KisJPEGImport::KisJPEGImport(QObject *parent, const QVariantList &) : KisImportExportFilter(parent)
 {

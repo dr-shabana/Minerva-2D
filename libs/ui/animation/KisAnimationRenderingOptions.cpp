@@ -31,7 +31,7 @@ QString KisAnimationRenderingOptions::resolveAbsoluteDocumentFilePath(const QStr
 QString KisAnimationRenderingOptions::resolveAbsoluteVideoFilePath(const QString &documentPath) const
 {
     const QString basePath = resolveAbsoluteDocumentFilePath(documentPath);
-    return KritaUtils::resolveAbsoluteFilePath(basePath, videoFileName);
+    return MinervaUtils::resolveAbsoluteFilePath(basePath, videoFileName);
 }
 
 QString KisAnimationRenderingOptions::resolveAbsoluteFramesDirectory(const QString &documentPath) const
@@ -41,7 +41,7 @@ QString KisAnimationRenderingOptions::resolveAbsoluteFramesDirectory(const QStri
     }
 
     const QString basePath = resolveAbsoluteDocumentFilePath(documentPath);
-    return KritaUtils::resolveAbsoluteFilePath(basePath, directory);
+    return MinervaUtils::resolveAbsoluteFilePath(basePath, directory);
 }
 
 QString KisAnimationRenderingOptions::resolveAbsoluteVideoFilePath() const

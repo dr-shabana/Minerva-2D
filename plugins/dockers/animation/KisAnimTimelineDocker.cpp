@@ -18,7 +18,7 @@
 #include "QWidgetAction"
 #include <QActionGroup>
 
-#include "krita_utils.h"
+#include "minerva2d_utils.h"
 #include "kis_canvas2.h"
 #include "kis_image.h"
 #include <KoIcon.h>
@@ -139,7 +139,7 @@ KisAnimTimelineDockerTitlebar::KisAnimTimelineDockerTitlebar(QWidget* parent) :
         {   // Audio menu..
             QMenu *audioMenu = new QMenu(this);
 
-            strImportAudio = QString(i18nc("@item:inmenu Load audio file into Krita from disk.", "Import Audio..."));
+            strImportAudio = QString(i18nc("@item:inmenu Load audio file into Minerva from disk.", "Import Audio..."));
             importAudioAction = new QAction(strImportAudio, audioMenu);
             removeAudioAction = new QAction(i18nc("@item:inmenu", "Remove audio"), audioMenu);
 
@@ -561,7 +561,7 @@ void KisAnimTimelineDocker::updatePlaybackStatistics()
                              "%3\n"
                              "[PlaybackEngine: %4]")
             .arg(KisAnimUtils::dropFramesActionName)
-            .arg(KritaUtils::toLocalizedOnOff(shouldDropFrames))
+            .arg(MinervaUtils::toLocalizedOnOff(shouldDropFrames))
             .arg(i18n("Enable to preserve playback timing."))
             .arg(playbackEngineClass);
     } else {
@@ -571,7 +571,7 @@ void KisAnimTimelineDocker::updatePlaybackStatistics()
                        "%5\n"
                        "[PlaybackEngine: %6]")
             .arg(KisAnimUtils::dropFramesActionName)
-            .arg(KritaUtils::toLocalizedOnOff(shouldDropFrames))
+            .arg(MinervaUtils::toLocalizedOnOff(shouldDropFrames))
                          .arg(i18n("Effective FPS:\t%1", QString::number(effectiveFps, 'f', 1)))
             .arg(i18n("Real FPS:\t%1", QString::number(realFps, 'f', 1)))
             .arg(i18n("Frames dropped:\t%1\%", QString::number(framesDropped * 100, 'f', 1)))

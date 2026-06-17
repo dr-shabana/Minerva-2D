@@ -16,7 +16,7 @@ class KoShapeLayer;
 /**
  * @brief The KoSelectedShapesProxy class is a special interface of KoCanvasBase to
  * have a stable connection to shape selection signals in an environment when the
- * active shape manager can switch (e.g. when shape layers are switched in Krita)
+ * active shape manager can switch (e.g. when shape layers are switched in Minerva)
  */
 
 class KRITAFLAKE_EXPORT KoSelectedShapesProxy : public QObject

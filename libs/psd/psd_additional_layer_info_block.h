@@ -361,7 +361,7 @@ struct KRITAPSD_EXPORT psd_layer_gradient_fill {
         cfg->setProperty("end_position_angle", fixedAngle);
 
         if (style == "linear") {
-            // linear has the problem that in Krita it rotates around the top-left,
+            // linear has the problem that in Minerva it rotates around the top-left,
             // while in psd it rotates around the middle.
             QPointF center(imageWidth*0.5, imageHeight*0.5);
 
@@ -677,7 +677,7 @@ struct KRITAPSD_EXPORT psd_layer_pattern_fill {
         cfg->setProperty("fileName", QString(patternID + ".pat"));
         cfg->setProperty("md5", ""); // Zero out MD5, PSD patterns are looked up by UUID in filename
 
-        //angle is flipped for patterns in Krita.
+        //angle is flipped for patterns in Minerva.
         double fixedAngle = 360.0 - fmod(360.0 + angle, 360.0);
 
         cfg->setProperty("transform_scale_x", scale / 100);

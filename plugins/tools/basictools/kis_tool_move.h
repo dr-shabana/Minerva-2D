@@ -179,12 +179,12 @@ class KisToolMoveFactory : public KisToolPaintFactoryBase
 
 public:
     KisToolMoveFactory()
-            : KisToolPaintFactoryBase("KritaTransform/KisToolMove") {
+            : KisToolPaintFactoryBase("MinervaTransform/KisToolMove") {
         setToolTip(i18n("Move Tool"));
         setSection(ToolBoxSection::Transform);
-        setActivationShapeId(KRITA_TOOL_ACTIVATION_ID);
+        setActivationShapeId(MINERVA2D_TOOL_ACTIVATION_ID);
         setPriority(3);
-        setIconName(koIconNameCStr("krita_tool_move"));
+        setIconName(koIconNameCStr("minerva2d_tool_move"));
         setShortcut(QKeySequence(Qt::Key_T));
     }
 

@@ -770,7 +770,7 @@ QString writeTabSize(const TabSizeInfo tabSize)
         // Tabsize does not support percentage, so if we accidentally set it somewhere, convert to em.
         val = writeLengthPercentage(tabSize.length, true);
         if (tabSize.length == CssLengthPercentage::Absolute) {
-            val += "px"; // In SVG, due to browsers, the default unit is css px. Krita scales these to pt.
+            val += "px"; // In SVG, due to browsers, the default unit is css px. Minerva scales these to pt.
         }
     }
     return val;
@@ -874,7 +874,7 @@ QString writeLineHeight(LineHeightInfo lineHeight)
     if (!lineHeight.isNumber) {
         val = writeLengthPercentage(lineHeight.length);
         if (lineHeight.length.unit == CssLengthPercentage::Absolute) {
-            val += "px"; // In SVG, due to browsers, the default unit is css px. Krita scales these to pt.
+            val += "px"; // In SVG, due to browsers, the default unit is css px. Minerva scales these to pt.
         }
     }
     return val;

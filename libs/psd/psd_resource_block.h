@@ -135,7 +135,7 @@ struct KRITAPSD_EXPORT MAC_PRINT_INFO_1001 : public PSDInterpretedResource {
 
 /* 0x03ed - ResolutionInfo structure */
 struct KRITAPSD_EXPORT RESN_INFO_1005 : public PSDInterpretedResource {
-    // XXX: Krita only uses INCH internally
+    // XXX: Minerva only uses INCH internally
     enum PSDUnit {
         PSD_UNIT_INCH = 1, /* inches */
         PSD_UNIT_CM = 2, /* cm */

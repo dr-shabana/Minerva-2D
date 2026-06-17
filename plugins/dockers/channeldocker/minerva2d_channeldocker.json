@@ -1,0 +1,9 @@
+{
+    "Id": "Channel Docker",
+    "Type": "Service",
+    "X-KDE-Library": "kritachanneldocker",
+    "X-KDE-ServiceTypes": [
+        "Minerva/Dock"
+    ],
+    "X-Minerva-Version": "28"
+}

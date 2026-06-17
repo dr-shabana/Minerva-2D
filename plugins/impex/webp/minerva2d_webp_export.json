@@ -1,0 +1,12 @@
+{
+    "Id": "Minerva WebP Export Filter",
+    "NoDisplay": "true",
+    "Type": "Service",
+    "X-KDE-Export": "image/webp",
+    "X-KDE-Library": "kritawebpexport",
+    "X-KDE-ServiceTypes": [
+        "Minerva/FileFilter"
+    ],
+    "X-KDE-Weight": 4,
+    "X-KDE-Extensions" : "webp"
+}

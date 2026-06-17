@@ -1,5 +1,5 @@
 /*
- *  preferencesdlg.h - part of KImageShop^WKrita
+ *  preferencesdlg.h - part of KImageShop^WMinerva
  *
  *  SPDX-FileCopyrightText: 1999 Michael Koch <koch@kde.org>
  *  SPDX-FileCopyrightText: 2003-2011 Boudewijn Rempt <boud@valdyas.org>
@@ -396,7 +396,7 @@ protected Q_SLOTS:
 
 
 /**
- *  Preferences dialog of KImageShop^WKrayon^WKrita
+ *  Preferences dialog of KImageShop^WKrayon^WMinerva
  */
 class KisDlgPreferences : public KPageDialog
 {

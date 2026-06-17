@@ -31,7 +31,7 @@ void KoToolRegistry::init()
     KoPluginLoader::PluginsConfig config;
     config.group = "krita";
     config.blacklist = "ToolPluginsDisabled";
-    KoPluginLoader::instance()->load(QString::fromLatin1("Krita/Tool"),
+    KoPluginLoader::instance()->load(QString::fromLatin1("Minerva/Tool"),
                                      config);
 
     // register generic tools

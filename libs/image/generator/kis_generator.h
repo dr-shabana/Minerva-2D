@@ -20,7 +20,7 @@
 class KisProcessingInformation;
 
 /**
- * Basic interface of a Krita generator: a generator is a program
+ * Basic interface of a Minerva generator: a generator is a program
  * that can fill a paint device with a color. A generator can have a
  * preferred colorspace.
  *

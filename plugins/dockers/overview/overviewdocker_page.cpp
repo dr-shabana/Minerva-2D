@@ -158,7 +158,7 @@ void OverviewDockerPage::setCanvas(KoCanvasBase * canvas)
         m_pinControlsButton->setToolTip(
             i18nc("Make the controls in the overview docker auto-hide or always visible", "Pin navigation controls")
         );
-        m_pinControlsButton->setIcon(KisIconUtils::loadIcon("krita_tool_reference_images"));
+        m_pinControlsButton->setIcon(KisIconUtils::loadIcon("minerva2d_tool_reference_images"));
         m_pinControlsButton->setAutoRaise(true);
         connect(m_pinControlsButton, SIGNAL(toggled(bool)), SLOT(setPinControls(bool)));
 

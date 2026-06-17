@@ -6,7 +6,7 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.12
-import org.krita.flake.text 1.0
+import org.minerva2d.flake.text 1.0
 
 /**
   CSS font-kerning is formally a three-way state between auto, normal and none. SVG 1.1 had it as an

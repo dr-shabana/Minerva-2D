@@ -1,5 +1,5 @@
 /*
- * This file is part of Krita
+ * This file is part of Minerva
  *
  * SPDX-FileCopyrightText: 2006 Cyrille Berger <cberger@cberger.net>
  *
@@ -15,12 +15,12 @@
 
 class KisConfigWidget;
 
-class KritaRandomPickFilter : public QObject
+class MinervaRandomPickFilter : public QObject
 {
     Q_OBJECT
 public:
-    KritaRandomPickFilter(QObject *parent, const QVariantList &);
-    ~KritaRandomPickFilter() override;
+    MinervaRandomPickFilter(QObject *parent, const QVariantList &);
+    ~MinervaRandomPickFilter() override;
 };
 
 class KisFilterRandomPick : public KisFilter

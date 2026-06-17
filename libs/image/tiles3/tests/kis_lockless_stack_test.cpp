@@ -207,7 +207,7 @@ void KisLocklessStackTest::runStressTest(KisAbstractIntStack &stack)
         totalSum += job->pushSum();
         totalSum -= job->popSum();
 
-        dbgKrita << ppVar(totalSum);
+        dbgMinerva << ppVar(totalSum);
 
         delete job;
     }

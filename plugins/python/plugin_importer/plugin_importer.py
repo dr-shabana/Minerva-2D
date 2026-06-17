@@ -1,6 +1,6 @@
 # SPDX-FileCopyrightText: 2019 Rebecca Breu <rebecca@rbreu.de>
 
-# This file is part of Krita.
+# This file is part of Minerva.
 
 # SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -36,7 +36,7 @@ class PluginReadError(PluginImportError):
 
 
 class PluginImporter:
-    """Import a Krita Python Plugin from a zip file into the given
+    """Import a Minerva Python Plugin from a zip file into the given
     directory.
 
     The Importer makes barely any assumptions about the file structure
@@ -50,13 +50,13 @@ class PluginImporter:
     3. Find files with ending `.action` that have matching
        `<Action name=...>` tags (these files are optional)
     4. Extract the desktop- and action-files and the Python module
-       directories into the corresponding pykrita and actions folders
+       directories into the corresponding pyminerva2d and actions folders
 
     Usage:
 
     >>> importer = PluginImporter(
             '/path/to/plugin.zip',
-            '/path/to/krita/resources/',
+            '/path/to/minerva2d/resources/',
             confirm_overwrite_callback)
     >>> imported = importer.import_all()
 
@@ -69,7 +69,7 @@ class PluginImporter:
 
         :param zip_filename: Filename of the zip archive containing the
           plugin(s)
-        :param resources_dir: The Krita resources directory into which
+        :param resources_dir: The Minerva resources directory into which
           to extract the plugin(s)
         :param confirm_overwrite_callback: A function that gets called
           if a plugin already exists in the resources directory. It gets
@@ -94,8 +94,8 @@ class PluginImporter:
                 self.action_filenames.append(filename)
 
     @property
-    def destination_pykrita(self):
-        dest = os.path.join(self.resources_dir, 'pykrita')
+    def destination_pyminerva2d(self):
+        dest = os.path.join(self.resources_dir, 'pyminerva2d')
         if not os.path.exists(dest):
             os.mkdir(dest)
         return dest
@@ -108,11 +108,11 @@ class PluginImporter:
         return dest
 
     def get_destination_module(self, plugin):
-        return os.path.join(self.destination_pykrita, plugin['name'])
+        return os.path.join(self.destination_pyminerva2d, plugin['name'])
 
     def get_destination_desktop(self, plugin):
         return os.path.join(
-            self.destination_pykrita, '%s.desktop' % plugin['name'])
+            self.destination_pyminerva2d, '%s.desktop' % plugin['name'])
 
     def get_destination_actionfile(self, plugin):
         return os.path.join(

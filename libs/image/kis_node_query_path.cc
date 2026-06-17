@@ -72,7 +72,7 @@ struct Q_DECL_HIDDEN KisNodeQueryPath::Private {
                 if (_node->parent()) {
                     queryLevel(_level + 1, _node->parent(), _result);
                 } else {
-                    dbgKrita << "No parent";
+                    dbgMinerva << "No parent";
                 }
                 break;
             }
@@ -80,7 +80,7 @@ struct Q_DECL_HIDDEN KisNodeQueryPath::Private {
                 if (pe.index < _node->childCount()) {
                     queryLevel(_level + 1, _node->at(pe.index), _result);
                 } else {
-                    dbgKrita << "No parent";
+                    dbgMinerva << "No parent";
                 }
                 break;
             }

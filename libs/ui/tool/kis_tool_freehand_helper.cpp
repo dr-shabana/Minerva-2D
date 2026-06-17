@@ -411,7 +411,7 @@ void KisToolFreehandHelper::paintBezierSegment(KisPaintInformation pi1, KisPaint
             intersection.manhattanLength() > maxSanePoint) {
 
             intersection = 0.5 * (pi1.pos() + pi2.pos());
-//            dbgKrita << "WARNING: there is no intersection point "
+//            dbgMinerva << "WARNING: there is no intersection point "
 //                     << "in the basic smoothing algorithms";
         }
 
@@ -428,7 +428,7 @@ void KisToolFreehandHelper::paintBezierSegment(KisPaintInformation pi1, KisPaint
     if (velocity1 == 0.0 || velocity2 == 0.0) {
         velocity1 = 1e-6;
         velocity2 = 1e-6;
-        warnKrita << "WARNING: Basic Smoothing: Velocity is Zero! Please report a bug:" << ppVar(velocity1) << ppVar(velocity2);
+        warnMinerva << "WARNING: Basic Smoothing: Velocity is Zero! Please report a bug:" << ppVar(velocity1) << ppVar(velocity2);
     }
 
     qreal similarity = qMin(velocity1/velocity2, velocity2/velocity1);
@@ -494,7 +494,7 @@ void KisToolFreehandHelper::paint(KisPaintInformation &info)
     /**
      * Smooth the coordinates out using the history and the
      * distance. This is a heavily modified version of an algo used in
-     * Gimp and described in https://bugs.kde.org/show_bug.cgi?id=281267 and
+     * Gimp and described in https://github.com/dr-shabana/Minerva-2D/issues/show_bug.cgi?id=281267 and
      * https://w.atwiki.jp/sigetch_2007/pages/17.html.  The main
      * differences are:
      *

@@ -90,7 +90,7 @@ void KisTextureOption::fillProperties(const KisPropertiesConfiguration *setting,
 
     m_maskInfo = toQShared(new KisTextureMaskInfo(m_levelOfDetail, preserveAlpha));
     if (!m_maskInfo->fillProperties(setting, resourcesInterface, additionalInvert)) {
-        warnKrita << "WARNING: Couldn't load the pattern for a stroke (KisTextureProperties)";
+        warnMinerva << "WARNING: Couldn't load the pattern for a stroke (KisTextureProperties)";
         m_enabled = false;
         return;
     }

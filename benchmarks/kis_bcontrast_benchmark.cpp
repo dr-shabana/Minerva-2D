@@ -24,7 +24,7 @@
 
 #include "kis_selection.h"
 #include <kis_iterator_ng.h>
-#include "krita_utils.h"
+#include "minerva2d_utils.h"
 #include <KisGlobalResourcesInterface.h>
 #include <KisPortingUtils.h>
 
@@ -78,8 +78,8 @@ void KisBContrastBenchmark::benchmarkFilter()
         kfc->fromXML(s);
     }
 
-    QSize size = KritaUtils::optimalPatchSize();
-    QVector<QRect> rects = KritaUtils::splitRectIntoPatches(QRect(0, 0, GMP_IMAGE_WIDTH,GMP_IMAGE_HEIGHT), size);
+    QSize size = MinervaUtils::optimalPatchSize();
+    QVector<QRect> rects = MinervaUtils::splitRectIntoPatches(QRect(0, 0, GMP_IMAGE_WIDTH,GMP_IMAGE_HEIGHT), size);
 
     QBENCHMARK{
         Q_FOREACH (const QRect &rc, rects) {

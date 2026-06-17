@@ -1,4 +1,4 @@
-set(KRITA_TEXTPROPERTIES_SOURCES 
+set(MINERVA2D_TEXTPROPERTIES_SOURCES 
     TextPropertiesPlugin.cpp 
     TextPropertiesDock.cpp 
     FontStyleModel.cpp
@@ -12,9 +12,9 @@ set(KRITA_TEXTPROPERTIES_SOURCES
     TextPropertiesCanvasObserver.cpp
 )
 
-qt_add_resources(KRITA_TEXTPROPERTIES_SOURCES textproperties.qrc)
+qt_add_resources(MINERVA2D_TEXTPROPERTIES_SOURCES textproperties.qrc)
 
-kis_add_library(kritatextproperties MODULE ${KRITA_TEXTPROPERTIES_SOURCES})
+kis_add_library(kritatextproperties MODULE ${MINERVA2D_TEXTPROPERTIES_SOURCES})
 target_link_libraries(kritatextproperties 
     kritaui
     kritaqmlwidgets
@@ -23,5 +23,5 @@ target_link_libraries(kritatextproperties
     Qt${QT_MAJOR_VERSION}::QuickControls2
     Qt${QT_MAJOR_VERSION}::Qml
 )
-install(TARGETS kritatextproperties  DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
+install(TARGETS kritatextproperties  DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})
  

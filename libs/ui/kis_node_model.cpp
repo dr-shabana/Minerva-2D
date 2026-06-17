@@ -793,10 +793,10 @@ bool KisNodeModel::hasDummiesFacade()
 QStringList KisNodeModel::mimeTypes() const
 {
     QStringList types;
-    types << QLatin1String("application/x-krita-node-internal-pointer");
+    types << QLatin1String("application/x-minerva2d-node-internal-pointer");
     types << QLatin1String("application/x-qt-image");
     types << QLatin1String("application/x-color");
-    types << QLatin1String("krita/x-colorsetentry");
+    types << QLatin1String("minerva2d/x-colorsetentry");
     return types;
 }
 

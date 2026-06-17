@@ -8,10 +8,10 @@
 #include <QDataStream>
 #include <QLoggingCategory>
 
-#include <KritaVersionWrapper.h>
+#include <MinervaVersionWrapper.h>
 #include <Node.h>
 #include <Channel.h>
-#include <Krita.h>
+#include <Minerva.h>
 
 #include <KoColorSpaceRegistry.h>
 #include <KoColorProfile.h>

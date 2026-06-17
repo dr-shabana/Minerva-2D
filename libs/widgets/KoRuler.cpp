@@ -1073,7 +1073,7 @@ void KoRuler::mousePressEvent ( QMouseEvent* ev )
     }
 
     /**
-     * HACK ALERT: We don't need all that indentation stuff in Krita.
+     * HACK ALERT: We don't need all that indentation stuff in Minerva.
      *             Just ensure the rulers are created correctly.
      */
     if (d->selected == KoRulerPrivate::None) {

@@ -39,7 +39,7 @@ There are several kinds of brush types:
 <ul>
  <li> gbr: Gimp one-image brushes, either a grayscale mask or a colored image.
         There are also 16-bit .gbr brushes, created and used by CinePaint.
-        Krita is compatible with those, too.
+        Minerva is compatible with those, too.
  <li> gih: Gimp image hose brushes. Image hoses contain a set of images and
         some instructions to determine which image comes next
  <li> custom: this brush is generator from the image or a selection of the image
@@ -73,7 +73,7 @@ that to deliver brush sets that are pre-tagged.
 The original brush resource architecture used a resource server,
 resource mediator and resource chooser. It was impossible to retrieve
 a specific brush by name or to serialize and deserialize brushes.
-We are transitioning to the ordinary Krita
+We are transitioning to the ordinary Minerva
 registry/factory/instance/settings/settings widget  pattern, where
 the registry loads plugins, the plugins add a factory to the registry
 and provides instances to the application.  For now, it's still a

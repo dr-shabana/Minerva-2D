@@ -2,5 +2,5 @@ set(kritaseparatechannels_SOURCES kis_channel_separator.cc dlg_separate.cc kis_s
 ki18n_wrap_ui(kritaseparatechannels_SOURCES wdg_separations.ui )
 kis_add_library(kritaseparatechannels MODULE ${kritaseparatechannels_SOURCES})
 target_link_libraries(kritaseparatechannels kritaui)
-install(TARGETS kritaseparatechannels  DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
-install( FILES  imageseparate.xmlgui  DESTINATION ${KDE_INSTALL_DATADIR}/kritaplugins)
+install(TARGETS kritaseparatechannels  DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})
+install( FILES  imageseparate.xmlgui  DESTINATION ${KDE_INSTALL_DATADIR}/minerva2dplugins)

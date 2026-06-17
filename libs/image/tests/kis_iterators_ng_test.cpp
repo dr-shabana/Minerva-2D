@@ -29,7 +29,7 @@ void KisIteratorNGTest::allCsApplicator(void (KisIteratorNGTest::* funcPtr)(cons
 
     Q_FOREACH (const KoColorSpace* cs, colorspaces) {
 
-        dbgKrita << "Testing with" << cs->id();
+        dbgMinerva << "Testing with" << cs->id();
         if (cs->id() != "GRAYU16") // No point in testing extend for GRAYU16
             (this->*funcPtr)(cs);
     }

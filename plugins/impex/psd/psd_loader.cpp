@@ -229,7 +229,7 @@ KisImportExportErrorCode PSDLoader::decode(QIODevice &io)
         return ImportExportCodes::OK;
     }
 
-    // More than one layer, so now construct the Krita image from the info we read.
+    // More than one layer, so now construct the Minerva image from the info we read.
 
     QStack<KisGroupLayerSP> groupStack;
     groupStack.push(m_image->rootLayer());
@@ -304,7 +304,7 @@ KisImportExportErrorCode PSDLoader::decode(QIODevice &io)
 
                 QString compositeOp = psd_blendmode_to_composite_op(layerRecord->infoBlocks.sectionDividerBlendMode);
 
-                // Krita doesn't support pass-through blend
+                // Minerva doesn't support pass-through blend
                 // mode. Instead it is just a property of a group
                 // layer, so flip it
                 if (compositeOp == COMPOSITE_PASS_THROUGH) {
@@ -326,10 +326,10 @@ KisImportExportErrorCode PSDLoader::decode(QIODevice &io)
                  * See bug: 357559
                  */
 
-                warnKrita << "WARNING: Provided PSD has unbalanced group "
+                warnMinerva << "WARNING: Provided PSD has unbalanced group "
                           << "layer markers. Some masks and/or layers can "
                           << "be lost while loading this file. Please "
-                          << "report a bug to Krita developers and attach "
+                          << "report a bug to Minerva developers and attach "
                           << "this file to the bugreport\n"
                           << "    " << ppVar(layerRecord->layerName) << "\n"
                           << "    " << ppVar(layerRecord->infoBlocks.sectionDividerType) << "\n"
@@ -647,13 +647,13 @@ KisImportExportErrorCode PSDLoader::decode(QIODevice &io)
 
                 layer->setLayerStyle(layerStyle->cloneWithResourcesSnapshot(layerStyle->resourcesInterface(), 0));
             } else {
-                warnKrita << "WARNING: Couldn't read layer style!" << ppVar(serializer.styles());
+                warnMinerva << "WARNING: Couldn't read layer style!" << ppVar(serializer.styles());
             }
 
         }
     }
 
-    return KritaUtils::workaroundUnsuitableImageColorSpace(m_image, m_feedbackInterface, lock);
+    return MinervaUtils::workaroundUnsuitableImageColorSpace(m_image, m_feedbackInterface, lock);
 }
 
 KisImportExportErrorCode PSDLoader::buildImage(QIODevice &io)

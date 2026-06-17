@@ -1,6 +1,6 @@
 # Icons for Android source files
 
-These files are modified from `/pics/branding/[flavors]/sc-apps-krita.svgz`.
+These files are modified from `/pics/branding/[flavors]/sc-apps-minerva2d.svgz`.
 
 - `adaptive.svg` is the completed version of the background and foreground extension according to the [Designing Adaptive Icons](https://medium.com/google-design/designing-adaptive-icons-515af294c783).
   1. Remove the shadow from the canvas.

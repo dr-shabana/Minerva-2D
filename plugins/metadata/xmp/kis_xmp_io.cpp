@@ -222,8 +222,8 @@ bool parseTagName(const QString &tagString,
         }
     }
 
-    warnKrita << "WARNING: Unsupported tag. We do not yet support nested tags. The tag will be dropped!";
-    warnKrita << "         Failing tag:" << tagString;
+    warnMinerva << "WARNING: Unsupported tag. We do not yet support nested tags. The tag will be dropped!";
+    warnMinerva << "         Failing tag:" << tagString;
     return false;
 }
 
@@ -312,7 +312,7 @@ bool KisXMPIO::loadFrom(KisMetaData::Store *store, QIODevice *ioDevice) const
                 KisMetaData::Value::ValueType vt = KisMetaData::Value::Invalid;
                 switch (xav->xmpArrayType()) {
                 case Exiv2::XmpValue::xaNone:
-                    warnKrita << "KisXMPIO: Unsupported array";
+                    warnMinerva << "KisXMPIO: Unsupported array";
                     break;
                 case Exiv2::XmpValue::xaAlt:
                     vt = KisMetaData::Value::AlternativeArray;
@@ -364,7 +364,7 @@ bool KisXMPIO::loadFrom(KisMetaData::Store *store, QIODevice *ioDevice) const
                 if (!arraysOfStructures[schema][structName][arrayIndex].contains(tagName)) {
                     arraysOfStructures[schema][structName][arrayIndex][tagName] = v;
                 } else {
-                    warnKrita << "WARNING: trying to overwrite tag" << tagName << "in" << structName << arrayIndex;
+                    warnMinerva << "WARNING: trying to overwrite tag" << tagName << "in" << structName << arrayIndex;
                 }
             } else {
                 if (!ignoreValue) {

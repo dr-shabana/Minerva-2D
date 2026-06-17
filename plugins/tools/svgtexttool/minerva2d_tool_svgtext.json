@@ -1,0 +1,10 @@
+{
+    "Id": "SvgTextTool",
+    "Type": "Service",
+    "X-Minerva-Version": "28",
+    "X-KDE-Library": "minerva2d_tool_svgtext",
+    "X-KDE-PluginInfo-Name": "svgtexttool",
+    "X-KDE-ServiceTypes": [
+        "Minerva/Tool"
+    ]
+}

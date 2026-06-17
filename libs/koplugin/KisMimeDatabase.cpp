@@ -27,8 +27,8 @@ QString KisMimeDatabase::mimeTypeForFile(const QString &file, bool checkExisting
     QString suffix = fi.suffix().toLower();
 
 #ifdef Q_OS_ANDROID
-    // HACK: on Android we can save as .kra with no extension or as something like:
-    // "untitled.kra (1)", (1) being added by the SAF because we can't overwrite the duplicate.
+    // HACK: on Android we can save as .m2d with no extension or as something like:
+    // "untitled.m2d (1)", (1) being added by the SAF because we can't overwrite the duplicate.
     // So, we need to be able to remove that number and get extension. If there is no extension,
     // perhaps try "kra"
     suffix = sanitizeSuffix(suffix);
@@ -180,8 +180,8 @@ void KisMimeDatabase::fillMimeData()
         mimeType.suffixes = QStringList() << "abr";
         s_mimeDatabase << mimeType;
 
-        mimeType.mimeType = "application/x-krita-paintoppreset";
-        mimeType.description = i18nc("description of a file type", "Krita Brush Preset");
+        mimeType.mimeType = "application/x-minerva2d-paintoppreset";
+        mimeType.description = i18nc("description of a file type", "Minerva Brush Preset");
         mimeType.suffixes = QStringList() << "kpp";
         s_mimeDatabase << mimeType;
 
@@ -190,8 +190,8 @@ void KisMimeDatabase::fillMimeData()
         mimeType.suffixes = QStringList() << "myb";
         s_mimeDatabase << mimeType;
 
-        mimeType.mimeType = "application/x-krita-assistant";
-        mimeType.description = i18nc("description of a file type", "Krita Assistant");
+        mimeType.mimeType = "application/x-minerva2d-assistant";
+        mimeType.description = i18nc("description of a file type", "Minerva Assistant");
         mimeType.suffixes = QStringList() << "paintingassistant";
         s_mimeDatabase << mimeType;
 
@@ -235,8 +235,8 @@ void KisMimeDatabase::fillMimeData()
         mimeType.suffixes = QStringList() << "gpl" << "pal" << "act" << "aco" << "colors" << "xml" << "sbz" << "acb" << "ase" << "css";
         s_mimeDatabase << mimeType;
 
-        mimeType.mimeType = "application/x-krita-palette";
-        mimeType.description = i18nc("description of a file type", "Krita Color Palette");
+        mimeType.mimeType = "application/x-minerva2d-palette";
+        mimeType.description = i18nc("description of a file type", "Minerva Color Palette");
         mimeType.suffixes = QStringList() << "kpl";
         s_mimeDatabase << mimeType;
 
@@ -255,47 +255,47 @@ void KisMimeDatabase::fillMimeData()
         mimeType.suffixes = QStringList() << "pat";
         s_mimeDatabase << mimeType;
 
-        mimeType.mimeType = "application/x-krita-bundle";
-        mimeType.description = i18nc("description of a file type", "Krita Resource Bundle");
+        mimeType.mimeType = "application/x-minerva2d-bundle";
+        mimeType.description = i18nc("description of a file type", "Minerva Resource Bundle");
         mimeType.suffixes = QStringList() << "bundle";
         s_mimeDatabase << mimeType;
 
-        mimeType.mimeType = "application/x-krita-workspace";
-        mimeType.description = i18nc("description of a file type", "Krita Workspace");
+        mimeType.mimeType = "application/x-minerva2d-workspace";
+        mimeType.description = i18nc("description of a file type", "Minerva Workspace");
         mimeType.suffixes = QStringList() << "kws";
         s_mimeDatabase << mimeType;
 
-        mimeType.mimeType = "application/x-krita-windowlayout";
-        mimeType.description = i18nc("description of a file type", "Krita Window Layout");
+        mimeType.mimeType = "application/x-minerva2d-windowlayout";
+        mimeType.description = i18nc("description of a file type", "Minerva Window Layout");
         mimeType.suffixes = QStringList() << "kwl";
         s_mimeDatabase << mimeType;
 
-        mimeType.mimeType = "application/x-krita-session";
-        mimeType.description = i18nc("description of a file type", "Krita Session");
+        mimeType.mimeType = "application/x-minerva2d-session";
+        mimeType.description = i18nc("description of a file type", "Minerva Session");
         mimeType.suffixes = QStringList() << "ksn";
         s_mimeDatabase << mimeType;
 
-        mimeType.mimeType = "application/x-krita-taskset";
-        mimeType.description = i18nc("description of a file type", "Krita Taskset");
+        mimeType.mimeType = "application/x-minerva2d-taskset";
+        mimeType.description = i18nc("description of a file type", "Minerva Taskset");
         mimeType.suffixes = QStringList() << "kts";
         s_mimeDatabase << mimeType;
 
-        mimeType.mimeType = "application/x-krita-reference-images";
-        mimeType.description = i18nc("description of a file type", "Krita Reference Image Collection");
+        mimeType.mimeType = "application/x-minerva2d-reference-images";
+        mimeType.description = i18nc("description of a file type", "Minerva Reference Image Collection");
         mimeType.suffixes = QStringList() << "krf";
         s_mimeDatabase << mimeType;
 
-        mimeType.mimeType = "application/x-krita-gamutmasks";
-        mimeType.description = i18nc("description of a file type", "Krita Gamut Mask");
+        mimeType.mimeType = "application/x-minerva2d-gamutmasks";
+        mimeType.description = i18nc("description of a file type", "Minerva Gamut Mask");
         mimeType.suffixes = QStringList() << "kgm";
         s_mimeDatabase << mimeType;
         
-        mimeType.mimeType = "application/x-krita-shortcuts";
-        mimeType.description = i18nc("description of a file type", "Krita Shortcut Scheme");
+        mimeType.mimeType = "application/x-minerva2d-shortcuts";
+        mimeType.description = i18nc("description of a file type", "Minerva Shortcut Scheme");
         mimeType.suffixes = QStringList() << "shortcuts";
         s_mimeDatabase << mimeType;
 
-        mimeType.mimeType = "image/x-krita-raw";
+        mimeType.mimeType = "image/x-minerva2d-raw";
         mimeType.description = i18nc("description of a file type", "Camera Raw Files");
         mimeType.suffixes = QStringList() << "bay" << "bmq" << "cr2" << "crw" << "cs1" << "dc2" << "dcr" << "dng" << "erf" << "fff" << "k25" << "kdc" << "mdc" << "mos" << "mrw" << "nef" << "orf" << "pef" << "pxn" << "raf" << "raw" << "rdc" << "sr2" << "srf" << "x3f" << "arw" << "3fr" << "cine" << "ia" << "kc2" << "mef" << "nrw" << "qtk" << "rw2" << "sti" << "rwl" << "srw";
         s_mimeDatabase << mimeType;
@@ -325,13 +325,13 @@ void KisMimeDatabase::fillMimeData()
 //        mimeType.suffixes = QStringList() << "jp2" << "j2k";
 //        s_mimeDatabase << mimeType;
 
-        mimeType.mimeType = "application/x-krita-seexpr-script";
+        mimeType.mimeType = "application/x-minerva2d-seexpr-script";
         mimeType.description = i18nc("description of a file type", "SeExpr script package");
         mimeType.suffixes = QStringList() << "kse";
         s_mimeDatabase << mimeType;
 
-        mimeType.mimeType = "application/x-krita-archive";
-        mimeType.description = i18nc("description of a file type", "Krita Archival Image Format");
+        mimeType.mimeType = "application/x-minerva2d-archive";
+        mimeType.description = i18nc("description of a file type", "Minerva Archival Image Format");
         mimeType.suffixes = QStringList() << "krz";
         s_mimeDatabase << mimeType;
 

@@ -90,7 +90,7 @@ public:
     // perpendicular dot product
     // it's basically a dot product between vector A(xa, ya) and vector B'(xb, -yb)
     // or a dot product between vector A'(xa, -ya) and vector B(xb, yb)
-    // if it's needed elsewhere in Krita too, you can move it to KisAlgebra2D
+    // if it's needed elsewhere in Minerva too, you can move it to KisAlgebra2D
     static qreal pdot(const QPointF& a, const QPointF& b);
 
 };

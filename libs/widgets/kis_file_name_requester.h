@@ -49,7 +49,7 @@ public:
     /**
      * Sets the mime type filters to use, same format as KoFileDialog::setMimeTypeFilters.
      * If this is not called, the default list is used, which simply selects all the image
-     * file formats Krita can load.
+     * file formats Minerva can load.
      */
     void setMimeTypeFilters(const QStringList &filterList, QString defaultFilter = QString());
 

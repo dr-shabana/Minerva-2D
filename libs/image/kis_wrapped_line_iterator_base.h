@@ -103,11 +103,11 @@ public:
     }
 
     void resetPixelPos() {
-        errKrita << "CRITICAL: resetPixelPos() is not implemented";
+        errMinerva << "CRITICAL: resetPixelPos() is not implemented";
     }
 
     void resetRowPos() {
-        errKrita << "CRITICAL: resetRowPos() is not implemented";
+        errMinerva << "CRITICAL: resetRowPos() is not implemented";
     }
 
     void resetColumnPos() {

@@ -57,7 +57,7 @@ public:
 
     bool process(KisNode* node) {
         if (node->isFakeNode()) {
-            dbgKrita << "Compositions: Skipping over Fake Node" << node->uuid() << node->name();
+            dbgMinerva << "Compositions: Skipping over Fake Node" << node->uuid() << node->name();
             return true;
         }
 
@@ -193,12 +193,12 @@ void KisLayerComposition::save(QDomDocument& doc, QDomElement& element)
     while (iter.hasNext()) {
         iter.next();
         QDomElement valueElement = doc.createElement("value");
-        dbgKrita << "uuid" << iter.key().toString() << "visible" <<  iter.value();
+        dbgMinerva << "uuid" << iter.key().toString() << "visible" <<  iter.value();
         valueElement.setAttribute("uuid", iter.key().toString());
         valueElement.setAttribute("visible", iter.value());
-        dbgKrita << "contains" << m_collapsedMap.contains(iter.key());
+        dbgMinerva << "contains" << m_collapsedMap.contains(iter.key());
         if (m_collapsedMap.contains(iter.key())) {
-            dbgKrita << "collapsed :" << m_collapsedMap[iter.key()];
+            dbgMinerva << "collapsed :" << m_collapsedMap[iter.key()];
             valueElement.setAttribute("collapsed", m_collapsedMap[iter.key()]);
         }
         compositionElement.appendChild(valueElement);

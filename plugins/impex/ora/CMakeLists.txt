@@ -17,7 +17,7 @@ kis_add_library(kritaoraimport MODULE ${kritaoraimport_SOURCES})
 
 target_link_libraries(kritaoraimport kritaui )
 
-install(TARGETS kritaoraimport  DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
+install(TARGETS kritaoraimport  DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})
 
 set(kritaoraexport_SOURCES
     ora_export.cc
@@ -28,6 +28,6 @@ kis_add_library(kritaoraexport MODULE ${kritaoraexport_SOURCES})
 
 target_link_libraries(kritaoraexport kritaui kritaimpex)
 
-install(TARGETS kritaoraexport  DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
+install(TARGETS kritaoraexport  DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})
 
-install(FILES krita_ora.desktop DESTINATION ${KDE_INSTALL_APPDIR})
+install(FILES minerva2d_ora.desktop DESTINATION ${KDE_INSTALL_APPDIR})

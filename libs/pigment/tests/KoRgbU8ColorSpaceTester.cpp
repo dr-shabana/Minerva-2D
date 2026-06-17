@@ -374,7 +374,7 @@ void KoRgbU8ColorSpaceTester::testCompositeCopyDivisionByZero()
      * of the composite op. In vector version we handle division be zero in a relaxed
      * way, so it some cases the content of the color channels may be different from
      * the one of the scalar versions of the algorithm. It is only allowed when the
-     * pixel's alpha is null. In such case Krita considers pixel state as "undefined",
+     * pixel's alpha is null. In such case Minerva considers pixel state as "undefined",
      * so any value is considered okay.
      */
 

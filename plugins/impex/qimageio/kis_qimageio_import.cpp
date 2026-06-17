@@ -25,7 +25,7 @@
 #include <kis_group_layer.h>
 
 
-K_PLUGIN_FACTORY_WITH_JSON(KisQImageIOImportFactory, "krita_qimageio_import.json", registerPlugin<KisQImageIOImport>();)
+K_PLUGIN_FACTORY_WITH_JSON(KisQImageIOImportFactory, "minerva2d_qimageio_import.json", registerPlugin<KisQImageIOImport>();)
 
 KisQImageIOImport::KisQImageIOImport(QObject *parent, const QVariantList &) : KisImportExportFilter(parent)
 {

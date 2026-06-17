@@ -147,19 +147,19 @@ static bool abr_reach_8BIM_section(QDataStream & abr, const QString name)
         r = abr.readRawData(tag, 4);
 
         if (r != 4) {
-            warnKrita << "Error: Cannot read 8BIM tag ";
+            warnMinerva << "Error: Cannot read 8BIM tag ";
             return false;
         }
 
         if (strncmp(tag, "8BIM", 4)) {
-            warnKrita << "Error: Start tag not 8BIM but " << (int)tag[0] << (int)tag[1] << (int)tag[2] << (int)tag[3] << " at position " << abr.device()->pos();
+            warnMinerva << "Error: Start tag not 8BIM but " << (int)tag[0] << (int)tag[1] << (int)tag[2] << (int)tag[3] << " at position " << abr.device()->pos();
             return false;
         }
 
         r = abr.readRawData(tagname, 4);
 
         if (r != 4) {
-            warnKrita << "Error: Cannot read 8BIM tag name";
+            warnMinerva << "Error: Cannot read 8BIM tag name";
             return false;
         }
         tagname[4] = '\0';
@@ -228,7 +228,7 @@ static qint32 find_sample_count_v6(QDataStream & abr, AbrInfo *abr_info)
     // set stream to samples data
     abr.device()->seek(data_start);
 
-    //dbgKrita <<"samples : "<< samples;
+    //dbgMinerva <<"samples : "<< samples;
     return samples;
 }
 
@@ -423,7 +423,7 @@ qint32 KisAbrBrushCollection::abr_brush_load_v12(QDataStream & abr, AbrInfo *abr
     if (brush_type == 1) {
         // computed brush
         // FIXME: support it!
-        warnKrita  << "WARNING: computed brush unsupported, skipping.";
+        warnMinerva  << "WARNING: computed brush unsupported, skipping.";
         abr.device()->seek(abr.device()->pos() + next_brush);
         // TODO: test also this one abr.skipRawData(next_brush);
     }
@@ -457,7 +457,7 @@ qint32 KisAbrBrushCollection::abr_brush_load_v12(QDataStream & abr, AbrInfo *abr
 
         /* FIXME: support wide brushes */
         if (height > 16384) {
-            warnKrita << "WARNING: wide brushes not supported";
+            warnMinerva << "WARNING: wide brushes not supported";
             abr.device()->seek(next_brush);
         }
         else {
@@ -492,7 +492,7 @@ qint32 KisAbrBrushCollection::abr_brush_load_v12(QDataStream & abr, AbrInfo *abr
         }
     }
     else {
-        warnKrita << "Unknown ABR brush type, skipping.";
+        warnMinerva << "Unknown ABR brush type, skipping.";
         abr.device()->seek(next_brush);
     }
 
@@ -548,7 +548,7 @@ bool KisAbrBrushCollection::load()
     m_lastModified = info.lastModified();
     // check if the file is open correctly
     if (!file.open(QIODevice::ReadOnly)) {
-        warnKrita << "Can't open file " << filename();
+        warnMinerva << "Can't open file " << filename();
         return false;
     }
 
@@ -573,17 +573,17 @@ bool KisAbrBrushCollection::loadFromDevice(QIODevice *dev)
 
 
     if (!abr_read_content(abr, &abr_hdr)) {
-        warnKrita << "Error: cannot parse ABR file: " << filename();
+        warnMinerva << "Error: cannot parse ABR file: " << filename();
         return false;
     }
 
     if (!abr_supported_content(&abr_hdr)) {
-        warnKrita << "ERROR: unable to decode abr format version " << abr_hdr.version << "(subver " << abr_hdr.subversion << ")";
+        warnMinerva << "ERROR: unable to decode abr format version " << abr_hdr.version << "(subver " << abr_hdr.subversion << ")";
         return false;
     }
 
     if (abr_hdr.count == 0) {
-        errKrita << "ERROR: no sample brush found in " << filename();
+        errMinerva << "ERROR: no sample brush found in " << filename();
         return false;
     }
 
@@ -592,7 +592,7 @@ bool KisAbrBrushCollection::loadFromDevice(QIODevice *dev)
     for (i = 0; i < abr_hdr.count; i++) {
         layer_ID = abr_brush_load(abr, &abr_hdr, QFileInfo(filename()).fileName(), image_ID, i + 1);
         if (layer_ID == -1) {
-            warnKrita << "Warning: problem loading brush #" << i << " in " << filename();
+            warnMinerva << "Warning: problem loading brush #" << i << " in " << filename();
         }
     }
 

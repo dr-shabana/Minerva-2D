@@ -29,7 +29,7 @@ KisMetadataBackendRegistry::~KisMetadataBackendRegistry()
 
 void KisMetadataBackendRegistry::init()
 {
-    KoPluginLoader::instance()->load("Krita/Metadata");
+    KoPluginLoader::instance()->load("Minerva/Metadata");
 }
 
 KisMetadataBackendRegistry *KisMetadataBackendRegistry::instance()

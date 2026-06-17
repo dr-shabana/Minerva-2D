@@ -350,7 +350,7 @@ QWidget * KisToolLazyBrush::createOptionWidget()
     QWidget *optionsWidget = new KisToolLazyBrushOptionsWidget(kiscanvas->viewManager()->canvasResourceProvider(), 0);
     optionsWidget->setObjectName(toolId() + "option widget");
 
-    // // See https://bugs.kde.org/show_bug.cgi?id=316896
+    // // See https://github.com/dr-shabana/Minerva-2D/issues/show_bug.cgi?id=316896
     // QWidget *specialSpacer = new QWidget(optionsWidget);
     // specialSpacer->setObjectName("SpecialSpacer");
     // specialSpacer->setFixedSize(0, 0);

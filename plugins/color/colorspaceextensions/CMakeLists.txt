@@ -11,6 +11,6 @@ set( extensions_plugin_SOURCES
     kis_desaturate_adjustment.cpp
 )
 
-kis_add_library(krita_colorspaces_extensions MODULE ${extensions_plugin_SOURCES})
-target_link_libraries(krita_colorspaces_extensions kritapigment kritaglobal ${LINK_OPENEXR_LIB} KF${KF_MAJOR}::I18n KF${KF_MAJOR}::CoreAddons)
-install( TARGETS krita_colorspaces_extensions DESTINATION ${KRITA_PLUGIN_INSTALL_DIR} )
+kis_add_library(minerva2d_colorspaces_extensions MODULE ${extensions_plugin_SOURCES})
+target_link_libraries(minerva2d_colorspaces_extensions kritapigment kritaglobal ${LINK_OPENEXR_LIB} KF${KF_MAJOR}::I18n KF${KF_MAJOR}::CoreAddons)
+install( TARGETS minerva2d_colorspaces_extensions DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR} )

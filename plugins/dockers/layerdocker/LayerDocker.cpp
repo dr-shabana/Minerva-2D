@@ -15,15 +15,15 @@
 
 #include "LayerBox.h"
 
-K_PLUGIN_FACTORY_WITH_JSON(KritaLayerDockerPluginFactory, "kritalayerdocker.json", registerPlugin<KritaLayerDockerPlugin>();)
+K_PLUGIN_FACTORY_WITH_JSON(MinervaLayerDockerPluginFactory, "kritalayerdocker.json", registerPlugin<MinervaLayerDockerPlugin>();)
 
-KritaLayerDockerPlugin::KritaLayerDockerPlugin(QObject *parent, const QVariantList &)
+MinervaLayerDockerPlugin::MinervaLayerDockerPlugin(QObject *parent, const QVariantList &)
         : QObject(parent)
 {
     KoDockRegistry::instance()->add(new LayerBoxFactory());
 }
 
-KritaLayerDockerPlugin::~KritaLayerDockerPlugin()
+MinervaLayerDockerPlugin::~MinervaLayerDockerPlugin()
 {
 }
 

@@ -42,7 +42,7 @@ void kis_assert_common(const char *assertion, const char *file, int line, bool a
 
     QString longMessage =
         QString(
-            "Krita has encountered an internal error:\n\n"
+            "Minerva has encountered an internal error:\n\n"
             "%1\n\n"
             "Please report a bug to developers!\n\n"
             "Press Ignore to try to continue.\n"
@@ -52,7 +52,7 @@ void kis_assert_common(const char *assertion, const char *file, int line, bool a
     KisUsageLogger::log(shortMessage);
 
     bool disableAssertMsg =
-        QProcessEnvironment::systemEnvironment().value("KRITA_NO_ASSERT_MSG", "0").toInt();
+        QProcessEnvironment::systemEnvironment().value("MINERVA2D_NO_ASSERT_MSG", "0").toInt();
 
     // disable message box if the assert happened in non-gui thread
     // or if the GUI is not yet instantiated
@@ -79,7 +79,7 @@ void kis_assert_common(const char *assertion, const char *file, int line, bool a
 
     if (!disableAssertMsg) {
         button =
-            QMessageBox::critical(qApp->activeWindow(), i18nc("@title:window", "Krita: Internal Error"),
+            QMessageBox::critical(qApp->activeWindow(), i18nc("@title:window", "Minerva: Internal Error"),
                                   longMessage,
                                   QMessageBox::Ignore | QMessageBox::Abort,
                                   QMessageBox::Ignore);
@@ -88,7 +88,7 @@ void kis_assert_common(const char *assertion, const char *file, int line, bool a
     if (button == QMessageBox::Abort || abort) {
         qFatal("%s", shortMessage.toLatin1().data());
     } else if (isIgnorable) {
-        // Assert is a bug! Please don't change this line to warnKrita,
+        // Assert is a bug! Please don't change this line to warnMinerva,
         // the user must see it!
         qWarning("%s", shortMessage.toLatin1().data());
     }

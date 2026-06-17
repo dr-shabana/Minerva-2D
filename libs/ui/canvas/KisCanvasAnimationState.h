@@ -30,7 +30,7 @@ enum PlaybackState : unsigned int {
 /**
  * @brief The KisCanvasAnimationState class stores all of the canvas-specific animation state.
  *
- * Krita drives animation using a single KisPlaybackEngine instance (found in KisPart).
+ * Minerva drives animation using a single KisPlaybackEngine instance (found in KisPart).
  * However, there is some data that we want/need to store per-canvas (typically per-document).
  * This might include the frame where playback started, audio volume, or anything else
  * that we may need to persist between canvas changes.

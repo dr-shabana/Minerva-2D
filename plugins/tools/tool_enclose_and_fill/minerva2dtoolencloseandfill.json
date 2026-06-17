@@ -1,0 +1,9 @@
+{
+    "Id": "Enclose and Fill Tool",
+    "Type": "Service",
+    "X-KDE-Library": "kritatoolencloseandfill",
+    "X-KDE-ServiceTypes": [
+        "Minerva/Tool"
+    ],
+    "X-Minerva-Version": "28"
+}

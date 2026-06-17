@@ -1,0 +1,9 @@
+{
+    "Id": "Dyna Tool",
+    "Type": "Service",
+    "X-KDE-Library": "kritatooldyna",
+    "X-KDE-ServiceTypes": [
+        "Minerva/Tool"
+    ],
+    "X-Minerva-Version": "28"
+}

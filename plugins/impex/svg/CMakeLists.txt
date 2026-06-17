@@ -10,6 +10,6 @@ add_definitions(${SVG_DEFINITIONS})
 
 target_link_libraries(kritasvgimport kritaui )
 
-install(TARGETS kritasvgimport  DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
+install(TARGETS kritasvgimport  DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})
 
-install(FILES krita_svg.desktop DESTINATION ${KDE_INSTALL_APPDIR})
+install(FILES minerva2d_svg.desktop DESTINATION ${KDE_INSTALL_APPDIR})

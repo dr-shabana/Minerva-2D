@@ -1,0 +1,9 @@
+{
+    "Id": "ColorSelectorNG",
+    "Type": "Service",
+    "X-KDE-Library": "kritacolorselectorng",
+    "X-KDE-ServiceTypes": [
+        "Minerva/Dock"
+    ],
+    "X-Minerva-Version": "28"
+}

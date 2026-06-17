@@ -1,0 +1,9 @@
+{
+    "Id": "Transform Tool",
+    "Type": "Service",
+    "X-KDE-Library": "kritatooltransform",
+    "X-KDE-ServiceTypes": [
+        "Minerva/Tool"
+    ],
+    "X-Minerva-Version": "28"
+}

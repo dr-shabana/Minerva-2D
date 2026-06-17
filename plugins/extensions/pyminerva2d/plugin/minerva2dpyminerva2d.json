@@ -1,0 +1,9 @@
+{
+    "Id": "Python Plugin Manager",
+    "Type": "Service",
+    "X-KDE-Library": "kritapyminerva2d",
+    "X-KDE-ServiceTypes": [
+        "Minerva/ApplicationPlugin"
+    ],
+    "X-Minerva-Version": "28"
+}

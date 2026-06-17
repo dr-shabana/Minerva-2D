@@ -19,7 +19,7 @@
 #include <KoShapeController.h>
 #include <KoSelection.h>
 
-#include "Krita.h"
+#include "Minerva.h"
 #include "Document.h"
 #include "GroupShape.h"
 
@@ -151,7 +151,7 @@ bool Shape::remove()
     if (!d->shape->parent()) return false;
 
     bool removeStatus = false;
-    Document *document = Krita::instance()->activeDocument();
+    Document *document = Minerva::instance()->activeDocument();
 
     if (KisPart::instance()->viewCount(document->document()) > 0) {
         for (QPointer<KisView> view : KisPart::instance()->views()) {

@@ -1,12 +1,12 @@
-set(KRITA_LOGDOCKER_SOURCES 
+set(MINERVA2D_LOGDOCKER_SOURCES 
     LogDocker.cpp 
     LogDockerDock.cpp
 )
 
-ki18n_wrap_ui(KRITA_LOGDOCKER_SOURCES 
+ki18n_wrap_ui(MINERVA2D_LOGDOCKER_SOURCES 
     WdgLogDocker.ui
 )
 
-kis_add_library(kritalogdocker MODULE ${KRITA_LOGDOCKER_SOURCES})
+kis_add_library(kritalogdocker MODULE ${MINERVA2D_LOGDOCKER_SOURCES})
 target_link_libraries(kritalogdocker kritaui)
-install(TARGETS kritalogdocker DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
+install(TARGETS kritalogdocker DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})

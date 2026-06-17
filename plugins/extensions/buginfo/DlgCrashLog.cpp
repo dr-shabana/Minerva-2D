@@ -14,7 +14,7 @@ DlgCrashLog::DlgCrashLog(QWidget *parent)
     initialize();
 }
 
-QString DlgCrashLog::defaultNewFileName() { return "KritaCrashLog.txt"; }
+QString DlgCrashLog::defaultNewFileName() { return "MinervaCrashLog.txt"; }
 
 QString DlgCrashLog::originalFileName()
 {
@@ -22,7 +22,7 @@ QString DlgCrashLog::originalFileName()
     return QStandardPaths::writableLocation(QStandardPaths::GenericConfigLocation).replace(L'/', L'\\')
          + QStringLiteral("\\kritacrash.log");
 #elif defined(Q_OS_ANDROID)
-    return QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + "/kritacrashlog.txt";
+    return QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + "/minerva2dcrashlog.txt";
 #else
     // since we only have crash log for windows and android
     return QString();
@@ -32,7 +32,7 @@ QString DlgCrashLog::originalFileName()
 QString DlgCrashLog::captionText()
 {
     return i18nc("Caption of the dialog with crash log for bug reports",
-                 "Krita Crash Log: please paste this information to the bug report");
+                 "Minerva Crash Log: please paste this information to the bug report");
 }
 
 QString DlgCrashLog::replacementWarningText() { return "No Crashes!\n"; }

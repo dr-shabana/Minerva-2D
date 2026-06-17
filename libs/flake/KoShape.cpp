@@ -390,10 +390,10 @@ bool KoShape::compareShapeZIndex(KoShape *s1, KoShape *s2)
     /**
      * WARNING: Our definition of zIndex is not yet compatible with SVG2's
      *          definition. In SVG stacking context of groups with the same
-     *          zIndex are **merged**, while in Krita the contents of groups
+     *          zIndex are **merged**, while in Minerva the contents of groups
      *          is never merged. One group will always below than the other.
      *          Therefore, when zIndex of two groups inside the same parent
-     *          coincide, the resulting painting order in Krita is
+     *          coincide, the resulting painting order in Minerva is
      *          **UNDEFINED**.
      *
      *          To avoid this trouble we use  KoShapeReorderCommand::mergeInShape()

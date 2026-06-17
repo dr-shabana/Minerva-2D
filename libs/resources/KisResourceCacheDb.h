@@ -67,7 +67,7 @@ public:
 
     /// Called in the end of the database creation step to enable
     /// or disable the foreign_keys state depending on the release
-    /// status of Krita. Currently, only developer's builds of Krita
+    /// status of Minerva. Currently, only developer's builds of Minerva
     /// have foreign_keys constraint enabled.
     static void synchronizeForeignKeysState();
 
@@ -180,7 +180,7 @@ private:
 
     /**
      * @brief removeOrphanedMetaData
-     * Previous versions of Krita never removed metadata, so this function doublechecks and
+     * Previous versions of Minerva never removed metadata, so this function doublechecks and
      * removes any orphaned metadata for either storages or resources from the database.
      * @return true if successful, false if not
      */

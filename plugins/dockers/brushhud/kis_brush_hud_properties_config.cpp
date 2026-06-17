@@ -77,7 +77,7 @@ void KisBrushHudPropertiesConfig::Private::readConfig()
         if (!KisDomUtils::loadValue(root, "version", &version) ||
             version != 1) {
 
-            warnKrita << "Unknown Brush HUD XML document type or version!";
+            warnMinerva << "Unknown Brush HUD XML document type or version!";
             doc = QDomDocument();
         }
     }
@@ -115,7 +115,7 @@ void KisBrushHudPropertiesConfig::filterProperties(
             *chosenProperties << *it;
             it = skippedProperties->erase(it);
         } else {
-            warnKrita << "Filtering HUD properties: property \"" << id << "\" does not exist!";
+            warnMinerva << "Filtering HUD properties: property \"" << id << "\" does not exist!";
             ++it;
         }
     }

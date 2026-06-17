@@ -70,7 +70,7 @@ ALWAYS_INLINE float HLGOOTFGamma(float nominalPeak) noexcept
 }
 
 // The HLG OOTF needs to be applied to convert from 'display linear' to 'scene linear'.
-// Krita doesn't support sending tagged HLG to the display, so we have to pretend
+// Minerva doesn't support sending tagged HLG to the display, so we have to pretend
 // we're always converting from PQ to HLG.
 ALWAYS_INLINE void applyHLGOOTF(float *rgb,
                                 const double *lumaCoefficients,
@@ -87,7 +87,7 @@ ALWAYS_INLINE void applyHLGOOTF(float *rgb,
 }
 
 // The HLG OOTF needs to be removed to convert from 'scene linear' to 'display linear'.
-// Krita doesn't support sending tagged HLG to the display, so we have to pretend
+// Minerva doesn't support sending tagged HLG to the display, so we have to pretend
 // we're always converting from HLG to PQ.
 ALWAYS_INLINE void removeHLGOOTF(float *rgb,
                                  const double *lumaCoefficients,

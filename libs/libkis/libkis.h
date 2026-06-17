@@ -17,7 +17,7 @@ class DockWidgetFactoryBase;
 class Document;
 class Filter;
 class InfoObject;
-class Krita;
+class Minerva;
 class Node;
 class Notifier;
 class Resource;

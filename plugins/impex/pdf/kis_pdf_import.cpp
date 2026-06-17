@@ -45,7 +45,7 @@
 #include "kis_pdf_import_widget.h"
 #include <KisImportExportErrorCode.h>
 
-K_PLUGIN_FACTORY_WITH_JSON(PDFImportFactory, "krita_pdf_import.json",
+K_PLUGIN_FACTORY_WITH_JSON(PDFImportFactory, "minerva2d_pdf_import.json",
                            registerPlugin<KisPDFImport>();)
 
 KisPDFImport::KisPDFImport(QObject *parent, const QVariantList &)

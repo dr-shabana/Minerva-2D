@@ -29,7 +29,7 @@ class KRITAWIDGETS_EXPORT KisColorButton : public QPushButton
 
     /**
      * QtCreator treats KoColor as a QColor in incorrect way, so just disable using them in QtCreator
-     * https://bugs.kde.org/show_bug.cgi?id=368483
+     * https://github.com/dr-shabana/Minerva-2D/issues/show_bug.cgi?id=368483
      */
     Q_PROPERTY(KoColor color READ color WRITE setColor NOTIFY changed USER true DESIGNABLE false)
     Q_PROPERTY(KoColor defaultColor READ defaultColor WRITE setDefaultColor DESIGNABLE false)

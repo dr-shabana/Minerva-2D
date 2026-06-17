@@ -1,5 +1,5 @@
 /*
- * This file is part of Krita
+ * This file is part of Minerva
  *
  * SPDX-FileCopyrightText: 2004 Cyrille Berger <cberger@cberger.net>
  * SPDX-FileCopyrightText: 2021 Deif Lou <giniba@gmail.net>
@@ -43,7 +43,7 @@ QVector<VirtualChannelInfo> getVirtualChannels(const KoColorSpace *cs,
 
     if (maxChannels >= 0 && maxChannels == sortedChannels.size()) {
         /**
-         * This is the extremely old version of the filter (< Krita 3.0).
+         * This is the extremely old version of the filter (< Minerva 3.0).
          * It has the following curves layout: R, G, B, A.
          */
         supportsLightness = false;
@@ -51,14 +51,14 @@ QVector<VirtualChannelInfo> getVirtualChannels(const KoColorSpace *cs,
         supportsSaturation = false;
     } else if (maxChannels >= 0 && maxChannels == sortedChannels.size() + 2) {
         /**
-         * This is the old version of the filter (Krita [3.0, 5.0]).
+         * This is the old version of the filter (Minerva [3.0, 5.0]).
          * It has the following channel layout: RGBA, R, G, B, A, Lightness.
          */
         supportsHue = false;
         supportsSaturation = false;
     } else {
         /**
-         * Starting Krita 5.1.0 Krita started to use the latest layout:
+         * Starting Minerva 5.1.0 Minerva started to use the latest layout:
          * RGBA, R, G, B, A, Hue, Saturation, Lightness
          */
     }

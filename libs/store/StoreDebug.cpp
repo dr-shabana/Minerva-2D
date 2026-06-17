@@ -8,7 +8,7 @@
 
 const QLoggingCategory &STORE_LOG() \
 {
-    static const QLoggingCategory category("krita.lib.store", QtInfoMsg);
+    static const QLoggingCategory category("minerva2d.lib.store", QtInfoMsg);
     return category;
 }
 

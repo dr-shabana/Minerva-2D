@@ -16,7 +16,7 @@ if skipBuild3rdpartyPlugins.lower() in ['true', '1', 't', 'y', 'yes']:
 
 sourcesPath = os.environ.pop('KDECI_SOURCES_DIR')
 localCachePath = os.environ.pop('KDECI_CACHE_PATH')
-kritaCacheDir = os.path.join(localCachePath, 'krita-deps')
+kritaCacheDir = os.path.join(localCachePath, 'minerva2d-deps')
 if not os.path.isdir(kritaCacheDir):
     os.makedirs(kritaCacheDir)
 

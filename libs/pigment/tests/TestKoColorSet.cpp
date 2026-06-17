@@ -128,7 +128,7 @@ void TestKoColorSet::testLoadXML()
 }
 void TestKoColorSet::testLoadKPL()
 {
-    KoColorSet set(QString(FILES_DATA_DIR)+ "/krita.kpl");
+    KoColorSet set(QString(FILES_DATA_DIR)+ "/minerva2d.kpl");
     QVERIFY(set.load(KisGlobalResourcesInterface::instance()));
     QCOMPARE(set.paletteType(), KoColorSet::KPL);
     QVERIFY(set.valid());

@@ -32,7 +32,7 @@ void KisConfigWidget::slotConfigChanged()
 void KisConfigWidget::setView(KisViewManager *view)
 {
     if (!view) {
-        warnKrita << "KisConfigWidget::setView has got view == 0. That's a bug! Please report it!";
+        warnMinerva << "KisConfigWidget::setView has got view == 0. That's a bug! Please report it!";
     }
 }
 

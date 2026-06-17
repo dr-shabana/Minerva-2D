@@ -184,7 +184,7 @@ void KisInputProfileManager::loadProfiles()
     //Look up all profiles (this includes those installed to $prefix as well as the user's local data dir)
     QStringList profiles = KoResourcePaths::findAllAssets("data", "input/*.profile", KoResourcePaths::Recursive);
 
-    dbgKrita << "profiles" << profiles;
+    dbgMinerva << "profiles" << profiles;
 
     // We don't use list here, because we're assuming we are only going to be changing the user directory and
     // there can only be one of a profile name.
@@ -331,7 +331,7 @@ void KisInputProfileManager::loadProfiles()
     QString currentProfile = cfg.currentInputProfile();
     if (d->profiles.size() > 0) {
         if (currentProfile.isEmpty() || !d->profiles.contains(currentProfile)) {
-            QString kritaDefault = QStringLiteral("Krita Default");
+            QString kritaDefault = QStringLiteral("Minerva Default");
             if (d->profiles.contains(kritaDefault)) {
                 d->currentProfile = d->profiles.value(kritaDefault);
             } else {
@@ -414,7 +414,7 @@ void KisInputProfileManager::resetAll()
         }
     }
 
-    //Load the profiles again, this should now only load those shipped with Krita.
+    //Load the profiles again, this should now only load those shipped with Minerva.
     loadProfiles();
 
     Q_EMIT profilesChanged();

@@ -12,7 +12,7 @@ ki18n_wrap_ui(kritahalftone_SOURCES
 
 kis_add_library(kritahalftone MODULE ${kritahalftone_SOURCES})
 target_link_libraries(kritahalftone kritaui)
-install(TARGETS kritahalftone DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
+install(TARGETS kritahalftone DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})
 install( FILES
     halftone.action
-DESTINATION  ${KDE_INSTALL_DATADIR}/krita/actions)
+DESTINATION  ${KDE_INSTALL_DATADIR}/minerva2d/actions)

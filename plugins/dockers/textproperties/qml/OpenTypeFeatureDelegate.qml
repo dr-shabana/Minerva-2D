@@ -6,8 +6,8 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.15
-import org.krita.flake.text 1.0
-import org.krita.components 1.0 as Kis
+import org.minerva2d.flake.text 1.0
+import org.minerva2d.components 1.0 as Kis
 
 ItemDelegate {
     id: root;

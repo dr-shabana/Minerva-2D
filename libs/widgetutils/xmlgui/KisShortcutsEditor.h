@@ -64,7 +64,7 @@ public:
      * dialog.
      *
      * Enumerating all possible actions is a sorrowful, pitiable endeavor,
-     * useless for Krita. We should do something about this.
+     * useless for Minerva. We should do something about this.
      */
     enum ActionType {
         /// Actions which are triggered by any keypress in a widget which has the action added to it

@@ -1,6 +1,6 @@
 add_subdirectory(tests)
 
-set(KRITA_ANIMATIONDOCKER_SOURCES
+set(MINERVA2D_ANIMATIONDOCKER_SOURCES
     KisAnimUtils.cpp
     
     KisTimeBasedItemModel.cpp
@@ -38,11 +38,11 @@ set(KRITA_ANIMATIONDOCKER_SOURCES
     kis_custom_modifiers_catcher.cpp
 )
 
-ki18n_wrap_ui(KRITA_ANIMATIONDOCKER_SOURCES
+ki18n_wrap_ui(MINERVA2D_ANIMATIONDOCKER_SOURCES
     KisOnionSkinsDocker.ui
 )
 
-kis_add_library(kritaanimationdocker_static STATIC ${KRITA_ANIMATIONDOCKER_SOURCES})
+kis_add_library(kritaanimationdocker_static STATIC ${MINERVA2D_ANIMATIONDOCKER_SOURCES})
 
 generate_export_header(kritaanimationdocker_static BASE_NAME kritaanimationdocker EXPORT_MACRO_NAME KRITAANIMATIONDOCKER_EXPORT)
 
@@ -52,4 +52,4 @@ kis_add_library(kritaanimationdocker MODULE KisAnimDockers.cpp)
 
 target_link_libraries(kritaanimationdocker kritaanimationdocker_static)
 
-install(TARGETS kritaanimationdocker  DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
+install(TARGETS kritaanimationdocker  DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})

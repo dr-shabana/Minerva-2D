@@ -58,18 +58,18 @@ kis_add_test(TestPointMergeCommand.cpp
     LINK_LIBRARIES kritaflake kritatestsdk
     )
 
-krita_add_broken_unit_test( TestSvgText.cpp
+minerva2d_add_broken_unit_test( TestSvgText.cpp
     TEST_NAME TestSvgText
     LINK_LIBRARIES kritaflake kritatestsdk
     )
 
-krita_add_broken_unit_test( TestSvgText.cpp
+minerva2d_add_broken_unit_test( TestSvgText.cpp
     TEST_NAME TestSvgTextCloned
     LINK_LIBRARIES kritaflake kritatestsdk
     )
 target_compile_definitions(TestSvgTextCloned PRIVATE USE_CLONED_SHAPES)
 
-krita_add_broken_unit_test( TestSvgText.cpp
+minerva2d_add_broken_unit_test( TestSvgText.cpp
     TEST_NAME TestSvgTextRoundTrip
     LINK_LIBRARIES kritaflake kritatestsdk
     )

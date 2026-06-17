@@ -472,7 +472,7 @@ protected:
         tempRect.getRect(&x, &y, &w, &h);
         checksum += -x - y + w + h;
 
-//        errKrita << leaf << requestedRect << "-->" << checksum;
+//        errMinerva << leaf << requestedRect << "-->" << checksum;
 
         return checksum;
     }
@@ -489,7 +489,7 @@ private:
         if (!leaf || !leaf->projection()) {
             /**
              * Such errors may happen during undo or too quick node removal,
-             * they shouldn't cause any real problems in Krita work.
+             * they shouldn't cause any real problems in Minerva work.
              */
             qWarning() << "WARNING: KisBaseRectsWalker::getNodeLevelOfDetail() "
                           "failed to fetch currentLevelOfDetail() from the node. "

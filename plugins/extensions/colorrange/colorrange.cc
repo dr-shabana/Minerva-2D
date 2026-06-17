@@ -1,5 +1,5 @@
 /*
- * colorrange.h -- Part of Krita
+ * colorrange.h -- Part of Minerva
  *
  * SPDX-FileCopyrightText: 2004 Boudewijn Rempt (boud@valdyas.org)
  *

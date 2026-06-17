@@ -165,7 +165,7 @@ void KisSelectionToolHelper::addSelectionShape(KoShape* shape, SelectionAction a
     shapes.append(shape);
     addSelectionShapes(shapes, action);
 }
-#include "krita_utils.h"
+#include "minerva2d_utils.h"
 void KisSelectionToolHelper::addSelectionShapes(QList< KoShape* > shapes, SelectionAction action)
 {
     KisView *view = m_canvas->imageView();
@@ -247,7 +247,7 @@ void KisSelectionToolHelper::addSelectionShapes(QList< KoShape* > shapes, Select
                     }
 
                     const QTransform booleanWorkaroundTransform =
-                        KritaUtils::pathShapeBooleanSpaceWorkaround(m_view->image());
+                        MinervaUtils::pathShapeBooleanSpaceWorkaround(m_view->image());
 
                     path1 = booleanWorkaroundTransform.map(path1);
                     path2 = booleanWorkaroundTransform.map(path2);
@@ -262,7 +262,7 @@ void KisSelectionToolHelper::addSelectionShapes(QList< KoShape* > shapes, Select
 
                     case SELECTION_INTERSECT:
                         path = path1 & path2;
-                        path = KritaUtils::tryCloseTornSubpathsAfterIntersection(path);
+                        path = MinervaUtils::tryCloseTornSubpathsAfterIntersection(path);
                         break;
                     case SELECTION_ADD:
                         path = path1 | path2;

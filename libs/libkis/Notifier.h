@@ -17,7 +17,7 @@ class KisMainWindow;
 class KisDocument;
 
 /**
- * The Notifier can be used to be informed of state changes in the Krita application.
+ * The Notifier can be used to be informed of state changes in the Minerva application.
  */
 class KRITALIBKIS_EXPORT Notifier : public QObject
 {
@@ -62,7 +62,7 @@ Q_SIGNALS:
 
     /**
      * @brief imageClosed is emitted whenever the last view on an image is closed. The image
-     * does not exist anymore in Krita
+     * does not exist anymore in Minerva
      * @param filename the filename of the image.
      */
     void imageClosed(const QString &filename);
@@ -91,7 +91,7 @@ Q_SIGNALS:
     void windowCreated();
 
     /**
-     * @brief configurationChanged is emitted every time Krita's configuration
+     * @brief configurationChanged is emitted every time Minerva's configuration
      * has changed.
      */
     void configurationChanged();

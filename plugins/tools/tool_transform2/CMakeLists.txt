@@ -41,7 +41,7 @@ target_link_libraries(kritatooltransform_static
 )
 
 if (NOT GSL_FOUND)
-  message (WARNING "KRITA WARNING! No GNU Scientific Library was found! Krita's Transform Tool will not be able to scale the image with handles. Please install GSL library.")
+  message (WARNING "KRITA WARNING! No GNU Scientific Library was found! Minerva's Transform Tool will not be able to scale the image with handles. Please install GSL library.")
 else ()
   target_link_libraries(kritatooltransform_static
     PUBLIC
@@ -51,9 +51,9 @@ endif ()
 
 target_link_libraries(kritatooltransform PRIVATE kritatooltransform_static)
 
-install(TARGETS kritatooltransform  DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
+install(TARGETS kritatooltransform  DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})
 
 
 install( FILES
     KisToolTransform.action
-DESTINATION  ${KDE_INSTALL_DATADIR}/krita/actions)
+DESTINATION  ${KDE_INSTALL_DATADIR}/minerva2d/actions)

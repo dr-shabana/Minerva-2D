@@ -40,7 +40,7 @@
 #include <kis_image.h>
 #include <KisSqueezedComboBox.h>
 #include "kis_signals_blocker.h"
-#include "krita_utils.h"
+#include "minerva2d_utils.h"
 #include <KisOcioConfiguration.h>
 
 #include <opengl/KisOpenGLModeProber.h>
@@ -206,7 +206,7 @@ void LutDockerDock::unsetCanvas()
 
 void LutDockerDock::slotUpdateIcons()
 {
-    m_btnConvertCurrentColor->setIcon(KisIconUtils::loadIcon("krita_tool_freehand"));
+    m_btnConvertCurrentColor->setIcon(KisIconUtils::loadIcon("minerva2d_tool_freehand"));
     m_btmShowBWConfiguration->setIcon(KisIconUtils::loadIcon("settings-button"));
     m_lblOcioVersion->setText(QString("OCIO: %1 | %2").arg(OCIO_VERSION_FULL_STR, KisOpenGL::currentDriver()));
     m_lblOcioVersion->setWordWrap(true);
@@ -256,7 +256,7 @@ void LutDockerDock::setCurrentExposure(qreal value)
     if(m_canvas) {
         m_canvas->viewManager()->showFloatingMessage(
             i18nc("floating message about exposure", "Exposure: %1",
-                KritaUtils::prettyFormatReal(m_exposureDoubleWidget->value())),
+                MinervaUtils::prettyFormatReal(m_exposureDoubleWidget->value())),
             QIcon(), 500, KisFloatingMessage::Low);
     }
 }
@@ -275,7 +275,7 @@ void LutDockerDock::setCurrentGamma(qreal value)
     if (m_canvas) {
         m_canvas->viewManager()->showFloatingMessage(
             i18nc("floating message about gamma", "Gamma: %1",
-                KritaUtils::prettyFormatReal(m_gammaDoubleWidget->value())),
+                MinervaUtils::prettyFormatReal(m_gammaDoubleWidget->value())),
             QIcon(), 500, KisFloatingMessage::Low);
     }
 }
@@ -471,7 +471,7 @@ void LutDockerDock::resetOcioConfiguration()
             OCIO::SetCurrentConfig(m_ocioConfig);
         }
     } catch (OCIO::Exception &exception) {
-        errKrita << "OpenColorIO Error:" << exception.what() << "Cannot create the LUT docker";
+        errMinerva << "OpenColorIO Error:" << exception.what() << "Cannot create the LUT docker";
     }
 
 

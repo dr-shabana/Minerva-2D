@@ -31,8 +31,8 @@ void TestBundleStorage::initTestCase()
     QDir().mkpath(m_dstLocation + QString("/bundles"));
 
     const bool copyResult =
-        QFile::copy(KRITA_SOURCE_DIR + QString("/krita/data/bundles/Krita_4_Default_Resources.bundle"),
-                    m_dstLocation + QString("/bundles/Krita_4_Default_Resources.bundle"));
+        QFile::copy(MINERVA2D_SOURCE_DIR + QString("/minerva2d/data/bundles/Minerva_4_Default_Resources.bundle"),
+                    m_dstLocation + QString("/bundles/Minerva_4_Default_Resources.bundle"));
 
     QVERIFY(copyResult);
 
@@ -41,8 +41,8 @@ void TestBundleStorage::initTestCase()
 
 void TestBundleStorage::testMetaData()
 {
-    KisBundleStorage storage(m_dstLocation + QString("/bundles/Krita_4_Default_Resources.bundle"));
-    QVERIFY(storage.location() == m_dstLocation + QString("/bundles/Krita_4_Default_Resources.bundle"));
+    KisBundleStorage storage(m_dstLocation + QString("/bundles/Minerva_4_Default_Resources.bundle"));
+    QVERIFY(storage.location() == m_dstLocation + QString("/bundles/Minerva_4_Default_Resources.bundle"));
     QVERIFY(!storage.metaData(KisResourceStorage::s_meta_generator).isNull());
     QVERIFY(!storage.metaData(KisResourceStorage::s_meta_author).isNull());
     QVERIFY(!storage.metaData(KisResourceStorage::s_meta_description).isNull());
@@ -53,7 +53,7 @@ void TestBundleStorage::testMetaData()
 
 void TestBundleStorage::testResourceIterator()
 {
-    KisBundleStorage storage(m_dstLocation + QString("/bundles/Krita_4_Default_Resources.bundle"));
+    KisBundleStorage storage(m_dstLocation + QString("/bundles/Minerva_4_Default_Resources.bundle"));
     QSharedPointer<KisResourceStorage::ResourceIterator> iter = storage.resources(ResourceType::Brushes);
     QVERIFY(iter->hasNext());
     int count = 0;
@@ -68,7 +68,7 @@ void TestBundleStorage::testResourceIterator()
 
 void TestBundleStorage::testTagIterator()
 {
-    KisBundleStorage storage(m_dstLocation + QString("/bundles/Krita_4_Default_Resources.bundle"));
+    KisBundleStorage storage(m_dstLocation + QString("/bundles/Minerva_4_Default_Resources.bundle"));
     QSharedPointer<KisResourceStorage::TagIterator> iter = storage.tags(ResourceType::PaintOpPresets);
     QVERIFY(iter->hasNext());
     int count = 0;
@@ -82,14 +82,14 @@ void TestBundleStorage::testTagIterator()
 
 void TestBundleStorage::testResourceItem()
 {
-    KisBundleStorage storage(m_dstLocation + QString("/bundles/Krita_4_Default_Resources.bundle"));
+    KisBundleStorage storage(m_dstLocation + QString("/bundles/Minerva_4_Default_Resources.bundle"));
     KisResourceStorage::ResourceItem item = storage.resourceItem("paintoppresets/g)_Dry_Brushing.kpp");
     QVERIFY(!item.url.isEmpty());
 }
 
 void TestBundleStorage::testResource()
 {
-    KisBundleStorage storage(m_dstLocation + QString("/bundles/Krita_4_Default_Resources.bundle"));
+    KisBundleStorage storage(m_dstLocation + QString("/bundles/Minerva_4_Default_Resources.bundle"));
     KoResourceSP res = storage.resource("paintoppresets/g)_Dry_Brushing.kpp");
     QVERIFY(res);
     QVERIFY(res->filename() == "g)_Dry_Brushing.kpp");
@@ -98,21 +98,21 @@ void TestBundleStorage::testResource()
 void TestBundleStorage::testAddResource()
 {
 
-    KisBundleStorage storage(m_dstLocation + QString("/bundles/Krita_4_Default_Resources.bundle"));
+    KisBundleStorage storage(m_dstLocation + QString("/bundles/Minerva_4_Default_Resources.bundle"));
 
     const QString resourceUrl = "paintoppresets/g)_Dry_Brushing.kpp";
     const QString resourceType = ResourceType::PaintOpPresets;
 
     ResourceTestHelper::testVersionedStorage(storage, resourceType, resourceUrl,
                                             m_dstLocation +
-                                             QString("/bundles/Krita_4_Default_Resources.bundle_modified"));
+                                             QString("/bundles/Minerva_4_Default_Resources.bundle_modified"));
 
     ResourceTestHelper::testVersionedStorageIterator(storage, resourceType, resourceUrl);
 }
 
 void TestBundleStorage::testResourceCaseSensitivity()
 {
-    KisBundleStorage storage(m_dstLocation + QString("/bundles/Krita_4_Default_Resources.bundle"));
+    KisBundleStorage storage(m_dstLocation + QString("/bundles/Minerva_4_Default_Resources.bundle"));
 
     const QString resourceUrl = "paintoppresets/g)_Dry_Brushing.kpp";
     const QString resourceType = ResourceType::PaintOpPresets;

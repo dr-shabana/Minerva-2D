@@ -302,7 +302,7 @@
        <item>
         <widget class="QCheckBox" name="chkCompatibilityMode">
          <property name="text">
-          <string>Legacy mode (before Krita 4.3)</string>
+          <string>Legacy mode (before Minerva 4.3)</string>
          </property>
         </widget>
        </item>

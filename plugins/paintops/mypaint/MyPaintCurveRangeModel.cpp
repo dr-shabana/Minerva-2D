@@ -122,7 +122,7 @@ KisCurveRangeModelFactory MyPaintCurveRangeModel::factory(qreal maxYRange, const
 std::tuple<QString, QRectF> MyPaintCurveRangeModel::reshapeCurve(std::tuple<QString, QRectF> curve)
 {
     /**
-     * Krita's GUI doesn't support x-range more narrow than 0...1, so
+     * Minerva's GUI doesn't support x-range more narrow than 0...1, so
      * we should extend it if necessary
      */
     std::get<1>(curve) |= QRect(0, -1, 1, 2);

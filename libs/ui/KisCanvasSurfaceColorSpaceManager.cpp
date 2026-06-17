@@ -253,7 +253,7 @@ selectSurfaceDescription(KisConfig::CanvasSurfaceMode requestedSurfaceMode, cons
 
     // we have our own definition of the Rec2020PQ space with
     // the reference point fixed to 80 cd/m2
-    auto makeKritaRec2020PQLuminance = []() {
+    auto makeMinervaRec2020PQLuminance = []() {
         Luminance luminance;
         luminance.minLuminance = 0;
         luminance.referenceLuminance = 80;
@@ -277,12 +277,12 @@ selectSurfaceDescription(KisConfig::CanvasSurfaceMode requestedSurfaceMode, cons
         if (std::holds_alternative<NamedTransferFunction>(requestedDescription->colorSpace.transferFunction)
             && std::get<NamedTransferFunction>(requestedDescription->colorSpace.transferFunction)
                 == NamedTransferFunction::transfer_function_st2084_pq) {
-            requestedDescription->colorSpace.luminance = makeKritaRec2020PQLuminance();
+            requestedDescription->colorSpace.luminance = makeMinervaRec2020PQLuminance();
         }
     } else if (requestedSurfaceMode == KisConfig::CanvasSurfaceMode::Rec2020pq) {
         requestedDescription->colorSpace.primaries = NamedPrimaries::primaries_bt2020;
         requestedDescription->colorSpace.transferFunction = NamedTransferFunction::transfer_function_st2084_pq;
-        requestedDescription->colorSpace.luminance = makeKritaRec2020PQLuminance();
+        requestedDescription->colorSpace.luminance = makeMinervaRec2020PQLuminance();
     } else if (requestedSurfaceMode == KisConfig::CanvasSurfaceMode::Rec709g22) {
         requestedDescription->colorSpace.primaries = NamedPrimaries::primaries_srgb;
         requestedDescription->colorSpace.transferFunction = NamedTransferFunction::transfer_function_gamma22;
@@ -296,7 +296,7 @@ selectSurfaceDescription(KisConfig::CanvasSurfaceMode requestedSurfaceMode, cons
         if (compositorPreferred.colorSpace.luminance) {
             /**
              * Our definition of rec709-g10 is different from the one used in Wayland.
-             * Krita defines it as "value 1.0 is reference white" and everything above is
+             * Minerva defines it as "value 1.0 is reference white" and everything above is
              * HDR values. But Wayland declares it as "0.0...1.0 is the full HDR range" and
              * reference white value being put somewhere inbetween. It technically allows
              * Wayland to use 10-bit integer surfaces for rec709-g10 space, which is a bad

@@ -193,12 +193,12 @@ void DlgBundleManager::done(int res)
 
         if (!mw->checkPaintOpAvailable()) {
             warning += i18n("\nThere are no brush presets available. Please enable a bundle that has presets before continuing.\nIf there are no bundles, please import a bundle before continuing.");
-            QMessageBox::critical(this, i18nc("@title:window", "Krita"), warning);
+            QMessageBox::critical(this, i18nc("@title:window", "Minerva"), warning);
             return;
         }
 
         if (!mw->checkActiveBundlesAvailable()) {
-            QMessageBox::warning(this, i18nc("@title:window", "Krita"), warning + i18n("\nOnly your local resources are available."));
+            QMessageBox::warning(this, i18nc("@title:window", "Minerva"), warning + i18n("\nOnly your local resources are available."));
         }
     }
     KoDialog::done(res);
@@ -209,7 +209,7 @@ void DlgBundleManager::addBundle()
     KoFileDialog dlg(this, KoFileDialog::OpenFiles, i18n("Choose the resource library to import"));
     dlg.setDefaultDir(QStandardPaths::writableLocation(QStandardPaths::DownloadLocation));
     dlg.setMimeTypeFilters(
-                {"application/x-krita-bundle", "image/x-adobe-brushlibrary", "application/x-photoshop-style-library"});
+                {"application/x-minerva2d-bundle", "image/x-adobe-brushlibrary", "application/x-photoshop-style-library"});
     dlg.setCaption(i18n("Select the bundle"));
 
     Q_FOREACH(const QString &filename, dlg.filenames()) {
@@ -225,7 +225,7 @@ void DlgBundleManager::addBundle()
                     cursorLock.unlock();
                     qWarning() << "Attempted to import an invalid bundle!" << filename;
                     QMessageBox::warning(this,
-                                         i18nc("@title:window", "Krita"),
+                                         i18nc("@title:window", "Minerva"),
                                          i18n("Could not load bundle %1.", filename));
                     continue;
                 }
@@ -276,7 +276,7 @@ void DlgBundleManager::editBundle()
     KoFileDialog dlg(this, KoFileDialog::OpenFiles, i18n("Choose the bundle to edit"));
     dlg.setDefaultDir(QStandardPaths::writableLocation(QStandardPaths::DownloadLocation));
     dlg.setMimeTypeFilters(
-                {"application/x-krita-bundle", "image/x-adobe-brushlibrary", "application/x-photoshop-style-library"});
+                {"application/x-minerva2d-bundle", "image/x-adobe-brushlibrary", "application/x-photoshop-style-library"});
     dlg.setCaption(i18n("Select the bundle"));
 
 
@@ -291,7 +291,7 @@ void DlgBundleManager::editBundle()
                     qApp->restoreOverrideCursor();
                     qWarning() << "Attempted to edit an invalid bundle!" << filename;
                     QMessageBox::warning(this,
-                                         i18nc("@title:window", "Krita"),
+                                         i18nc("@title:window", "Minerva"),
                                          i18n("Could not load bundle %1.", filename));
                     qApp->setOverrideCursor(Qt::BusyCursor);
                     continue;
@@ -351,12 +351,12 @@ void DlgBundleManager::toggleBundle()
             button(KoDialog::Close)->setEnabled(false);
 
             warning += i18n("\nThere are no brush presets available. Please enable a bundle that has presets before continuing.\nIf there are no bundles, please import a bundle before continuing.");
-            QMessageBox::critical(this, i18nc("@title:window", "Krita"), warning);
+            QMessageBox::critical(this, i18nc("@title:window", "Minerva"), warning);
             return;
         }
 
         if (!mw->checkActiveBundlesAvailable()) {
-            QMessageBox::warning(this, i18nc("@title:window", "Krita"), warning + i18n("\nOnly your local resources are available."));
+            QMessageBox::warning(this, i18nc("@title:window", "Minerva"), warning + i18n("\nOnly your local resources are available."));
         }
     }
     button(KoDialog::Close)->setEnabled(true);

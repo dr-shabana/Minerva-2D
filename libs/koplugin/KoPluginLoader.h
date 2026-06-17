@@ -89,7 +89,7 @@ public:
 
     /**
      * Load all plugins that conform to the versiontype, for instance:
-     * KoPluginLoader::instance()->load("Krita/Flake");
+     * KoPluginLoader::instance()->load("Minerva/Flake");
      * This method allows you to optionally limit the plugins that are loaded by version, but also
      * using a user configurable set of config options.
      * If you pass a PluginsConfig struct only those plugins are loaded that are specified in the
@@ -117,8 +117,8 @@ public:
      *        \code{.cpp}
      *
      *        KPluginFactory *factory = KoPluginLoader::instance()->loadSinglePlugin(
-     *            std::make_pair("X-Krita-PlatformId", QGuiApplication::platformName()),
-     *            "Krita/PlatformPlugin");
+     *            std::make_pair("X-Minerva-PlatformId", QGuiApplication::platformName()),
+     *            "Minerva/PlatformPlugin");
      *
      *        if (factory) {
      *            interface = factory->create<KisExtendedModifiersMapperPluginInterface>();

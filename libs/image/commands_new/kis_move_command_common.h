@@ -15,7 +15,7 @@
 
 /**
  * KisMoveCommandCommon is a general template for a command that moves
- * entities capable of setX() and setY() actions. Generally in Krita
+ * entities capable of setX() and setY() actions. Generally in Minerva
  * you should now move the device itself, only the node containing
  * that device. But the case of the selections is a bit special, so we
  * move them separately.

@@ -24,15 +24,15 @@
 #include <klocalizedstring.h>
 #include <filter/kis_filter_registry.h>
 
-K_PLUGIN_FACTORY_WITH_JSON(KritaEdgeDetectionFilterFactory, "kritaedgedetection.json", registerPlugin<KritaEdgeDetectionFilter>();)
+K_PLUGIN_FACTORY_WITH_JSON(MinervaEdgeDetectionFilterFactory, "kritaedgedetection.json", registerPlugin<MinervaEdgeDetectionFilter>();)
 
-KritaEdgeDetectionFilter::KritaEdgeDetectionFilter(QObject *parent, const QVariantList &)
+MinervaEdgeDetectionFilter::MinervaEdgeDetectionFilter(QObject *parent, const QVariantList &)
     : QObject(parent)
 {
     KisFilterRegistry::instance()->add(KisFilterSP(new KisEdgeDetectionFilter()));
 }
 
-KritaEdgeDetectionFilter::~KritaEdgeDetectionFilter()
+MinervaEdgeDetectionFilter::~MinervaEdgeDetectionFilter()
 {
 }
 

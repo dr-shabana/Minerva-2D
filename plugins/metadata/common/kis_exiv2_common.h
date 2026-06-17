@@ -330,11 +330,11 @@ inline Exiv2::Value *kmdValueToExivXmpValue(const KisMetaData::Value &value)
     }
     case KisMetaData::Value::Structure:
     default: {
-        warnKrita << "KisExiv2: Unhandled value type";
+        warnMinerva << "KisExiv2: Unhandled value type";
         return nullptr;
     }
     }
-    warnKrita << "KisExiv2: Unhandled value type";
+    warnMinerva << "KisExiv2: Unhandled value type";
     return nullptr;
 }
 #endif

@@ -65,7 +65,7 @@
 #endif
 
 #include <klocalizedstring.h>
-#include <KritaVersionWrapper.h>
+#include <MinervaVersionWrapper.h>
 
 #include <KisUsageLogger.h>
 #include <QSysInfo>
@@ -156,7 +156,7 @@ KisWelcomePageWidget::KisWelcomePageWidget(QWidget *parent)
     newsOptionsMenu->setToolTipsVisible(true);
     ShowNewsAction *showNewsAction = new ShowNewsAction(i18n("Enable news and check for new releases"), newsOptionsMenu);
     newsOptionsMenu->addAction(showNewsAction);
-    showNewsAction->setToolTip(i18n("Show news about Krita: this needs internet to retrieve information from the krita.org website"));
+    showNewsAction->setToolTip(i18n("Show news about Minerva: this needs internet to retrieve information from the minerva2d.org website"));
     showNewsAction->setCheckable(true);
 
     newsOptionsMenu->addSection(i18n("Language"));
@@ -197,7 +197,7 @@ KisWelcomePageWidget::KisWelcomePageWidget(QWidget *parent)
     // wants to check for updates.
     // * No updater is created for Linux/Steam, Windows/Steam and Windows/Store distributions,
     // as those stores have their own updating mechanism.
-    // * STEAMAPPID(Windows)/SteamAppId(Linux) environment variable is set when Krita is run from Steam.
+    // * STEAMAPPID(Windows)/SteamAppId(Linux) environment variable is set when Minerva is run from Steam.
     // The environment variables are not public API.
     // * MS Store version runs as a package (though we cannot know if it was
     // installed from the Store or manually with the .msix package)
@@ -345,7 +345,7 @@ void KisWelcomePageWidget::slotUpdateThemeColors()
     btnNewsOptions->setIcon(KisIconUtils::loadIcon("view-choose"));
     btnNewsOptions->setFlat(true);
 
-    supportKritaIcon->setIcon(KisIconUtils::loadIcon(QStringLiteral("support-krita")));
+    supportMinervaIcon->setIcon(KisIconUtils::loadIcon(QStringLiteral("support-krita")));
     userManualIcon->setIcon(KisIconUtils::loadIcon(QStringLiteral("bookmarks")));
     gettingStartedIcon->setIcon(KisIconUtils::loadIcon(QStringLiteral("get_started")));
     userCommunityIcon->setIcon(KisIconUtils::loadIcon(QStringLiteral("comunity")));
@@ -354,28 +354,28 @@ void KisWelcomePageWidget::slotUpdateThemeColors()
     kdeIcon->setIcon(KisIconUtils::loadIcon(QStringLiteral("kde")));
 
     // HTML links seem to be a bit more stubborn with theme changes... setting inline styles to help with color change
-    userCommunityLink->setText(QString("<a style=\"color: " + blendedColor.name() + " \" href=\"https://krita-artists.org\">")
+    userCommunityLink->setText(QString("<a style=\"color: " + blendedColor.name() + " \" href=\"https://minerva2d-artists.org\">")
                                .append(i18n("User Community")).append("</a>"));
 
-    gettingStartedLink->setText(QString("<a style=\"color: " + blendedColor.name() + " \" href=\"https://docs.krita.org/user_manual/getting_started.html\">")
+    gettingStartedLink->setText(QString("<a style=\"color: " + blendedColor.name() + " \" href=\"https://docs.minerva2d.org/user_manual/getting_started.html\">")
                                 .append(i18n("Getting Started")).append("</a>"));
 
-    manualLink->setText(QString("<a style=\"color: " + blendedColor.name() + " \" href=\"https://docs.krita.org\">")
+    manualLink->setText(QString("<a style=\"color: " + blendedColor.name() + " \" href=\"https://docs.minerva2d.org\">")
                         .append(i18n("User Manual")).append("</a>"));
 
-    supportKritaLink->setText(QString("<a style=\"color: " + blendedColor.name() + " \" href=\"https://krita.org/support-us/donations?" + analyticsString + "donations" + "\">")
-                              .append(i18n("Support Krita")).append("</a>"));
+    supportMinervaLink->setText(QString("<a style=\"color: " + blendedColor.name() + " \" href=\"https://minerva2d.org/support-us/donations?" + analyticsString + "donations" + "\">")
+                              .append(i18n("Support Minerva")).append("</a>"));
 
-    kritaWebsiteLink->setText(QString("<a style=\"color: " + blendedColor.name() + " \" href=\"https://www.krita.org?" + analyticsString + "marketing-site" + "\">")
-                              .append(i18n("Krita Website")).append("</a>"));
+    kritaWebsiteLink->setText(QString("<a style=\"color: " + blendedColor.name() + " \" href=\"https://www.minerva2d.org?" + analyticsString + "marketing-site" + "\">")
+                              .append(i18n("Minerva Website")).append("</a>"));
 
-    sourceCodeLink->setText(QString("<a style=\"color: " + blendedColor.name() + " \" href=\"https://invent.kde.org/graphics/krita\">")
+    sourceCodeLink->setText(QString("<a style=\"color: " + blendedColor.name() + " \" href=\"https://invent.kde.org/graphics/minerva2d\">")
                             .append(i18n("Source Code")).append("</a>"));
 
     poweredByKDELink->setText(QString("<a style=\"color: " + blendedColor.name() + " \" href=\"https://userbase.kde.org/What_is_KDE\">")
                               .append(i18n("Powered by KDE")).append("</a>"));
 
-    QString translationNoFeed = i18n("You can <a href=\"ignored\" style=\"color: COLOR_PLACEHOLDER; text-decoration: underline;\">enable news</a> from krita.org in various languages with the menu above");
+    QString translationNoFeed = i18n("You can <a href=\"ignored\" style=\"color: COLOR_PLACEHOLDER; text-decoration: underline;\">enable news</a> from minerva2d.org in various languages with the menu above");
     labelNoFeed->setText(translationNoFeed.replace("COLOR_PLACEHOLDER", blendedColor.name()));
 
     const QColor faintTextColor = KisPaintingTweaks::blendColors(textColor, backgroundColor, 0.4);
@@ -397,14 +397,14 @@ void KisWelcomePageWidget::slotUpdateThemeColors()
 
 #ifdef Q_OS_ANDROID
     donationLink->setText(
-        QStringLiteral("<a href=\"#\">%1</a>").arg(QString(i18n("Get your Krita Supporter Badge here!"))));
+        QStringLiteral("<a href=\"#\">%1</a>").arg(QString(i18n("Get your Minerva Supporter Badge here!"))));
 #endif
 
 #ifdef Q_OS_MACOS
     // macOS store version should not contain external links containing donation buttons or forms
     if (KisMacosEntitlements().sandbox()) {
-        supportKritaLink->hide();
-        supportKritaIcon->hide();
+        supportMinervaLink->hide();
+        supportMinervaIcon->hide();
         labelSupportText->hide();
         kritaWebsiteLink->hide();
         kritaWebsiteIcon->hide();
@@ -417,7 +417,7 @@ void KisWelcomePageWidget::dragEnterEvent(QDragEnterEvent *event)
 {
     showDropAreaIndicator(true);
     if (event->mimeData()->hasUrls() ||
-        event->mimeData()->hasFormat("application/x-krita-node-internal-pointer") ||
+        event->mimeData()->hasFormat("application/x-minerva2d-node-internal-pointer") ||
         event->mimeData()->hasFormat("application/x-qt-image")) {
         return event->accept();
     }
@@ -461,7 +461,7 @@ void KisWelcomePageWidget::dragMoveEvent(QDragMoveEvent *event)
     m_mainWindow->dragMoveEvent(event);
 
     if (event->mimeData()->hasUrls() ||
-        event->mimeData()->hasFormat("application/x-krita-node-internal-pointer") ||
+        event->mimeData()->hasFormat("application/x-minerva2d-node-internal-pointer") ||
         event->mimeData()->hasFormat("application/x-qt-image")) {
         return event->accept();
     }
@@ -524,7 +524,7 @@ void KisWelcomePageWidget::setupNewsLangSelection(QMenu *newsOptionsMenu)
     // These are languages in which the news items should be regularly
     // translated into as of 04-09-2024.
     // The language display names should not be translated. This reflects
-    // the language selection box on the Krita website.
+    // the language selection box on the Minerva website.
     struct Lang {
         const QString siteCode;
         const QString name;
@@ -607,7 +607,7 @@ void KisWelcomePageWidget::showDevVersionHighlight()
     if (isDevelopmentBuild()) {
         QString devBuildLabelText = QString("<a style=\"color: " +
                                            blendedColor.name() +
-                                           " \" href=\"https://docs.krita.org/en/untranslatable_pages/triaging_bugs.html?"
+                                           " \" href=\"https://docs.minerva2d.org/en/untranslatable_pages/triaging_bugs.html?"
                                            + analyticsString + "dev-build" + "\">")
                                   .append(i18n("DEV BUILD")).append("</a>");
 
@@ -644,7 +644,7 @@ void KisWelcomePageWidget::slotRecentDocContextMenuRequest(const QPoint &pos)
 
 bool KisWelcomePageWidget::isDevelopmentBuild()
 {
-    return KritaVersionWrapper::isDevelopersBuild();
+    return MinervaVersionWrapper::isDevelopersBuild();
 }
 
 void KisWelcomePageWidget::slotNewFileClicked()
@@ -720,7 +720,7 @@ void KisWelcomePageWidget::slotSetUpdateStatus(KisUpdaterStatus updateStatus)
 
 void KisWelcomePageWidget::slotShowUpdaterErrorDetails()
 {
-    QMessageBox::warning(qApp->activeWindow(), i18nc("@title:window", "Krita"), m_updaterStatus.updaterOutput());
+    QMessageBox::warning(qApp->activeWindow(), i18nc("@title:window", "Minerva"), m_updaterStatus.updaterOutput());
 }
 
 void KisWelcomePageWidget::updateVersionUpdaterFrame()
@@ -739,7 +739,7 @@ void KisWelcomePageWidget::updateVersionUpdaterFrame()
     if (m_updaterStatus.status() == UpdaterStatus::StatusID::UPDATE_AVAILABLE) {
         updaterFrame->setVisible(true);
         updaterFrame->setEnabled(true);
-        versionLabelText = i18n("New version of Krita is available.");
+        versionLabelText = i18n("New version of Minerva is available.");
         versionNotificationLabel->setVisible(true);
         updateIcon->setIcon(KisIconUtils::loadIcon("update-medium"));
 
@@ -747,7 +747,7 @@ void KisWelcomePageWidget::updateVersionUpdaterFrame()
             bnVersionUpdate->setVisible(true);
         } else {
             // build URL for label
-            QString downloadLink = QString(" <a style=\"color: %1; text-decoration: underline\" href=\"%2?%3\">Download Krita %4</a>")
+            QString downloadLink = QString(" <a style=\"color: %1; text-decoration: underline\" href=\"%2?%3\">Download Minerva %4</a>")
                     .arg(blendedColor.name())
                     .arg(m_updaterStatus.downloadLink())
                     .arg(analyticsString + "version-update")
@@ -797,7 +797,7 @@ void KisWelcomePageWidget::initDonations()
 
     connect(donationLink, SIGNAL(linkActivated(QString)), androidDonations, SLOT(slotStartDonationFlow()));
 
-    QString bannerPath = QStandardPaths::locate(QStandardPaths::AppDataLocation, "share/krita/donation/banner.png");
+    QString bannerPath = QStandardPaths::locate(QStandardPaths::AppDataLocation, "share/minerva2d/donation/banner.png");
     QPixmap pixmap(bannerPath);
     if (pixmap.isNull()) {
         qWarning("KisWelcomePage::initDonations: failed to load banner from '%s'", qUtf8Printable(bannerPath));

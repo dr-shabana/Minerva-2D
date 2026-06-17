@@ -133,7 +133,7 @@ QStringList KisMimeData::formats () const
     if (m_nodes.size() > 0) {
         f << "application/x-qt-image"
           << "application/zip"
-          << "application/x-krita-node-internal-pointer";
+          << "application/x-minerva2d-node-internal-pointer";
     }
     return f;
 }
@@ -201,7 +201,7 @@ QVariant KisMimeData::retrieveData(const QString &mimetype, QMetaType preferredT
     /**
      * HACK ALERT:
      *
-     * Sometimes Qt requests the data *after* destruction of Krita,
+     * Sometimes Qt requests the data *after* destruction of Minerva,
      * we cannot load the nodes in that case, because we need signals
      * and timers. So we just skip serializing.
      */
@@ -226,9 +226,9 @@ QVariant KisMimeData::retrieveData(const QString &mimetype, QMetaType preferredT
         return ba;
 
     }
-    else if (mimetype == "application/x-krita-node-internal-pointer") {
+    else if (mimetype == "application/x-minerva2d-node-internal-pointer") {
 
-        QDomDocument doc("krita_internal_node_pointer");
+        QDomDocument doc("minerva2d_internal_node_pointer");
         QDomElement root = doc.createElement("pointer");
         root.setAttribute("application_pid", (qint64)QApplication::applicationPid());
         root.setAttribute("force_copy", m_forceCopy);
@@ -291,8 +291,8 @@ QList<KisNodeSP> KisMimeData::tryLoadInternalNodes(const QMimeData *data,
     }
 
     // Qt 4.8 way
-    if (nodes.isEmpty() && data->hasFormat("application/x-krita-node-internal-pointer")) {
-        QByteArray nodeXml = data->data("application/x-krita-node-internal-pointer");
+    if (nodes.isEmpty() && data->hasFormat("application/x-minerva2d-node-internal-pointer")) {
+        QByteArray nodeXml = data->data("application/x-minerva2d-node-internal-pointer");
 
         QDomDocument doc;
         doc.setContent(nodeXml);
@@ -341,10 +341,10 @@ QList<KisNodeSP> KisMimeData::loadNonNativeNodes(const QMimeData *data,
     bool doRecenter = false;
     QList<KisNodeSP> nodes;
 
-    if (nodes.isEmpty() && (data->hasFormat("application/x-color") || data->hasFormat("krita/x-colorsetentry"))) {
+    if (nodes.isEmpty() && (data->hasFormat("application/x-color") || data->hasFormat("minerva2d/x-colorsetentry"))) {
         QColor color = data->hasColor() ? qvariant_cast<QColor>(data->colorData()) : QColor(255, 0, 255);
-        if (!data->hasColor() && data->hasFormat("krita/x-colorsetentry")) {
-            QByteArray byteData = data->data("krita/x-colorsetentry");
+        if (!data->hasColor() && data->hasFormat("minerva2d/x-colorsetentry")) {
+            QByteArray byteData = data->data("minerva2d/x-colorsetentry");
             KisSwatch s = KisSwatch::fromByteArray(byteData);
             color = s.color().toQColor();
         }

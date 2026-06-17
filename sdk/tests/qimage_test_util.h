@@ -18,11 +18,11 @@ namespace TestUtil {
 inline QString fetchExternalDataFileName(const QString relativeFileName)
 {
     static QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
-    static QString unittestsDataDirPath = "KRITA_UNITTESTS_DATA_DIR";
+    static QString unittestsDataDirPath = "MINERVA2D_UNITTESTS_DATA_DIR";
 
     QString path;
     if (!env.contains(unittestsDataDirPath)) {
-        warnKrita << "Environment variable" << unittestsDataDirPath << "is not set";
+        warnMinerva << "Environment variable" << unittestsDataDirPath << "is not set";
         return QString();
     } else {
         path = env.value(unittestsDataDirPath, "");
@@ -222,7 +222,7 @@ inline bool checkQImageImpl(bool externalTest,
 
         if (canSkipExternalTest) {
             static QProcessEnvironment env = QProcessEnvironment::systemEnvironment();
-            static QString writeUnittestsVar = "KRITA_WRITE_UNITTESTS";
+            static QString writeUnittestsVar = "MINERVA2D_WRITE_UNITTESTS";
 
             int writeUnittests = env.value(writeUnittestsVar, "0").toInt();
             if (writeUnittests) {

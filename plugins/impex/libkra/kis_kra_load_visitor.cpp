@@ -102,7 +102,7 @@ KisKraLoadVisitor::KisKraLoadVisitor(KisImageSP image,
 
     if (!m_store->enterDirectory(m_name)) {
         QStringList directories = m_store->directoryList();
-        dbgKrita << directories;
+        dbgMinerva << directories;
         if (directories.size() > 0) {
             dbgFile << "Could not locate the directory, maybe some encoding issue? Grab the first directory, that'll be the image one." << m_name << directories;
             m_name = directories.first();
@@ -318,7 +318,7 @@ bool KisKraLoadVisitor::visit(KisCloneLayer *layer)
 
         layer->setCopyFrom(srcLayer);
     } else {
-        m_warningMessages.append(i18nc("Loading a .kra file", "The file contains a clone layer that has an incorrect source node id. "
+        m_warningMessages.append(i18nc("Loading a .m2d file", "The file contains a clone layer that has an incorrect source node id. "
                                                               "This layer will be converted into a paint layer."));
     }
 
@@ -406,12 +406,12 @@ bool KisKraLoadVisitor::visit(KisTransformMask *mask)
 
             /**
              * Workaround for the dumbparams that we used in older versions
-             * of Krita for simple translations. The dumbparams were deprecated
+             * of Minerva for simple translations. The dumbparams were deprecated
              * with the proper implementation of the param holder, so
              * now we should convert the old definition into the new format
              * somehow.
              *
-             * See: https://bugs.kde.org/show_bug.cgi?id=492320
+             * See: https://github.com/dr-shabana/Minerva-2D/issues/show_bug.cgi?id=492320
              */
             if (id == "dumbparams") {
                 const QPointF center = m_image->bounds().center();

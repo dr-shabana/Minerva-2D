@@ -28,7 +28,7 @@ FilterOp::FilterOp(QObject *parent, const QVariantList &)
 
     // This is not a gui plugin; only load it when the doc is created.
     KisPaintOpRegistry *r = KisPaintOpRegistry::instance();
-    r->add(new KisSimplePaintOpFactory<KisFilterOp, KisFilterOpSettings, KisFilterOpSettingsWidget>("filter", i18nc("type of a brush engine, shown in the list of brush engines", "Filter"), KisPaintOpFactory::categoryStable(), "krita-filterop.png", QString(), whiteList, 17));
+    r->add(new KisSimplePaintOpFactory<KisFilterOp, KisFilterOpSettings, KisFilterOpSettingsWidget>("filter", i18nc("type of a brush engine, shown in the list of brush engines", "Filter"), KisPaintOpFactory::categoryStable(), "minerva2d-filterop.png", QString(), whiteList, 17));
 
 }
 

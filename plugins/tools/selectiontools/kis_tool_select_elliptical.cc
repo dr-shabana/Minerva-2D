@@ -1,5 +1,5 @@
 /*
- *  kis_tool_select_elliptical.cc -- part of Krita
+ *  kis_tool_select_elliptical.cc -- part of Minerva
  *
  *  SPDX-FileCopyrightText: 2004 Boudewijn Rempt (boud@valdyas.org)
  *  SPDX-FileCopyrightText: 2007 Sven Langkamp <sven.langkamp@gmail.com>

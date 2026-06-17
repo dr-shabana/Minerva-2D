@@ -20,8 +20,8 @@ kis_add_library(kritahairypaintop MODULE ${kritahairypaintop_SOURCES})
 
 target_link_libraries(kritahairypaintop kritalibpaintop)
 
-install(TARGETS kritahairypaintop  DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
+install(TARGETS kritahairypaintop  DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})
 install( FILES
-    krita-sumi.png DESTINATION ${KDE_INSTALL_DATADIR}/krita/images)
+    minerva2d-sumi.png DESTINATION ${KDE_INSTALL_DATADIR}/minerva2d/images)
 
 

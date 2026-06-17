@@ -1,5 +1,5 @@
 /*
- *  kis_tool_crop.cc -- part of Krita
+ *  kis_tool_crop.cc -- part of Minerva
  *
  *  SPDX-FileCopyrightText: 2004 Boudewijn Rempt <boud@valdyas.org>
  *  SPDX-FileCopyrightText: 2005 Michael Thaler <michael.thaler@physik.tu-muenchen.de>
@@ -147,7 +147,7 @@ void KisToolCrop::activate(const QSet<KoShape*> &shapes)
 {
 
     KisTool::activate(shapes);
-    configGroup =  KSharedConfig::openConfig()->group(toolId()); // save settings to kritarc
+    configGroup =  KSharedConfig::openConfig()->group(toolId()); // save settings to minerva2drc
 
     KisResourcesSnapshotSP resources =
         new KisResourcesSnapshot(image(), currentNode(), this->canvas()->resourceManager());
@@ -758,7 +758,7 @@ void KisToolCrop::showSizeOnCanvas()
 QWidget* KisToolCrop::createOptionWidget()
 {
     optionsWidget = new KisToolCropConfigWidget(0, this);
-    // See https://bugs.kde.org/show_bug.cgi?id=316896
+    // See https://github.com/dr-shabana/Minerva-2D/issues/show_bug.cgi?id=316896
     QWidget *specialSpacer = new QWidget(optionsWidget);
     specialSpacer->setObjectName("SpecialSpacer");
     specialSpacer->setFixedSize(0, 0);

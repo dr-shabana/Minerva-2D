@@ -9,11 +9,11 @@ set -x
 
 # Read in our parameters
 export BUILD_PREFIX=$1
-export KRITA_SOURCES=$2
+export MINERVA2D_SOURCES=$2
 
 # Save some frequently referenced locations in variables for ease of use / updating
-export APPDIR=${KRITA_APPDIR_PATH:-$BUILD_PREFIX/krita.appdir}
-export PLUGINS=$APPDIR/usr/lib/kritaplugins/
+export APPDIR=${MINERVA2D_APPDIR_PATH:-$BUILD_PREFIX/minerva2d.appdir}
+export PLUGINS=$APPDIR/usr/lib/minerva2dplugins/
 
 # qjsonparser, used to add metadata to the plugins needs to work in a en_US.UTF-8 environment.
 # That's not always the case, so make sure it is
@@ -21,9 +21,9 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_us.UTF-8
 
 # We want to use $prefix/deps/usr/ for all our dependencies
-export DEPS_INSTALL_PREFIX=${KRITA_DEPS_PATH:-$BUILD_PREFIX/deps/usr}
-export BUILD_DIR=${KRITA_BUILD_PATH:-$BUILD_PREFIX/krita-build/}
-export DOWNLOADS_DIR=${KRITA_DOWNLOADS_PATH:-$BUILD_PREFIX/downloads/}
+export DEPS_INSTALL_PREFIX=${MINERVA2D_DEPS_PATH:-$BUILD_PREFIX/deps/usr}
+export BUILD_DIR=${MINERVA2D_BUILD_PATH:-$BUILD_PREFIX/minerva2d-build/}
+export DOWNLOADS_DIR=${MINERVA2D_DOWNLOADS_PATH:-$BUILD_PREFIX/downloads/}
 
 # Setup variables needed to help everything find what we built
 ARCH=`dpkg --print-architecture`
@@ -55,8 +55,8 @@ if [ -d $DEPS_INSTALL_PREFIX/appimage-tools/bin ]; then
   export PATH=$DEPS_INSTALL_PREFIX/appimage-tools/bin/:$PATH
 fi
 
-source ${KRITA_SOURCES}/packaging/linux/appimage/override_compiler.sh.inc
-source ${KRITA_SOURCES}/packaging/linux/appimage/kritaci-utils.sh.inc
+source ${MINERVA2D_SOURCES}/packaging/linux/appimage/override_compiler.sh.inc
+source ${MINERVA2D_SOURCES}/packaging/linux/appimage/minerva2dci-utils.sh.inc
 
 if [[ $ARCH == "arm64" ]]; then
   APPIMAGE_ARCHITECTURE="aarch64"
@@ -66,57 +66,57 @@ else
   APPIMAGE_ARCHITECTURE=$ARCH
 fi
 
-# Step 0: Find out what version of Krita we built and give the Appimage a proper name
+# Step 0: Find out what version of Minerva we built and give the Appimage a proper name
 cd $BUILD_DIR
 
-KRITA_VERSION=$(grep "#define KRITA_VERSION_STRING" libs/version/kritaversion.h | cut -d '"' -f 2)
+MINERVA2D_VERSION=$(grep "#define MINERVA2D_VERSION_STRING" libs/version/minerva2dversion.h | cut -d '"' -f 2)
 # Also find out the revision of Git we built
 # Then use that to generate a combined name we'll distribute
-cd $KRITA_SOURCES
+cd $MINERVA2D_SOURCES
 
 if [[ "${CI_COMMIT_BRANCH}" =~ release/.* ]]; then
     BRANCH_VERSION=${CI_COMMIT_BRANCH/#release\//}
     echo "Found a release branch: ${CI_COMMIT_BRANCH} using version: ${BRANCH_VERSION}"
 
-    if [[ "$BRANCH_VERSION" != "$KRITA_VERSION" ]]; then
-        echo "WARNING: Branch version does not coincide with the version in kritaversion.h:"
+    if [[ "$BRANCH_VERSION" != "$MINERVA2D_VERSION" ]]; then
+        echo "WARNING: Branch version does not coincide with the version in minerva2dversion.h:"
         echo "    branch version: $BRANCH_VERSION"
-        echo "    kritaversion.h: $KRITA_VERSION"
+        echo "    minerva2dversion.h: $MINERVA2D_VERSION"
     fi
 
-    if [[ "${KRITA_VERSION}" =~ -beta$ ]]; then
+    if [[ "${MINERVA2D_VERSION}" =~ -beta$ ]]; then
         echo "ERROR: beta version does not have a numeric suffix, please change it to \"beta1\""
         exit 3
     fi
 
-    if [[ "${KRITA_VERSION}" =~ -rc$ ]]; then
+    if [[ "${MINERVA2D_VERSION}" =~ -rc$ ]]; then
         echo "ERROR: release candidate version does not have a numeric suffix, please change it to \"rc1\""
         exit 4
     fi
 
-    export VERSION=$KRITA_VERSION
-    NEW_APPIMAGE_NAME="krita-${VERSION}-${APPIMAGE_ARCHITECTURE}.AppImage"
+    export VERSION=$MINERVA2D_VERSION
+    NEW_APPIMAGE_NAME="minerva2d-${VERSION}-${APPIMAGE_ARCHITECTURE}.AppImage"
 
     pushd $BUILD_DIR
 
-    #if KRITA_BETA is set, set channel to Beta, otherwise set it to stable
+    #if MINERVA2D_BETA is set, set channel to Beta, otherwise set it to stable
     is_beta=0
-    grep "define KRITA_BETA 1" libs/version/kritaversion.h || is_beta=$?
+    grep "define MINERVA2D_BETA 1" libs/version/minerva2dversion.h || is_beta=$?
 
     is_rc=0
-    grep "define KRITA_RC 1" libs/version/kritaversion.h || is_rc=$?
+    grep "define MINERVA2D_RC 1" libs/version/minerva2dversion.h || is_rc=$?
 
     popd
 
     if [ $is_beta -eq 0 ] || [ $is_rc -eq 0 ]; then
         CHANNEL="Beta"
-        ZSYNC_URL="zsync|https://download.kde.org/unstable/krita/updates/Krita-${CHANNEL}-${APPIMAGE_ARCHITECTURE}.appimage.zsync"
-        ZSYNC_SOURCE_URL="https://download.kde.org/unstable/krita/${KRITA_VERSION}/${NEW_APPIMAGE_NAME}"
+        ZSYNC_URL="zsync|https://download.kde.org/unstable/minerva2d/updates/Minerva-${CHANNEL}-${APPIMAGE_ARCHITECTURE}.appimage.zsync"
+        ZSYNC_SOURCE_URL="https://download.kde.org/unstable/minerva2d/${MINERVA2D_VERSION}/${NEW_APPIMAGE_NAME}"
         VERSION_TYPE="development"
     else
         CHANNEL="Stable"
-        ZSYNC_URL="zsync|https://download.kde.org/stable/krita/updates/Krita-${CHANNEL}-${APPIMAGE_ARCHITECTURE}.appimage.zsync"
-        ZSYNC_SOURCE_URL="https://download.kde.org/stable/krita/${KRITA_VERSION}/${NEW_APPIMAGE_NAME}"
+        ZSYNC_URL="zsync|https://download.kde.org/stable/minerva2d/updates/Minerva-${CHANNEL}-${APPIMAGE_ARCHITECTURE}.appimage.zsync"
+        ZSYNC_SOURCE_URL="https://download.kde.org/stable/minerva2d/${MINERVA2D_VERSION}/${NEW_APPIMAGE_NAME}"
         VERSION_TYPE="stable"
     fi
 
@@ -125,23 +125,23 @@ else
 
     if git rev-parse --is-inside-work-tree; then
         GIT_REVISION=$(git rev-parse --short HEAD)
-        export VERSION=$KRITA_VERSION-$GIT_REVISION
+        export VERSION=$MINERVA2D_VERSION-$GIT_REVISION
     else
-        export VERSION=$KRITA_VERSION
+        export VERSION=$MINERVA2D_VERSION
     fi
 
-    NEW_APPIMAGE_NAME="krita-${VERSION}-${APPIMAGE_ARCHITECTURE}.AppImage"
+    NEW_APPIMAGE_NAME="minerva2d-${VERSION}-${APPIMAGE_ARCHITECTURE}.AppImage"
 
-    if [[ "${CI_COMMIT_BRANCH}" =~ krita/.* ]]; then
+    if [[ "${CI_COMMIT_BRANCH}" =~ minerva2d/.* ]]; then
         ESCAPED_COMMIT_BRANCH="${CI_COMMIT_BRANCH//\//-}"
 
         CHANNEL="Plus"
-        ZSYNC_URL="zsync|https://autoconfig.kde.org/krita/updates/plus/linux/Krita-Plus-${APPIMAGE_ARCHITECTURE}.appimage.zsync"
-        ZSYNC_SOURCE_URL="https://autoconfig.kde.org/krita/updates/plus/linux/${NEW_APPIMAGE_NAME}"
+        ZSYNC_URL="zsync|https://autoconfig.kde.org/minerva2d/updates/plus/linux/Minerva-Plus-${APPIMAGE_ARCHITECTURE}.appimage.zsync"
+        ZSYNC_SOURCE_URL="https://autoconfig.kde.org/minerva2d/updates/plus/linux/${NEW_APPIMAGE_NAME}"
     else
         CHANNEL="Next"
-        ZSYNC_URL="zsync|https://autoconfig.kde.org/krita/updates/next/linux/Krita-Next-${APPIMAGE_ARCHITECTURE}.appimage.zsync"
-        ZSYNC_SOURCE_URL="https://autoconfig.kde.org/krita/updates/next/linux/${NEW_APPIMAGE_NAME}"
+        ZSYNC_URL="zsync|https://autoconfig.kde.org/minerva2d/updates/next/linux/Minerva-Next-${APPIMAGE_ARCHITECTURE}.appimage.zsync"
+        ZSYNC_SOURCE_URL="https://autoconfig.kde.org/minerva2d/updates/next/linux/${NEW_APPIMAGE_NAME}"
     fi
 fi
 
@@ -154,17 +154,17 @@ cd $BUILD_PREFIX
 
 # Step 0: place the translations where ki18n and Qt look for them
 #
-# In Qt5 version of Krita we used to patch ki18n to locate the translations
+# In Qt5 version of Minerva we used to patch ki18n to locate the translations
 # in QStandardPaths::AppLocalDataLocation, hence all the translations had to
-# be moved into the Krita-local directory. In Qt6 we dropped this patch, so
+# be moved into the Minerva-local directory. In Qt6 we dropped this patch, so
 # all the translations are now searched in QStandardPaths::GenericDataLocation
 
 if [ "$QT_VERSION_MAJOR" = "5" ] ; then
     if [ -d $APPDIR/usr/share/locale ] ; then
-        rsync -prul $APPDIR/usr/share/locale $APPDIR/usr/share/krita
+        rsync -prul $APPDIR/usr/share/locale $APPDIR/usr/share/minerva2d
         rm -rf $APPDIR/usr/share/locale
     fi
-    rsync -prul $DEPS_INSTALL_PREFIX/share/locale $APPDIR/usr/share/krita
+    rsync -prul $DEPS_INSTALL_PREFIX/share/locale $APPDIR/usr/share/minerva2d
 else
     rsync -prul $DEPS_INSTALL_PREFIX/share/locale $APPDIR/usr/share/
 fi
@@ -191,14 +191,14 @@ if [ ! -d $APPDIR/usr/libstdcpp-fallback/ ] ; then
     ln -s `find ./ -name 'libstdc++.so.6.*' -maxdepth 1 -type f | head -n1 | xargs basename` libstdc++.so.6
 fi
 
-mkdir $BUILD_PREFIX/krita-apprun-build
+mkdir $BUILD_PREFIX/minerva2d-apprun-build
 (
-    cd $BUILD_PREFIX/krita-apprun-build
-    cmake -DCMAKE_BUILD_TYPE=Release $KRITA_SOURCES/packaging/linux/appimage/krita-apprun/
+    cd $BUILD_PREFIX/minerva2d-apprun-build
+    cmake -DCMAKE_BUILD_TYPE=Release $MINERVA2D_SOURCES/packaging/linux/appimage/minerva2d-apprun/
     cmake --build .
     cp AppRun $APPDIR
 )
-rm -rf $BUILD_PREFIX/krita-apprun-build
+rm -rf $BUILD_PREFIX/minerva2d-apprun-build
 
 if [ -d $APPDIR/usr/lib/$PYTHON_VER/site-packages ]; then
     rm -rf $APPDIR/usr/lib/$PYTHON_VER/site-packages/packaging*
@@ -279,10 +279,10 @@ for lib in $APPDIR/usr/lib/$PYTHON_VER/lib-dynload/*.so*; do
   patchelf --set-rpath '$ORIGIN/../..' $lib;
 done
 
-if [[ -n $KRITACI_ALLOW_NO_PYQT && ! -f $APPDIR/usr/lib/krita-python-libs/PyKrita/krita.so ]]; then
-  echo "WARNING: not found $APPDIR/usr/lib/krita-python-libs/PyKrita/krita.so, skipping..."
+if [[ -n $KRITACI_ALLOW_NO_PYQT && ! -f $APPDIR/usr/lib/minerva2d-python-libs/PyMinerva/minerva2d.so ]]; then
+  echo "WARNING: not found $APPDIR/usr/lib/minerva2d-python-libs/PyMinerva/minerva2d.so, skipping..."
 else
-  patchelf --set-rpath '$ORIGIN/../..' $APPDIR/usr/lib/krita-python-libs/PyKrita/krita.so
+  patchelf --set-rpath '$ORIGIN/../..' $APPDIR/usr/lib/minerva2d-python-libs/PyMinerva/minerva2d.so
 fi
 
 if [ -f $APPDIR/usr/lib/$PYTHON_VER/site-packages/$PYQT_VER/sip.so ] ; then
@@ -291,14 +291,14 @@ fi
 
 # Step 4: Update version and update information
 
-cd $KRITA_SOURCES
+cd $MINERVA2D_SOURCES
 
 DATE=$(git log -1 --format="%ct" | xargs -I{} date -d @{} +%Y-%m-%d)
 if [ "$DATE" = "" ] ; then
         DATE=$(date +%Y-%m-%d)
 fi
 
-sed -e "s|<release version=\"\" date=\"\" />|<release version=\"$VERSION\" date=\"$DATE\" type=\"$VERSION_TYPE\"/>|" -i $APPDIR/usr/share/metainfo/org.kde.krita.appdata.xml
+sed -e "s|<release version=\"\" date=\"\" />|<release version=\"$VERSION\" date=\"$DATE\" type=\"$VERSION_TYPE\"/>|" -i $APPDIR/usr/share/metainfo/org.kde.minerva2d.appdata.xml
 
 # Return to our build root
 cd $BUILD_PREFIX
@@ -314,7 +314,7 @@ if [[ $ARCH == "amd64" ]]; then
     UPDATER_SHA256=414f10d9ab2dc72dc6874dbdb99454227124473a7ae691db2288d60f14f810fe
 
     if ! test -f "AppImageUpdate" || ! echo -n "$UPDATER_SHA256 AppImageUpdate" | sha256sum -c -; then
-        wget --no-verbose "https://files.kde.org/krita/build/AppImageUpdate-x86_64.AppImage" -O AppImageUpdate
+        wget --no-verbose "https://files.kde.org/minerva2d/build/AppImageUpdate-x86_64.AppImage" -O AppImageUpdate
         echo -n "$UPDATER_SHA256 AppImageUpdate" | sha256sum -c -
     fi
 
@@ -327,8 +327,8 @@ if [ -f $DOWNLOADS_DIR/AppImageUpdate ]; then
 fi
 
 # place the icon where linuxdeployqt seems to expect it
-find $APPDIR -name krita.png
-cp $APPDIR/usr/share/icons/hicolor/256x256/apps/krita.png $APPDIR
+find $APPDIR -name minerva2d.png
+cp $APPDIR/usr/share/icons/hicolor/256x256/apps/minerva2d.png $APPDIR
 ls $APPDIR
 
 if [ -n "$STRIP_APPIMAGE" ]; then
@@ -354,7 +354,7 @@ if [ -n "$STRIP_APPIMAGE" ]; then
     rm -f $TEMPFILE
 fi
 
-EXTRA_PLUGINS_LIST="$PLUGINS,$APPDIR/usr/lib/krita-python-libs/PyKrita/krita.so"
+EXTRA_PLUGINS_LIST="$PLUGINS,$APPDIR/usr/lib/minerva2d-python-libs/PyMinerva/minerva2d.so"
 
 WAYLAND_PLATFORM_PLUGIN_NAME=
 # Qt6.8 names the plugin file as libqwayland-generic.so
@@ -389,11 +389,11 @@ if [ $useVerbosePackagingLog -eq 1 ]; then
 fi
 
 # Step 4: Build the image!!!
-linuxdeployqt $APPDIR/usr/share/applications/org.kde.krita.desktop \
-  -executable=$APPDIR/usr/bin/krita \
+linuxdeployqt $APPDIR/usr/share/applications/org.kde.minerva2d.desktop \
+  -executable=$APPDIR/usr/bin/minerva2d \
   ${MLT_BINARIES} \
   ${FFMPEG_BINARIES} \
-  -qmldir=$KRITA_SOURCES/plugins/dockers/textproperties \
+  -qmldir=$MINERVA2D_SOURCES/plugins/dockers/textproperties \
   ${EXTRA_VERBOSE_ARGUMENT} \
   -bundle-non-qt-libs \
   -extra-plugins=$EXTRA_PLUGINS_LIST \
@@ -403,7 +403,7 @@ linuxdeployqt $APPDIR/usr/share/applications/org.kde.krita.desktop \
 
 # Generate a new name for the Appimage file and rename it accordingly
 
-OLD_APPIMAGE_NAME="Krita-${VERSION}-${APPIMAGE_ARCHITECTURE}.AppImage"
+OLD_APPIMAGE_NAME="Minerva-${VERSION}-${APPIMAGE_ARCHITECTURE}.AppImage"
 mv ${OLD_APPIMAGE_NAME} ${NEW_APPIMAGE_NAME}
 
 # TODO: when signing is implemented, make sure the package is signed **before**
@@ -412,4 +412,4 @@ mv ${OLD_APPIMAGE_NAME} ${NEW_APPIMAGE_NAME}
 # remove the autogenerated zsync file and create the custom one
 rm -f *.zsync
 zsyncmake -u "${ZSYNC_SOURCE_URL}" ${NEW_APPIMAGE_NAME}
-mv ${NEW_APPIMAGE_NAME}.zsync Krita-${CHANNEL}-${APPIMAGE_ARCHITECTURE}.appimage.zsync
+mv ${NEW_APPIMAGE_NAME}.zsync Minerva-${CHANNEL}-${APPIMAGE_ARCHITECTURE}.appimage.zsync

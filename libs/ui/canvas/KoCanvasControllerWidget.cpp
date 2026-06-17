@@ -88,7 +88,7 @@ KoCanvasControllerWidget::KoCanvasControllerWidget(KisKActionCollection * action
       Details: Since the document is set on the mainwindow before loading commences the inial show/layout can choose
           to set the document to be very small, even to be zero pixels tall.  Setting a sane minimum size on the
           widget means we no longer get rounding errors in zooming and we no longer end up with zero-zoom.
-      Note: KoPage apps should probably startup with a sane document size; for Krita that's impossible
+      Note: KoPage apps should probably startup with a sane document size; for Minerva that's impossible
      */
     setMinimumSize(QSize(50, 50));
     setMouseTracking(true);

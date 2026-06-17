@@ -10,7 +10,7 @@
 #include <kconfiggroup.h>
 #include <ksharedconfig.h>
 
-#include <KritaVersionWrapper.h>
+#include <MinervaVersionWrapper.h>
 
 #include <KisFolderStorage.h>
 #include <KoResource.h>

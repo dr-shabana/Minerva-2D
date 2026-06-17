@@ -1,0 +1,12 @@
+{
+    "Id": "Minerva SVG Import Filter",
+    "NoDisplay": "true",
+    "Type": "Service",
+    "X-KDE-Import": "image/svg+xml",
+    "X-KDE-Library": "kritasvgimport",
+    "X-KDE-ServiceTypes": [
+        "Minerva/FileFilter"
+    ],
+    "X-KDE-Weight": 1,
+    "X-KDE-Extensions" : "svg"
+}

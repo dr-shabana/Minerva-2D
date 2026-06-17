@@ -39,7 +39,7 @@ public:
     virtual QString captionText() = 0;
     virtual QString replacementWarningText() = 0;
 
-    virtual QString infoText(QSettings& kritarc);
+    virtual QString infoText(QSettings& minerva2drc);
 
     QString basicSystemInformationReplacementText();
 

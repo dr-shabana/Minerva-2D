@@ -1,5 +1,5 @@
 /*
- * tool_dyna.cpp -- Part of Krita
+ * tool_dyna.cpp -- Part of Minerva
  *
  * SPDX-FileCopyrightText: 2009 Lukáš Tvrdý <lukast.dev@gmail.com>
  *

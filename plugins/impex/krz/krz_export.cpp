@@ -29,7 +29,7 @@
 
 class KisExternalLayer;
 
-K_PLUGIN_FACTORY_WITH_JSON(KrzExportFactory, "krita_krz_export.json", registerPlugin<KrzExport>();)
+K_PLUGIN_FACTORY_WITH_JSON(KrzExportFactory, "minerva2d_krz_export.json", registerPlugin<KrzExport>();)
 
 KrzExport::KrzExport(QObject *parent, const QVariantList &)
     : KisImportExportFilter(parent)

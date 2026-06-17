@@ -233,7 +233,7 @@ void KisPasteActionFactory::run(Flags flags, KisViewManager *view)
     if (KisClipboard::instance()->hasLayers()) {
         const QPointF offsetTopLeft = [&]() -> QPointF {
             KisPaintDeviceSP clip =
-                KisClipboard::instance()->clipFromKritaLayers(
+                KisClipboard::instance()->clipFromMinervaLayers(
                     image->colorSpace());
 
             if (!clip) {
@@ -263,7 +263,7 @@ void KisPasteActionFactory::run(Flags flags, KisViewManager *view)
 
         if (view->selection()) {
             /// TODO: we are relying on a sticky translated string from KisImageLayerAddCommand
-            ///       change the string after Krita 5.2.5
+            ///       change the string after Minerva 5.2.5
             KisProcessingApplicator *ap = beginAction(view, kundo2_i18n("Add Layer"));
             KUndo2Command *deselectCmd = new KisDeselectActiveSelectionCommand(view->selection(), image);
             ap->applyCommand(deselectCmd);
@@ -345,7 +345,7 @@ void KisPasteIntoActionFactory::run(KisViewManager *viewManager)
 
     QRect imageBounds = image->bounds();
 
-    KisPaintDeviceSP clipdev = KisClipboard::instance()->clipFromKritaLayers(image->colorSpace());
+    KisPaintDeviceSP clipdev = KisClipboard::instance()->clipFromMinervaLayers(image->colorSpace());
     KisPaintDeviceSP clip = clipdev ? new KisPaintDevice(*clipdev) : nullptr;
 
     if (clip)

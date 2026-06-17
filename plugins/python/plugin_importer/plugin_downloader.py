@@ -1,19 +1,19 @@
 # SPDX-FileCopyrightText: 2029 Rebecca Breu <rebecca@rbreu.de>
 
-# This file is part of Krita.
+# This file is part of Minerva.
 
-# Krita is free software: you can redistribute it and/or modify
+# Minerva is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
 # the Free Software Foundation, either version 3 of the License, or
 # (at your option) any later version.
 
-# Krita is distributed in the hope that it will be useful,
+# Minerva is distributed in the hope that it will be useful,
 # but WITHOUT ANY WARRANTY; without even the implied warranty of
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License for more details.
 
 # You should have received a copy of the GNU General Public License
-# along with Krita.  If not, see <https://www.gnu.org/licenses/>.
+# along with Minerva.  If not, see <https://www.gnu.org/licenses/>.
 
 import mimetypes
 import os
@@ -83,7 +83,7 @@ def download_plugin(url, dest_dir):
 
     dest_path = os.path.join(dest_dir, 'plugin.zip')
     zip_url, headers = get_zipurl(url)
-    headers['User-Agent'] = 'krita-plugin-importer'
+    headers['User-Agent'] = 'minerva2d-plugin-importer'
 
     try:
         request = urllib.request.Request(zip_url, headers=headers)

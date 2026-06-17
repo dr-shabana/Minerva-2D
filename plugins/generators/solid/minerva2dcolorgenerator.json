@@ -1,0 +1,9 @@
+{
+    "Id": "Solid Color Generator",
+    "Type": "Service",
+    "X-KDE-Library": "kritacolorgenerator",
+    "X-KDE-ServiceTypes": [
+        "Minerva/Generator"
+    ],
+    "X-Minerva-Version": "28"
+}

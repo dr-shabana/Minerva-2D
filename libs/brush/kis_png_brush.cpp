@@ -44,7 +44,7 @@ bool KisPngBrush::loadFromDevice(QIODevice *dev, KisResourcesInterfaceSP resourc
     QImageReader reader(&buf, "PNG");
 
     if (!reader.canRead()) {
-        dbgKrita << "Could not read brush" << filename() << ". Error:" << reader.errorString();
+        dbgMinerva << "Could not read brush" << filename() << ". Error:" << reader.errorString();
         setValid(false);
         return false;
     }
@@ -64,7 +64,7 @@ bool KisPngBrush::loadFromDevice(QIODevice *dev, KisResourcesInterfaceSP resourc
     QImage image = reader.read();
 
     if (image.isNull()) {
-        dbgKrita << "Could not create image for" << filename() << ". Error:" << reader.errorString();
+        dbgMinerva << "Could not create image for" << filename() << ". Error:" << reader.errorString();
         setValid(false);
         return false;
     }
@@ -103,7 +103,7 @@ bool KisPngBrush::loadFromDevice(QIODevice *dev, KisResourcesInterfaceSP resourc
         setHasColorAndTransparency(false);
     }
     else {
-        // see bug https://bugs.kde.org/show_bug.cgi?id=484115 if you want to edit this condition
+        // see bug https://github.com/dr-shabana/Minerva-2D/issues/show_bug.cgi?id=484115 if you want to edit this condition
         // keep it in sync with KisColorfulBrush code
         if ((int)image.format() != (int)QImage::Format_ARGB32) {
             image.convertTo(QImage::Format_ARGB32);

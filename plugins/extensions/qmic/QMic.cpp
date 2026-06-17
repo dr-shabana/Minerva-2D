@@ -48,17 +48,17 @@ void QMic::slotQMic(bool again)
 
     std::unique_ptr<KisQmicPluginInterface> plugin;
 
-    // find the krita-gmic-qt plugin
-    const QList<KoJsonTrader::Plugin> offers = KoJsonTrader::instance()->query("Krita/GMic", QString());
+    // find the minerva2d-gmic-qt plugin
+    const QList<KoJsonTrader::Plugin> offers = KoJsonTrader::instance()->query("Minerva/GMic", QString());
     if (offers.isEmpty()) {
-        QMessageBox::warning(qApp->activeWindow(), i18nc("@title:window", "Krita"), i18n("The GMic plugin is not installed or could not be loaded."));
+        QMessageBox::warning(qApp->activeWindow(), i18nc("@title:window", "Minerva"), i18n("The GMic plugin is not installed or could not be loaded."));
         return;
     }
 
     for (const auto &loader : offers) {
         auto *factory = qobject_cast<KPluginFactory *>(loader.instance());
         if (!factory) {
-            warnPlugins << "(GMic) This is not a Krita plugin: " << loader.fileName() << loader.errorString();
+            warnPlugins << "(GMic) This is not a Minerva plugin: " << loader.fileName() << loader.errorString();
 
             continue;
         }
@@ -76,7 +76,7 @@ void QMic::slotQMic(bool again)
     }
 
     if (!plugin) {
-        QMessageBox::warning(qApp->activeWindow(), i18nc("@title:window", "Krita"), i18n("Krita cannot launch the gmic-qt plugin. No bundled library found."));
+        QMessageBox::warning(qApp->activeWindow(), i18nc("@title:window", "Minerva"), i18n("Minerva cannot launch the gmic-qt plugin. No bundled library found."));
         return;
     }
 

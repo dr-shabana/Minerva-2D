@@ -12,7 +12,7 @@ add_definitions(${PNG_DEFINITIONS})
 
 target_link_libraries(kritapngimport kritaui ${PNG_LIBRARIES} )
 
-install(TARGETS kritapngimport  DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
+install(TARGETS kritapngimport  DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})
 
 set(kritapngexport_SOURCES
     kis_png_export.cc
@@ -24,6 +24,6 @@ kis_add_library(kritapngexport MODULE ${kritapngexport_SOURCES})
 
 target_link_libraries(kritapngexport kritaui kritaimpex ${PNG_LIBRARIES})
 
-install(TARGETS kritapngexport  DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
+install(TARGETS kritapngexport  DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})
 
-install(FILES krita_png.desktop DESTINATION ${KDE_INSTALL_APPDIR})
+install(FILES minerva2d_png.desktop DESTINATION ${KDE_INSTALL_APPDIR})

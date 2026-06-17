@@ -122,7 +122,7 @@ bool GamutMaskDock::openMaskEditor()
     }
 
     // find the template resource first, so we can abort the action early on
-    QString maskTemplateFile = ":/gamutmasks/GamutMaskTemplate.kra";
+    QString maskTemplateFile = ":/gamutmasks/GamutMaskTemplate.m2d";
     if (maskTemplateFile.isEmpty() || maskTemplateFile.isNull() || !QFile::exists(maskTemplateFile)) {
         dbgPlugins << "GamutMaskDock::openMaskEditor(): maskTemplateFile (" << maskTemplateFile << ") was not found on the system";
         getUserFeedback(i18n("Could not open gamut mask for editing."),
@@ -150,7 +150,7 @@ bool GamutMaskDock::openMaskEditor()
     // (e.g. user closes another view, the template stays open, but the edit operation is canceled)
     m_maskDocument->setInfiniteAutoSaveInterval();
     QString maskPath =
-        QString("%1%2%3_%4.kra")
+        QString("%1%2%3_%4.m2d")
             .arg(QDir::tempPath(), "/", "GamutMaskTemplate", QString::number(std::time(nullptr)));
     m_maskDocument->setPath(maskPath);
     m_maskDocument->setLocalFilePath(maskPath);
@@ -290,7 +290,7 @@ int GamutMaskDock::getUserFeedback(QString text, QString informativeText,
                                    QMessageBox::Icon severity)
 {
     QMessageBox msgBox;
-    msgBox.setWindowTitle(i18nc("@title:window", "Krita"));
+    msgBox.setWindowTitle(i18nc("@title:window", "Minerva"));
     msgBox.setText(QString("<p><b>%1</b></p>").arg(text));
     msgBox.setInformativeText(informativeText);
     msgBox.setStandardButtons(buttons);

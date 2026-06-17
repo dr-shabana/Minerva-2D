@@ -19,7 +19,7 @@ class QIcon;
 class KUndo2Command;
 
 /**
-   A base interface for layers that are implemented outside the Krita
+   A base interface for layers that are implemented outside the Minerva
    core.
  */
 class KRITAIMAGE_EXPORT KisExternalLayer : public KisLayer

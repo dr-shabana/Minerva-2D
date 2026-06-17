@@ -129,7 +129,7 @@ bool findOnlyElement(const QDomElement &parent, const QString &tag, QDomElement 
         if (errorMessages) {
             *errorMessages << msg;
         } else {
-            warnKrita << msg;
+            warnMinerva << msg;
         }
 
         return false;
@@ -155,7 +155,7 @@ namespace Private {
     {
         QString type = e.attribute("type", "unknown-type");
         if (type != expectedType) {
-            warnKrita << i18n("Error: incorrect type (%2) for value %1. Expected %3", e.tagName(), type, expectedType);
+            warnMinerva << i18n("Error: incorrect type (%2) for value %1. Expected %3", e.tagName(), type, expectedType);
             return false;
         }
 

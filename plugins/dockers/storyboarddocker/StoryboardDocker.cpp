@@ -14,7 +14,7 @@
 
 #include "StoryboardDockerDock.h"
 
-K_PLUGIN_FACTORY_WITH_JSON(StoryboardDockerPluginFactory, "krita_storyboarddocker.json", registerPlugin<StoryboardDockerPlugin>();)
+K_PLUGIN_FACTORY_WITH_JSON(StoryboardDockerPluginFactory, "minerva2d_storyboarddocker.json", registerPlugin<StoryboardDockerPlugin>();)
 
 class StoryboardDockerDockFactory : public KoDockFactoryBase {
 public:

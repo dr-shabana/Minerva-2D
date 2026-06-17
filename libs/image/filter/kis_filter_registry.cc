@@ -43,7 +43,7 @@ KisFilterRegistry* KisFilterRegistry::instance()
     if (!reg) {
         dbgRegistry << "initializing KisFilterRegistry";
         reg = new KisFilterRegistry(qApp);
-        KoPluginLoader::instance()->load("Krita/Filter");
+        KoPluginLoader::instance()->load("Minerva/Filter");
     }
     return reg;
 }

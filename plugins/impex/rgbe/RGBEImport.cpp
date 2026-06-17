@@ -33,7 +33,7 @@
 #include "RGBEImport.h"
 #include "RGBEImportUtils.h"
 
-K_PLUGIN_FACTORY_WITH_JSON(KisRGBEImportFactory, "krita_rgbe_import.json", registerPlugin<RGBEImport>();)
+K_PLUGIN_FACTORY_WITH_JSON(KisRGBEImportFactory, "minerva2d_rgbe_import.json", registerPlugin<RGBEImport>();)
 
 #define MAXLINE 1024
 

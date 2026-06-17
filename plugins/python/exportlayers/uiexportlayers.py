@@ -16,7 +16,7 @@ except:
                                  QMessageBox, QCheckBox, QSpinBox,
                                  QComboBox, QListWidgetItem)
 import os
-from krita import Krita, InfoObject, FileDialog
+from krita import Minerva, InfoObject, FileDialog
 from builtins import i18n, Application
 
 
@@ -55,7 +55,7 @@ class UIExportLayers(object):
         self.buttonBox = QDialogButtonBox(
             QDialogButtonBox.StandardButton.Ok | QDialogButtonBox.StandardButton.Cancel)
 
-        self.kritaInstance = Krita.instance()
+        self.kritaInstance = Minerva.instance()
         self.documentsList = []
 
         self.directoryTextField.setReadOnly(True)
@@ -139,7 +139,7 @@ class UIExportLayers(object):
         docCount = 0
         for document in self.documentsList:
             fullName = document.fileName()
-            if document.name(): #if you open a file that isn't a .kra file it won't have a name property...
+            if document.name(): #if you open a file that isn't a .m2d file it won't have a name property...
                 shortName = document.name()
             else:
                 shortName = os.path.basename(document.fileName()) #... so just get the name from the file using os.path.basename()

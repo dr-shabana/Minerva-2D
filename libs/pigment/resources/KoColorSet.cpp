@@ -1064,7 +1064,7 @@ KoColorSet::PaletteType KoColorSet::Private::detectFormat(const QString &fileNam
     else if (ba.startsWith("JASC-PAL")) {
         return KoColorSet::PSP_PAL;
     }
-    else if (ba.contains("krita/x-colorset") || ba.contains("application/x-krita-palette")) {
+    else if (ba.contains("minerva2d/x-colorset") || ba.contains("application/x-minerva2d-palette")) {
         return KoColorSet::KPL;
     }
     else if (fi.suffix().toLower() == "aco") {
@@ -1796,7 +1796,7 @@ bool KoColorSet::Private::loadKpl()
 
     QScopedPointer<KoStore> store(
         KoStore::createStore(&buf, KoStore::Read,
-                             "application/x-krita-palette",
+                             "application/x-minerva2d-palette",
                              KoStore::Zip));
     if (!store || store->bad()) {
         return false;
@@ -2447,7 +2447,7 @@ bool KoColorSet::Private::loadXml() {
 
 bool KoColorSet::Private::saveKpl(QIODevice *dev) const
 {
-    QScopedPointer<KoStore> store(KoStore::createStore(dev, KoStore::Write, "application/x-krita-palette", KoStore::Zip));
+    QScopedPointer<KoStore> store(KoStore::createStore(dev, KoStore::Write, "application/x-minerva2d-palette", KoStore::Zip));
     if (!store || store->bad()) {
         qWarning() << "saveKpl could not create store";
         return false;

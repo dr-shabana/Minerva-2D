@@ -1,5 +1,5 @@
 /*
- * This file is part of Krita
+ * This file is part of Minerva
  *
  * SPDX-FileCopyrightText: 2006 Cyrille Berger <cberger@cberger.net>
  *
@@ -14,9 +14,9 @@
 #include "KisFilterFastColorOverlay.h"
 #include <filter/kis_filter_registry.h>
 
-K_PLUGIN_FACTORY_WITH_JSON(KritaExtensionsColorsFactory, "kritaextensioncolorsfilters.json", registerPlugin<KritaExtensionsColors>();)
+K_PLUGIN_FACTORY_WITH_JSON(MinervaExtensionsColorsFactory, "kritaextensioncolorsfilters.json", registerPlugin<MinervaExtensionsColors>();)
 
-KritaExtensionsColors::KritaExtensionsColors(QObject *parent, const QVariantList &)
+MinervaExtensionsColors::MinervaExtensionsColors(QObject *parent, const QVariantList &)
         : QObject(parent)
 {
     KisFilterRegistry * manager = KisFilterRegistry::instance();
@@ -27,7 +27,7 @@ KritaExtensionsColors::KritaExtensionsColors(QObject *parent, const QVariantList
 
 }
 
-KritaExtensionsColors::~KritaExtensionsColors()
+MinervaExtensionsColors::~MinervaExtensionsColors()
 {
 }
 

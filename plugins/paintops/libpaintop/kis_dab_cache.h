@@ -22,7 +22,7 @@ struct MirrorProperties;
 /**
  * @brief The KisDabCache class provides caching for dabs into the brush paintop
  *
- *  This class adds caching of the dabs to the paintop system of Krita.
+ *  This class adds caching of the dabs to the paintop system of Minerva.
  *  Such cache makes the execution of the benchmarks up to 2 times faster.
  *  Subjectively, the real painting becomes much faster, especially with
  *  huge brushes. Artists report up to 20% speed gain while painting.

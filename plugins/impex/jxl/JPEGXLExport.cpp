@@ -57,7 +57,7 @@
 #include "kis_wdg_options_jpegxl.h"
 #include "kis_jpegxl_export_tools.h"
 
-K_PLUGIN_FACTORY_WITH_JSON(ExportFactory, "krita_jxl_export.json", registerPlugin<JPEGXLExport>();)
+K_PLUGIN_FACTORY_WITH_JSON(ExportFactory, "minerva2d_jxl_export.json", registerPlugin<JPEGXLExport>();)
 
 JPEGXLExport::JPEGXLExport(QObject *parent, const QVariantList &)
     : KisImportExportFilter(parent)
@@ -716,7 +716,7 @@ KisImportExportErrorCode JPEGXLExport::convert(KisDocument *document, QIODevice 
                 const QByteArray pixels = [&]() {
                     const auto frameData = frames->keyframeAt<KisRasterKeyframe>(i);
                     KisPaintDeviceSP dev =
-                        new KisPaintDevice(*image->projection(), KritaUtils::DeviceCopyMode::CopySnapshot);
+                        new KisPaintDevice(*image->projection(), MinervaUtils::DeviceCopyMode::CopySnapshot);
                     frameData->writeFrameToDevice(dev);
 
                     const KoID colorModel = cs->colorModelId();
@@ -919,7 +919,7 @@ KisImportExportErrorCode JPEGXLExport::convert(KisDocument *document, QIODevice 
                     }
 
                     // EXPERIMENTAL! Additive blending mode on JPEG-XL produces
-                    // slightly different result than Krita.
+                    // slightly different result than Minerva.
                     const QString frameName = node->name();
                     if (!isFirstLayer && cfgMultiLayer) {
                         if (node->compositeOpId() == QString("add")) {

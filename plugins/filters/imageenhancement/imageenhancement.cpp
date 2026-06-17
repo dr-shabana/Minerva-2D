@@ -25,16 +25,16 @@
 #include "kis_simple_noise_reducer.h"
 #include "kis_wavelet_noise_reduction.h"
 
-K_PLUGIN_FACTORY_WITH_JSON(KritaImageEnhancementFactory, "kritaimageenhancement.json", registerPlugin<KritaImageEnhancement>();)
+K_PLUGIN_FACTORY_WITH_JSON(MinervaImageEnhancementFactory, "kritaimageenhancement.json", registerPlugin<MinervaImageEnhancement>();)
 
-KritaImageEnhancement::KritaImageEnhancement(QObject *parent, const QVariantList &)
+MinervaImageEnhancement::MinervaImageEnhancement(QObject *parent, const QVariantList &)
         : QObject(parent)
 {
     KisFilterRegistry::instance()->add(new KisSimpleNoiseReducer());
     KisFilterRegistry::instance()->add(new KisWaveletNoiseReduction());
 }
 
-KritaImageEnhancement::~KritaImageEnhancement()
+MinervaImageEnhancement::~MinervaImageEnhancement()
 {
 }
 

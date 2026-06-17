@@ -1,5 +1,5 @@
 /*
- *  kis_tool_gradient.cc - part of Krita
+ *  kis_tool_gradient.cc - part of Minerva
  *
  *  SPDX-FileCopyrightText: 2002 Patrick Julien <freak@codepimps.org>
  *  SPDX-FileCopyrightText: 2003 Boudewijn Rempt <boud@valdyas.org>

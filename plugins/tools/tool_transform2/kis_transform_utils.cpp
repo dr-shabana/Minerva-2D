@@ -26,7 +26,7 @@
 #include "commands_new/kis_saved_commands.h"
 #include "kis_transform_mask.h"
 #include "kis_transform_mask_adapter.h"
-#include "krita_container_utils.h"
+#include "minerva2d_container_utils.h"
 #include "kis_selection.h"
 #include "kis_image.h"
 #include "kis_image_animation_interface.h"
@@ -759,7 +759,7 @@ bool KisTransformUtils::tryFetchArgsFromCommandAndUndo(ToolTransformArgs *outArg
         oldRootNodes == currentNodes &&
         oldTime == currentTime) {
 
-        if (KritaUtils::compareListsUnordered(oldTransformedNodes, selectedNodes)) {
+        if (MinervaUtils::compareListsUnordered(oldTransformedNodes, selectedNodes)) {
             args.saveContinuedState();
 
             *outArgs = args;

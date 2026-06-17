@@ -26,7 +26,7 @@
 #include <kmessagebox.h>
 
 // On Android, KF5I18n's loadMessageCatalog function is unbelievably,
-// unusably slow when setting a fallback language, causing Krita's startup
+// unusably slow when setting a fallback language, causing Minerva's startup
 // time to balloon several minutes long. Creating dialogs or other widgets
 // also ends up taking forever. Since it's non-functional anyway, we'll
 // disable the ability to set a fallback language. Other operating systems

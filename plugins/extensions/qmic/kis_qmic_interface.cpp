@@ -1,5 +1,5 @@
 /*
- * This file is part of Krita
+ * This file is part of Minerva
  *
  * SPDX-FileCopyrightText: 2020 L. E. Segovia <amy@amyspark.me>
  *
@@ -115,7 +115,7 @@ QSize KisImageInterface::gmic_qt_get_image_size(int mode)
         default: {
             warnPlugins
                 << "Inputmode" << static_cast<int>(p->m_inputMode)
-                << "must be specified by GMic or is not implemented in Krita";
+                << "must be specified by GMic or is not implemented in Minerva";
             break;
         }
         }

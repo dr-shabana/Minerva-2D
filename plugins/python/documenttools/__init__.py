@@ -5,4 +5,4 @@
 import krita
 from .documenttools import DocumentToolsExtension
 
-Scripter.addExtension(DocumentToolsExtension(krita.Krita.instance()))
+Scripter.addExtension(DocumentToolsExtension(minerva2d.Minerva.instance()))

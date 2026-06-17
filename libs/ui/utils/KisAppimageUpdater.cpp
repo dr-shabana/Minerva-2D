@@ -25,8 +25,8 @@ KisAppimageUpdater::KisAppimageUpdater()
 {
     QString updaterPath;
 
-#if defined(KRITA_GIT_SHA1_STRING)
-    if (qEnvironmentVariableIsSet("KRITA_APPIMAGEUPDATER_USE_DUMMY")) {
+#if defined(MINERVA2D_GIT_SHA1_STRING)
+    if (qEnvironmentVariableIsSet("MINERVA2D_APPIMAGEUPDATER_USE_DUMMY")) {
         updaterPath = QString("%1%2AppImageUpdateDummy")
                 .arg(QCoreApplication::applicationDirPath())
                 .arg(QDir::separator());
@@ -168,7 +168,7 @@ void KisAppimageUpdater::slotUpdateFinished(int result, QProcess::ExitStatus exi
         switch (result) {
         case 0:
             updateStatus = UpdaterStatus::StatusID::RESTART_REQUIRED;
-            statusDetails = i18n("New AppImage was downloaded to %1. To complete the update, close Krita and run the new AppImage.", finfoAppImagePath.path());
+            statusDetails = i18n("New AppImage was downloaded to %1. To complete the update, close Minerva and run the new AppImage.", finfoAppImagePath.path());
             break;
         default:
             // some errors have exit code of 255 (modified by system, when AppImageUpdate returns -1)
@@ -247,7 +247,7 @@ bool KisAppimageUpdater::findUpdaterBinary()
         return true;
     } else {
         KisUsageLogger::log(
-                    QString("KisAppimageUpdater: AppImageUpdate (%1) was not found within the Krita appimage, or is not executable")
+                    QString("KisAppimageUpdater: AppImageUpdate (%1) was not found within the Minerva appimage, or is not executable")
                     .arg(m_updaterBinary)
                     );
         return false;

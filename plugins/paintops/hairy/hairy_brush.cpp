@@ -140,7 +140,7 @@ void HairyBrush::paintLine(KisPaintDeviceSP dab, KisPaintDeviceSP layer, const K
             colorifyBristles(layer, pi1.pos());
         }
         else {
-            dbgKrita << "Can't soak the ink from the layer";
+            dbgMinerva << "Can't soak the ink from the layer";
         }
     }
 

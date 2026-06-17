@@ -15,7 +15,7 @@
 #include <QHash>
 
 // KisCursorCache implements a global static database of cursors. This allows
-// Krita to load cursor data only once.
+// Minerva to load cursor data only once.
 
 class KisCursorCache: public QObject
 {

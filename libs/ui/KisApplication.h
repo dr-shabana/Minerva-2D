@@ -23,12 +23,12 @@ class KisAndroidDonations;
 #include <KisImportExportManager.h>
 
 /**
- *  @brief Base class for the %Krita app
+ *  @brief Base class for the %Minerva app
  *
  *  This class handles arguments given on the command line and
- *  shows a generic about dialog for the Krita app.
+ *  shows a generic about dialog for the Minerva app.
  *
- *  In addition it adds the standard directories where Krita
+ *  In addition it adds the standard directories where Minerva
  *  can find its images etc.
  *
  *  If the last mainwindow becomes closed, KisApplication automatically
@@ -89,7 +89,7 @@ public:
     void initializeGlobals(const KisApplicationArguments &args);
     void processPostponedSynchronizationEvents();
 
-    /// @return true if Krita has been acquired through an app store
+    /// @return true if Minerva has been acquired through an app store
     bool isStoreApplication();
 
     static void verifyMetatypeRegistration();

@@ -97,7 +97,7 @@ void KisExrLayersSorter::Private::processLayers(KisNodeSP root)
             QDomElement el = pathToElementMap[path];
 
             /**
-             * In older files (before Krita 5.2.7) we used to save the layer offset
+             * In older files (before Minerva 5.2.7) we used to save the layer offset
              * into the XML metadata, while loading the pixel data at the origin.
              * Since 5.2.7 we stopped saving offsets (we save null instead of them),
              * we let's just make sure we don't load garbage from older files).

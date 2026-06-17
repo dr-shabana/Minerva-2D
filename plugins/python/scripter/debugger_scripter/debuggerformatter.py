@@ -12,13 +12,13 @@ def format_data(data):
 
     exclude_keys = ['copyright', 'credits', 'False',
                     'True', 'None', 'Ellipsis', 'quit',
-                    'QtCriticalMsg', 'krita_path',
+                    'QtCriticalMsg', 'minerva2d_path',
                     'QtWarningMsg', 'QWIDGETSIZE_MAX',
                     'QtFatalMsg', 'PYQT_CONFIGURATION',
-                    'on_load', 'PYQT_VERSION', 'on_pykrita_unloading',
+                    'on_load', 'PYQT_VERSION', 'on_pyminerva2d_unloading',
                     'on_unload', 'QT_VERSION', 'QtInfoMsg',
                     'PYQT_VERSION_STR', 'qApp', 'QtSystemMsg',
-                    'QtDebugMsg', 'on_pykrita_loaded', 'QT_VERSION_STR']
+                    'QtDebugMsg', 'on_pyminerva2d_loaded', 'QT_VERSION_STR']
     exclude_valuetypes = [types.BuiltinFunctionType,
                           types.BuiltinMethodType,
                           types.ModuleType,

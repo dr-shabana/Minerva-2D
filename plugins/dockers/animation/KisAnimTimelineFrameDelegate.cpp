@@ -25,7 +25,7 @@ KisAnimTimelineFrameDelegate::KisAnimTimelineFrameDelegate(QObject *parent)
 
     // Clone frame stripes SVG -> Pixmap..
     QImage stripesImage(":diagonal-stripe.svg", "svg");
-    stripesImage.save("/tmp/krita_stripes.svg", "svg");
+    stripesImage.save("/tmp/minerva2d_stripes.svg", "svg");
     stripes = QPixmap::fromImage(stripesImage);
 }
 

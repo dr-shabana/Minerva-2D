@@ -6,8 +6,8 @@
 
 #include "kis_paintop_utils.h"
 
-#include "krita_utils.h"
-#include "krita_container_utils.h"
+#include "minerva2d_utils.h"
+#include "minerva2d_container_utils.h"
 #include <KisRenderedDab.h>
 
 #include <functional>
@@ -58,9 +58,9 @@ KisTimingInformation effectiveTiming(bool timingEnabled, qreal timingInterval, q
 
 QVector<QRect> splitAndFilterDabRect(const QRect &totalRect, const QVector<QRect> &dabRects, int idealPatchSize)
 {
-    QVector<QRect> rects = KritaUtils::splitRectIntoPatches(totalRect, QSize(idealPatchSize,idealPatchSize));
+    QVector<QRect> rects = MinervaUtils::splitRectIntoPatches(totalRect, QSize(idealPatchSize,idealPatchSize));
 
-    KritaUtils::filterContainer(rects,
+    MinervaUtils::filterContainer(rects,
         [dabRects] (const QRect &rc) {
             Q_FOREACH (const QRect &dab, dabRects) {
                 if (dab.intersects(rc)) {

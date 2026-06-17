@@ -15,7 +15,7 @@
 #include "kis_selection_mask.h"
 #include "kis_adjustment_layer.h"
 
-#include "krita_utils.h"
+#include "minerva2d_utils.h"
 
 #include "kis_refresh_subtree_walker.h"
 #include "kis_async_merger.h"
@@ -304,7 +304,7 @@ quint8 KisProjectionLeaf::opacity() const
     if (m_d->checkParentPassThrough()) {
         quint8 parentOpacity = m_d->node->parent()->projectionLeaf()->opacity();
 
-        resultOpacity = KritaUtils::mergeOpacityU8(resultOpacity, parentOpacity);
+        resultOpacity = MinervaUtils::mergeOpacityU8(resultOpacity, parentOpacity);
     }
 
     return resultOpacity;
@@ -329,7 +329,7 @@ QBitArray KisProjectionLeaf::channelFlags() const
             parentChannelFlags = parentLayer->channelFlags();
         }
 
-        channelFlags = KritaUtils::mergeChannelFlags(channelFlags, parentChannelFlags);
+        channelFlags = MinervaUtils::mergeChannelFlags(channelFlags, parentChannelFlags);
     }
 
     return channelFlags;

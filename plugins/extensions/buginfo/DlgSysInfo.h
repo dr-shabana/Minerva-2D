@@ -21,7 +21,7 @@ public:
     ~DlgSysInfo() override;
 
     QString defaultNewFileName() override {
-        return "KritaSystemInformation.txt";
+        return "MinervaSystemInformation.txt";
     }
 
     QString originalFileName() override;

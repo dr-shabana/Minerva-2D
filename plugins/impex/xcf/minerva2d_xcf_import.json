@@ -1,0 +1,13 @@
+{
+    "Id": "Minerva Gimp Import Filter",
+    "NoDisplay": "true",
+    "Type": "Service",
+    
+    "X-KDE-Import": "image/x-xcf",
+    "X-KDE-Library": "kritaxcfimport",
+    "X-KDE-ServiceTypes": [
+        "Minerva/FileFilter"
+    ],
+    "X-KDE-Weight": 1,
+    "X-KDE-Extensions" : "xcf"
+}

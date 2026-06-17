@@ -74,7 +74,7 @@ void KisColorSelectorTriangle::updatePixelCache(qreal devicePixelRatioF)
     m_cacheDevicePixelRatioF = devicePixelRatioF; // save device pixel ratio of the cache
 
 //    if (!pixelCacheOffset.isNull()) {
-//        warnKrita << "WARNING: offset of the triangle selector is not null!";
+//        warnMinerva << "WARNING: offset of the triangle selector is not null!";
 //    }
 
     // antialiased border

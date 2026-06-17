@@ -42,7 +42,7 @@
 #include <kis_dom_utils.h>
 #include <kis_layer_utils.h>
 
-K_PLUGIN_FACTORY_WITH_JSON(KisSpriterExportFactory, "krita_spriter_export.json", registerPlugin<KisSpriterExport>();)
+K_PLUGIN_FACTORY_WITH_JSON(KisSpriterExportFactory, "minerva2d_spriter_export.json", registerPlugin<KisSpriterExport>();)
 
 KisSpriterExport::KisSpriterExport(QObject *parent, const QVariantList &) : KisImportExportFilter(parent)
 {

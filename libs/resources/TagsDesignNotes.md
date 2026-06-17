@@ -12,7 +12,7 @@
 
 1) When multiple storages provide tags with the same URL, all such tags will be merged into one. The `tags_storages` table will have one record for each such storage.
 
-1) [current behavior] The `tags_storages` table works like a reference-countng table. When the **last storage owning a tag** is removed, Krita removes the tag as well, whether or not there are still resources tagged with this tag, i.e.
+1) [current behavior] The `tags_storages` table works like a reference-countng table. When the **last storage owning a tag** is removed, Minerva removes the tag as well, whether or not there are still resources tagged with this tag, i.e.
    * if a tag links the resources from the removed storage only, then the resources and the tag are removed
    * if a tag links the resources from the outside of the removed storage, these external resources will be untagged, and only the tag will be removed
 

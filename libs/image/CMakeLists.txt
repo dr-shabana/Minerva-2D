@@ -306,7 +306,7 @@ set(kritaimage_LIB_SRCS
    kis_post_execution_undo_adapter.cpp
    kis_processing_visitor.cpp
    kis_processing_applicator.cpp
-   krita_utils.cpp
+   minerva2d_utils.cpp
    kis_outline_generator.cpp
    kis_layer_composition.cpp
    kis_selection_filters.cpp
@@ -375,7 +375,7 @@ generate_export_header(kritaimage BASE_NAME kritaimage)
 
 target_link_libraries(kritaimage 
     PUBLIC
-        kritaversion 
+        minerva2dversion 
         kritawidgets 
         kritaglobal 
         kritapsdutils 
@@ -407,7 +407,7 @@ endif()
 target_link_libraries(kritaimage PUBLIC kritamultiarch)
 
 if (NOT GSL_FOUND)
-  message (WARNING "KRITA WARNING! No GNU Scientific Library was found! Krita's Shaped Gradients might be non-normalized! Please install GSL library.")
+  message (WARNING "KRITA WARNING! No GNU Scientific Library was found! Minerva's Shaped Gradients might be non-normalized! Please install GSL library.")
 else ()
   target_link_libraries(kritaimage PRIVATE GSL::gsl)
 endif ()
@@ -422,6 +422,6 @@ target_include_directories(kritaimage
 )
 
 set_target_properties(kritaimage PROPERTIES
-    VERSION ${GENERIC_KRITA_LIB_VERSION} SOVERSION ${GENERIC_KRITA_LIB_SOVERSION}
+    VERSION ${GENERIC_MINERVA2D_LIB_VERSION} SOVERSION ${GENERIC_MINERVA2D_LIB_SOVERSION}
 )
 install(TARGETS kritaimage  ${INSTALL_TARGETS_DEFAULT_ARGS})

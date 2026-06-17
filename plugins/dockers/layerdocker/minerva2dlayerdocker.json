@@ -1,0 +1,9 @@
+{
+    "Id": "Layer Docker",
+    "Type": "Service",
+    "X-KDE-Library": "kritalayerdocker",
+    "X-KDE-ServiceTypes": [
+        "Minerva/Dock"
+    ],
+    "X-Minerva-Version": "28"
+}

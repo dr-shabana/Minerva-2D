@@ -56,7 +56,7 @@ void KisStabilizedEventsSampler::addEvent(const KisPaintInformation &pi)
 void KisStabilizedEventsSampler::addFinishingEvent(int numSamples)
 {
     if (m_d->realEvents.size() > 0) {
-        dbgKrita << "DEBUG: KisStabilizedEventsSampler::addFinishingEvent called "
+        dbgMinerva << "DEBUG: KisStabilizedEventsSampler::addFinishingEvent called "
                     "before `realEvents` is cleared";
         clear();
     }

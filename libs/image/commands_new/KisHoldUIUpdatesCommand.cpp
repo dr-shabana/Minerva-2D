@@ -8,7 +8,7 @@
 
 #include <algorithm>
 #include "kis_image_interfaces.h"
-#include "krita_utils.h"
+#include "minerva2d_utils.h"
 #include "kis_paintop_utils.h"
 #include "kis_image_signal_router.h"
 #include "KisRunnableStrokeJobData.h"
@@ -44,7 +44,7 @@ void KisHoldUIUpdatesCommand::partB()
     totalDirtyRects =
         KisPaintOpUtils::splitAndFilterDabRect(totalRect,
                                                totalDirtyRects,
-                                               KritaUtils::optimalPatchSize().width());
+                                               MinervaUtils::optimalPatchSize().width());
 
     *m_batchUpdateStarted = true;
     m_updatesFacade->notifyBatchUpdateStarted();
@@ -54,12 +54,12 @@ void KisHoldUIUpdatesCommand::partB()
 
     QVector<KisRunnableStrokeJobDataBase*> jobsData;
     Q_FOREACH (const QRect &rc, totalDirtyRects) {
-        KritaUtils::addJobConcurrent(jobsData, [updatesFacade, rc] () {
+        MinervaUtils::addJobConcurrent(jobsData, [updatesFacade, rc] () {
             updatesFacade->notifyUIUpdateCompleted(rc);
         });
     }
 
-    KritaUtils::addJobBarrier(jobsData, [updatesFacade, batchUpdateStarted] () {
+    MinervaUtils::addJobBarrier(jobsData, [updatesFacade, batchUpdateStarted] () {
         updatesFacade->notifyBatchUpdateEnded();
         *batchUpdateStarted = false;
     });

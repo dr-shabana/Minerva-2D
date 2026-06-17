@@ -56,7 +56,7 @@ bool testFilterSrcNotIsDev(KisFilterSP f)
         //qDebug() << "Read for " << f->id() << "\n" << s;
         kfc->fromXML(s);
     }
-    dbgKrita << f->id();// << "\n" << kfc->toXML() << "\n";
+    dbgMinerva << f->id();// << "\n" << kfc->toXML() << "\n";
 
     kfc->createLocalResourcesSnapshot(KisGlobalResourcesInterface::instance());
     f->process(dev, dstdev, 0, QRect(QPoint(0,0), qimage.size()), kfc);
@@ -117,7 +117,7 @@ bool testFilter(KisFilterSP f)
             return false;
         }
     }
-    dbgKrita << f->id();// << "\n" << kfc->toXML() << "\n";
+    dbgMinerva << f->id();// << "\n" << kfc->toXML() << "\n";
     kfc->createLocalResourcesSnapshot(KisGlobalResourcesInterface::instance());
 
     f->process(dev, QRect(QPoint(0,0), qimage.size()), kfc);
@@ -170,7 +170,7 @@ bool testFilterWithSelections(KisFilterSP f)
         //qDebug() << "Read for " << f->id() << "\n" << s;
         kfc->fromXML(s);
     }
-    dbgKrita << f->id();// << "\n"; << kfc->toXML() << "\n";
+    dbgMinerva << f->id();// << "\n"; << kfc->toXML() << "\n";
 
     KisSelectionSP sel1 = new KisSelection(new KisSelectionDefaultBounds(dev), KisImageResolutionProxy::identity());
     sel1->pixelSelection()->select(qimage.rect());
@@ -218,7 +218,7 @@ void KisAllFilterTest::testAllFilters()
         else
             failures << *it;
     }
-    dbgKrita << "Success: " << successes;
+    dbgMinerva << "Success: " << successes;
     if (failures.size() > 0) {
         QFAIL(QString("Failed filters:\n\t %1").arg(failures.join("\n\t")).toLatin1());
     }
@@ -249,7 +249,7 @@ void KisAllFilterTest::testAllFiltersSrcNotIsDev()
         else
             failures << *it;
     }
-    dbgKrita << "Src!=Dev Success: " << successes;
+    dbgMinerva << "Src!=Dev Success: " << successes;
     if (failures.size() > 0) {
         QFAIL(QString("Src!=Dev Failed filters:\n\t %1").arg(failures.join("\n\t")).toLatin1());
     }
@@ -281,7 +281,7 @@ void KisAllFilterTest::testAllFiltersWithSelections()
         else
             failures << *it;
     }
-    dbgKrita << "Success: " << successes;
+    dbgMinerva << "Success: " << successes;
     if (failures.size() > 0) {
         QFAIL(QString("Failed filters with selections:\n\t %1").arg(failures.join("\n\t")).toLatin1());
     }

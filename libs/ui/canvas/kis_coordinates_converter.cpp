@@ -338,7 +338,7 @@ void KisCoordinatesConverter::setDocumentOffset(const QPointF& offset)
 
     // Steps to reproduce the issue (when no snapping):
     // 1) Download an image with 1px vertical black and white stripes
-    // 2) Enable fractional HiDPI support in Krita
+    // 2) Enable fractional HiDPI support in Minerva
     // 3) Set display scaling to 1.5 or 2.5
     // 4) Try to change offset of the image. If offset is unaligned, then
     //    the image will disappear on the canvas.

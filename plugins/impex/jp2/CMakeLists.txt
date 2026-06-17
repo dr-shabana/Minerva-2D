@@ -13,6 +13,6 @@ kis_add_library(kritajp2import MODULE ${kritajp2import_SOURCES})
 
 target_link_libraries(kritajp2import kritaui OpenJPEG::openjp2)
 
-install(TARGETS kritajp2import DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
+install(TARGETS kritajp2import DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})
 
-install(FILES krita_jp2.desktop DESTINATION ${KDE_INSTALL_APPDIR})
+install(FILES minerva2d_jp2.desktop DESTINATION ${KDE_INSTALL_APPDIR})

@@ -61,7 +61,7 @@ public:
 void createDummyLoaderRegistry() {
 
     KisResourceLoaderRegistry *reg = KisResourceLoaderRegistry::instance();
-    reg->add(new KisDummyResourceLoader(ResourceType::PaintOpPresets, ResourceType::PaintOpPresets,  i18n("Brush presets"), QStringList() << "application/x-krita-paintoppreset"));
+    reg->add(new KisDummyResourceLoader(ResourceType::PaintOpPresets, ResourceType::PaintOpPresets,  i18n("Brush presets"), QStringList() << "application/x-minerva2d-paintoppreset"));
     reg->add(new KisDummyResourceLoader(ResourceSubType::GbrBrushes, ResourceType::Brushes, i18n("Brush tips"), QStringList() << "image/x-gimp-brush"));
     reg->add(new KisDummyResourceLoader(ResourceSubType::GihBrushes, ResourceType::Brushes, i18n("Brush tips"), QStringList() << "image/x-gimp-brush-animated"));
     reg->add(new KisDummyResourceLoader(ResourceSubType::SvgBrushes, ResourceType::Brushes, i18n("Brush tips"), QStringList() << "image/svg+xml"));
@@ -87,11 +87,11 @@ void createDummyLoaderRegistry() {
     allImageMimes << KisMimeDatabase::mimeTypeForSuffix("pat");
 
     reg->add(new KisDummyResourceLoader(ResourceType::Patterns, ResourceType::Patterns, i18n("Patterns"), allImageMimes));
-    reg->add(new KisDummyResourceLoader(ResourceType::Workspaces, ResourceType::Workspaces, i18n("Workspaces"), QStringList() << "application/x-krita-workspace"));
+    reg->add(new KisDummyResourceLoader(ResourceType::Workspaces, ResourceType::Workspaces, i18n("Workspaces"), QStringList() << "application/x-minerva2d-workspace"));
     reg->add(new KisDummyResourceLoader(ResourceType::Symbols, ResourceType::Symbols, i18n("SVG symbol libraries"), QStringList() << "image/svg+xml"));
-    reg->add(new KisDummyResourceLoader(ResourceType::WindowLayouts, ResourceType::WindowLayouts, i18n("Window layouts"), QStringList() << "application/x-krita-windowlayout"));
-    reg->add(new KisDummyResourceLoader(ResourceType::Sessions, ResourceType::Sessions, i18n("Sessions"), QStringList() << "application/x-krita-session"));
-    reg->add(new KisDummyResourceLoader(ResourceType::GamutMasks, ResourceType::GamutMasks, i18n("Gamut masks"), QStringList() << "application/x-krita-gamutmask"));
+    reg->add(new KisDummyResourceLoader(ResourceType::WindowLayouts, ResourceType::WindowLayouts, i18n("Window layouts"), QStringList() << "application/x-minerva2d-windowlayout"));
+    reg->add(new KisDummyResourceLoader(ResourceType::Sessions, ResourceType::Sessions, i18n("Sessions"), QStringList() << "application/x-minerva2d-session"));
+    reg->add(new KisDummyResourceLoader(ResourceType::GamutMasks, ResourceType::GamutMasks, i18n("Gamut masks"), QStringList() << "application/x-minerva2d-gamutmask"));
 
 }
 

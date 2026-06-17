@@ -98,7 +98,7 @@ bool KoResource::save()
     QFile file(filename());
 
     if (!file.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
-        warnKrita << "Can't open file for writing" << filename();
+        warnMinerva << "Can't open file for writing" << filename();
         return false;
     }
 

@@ -180,9 +180,9 @@ void LayerSplit::slotLayerSplit()
 
         updater->setProgress(100);
 
-        dbgKrita << "Created" << colorMap.size() << "layers";
+        dbgMinerva << "Created" << colorMap.size() << "layers";
 //        Q_FOREACH (const Layer &l, colorMap) {
-//            dbgKrita << "\t" << l.device->objectName() << ":" << l.pixelsWritten;
+//            dbgMinerva << "\t" << l.device->objectName() << ":" << l.pixelsWritten;
 //        }
 
         if (dlg.sortLayers()) {

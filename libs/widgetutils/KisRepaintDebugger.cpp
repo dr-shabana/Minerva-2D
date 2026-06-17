@@ -18,7 +18,7 @@
 
 bool KisRepaintDebugger::enabled()
 {
-    static bool enabled = qEnvironmentVariableIntValue("KRITA_DEBUG_REPAINT") == 1;
+    static bool enabled = qEnvironmentVariableIntValue("MINERVA2D_DEBUG_REPAINT") == 1;
     return enabled;
 }
 

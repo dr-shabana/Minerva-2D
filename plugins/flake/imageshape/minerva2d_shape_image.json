@@ -1,0 +1,10 @@
+{
+    "Id": "Static Vector Shape",
+    "Type": "Service",
+    "X-Minerva-Version": "28",
+    "X-KDE-Library": "minerva2d_shape_image",
+    "X-KDE-PluginInfo-Name": "imageshape",
+    "X-KDE-ServiceTypes": [
+        "Minerva/Flake"
+    ]
+}

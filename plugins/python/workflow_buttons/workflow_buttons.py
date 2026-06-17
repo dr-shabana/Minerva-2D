@@ -11,14 +11,14 @@ except:
     from PyQt5.QtCore import QSize
     from PyQt5.QtGui import QIcon, QPixmap
     from PyQt5.QtWidgets import QWidget, QVBoxLayout, QHBoxLayout, QScrollArea, QToolButton, QPushButton, QToolBar, QAction, QSizePolicy
-from krita import Krita, DockWidget, DockWidgetFactory, DockWidgetFactoryBase, ManagedColor
+from krita import Minerva, DockWidget, DockWidgetFactory, DockWidgetFactoryBase, ManagedColor
 from builtins import i18n, i18nc, Application
 from .flow_layout import FlowLayout
 from .buttons_settings_dialog import LISTOFTOOLS, LISTOFSIZES, ButtonsSettingsDialog
 import ast
 
-DOCKER_ID = 'pykrita_workflow_buttons'
-INSTANCE = Krita.instance()
+DOCKER_ID = 'pyminerva2d_workflow_buttons'
+INSTANCE = Minerva.instance()
 
 class WorkflowButtons(DockWidget):
     def __init__(self):

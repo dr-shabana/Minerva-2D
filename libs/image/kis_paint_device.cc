@@ -57,7 +57,7 @@
 
 #include "kis_transform_worker.h"
 #include "kis_filter_strategy.h"
-#include "krita_utils.h"
+#include "minerva2d_utils.h"
 #include <KisStaticInitializer.h>
 
 KIS_DECLARE_STATIC_INITIALIZER {
@@ -1079,7 +1079,7 @@ void KisPaintDevice::init(const KoColorSpace *colorSpace,
     setParentNode(parent);
 }
 
-KisPaintDevice::KisPaintDevice(const KisPaintDevice& rhs, KritaUtils::DeviceCopyMode copyMode, KisNode *newParentNode)
+KisPaintDevice::KisPaintDevice(const KisPaintDevice& rhs, MinervaUtils::DeviceCopyMode copyMode, KisNode *newParentNode)
     : QObject()
     , KisShared()
     , m_d(new Private(this))
@@ -1089,15 +1089,15 @@ KisPaintDevice::KisPaintDevice(const KisPaintDevice& rhs, KritaUtils::DeviceCopy
     }
 }
 
-void KisPaintDevice::makeFullCopyFrom(const KisPaintDevice &rhs, KritaUtils::DeviceCopyMode copyMode, KisNode *newParentNode)
+void KisPaintDevice::makeFullCopyFrom(const KisPaintDevice &rhs, MinervaUtils::DeviceCopyMode copyMode, KisNode *newParentNode)
 {
     // temporary def. bounds object for the initialization phase only
     m_d->defaultBounds = m_d->transitionalDefaultBounds;
 
     // copy data objects with or without frames
-    m_d->cloneAllDataObjects(rhs.m_d, copyMode == KritaUtils::CopyAllFrames);
+    m_d->cloneAllDataObjects(rhs.m_d, copyMode == MinervaUtils::CopyAllFrames);
 
-    if (copyMode == KritaUtils::CopyAllFrames && rhs.m_d->framesInterface) {
+    if (copyMode == MinervaUtils::CopyAllFrames && rhs.m_d->framesInterface) {
         KIS_ASSERT_RECOVER_RETURN(rhs.m_d->framesInterface);
         KIS_ASSERT_RECOVER_RETURN(rhs.m_d->contentChannel);
         m_d->framesInterface.reset(new KisPaintDeviceFramesInterface(this));
@@ -1475,7 +1475,7 @@ KisRegion KisPaintDevice::regionExact() const
 
     Q_FOREACH (const QRect &rc1, sourceRects) {
         const int patchSize = 64;
-        QVector<QRect> smallerRects = KritaUtils::splitRectIntoPatches(rc1, QSize(patchSize, patchSize));
+        QVector<QRect> smallerRects = MinervaUtils::splitRectIntoPatches(rc1, QSize(patchSize, patchSize));
         Q_FOREACH (const QRect &rc2, smallerRects) {
 
             const QRect result =
@@ -1615,7 +1615,7 @@ void KisPaintDevice::convertFromQImage(const QImage& _image, const KoColorProfil
             writeBytes(dstData, offsetX, offsetY, image.width(), image.height());
             delete[] dstData;
         } catch (const std::bad_alloc&) {
-            warnKrita << "KisPaintDevice::convertFromQImage: Could not allocate" << image.width() * image.height() * pixelSize() << "bytes";
+            warnMinerva << "KisPaintDevice::convertFromQImage: Could not allocate" << image.width() * image.height() * pixelSize() << "bytes";
             return;
         }
     }
@@ -1661,7 +1661,7 @@ QImage KisPaintDevice::convertToQImage(const KoColorProfile *dstProfile, qint32 
     try {
         data = new quint8 [w * h * pixelSize()];
     } catch (const std::bad_alloc&) {
-        warnKrita << "KisPaintDevice::convertToQImage std::bad_alloc for " << w << " * " << h << " * " << pixelSize();
+        warnMinerva << "KisPaintDevice::convertToQImage std::bad_alloc for " << w << " * " << h << " * " << pixelSize();
         //delete[] data; // data is not allocated, so don't free it
         return QImage();
     }

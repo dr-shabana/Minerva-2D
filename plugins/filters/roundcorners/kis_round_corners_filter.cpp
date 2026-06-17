@@ -1,5 +1,5 @@
 /*
- * This file is part of Krita
+ * This file is part of Minerva
  *
  * SPDX-FileCopyrightText: 2005 Michael Thaler <michael.thaler@physik.tu-muenchen.de>
  *
@@ -75,7 +75,7 @@ void KisRoundCornersFilter::processImpl(KisPaintDeviceSP device,
     Q_ASSERT(!device.isNull());
 
     if (!device || !config) {
-        warnKrita << "Invalid parameters for round corner filter";
+        warnMinerva << "Invalid parameters for round corner filter";
         dbgPlugins << device << " " << config;
         return;
     }

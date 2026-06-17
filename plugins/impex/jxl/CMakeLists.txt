@@ -8,7 +8,7 @@ kis_add_library(kritajxlimport MODULE ${kritajxlimport_SOURCES})
 
 target_link_libraries(kritajxlimport kritaui kritalibkra kritametadata ${JPEGXL_LIBRARIES})
 
-install(TARGETS kritajxlimport  DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
+install(TARGETS kritajxlimport  DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})
 
 set(kritajxlexport_SOURCES
     JPEGXLExport.cpp
@@ -22,6 +22,6 @@ kis_add_library(kritajxlexport MODULE ${kritajxlexport_SOURCES})
 
 target_link_libraries(kritajxlexport kritaui kritalibkra kritaimpex ${JPEGXL_LIBRARIES})
 
-install(TARGETS kritajxlexport  DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
+install(TARGETS kritajxlexport  DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})
 
-install(FILES krita_jxl.desktop DESTINATION ${KDE_INSTALL_APPDIR})
+install(FILES minerva2d_jxl.desktop DESTINATION ${KDE_INSTALL_APPDIR})

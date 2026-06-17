@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ActionCollection version="2" name="Krita">
+<ActionCollection version="2" name="Minerva">
   <Actions category="Filters">
     <text context="Filter as an effect">Filters</text>
-    <Action name="krita_filter_gaussianhighpass">
+    <Action name="minerva2d_filter_gaussianhighpass">
       <icon/>
       <text>Gaussian High Pass Filter</text>
       <whatsThis></whatsThis>

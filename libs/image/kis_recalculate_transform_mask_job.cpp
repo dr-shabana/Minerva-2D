@@ -46,7 +46,7 @@ void KisRecalculateTransformMaskJob::run()
     KisLayerSP layer = qobject_cast<KisLayer*>(m_mask->parent().data());
 
     if (!layer) {
-        warnKrita << "WARNING: KisRecalculateTransformMaskJob::run() Mask has no parent layer! Skipping projection update!";
+        warnMinerva << "WARNING: KisRecalculateTransformMaskJob::run() Mask has no parent layer! Skipping projection update!";
         return;
     }
 

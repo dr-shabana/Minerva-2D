@@ -154,7 +154,7 @@ void KisCategorizedListView::mousePressEvent(QMouseEvent* event)
             QIcon icon = locked ? KisIconUtils::loadIcon("unlocked") : KisIconUtils::loadIcon("locked");
 
             // Add an empty section so there's a bit more space before users accidentally press lock
-            // See https://bugs.kde.org/show_bug.cgi?id=447367
+            // See https://github.com/dr-shabana/Minerva-2D/issues/show_bug.cgi?id=447367
             menu.addSection("     ");
 
             QAction* action1 = menu.addAction(icon, locked ? i18n("Unlock (restore settings from preset)")

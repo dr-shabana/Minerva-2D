@@ -1,0 +1,9 @@
+{
+    "Id": "Enhancement Filters",
+    "Type": "Service",
+    "X-KDE-Library": "kritaimageenhancement",
+    "X-KDE-ServiceTypes": [
+        "Minerva/Filter"
+    ],
+    "X-Minerva-Version": "28"
+}

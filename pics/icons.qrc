@@ -28,14 +28,14 @@
         <file>22_dark_align-vertical-top.svg</file>
         <file>16_light_align-vertical-top.svg</file>
         <file>22_light_align-vertical-top.svg</file>
-        <file>16_dark_application-x-krita.svg</file>
-        <file>22_dark_application-x-krita.svg</file>
-        <file>32_dark_application-x-krita.svg</file>
-        <file>64_dark_application-x-krita.svg</file>
-        <file>16_light_application-x-krita.svg</file>
-        <file>22_light_application-x-krita.svg</file>
-        <file>32_light_application-x-krita.svg</file>
-        <file>64_light_application-x-krita.svg</file>
+        <file>16_dark_application-x-minerva2d.svg</file>
+        <file>22_dark_application-x-minerva2d.svg</file>
+        <file>32_dark_application-x-minerva2d.svg</file>
+        <file>64_dark_application-x-minerva2d.svg</file>
+        <file>16_light_application-x-minerva2d.svg</file>
+        <file>22_light_application-x-minerva2d.svg</file>
+        <file>32_light_application-x-minerva2d.svg</file>
+        <file>64_light_application-x-minerva2d.svg</file>
         <file>16_dark_application-x-krz.svg</file>
         <file>22_dark_application-x-krz.svg</file>
         <file>32_dark_application-x-krz.svg</file>
@@ -52,7 +52,7 @@
         <file>22_light_application-x-wmf.svg</file>
         <file>32_light_application-x-wmf.svg</file>
         <file>64_light_application-x-wmf.svg</file>
-        <file>krita.png</file>
+        <file>minerva2d.png</file>
         <file>16_dark_character-set.svg</file>
         <file>22_dark_character-set.svg</file>
         <file>16_light_character-set.svg</file>

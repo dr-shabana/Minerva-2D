@@ -10,7 +10,7 @@
 #include <KisApplication.h>
 #include <QKeyEvent>
 
-#include <krita_container_utils.h>
+#include <minerva2d_container_utils.h>
 
 #ifdef Q_OS_MACOS
 
@@ -24,7 +24,7 @@
 #include <commctrl.h>
 #include <winuser.h>
 
-#include "krita_container_utils.h"
+#include "minerva2d_container_utils.h"
 #include "kis_config.h"
 
 
@@ -63,7 +63,7 @@ QVector<Qt::Key> queryPressedKeysWin()
         }
     }
 
-    KritaUtils::makeContainerUnique(result);
+    MinervaUtils::makeContainerUnique(result);
 
     return result;
 }

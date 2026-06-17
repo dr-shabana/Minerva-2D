@@ -96,7 +96,7 @@ void KisCurveOptionDataTest::testSerializeNoSensors()
                             KisCurveOptionData::Checkability::NotCheckable);
 
     /**
-     * When Krita loads a configuration with no sensors
+     * When Minerva loads a configuration with no sensors
      * available, it automatically activates a pressure
      * sensors with the default curve.
      */

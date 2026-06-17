@@ -20,7 +20,7 @@
 #include "kis_time_span.h"
 #include "KisMainWindow.h"
 
-#include "krita_container_utils.h"
+#include "minerva2d_container_utils.h"
 
 #include "KisVideoSaver.h"
 
@@ -45,7 +45,7 @@ bool KisAnimationRender::render(KisDocument *doc, KisViewManager *viewManager, K
 
             qWarning() << type <<"requires width and height to be even, resize and try again!";
             doc->setErrorMessage(i18n("%1 requires width and height to be even numbers.  Please resize or crop the image before exporting.", type));
-            QMessageBox::critical(qApp->activeWindow(), i18nc("@title:window", "Krita"), i18n("Could not render animation:\n%1", doc->errorMessage()));
+            QMessageBox::critical(qApp->activeWindow(), i18nc("@title:window", "Minerva"), i18n("Could not render animation:\n%1", doc->errorMessage()));
 
             return false;
         }
@@ -115,7 +115,7 @@ bool KisAnimationRender::render(KisDocument *doc, KisViewManager *viewManager, K
                 }
 
                 if (!exportResult.isOk()) {
-                    QMessageBox::critical(qApp->activeWindow(), i18nc("@title:window", "Krita"), i18n("Could not render animation:\n%1", exportResult.errorMessage()));
+                    QMessageBox::critical(qApp->activeWindow(), i18nc("@title:window", "Minerva"), i18n("Could not render animation:\n%1", exportResult.errorMessage()));
 
                     delayReturnSuccess = false; // Delay return to clean up exported frames.
                 }
@@ -144,13 +144,13 @@ bool KisAnimationRender::render(KisDocument *doc, KisViewManager *viewManager, K
             }
         }
 
-        QStringList paletteFiles = d.entryList(QStringList() << "KritaTempPalettegen_*.png", QDir::Files);
+        QStringList paletteFiles = d.entryList(QStringList() << "MinervaTempPalettegen_*.png", QDir::Files);
 
         Q_FOREACH(const QString &f, paletteFiles) {
             d.remove(f);
         }
     } else if (result == KisAsyncAnimationFramesSaveDialog::RenderTimedOut) {
-        QMessageBox::critical(qApp->activeWindow(), i18nc("@title:window", "Rendering error"), "Animation frame rendering has timed out. Output files are incomplete.\nTry to increase \"Frame Rendering Timeout\" or reduce \"Frame Rendering Clones Limit\" in Krita settings");
+        QMessageBox::critical(qApp->activeWindow(), i18nc("@title:window", "Rendering error"), "Animation frame rendering has timed out. Output files are incomplete.\nTry to increase \"Frame Rendering Timeout\" or reduce \"Frame Rendering Clones Limit\" in Minerva settings");
     } else if (result == KisAsyncAnimationFramesSaveDialog::RenderFailed) {
         QMessageBox::critical(qApp->activeWindow(), i18nc("@title:window", "Rendering error"), i18n("Failed to render animation frames! Output files are incomplete."));
     } 

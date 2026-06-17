@@ -11,26 +11,26 @@ include(CMakeParseArguments)
 # having only a name of the plugin...
 # (just to reduce syntactic noise when a lot of plugins get installed)
 #
-function(install_pykrita_plugin name)
+function(install_pyminerva2d_plugin name)
     set(_options)
     set(_one_value_args)
     set(_multi_value_args PATTERNS FILE)
-    cmake_parse_arguments(install_pykrita_plugin "${_options}" "${_one_value_args}" "${_multi_value_args}" ${ARGN})
+    cmake_parse_arguments(install_pyminerva2d_plugin "${_options}" "${_one_value_args}" "${_multi_value_args}" ${ARGN})
     if(NOT name)
         message(FATAL_ERROR "Plugin filename is not given")
     endif()
     if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/${name}.py)
-        install(FILES kritapykrita_${name}.desktop DESTINATION ${KDE_INSTALL_DATADIR}/krita/pykrita)
-        foreach(_f ${name}.py ${name}.ui ${install_pykrita_plugin_FILE})
+        install(FILES kritapyminerva2d_${name}.desktop DESTINATION ${KDE_INSTALL_DATADIR}/minerva2d/pyminerva2d)
+        foreach(_f ${name}.py ${name}.ui ${install_pyminerva2d_plugin_FILE})
             if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/${_f})
-                install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/${_f} DESTINATION ${KDE_INSTALL_DATADIR}/krita/pykrita)
+                install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/${_f} DESTINATION ${KDE_INSTALL_DATADIR}/minerva2d/pyminerva2d)
             endif()
         endforeach()
     elseif(IS_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/${name})
-        install(FILES ${name}/kritapykrita_${name}.desktop DESTINATION ${KDE_INSTALL_DATADIR}/krita/pykrita)
+        install(FILES ${name}/minerva2dpyminerva2d_${name}.desktop DESTINATION ${KDE_INSTALL_DATADIR}/minerva2d/pyminerva2d)
         install(
             DIRECTORY ${name}
-            DESTINATION ${KDE_INSTALL_DATADIR}/krita/pykrita
+            DESTINATION ${KDE_INSTALL_DATADIR}/minerva2d/pyminerva2d
             FILES_MATCHING
                 PATTERN "*.py"
                 PATTERN "*.ui"
@@ -43,10 +43,10 @@ function(install_pykrita_plugin name)
         # TODO Is there any way to form a long PATTERN options string
         # and use it in a single install() call?
         # NOTE Install specified patterns one-by-one...
-        foreach(_pattern ${install_pykrita_plugin_PATTERNS})
+        foreach(_pattern ${install_pyminerva2d_plugin_PATTERNS})
             install(
                 DIRECTORY ${name}
-                DESTINATION ${KDE_INSTALL_DATADIR}/krita/pykrita
+                DESTINATION ${KDE_INSTALL_DATADIR}/minerva2d/pyminerva2d
                 FILES_MATCHING
                     PATTERN "${_pattern}"
                     PATTERN "__pycache__*" EXCLUDE
@@ -58,33 +58,33 @@ function(install_pykrita_plugin name)
     endif()
 endfunction()
 
-install_pykrita_plugin(assignprofiledialog)
-install_pykrita_plugin(scripter)
-install_pykrita_plugin(colorspace)
-install_pykrita_plugin(documenttools)
-install_pykrita_plugin(filtermanager)
-install_pykrita_plugin(exportlayers)
-install_pykrita_plugin(batch_exporter)
-#install_pykrita_plugin(highpass)
-install_pykrita_plugin(tenbrushes)
-install_pykrita_plugin(tenscripts)
-install_pykrita_plugin(palette_docker)
-install_pykrita_plugin(quick_settings_docker)
-install_pykrita_plugin(lastdocumentsdocker)
-# install_pykrita_plugin(scriptdocker)
-install_pykrita_plugin(comics_project_management_tools)
-install_pykrita_plugin(krita_script_starter)
-install_pykrita_plugin(plugin_importer)
-install_pykrita_plugin(mixer_slider_docker)
-install_pykrita_plugin(mutator)
-install_pykrita_plugin(channels2layers)
-install_pykrita_plugin(photobash_images)
-install_pykrita_plugin(workflow_buttons)
+install_pyminerva2d_plugin(assignprofiledialog)
+install_pyminerva2d_plugin(scripter)
+install_pyminerva2d_plugin(colorspace)
+install_pyminerva2d_plugin(documenttools)
+install_pyminerva2d_plugin(filtermanager)
+install_pyminerva2d_plugin(exportlayers)
+install_pyminerva2d_plugin(batch_exporter)
+#install_pyminerva2d_plugin(highpass)
+install_pyminerva2d_plugin(tenbrushes)
+install_pyminerva2d_plugin(tenscripts)
+install_pyminerva2d_plugin(palette_docker)
+install_pyminerva2d_plugin(quick_settings_docker)
+install_pyminerva2d_plugin(lastdocumentsdocker)
+# install_pyminerva2d_plugin(scriptdocker)
+install_pyminerva2d_plugin(comics_project_management_tools)
+install_pyminerva2d_plugin(minerva2d_script_starter)
+install_pyminerva2d_plugin(plugin_importer)
+install_pyminerva2d_plugin(mixer_slider_docker)
+install_pyminerva2d_plugin(mutator)
+install_pyminerva2d_plugin(channels2layers)
+install_pyminerva2d_plugin(photobash_images)
+install_pyminerva2d_plugin(workflow_buttons)
 
 # if(PYTHON_VERSION_MAJOR VERSION_EQUAL 3)
-#     install_pykrita_plugin(cmake_utils)
-#     install_pykrita_plugin(js_utils PATTERNS "*.json")
-#     install_pykrita_plugin(expand PATTERNS "*.expand" "templates/*.tpl")
+#     install_pyminerva2d_plugin(cmake_utils)
+#     install_pyminerva2d_plugin(js_utils PATTERNS "*.json")
+#     install_pyminerva2d_plugin(expand PATTERNS "*.expand" "templates/*.tpl")
 # endif()
 
 install( FILES
@@ -92,11 +92,11 @@ install( FILES
     tenscripts/tenscripts.action
     plugin_importer/plugin_importer.action
     mutator/mutator.action
-DESTINATION  ${KDE_INSTALL_DATADIR}/krita/actions)
+DESTINATION  ${KDE_INSTALL_DATADIR}/minerva2d/actions)
 
 install(
-    DIRECTORY libkritapykrita
-    DESTINATION ${KDE_INSTALL_DATADIR}/krita/pykrita
+    DIRECTORY libkritapyminerva2d
+    DESTINATION ${KDE_INSTALL_DATADIR}/minerva2d/pyminerva2d
     FILES_MATCHING
         PATTERN "*.py"
         PATTERN "__pycache__*" EXCLUDE

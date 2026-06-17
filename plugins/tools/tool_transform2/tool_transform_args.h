@@ -1,5 +1,5 @@
 /*
- *  tool_transform_args.h - part of Krita
+ *  tool_transform_args.h - part of Minerva
  *
  *  SPDX-FileCopyrightText: 2010 Marc Pegon <pe.marc@free.fr>
  *

@@ -18,7 +18,7 @@ except:
                                 QAbstractItemView, QDialogButtonBox,
                                 QVBoxLayout, QFrame, QMessageBox, QPushButton,
                                 QAbstractScrollArea)
-from krita import Krita
+from krita import Minerva
 from krita import utils
 from builtins import i18n
 
@@ -43,7 +43,7 @@ class UIColorSpace(object):
         self.buttonBox = QDialogButtonBox(
             QDialogButtonBox.StandardButton.Ok | QDialogButtonBox.StandardButton.Cancel)
 
-        self.kritaInstance = Krita.instance()
+        self.kritaInstance = Minerva.instance()
         self.documentsList = []
         self.colorModelsList = []
         self.colorDepthsList = []

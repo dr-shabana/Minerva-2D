@@ -34,17 +34,17 @@ adipiscing elit. Quisque finibus mattis lacus.
     <use xlink:href="#simple" fill="none" stroke="cornflowerblue" transform="translate(0,220)" />
     <use xlink:href="#simple" fill="none" stroke="cornflowerblue" transform="translate(0,330)" />
     <text id="test1ttb" transform="translate(0,0)" style="shape-inside: url(#simple);hanging-punctuation:first allow-end last; writing-mode: vertical-rl;text-align:justify-all"
-          font-family="Krita_Test_Unicode_Variation_A, DejaVu Sans" fill="blue" font-size="10">&quot;ああああ&#x82A6;&#x82A6;&#x82A6;&#x82A6;.
+          font-family="Minerva_Test_Unicode_Variation_A, DejaVu Sans" fill="blue" font-size="10">&quot;ああああ&#x82A6;&#x82A6;&#x82A6;&#x82A6;.
 &#x82A6;&#x82A6;&#x82A6;ああああああああ&#x82A6;ああ&#x82A6;&#x82A6;&#x82A6;&#x82A6;あああ&#x82A6;&#x82A6;&#x82A6;&#x82A6;ああ&quot;</text>
     
-    <text id="test2ttb" transform="translate(0,110)" style="shape-inside: url(#simple);font-family:Krita_Test_Unicode_Variation_A, DejaVu Sans;text-indent:2em;white-space:pre-wrap; writing-mode: vertical-rl;" fill="blue"
+    <text id="test2ttb" transform="translate(0,110)" style="shape-inside: url(#simple);font-family:Minerva_Test_Unicode_Variation_A, DejaVu Sans;text-indent:2em;white-space:pre-wrap; writing-mode: vertical-rl;" fill="blue"
           font-size="10">あああ&#x82A6;&#x82A6;&#x82A6;&#x82A6;&#x82A6;&#x82A6;&#x82A6;あああああ
 あああ&#x82A6;ああ&#x82A6;&#x82A6;&#x82A6;&#x82A6;あああ&#x82A6;&#x82A6;&#x82A6;&#x82A6;ああ</text>
-    <text id="test3ttb" transform="translate(0,220)" style="shape-inside: url(#simple);font-family:Krita_Test_Unicode_Variation_A, DejaVu Sans;text-indent:2em each-line;white-space:pre-wrap;writing-mode: vertical-rl;" fill="blue"
+    <text id="test3ttb" transform="translate(0,220)" style="shape-inside: url(#simple);font-family:Minerva_Test_Unicode_Variation_A, DejaVu Sans;text-indent:2em each-line;white-space:pre-wrap;writing-mode: vertical-rl;" fill="blue"
           font-size="10">あああ&#x82A6;&#x82A6;&#x82A6;&#x82A6;&#x82A6;&#x82A6;&#x82A6;あああああ
 あああ&#x82A6;ああ&#x82A6;&#x82A6;&#x82A6;&#x82A6;あああ&#x82A6;&#x82A6;&#x82A6;&#x82A6;ああ</text>
     <text id="test4ttb" transform="translate(0,330)"
-          style="shape-inside: url(#simple);font-family:Krita_Test_Unicode_Variation_A, DejaVu Sans;text-indent:2em hanging;white-space:pre-wrap;writing-mode: vertical-rl;" fill="blue"
+          style="shape-inside: url(#simple);font-family:Minerva_Test_Unicode_Variation_A, DejaVu Sans;text-indent:2em hanging;white-space:pre-wrap;writing-mode: vertical-rl;" fill="blue"
           font-size="10">あああ&#x82A6;&#x82A6;&#x82A6;&#x82A6;&#x82A6;&#x82A6;&#x82A6;あああああ
 あああ&#x82A6;ああ&#x82A6;&#x82A6;&#x82A6;&#x82A6;あああ&#x82A6;&#x82A6;&#x82A6;&#x82A6;ああ</text>
 </g>
@@ -78,17 +78,17 @@ adipiscing elit. Quisque finibus mattis lacus.
     <use xlink:href="#simple" fill="none" stroke="cornflowerblue" transform="translate(0,220)" />
     <use xlink:href="#simple" fill="none" stroke="cornflowerblue" transform="translate(0,330)" />
     <text id="test1ttb-lr" transform="translate(0,0)" style="shape-inside: url(#simple);hanging-punctuation:first force-end;last;writing-mode: vertical-lr;text-align:justify-all"
-          font-family="Krita_Test_Unicode_Variation_A, DejaVu Sans" fill="blue" font-size="10">&quot;ああああ&#x82A6;&#x82A6;&#x82A6;&#x82A6;.
+          font-family="Minerva_Test_Unicode_Variation_A, DejaVu Sans" fill="blue" font-size="10">&quot;ああああ&#x82A6;&#x82A6;&#x82A6;&#x82A6;.
 &#x82A6;&#x82A6;&#x82A6;ああああああああ&#x82A6;ああ&#x82A6;&#x82A6;&#x82A6;&#x82A6;あああ&#x82A6;&#x82A6;&#x82A6;&#x82A6;ああ&quot;</text>
     
     <text id="test2ttb-lr" transform="translate(0,110)" style="shape-inside: url(#simple);text-indent:2em;white-space:pre-wrap;writing-mode: vertical-lr;"
-          font-family="Krita_Test_Unicode_Variation_A, DejaVu Sans" fill="blue" font-size="10">あああ&#x82A6;&#x82A6;&#x82A6;&#x82A6;&#x82A6;&#x82A6;&#x82A6;あああああ
+          font-family="Minerva_Test_Unicode_Variation_A, DejaVu Sans" fill="blue" font-size="10">あああ&#x82A6;&#x82A6;&#x82A6;&#x82A6;&#x82A6;&#x82A6;&#x82A6;あああああ
 あああ&#x82A6;ああ&#x82A6;&#x82A6;&#x82A6;&#x82A6;あああ&#x82A6;&#x82A6;&#x82A6;&#x82A6;ああ</text>
     <text id="test3ttb-lr" transform="translate(0,220)" style="shape-inside: url(#simple);text-indent:2em each-line;white-space:pre-wrap;writing-mode: vertical-lr;"
-          font-family="Krita_Test_Unicode_Variation_A, DejaVu Sans" fill="blue" font-size="10">あああ&#x82A6;&#x82A6;&#x82A6;&#x82A6;&#x82A6;&#x82A6;&#x82A6;あああああ
+          font-family="Minerva_Test_Unicode_Variation_A, DejaVu Sans" fill="blue" font-size="10">あああ&#x82A6;&#x82A6;&#x82A6;&#x82A6;&#x82A6;&#x82A6;&#x82A6;あああああ
 あああ&#x82A6;ああ&#x82A6;&#x82A6;&#x82A6;&#x82A6;あああ&#x82A6;&#x82A6;&#x82A6;&#x82A6;ああ</text>
     <text id="test4ttb-lr" transform="translate(0,330)" style="shape-inside: url(#simple);text-indent:2em hanging;white-space:pre-wrap;writing-mode: vertical-lr;"
-          font-family="Krita_Test_Unicode_Variation_A, DejaVu Sans" fill="blue" font-size="10">あああ&#x82A6;&#x82A6;&#x82A6;&#x82A6;&#x82A6;&#x82A6;&#x82A6;あああああ
+          font-family="Minerva_Test_Unicode_Variation_A, DejaVu Sans" fill="blue" font-size="10">あああ&#x82A6;&#x82A6;&#x82A6;&#x82A6;&#x82A6;&#x82A6;&#x82A6;あああああ
 あああ&#x82A6;ああ&#x82A6;&#x82A6;&#x82A6;&#x82A6;あああ&#x82A6;&#x82A6;&#x82A6;&#x82A6;ああ</text>
 </g>
     </g>

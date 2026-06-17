@@ -15,11 +15,11 @@ kis_add_library(kritaparticlepaintop MODULE ${kritaparticlepaintop_SOURCES})
 
 target_link_libraries(kritaparticlepaintop kritalibpaintop)
 
-install(TARGETS kritaparticlepaintop  DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
+install(TARGETS kritaparticlepaintop  DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})
 
 
 ########### install files ###############
 
-install( FILES  krita-particle.png DESTINATION ${KDE_INSTALL_DATADIR}/krita/images)
+install( FILES  minerva2d-particle.png DESTINATION ${KDE_INSTALL_DATADIR}/minerva2d/images)
 
 

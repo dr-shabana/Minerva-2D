@@ -83,7 +83,7 @@ inline void KisModelIndexConverterTest::checkIndexFromAddedDummy(KisNodeSP paren
 
    dummy = parent ? m_dummiesFacade->dummyForNode(parent) : 0;
    result = m_indexConverter->indexFromAddedDummy(dummy, index, type, modelIndex, row);
-   if(!result) dbgKrita << "Failing parent:" << (parent ? parent->name() : "none") << "index:" << index;
+   if(!result) dbgMinerva << "Failing parent:" << (parent ? parent->name() : "none") << "index:" << index;
    QVERIFY(result);
 
    QCOMPARE(modelIndex.isValid(), parentValid);
@@ -93,7 +93,7 @@ inline void KisModelIndexConverterTest::checkIndexFromAddedDummy(KisNodeSP paren
        QCOMPARE(modelIndex.column(), 0);
    }
 
-   if(row != childRow) dbgKrita << "Failing parent:" << (parent ? parent->name() : "none") << "index:" << index;
+   if(row != childRow) dbgMinerva << "Failing parent:" << (parent ? parent->name() : "none") << "index:" << index;
    QCOMPARE(row, childRow);
 }
 
@@ -136,8 +136,8 @@ inline void KisModelIndexConverterTest::checkDummyFromRow(KisNodeSP parent, int 
     KisNodeSP resultNode = resultDummy ? resultDummy->node() : 0;
 
     if(resultNode != expectedNode) {
-        dbgKrita << "Actual node:  " << (resultNode ? resultNode->name() : "none");
-        dbgKrita << "Expected node:" << (expectedNode ? expectedNode->name() : "none");
+        dbgMinerva << "Actual node:  " << (resultNode ? resultNode->name() : "none");
+        dbgMinerva << "Expected node:" << (expectedNode ? expectedNode->name() : "none");
         QFAIL("Wrong node");
     }
 }
@@ -155,9 +155,9 @@ inline void KisModelIndexConverterTest::checkRowCount(KisNodeSP parent, int rowC
     int resultRowCount = m_indexConverter->rowCount(parentIndex);
 
     if(resultRowCount != rowCount) {
-        dbgKrita << "Wrong row count for:" << (parent ? parent->name() : "none");
-        dbgKrita << "Actual:  " << resultRowCount;
-        dbgKrita << "Expected:" << rowCount;
+        dbgMinerva << "Wrong row count for:" << (parent ? parent->name() : "none");
+        dbgMinerva << "Actual:  " << resultRowCount;
+        dbgMinerva << "Expected:" << rowCount;
         QFAIL("Wrong row count");
     }
 }

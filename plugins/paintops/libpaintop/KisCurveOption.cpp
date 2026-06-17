@@ -35,7 +35,7 @@ std::vector<std::unique_ptr<KisDynamicSensor>> generateSensors(const KisCurveOpt
         commonCurve = KisCubicCurve(data.commonCurve);
     }
 
-    const KisKritaSensorData &sensorStruct = data.sensorStruct();
+    const KisMinervaSensorData &sensorStruct = data.sensorStruct();
 
     addSensor<KisDynamicSensorPressure>(result, sensorStruct.sensorPressure, commonCurve);
     addSensor<KisDynamicSensorPressureIn>(result, sensorStruct.sensorPressureIn, commonCurve);

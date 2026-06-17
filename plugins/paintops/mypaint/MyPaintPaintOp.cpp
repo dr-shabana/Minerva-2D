@@ -40,7 +40,7 @@ KisMyPaintPaintOp::KisMyPaintPaintOp(const KisPaintOpSettingsSP settings, KisPai
 
     m_brush->setColor(this->painter()->paintColor(), painter->device()->colorSpace());
 
-    if (KoToolManager::instance()->activeToolId() != "KritaShape/KisToolBrush") {
+    if (KoToolManager::instance()->activeToolId() != "MinervaShape/KisToolBrush") {
         mypaint_brush_set_base_value(m_brush->brush(), MYPAINT_BRUSH_SETTING_SLOW_TRACKING, 0.0);
     }
 

@@ -25,11 +25,11 @@
 #define SANITY_RELEASE_FILTER(filter)                           \
     do {                                                        \
         if (m_filterConfiguration && m_filterConfiguration->sanityDerefUsageCounter()) {  \
-            warnKrita;                                                 \
-            warnKrita << "WARNING: filter configuration has more than one user! Krita will probably crash soon!"; \
-            warnKrita << "WARNING:" << ppVar(this);                    \
-            warnKrita << "WARNING:" << ppVar(filter.data());           \
-            warnKrita;                                                 \
+            warnMinerva;                                                 \
+            warnMinerva << "WARNING: filter configuration has more than one user! Minerva will probably crash soon!"; \
+            warnMinerva << "WARNING:" << ppVar(this);                    \
+            warnMinerva << "WARNING:" << ppVar(filter.data());           \
+            warnMinerva;                                                 \
         }                                                               \
     } while (0)
 

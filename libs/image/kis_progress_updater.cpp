@@ -1,5 +1,5 @@
 /*
- *  This file is part of KimageShop^WKrayon^WKrita
+ *  This file is part of KimageShop^WKrayon^WMinerva
  *
  *  SPDX-FileCopyrightText: 2009 Boudewijn Rempt <boud@valdyas.org>
  *

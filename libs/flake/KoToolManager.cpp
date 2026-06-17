@@ -28,7 +28,7 @@
 #include "kis_assert.h"
 #include "KoCanvasResourceProvider.h"
 
-#include <krita_container_utils.h>
+#include <minerva2d_container_utils.h>
 
 // Qt + kde
 #include <QWidget>
@@ -291,7 +291,7 @@ QString KoToolManager::preferredToolForSelection(const QList<KoShape*> &shapes)
     Q_FOREACH (KoShape *shape, shapes) {
         shapeTypes << shape->shapeId();
     }
-    //KritaUtils::makeContainerUnique(types);
+    //MinervaUtils::makeContainerUnique(types);
 
     QString toolType = KoInteractionTool_ID;
     int prio = INT_MAX;
@@ -857,7 +857,7 @@ void KoToolManager::Private::switchInputDevice(const KoInputDevice &device)
     if (device.isMouse() && !inputDevice.isMouse()) {
         // we never switch back to mouse from a tablet input device, so the user can use the
         // mouse to edit the settings for a tool activated by a tablet. See bugs
-        // https://bugs.kde.org/show_bug.cgi?id=283130 and https://bugs.kde.org/show_bug.cgi?id=285501.
+        // https://github.com/dr-shabana/Minerva-2D/issues/show_bug.cgi?id=283130 and https://github.com/dr-shabana/Minerva-2D/issues/show_bug.cgi?id=285501.
         // We do continue to switch between tablet devices, thought.
         return;
     }

@@ -159,7 +159,7 @@ void KisNodeFilterProxyModel::slotUpdateCurrentNodeFilter()
     /**
      * During the filter update the model might Q_EMIT "current changed" signals,
      * which (in their turn) will issue setData(..., KisNodeModel::ActiveRole)
-     * call, leading to a double recursion. Which, obviously, crashes Krita.
+     * call, leading to a double recursion. Which, obviously, crashes Minerva.
      *
      * Right now, just blocking the KisNodeModel::ActiveRole call is the
      * most obvious solution for the problem.

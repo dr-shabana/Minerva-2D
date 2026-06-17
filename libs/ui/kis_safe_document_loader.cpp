@@ -299,7 +299,7 @@ void KisSafeDocumentLoader::fileChangedCompressed(bool sync)
 
     m_d->temporaryPath =
             QDir::tempPath() + '/' +
-            QString("krita_file_layer_copy_%1_%2.%3")
+            QString("minerva2d_file_layer_copy_%1_%2.%3")
             .arg(QApplication::applicationPid())
             .arg(QRandomGenerator::global()->generate())
             .arg(initialFileInfo.suffix());
@@ -355,14 +355,14 @@ void KisSafeDocumentLoader::delayedLoadStart()
                      */
                     qint64 totalWritten = 0;
                     const qint64 expectedFileSize = store->size();
-                    QTemporaryFile temporaryFile(QDir::tempPath() + QLatin1String("/krita_merged_image_XXXXXX.png"));
+                    QTemporaryFile temporaryFile(QDir::tempPath() + QLatin1String("/minerva2d_merged_image_XXXXXX.png"));
                     if (temporaryFile.open()) {
                         QByteArray buffer(BUFSIZ, 0);
 
                         while (true) {
                             qint64 read = store->read(buffer.data(), buffer.size());
                             if (read < 0) {
-                                warnKrita << "Failed to read from mergedimage.png for the file layer's projection";
+                                warnMinerva << "Failed to read from mergedimage.png for the file layer's projection";
                                 break;
                             } else if (read == 0) {
                                 // End of file
@@ -372,7 +372,7 @@ void KisSafeDocumentLoader::delayedLoadStart()
                                 qint64 written = temporaryFile.write(buffer.constData(), read);
                                 if (written < 0) {
                                     // Write error.
-                                    warnKrita << "Failed to write mergedimage.png into a temporary file for the file layer's projection"
+                                    warnMinerva << "Failed to write mergedimage.png into a temporary file for the file layer's projection"
                                               << temporaryFile.fileName() << ":" << temporaryFile.errorString();
                                     break;
                                 }
@@ -384,7 +384,7 @@ void KisSafeDocumentLoader::delayedLoadStart()
 
                         temporaryFile.close();
                     } else {
-                        warnKrita << "Failed to open temporary file for mergedimage.png for the file layer's projection"
+                        warnMinerva << "Failed to open temporary file for mergedimage.png for the file layer's projection"
                                   << temporaryFile.fileName() << ":" << temporaryFile.errorString();
                     }
                     store->close();
@@ -407,13 +407,13 @@ void KisSafeDocumentLoader::delayedLoadStart()
             successfullyLoaded = loadPathNatively(m_d->temporaryPath);
         }
     } else {
-        dbgKrita << "File was modified externally. Restarting.";
-        dbgKrita << ppVar(m_d->fileChangedFlag);
-        dbgKrita << ppVar(m_d->initialFileSize);
-        dbgKrita << ppVar(m_d->initialFileTimeStamp);
-        dbgKrita << ppVar(originalInfo.size());
-        dbgKrita << ppVar(originalInfo.lastModified());
-        dbgKrita << ppVar(tempInfo.size());
+        dbgMinerva << "File was modified externally. Restarting.";
+        dbgMinerva << ppVar(m_d->fileChangedFlag);
+        dbgMinerva << ppVar(m_d->initialFileSize);
+        dbgMinerva << ppVar(m_d->initialFileTimeStamp);
+        dbgMinerva << ppVar(originalInfo.size());
+        dbgMinerva << ppVar(originalInfo.lastModified());
+        dbgMinerva << ppVar(tempInfo.size());
     }
 
     QFile::remove(m_d->temporaryPath);

@@ -15,11 +15,11 @@
 
 /**
  * ViewConverter to convert from flake-internal points to
- * krita-internal pixels and back. You can use this class wherever
- * the flake tools or shapes come in contact with the krita-image.
+ * minerva2d-internal pixels and back. You can use this class wherever
+ * the flake tools or shapes come in contact with the minerva2d-image.
  *
  * For usage remember that the document here is the flake-points. And
- * the view is the krita-pixels.
+ * the view is the minerva2d-pixels.
  */
 class KRITAUI_EXPORT KisImageViewConverter : public KisClonableViewConverter
 {

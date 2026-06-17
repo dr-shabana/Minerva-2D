@@ -128,7 +128,7 @@ KisTransformMaskParamsInterfaceSP KisTransformMaskAdapter::fromDumbXML(const QDo
             KisDomUtils::loadValue(transformEl, "transform", &transform);
 
         if (!result) {
-            warnKrita << "WARNING: couldn't load dumb transform. Ignoring...";
+            warnMinerva << "WARNING: couldn't load dumb transform. Ignoring...";
         }
 
         args.translateDstSpace(QPointF(transform.dx(), transform.dy()));

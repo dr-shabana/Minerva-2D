@@ -1,5 +1,5 @@
 /*
- * KDE. Krita Project.
+ * KDE. Minerva Project.
  *
  * SPDX-FileCopyrightText: 2019 Eoin O 'Neill <eoinoneill1991@gmail.com>
  * SPDX-FileCopyrightText: 2019 Emmet O 'Neill <emmetoneill.pdx@gmail.com>
@@ -22,7 +22,7 @@
 #include <kis_processing_information.h>
 #include <kpluginfactory.h>
 
-K_PLUGIN_FACTORY_WITH_JSON(KritaSimplexNoiseGeneratorFactory, "kritasimplexnoisegenerator.json", registerPlugin<KisSimplexNoiseGeneratorHandle>();)
+K_PLUGIN_FACTORY_WITH_JSON(MinervaSimplexNoiseGeneratorFactory, "kritasimplexnoisegenerator.json", registerPlugin<KisSimplexNoiseGeneratorHandle>();)
 
 KisSimplexNoiseGeneratorHandle::KisSimplexNoiseGeneratorHandle(QObject *parent, const QVariantList &)
         : QObject(parent)

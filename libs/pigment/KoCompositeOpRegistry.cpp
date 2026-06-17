@@ -236,7 +236,7 @@ KoCompositeOpRegistry::KoIDMap KoCompositeOpRegistry::getLayerStylesCompositeOps
 {
     QVector<QString> ids;
 
-    // not available via the blending modes list in Krita
+    // not available via the blending modes list in Minerva
     // ids << COMPOSITE_PASS_THROUGH;
 
     ids << COMPOSITE_OVER;

@@ -117,7 +117,7 @@ void parseElement(const QDomElement &el, QIODevice &device, bool forceTypeInfo =
         QDomNode dataNode = el.firstChild();
 
         if (!dataNode.isCDATASection()) {
-            warnKrita << "WARNING: failed to parse RawData XML section!";
+            warnMinerva << "WARNING: failed to parse RawData XML section!";
             return;
         }
 
@@ -126,13 +126,13 @@ void parseElement(const QDomElement &el, QIODevice &device, bool forceTypeInfo =
         data = QByteArray::fromBase64(data);
 
         if (data.isEmpty()) {
-            warnKrita << "WARNING: failed to parse RawData XML section!";
+            warnMinerva << "WARNING: failed to parse RawData XML section!";
         }
         quint32 length = data.size();
         SAFE_WRITE_EX(byteOrder, device, length);
         device.write(data);
     } else {
-        warnKrita << "WARNING: XML (ASL) Unknown element type:" << type << ppVar(key);
+        warnMinerva << "WARNING: XML (ASL) Unknown element type:" << type << ppVar(key);
     }
 }
 
@@ -430,7 +430,7 @@ void KisAslWriter::writeFile(QIODevice &device, const QDomDocument &doc)
     try {
         Private::writeFileImpl(device, doc);
     } catch (Private::ASLWriteException &e) {
-        warnKrita << "WARNING: ASL:" << e.what();
+        warnMinerva << "WARNING: ASL:" << e.what();
     }
 }
 

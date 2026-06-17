@@ -8,7 +8,7 @@
 
 const QLoggingCategory &WIDGETS_LOG() \
 {
-    static const QLoggingCategory category("krita.lib.widgets", QtInfoMsg);
+    static const QLoggingCategory category("minerva2d.lib.widgets", QtInfoMsg);
     return category;
 }
 

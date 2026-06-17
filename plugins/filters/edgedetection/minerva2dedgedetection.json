@@ -1,0 +1,9 @@
+{
+    "Id": "Edge Detection Filter",
+    "Type": "Service",
+    "X-KDE-Library": "kritaedgedetection",
+    "X-KDE-ServiceTypes": [
+        "Minerva/Filter"
+    ],
+    "X-Minerva-Version": "40"
+}

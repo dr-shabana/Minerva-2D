@@ -39,7 +39,7 @@ public:
     ~KoResourceLoadResult();
 
     /**
-     * Returns existing resource that has been loaded from the Krita
+     * Returns existing resource that has been loaded from the Minerva
      * database.
      *
      * Returns non-null pointer only when `type()` is equal to

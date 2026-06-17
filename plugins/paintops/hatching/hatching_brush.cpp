@@ -112,7 +112,7 @@ void HatchingBrush::iterateLines(bool forward, int lineindex, bool oneline)
         else
             scanIntercept = hotIntercept - dy * lineindex;  // scanIntercept will represent the Intercept of the current line
 
-        lineindex++; // We are descending vertically out of convenience, see blog entry at pentalis.org/kritablog
+        lineindex++; // We are descending vertically out of convenience, see blog entry at pentalis.org/minerva2dblog
 
         /*
         Explanation: only 2 out of the 4 segments can include limit values
@@ -246,7 +246,7 @@ void HatchingBrush::iterateVerticalLines(bool forward, int lineindex, bool oneli
 double HatchingBrush::separationAsFunctionOfParameter(double parameter, double separation, int numintervals)
 {
     if ((numintervals < 2) || (numintervals > 7)) {
-        dbgKrita << "Fix your function" << numintervals << "<> 2-7" ;
+        dbgMinerva << "Fix your function" << numintervals << "<> 2-7" ;
         return separation;
     }
 
@@ -267,11 +267,11 @@ double HatchingBrush::separationAsFunctionOfParameter(double parameter, double s
             upperlimit = 1;
         if ((parameter >= lowerlimit) && (parameter <= upperlimit)) {
             factor = pow(2.0, (basefactor - currentinterval));
-            //dbgKrita << factor;
+            //dbgMinerva << factor;
             return (separation * factor);
         }
     }
 
-    dbgKrita << "Fix your function" << parameter << ">" << upperlimit ;
+    dbgMinerva << "Fix your function" << parameter << ">" << upperlimit ;
     return separation;
 }

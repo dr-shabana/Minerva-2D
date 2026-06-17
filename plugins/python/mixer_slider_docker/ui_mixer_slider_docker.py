@@ -1,7 +1,7 @@
 '''
     SPDX-FileCopyrightText: 2019 Tusooa Zhu <tusooa@vista.aero>
 
-    This file is part of Krita-docker-color-slider.
+    This file is part of Minerva-docker-color-slider.
 
     SPDX-License-Identifier: GPL-3.0-or-later
 '''
@@ -18,8 +18,8 @@ from .settings_dialog import SettingsDialog
 
 class UIMixerSliderDocker(object):
     def __init__(self):
-        self.krita_instance = krita.Krita.instance()
-        self.main_dialog = SettingsDialog(self, self.krita_instance.activeWindow().qwindow())
+        self.minerva2d_instance = minerva2d.Minerva.instance()
+        self.main_dialog = SettingsDialog(self, self.minerva2d_instance.activeWindow().qwindow())
 
         self.button_box = QDialogButtonBox(self.main_dialog)
         self.vbox = QVBoxLayout(self.main_dialog)

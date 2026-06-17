@@ -43,7 +43,7 @@ generate_export_header(kritadefaulttools BASE_NAME kritadefaulttools)
 
 target_link_libraries(kritadefaulttools kritadefaulttools_static)
 
-install(TARGETS kritadefaulttools  DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
+install(TARGETS kritadefaulttools  DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})
 
 
 ########### install files ###############
@@ -51,4 +51,4 @@ install(TARGETS kritadefaulttools  DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
 install( FILES
     KisToolPath.action
     KisToolPencil.action
-DESTINATION  ${KDE_INSTALL_DATADIR}/krita/actions)
+DESTINATION  ${KDE_INSTALL_DATADIR}/minerva2d/actions)

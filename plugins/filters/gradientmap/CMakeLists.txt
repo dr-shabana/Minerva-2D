@@ -13,7 +13,7 @@ ki18n_wrap_ui(kritagradientmap_SOURCES
 
 kis_add_library(kritagradientmap MODULE ${kritagradientmap_SOURCES})
 target_link_libraries(kritagradientmap kritaui)
-install(TARGETS kritagradientmap  DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
+install(TARGETS kritagradientmap  DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})
 install( FILES
     gradientmap.action
-DESTINATION  ${KDE_INSTALL_DATADIR}/krita/actions)
+DESTINATION  ${KDE_INSTALL_DATADIR}/minerva2d/actions)

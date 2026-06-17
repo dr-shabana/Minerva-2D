@@ -6,4 +6,4 @@ import krita
 from .filtermanager import FilterManagerExtension
 
 
-Scripter.addExtension(FilterManagerExtension(krita.Krita.instance()))
+Scripter.addExtension(FilterManagerExtension(minerva2d.Minerva.instance()))

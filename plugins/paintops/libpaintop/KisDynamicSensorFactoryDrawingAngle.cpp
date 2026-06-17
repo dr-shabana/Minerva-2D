@@ -13,25 +13,25 @@
 
 #include "KisDrawingAngleSensorModel.h"
 #include "KisWidgetConnectionUtils.h"
-#include "KisKritaSensorPack.h"
+#include "KisMinervaSensorPack.h"
 
 namespace {
     auto safeDereferenceDrawingAngleSensor = lager::lenses::getset(
     [](const KisCurveOptionDataCommon &data) -> KisDrawingAngleSensorData {
-        const KisKritaSensorPack *pack = dynamic_cast<const KisKritaSensorPack*>(data.sensorData.constData());
+        const KisMinervaSensorPack *pack = dynamic_cast<const KisMinervaSensorPack*>(data.sensorData.constData());
         if (pack) {
             return pack->constSensorsStruct().sensorDrawingAngle;
         } else {
-            qWarning() << "safeDereferenceDrawingAngleSensor(get): failed to get a Krita sensor data";
+            qWarning() << "safeDereferenceDrawingAngleSensor(get): failed to get a Minerva sensor data";
             return KisDrawingAngleSensorData();
         }
     },
     [](KisCurveOptionDataCommon data, KisDrawingAngleSensorData sensor) -> KisCurveOptionDataCommon {
-        KisKritaSensorPack *pack = dynamic_cast<KisKritaSensorPack*>(data.sensorData.data());
+        KisMinervaSensorPack *pack = dynamic_cast<KisMinervaSensorPack*>(data.sensorData.data());
         if (pack) {
             pack->sensorsStruct().sensorDrawingAngle = sensor;
         } else {
-            qWarning() << "safeDereferenceDrawingAngleSensor(set): failed to get a Krita sensor data";
+            qWarning() << "safeDereferenceDrawingAngleSensor(set): failed to get a Minerva sensor data";
         }
         return data;
     });

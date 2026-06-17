@@ -39,9 +39,9 @@ class KisViewManager;
 
 /**
  * KisPart a singleton class which provides the main entry point to the application.
- * Krita supports multiple documents, multiple main windows, and multiple
+ * Minerva supports multiple documents, multiple main windows, and multiple
  * components.  KisPart manages these resources and provides them to the rest of
- * Krita.  It manages lists of Actions and shortcuts as well.
+ * Minerva.  It manages lists of Actions and shortcuts as well.
  *
  * The terminology comes from KParts, which is a system allowing one KDE app
  * to be run from inside another, like pressing F4 inside dolphin to run konsole.

@@ -1,0 +1,9 @@
+{
+    "Id": "Composition Docker",
+    "Type": "Service",
+    "X-KDE-Library": "kritacompositiondocker",
+    "X-KDE-ServiceTypes": [
+        "Minerva/Dock"
+    ],
+    "X-Minerva-Version": "28"
+}

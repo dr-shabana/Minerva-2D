@@ -1,5 +1,5 @@
 /*
- * imagesplit.cc -- Part of Krita
+ * imagesplit.cc -- Part of Minerva
  *
  * SPDX-FileCopyrightText: 2004 Boudewijn Rempt (boud@valdyas.org)
  * SPDX-FileCopyrightText: 2011 Srikanth Tiyyagura <srikanth.tulasiram@gmail.com>
@@ -71,9 +71,9 @@ bool Imagesplit::saveAsImage(const QRect &imgSize, const QString &mimeType, cons
     document->setFileBatchMode(true);
     if (!document->exportDocumentSync(url, mimeType.toLatin1())) {
         if (document->errorMessage().isEmpty()) {
-            QMessageBox::critical(qApp->activeWindow(), i18nc("@title:window", "Krita"), i18n("Could not save\n%1", document->localFilePath()));
+            QMessageBox::critical(qApp->activeWindow(), i18nc("@title:window", "Minerva"), i18n("Could not save\n%1", document->localFilePath()));
         } else {
-            QMessageBox::critical(qApp->activeWindow(), i18nc("@title:window", "Krita"), i18n("Could not save %1\nReason: %2", document->localFilePath(), document->errorMessage()));
+            QMessageBox::critical(qApp->activeWindow(), i18nc("@title:window", "Minerva"), i18n("Could not save %1\nReason: %2", document->localFilePath(), document->errorMessage()));
         }
         return false;
     }

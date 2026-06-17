@@ -1,5 +1,5 @@
 /*
- * This file is part of Krita
+ * This file is part of Minerva
  *
  * SPDX-FileCopyrightText: 2020 L. E. Segovia <amy@amyspark.me>
  *
@@ -26,12 +26,12 @@ $color\n\
 
 class KisConfigWidget;
 
-class KritaSeExprGenerator : public QObject
+class MinervaSeExprGenerator : public QObject
 {
     Q_OBJECT
 public:
-    KritaSeExprGenerator(QObject *parent, const QVariantList &);
-    ~KritaSeExprGenerator() override;
+    MinervaSeExprGenerator(QObject *parent, const QVariantList &);
+    ~MinervaSeExprGenerator() override;
 };
 
 class KisSeExprGenerator : public KisGenerator

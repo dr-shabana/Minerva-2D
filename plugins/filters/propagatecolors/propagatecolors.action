@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ActionCollection version="2" name="Krita">
+<ActionCollection version="2" name="Minerva">
   <Actions category="Filters">
     <text context="Filter as an effect">Filters</text>
-    <Action name="krita_filter_propagatecolors">
+    <Action name="minerva2d_filter_propagatecolors">
       <icon/>
       <text>Propagate Colors Filter</text>
       <whatsThis></whatsThis>

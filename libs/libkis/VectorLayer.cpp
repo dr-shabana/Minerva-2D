@@ -16,7 +16,7 @@
 #include <kis_processing_applicator.h>
 #include <kis_group_layer.h>
 
-#include "Krita.h"
+#include "Minerva.h"
 #include "GroupShape.h"
 #include "LibKisUtils.h"
 
@@ -115,7 +115,7 @@ QList<Shape *> VectorLayer::addShapesFromSvg(const QString &svgData)
             return shapes;
         }
 
-        Document *document = Krita::instance()->activeDocument();
+        Document *document = Minerva::instance()->activeDocument();
 
         if (!document) {
             document = LibKisUtils::findNodeInDocuments(this->node());
@@ -209,7 +209,7 @@ Shape* VectorLayer::createGroupShape(const QString &name, QList<Shape *> shapes)
 
     if (originalShapes.isEmpty()) return 0;
 
-    Document *document = Krita::instance()->activeDocument();
+    Document *document = Minerva::instance()->activeDocument();
 
     if (!document) {
         document = LibKisUtils::findNodeInDocuments(this->node());

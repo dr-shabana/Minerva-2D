@@ -29,9 +29,9 @@ kis_add_library(kritamypaintop MODULE MyPaintPaintOpPlugin.cpp)
 
 target_link_libraries(kritamypaintop kritamypaintop_static)
 
-install(TARGETS kritamypaintop  DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
+install(TARGETS kritamypaintop  DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})
 
 
 ########### install files ###############
 
-install( FILES  krita-mypaint.png DESTINATION ${KDE_INSTALL_DATADIR}/krita/images)
+install( FILES  minerva2d-mypaint.png DESTINATION ${KDE_INSTALL_DATADIR}/minerva2d/images)

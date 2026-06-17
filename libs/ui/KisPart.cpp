@@ -203,7 +203,7 @@ void KisPart::updateIdleWatcherConnections()
     d->idleWatcher.setTrackedImages(images);
 
     /**
-     * Update memory stats on changing the amount of images open in Krita
+     * Update memory stats on changing the amount of images open in Minerva
      */
     d->idleWatcher.forceImageModified();
 }
@@ -552,10 +552,10 @@ void KisPart::openTemplate(const QUrl &url)
     }
     else {
         if (document->errorMessage().isEmpty()) {
-            QMessageBox::critical(qApp->activeWindow(), i18nc("@title:window", "Krita"), i18n("Could not create document from template\n%1", document->localFilePath()));
+            QMessageBox::critical(qApp->activeWindow(), i18nc("@title:window", "Minerva"), i18n("Could not create document from template\n%1", document->localFilePath()));
         }
         else {
-            QMessageBox::critical(qApp->activeWindow(), i18nc("@title:window", "Krita"), i18n("Could not create document from template\n%1\nReason: %2", document->localFilePath(), document->errorMessage()));
+            QMessageBox::critical(qApp->activeWindow(), i18nc("@title:window", "Minerva"), i18n("Could not create document from template\n%1\nReason: %2", document->localFilePath(), document->errorMessage()));
         }
         delete document;
         return;
@@ -701,7 +701,7 @@ void KisPart::setPlaybackEngine(KisPlaybackEngine *p_playbackEngine)
     d->playbackEngine.swap(backup);
 
     // Log all changes to playback engine for easier debugging.
-    // (See `krita.log` or `Help > Show Krita log for bug reports`.)
+    // (See `minerva2d.log` or `Help > Show Minerva log for bug reports`.)
     KisUsageLogger::log("Audio Playback Engine: " + QString(p_playbackEngine->metaObject()->className()));
 
     Q_EMIT playbackEngineChanged(p_playbackEngine);

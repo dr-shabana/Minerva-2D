@@ -188,9 +188,9 @@ public:
             : KoToolFactoryBase("KisAssistantTool") {
         setToolTip(i18n("Assistant Tool"));
         setSection(ToolBoxSection::View);
-        setIconName(koIconNameCStr("krita_tool_assistant"));
+        setIconName(koIconNameCStr("minerva2d_tool_assistant"));
         setPriority(0);
-        setActivationShapeId(KRITA_TOOL_ACTIVATION_ID);
+        setActivationShapeId(MINERVA2D_TOOL_ACTIVATION_ID);
     }
 
 

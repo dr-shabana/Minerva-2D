@@ -17,7 +17,7 @@
 #include <kis_global.h>
 #include "kis_debug.h"
 #include <KoPathShape.h>
-#include <krita_utils.h>
+#include <minerva2d_utils.h>
 #include <kis_canvas2.h>
 #include <QPainterPath>
 #include <KoShapeController.h>
@@ -193,7 +193,7 @@ void CutThroughShapeStrategy::finishInteraction(Qt::KeyboardModifiers modifiers)
 
     KisCanvas2 *kisCanvas = static_cast<KisCanvas2 *>(tool()->canvas());
     KIS_SAFE_ASSERT_RECOVER_RETURN(kisCanvas);
-    const QTransform booleanWorkaroundTransform = KritaUtils::pathShapeBooleanSpaceWorkaround(kisCanvas->image());
+    const QTransform booleanWorkaroundTransform = MinervaUtils::pathShapeBooleanSpaceWorkaround(kisCanvas->image());
 
     QList<QPainterPath> srcOutlines;
     QRectF outlineRect;

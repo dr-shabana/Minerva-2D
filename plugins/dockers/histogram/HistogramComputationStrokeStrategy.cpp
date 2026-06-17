@@ -8,7 +8,7 @@
 
 #include "KoColorSpace.h"
 
-#include "krita_utils.h"
+#include "minerva2d_utils.h"
 #include "kis_image.h"
 #include "kis_sequential_iterator.h"
 
@@ -52,7 +52,7 @@ void HistogramComputationStrokeStrategy::initStrokeCallback()
 
     QVector<KisStrokeJobData*> jobsData;
     int i = 0;
-    QVector<QRect> tileRects = KritaUtils::splitRectIntoPatches(m_d->image->bounds(), KritaUtils::optimalPatchSize());
+    QVector<QRect> tileRects = MinervaUtils::splitRectIntoPatches(m_d->image->bounds(), MinervaUtils::optimalPatchSize());
     m_d->results.resize(tileRects.size());
     m_d->resultsLog.resize(tileRects.size());
 

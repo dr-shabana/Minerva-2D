@@ -15,12 +15,12 @@ DlgSysInfo::DlgSysInfo(QWidget *parent)
 
 QString DlgSysInfo::originalFileName()
 {
-    return QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/krita-sysinfo.log";
+    return QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/minerva2d-sysinfo.log";
 }
 
 QString DlgSysInfo::captionText()
 {
-    return i18nc("Caption of the dialog with system information for bug reports", "Krita System Information: please paste this information to the bug report");
+    return i18nc("Caption of the dialog with system information for bug reports", "Minerva System Information: please paste this information to the bug report");
 }
 
 QString DlgSysInfo::replacementWarningText()

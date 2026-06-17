@@ -8,12 +8,12 @@
 
 #include "filter/kis_filter.h"
 
-class KritaConvertHeightToNormalMapFilter : public QObject
+class MinervaConvertHeightToNormalMapFilter : public QObject
 {
     Q_OBJECT
 public:
-    KritaConvertHeightToNormalMapFilter(QObject *parent, const QVariantList &);
-    ~KritaConvertHeightToNormalMapFilter() override;
+    MinervaConvertHeightToNormalMapFilter(QObject *parent, const QVariantList &);
+    ~MinervaConvertHeightToNormalMapFilter() override;
 };
 
 class KisConvertHeightToNormalMapFilter : public KisFilter

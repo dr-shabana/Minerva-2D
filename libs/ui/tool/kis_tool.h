@@ -19,9 +19,9 @@
 #include <kis_types.h>
 
 #ifdef __GNUC__
-#define WARN_WRONG_MODE(_mode) warnKrita << "Unexpected tool event has come to" << __func__ << "while being mode" << _mode << "!"
+#define WARN_WRONG_MODE(_mode) warnMinerva << "Unexpected tool event has come to" << __func__ << "while being mode" << _mode << "!"
 #else
-#define WARN_WRONG_MODE(_mode) warnKrita << "Unexpected tool event has come while being mode" << _mode << "!"
+#define WARN_WRONG_MODE(_mode) warnMinerva << "Unexpected tool event has come while being mode" << _mode << "!"
 #endif
 
 #define CHECK_MODE_SANITY_OR_RETURN(_mode) if (mode() != _mode) { WARN_WRONG_MODE(mode()); return; }
@@ -33,8 +33,8 @@ class QPainterPath;
 class QPolygonF;
 class KisOptimizedBrushOutline;
 
-//activation id for Krita tools, Krita tools are always active and handle locked and invisible layers by themselves
-static const QString KRITA_TOOL_ACTIVATION_ID = "flake/always";
+//activation id for Minerva tools, Minerva tools are always active and handle locked and invisible layers by themselves
+static const QString MINERVA2D_TOOL_ACTIVATION_ID = "flake/always";
 
 #include <kritaui_export.h>
 class  KRITAUI_EXPORT KisTool : public KoToolBase

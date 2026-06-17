@@ -261,8 +261,8 @@ void KisAslLayerStyleSerializerTest::testWritingGlobalPatterns()
     resourcesInterface->addResource(pattern);
     style->setResourcesInterface(resourcesInterface);
 
-    dbgKrita << ppVar(pattern->name());
-    dbgKrita << ppVar(pattern->filename());
+    dbgMinerva << ppVar(pattern->name());
+    dbgMinerva << ppVar(pattern->filename());
 
     style->patternOverlay()->setEffectEnabled(true);
     style->patternOverlay()->setPattern(pattern);
@@ -331,7 +331,7 @@ void KisAslLayerStyleSerializerTest::testReadMultipleStyles()
 
         styles = s.styles();
 
-        dbgKrita << ppVar(styles.size());
+        dbgMinerva << ppVar(styles.size());
     }
 }
 

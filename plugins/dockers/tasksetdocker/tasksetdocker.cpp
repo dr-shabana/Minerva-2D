@@ -15,7 +15,7 @@
 #include "tasksetdocker_dock.h"
 
 K_PLUGIN_FACTORY_WITH_JSON(TasksetDockerPluginFactory,
-                           "krita_tasksetdocker.json",
+                           "minerva2d_tasksetdocker.json",
                            registerPlugin<TasksetDockerPlugin>();)
 
 class TasksetDockerDockFactory : public KoDockFactoryBase {

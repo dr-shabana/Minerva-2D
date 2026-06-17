@@ -54,7 +54,7 @@ void KisExrTest::testRoundTrip()
     QVERIFY(doc1->errorMessage().isEmpty());
     QVERIFY(doc1->image());
 
-    QTemporaryFile savedFile(QDir::tempPath() + QLatin1String("/krita_XXXXXX") + QLatin1String(".exr"));
+    QTemporaryFile savedFile(QDir::tempPath() + QLatin1String("/minerva2d_XXXXXX") + QLatin1String(".exr"));
     savedFile.setAutoRemove(true);
     KIS_ASSERT(savedFile.open());
 

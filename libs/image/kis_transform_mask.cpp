@@ -586,7 +586,7 @@ QRect KisTransformMask::changeRect(const QRect &rect, PositionToFilthy pos) cons
         } else {
             bounds = QRect(0,0,777,777);
             interestRect = QRect(0,0,888,888);
-            warnKrita << "WARNING: transform mask has no parent (change rect)."
+            warnMinerva << "WARNING: transform mask has no parent (change rect)."
                       << "Cannot run safe transformations."
                       << "Will limit bounds to" << ppVar(bounds);
         }
@@ -624,7 +624,7 @@ QRect KisTransformMask::needRect(const QRect& rect, PositionToFilthy pos) const
     } else {
         bounds = QRect(0,0,777,777);
         interestRect = QRect(0,0,888,888);
-        warnKrita << "WARNING: transform mask has no parent (need rect)."
+        warnMinerva << "WARNING: transform mask has no parent (need rect)."
                    << "Cannot run safe transformations."
                    << "Will limit bounds to" << ppVar(bounds);
     }

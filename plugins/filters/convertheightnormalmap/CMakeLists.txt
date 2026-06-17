@@ -8,7 +8,7 @@ ki18n_wrap_ui(kritaconvertheighttonormalmap_SOURCES
     )
 kis_add_library(kritaconvertheighttonormalmap MODULE ${kritaconvertheighttonormalmap_SOURCES})
 target_link_libraries(kritaconvertheighttonormalmap kritaui)
-install(TARGETS kritaconvertheighttonormalmap  DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
+install(TARGETS kritaconvertheighttonormalmap  DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})
 install( FILES
     convertheightnormalmap.action
-DESTINATION  ${KDE_INSTALL_DATADIR}/krita/actions)
+DESTINATION  ${KDE_INSTALL_DATADIR}/minerva2d/actions)

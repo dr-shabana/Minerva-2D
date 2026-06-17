@@ -231,8 +231,8 @@ void KisAsyncMergerTest::testFullRefreshWithClones()
     quint8 *dstPtr = desiredPixel.data();
     for(int i = 0; i < numPixels; i++) {
         if(memcmp(srcPtr, dstPtr, pixelSize)) {
-            dbgKrita << "expected:" << dstPtr[0] << dstPtr[1] << dstPtr[2] << dstPtr[3];
-            dbgKrita << "result:  " << srcPtr[0] << srcPtr[1] << srcPtr[2] << srcPtr[3];
+            dbgMinerva << "expected:" << dstPtr[0] << dstPtr[1] << dstPtr[2] << dstPtr[3];
+            dbgMinerva << "result:  " << srcPtr[0] << srcPtr[1] << srcPtr[2] << srcPtr[3];
             QFAIL("Failed to compare pixels");
         }
         srcPtr += pixelSize;

@@ -12,7 +12,7 @@
 #include <KoDockFactoryBase.h>
 #include <KoDockRegistry.h>
 
-K_PLUGIN_FACTORY_WITH_JSON(HistogramDockerPluginFactory, "krita_histogramdocker.json", registerPlugin<HistogramDockerPlugin>();)
+K_PLUGIN_FACTORY_WITH_JSON(HistogramDockerPluginFactory, "minerva2d_histogramdocker.json", registerPlugin<HistogramDockerPlugin>();)
 
 class HistogramDockerDockFactory : public KoDockFactoryBase {
 public:

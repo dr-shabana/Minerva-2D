@@ -80,7 +80,7 @@ bool PSDLayerMaskSection::read(QIODevice &io)
             retval = readPsdImpl(io);
         }
     } catch (KisAslReaderUtils::ASLParseException &e) {
-        warnKrita << "WARNING: PSD (emb. pattern):" << e.what();
+        warnMinerva << "WARNING: PSD (emb. pattern):" << e.what();
         retval = false;
     }
 
@@ -100,7 +100,7 @@ bool PSDLayerMaskSection::readLayerInfoImpl(QIODevice &io)
     }
 
     if (layerInfoSectionSize & 0x1) {
-        warnKrita << "WARNING: layerInfoSectionSize is NOT even! Fixing...";
+        warnMinerva << "WARNING: layerInfoSectionSize is NOT even! Fixing...";
         layerInfoSectionSize++;
     }
 
@@ -246,7 +246,7 @@ bool PSDLayerMaskSection::readPsdImpl(QIODevice &io)
      * sanity check to catch this case
      */
     if (static_cast<qint64>(*layerMaskBlockSize) > io.bytesAvailable()) {
-        warnKrita << "WARNING: invalid layer block size. Got" << *layerMaskBlockSize << "Bytes left" << io.bytesAvailable() << "Triggering a workaround...";
+        warnMinerva << "WARNING: invalid layer block size. Got" << *layerMaskBlockSize << "Bytes left" << io.bytesAvailable() << "Triggering a workaround...";
 
         // just don't use this value for offset recovery at the end
         layerMaskBlockSize = boost::none;
@@ -943,7 +943,7 @@ void PSDLayerMaskSection::writePsdImpl(QIODevice &io, KisNodeSP rootLayer, psd_c
                 layerRecord->nChannels = static_cast<quint16>(colorSpace->colorChannelCount() + 1);
 
                 ChannelInfo *info = new ChannelInfo;
-                info->channelId = -1; // For the alpha channel, which we always have in Krita, and should be saved first in
+                info->channelId = -1; // For the alpha channel, which we always have in Minerva, and should be saved first in
                 layerRecord->channelInfoRecords << info;
 
                 // the rest is in display order: rgb, cmyk, lab...
@@ -1010,7 +1010,7 @@ void PSDLayerMaskSection::writePsdImpl(QIODevice &io, KisNodeSP rootLayer, psd_c
          * 3. Something else. The Txt2 data is huge and therefore it is hard to figure out
          *    where things might be going wrong.
          *
-         * In practice, this means Krita won't be able to store OpenType feature data as well
+         * In practice, this means Minerva won't be able to store OpenType feature data as well
          * as path shapes for either text-in-shape or text-on-path.
          */
         if (textCount > 0) {
@@ -1122,7 +1122,7 @@ void PSDLayerMaskSection::writeTiffImpl(QIODevice &io, KisNodeSP rootLayer, psd_
                 layerRecord->nChannels = static_cast<quint16>(colorSpace->colorChannelCount() + 1);
 
                 ChannelInfo *info = new ChannelInfo;
-                info->channelId = -1; // For the alpha channel, which we always have in Krita, and should be saved first in
+                info->channelId = -1; // For the alpha channel, which we always have in Minerva, and should be saved first in
                 layerRecord->channelInfoRecords << info;
 
                 // the rest is in display order: rgb, cmyk, lab...

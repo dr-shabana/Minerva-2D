@@ -32,7 +32,7 @@ public:
 };
 
 /**
- * The 'Custom Document' widget in the Krita startup widget.
+ * The 'Custom Document' widget in the Minerva startup widget.
  * This class embeds the image size and colorspace to allow the user to select the image properties
  * for a new empty image document.
  */

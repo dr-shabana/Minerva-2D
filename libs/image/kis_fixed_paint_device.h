@@ -112,7 +112,7 @@ public:
 
     /**
      * Read the bytes representing the rectangle described by x, y, w, h into
-     * data. If data is not big enough, Krita will gladly overwrite the rest
+     * data. If data is not big enough, Minerva will gladly overwrite the rest
      * of your precious memory.
      *
      * Since this is a copy, you need to make sure you have enough memory.

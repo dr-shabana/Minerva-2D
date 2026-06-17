@@ -17,7 +17,7 @@ class QStyleOptionViewItem;
 class KisNodeModel;
 
 /**
- * A widget displaying the Krita nodes (layers, masks, local selections, etc.)
+ * A widget displaying the Minerva nodes (layers, masks, local selections, etc.)
  * 
  * This class is designed as a Qt model-view widget.
  * 

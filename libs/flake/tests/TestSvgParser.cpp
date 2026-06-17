@@ -1140,7 +1140,7 @@ void TestSvgParser::testIccColor()
 {
 #ifdef Q_OS_WIN
     // HACK: For reasons yet unknown, the profile unique id is different on Windows.
-    // See https://invent.kde.org/graphics/krita/-/commit/1191295a4618a93893987497e3c54e6f0c2fd025#note_634123
+    // See https://invent.kde.org/graphics/minerva2d/-/commit/1191295a4618a93893987497e3c54e6f0c2fd025#note_634123
 #define PROFILE_UNIQUE_ID_HEX "84f64878faf21217362594685be031d5"
 #else
 #define PROFILE_UNIQUE_ID_HEX "133a66607cffeebdd64dd433ada9bf4e"
@@ -1418,7 +1418,7 @@ void TestSvgParser::testRenderFillLinearGradientTransparent()
 
     SvgRenderTester t(data);
     t.setCheckQImagePremultiplied(true);
-    QEXPECT_FAIL("", "TODO: Krita forces all gradients to work in premultiplied space, which is against SVG spec", Abort);
+    QEXPECT_FAIL("", "TODO: Minerva forces all gradients to work in premultiplied space, which is against SVG spec", Abort);
     t.test_standard_30px_72ppi("fill_gradient_transparent", false);
 }
 
@@ -1486,7 +1486,7 @@ void TestSvgParser::testRenderFillRadialGradientTransparent()
     SvgRenderTester t(data);
     t.setFuzzyThreshold(1);
     t.setCheckQImagePremultiplied(true);
-    QEXPECT_FAIL("", "TODO: Krita forces all gradients to work in premultiplied space, which is against SVG spec", Abort);
+    QEXPECT_FAIL("", "TODO: Minerva forces all gradients to work in premultiplied space, which is against SVG spec", Abort);
     t.test_standard_30px_72ppi("fill_gradient_radial_transparent", false);
 }
 
@@ -2199,7 +2199,7 @@ void TestSvgParser::testRenderMeshGradient_ShapeTransform_Obb()
 
 void TestSvgParser::testRenderMeshGradient_transparent()
 {
-    // here I use Krita's output, due to my lack of knowledge about Inkscape's RGBA
+    // here I use Minerva's output, due to my lack of knowledge about Inkscape's RGBA
     // output format. But the results, have been verified - SZ
     QString data =
         "<svg"
@@ -4159,13 +4159,13 @@ void TestSvgParser::testSodipodiArcShapeOpen()
     QVERIFY(dynamic_cast<KoParameterShape*>(shape));
 }
 
-void TestSvgParser::testKritaChordShape()
+void TestSvgParser::testMinervaChordShape()
 {
     const QString data =
             "<svg width=\"30px\" height=\"30px\""
             "    xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\""
             "    xmlns:sodipodi=\"http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd\""
-            "    xmlns:krita=\"http://krita.org/namespaces/svg/krita\""
+            "    xmlns:krita=\"http://minerva2d.org/namespaces/svg/minerva2d\""
             ">"
 
             "<path"

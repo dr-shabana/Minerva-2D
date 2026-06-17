@@ -42,7 +42,7 @@ public:
         KisIdleTaskStrokeStrategy::initStrokeCallback();
 
         using KisLayerUtils::recursiveApplyNodes;
-        using KritaUtils::addJobConcurrent;
+        using MinervaUtils::addJobConcurrent;
 
         QVector<KisRunnableStrokeJobData*> jobs;
         recursiveApplyNodes(m_root, [&jobs, this] (KisNodeSP node) {

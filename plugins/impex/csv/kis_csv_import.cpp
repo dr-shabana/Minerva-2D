@@ -17,7 +17,7 @@
 
 #include "csv_loader.h"
 
-K_PLUGIN_FACTORY_WITH_JSON(CSVImportFactory, "krita_csv_import.json", registerPlugin<KisCSVImport>();)
+K_PLUGIN_FACTORY_WITH_JSON(CSVImportFactory, "minerva2d_csv_import.json", registerPlugin<KisCSVImport>();)
 
 KisCSVImport::KisCSVImport(QObject *parent, const QVariantList &) : KisImportExportFilter(parent)
 {

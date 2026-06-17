@@ -59,4 +59,4 @@
 #cmakedefine HAVE_KCRASH 1
 
 /* This variable contains the path to the root of the build directory */
-#define KRITA_BUILD_DIR "${CMAKE_BINARY_DIR}"
+#define MINERVA2D_BUILD_DIR "${CMAKE_BINARY_DIR}"

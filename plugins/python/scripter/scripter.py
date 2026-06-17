@@ -7,7 +7,7 @@ try:
     from PyQt6.QtCore import QSettings, QStandardPaths
 except:
     from PyQt5.QtCore import QSettings, QStandardPaths
-from krita import Krita, Extension
+from krita import Minerva, Extension
 from builtins import i18n
 from . import uicontroller, documentcontroller, debugcontroller
 
@@ -26,11 +26,11 @@ class ScripterExtension(Extension):
 
     def initialize(self):
         configPath = QStandardPaths.writableLocation(QStandardPaths.StandardLocation.GenericConfigLocation)
-        self.settings = QSettings(configPath + '/krita-scripterrc', QSettings.Format.IniFormat)
+        self.settings = QSettings(configPath + '/minerva2d-scripterrc', QSettings.Format.IniFormat)
         self.uicontroller = uicontroller.UIController()
         self.documentcontroller = documentcontroller.DocumentController()
         self.debugcontroller = debugcontroller.DebugController(self)
         self.uicontroller.initialize(self)
 
 
-Krita.instance().addExtension(ScripterExtension(Krita.instance()))
+Minerva.instance().addExtension(ScripterExtension(Minerva.instance()))

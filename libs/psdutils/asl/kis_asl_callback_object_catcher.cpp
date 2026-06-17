@@ -107,7 +107,7 @@ inline void passToCallback(const QString &path, const HashType &hash, const T &v
     if (it != hash.constEnd()) {
         (*it)(value);
     } else {
-        warnKrita << "Unhandled:" << path << typeid(hash).name() << value;
+        warnMinerva << "Unhandled:" << path << typeid(hash).name() << value;
     }
 }
 
@@ -118,7 +118,7 @@ inline void passToCallback(const QString &path, const HashType &hash, const T1 &
     if (it != hash.constEnd()) {
         (*it)(value1, value2);
     } else {
-        warnKrita << "Unhandled:" << path << typeid(hash).name() << value1 << value2;
+        warnMinerva << "Unhandled:" << path << typeid(hash).name() << value1 << value2;
     }
 }
 
@@ -139,7 +139,7 @@ void KisAslCallbackObjectCatcher::addEnum(const QString &path, const QString &ty
         if (it->typeId == typeId) {
             it->map(value);
         } else {
-            warnKrita << "KisAslCallbackObjectCatcher::addEnum: inconsistent typeId" << ppVar(typeId) << ppVar(it->typeId);
+            warnMinerva << "KisAslCallbackObjectCatcher::addEnum: inconsistent typeId" << ppVar(typeId) << ppVar(it->typeId);
         }
     }
 }
@@ -152,7 +152,7 @@ void KisAslCallbackObjectCatcher::addUnitFloat(const QString &path, const QStrin
             ASLCallbackDouble map = it->unitMap.value(unit);
             map(value);
         } else {
-            warnKrita << "KisAslCallbackObjectCatcher::addUnitFloat: inconsistent unit" << ppVar(unit) << ppVar(it->unitMap.keys());
+            warnMinerva << "KisAslCallbackObjectCatcher::addUnitFloat: inconsistent unit" << ppVar(unit) << ppVar(it->unitMap.keys());
         }
     }
 }
@@ -232,7 +232,7 @@ void KisAslCallbackObjectCatcher::addUnitRect(const QString &path, const QString
         if (it->unit == unit) {
             it->map(rect);
         } else {
-            warnKrita << "KisAslCallbackObjectCatcher::addUnitRect: inconsistent unit" << ppVar(unit) << ppVar(it->unit);
+            warnMinerva << "KisAslCallbackObjectCatcher::addUnitRect: inconsistent unit" << ppVar(unit) << ppVar(it->unit);
         }
     }
 }

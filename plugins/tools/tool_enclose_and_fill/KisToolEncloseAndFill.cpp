@@ -1,5 +1,5 @@
 /*
- * KDE. Krita Project.
+ * KDE. Minerva Project.
  *
  * SPDX-FileCopyrightText: 2022 Deif Lou <ginoba@gmail.com>
  *
@@ -397,7 +397,7 @@ QWidget* KisToolEncloseAndFill::createOptionWidget()
     m_buttonEnclosingMethodLasso = optionButtonStripEnclosingMethod->addButton(
         KisIconUtils::loadIcon("tool_outline_selection"));
     m_buttonEnclosingMethodBrush = optionButtonStripEnclosingMethod->addButton(
-        KisIconUtils::loadIcon("krita_tool_freehand"));
+        KisIconUtils::loadIcon("minerva2d_tool_freehand"));
     m_buttonEnclosingMethodLasso->setChecked(true);
 
     m_comboBoxRegionSelectionMethod = new QComboBox;

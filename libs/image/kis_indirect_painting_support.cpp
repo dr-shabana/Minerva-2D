@@ -159,7 +159,7 @@ void KisIndirectPaintingSupport::mergeToLayerThreaded(KisNodeSP layer, KUndo2Com
     /**
      * Now wait for all update jobs to finish and lock the indirect target
      */
-    KritaUtils::addJobBarrier(*jobs,
+    MinervaUtils::addJobBarrier(*jobs,
         [sharedWriteLock] () {
             sharedWriteLock->relock();
         });
@@ -178,7 +178,7 @@ void KisIndirectPaintingSupport::mergeToLayerImpl(KisPaintDeviceSP dst, KUndo2Co
 
     QSharedPointer<SharedState> sharedState(new SharedState());
 
-    KritaUtils::addJobSequential(*jobs,
+    MinervaUtils::addJobSequential(*jobs,
         [sharedState, sharedWriteLock, dst, parentCommand, transactionText, timedID] () {
             Q_UNUSED(sharedWriteLock); // just a RAII holder object for the lock
 
@@ -194,7 +194,7 @@ void KisIndirectPaintingSupport::mergeToLayerImpl(KisPaintDeviceSP dst, KUndo2Co
 
     KisPaintDeviceSP src = d->temporaryTarget;
     Q_FOREACH (const QRect &rc, src->region().rects()) {
-        KritaUtils::addJobConcurrent(*jobs,
+        MinervaUtils::addJobConcurrent(*jobs,
             [this, rc, src, dst, sharedState, sharedWriteLock] () {
                 Q_UNUSED(sharedWriteLock); // just a RAII holder object for the lock
 
@@ -210,7 +210,7 @@ void KisIndirectPaintingSupport::mergeToLayerImpl(KisPaintDeviceSP dst, KUndo2Co
         );
     }
 
-    KritaUtils::addJobSequential(*jobs,
+    MinervaUtils::addJobSequential(*jobs,
         [this, sharedState, sharedWriteLock, cleanResources] () {
             Q_UNUSED(sharedWriteLock); // just a RAII holder object for the lock
 

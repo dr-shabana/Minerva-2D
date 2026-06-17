@@ -291,7 +291,7 @@ public:
      * extended. There are no guards: if the area covers more pixels
      * than there are bytes in the arrays, krita will happily fill
      * your paint device with areas of memory you never wanted to be
-     * read. Krita may also crash.
+     * read. Minerva may also crash.
      *
      * @param planes a vector with a byte array for every plane
      * @param channelsizes a vector with for every channel its size in

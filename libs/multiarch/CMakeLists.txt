@@ -18,7 +18,7 @@ target_link_libraries(kritamultiarch
 )
 
 set_target_properties(kritamultiarch PROPERTIES
-    VERSION ${GENERIC_KRITA_LIB_VERSION} SOVERSION ${GENERIC_KRITA_LIB_SOVERSION}
+    VERSION ${GENERIC_MINERVA2D_LIB_VERSION} SOVERSION ${GENERIC_MINERVA2D_LIB_SOVERSION}
 )
 
 target_include_directories(kritamultiarch

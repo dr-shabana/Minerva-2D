@@ -18,7 +18,7 @@
 #define KIS_NODE_SHAPE_ID "KisNodeShape"
 
 /**
- * A KisNodeShape is a flake wrapper around Krita nodes. It is used
+ * A KisNodeShape is a flake wrapper around Minerva nodes. It is used
  * for dealing with currently active node for tools.
  */
 class KRITAUI_EXPORT KisNodeShape : public QObject, public KoShapeLayer

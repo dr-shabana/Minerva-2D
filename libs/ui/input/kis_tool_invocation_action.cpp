@@ -71,25 +71,25 @@ void KisToolInvocationAction::activate(int shortcut)
     QString temporaryToolId;
     switch(shortcut) {
         case LineToolShortcut:
-            temporaryToolId = "KritaShape/KisToolLine";
+            temporaryToolId = "MinervaShape/KisToolLine";
             break;
         case EllipseToolShortcut:
-            temporaryToolId = "KritaShape/KisToolEllipse";
+            temporaryToolId = "MinervaShape/KisToolEllipse";
             break;
         case RectToolShortcut:
-            temporaryToolId = "KritaShape/KisToolRectangle";
+            temporaryToolId = "MinervaShape/KisToolRectangle";
             break;
         case MoveToolShortcut:
-            temporaryToolId = "KritaTransform/KisToolMove";
+            temporaryToolId = "MinervaTransform/KisToolMove";
             break;
         case FillToolShortcut:
-            temporaryToolId = "KritaFill/KisToolFill";
+            temporaryToolId = "MinervaFill/KisToolFill";
             break;
         case GradientToolShortcut:
-            temporaryToolId = "KritaFill/KisToolGradient";
+            temporaryToolId = "MinervaFill/KisToolGradient";
             break;
         case MeasureToolShortcut:
-            temporaryToolId = "KritaShape/KisToolMeasure";
+            temporaryToolId = "MinervaShape/KisToolMeasure";
             break;
         case EllipseSelToolShortcut:
             temporaryToolId = "KisToolSelectElliptical";

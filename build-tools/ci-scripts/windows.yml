@@ -8,11 +8,11 @@
     - .ci-artifacts-with-packages-mixin
   variables:
     KDECI_BUILD_TYPE: Release
-    KDECI_CC_CACHE: "Z:\\krita-windows\\caches"
-    KDECI_CACHE_PATH: "Z:\\krita-windows\\artifacts"
+    KDECI_CC_CACHE: "Z:\\minerva2d-windows\\caches"
+    KDECI_CACHE_PATH: "Z:\\minerva2d-windows\\artifacts"
     KDECI_GITLAB_SERVER: https://invent.kde.org/
-    KDECI_PACKAGE_PROJECT: teams/ci-artifacts/krita-windows
-    KDECI_REPO_METADATA_PATH: "$CI_PROJECT_DIR\\krita-deps-management\\repo-metadata"
+    KDECI_PACKAGE_PROJECT: teams/ci-artifacts/minerva2d-windows
+    KDECI_REPO_METADATA_PATH: "$CI_PROJECT_DIR\\minerva2d-deps-management\\repo-metadata"
     # KDECI_WORKDIR_PATH: "C:\\_" # don't use separate workdir since package script will fail!
     KDECI_COMPRESS_PACKAGES_ON_DOWNLOAD: False
     KDECI_EXTRA_CMAKE_ARGS: -DHIDE_SAFE_ASSERTS=OFF
@@ -27,21 +27,21 @@
     PYTHONUTF8: 1
   interruptible: true
   before_script:
-    - git clone https://invent.kde.org/packaging/krita-deps-management.git -b $EFFECTIVE_DEPS_REPO_BRANCH_NAME --depth=1
-    - git clone https://invent.kde.org/packaging/krita-ci-utilities.git krita-deps-management/ci-utilities --depth=1
+    - git clone https://invent.kde.org/packaging/minerva2d-deps-management.git -b $EFFECTIVE_DEPS_REPO_BRANCH_NAME --depth=1
+    - git clone https://invent.kde.org/packaging/minerva2d-ci-utilities.git minerva2d-deps-management/ci-utilities --depth=1
     - git clone https://invent.kde.org/sysadmin/ci-notary-service.git --depth=1
     - git clone https://invent.kde.org/sysadmin/ci-utilities.git upstream-ci-utilities --depth=1
     - >
       & $BOOTSTRAP_PYTHON_EXE_WINDOWS -m venv venv --upgrade-deps
     - . venv\Scripts\Activate.ps1
-    - pip install -r krita-deps-management/requirements.txt
+    - pip install -r minerva2d-deps-management/requirements.txt
     - pip install -r ci-notary-service/requirements.txt
     - pip install -r build-tools/ci-scripts/requirements-windows.txt
   script:
     - git config --global --add safe.directory $CI_PROJECT_DIR
-    - python -u krita-deps-management/tools/replace-branch-in-seed-file.py krita-deps-management/latest/krita-deps.yml -p -o branch-corrected-deps.yml -d $EFFECTIVE_DEPS_BRANCH_NAME
-    - python -u krita-deps-management/tools/generate-deps-file.py -s branch-corrected-deps.yml -o .kde-ci.yml
-    - python -u krita-deps-management/ci-utilities/run-ci-build.py --project $CI_PROJECT_NAME --branch $CI_COMMIT_REF_NAME --platform Windows/Qt5/Shared --skip-publishing 2>&1 | Tee-Object -FilePath "build-krita.log"
+    - python -u minerva2d-deps-management/tools/replace-branch-in-seed-file.py minerva2d-deps-management/latest/minerva2d-deps.yml -p -o branch-corrected-deps.yml -d $EFFECTIVE_DEPS_BRANCH_NAME
+    - python -u minerva2d-deps-management/tools/generate-deps-file.py -s branch-corrected-deps.yml -o .kde-ci.yml
+    - python -u minerva2d-deps-management/ci-utilities/run-ci-build.py --project $CI_PROJECT_NAME --branch $CI_COMMIT_REF_NAME --platform Windows/Qt5/Shared --skip-publishing 2>&1 | Tee-Object -FilePath "build-minerva2d.log"
     - python -u build-tools/ci-scripts/build-windows-package.py 2>&1 | Tee-Object -FilePath "build-installers.log"
     - python -u build-tools/ci-scripts/upload-nightly-packages.py --platform $EFFECTIVE_PUBLISH_PLATFORM_NAME --folder $CI_PROJECT_DIR 2>&1 | Tee-Object -FilePath "installers-publish.log"
   coverage: '/^TOTAL.*\s+(\d+\%)$/'

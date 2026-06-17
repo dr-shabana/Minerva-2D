@@ -187,14 +187,14 @@
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Only use this option for &lt;span style=&quot; font-weight:600;&quot;&gt;very&lt;/span&gt; large files: larger than 4 GiB on disk.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
             <property name="text">
-             <string>Use Zip64 (for very large files: cannot be opened in versions of Krita older than 4.2.0)</string>
+             <string>Use Zip64 (for very large files: cannot be opened in versions of Minerva older than 4.2.0)</string>
             </property>
            </widget>
           </item>
           <item row="0" column="0">
            <widget class="QCheckBox" name="m_chkCompressKra">
             <property name="text">
-             <string>Compress .kra files more (slows loading/saving)</string>
+             <string>Compress .m2d files more (slows loading/saving)</string>
             </property>
            </widget>
           </item>
@@ -247,7 +247,7 @@
        <item row="0" column="0" colspan="2">
         <widget class="QGroupBox" name="grpPasteFrom">
          <property name="title">
-          <string>When Pasting Into Krita From Other Applications</string>
+          <string>When Pasting Into Minerva From Other Applications</string>
          </property>
          <layout class="QFormLayout" name="formLayout_8">
           <item row="1" column="0" colspan="2">
@@ -1016,12 +1016,12 @@
         <widget class="QComboBox" name="cmbFlowMode">
          <item>
           <property name="text">
-           <string>Creamy (Krita 4.2+)</string>
+           <string>Creamy (Minerva 4.2+)</string>
           </property>
          </item>
          <item>
           <property name="text">
-           <string>Hard (Krita 4.1 and earlier versions)</string>
+           <string>Hard (Minerva 4.1 and earlier versions)</string>
           </property>
          </item>
         </widget>
@@ -1037,12 +1037,12 @@
         <widget class="QComboBox" name="cmbCmykBlendingMode">
          <item>
           <property name="text">
-           <string>Subtractive (Krita 5.2+)</string>
+           <string>Subtractive (Minerva 5.2+)</string>
           </property>
          </item>
          <item>
           <property name="text">
-           <string>Additive (Krita 5.1 and earlier versions)</string>
+           <string>Additive (Minerva 5.1 and earlier versions)</string>
           </property>
          </item>
         </widget>
@@ -1311,7 +1311,7 @@
               </sizepolicy>
              </property>
              <property name="text">
-              <string>When Krita starts:</string>
+              <string>When Minerva starts:</string>
              </property>
             </widget>
            </item>
@@ -1328,7 +1328,7 @@
            <item row="1" column="1">
             <widget class="QCheckBox" name="chkSaveSessionOnQuit">
              <property name="text">
-              <string>Save session when Krita closes</string>
+              <string>Save session when Minerva closes</string>
              </property>
             </widget>
            </item>
@@ -1567,13 +1567,13 @@
               <item row="0" column="0">
                <widget class="QLabel" name="label_17">
                 <property name="toolTip">
-                 <string>In some Krita versions before 5.0 text size could be dependent on the current display DPI (which was a bug).
-In Krita 5.0 this bug has been fixed, which may cause files created in previous versions look different. 
+                 <string>In some Minerva versions before 5.0 text size could be dependent on the current display DPI (which was a bug).
+In Minerva 5.0 this bug has been fixed, which may cause files created in previous versions look different. 
 
-When loading old files Krita will try to adjust font size to the DPI of the current screen.
+When loading old files Minerva will try to adjust font size to the DPI of the current screen.
 If the file has been created on a different display, try adjusting this value manually.
 
-After saving the file in Krita 5.0 at least once, no conversions will be needed anymore.</string>
+After saving the file in Minerva 5.0 at least once, no conversions will be needed anymore.</string>
                 </property>
                 <property name="text">
                  <string>DPI:</string>
@@ -1583,9 +1583,9 @@ After saving the file in Krita 5.0 at least once, no conversions will be needed 
               <item row="0" column="1">
                <widget class="QSpinBox" name="intForcedFontDPI">
                 <property name="toolTip">
-                 <string>In some versions of Krita before 4.4.3 text size could be dependent on the current display DPI (which was a bug).
-In Krita 4.4.3 this bug has been fixed, which may cause files created in previous versions look different.
-To restore the old behavior you can force Krita to use Display DPI for fonts by entering it in this field.</string>
+                 <string>In some versions of Minerva before 4.4.3 text size could be dependent on the current display DPI (which was a bug).
+In Minerva 4.4.3 this bug has been fixed, which may cause files created in previous versions look different.
+To restore the old behavior you can force Minerva to use Display DPI for fonts by entering it in this field.</string>
                 </property>
                 <property name="maximum">
                  <number>1000</number>
@@ -1727,7 +1727,7 @@ To restore the old behavior you can force Krita to use Display DPI for fonts by 
            <item row="9" column="1">
             <widget class="QCheckBox" name="chkIgnoreHighFunctionKeys">
              <property name="toolTip">
-              <string>Some applications may emulate presses of function keys with high numbers (e.g. F22) to bring themselves to the foreground. This may break Krita's shortcuts and actions system. If you have a keyboard with F13 or higher function keys, and you wish to use them, try disabling this option, but take this potential problem into account.</string>
+              <string>Some applications may emulate presses of function keys with high numbers (e.g. F22) to bring themselves to the foreground. This may break Minerva's shortcuts and actions system. If you have a keyboard with F13 or higher function keys, and you wish to use them, try disabling this option, but take this potential problem into account.</string>
              </property>
              <property name="text">
               <string>Ignore high function keys (F13-F24)</string>

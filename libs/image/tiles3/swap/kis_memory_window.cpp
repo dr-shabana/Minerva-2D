@@ -9,7 +9,7 @@
 
 #include <QDir>
 
-#define SWP_PREFIX "KRITA_SWAP_FILE_XXXXXX"
+#define SWP_PREFIX "MINERVA2D_SWAP_FILE_XXXXXX"
 
 KisMemoryWindow::KisMemoryWindow(const QString &swapDir, quint64 writeWindowSize)
     : m_readWindowEx(writeWindowSize / 4),
@@ -77,7 +77,7 @@ bool KisMemoryWindow::adjustWindow(const KisChunkData &requestedChunk,
 
         quint64 windowSize = adjustingWindow->defaultSize;
         if(requestedChunk.size() > windowSize) {
-            warnKrita <<
+            warnMinerva <<
                 "KisMemoryWindow: the requested chunk is too "
                 "big to fit into the mapping! "
                 "Adjusting mapping to avoid SIGSEGV...";

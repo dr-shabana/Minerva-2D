@@ -263,7 +263,7 @@ KoFillConfigWidget::KoFillConfigWidget(KoCanvasBase *canvas, KoFlake::FillVarian
 
     d->ui->btnChooseSolidColor->setDefaultAction(d->colorAction);
     d->ui->btnChooseSolidColor->setPopupMode(QToolButton::InstantPopup);
-    d->ui->btnSolidColorSample->setIcon(KisIconUtils::loadIcon("krita_tool_color_sampler"));
+    d->ui->btnSolidColorSample->setIcon(KisIconUtils::loadIcon("minerva2d_tool_color_sampler"));
 
     // TODO: for now the color sampling button is disabled!
     d->ui->btnSolidColorSample->setEnabled(false);

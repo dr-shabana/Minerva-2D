@@ -80,7 +80,7 @@ KoCanvasResourceProvider* utils::createResourceManager(KisImageWSP image,
     }
 
     i.setValue(node);
-    manager->setResource(KoCanvasResource::CurrentKritaNode, i);
+    manager->setResource(KoCanvasResource::CurrentMinervaNode, i);
 
     KisPaintOpPresetSP preset;
 
@@ -201,7 +201,7 @@ void utils::StrokeTester::testOneStroke(bool cancelled,
                                       indirectPainting,
                                       externalLayer);
 
-    dbgKrita << "Testcase:" << testName
+    dbgMinerva << "Testcase:" << testName
              << "(compare against " << (testUpdates ? "projection" : "layer") << ")";
 
     QImage resultImage;

@@ -22,7 +22,7 @@ public:
 
 public Q_SLOTS:
 
-    void slotKritaLog();
+    void slotMinervaLog();
     void slotSysInfo();
 
 #ifdef Q_OS_ANDROID
@@ -33,7 +33,7 @@ public Q_SLOTS:
     void slotCrashLog();
 #endif
 
-#if KRITA_USE_SURFACE_COLOR_MANAGEMENT_API
+#if MINERVA2D_USE_SURFACE_COLOR_MANAGEMENT_API
     void slotColorManagement();
 #endif
 };

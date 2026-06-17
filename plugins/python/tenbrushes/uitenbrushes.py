@@ -11,14 +11,14 @@ except:
     from PyQt5.QtWidgets import (QDialogButtonBox, QLabel, QVBoxLayout,
                                  QHBoxLayout, QCheckBox)
 from . import tenbrushesdialog, dropbutton
-from krita import Krita, PresetChooser
+from krita import Minerva, PresetChooser
 from builtins import i18n, Application
 
 
 class UITenBrushes(object):
 
     def __init__(self):
-        self.kritaInstance = Krita.instance()
+        self.kritaInstance = Minerva.instance()
         self.mainDialog = tenbrushesdialog.TenBrushesDialog(
             self, self.kritaInstance.activeWindow().qwindow())
 
@@ -59,7 +59,7 @@ class UITenBrushes(object):
                         "you want to use to select the preset.")))
         self.vbox.addWidget(
             QLabel(i18n("Shortcuts are configurable through the <i>Keyboard Shortcuts</i> "
-                        "interface in Krita's settings.")))
+                        "interface in Minerva's settings.")))
 
         self.vbox.addWidget(self.presetChooser)
 

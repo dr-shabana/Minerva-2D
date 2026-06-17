@@ -294,7 +294,7 @@ void KisRainDropsFilter::processImpl(KisPaintDeviceSP device,
                         if (BlurPixels == 0) {
                             // Coverity complains that it *is* possible
                             // for BlurPixels to be 0, so let's make sure
-                            // Krita doesn't crash here
+                            // Minerva doesn't crash here
                             BlurPixels = 1;
                         }
 

@@ -63,7 +63,7 @@ public:
                 QRect cloneRect(0, 0, m_numTiles * 64, 64);
                 m_dstDM.bitBltRough(&m_srcDM, cloneRect);
 
-                if(j % 50 == 0) dbgKrita << "Producer:" << j << "of" << m_numCycles;
+                if(j % 50 == 0) dbgMinerva << "Producer:" << j << "of" << m_numCycles;
 
                 KisTileDataStore::instance()->debugSwapAll();
             }
@@ -79,7 +79,7 @@ public:
                     voidTile->unlockForRead();
                 }
 
-                if(j % 50 == 0) dbgKrita << "Consumer_src:" << j << "of" << m_numCycles;
+                if(j % 50 == 0) dbgMinerva << "Consumer_src:" << j << "of" << m_numCycles;
 
                 KisTileDataStore::instance()->debugSwapAll();
             }
@@ -95,7 +95,7 @@ public:
                     voidTile->unlockForRead();
                 }
 
-                if(j % 50 == 0) dbgKrita << "Consumer_dst:" << j << "of" << m_numCycles;
+                if(j % 50 == 0) dbgMinerva << "Consumer_dst:" << j << "of" << m_numCycles;
 
                 KisTileDataStore::instance()->debugSwapAll();
             }

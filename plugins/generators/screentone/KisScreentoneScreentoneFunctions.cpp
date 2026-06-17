@@ -1,5 +1,5 @@
 /*
- * KDE. Krita Project.
+ * KDE. Minerva Project.
  *
  * SPDX-FileCopyrightText: 2020 Deif Lou <ginoba@gmail.com>
  *
@@ -160,7 +160,7 @@ qreal DotsEllipseSinusoidalEqualized::operator()(qreal x, qreal y) const
 
 qreal DotsEllipseLinear_Legacy::operator()(qreal x, qreal y) const
 {
-    // This is the function used for the elliptical spots in Krita 4.*
+    // This is the function used for the elliptical spots in Minerva 4.*
     // It is wrong because it produces too dark values. The function should
     // produce a value of 1 at the corners of the screen cell
     constexpr qreal ellipseRatioX = 0.4 / M_SQRT2;

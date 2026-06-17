@@ -18,8 +18,8 @@ kis_add_library(kritagridpaintop MODULE ${kritagridpaintop_SOURCES})
 
 target_link_libraries(kritagridpaintop kritalibpaintop)
 
-install(TARGETS kritagridpaintop  DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
+install(TARGETS kritagridpaintop  DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})
 install( FILES
-    krita-grid.png DESTINATION ${KDE_INSTALL_DATADIR}/krita/images)
+    minerva2d-grid.png DESTINATION ${KDE_INSTALL_DATADIR}/minerva2d/images)
 
 

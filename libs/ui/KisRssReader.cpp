@@ -97,7 +97,7 @@ RssItemList KisRssReader::parseStream(QXmlStreamReader &streamReader) {
                 QUrl favIconUrl(favIconString);
                 favIconUrl.setPath(QLatin1String("favicon.ico"));
                 blogIcon = favIconUrl.toString();
-                blogIcon = QString(); // XXX: fix the favicon on krita.org!
+                blogIcon = QString(); // XXX: fix the favicon on minerva2d.org!
             }
             break;
         default:

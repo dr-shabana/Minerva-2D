@@ -1,6 +1,6 @@
 # Linked/embedded resources design
 
-In Krita some resources can depend/reuse some other resources. For example a
+In Minerva some resources can depend/reuse some other resources. For example a
 paintop preset may link to a pattern to be used as a stroke texture. Resources
 usually address each other with a "resource signature".
 
@@ -99,13 +99,13 @@ that the global interface **cannot be used from non-gui threads**.
 
 The global resources database (and its corresponding interface
 `KisGlobalResourcesInterface::instance()`) is not available from non-GUI
-threads. But most of Krita resources, like paintop presets, are normally
+threads. But most of Minerva resources, like paintop presets, are normally
 used in non-GUI worker threads when painting, therefore they cannot
 access the global cache.
 
 Here comes the abstract nature of the resources interface
 (`KisResourcesInterfaceSP`). Before passing a KoResource-object into
-a worker thread Krita performs the following:
+a worker thread Minerva performs the following:
 
 1) Fetches all the required resources from the database using
     `KoResource::requiredResources()` (which is basically a union
@@ -168,7 +168,7 @@ and `KoAbstractGradient::cloneAndUpdateVariableColors()` for more details.
 From the UIX point of view, our resources can be split into two groups:
 
 1) __Immutable resources__ are the resources which cannot be changed
-    directly using the Krita GUI. The only thing that a user can do
+    directly using the Minerva GUI. The only thing that a user can do
     with them is "select a resource from a list". A good example of
     an immutable resource is a pattern (`KoPattern`).
 
@@ -187,7 +187,7 @@ From the UIX point of view, our resources can be split into two groups:
     database.
 
 2) __Mutable resources__ are the resources which **can be edited**
-    directly in the Krita GUI. An example of a mutable resource
+    directly in the Minerva GUI. An example of a mutable resource
     is a gradient.
 
     When some dialog provides a possibility for editing an embedded

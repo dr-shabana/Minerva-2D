@@ -1,5 +1,5 @@
 /*
- *  dlg_separate.cc - part of KimageShop^WKrayon^WKrita
+ *  dlg_separate.cc - part of KimageShop^WKrayon^WMinerva
  *
  *  SPDX-FileCopyrightText: 2004 Boudewijn Rempt <boud@valdyas.org>
  *
@@ -41,12 +41,12 @@ DlgSeparate::DlgSeparate(const QString & imageCS,
     connect(this, SIGNAL(okClicked()),
             this, SLOT(okClicked()));
 
-    KisDialogStateSaver::restoreState(m_page, "krita/separate channels");
+    KisDialogStateSaver::restoreState(m_page, "minerva2d/separate channels");
 }
 
 DlgSeparate::~DlgSeparate()
 {
-    KisDialogStateSaver::saveState(m_page, "krita/separate channels");
+    KisDialogStateSaver::saveState(m_page, "minerva2d/separate channels");
     delete m_page;
 }
 enumSepAlphaOptions DlgSeparate::getAlphaOptions()

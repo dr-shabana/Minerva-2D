@@ -178,8 +178,8 @@ namespace GSL
 
             if (status == GSL_SUCCESS)
             {
-                // dbgKrita << "*******Converged to minimum";
-                // dbgKrita << gsl_vector_get (s->x, 0)
+                // dbgMinerva << "*******Converged to minimum";
+                // dbgMinerva << gsl_vector_get (s->x, 0)
                 //          << gsl_vector_get (s->x, 1)
                 //          << gsl_vector_get (s->x, 2)
                 //          << "|" << s->fval << size;
@@ -312,8 +312,8 @@ namespace GSL
 
             if (status == GSL_SUCCESS)
             {
-                // dbgKrita << "*******Converged to minimum";
-                // dbgKrita << gsl_vector_get (s->x, 0)
+                // dbgMinerva << "*******Converged to minimum";
+                // dbgMinerva << gsl_vector_get (s->x, 0)
                 //          << gsl_vector_get (s->x, 1)
                 //          << gsl_vector_get (s->x, 2)
                 //          << gsl_vector_get (s->x, 3)
@@ -434,11 +434,11 @@ namespace GSL
     void warnNoGSL()
     {
         QMessageBox::warning(qApp->activeWindow(),
-                             i18nc("@title:window", "Krita"),
-                             i18n("Krita was built without the support "
+                             i18nc("@title:window", "Minerva"),
+                             i18n("Minerva was built without the support "
                                   "of GNU Scientific Library, so you cannot scale "
                                   "the selection with handles. Please compile "
-                                  "Krita with GNU Scientific Library support, or use "
+                                  "Minerva with GNU Scientific Library support, or use "
                                   "options widget for editing scale values manually."));
     }
 

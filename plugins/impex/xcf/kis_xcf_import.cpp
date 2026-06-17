@@ -129,7 +129,7 @@ void addLayers(const QVector<Layer> &layers, KisImageSP image, int depth)
     }
 }
 
-K_PLUGIN_FACTORY_WITH_JSON(XCFImportFactory, "krita_xcf_import.json", registerPlugin<KisXCFImport>();)
+K_PLUGIN_FACTORY_WITH_JSON(XCFImportFactory, "minerva2d_xcf_import.json", registerPlugin<KisXCFImport>();)
 
 KisXCFImport::KisXCFImport(QObject *parent, const QVariantList &) : KisImportExportFilter(parent)
 {
@@ -152,7 +152,7 @@ KisImportExportErrorCode KisXCFImport::convert(KisDocument *document, QIODevice 
     // Decode the data
     if (getBasicXcfInfo() != XCF_OK) {
         if (XCF.version < 0 || XCF.version > 2) {
-            document->setErrorMessage(i18n("This XCF file is too new; Krita cannot support XCF files written by GIMP 2.9 or newer."));
+            document->setErrorMessage(i18n("This XCF file is too new; Minerva cannot support XCF files written by GIMP 2.9 or newer."));
             return ImportExportCodes::FormatFeaturesUnsupported;
         }
         return ImportExportCodes::FileFormatIncorrect;

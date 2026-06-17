@@ -27,16 +27,16 @@ QByteArray KisMD5Generator::generateHash(const QString &filename)
         QString fn = bn.right(bn.size() - pos - 1);
         bn = bn.left(pos);
 
-        QScopedPointer<KoStore> resourceStore(KoStore::createStore(bn, KoStore::Read, "application/x-krita-resourcebundle", KoStore::Zip));
+        QScopedPointer<KoStore> resourceStore(KoStore::createStore(bn, KoStore::Read, "application/x-minerva2d-resourcebundle", KoStore::Zip));
         if (!resourceStore || resourceStore->bad()) {
-            warnKrita << "Could not open store on bundle" << bn;
+            warnMinerva << "Could not open store on bundle" << bn;
             return ba;
         }
 
         if (resourceStore->isOpen()) resourceStore->close();
 
         if (!resourceStore->open(fn)) {
-            warnKrita << "Could not open preset" << fn << "in bundle" << bn;
+            warnMinerva << "Could not open preset" << fn << "in bundle" << bn;
             return ba;
         }
 

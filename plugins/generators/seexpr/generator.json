@@ -3,7 +3,7 @@
     "Type": "Service",
     "X-KDE-Library": "kritaseexprgenerator",
     "X-KDE-ServiceTypes": [
-        "Krita/Generator"
+        "Minerva/Generator"
     ],
-    "X-Krita-Version": "28"
+    "X-Minerva-Version": "28"
 }

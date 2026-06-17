@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: CC0-1.0
 
-from krita import Krita, Extension
+from krita import Minerva, Extension
 from builtins import i18n, Application
 try:
     from PyQt6.QtGui import QPixmap, QIcon
@@ -45,8 +45,8 @@ class TenBrushesExtension(Extension):
 
         self.selectedPresets = Application.readSetting("", "tenbrushes", "").split(',')
 
-        # in Krita 4.x we used to replace spaces in preset names with
-        # underscores, which has changed in Krita 5.x. Here we just
+        # in Minerva 4.x we used to replace spaces in preset names with
+        # underscores, which has changed in Minerva 5.x. Here we just
         # try hard to load the legacy preset
 
         for index, preset in enumerate(self.selectedPresets):
@@ -107,7 +107,7 @@ class TenBrushesExtension(Extension):
             currentPreset = window.views()[0].currentBrushPreset()
 
             if self.autoBrush:
-                Krita.instance().action('KritaShape/KisToolBrush').trigger()
+                Minerva.instance().action('MinervaShape/KisToolBrush').trigger()
 
             if (self.activatePrev
                     and preset == currentPreset.name()):

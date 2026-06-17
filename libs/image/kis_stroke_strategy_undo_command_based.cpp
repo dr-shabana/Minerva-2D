@@ -160,7 +160,7 @@ void KisStrokeStrategyUndoCommandBased::notifyCommandDone(KUndo2CommandSP comman
 void KisStrokeStrategyUndoCommandBased::setCommandExtraData(KUndo2CommandExtraData *data)
 {
     if (m_undoFacade && m_macroCommand) {
-        warnKrita << "WARNING: KisStrokeStrategyUndoCommandBased::setCommandExtraData():"
+        warnMinerva << "WARNING: KisStrokeStrategyUndoCommandBased::setCommandExtraData():"
                    << "the extra data is set while the stroke has already been started!"
                    << "The result is undefined, continued actions may not work!";
     }

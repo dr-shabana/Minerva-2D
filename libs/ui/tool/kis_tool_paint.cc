@@ -392,7 +392,7 @@ QWidget *KisToolPaint::createOptionWidget()
     verticalLayout->setContentsMargins(0,0,0,0);
     verticalLayout->setSpacing(5);
 
-    // See https://bugs.kde.org/show_bug.cgi?id=316896
+    // See https://github.com/dr-shabana/Minerva-2D/issues/show_bug.cgi?id=316896
     QWidget *specialSpacer = new QWidget(optionWidget);
     specialSpacer->setObjectName("SpecialSpacer");
     specialSpacer->setFixedSize(0, 0);
@@ -672,7 +672,7 @@ void KisToolPaint::requestUpdateOutline(const QPointF &outlineDocPoint, const Ko
          * The point is that canvas rendering comes through two stages of
          * compression and the canvas may request outline update when the
          * outline itself has already been changed. It causes visual tearing
-         * on the screen (see https://bugs.kde.org/show_bug.cgi?id=476300).
+         * on the screen (see https://github.com/dr-shabana/Minerva-2D/issues/show_bug.cgi?id=476300).
          *
          * We can solve that in two ways:
          *

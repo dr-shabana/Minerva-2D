@@ -150,7 +150,7 @@ KisPropertiesConfigurationSP KisPhongBumpmapConfigWidget::configuration() const
 
     QMap<QString, QVariant>::const_iterator i;
     for (i = rofl.constBegin(); i != rofl.constEnd(); ++i)
-        dbgKrita << i.key() << ":" << i.value();
+        dbgMinerva << i.key() << ":" << i.value();
     */
     return config;
 }

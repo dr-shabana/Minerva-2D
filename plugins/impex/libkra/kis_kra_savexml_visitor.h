@@ -54,7 +54,7 @@ public:
 public:
     QDomElement savePaintLayerAttributes(KisPaintLayer *layer, QDomDocument &doc, bool saveLayerOffset);
 
-    // used by EXR to save properties of Krita layers inside .exr
+    // used by EXR to save properties of Minerva layers inside .exr
     static void loadPaintLayerAttributes(const QDomElement &el, KisPaintLayer *layer, bool loadLayerOffset);
 
 private:

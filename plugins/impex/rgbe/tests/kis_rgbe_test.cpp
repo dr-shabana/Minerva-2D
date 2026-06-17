@@ -48,7 +48,7 @@ void KisRGBETest::testHDR()
     KisImageSP image = doc1->image();
 
     {
-        const QString outputFileName = TestUtil::fetchDataFileLazy("/results/objects.kra");
+        const QString outputFileName = TestUtil::fetchDataFileLazy("/results/objects.m2d");
 
         KisDocument *doc2 = KisPart::instance()->createDocument();
         doc2->setFileBatchMode(true);

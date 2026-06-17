@@ -10,7 +10,7 @@ kis_add_library(kritatgaexport MODULE ${kritatgaexport_SOURCES})
 
 target_link_libraries(kritatgaexport kritaui kritaimpex)
 
-install(TARGETS kritatgaexport  DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
+install(TARGETS kritatgaexport  DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})
 
 set(kritatgaimport_SOURCES
     kis_tga_import.cpp
@@ -22,6 +22,6 @@ kis_add_library(kritatgaimport MODULE ${kritatgaimport_SOURCES})
 
 target_link_libraries(kritatgaimport kritaui)
 
-install(TARGETS kritatgaimport  DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
+install(TARGETS kritatgaimport  DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})
 
-install(FILES krita_tga.desktop DESTINATION ${KDE_INSTALL_APPDIR})
+install(FILES minerva2d_tga.desktop DESTINATION ${KDE_INSTALL_APPDIR})

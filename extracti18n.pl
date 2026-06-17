@@ -1,6 +1,6 @@
 #!/usr/bin/perl -w
 
-# This file is part of Krita
+# This file is part of Minerva
 #
 #  SPDX-FileCopyrightText: 2005 Sven Langkamp <sven.langkamp@gmail.com>
 #
@@ -32,7 +32,7 @@ sub printi18n($$$$) {
       if ($name =~ /^\w\)/)
       {
         print "// i18n: 'a)', 'b)' etc. in resource names are used to keep resources in a specific order ";
-        print "when Krita sorts them alphabetically. The order will be kept only using the original/untranslated names\n";
+        print "when Minerva sorts them alphabetically. The order will be kept only using the original/untranslated names\n";
       }
       if ($name =~ /DITH\b/)
       {
@@ -178,26 +178,26 @@ sub readZipSpecialBuffer($)
 
 
 
-my @filenames = glob("./krita/data/gradients/*.ggr");
-push( @filenames, glob("./krita/data/palettes/*.gpl"));
-push( @filenames, glob("./krita/data/brushes/*.gih"));
-push( @filenames, glob("./krita/data/brushes/*.gbr"));
-push( @filenames, glob("./krita/data/brushes/*.svg"));
-push( @filenames, glob("./krita/data/patterns/*.pat"));
-push( @filenames, glob("./krita/data/patterns/*.png"));
-push( @filenames, glob("./krita/data/paintoppresets/*.kpp"));
-push( @filenames, glob("./krita/data/workspaces/*.kws"));
-push( @filenames, glob("./krita/data/windowlayouts/*.kwl"));
-push( @filenames, glob("./krita/data/gamutmasks/*.kgm"));
+my @filenames = glob("./minerva2d/data/gradients/*.ggr");
+push( @filenames, glob("./minerva2d/data/palettes/*.gpl"));
+push( @filenames, glob("./minerva2d/data/brushes/*.gih"));
+push( @filenames, glob("./minerva2d/data/brushes/*.gbr"));
+push( @filenames, glob("./minerva2d/data/brushes/*.svg"));
+push( @filenames, glob("./minerva2d/data/patterns/*.pat"));
+push( @filenames, glob("./minerva2d/data/patterns/*.png"));
+push( @filenames, glob("./minerva2d/data/paintoppresets/*.kpp"));
+push( @filenames, glob("./minerva2d/data/workspaces/*.kws"));
+push( @filenames, glob("./minerva2d/data/windowlayouts/*.kwl"));
+push( @filenames, glob("./minerva2d/data/gamutmasks/*.kgm"));
 push( @filenames, glob("./plugins/paintops/mypaint/brushes/*.myb"));
-push( @filenames, glob("./krita/data/symbols/*.svg"));
+push( @filenames, glob("./minerva2d/data/symbols/*.svg"));
 
 
 my %bundleForResource;
 my %internalFilenameForResource;
 
 # get the filename from the bundle
-my @bundlenames = glob("./krita/data/bundles/*.bundle");
+my @bundlenames = glob("./minerva2d/data/bundles/*.bundle");
 foreach my $bundlename (@bundlenames)
 {
   my $bundle = Archive::Zip->new();
@@ -286,7 +286,7 @@ foreach my $filename (@filenames)
   }
   elsif( $filename =~ /kpp$/ || $filename =~ /kws$/ || $filename =~ /kwl$/ || $filename =~ /kgm$/ || $filename =~ /jpg$/ || $filename =~ /myb$/ || $filename =~ /png$/ || $filename =~ /kse$/)
   {
-    # all of Krita's default brush presets and other resources with abovementioned extensions
+    # all of Minerva's default brush presets and other resources with abovementioned extensions
     # are named the same way the file is called
     # so there is no need to parse the file itself to find the name inside of it
     my $extension = split(/\./, $filename);
@@ -333,7 +333,7 @@ foreach my $filename (@filenames)
 }
 
 
-# add "memory" resources that are defined in Krita's code (KoResourceServerProvider)
+# add "memory" resources that are defined in Minerva's code (KoResourceServerProvider)
 printi18n("0. Foreground to Background", "memory/gradients/Foreground to Background.svg", "memory/gradients/Foreground to Background.svg", -1);
 printi18n("1. Foreground to Transparent", "memory/gradients/Foreground to Transparent.svg", "memory/gradients/Foreground to Transparent.svg", -1);
 

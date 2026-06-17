@@ -22,10 +22,10 @@ KisStrokeLayerStyleFilterProjectionPlane::~KisStrokeLayerStyleFilterProjectionPl
 {
 }
 
-KritaUtils::ThresholdMode KisStrokeLayerStyleFilterProjectionPlane::sourcePlaneOpacityThresholdRequirement() const
+MinervaUtils::ThresholdMode KisStrokeLayerStyleFilterProjectionPlane::sourcePlaneOpacityThresholdRequirement() const
 {
-    if (!filter()) return KritaUtils::ThresholdNone;
+    if (!filter()) return MinervaUtils::ThresholdNone;
 
     const KisLsStrokeFilter *filter = dynamic_cast<const KisLsStrokeFilter*>(this->filter());
-    return filter ? filter->sourcePlaneOpacityThresholdRequirement(style()) : KritaUtils::ThresholdNone;
+    return filter ? filter->sourcePlaneOpacityThresholdRequirement(style()) : MinervaUtils::ThresholdNone;
 }

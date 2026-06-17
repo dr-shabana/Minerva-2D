@@ -8,7 +8,7 @@
 
 /**
  * @file kis_annotation.h
- * @brief This file is part of the Krita application in calligra
+ * @brief This file is part of the Minerva application in calligra
  * @author Boudewijn Rempt
  * @author comments by hscott
  * @since 1.4 or 2005
@@ -26,7 +26,7 @@
 
 /**
  * @class KisAnnotation
- * @brief A data extension mechanism for Krita.
+ * @brief A data extension mechanism for Minerva.
  *
  * An annotation can be of something like a QByteArray or a QString or
  * a more specific datatype that can be attached to an image (or maybe

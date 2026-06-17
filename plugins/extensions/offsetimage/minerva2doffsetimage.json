@@ -1,0 +1,9 @@
+{
+    "Id": "Offset Image Plugin",
+    "Type": "Service",
+    "X-KDE-Library": "kritaoffsetimage",
+    "X-KDE-ServiceTypes": [
+        "Minerva/ViewPlugin"
+    ],
+    "X-Minerva-Version": "28"
+}

@@ -5,8 +5,8 @@
  */
 import QtQuick 2.15
 import QtQuick.Controls 2.15
-import org.krita.flake.text 1.0
-import org.krita.components 1.0 as Kis
+import org.minerva2d.flake.text 1.0
+import org.minerva2d.components 1.0 as Kis
 
 Column {
     id: root;
@@ -63,7 +63,7 @@ Column {
         enabled = true;
     }
     Component.onCompleted: {
-        Qt.createQmlObject("import org.krita.components 1.0 as Kis
+        Qt.createQmlObject("import org.minerva2d.components 1.0 as Kis
                 Kis.ToolSeparatorBase {
                 id: separator;
                 orientation: Qt.Horizontal;

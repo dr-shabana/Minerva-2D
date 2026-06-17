@@ -1,0 +1,9 @@
+{
+    "Id": "Polyline Tool",
+    "Type": "Service",
+    "X-KDE-Library": "kritatoolpolyline",
+    "X-KDE-ServiceTypes": [
+        "Minerva/Tool"
+    ],
+    "X-Minerva-Version": "28"
+}

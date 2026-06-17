@@ -12,4 +12,4 @@ kis_add_library(kritamultigridpatterngenerator MODULE ${kritamultigridpatterngen
 
 target_link_libraries(kritamultigridpatterngenerator kritaui)
 
-install(TARGETS kritamultigridpatterngenerator  DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
+install(TARGETS kritamultigridpatterngenerator  DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})

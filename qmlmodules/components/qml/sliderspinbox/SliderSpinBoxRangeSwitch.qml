@@ -4,7 +4,7 @@
  *  SPDX-License-Identifier: GPL-2.0-or-later
  */
 import QtQuick 2.15
-import org.krita.components 1.0 as Kis
+import org.minerva2d.components 1.0 as Kis
 
 /*
     \qmltype SliderSpinBoxRangeSwitch

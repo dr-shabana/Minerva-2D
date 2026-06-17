@@ -245,7 +245,7 @@ KisImageSP KisKraLoader::loadXML(const QDomElement& imageElement)
 
         if ((colorspacename = imageElement.attribute(COLORSPACE_NAME)).isNull()) {
             // An old file: take a reasonable default.
-            // Krita didn't support anything else in those
+            // Minerva didn't support anything else in those
             // days anyway.
             colorspacename = "RGBA";
         }
@@ -462,7 +462,7 @@ void KisKraLoader::loadBinaryData(KoStore * store, KisImageSP image, const QStri
             }
         }
     }
-    //load the embed proofing profile, it only needs to be loaded into Krita, not assigned.
+    //load the embed proofing profile, it only needs to be loaded into Minerva, not assigned.
     location = external ? QString() : uri;
     location += m_d->imageName + ICC_PROOFING_PATH;
     if (store->hasFile(location)) {
@@ -542,7 +542,7 @@ void KisKraLoader::loadBinaryData(KoStore * store, KisImageSP image, const QStri
             serializer.assignAllLayerStylesToLayers(image->root(), resourceLocation);
 
         } else {
-            warnKrita << "WARNING: Couldn't load layer styles library from .kra!";
+            warnMinerva << "WARNING: Couldn't load layer styles library from .m2d!";
         }
     }
 
@@ -585,7 +585,7 @@ void KisKraLoader::loadResources(KoStore *store, KisDocument *doc)
             store->close();
             list.append(newPalette);
         } else {
-            m_d->warningMessages.append(i18nc("Warning message on loading a .kra file", "Embedded palette is empty and cannot be loaded. The name of the palette: %1", filename));
+            m_d->warningMessages.append(i18nc("Warning message on loading a .m2d file", "Embedded palette is empty and cannot be loaded. The name of the palette: %1", filename));
         }
     }
     doc->setPaletteList(list);
@@ -596,7 +596,7 @@ void KisKraLoader::loadResources(KoStore *store, KisDocument *doc)
             store->open(RESOURCE_PATH + '/' + resourceItem.type + '/' + resourceItem.filename);
 
             if (!store->isOpen()) {
-                m_d->warningMessages.append(i18nc("Warning message on loading a .kra file", "Embedded resource cannot be read. The filename of the resource: %1", resourceItem.filename));
+                m_d->warningMessages.append(i18nc("Warning message on loading a .m2d file", "Embedded resource cannot be read. The filename of the resource: %1", resourceItem.filename));
                 continue;
             }
 
@@ -605,7 +605,7 @@ void KisKraLoader::loadResources(KoStore *store, KisDocument *doc)
             if (!store->device()->atEnd() && !doc->linkedResourcesStorageId().isEmpty()) {
                 bool result = bool(model.importResource(resourceItem.filename, store->device(), false, doc->linkedResourcesStorageId()));
                 if (!result) {
-                    m_d->warningMessages.append(i18nc("Warning message on loading a .kra file", "Embedded resource cannot be imported. The filename of the resource: %1", resourceItem.filename));
+                    m_d->warningMessages.append(i18nc("Warning message on loading a .m2d file", "Embedded resource cannot be imported. The filename of the resource: %1", resourceItem.filename));
                 }
             }
 
@@ -839,7 +839,7 @@ KisNodeSP KisKraLoader::loadNodes(const QDomElement& element, KisImageSP image, 
 
         if (node.isElement()) {
 
-            // See https://bugs.kde.org/show_bug.cgi?id=408963, where there is a selection mask that is a child of the
+            // See https://github.com/dr-shabana/Minerva-2D/issues/show_bug.cgi?id=408963, where there is a selection mask that is a child of the
             // the projection. That needs to be treated as a global selection, so we keep track of those.
             vKisNodeSP topLevelSelectionMasks;
             if (node.nodeName().toUpper() == LAYERS.toUpper() || node.nodeName().toUpper() == MASKS.toUpper()) {
@@ -1019,9 +1019,9 @@ KisNodeSP KisKraLoader::loadNode(const QDomElement& element, KisImageSP image)
 
             m_d->warningMessages <<
                 i18n("Layer \"%1\" has blending mode \"%2\" that has changed its "
-                    "behavior for CMYK color in Krita 5.2. Please check the "
+                    "behavior for CMYK color in Minerva 5.2. Please check the "
                     "result and consider enabling legacy \"Additive\" algorithm in "
-                    "Settings->Configure Krita->General->Tools->CMYK blending mode",
+                    "Settings->Configure Minerva->General->Tools->CMYK blending mode",
                     name, KoCompositeOpRegistry::instance().getKoID(compositeOpName).name());
         }
     }
@@ -1039,7 +1039,7 @@ KisNodeSP KisKraLoader::loadNode(const QDomElement& element, KisImageSP image)
                 dumbLayerStyle->setUuid(uuid);
                 layer->setLayerStyle(dumbLayerStyle->cloneWithResourcesSnapshot(KisGlobalResourcesInterface::instance(), 0));
             } else {
-                warnKrita << "WARNING: Layer style for layer" << layer->name() << "contains invalid UUID" << uuidString;
+                warnMinerva << "WARNING: Layer style for layer" << layer->name() << "contains invalid UUID" << uuidString;
             }
         }
     }

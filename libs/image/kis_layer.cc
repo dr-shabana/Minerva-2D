@@ -42,7 +42,7 @@
 #include "kis_layer_projection_plane.h"
 #include "layerstyles/kis_layer_style_projection_plane.h"
 
-#include "krita_utils.h"
+#include "minerva2d_utils.h"
 #include "kis_layer_properties_icons.h"
 #include "kis_layer_utils.h"
 #include "kis_projection_leaf.h"
@@ -343,7 +343,7 @@ void KisLayer::setChannelFlags(const QBitArray & channelFlags)
 {
     Q_ASSERT(channelFlags.isEmpty() ||((quint32)channelFlags.count() == colorSpace()->channelCount()));
 
-    if (KritaUtils::compareChannelFlags(channelFlags,
+    if (MinervaUtils::compareChannelFlags(channelFlags,
                                         this->channelFlags())) {
         return;
     }

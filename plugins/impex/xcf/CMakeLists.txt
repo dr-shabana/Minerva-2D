@@ -25,7 +25,7 @@ else()
     set(ICONV_CONST "")
 endif()
 set(PACKAGE_STRING "${CMAKE_PROJECT_NAME}")
-set(PACKAGE_VERSION "${KRITA_VERSION_STRING}")
+set(PACKAGE_VERSION "${MINERVA2D_VERSION_STRING}")
 set(PRECOMPUTED_SCALETABLE 1)
 check_c_source_compiles("#include <stdlib.h>
 #include <stdarg.h>
@@ -79,6 +79,6 @@ kis_add_library(kritaxcfimport MODULE ${kritaxcfimport_SOURCES})
 
 target_link_libraries(kritaxcfimport kritaui xcftools)
 
-install(TARGETS kritaxcfimport  DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
+install(TARGETS kritaxcfimport  DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})
 
-install(FILES krita_xcf.desktop DESTINATION ${KDE_INSTALL_APPDIR})
+install(FILES minerva2d_xcf.desktop DESTINATION ${KDE_INSTALL_APPDIR})

@@ -20,7 +20,7 @@ class KisCoordinatesConverter;
  * rotating the canvas, the center of rotation does not move, hence
  * it is considered as a "still point".
  *
- * A lot of canvas operations in Krita cannot guarantee that the
+ * A lot of canvas operations in Minerva cannot guarantee that the
  * point will precisely "stand still" during transformation. It may
  * happen that the canvas will be slightly moved to the side to ensure
  * that it is aligned to the hardware pixels.

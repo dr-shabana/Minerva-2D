@@ -6,7 +6,7 @@
 
 #include "KisAnimCurvesChannelDelegate.h"
 #include "KisAnimCurvesChannelsModel.h"
-#include "krita_utils.h"
+#include "minerva2d_utils.h"
 #include "kis_icon_utils.h"
 
 #include <QApplication>

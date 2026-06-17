@@ -15,8 +15,8 @@ kis_add_library(kritaexperimentpaintop MODULE ${kritaexperimentpaintop_SOURCES})
 
 target_link_libraries(kritaexperimentpaintop kritalibpaintop)
 
-install(TARGETS kritaexperimentpaintop  DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
+install(TARGETS kritaexperimentpaintop  DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})
 install( FILES
-    krita-experiment.png DESTINATION ${KDE_INSTALL_DATADIR}/krita/images)
+    minerva2d-experiment.png DESTINATION ${KDE_INSTALL_DATADIR}/minerva2d/images)
 
 

@@ -76,7 +76,7 @@
 #include "kis_shape_controller.h"
 #include "kis_signal_compressor.h"
 #include "kis_zoom_manager.h"
-#include "krita_utils.h"
+#include "minerva2d_utils.h"
 #include "processing/fill_processing_visitor.h"
 #include "widgets/kis_canvas_drop.h"
 #include <commands_new/KisMergeLabeledLayersCommand.h>
@@ -361,7 +361,7 @@ void KisView::setViewManager(KisViewManager *view)
 
     d->viewManager->updateGUI();
 
-    KoToolManager::instance()->switchToolRequested("KritaShape/KisToolBrush");
+    KoToolManager::instance()->switchToolRequested("MinervaShape/KisToolBrush");
 }
 
 KisViewManager* KisView::viewManager() const
@@ -391,7 +391,7 @@ void KisView::slotContinueAddNode(KisNodeSP newActiveNode, KisNodeAdditionFlags 
 
 void KisView::slotImageNodeRemoved(KisNodeSP node)
 {
-    d->removeNodeConnection.start(KritaUtils::nearestNodeAfterRemoval(node));
+    d->removeNodeConnection.start(MinervaUtils::nearestNodeAfterRemoval(node));
 }
 
 void KisView::slotContinueRemoveNode(KisNodeSP newActiveNode)
@@ -480,7 +480,7 @@ void KisView::dropEvent(QDropEvent *event)
         forcedCenter = imgCursorPos;
     }
 
-    if (event->mimeData()->hasFormat("application/x-krita-node-internal-pointer")) {
+    if (event->mimeData()->hasFormat("application/x-minerva2d-node-internal-pointer")) {
         KisShapeController *kritaShapeController =
                 dynamic_cast<KisShapeController*>(d->document->shapeController());
 
@@ -676,7 +676,7 @@ void KisView::dropEvent(QDropEvent *event)
                                     .errorMessage();
                             QMessageBox::warning(
                                 this,
-                                i18nc("@title:window", "Krita"),
+                                i18nc("@title:window", "Minerva"),
                                 i18n("Could not open %2.\nReason: %1.",
                                      msg,
                                      url.toDisplayString()));
@@ -736,7 +736,7 @@ void KisView::dropEvent(QDropEvent *event)
                 }
             }
         }
-    } else if (event->mimeData()->hasColor() || event->mimeData()->hasFormat("krita/x-colorsetentry")) {
+    } else if (event->mimeData()->hasColor() || event->mimeData()->hasFormat("minerva2d/x-colorsetentry")) {
         if (!image()) {
             return;
         }
@@ -785,13 +785,13 @@ void KisView::dropEvent(QDropEvent *event)
         if (event->mimeData()->hasColor()) {
             resources->setFGColorOverride(KoColor(event->mimeData()->colorData().value<QColor>(), image()->colorSpace()));
         } else {
-            QByteArray byteData = event->mimeData()->data("krita/x-colorsetentry");
+            QByteArray byteData = event->mimeData()->data("minerva2d/x-colorsetentry");
             KisSwatch s = KisSwatch::fromByteArray(byteData);
             resources->setFGColorOverride(s.color());
         }
 
         // Use same options as the fill tool
-        KConfigGroup configGroup = KSharedConfig::openConfig()->group("KritaFill/KisToolFill");
+        KConfigGroup configGroup = KSharedConfig::openConfig()->group("MinervaFill/KisToolFill");
         QString fillMode = configGroup.readEntry<QString>("whatToFill", "");
         if (fillMode.isEmpty()) {
             if (configGroup.readEntry<bool>("fillSelection", false)) {
@@ -1163,7 +1163,7 @@ bool KisView::queryClose()
             name = i18n("Untitled");
 
         int res = QMessageBox::warning(this,
-                                       i18nc("@title:window", "Krita"),
+                                       i18nc("@title:window", "Minerva"),
                                        i18n("<p>The document <b>'%1'</b> has been modified.</p><p>Do you want to save it?</p>", name),
                                        QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel, QMessageBox::Yes);
 
@@ -1438,7 +1438,7 @@ void KisView::closeView()
 bool KisView::shouldAcceptDrag(const QDropEvent *event) const
 {
     const QMimeData *data = event->mimeData();
-    if (data->hasFormat(QStringLiteral("application/x-krita-node-internal-pointer"))) {
+    if (data->hasFormat(QStringLiteral("application/x-minerva2d-node-internal-pointer"))) {
         // Don't allow dragging layers onto their own canvas, that really only
         // gets triggered accidentally if you're a bit sloppy about selecting
         // or reordering layers and then you're left confused about the layer
@@ -1452,7 +1452,7 @@ bool KisView::shouldAcceptDrag(const QDropEvent *event) const
     } else {
         return data->hasImage()
             || data->hasUrls()
-            || data->hasFormat("krita/x-colorsetentry")
+            || data->hasFormat("minerva2d/x-colorsetentry")
             || data->hasColor();
     }
 }

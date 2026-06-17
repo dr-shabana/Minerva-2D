@@ -1,0 +1,9 @@
+{
+    "Id": "Palettize Filter",
+    "Type": "Service",
+    "X-KDE-Library": "kritapalettize",
+    "X-KDE-ServiceTypes": [
+        "Minerva/Filter"
+    ],
+    "X-Minerva-Version": "30"
+}

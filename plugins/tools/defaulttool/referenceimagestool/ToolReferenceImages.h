@@ -95,9 +95,9 @@ public:
     : DefaultToolFactory("ToolReferenceImages") {
         setToolTip(i18n("Reference Images Tool"));
         setSection(ToolBoxSection::View);
-        setIconName(koIconNameCStr("krita_tool_reference_images"));
+        setIconName(koIconNameCStr("minerva2d_tool_reference_images"));
         setPriority(2);
-        setActivationShapeId(KRITA_TOOL_ACTIVATION_ID);
+        setActivationShapeId(MINERVA2D_TOOL_ACTIVATION_ID);
     };
 
 

@@ -27,8 +27,8 @@ ki18n_wrap_ui(pathshapes_SOURCES
 
 qt_add_resources(pathshapes_SOURCES pathshapes.qrc)
 
-kis_add_library(krita_shape_paths MODULE ${pathshapes_SOURCES})
+kis_add_library(minerva2d_shape_paths MODULE ${pathshapes_SOURCES})
 
-target_link_libraries(krita_shape_paths kritaflake kritawidgets kritaui)
+target_link_libraries(minerva2d_shape_paths kritaflake kritawidgets kritaui)
 
-install(TARGETS krita_shape_paths  DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
+install(TARGETS minerva2d_shape_paths  DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})

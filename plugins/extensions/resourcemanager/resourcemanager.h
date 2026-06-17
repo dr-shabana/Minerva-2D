@@ -1,5 +1,5 @@
 /*
- * resourcemanager.h -- Part of Krita
+ * resourcemanager.h -- Part of Minerva
  *
  * SPDX-FileCopyrightText: 2014 Boudewijn Rempt (boud@valdyas.org)
  *

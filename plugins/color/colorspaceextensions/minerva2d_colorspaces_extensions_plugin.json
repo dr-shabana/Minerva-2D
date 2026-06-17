@@ -1,0 +1,11 @@
+{
+    "Id": "Some extensions to color spaces",
+    "Type": "Service",
+    "X-KDE-Library": "minerva2d_colorspaces_extensions",
+    "X-KDE-PluginInfo-Name": "minerva2d_colorspaces_extensions",
+    "X-KDE-ServiceTypes": [
+        "Minerva/ColorSpaceExtension"
+    ],
+    "X-Pigment-MinVersion": "28",
+    "X-Pigment-PluginVersion": "28"
+}

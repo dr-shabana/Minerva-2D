@@ -1,5 +1,5 @@
 /*
- *  kis_tool_select_rectangular.h - part of Krita
+ *  kis_tool_select_rectangular.h - part of Minerva
  *
  *  SPDX-FileCopyrightText: 1999 Michael Koch <koch@kde.org>
  *  SPDX-FileCopyrightText: 2002 Patrick Julien <freak@codepimps.org>
@@ -49,7 +49,7 @@ public:
     {
         setToolTip(i18n("Rectangular Selection Tool"));
         setSection(ToolBoxSection::Select);
-        setActivationShapeId(KRITA_TOOL_ACTIVATION_ID);
+        setActivationShapeId(MINERVA2D_TOOL_ACTIVATION_ID);
         setIconName(koIconNameCStr("tool_rect_selection"));
         setShortcut(QKeySequence(Qt::CTRL | Qt::Key_R));
         setPriority(0);

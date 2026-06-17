@@ -1,7 +1,7 @@
 #
 #  SPDX-License-Identifier: GPL-3.0-or-later
 #
-# Helper function for extracting translatable messages from Krita source code.
+# Helper function for extracting translatable messages from Minerva source code.
 # Usage: kundo2_aware_xgettext <pot-filename-without-path> <source-files-list>
 # If there are no messages or the <source-files-list> is empty, the pot file is deleted.
 #
@@ -22,7 +22,7 @@ function kundo2_aware_xgettext() {
 # How to unit test:
 #   export podir=.
 #   cp init-sample.pot sample.pot
-#   source krita_xgettext.sh
+#   source minerva2d_xgettext.sh
 #   add_ctxt_qtundo sample.pot
 #
 #   Then check that all messages in sample.pot have "(qtundo-format)" in msgctxt.
@@ -59,7 +59,7 @@ function kundo2_aware_xgettext_internal() {
 
     XGETTEXT_FLAGS_KUNDO2="\
 --copyright-holder=This_file_is_part_of_KDE \
---msgid-bugs-address=http://bugs.kde.org \
+--msgid-bugs-address=http://github.com/dr-shabana/Minerva-2D/issues \
 --from-code=UTF-8
 -C -k --kde \
 -kkundo2_i18n:1 -kkundo2_i18np:1,2 -kkundo2_i18nc:1c,2 -kkundo2_i18ncp:1c,2,3 \

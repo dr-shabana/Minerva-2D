@@ -1,5 +1,5 @@
 /*
- *  tool_transform_args.h - part of Krita
+ *  tool_transform_args.h - part of Minerva
  *
  *  SPDX-FileCopyrightText: 2010 Marc Pegon <pe.marc@free.fr>
  *
@@ -483,7 +483,7 @@ ToolTransformArgs ToolTransformArgs::fromXML(const QDomElement &e)
             KisDomUtils::loadValue(freeEl, "flattenedPerspectiveTransform", &args.m_flattenedPerspectiveTransform) &&
             KisDomUtils::loadValue(freeEl, "filterId", &filterId);
 
-        // transformAroundRotationCenter is a new parameter introduced in Krita 4.0,
+        // transformAroundRotationCenter is a new parameter introduced in Minerva 4.0,
         // so it might be not present in older transform masks
         if (!KisDomUtils::loadValue(freeEl, "transformAroundRotationCenter", &args.m_transformAroundRotationCenter)) {
             args.m_transformAroundRotationCenter = false;
@@ -516,7 +516,7 @@ ToolTransformArgs ToolTransformArgs::fromXML(const QDomElement &e)
             KisDomUtils::loadValue(warpEl, "alpha", &args.m_alpha);
 
         if(args.m_mode == CAGE){
-            // Pixel precision is a parameter introduced in Krita 4.2, so we should
+            // Pixel precision is a parameter introduced in Minerva 4.2, so we should
             // expect it not being present in older files. In case it is not found,
             // just use the default value initialized by c-tor (that is, do nothing).
 

@@ -19,7 +19,7 @@
 // Altering this class and some classes it uses was one major impetus behind
 // forking XmlGui. The first major workaround was to allow
 // KisPart::configureShortcuts() to pull up the dialog, and to remote the scheme
-// editor support, since it's incompatible with Krita.
+// editor support, since it's incompatible with Minerva.
 //
 // The files were forked from KF5 XmlGui version 5.12.0
 //     dialogs/KisShortcutsEditorItem.cpp       <- kshortcutseditoritem.cpp

@@ -13,7 +13,7 @@
 #include "KisImportUserFeedbackInterface.h"
 #include "dialogs/KisColorSpaceConversionDialog.h"
 
-namespace KritaUtils {
+namespace MinervaUtils {
 
 KisImportExportErrorCode workaroundUnsuitableImageColorSpace(KisImageSP image,
                                                              KisImportUserFeedbackInterface *feedbackInterface,
@@ -28,7 +28,7 @@ KisImportExportErrorCode workaroundUnsuitableImageColorSpace(KisImageSP image,
 
     if (profile && !profile->isSuitableForOutput()) {
         /// The profile has no reverse mapping into for the described color space,
-        /// so we cannot use it in Krita. We need to ask the user to convert the image
+        /// so we cannot use it in Minerva. We need to ask the user to convert the image
         /// right on loading
 
         KIS_SAFE_ASSERT_RECOVER_NOOP(feedbackInterface);
@@ -48,7 +48,7 @@ KisImportExportErrorCode workaroundUnsuitableImageColorSpace(KisImageSP image,
                     dlgColorSpaceConversion->setCaption(i18n("Convert image color space on import"));
                     dlgColorSpaceConversion->m_page->lblHeadlineWarning->setText(
                         i18nc("the argument is the ICC profile name",
-                              "The image has a profile attached that Krita cannot edit images "
+                              "The image has a profile attached that Minerva cannot edit images "
                               "in (\"%1\"), please select a space to convert to for editing: \n"
                               , profile->name()));
                     dlgColorSpaceConversion->m_page->lblHeadlineWarning->setVisible(true);

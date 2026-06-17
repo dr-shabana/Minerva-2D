@@ -1,7 +1,7 @@
 project( kritaplatformpluginxcb )
 
 set ( kritaplatformpluginxcb_SRCS
-    KritaPlatformPluginXcb.cpp
+    MinervaPlatformPluginXcb.cpp
     KisExtendedModifiersMapperX11.cpp
 )
 
@@ -15,5 +15,5 @@ endif()
 
 target_link_libraries(kritaplatformpluginxcb PRIVATE ${X11_X11_LIB})
 
-install(TARGETS kritaplatformpluginxcb DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
+install(TARGETS kritaplatformpluginxcb DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})
 

@@ -1,0 +1,12 @@
+{
+    "Icon": "",
+    "Id": "Minerva exr Import Filter",
+    "Type": "Service",
+    "X-KDE-Import": "image/x-exr,application/x-extension-exr",
+    "X-KDE-Library": "kritaexrimport",
+    "X-KDE-ServiceTypes": [
+        "Minerva/FileFilter"
+    ],
+    "X-KDE-Weight": 1,
+    "X-KDE-Extensions" : "exr"
+}

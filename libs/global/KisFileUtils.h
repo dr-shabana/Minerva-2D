@@ -13,7 +13,7 @@
 
 class QString;
 
-namespace KritaUtils {
+namespace MinervaUtils {
 
 /**
  * @brief Resolve absolute file path from a file path and base dir

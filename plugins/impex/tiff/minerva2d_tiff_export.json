@@ -1,0 +1,14 @@
+{
+    "Icon": "",
+    "Id": "Minerva TIFF Export Filter",
+    "NoDisplay": "true",
+    "Type": "Service",
+    "X-KDE-Export": "image/tiff",
+    
+    "X-KDE-Library": "kritatiffexport",
+    "X-KDE-ServiceTypes": [
+        "Minerva/FileFilter"
+    ],
+    "X-KDE-Weight": 1,
+    "X-KDE-Extensions" : "tif,tiff"
+}

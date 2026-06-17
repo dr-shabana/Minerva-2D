@@ -1,4 +1,4 @@
-/* This file is part of the Krita project
+/* This file is part of the Minerva project
  *
  * SPDX-FileCopyrightText: 2014 Boudewijn Rempt <boud@valdyas.org>
  *
@@ -150,7 +150,7 @@ public:
     bool exportDocumentSync(const QString &path, const QByteArray &mimeType, KisPropertiesConfigurationSP exportConfiguration = 0);
 
 private:
-    bool exportDocumentImpl(const KritaUtils::ExportFileJob &job, KisPropertiesConfigurationSP exportConfiguration, bool isAdvancedExporting= false);
+    bool exportDocumentImpl(const MinervaUtils::ExportFileJob &job, KisPropertiesConfigurationSP exportConfiguration, bool isAdvancedExporting= false);
 
 public:
     /**
@@ -251,7 +251,7 @@ public:
     QDomDocument createDomDocument(const QString& tagName, const QString& version) const;
 
     /**
-     *  Return a correctly created QDomDocument for an old (1.3-style) Krita document,
+     *  Return a correctly created QDomDocument for an old (1.3-style) Minerva document,
      *  including processing instruction, complete DOCTYPE tag (with systemId and publicId), and root element.
      *  This static method can be used e.g. by filters.
      *  @param appName the app's instance name, e.g. words, kspread, kpresenter etc.
@@ -438,9 +438,9 @@ public:
     KisImportExportManager *importExportManager() const;
 
     /**
-     * @brief serializeToNativeByteArray daves the document into a .kra file written
+     * @brief serializeToNativeByteArray daves the document into a .m2d file written
      * to a memory-based byte-array
-     * @return a byte array containing the .kra file
+     * @return a byte array containing the .m2d file
      */
     QByteArray serializeToNativeByteArray();
 
@@ -489,7 +489,7 @@ Q_SIGNALS:
 
     void sigBackgroundSavingFinished(KisImportExportErrorCode status, const QString &errorMessage, const QString &warningMessage);
 
-    void sigCompleteBackgroundSaving(const KritaUtils::ExportFileJob &job, KisImportExportErrorCode status, const QString &errorMessage, const QString &warningMessage);
+    void sigCompleteBackgroundSaving(const MinervaUtils::ExportFileJob &job, KisImportExportErrorCode status, const QString &errorMessage, const QString &warningMessage);
 
     void sigReferenceImagesChanged();
 
@@ -518,9 +518,9 @@ Q_SIGNALS:
 private Q_SLOTS:
     void finishExportInBackground();
     void slotChildCompletedSavingInBackground(KisImportExportErrorCode status, const QString &errorMessage, const QString &warningMessage);
-    void slotCompleteAutoSaving(const KritaUtils::ExportFileJob &job, KisImportExportErrorCode status, const QString &errorMessage, const QString &warningMessage);
+    void slotCompleteAutoSaving(const MinervaUtils::ExportFileJob &job, KisImportExportErrorCode status, const QString &errorMessage, const QString &warningMessage);
 
-    void slotCompleteSavingDocument(const KritaUtils::ExportFileJob &job, KisImportExportErrorCode status, const QString &errorMessage, const QString &warningMessage);
+    void slotCompleteSavingDocument(const MinervaUtils::ExportFileJob &job, KisImportExportErrorCode status, const QString &errorMessage, const QString &warningMessage);
 
     void slotInitiateAsyncAutosaving(KisDocument *clonedDocument);
     void slotDocumentCloningCancelled();
@@ -532,15 +532,15 @@ private:
     friend class KisPart;
     friend class SafeSavingLocker;
 
-    KritaUtils::BackgroudSavingStartResult initiateSavingInBackground(const QString actionName,
+    MinervaUtils::BackgroudSavingStartResult initiateSavingInBackground(const QString actionName,
                                     const QObject *receiverObject, const char *receiverMethod,
-                                    const KritaUtils::ExportFileJob &job,
+                                    const MinervaUtils::ExportFileJob &job,
                                     KisPropertiesConfigurationSP exportConfiguration,
                                     std::unique_ptr<KisDocument> &&optionalClonedDocument, bool isAdvancedExporting = false);
 
-    KritaUtils::BackgroudSavingStartResult initiateSavingInBackground(const QString actionName,
+    MinervaUtils::BackgroudSavingStartResult initiateSavingInBackground(const QString actionName,
                                     const QObject *receiverObject, const char *receiverMethod,
-                                    const KritaUtils::ExportFileJob &job,
+                                    const MinervaUtils::ExportFileJob &job,
                                     KisPropertiesConfigurationSP exportConfiguration, bool isAdvancedExporting =false );
 
     KisImportExportErrorCode startExportInBackground(const QString &actionName, const QString &location,

@@ -9,10 +9,10 @@
 namespace deprecated_remove_after_krita6 {
 
 /**
- * Before Krita 5.2 MyPaint brushes saved into .kpp files used to have
+ * Before Minerva 5.2 MyPaint brushes saved into .kpp files used to have
  * separate properties for hardness, opacity and diameter. They are gone
- * with Krita 5.2, but to make sure new brush presets can be open with the
- * older versions of Krita, we should keep them for some time.
+ * with Minerva 5.2, but to make sure new brush presets can be open with the
+ * older versions of Minerva, we should keep them for some time.
  */
 
 const QString MYPAINT_HARDNESS = "MyPaint/hardness";

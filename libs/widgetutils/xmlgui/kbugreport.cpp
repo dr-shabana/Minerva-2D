@@ -155,9 +155,9 @@ KisKBugReport::KisKBugReport(const KAboutData &aboutData, QWidget *_parent)
 
     lay->addSpacing(10);
     QString text = i18n("<qt>"
-                        "<p>Please read <b><a href=\"https://docs.krita.org/en/untranslatable_pages/reporting_bugs.html\">this guide</a></b> for reporting bugs first!</p>"
+                        "<p>Please read <b><a href=\"https://docs.minerva2d.org/en/untranslatable_pages/reporting_bugs.html\">this guide</a></b> for reporting bugs first!</p>"
                         "<p>To submit a bug report, click on the button below. This will open a web browser "
-                        "window on <a href=\"https://bugs.kde.org\">https://bugs.kde.org</a> where you will find "
+                        "window on <a href=\"https://github.com/dr-shabana/Minerva-2D/issues\">https://github.com/dr-shabana/Minerva-2D/issues</a> where you will find "
                         "a form to fill in. </p>"
                         "<p><b>Please paste the following information into the bug report!</b></p>"
                         "</qt>");
@@ -169,7 +169,7 @@ KisKBugReport::KisKBugReport(const KAboutData &aboutData, QWidget *_parent)
     lay->addSpacing(10);
 
     QByteArray additionalInformation;
-    QFile sysinfo(QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/krita-sysinfo.log");
+    QFile sysinfo(QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/minerva2d-sysinfo.log");
     if (sysinfo.open(QFile::ReadOnly)) {
         additionalInformation += sysinfo.readAll();
         sysinfo.close();
@@ -177,7 +177,7 @@ KisKBugReport::KisKBugReport(const KAboutData &aboutData, QWidget *_parent)
 
     additionalInformation += "\n---------------------\n";
 
-    QFile log(QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/krita.log");
+    QFile log(QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/minerva2d.log");
     if (log.open(QFile::ReadOnly)) {
         additionalInformation += log.readAll();
         log.close();
@@ -185,7 +185,7 @@ KisKBugReport::KisKBugReport(const KAboutData &aboutData, QWidget *_parent)
 
     additionalInformation += "\n---------------------\n";
 
-    QFile crashes(QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/kritacrash.log");
+    QFile crashes(QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/minerva2dcrash.log");
     if (crashes.open(QFile::ReadOnly)) {
         additionalInformation += crashes.readAll();
         crashes.close();
@@ -214,7 +214,7 @@ KisKBugReport::~KisKBugReport()
 
 void KisKBugReportPrivate::_k_updateUrl()
 {
-    url = QUrl(QStringLiteral("https://bugs.kde.org/enter_bug.cgi"));
+    url = QUrl(QStringLiteral("https://github.com/dr-shabana/Minerva-2D/issues/enter_bug.cgi"));
     QUrlQuery query;
     query.addQueryItem(QStringLiteral("format"), QLatin1String("guided"));    // use the guided form
 

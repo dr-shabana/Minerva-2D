@@ -4,4 +4,4 @@ PyQt5==5.11.3
 PyQt5-sip==4.19.13
 httpretty==1.0.3
 
--e dev-tools/python/krita-mock
+-e dev-tools/python/minerva2d-mock

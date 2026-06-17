@@ -78,7 +78,7 @@ void KisFilter::process(const KisPaintDeviceSP src,
         processImpl(temporary, applyRect, config, progressUpdater);
     }
     catch (const std::bad_alloc&) {
-        warnKrita << "Filter" << name() << "failed to allocate enough memory to run.";
+        warnMinerva << "Filter" << name() << "failed to allocate enough memory to run.";
     }
 
 

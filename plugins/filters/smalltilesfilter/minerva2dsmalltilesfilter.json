@@ -1,0 +1,9 @@
+{
+    "Id": "Small Tiles Filter",
+    "Type": "Service",
+    "X-KDE-Library": "kritasmalltilesfilter",
+    "X-KDE-ServiceTypes": [
+        "Minerva/Filter"
+    ],
+    "X-Minerva-Version": "28"
+}

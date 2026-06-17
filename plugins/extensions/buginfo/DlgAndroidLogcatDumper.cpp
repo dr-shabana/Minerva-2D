@@ -89,13 +89,13 @@ QString DlgAndroidLogcatDumper::defaultNewFileName() { return "kritalogcatdump.t
 
 QString DlgAndroidLogcatDumper::originalFileName()
 {
-    return QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/krita-logcatdump.log";
+    return QStandardPaths::writableLocation(QStandardPaths::GenericDataLocation) + "/minerva2d-logcatdump.log";
 }
 
 QString DlgAndroidLogcatDumper::captionText()
 {
-    return i18nc("Caption of the dialog with Krita's Android system log for bug reports",
-                 "Krita Logcat Dump: please paste this information to the bug report");
+    return i18nc("Caption of the dialog with Minerva's Android system log for bug reports",
+                 "Minerva Logcat Dump: please paste this information to the bug report");
 }
 
 QString DlgAndroidLogcatDumper::replacementWarningText() { return QString(); }

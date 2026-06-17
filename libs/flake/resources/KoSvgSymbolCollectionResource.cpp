@@ -130,10 +130,10 @@ bool KoSvgSymbolCollectionResource::loadFromDevice(QIODevice *dev, KisResourcesI
     QDomDocument doc = SvgParser::createDocumentFromSvg(dev, &errorMsg, &errorLine, &errorColumn);
     if (doc.isNull()) {
 
-        errKrita << "Parsing error in " << filename() << "! Aborting!" << Qt::endl
+        errMinerva << "Parsing error in " << filename() << "! Aborting!" << Qt::endl
         << " In line: " << errorLine << ", column: " << errorColumn << Qt::endl
         << " Error message: " << errorMsg << Qt::endl;
-        errKrita << i18n("Parsing error in the main document at line %1, column %2\nError message: %3"
+        errMinerva << i18n("Parsing error in the main document at line %1, column %2\nError message: %3"
                          , errorLine , errorColumn , errorMsg);
         return false;
     }

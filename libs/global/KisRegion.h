@@ -20,7 +20,7 @@ class QRegion;
  * into a smaller set of bigger rectangles, the same thing that QRegion
  * is supposed to do. The main difference (and limitation) is: all the
  * input rects must be non-intersecting. This requirement is perfectly
- * fine for Krita's tiles, which do never intersect.
+ * fine for Minerva's tiles, which do never intersect.
  */
 class KRITAGLOBAL_EXPORT KisRegion :
         public boost::equality_comparable<KisRegion>,

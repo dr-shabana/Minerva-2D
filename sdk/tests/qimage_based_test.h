@@ -272,7 +272,7 @@ private:
            !TestUtil::compareQImages(temp, ref, image, fuzzy, fuzzy)) {
 
 
-            dbgKrita << "--- Wrong image:" << realName;
+            dbgMinerva << "--- Wrong image:" << realName;
             valid = false;
 
             image.save(QString(FILES_OUTPUT_DIR) + '/' + realName);

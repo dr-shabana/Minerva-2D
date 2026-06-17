@@ -237,7 +237,7 @@ void SvgLoadingContext::parseProfile(const QDomElement &element)
     const QString name = element.attribute("name");
 
     if (element.attribute("rendering-intent", "auto") != "auto") {
-        // WARNING: Krita does *not* treat rendering intents attributes of the profile!
+        // WARNING: Minerva does *not* treat rendering intents attributes of the profile!
         warnFlake << "WARNING: we do *not* treat rendering intents attributes of the profile!";
     }
 

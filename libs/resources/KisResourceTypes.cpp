@@ -36,7 +36,7 @@ namespace ResourceSubType {
     const QString PngBrushes {QStringLiteral("png_brushes")};
     const QString SegmentedGradients {QStringLiteral("segmented_gradients")};
     const QString StopGradients {QStringLiteral("stop_gradients")};
-    const QString KritaPaintOpPresets {QStringLiteral("krita_paintop_presets")};
+    const QString MinervaPaintOpPresets {QStringLiteral("minerva2d_paintop_presets")};
     const QString MyPaintPaintOpPresets {QStringLiteral("mypaint_paintop_presets")};
 }
 

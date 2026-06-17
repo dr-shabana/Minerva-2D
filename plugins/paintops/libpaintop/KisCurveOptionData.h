@@ -8,12 +8,12 @@
 #define KISCURVEOPTIONDATA_H
 
 #include <KisCurveOptionDataCommon.h>
-#include <KisKritaSensorPack.h>
+#include <KisMinervaSensorPack.h>
 
 
 struct PAINTOP_EXPORT KisCurveOptionData : KisCurveOptionDataCommon
 {
-    using Checkability = KisKritaSensorPack::Checkability;
+    using Checkability = KisMinervaSensorPack::Checkability;
 
     /**
      * When `isChecked` is std::nullopt, then the initial checked state
@@ -31,8 +31,8 @@ struct PAINTOP_EXPORT KisCurveOptionData : KisCurveOptionDataCommon
                        std::optional<bool> isChecked = std::nullopt,
                        const std::pair<qreal, qreal> &valueRange = {0.0, 1.0});
         
-    KisKritaSensorData& sensorStruct();
-    const KisKritaSensorData& sensorStruct() const;
+    KisMinervaSensorData& sensorStruct();
+    const KisMinervaSensorData& sensorStruct() const;
 };
 
 #endif // KISCURVEOPTIONDATA_H

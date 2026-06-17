@@ -14,15 +14,15 @@
 #include <kis_edge_detection_kernel.h>
 
 
-K_PLUGIN_FACTORY_WITH_JSON(KritaConvertHeightToNormalMapFilterFactory, "kritaconvertheighttonormalmap.json", registerPlugin<KritaConvertHeightToNormalMapFilter>();)
+K_PLUGIN_FACTORY_WITH_JSON(MinervaConvertHeightToNormalMapFilterFactory, "kritaconvertheighttonormalmap.json", registerPlugin<MinervaConvertHeightToNormalMapFilter>();)
 
-KritaConvertHeightToNormalMapFilter::KritaConvertHeightToNormalMapFilter(QObject *parent, const QVariantList &)
+MinervaConvertHeightToNormalMapFilter::MinervaConvertHeightToNormalMapFilter(QObject *parent, const QVariantList &)
 : QObject(parent)
 {
     KisFilterRegistry::instance()->add(KisFilterSP(new KisConvertHeightToNormalMapFilter()));
 }
 
-KritaConvertHeightToNormalMapFilter::~KritaConvertHeightToNormalMapFilter()
+MinervaConvertHeightToNormalMapFilter::~MinervaConvertHeightToNormalMapFilter()
 {
 }
 

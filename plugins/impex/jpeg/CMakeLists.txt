@@ -26,7 +26,7 @@ kis_add_library(kritajpegimport MODULE ${kritajpegimport_SOURCES})
 
 target_link_libraries(kritajpegimport kritaui  ${JPEG_LIBRARIES} ${LCMS2_LIBRARIES} LibExiv2::LibExiv2 )
 
-install(TARGETS kritajpegimport  DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
+install(TARGETS kritajpegimport  DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})
 
 set(kritajpegexport_SOURCES
     kis_jpeg_export.cc
@@ -46,6 +46,6 @@ if (MSVC AND "${CMAKE_CXX_FLAGS}" MATCHES "-EHsc")
     set_source_files_properties(kis_jpeg_converter.cc PROPERTIES COMPILE_OPTIONS "/EHsc-")
 endif()
 
-install(TARGETS kritajpegexport  DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
+install(TARGETS kritajpegexport  DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})
 
-install(FILES krita_jpeg.desktop DESTINATION ${KDE_INSTALL_APPDIR})
+install(FILES minerva2d_jpeg.desktop DESTINATION ${KDE_INSTALL_APPDIR})

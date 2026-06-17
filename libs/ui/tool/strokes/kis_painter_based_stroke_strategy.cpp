@@ -133,7 +133,7 @@ QVector<KisRunnableStrokeJobData *> KisPainterBasedStrokeStrategy::doMaskingBrus
     KIS_SAFE_ASSERT_RECOVER_RETURN_VALUE(m_maskingBrushRenderer, jobs);
 
     Q_FOREACH (const QRect &rc, rects) {
-        KritaUtils::addJobConcurrent(jobs,
+        MinervaUtils::addJobConcurrent(jobs,
             [this, rc] () {
                 this->m_maskingBrushRenderer->updateProjection(rc);
             }
@@ -251,7 +251,7 @@ void KisPainterBasedStrokeStrategy::initStrokeCallback()
 {
     QVector<KisRunnableStrokeJobData*> jobs;
 
-    KritaUtils::addJobSequential(jobs, [this] () {
+    MinervaUtils::addJobSequential(jobs, [this] () {
         KisNodeSP node = m_resources->currentNode();
 
         KUndo2Command *autoKeyframeCommand =
@@ -263,7 +263,7 @@ void KisPainterBasedStrokeStrategy::initStrokeCallback()
         }
     });
 
-    KritaUtils::addJobSequential(jobs, [this] () mutable {
+    MinervaUtils::addJobSequential(jobs, [this] () mutable {
         KisNodeSP node = m_resources->currentNode();
         KisPaintDeviceSP paintDevice = node->paintDevice();
         KisPaintDeviceSP targetDevice = paintDevice;
@@ -433,7 +433,7 @@ void KisPainterBasedStrokeStrategy::finishStrokeCallback()
                                -1,
                                &jobs);
 
-        KritaUtils::addJobBarrier(jobs,
+        MinervaUtils::addJobBarrier(jobs,
             [parentCommand, undoAdapter] () {
                 parentCommand->redo();
 

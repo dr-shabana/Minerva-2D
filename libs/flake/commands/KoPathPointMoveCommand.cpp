@@ -10,7 +10,7 @@
 #include "KoPathPoint.h"
 #include <klocalizedstring.h>
 #include "kis_command_ids.h"
-#include "krita_container_utils.h"
+#include "minerva2d_container_utils.h"
 #include <KoShapeBulkActionLock.h>
 
 class KoPathPointMoveCommandPrivate
@@ -84,7 +84,7 @@ bool KoPathPointMoveCommand::mergeWith(const KUndo2Command *command)
 
     if (!other ||
         other->d->paths != d->paths ||
-        !KritaUtils::compareListsUnordered(other->d->points.keys(), d->points.keys())) {
+        !MinervaUtils::compareListsUnordered(other->d->points.keys(), d->points.keys())) {
 
         return false;
     }

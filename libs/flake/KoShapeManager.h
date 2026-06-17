@@ -166,7 +166,7 @@ public:
      *
      * @param painter a painter to paint on. Clip rect of the painter is expected to be setup correctly.
      * @param job a job to paint.
-     * @param forPrint not used in Krita.
+     * @param forPrint not used in Minerva.
      *
      * \see preparePaintJobs
      */

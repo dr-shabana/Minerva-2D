@@ -40,7 +40,7 @@
 
 using heif::Error;
 
-K_PLUGIN_FACTORY_WITH_JSON(ImportFactory, "krita_heif_import.json", registerPlugin<HeifImport>();)
+K_PLUGIN_FACTORY_WITH_JSON(ImportFactory, "minerva2d_heif_import.json", registerPlugin<HeifImport>();)
 
 HeifImport::HeifImport(QObject *parent, const QVariantList &) : KisImportExportFilter(parent)
 {
@@ -389,7 +389,7 @@ KisImportExportErrorCode HeifImport::convert(KisDocument *document, QIODevice *i
 
         int height = handle.get_height();
 
-        // convert HEIF image to Krita KisDocument
+        // convert HEIF image to Minerva KisDocument
 
         KisImageSP image = new KisImage(document->createUndoStore(), width, height, colorSpace,
                                         "HEIF image");

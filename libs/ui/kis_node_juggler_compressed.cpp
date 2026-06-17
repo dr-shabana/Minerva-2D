@@ -64,7 +64,7 @@ struct MoveNodeStruct {
             oldParent = rhs.oldParent;
             oldAbove = rhs.oldAbove;
         } else {
-            warnKrita << "MoveNodeStruct: Trying to merge unsequential moves!";
+            warnMinerva << "MoveNodeStruct: Trying to merge unsequential moves!";
             result = false;
         }
 

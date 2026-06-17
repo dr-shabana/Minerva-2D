@@ -102,13 +102,13 @@ class KisToolGradientFactory : public KisToolPaintFactoryBase
 
 public:
     KisToolGradientFactory()
-            : KisToolPaintFactoryBase("KritaFill/KisToolGradient") {
+            : KisToolPaintFactoryBase("MinervaFill/KisToolGradient") {
         setToolTip(i18n("Gradient Tool"));
         setSection(ToolBoxSection::Fill);
-        setIconName(koIconNameCStr("krita_tool_gradient"));
+        setIconName(koIconNameCStr("minerva2d_tool_gradient"));
         setShortcut(QKeySequence(Qt::Key_G));
         setPriority(1);
-        setActivationShapeId(KRITA_TOOL_ACTIVATION_ID);
+        setActivationShapeId(MINERVA2D_TOOL_ACTIVATION_ID);
     }
 
     ~KisToolGradientFactory() override {}

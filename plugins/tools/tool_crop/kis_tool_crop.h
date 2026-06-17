@@ -1,5 +1,5 @@
 /*
- *  kis_tool_crop.h - part of Krita
+ *  kis_tool_crop.h - part of Minerva
  *
  *  SPDX-FileCopyrightText: 2004 Boudewijn Rempt <boud@valdyas.org>
  *
@@ -220,7 +220,7 @@ public:
             : KoToolFactoryBase("KisToolCrop") {
         setToolTip(i18n("Crop Tool"));
         setSection(ToolBoxSection::Transform);
-        setActivationShapeId(KRITA_TOOL_ACTIVATION_ID);
+        setActivationShapeId(MINERVA2D_TOOL_ACTIVATION_ID);
         setPriority(11);
         setIconName(koIconNameCStr("tool_crop"));
         setShortcut(QKeySequence("C"));

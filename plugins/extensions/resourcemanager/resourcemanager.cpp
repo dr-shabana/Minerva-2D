@@ -1,5 +1,5 @@
 /*
- * resourcemanager.cc -- Part of Krita
+ * resourcemanager.cc -- Part of Minerva
  *
  * SPDX-FileCopyrightText: 2004 Boudewijn Rempt (boud@valdyas.org)
  * SPDX-FileCopyrightText: 2021 L. E. Segovia <amy@amyspark.me>

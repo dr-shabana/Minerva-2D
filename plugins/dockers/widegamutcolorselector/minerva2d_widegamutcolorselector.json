@@ -1,0 +1,9 @@
+{
+    "Id": "WGColorSelector",
+    "Type": "Service",
+    "X-KDE-Library": "kritawgcolorselector",
+    "X-KDE-ServiceTypes": [
+        "Minerva/Dock"
+    ],
+    "X-Minerva-Version": "28"
+}

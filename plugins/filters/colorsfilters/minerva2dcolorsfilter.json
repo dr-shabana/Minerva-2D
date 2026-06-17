@@ -1,0 +1,9 @@
+{
+    "Id": "Color Filters",
+    "Type": "Service",
+    "X-KDE-Library": "kritacolorsfilters",
+    "X-KDE-ServiceTypes": [
+        "Minerva/Filter"
+    ],
+    "X-Minerva-Version": "28"
+}

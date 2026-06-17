@@ -27,7 +27,7 @@ KisShortcutsEditorItem::KisShortcutsEditorItem(QTreeWidgetItem *parent, QAction 
     m_actionNameInTable = i18nc("@item:intable Action name in shortcuts configuration",
                                 "%1", KLocalizedString::removeAcceleratorMarker(m_action->text()));
     if (m_actionNameInTable.isEmpty()) {
-        warnKrita << "Action without text!" << m_action->objectName();
+        warnMinerva << "Action without text!" << m_action->objectName();
         m_actionNameInTable = m_id;
     }
 
@@ -213,7 +213,7 @@ bool KisShortcutsEditorItem::isModified(uint column) const
 
 void KisShortcutsEditorItem::undo()
 {
-    //dbgKrita << "Undoing changes for " << data(Name, Qt::DisplayRole).toString();
+    //dbgMinerva << "Undoing changes for " << data(Name, Qt::DisplayRole).toString();
 
     if (m_oldLocalShortcut) {
         // We only ever reset the active Shortcut

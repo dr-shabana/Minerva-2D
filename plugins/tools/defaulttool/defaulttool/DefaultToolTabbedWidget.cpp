@@ -33,12 +33,12 @@ DefaultToolTabbedWidget::DefaultToolTabbedWidget(KoInteractionTool *tool, QWidge
     managerMitterLimit->setApparentUnitFromSymbol("px"); //set unit to px by default
     m_strokeWidget->setUnitManagers(managerLineWidth, managerMitterLimit);
 
-    addTab(m_strokeWidget, KisIconUtils::loadIcon("krita_tool_line"), QString());
+    addTab(m_strokeWidget, KisIconUtils::loadIcon("minerva2d_tool_line"), QString());
 
 
     m_fillWidget = new KoFillConfigWidget(tool->canvas(), KoFlake::Fill, true, this);
     m_fillWidget->setWindowTitle(i18n("Fill"));
-    addTab(m_fillWidget, KisIconUtils::loadIcon("krita_tool_color_fill"), QString());
+    addTab(m_fillWidget, KisIconUtils::loadIcon("minerva2d_tool_color_fill"), QString());
 
     connect(this, SIGNAL(currentChanged(int)), SLOT(slotCurrentIndexChanged(int)));
     m_oldTabIndex = currentIndex();

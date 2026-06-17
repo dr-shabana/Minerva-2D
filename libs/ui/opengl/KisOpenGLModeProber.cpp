@@ -281,10 +281,10 @@ void KisOpenGLModeProber::initSurfaceFormatFromConfig(std::pair<KisSurfaceColorS
      * bit-width.
      */
     if (rootSurfaceFormat.first == KisSurfaceColorSpaceWrapper::bt2020PQColorSpace) {
-        qWarning() << "WARNING: Bt.2020 PQ surface type is not supported by this build of Krita";
+        qWarning() << "WARNING: Bt.2020 PQ surface type is not supported by this build of Minerva";
         rootSurfaceFormat.first = KisSurfaceColorSpaceWrapper::DefaultColorSpace;
     } else if (rootSurfaceFormat.first == KisSurfaceColorSpaceWrapper::scRGBColorSpace) {
-        qWarning() << "WARNING: scRGB surface type is not supported by this build of Krita";
+        qWarning() << "WARNING: scRGB surface type is not supported by this build of Minerva";
         rootSurfaceFormat.first = KisSurfaceColorSpaceWrapper::DefaultColorSpace;
     } else {
         KIS_SAFE_ASSERT_RECOVER_NOOP(rootSurfaceFormat.first == KisSurfaceColorSpaceWrapper::DefaultColorSpace);

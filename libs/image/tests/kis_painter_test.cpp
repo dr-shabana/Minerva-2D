@@ -45,12 +45,12 @@ void KisPainterTest::allCsApplicator(void (KisPainterTest::* funcPtr)(const KoCo
         if (csId == "GRAYU16") continue; // No point in testing bounds with a cs without alpha
         if (csId == "GRAYU8") continue; // No point in testing bounds with a cs without alpha
 
-        dbgKrita << "Testing with cs" << csId;
+        dbgMinerva << "Testing with cs" << csId;
 
         if (cs && cs->compositeOp(COMPOSITE_OVER) != 0) {
             (this->*funcPtr)(cs);
         } else {
-            dbgKrita << "Cannot bitBlt for cs" << csId;
+            dbgMinerva << "Cannot bitBlt for cs" << csId;
         }
     }
 }
@@ -336,13 +336,13 @@ void KisPainterTest::testSelectionBitBltFixedSelection()
 
     QCOMPARE(dst->exactBounds(), QRect(5, 5, 10, 10));
     /*
-dbgKrita << "canary1.5";
+dbgMinerva << "canary1.5";
     dst->clear();
     painter.begin(dst);
 
     painter.bitBltWithFixedSelection(0, 0, src, fixedSelection, 10, 20);
     painter.end();
-dbgKrita << "canary2";
+dbgMinerva << "canary2";
     QCOMPARE(dst->exactBounds(), QRect(5, 5, 5, 10));
 
     dst->clear();
@@ -350,7 +350,7 @@ dbgKrita << "canary2";
 
     painter.bitBltWithFixedSelection(0, 0, src, fixedSelection, 5, 5, 5, 5, 10, 20);
     painter.end();
-dbgKrita << "canary3";
+dbgMinerva << "canary3";
     QCOMPARE(dst->exactBounds(), QRect(5, 5, 5, 10));
 
     dst->clear();
@@ -358,7 +358,7 @@ dbgKrita << "canary3";
 
     painter.bitBltWithFixedSelection(5, 5, src, fixedSelection, 10, 20);
     painter.end();
-dbgKrita << "canary4";
+dbgMinerva << "canary4";
     QCOMPARE(dst->exactBounds(), QRect(10, 10, 5, 10));
     */
 }

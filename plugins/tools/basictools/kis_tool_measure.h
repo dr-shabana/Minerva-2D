@@ -97,12 +97,12 @@ class KisToolMeasureFactory : public KoToolFactoryBase
 public:
 
     KisToolMeasureFactory()
-            : KoToolFactoryBase("KritaShape/KisToolMeasure") {
+            : KoToolFactoryBase("MinervaShape/KisToolMeasure") {
         setSection(ToolBoxSection::View);
         setToolTip(i18n("Measure Tool"));
-        setIconName(koIconNameCStr("krita_tool_measure"));
+        setIconName(koIconNameCStr("minerva2d_tool_measure"));
         setPriority(1);
-        setActivationShapeId(KRITA_TOOL_ACTIVATION_ID);
+        setActivationShapeId(MINERVA2D_TOOL_ACTIVATION_ID);
     }
 
     ~KisToolMeasureFactory() override {}

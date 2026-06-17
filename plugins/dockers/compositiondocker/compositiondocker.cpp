@@ -24,7 +24,7 @@
 #include "compositiondocker_dock.h"
 #include <KoDockRegistry.h>
 
-K_PLUGIN_FACTORY_WITH_JSON(CompositionDockerPluginFactory, "krita_compositiondocker.json", registerPlugin<CompositionDockerPlugin>();)
+K_PLUGIN_FACTORY_WITH_JSON(CompositionDockerPluginFactory, "minerva2d_compositiondocker.json", registerPlugin<CompositionDockerPlugin>();)
 
 class CompositionDockerDockFactory : public KoDockFactoryBase {
 public:

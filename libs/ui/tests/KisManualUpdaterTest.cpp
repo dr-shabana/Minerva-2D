@@ -106,20 +106,20 @@ void KisManualUpdaterTest::testCheckForUpdate_data()
     QTest::addColumn<UpdaterStatus::StatusID>("resultStatus");
 
     RssItem item1 = RssItem();
-    item1.title = "Krita 4.3.0 Released";
-    item1.link = "https://krita.org/en/item/krita-4-3-0/";
+    item1.title = "Minerva 4.3.0 Released";
+    item1.link = "https://minerva2d.org/en/item/minerva2d-4-3-0/";
     item1.category = "Official Release";
     item1.pubDate = QDateTime::fromString(QString("Wed, 10 Sep 2019 09:42:15 +0000"), Qt::RFC2822Date);
 
     RssItem item2 = RssItem();
-    item2.title = "Krita 4.2.4 Released";
-    item2.link = "https://krita.org/en/item/krita-4-2-4/";
+    item2.title = "Minerva 4.2.4 Released";
+    item2.link = "https://minerva2d.org/en/item/minerva2d-4-2-4/";
     item2.category = "Official Release";
     item2.pubDate = QDateTime::fromString(QString("Wed, 10 Sep 2018 09:42:15 +0000"), Qt::RFC2822Date);
 
     RssItem item3 = RssItem();
     item3.title = "Interview with The Artist";
-    item3.link = "https://krita.org/en/item/interview-with-the-artist/";
+    item3.link = "https://minerva2d.org/en/item/interview-with-the-artist/";
     item3.category = "Artist Interview";
     item3.pubDate = QDateTime::fromString(QString("Wed, 15 Sep 2019 09:42:15 +0000"), Qt::RFC2822Date);
 
@@ -130,14 +130,14 @@ void KisManualUpdaterTest::testCheckForUpdate_data()
             << feed
             << QString("4.3.0")
             << QString("4.3.0")
-            << QString("https://krita.org/en/item/krita-4-3-0/")
+            << QString("https://minerva2d.org/en/item/minerva2d-4-3-0/")
             << UpdaterStatus::StatusID::UPTODATE;
 
     QTest::addRow("update available")
             << feed
             << QString("4.2.4")
             << QString("4.3.0")
-            << QString("https://krita.org/en/item/krita-4-3-0/")
+            << QString("https://minerva2d.org/en/item/minerva2d-4-3-0/")
             << UpdaterStatus::StatusID::UPDATE_AVAILABLE;
 }
 

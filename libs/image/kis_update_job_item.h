@@ -124,7 +124,7 @@ public:
     inline void runMergeJob() {
         KIS_SAFE_ASSERT_RECOVER_RETURN(m_atomicType == Type::MERGE);
         KIS_SAFE_ASSERT_RECOVER_RETURN(m_walker);
-        // dbgKrita << "Executing merge job" << m_walker->changeRect()
+        // dbgMinerva << "Executing merge job" << m_walker->changeRect()
         //          << "on thread" << QThread::currentThreadId();
 
 #ifdef DEBUG_JOBS_SEQUENCE

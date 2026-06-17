@@ -221,7 +221,7 @@ void KisReferenceImagesDecoration::setReferenceImageLayer(KisSharedPtr<KisRefere
             // If the view is not ready yet (because this is being constructed
             // from view.d's ctor and thus view.d is not available now),
             // do not update canvas because it will lead to a crash.
-            if (updateCanvas && !dirtyRect.isEmpty()) { // in case the reference layer is just being loaded from the .kra file
+            if (updateCanvas && !dirtyRect.isEmpty()) { // in case the reference layer is just being loaded from the .m2d file
                 slotReferenceImagesChanged(dirtyRect);
             }
         }

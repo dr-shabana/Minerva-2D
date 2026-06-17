@@ -28,12 +28,12 @@ Q_DECLARE_FLAGS(SeekOptionFlags, SeekOption)
 Q_DECLARE_OPERATORS_FOR_FLAGS(SeekOptionFlags)
 
 
-/** @brief Krita's base animation playback engine for producing image frame changes and associated audio.
+/** @brief Minerva's base animation playback engine for producing image frame changes and associated audio.
  *
- *  Krita stores a main playback engine in KisPart (a singleton) to be used by the active document's canvas.
- *  It can be thought of as being just below the GUI layer of Krita's animation system,
+ *  Minerva stores a main playback engine in KisPart (a singleton) to be used by the active document's canvas.
+ *  It can be thought of as being just below the GUI layer of Minerva's animation system,
  *  responding to various GUI events, controlling transport controls (play, stop, next, etc.),
- *  and generally driving the playback of animation within Krita.
+ *  and generally driving the playback of animation within Minerva.
  *
  *  It's implemented by KisPlaybackEngineQT and KisPlaybackEngineMLT, one of which is typically selected
  *  at compile time depending on available dependencies. Specific implementations may or may not support

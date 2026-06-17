@@ -1,0 +1,9 @@
+{
+    "Id": "MyPaint Brush",
+    "Type": "Service",
+    "X-KDE-Library": "kritamypaintop",
+    "X-KDE-ServiceTypes": [
+        "Minerva/Paintop"
+    ],
+    "X-Minerva-Version": "28"
+}

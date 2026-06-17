@@ -22,11 +22,11 @@ class KoColor;
  * the specific properties of its colorspace, such as the whitepoint, chromaticities, trc, etc, as represented
  * by the color profile.
  *
- * Krita has two color management systems. LCMS and OCIO.
+ * Minerva has two color management systems. LCMS and OCIO.
  * LCMS is the one handling the ICC profile stuff, and the major one handling that ManagedColor deals with.
  * OCIO support is only in the display of the colors. ManagedColor has some support for it in colorForCanvas()
  *
- * All colors in Krita are color managed. QColors are understood as RGB-type colors in the sRGB space.
+ * All colors in Minerva are color managed. QColors are understood as RGB-type colors in the sRGB space.
  *
  * We recommend you make a color like this:
  *
@@ -63,7 +63,7 @@ public:
 
     /**
      * @brief colorForCanvas
-     * @param canvas the canvas whose color management you'd like to use. In Krita, different views have
+     * @param canvas the canvas whose color management you'd like to use. In Minerva, different views have
      * separate canvasses, and these can have different OCIO configurations active.
      * @return the QColor as it would be displaying on the canvas. This result can be used to draw widgets with
      * the correct configuration applied.
@@ -83,7 +83,7 @@ public:
      * <ul>
      * <li>U8: unsigned 8 bits integer, the most common type</li>
      * <li>U16: unsigned 16 bits integer</li>
-     * <li>F16: half, 16 bits floating point. Only available if Krita was built with OpenEXR</li>
+     * <li>F16: half, 16 bits floating point. Only available if Minerva was built with OpenEXR</li>
      * <li>F32: 32 bits floating point</li>
      * </ul>
      * @return the color depth.
@@ -139,7 +139,7 @@ public:
      * <ul>
      * <li>U8: unsigned 8 bits integer, the most common type</li>
      * <li>U16: unsigned 16 bits integer</li>
-     * <li>F16: half, 16 bits floating point. Only available if Krita was built with OpenEXR</li>
+     * <li>F16: half, 16 bits floating point. Only available if Minerva was built with OpenEXR</li>
      * <li>F32: 32 bits floating point</li>
      * </ul>
      * @param colorProfile a valid color profile for this color model and color depth combination.

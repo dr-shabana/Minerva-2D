@@ -20,7 +20,7 @@ KRITAGLOBAL_EXPORT void kis_safe_assert_recoverable(const char *assertion, const
 
 /**
  * KIS_ASSERT family of macros allows the user to choose whether to
- * try to continue working in Krita or to abort an application and see
+ * try to continue working in Minerva or to abort an application and see
  * a backtrace.
  *
  * Note, the macro are present in Release mode by default!
@@ -114,12 +114,12 @@ KRITAGLOBAL_EXPORT void kis_safe_assert_recoverable(const char *assertion, const
  * 2) The recovery branch will *workaround* the bug and the user will
  *    be able to continue his work *as if nothing has
  *    happened*. Again, please mark the assert "safe" if and only if
- *    you are 100% sure Krita will not crash in a minute after you
+ *    you are 100% sure Minerva will not crash in a minute after you
  *    faced that bug. The user is not notified about this bug, so he
  *    is not going to take any emergency steps like saving his work
- *    and restarting Krita!
+ *    and restarting Minerva!
  *
- * 3) If you think that Krita should be better restarted after this
+ * 3) If you think that Minerva should be better restarted after this
  *    bug, please use a usual KIS_ASSERT_RECOVER.
  */
 

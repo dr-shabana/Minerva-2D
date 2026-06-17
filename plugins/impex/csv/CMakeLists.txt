@@ -13,7 +13,7 @@ kis_add_library(kritacsvimport MODULE ${kritacsvimport_SOURCES})
 
 target_link_libraries(kritacsvimport kritaui )
 
-install(TARGETS kritacsvimport DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
+install(TARGETS kritacsvimport DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})
 
 # export
 
@@ -27,6 +27,6 @@ kis_add_library(kritacsvexport MODULE ${kritacsvexport_SOURCES})
 
 target_link_libraries(kritacsvexport kritaui kritaimpex)
 
-install(TARGETS kritacsvexport  DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
+install(TARGETS kritacsvexport  DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})
 
-install(FILES krita_csv.desktop DESTINATION ${KDE_INSTALL_APPDIR})
+install(FILES minerva2d_csv.desktop DESTINATION ${KDE_INSTALL_APPDIR})

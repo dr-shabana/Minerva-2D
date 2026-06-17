@@ -11,7 +11,7 @@
 #import <qmutex.h>
 #import <AppKit/AppKit.h>
 
-#include "krita_container_utils.h"
+#include "minerva2d_container_utils.h"
 
 class ExtendedModifiers
 {
@@ -121,7 +121,7 @@ QVector<Qt::Key> queryPressedKeysMac()
     }
     mutex.unlock();
 
-    KritaUtils::makeContainerUnique(result);
+    MinervaUtils::makeContainerUnique(result);
 
     return result;
 }

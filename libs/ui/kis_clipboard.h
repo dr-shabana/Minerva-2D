@@ -25,7 +25,7 @@ class KoColorSpace;
 class KisClipboardPrivate;
 
 /**
- * The Krita clipboard is a clipboard that can store paint devices
+ * The Minerva clipboard is a clipboard that can store paint devices
  * instead of just qimage's.
  */
 class KRITAUI_EXPORT KisClipboard : public QObject
@@ -89,7 +89,7 @@ public:
                                       KisTimeSpan *clipRange = nullptr,
                                       bool useClipboardFallback = false) const;
 
-    KisPaintDeviceSP clipFromKritaLayers(const KoColorSpace *cs) const;
+    KisPaintDeviceSP clipFromMinervaLayers(const KoColorSpace *cs) const;
 
     KisPaintDeviceSP clipFromBoardContents(const QMimeData *data,
                           const QRect &imageBounds,
@@ -135,7 +135,7 @@ private:
     Q_DISABLE_COPY(KisClipboard);
 
     KisPaintDeviceSP
-    clipFromKritaSelection(const QMimeData *data, const QRect &imageBounds, KisTimeSpan *clipRange) const;
+    clipFromMinervaSelection(const QMimeData *data, const QRect &imageBounds, KisTimeSpan *clipRange) const;
 
     KisPaintDeviceSP fetchImageByURL(const QUrl &originalUrl) const;
 

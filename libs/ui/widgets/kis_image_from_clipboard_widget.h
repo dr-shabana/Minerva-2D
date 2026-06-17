@@ -12,7 +12,7 @@
 #include "kis_custom_image_widget.h"
 
 /**
- * The 'New image from clipboard' widget in the Krita startup widget.
+ * The 'New image from clipboard' widget in the Minerva startup widget.
  * This class is an extension of the KisCustomImageWidget("Custom document" widget"
  */
 class KisImageFromClipboardWidget : public KisCustomImageWidget

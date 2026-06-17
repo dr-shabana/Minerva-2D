@@ -26,7 +26,7 @@ class KisTimeSpan;
 
 /** @brief KisKeyframeChannel stores and manages KisKeyframes.
  * Maps units of time to virtual keyframe values.
- * This class is a key piece of Krita's animation backend.
+ * This class is a key piece of Minerva's animation backend.
  * Abstract base class of KisRasterKeyframeChannel, KisScalarKeyframeChannel, etc.
  */
 class KRITAIMAGE_EXPORT KisKeyframeChannel : public QObject
@@ -182,11 +182,11 @@ protected:
     virtual void removeKeyframeImpl(int time, KUndo2Command *parentUndoCmd);
 
     /**
-     * @brief Between Krita 4.1 and 4.4 Krita had a bug which resulted in creating frames
+     * @brief Between Minerva 4.1 and 4.4 Minerva had a bug which resulted in creating frames
      * with negative time stamp. The bug has been fixed, but there might be some files
      * still in the wild.
      *
-     * TODO: remove this workaround in Krita 5.0, when no such file are left :)
+     * TODO: remove this workaround in Minerva 5.0, when no such file are left :)
      */
     Q_DECL_DEPRECATED void workaroundBrokenFrameTimeBug(int *time);
 

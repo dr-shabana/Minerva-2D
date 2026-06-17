@@ -1,5 +1,5 @@
 /*
- *  kis_tool_select_contiguous.h - part of KImageShop^WKrayon^Krita
+ *  kis_tool_select_contiguous.h - part of KImageShop^WKrayon^Minerva
  *
  *  SPDX-FileCopyrightText: 1999 Michael Koch <koch@kde.org>
  *  SPDX-FileCopyrightText: 2002 Patrick Julien <freak@codepimps.org>
@@ -98,7 +98,7 @@ public:
         setSection(ToolBoxSection::Select);
         setIconName(koIconNameCStr("tool_contiguous_selection"));
         setPriority(4);
-        setActivationShapeId(KRITA_TOOL_ACTIVATION_ID);
+        setActivationShapeId(MINERVA2D_TOOL_ACTIVATION_ID);
     }
 
     ~KisToolSelectContiguousFactory() override {}

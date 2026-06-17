@@ -15,7 +15,7 @@
 #include <kis_brush.h>
 #include <KoResourceServer.h>
 
-const QString TEMPORARY_FILENAME = "/tmp/temporaryKritaBrush.gbr";
+const QString TEMPORARY_FILENAME = "/tmp/temporaryMinervaBrush.gbr";
 const QString TEMPORARY_BRUSH_NAME = "Temporary custom brush";
 const double DEFAULT_SPACING = 0.25;
 

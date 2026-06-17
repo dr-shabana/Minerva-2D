@@ -7,7 +7,7 @@
 #include "KisExtendedModifiersMapperWayland.h"
 
 #include <input/kis_extended_modifiers_mapper.h>
-#include <krita_container_utils.h>
+#include <minerva2d_container_utils.h>
 
 KisExtendedModifiersMapperWayland::KisExtendedModifiersMapperWayland(QObject *parent, const QVariantList &)
     : KisExtendedModifiersMapperPluginInterface(parent)
@@ -18,7 +18,7 @@ KisExtendedModifiersMapperWayland::ExtendedModifiers KisExtendedModifiersMapperW
     ExtendedModifiers modifiers;
     if (m_watcher.hasKeyboardFocus()) {
         modifiers = m_watcher.pressedKeys();
-        KritaUtils::makeContainerUnique(modifiers);
+        MinervaUtils::makeContainerUnique(modifiers);
     } else {
         modifiers = KisExtendedModifiersMapper::qtModifiersToQtKeys(m_watcher.modifiers());
     }

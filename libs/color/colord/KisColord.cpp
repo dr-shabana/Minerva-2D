@@ -44,7 +44,7 @@ struct Device {
 KisColord::KisColord(QObject *parent)
     : QObject(parent)
 {
-    //dbgKrita << "Creating KisColorD";
+    //dbgMinerva << "Creating KisColorD";
 
     m_cdInterface = new CdInterface(QLatin1String("org.freedesktop.ColorManager"),
                                     QLatin1String("/org/freedesktop/ColorManager"),
@@ -127,13 +127,13 @@ QByteArray KisColord::deviceProfile(const QString &id, int p)
         }
 
         if (profile) {
-            //dbgKrita << "profile filename" << profile->filename;
+            //dbgMinerva << "profile filename" << profile->filename;
             QFile f(profile->filename);
             if (f.open(QFile::ReadOnly)) {
                 ba = f.readAll();
             }
             else {
-                dbgKrita << "Could not load profile" << profile->title << profile->filename;
+                dbgMinerva << "Could not load profile" << profile->title << profile->filename;
             }
         }
     }
@@ -156,11 +156,11 @@ void KisColord::serviceOwnerChanged(const QString &serviceName, const QString &o
 
 void KisColord::gotDevices(QDBusPendingCallWatcher *call)
 {
-    //dbgKrita << "Got devices!!!";
+    //dbgMinerva << "Got devices!!!";
 
     QDBusPendingReply<QList<QDBusObjectPath> > reply = *call;
     if (reply.isError()) {
-        dbgKrita << "Unexpected message" << reply.error().message();
+        dbgMinerva << "Unexpected message" << reply.error().message();
     } else {
         QList<QDBusObjectPath> devices = reply.argumentAt<0>();
         Q_FOREACH (const QDBusObjectPath &device, devices) {
@@ -168,7 +168,7 @@ void KisColord::gotDevices(QDBusPendingCallWatcher *call)
         }
         Q_EMIT changed();
     }
-    //dbgKrita << "gotDevices" << m_devices.count();
+    //dbgMinerva << "gotDevices" << m_devices.count();
     call->deleteLater();
 }
 
@@ -182,7 +182,7 @@ void KisColord::deviceChanged(const QDBusObjectPath &objectPath)
     }
 
     if (!m_devices.contains(objectPath)) {
-        //dbgKrita << "deviceChanged for an unknown device" << objectPath.path();
+        //dbgMinerva << "deviceChanged for an unknown device" << objectPath.path();
         deviceAdded(objectPath, false);
         return;
     }
@@ -195,7 +195,7 @@ void KisColord::deviceChanged(const QDBusObjectPath &objectPath)
 
     addProfilesToDevice(dev, profiles);
 
-    //dbgKrita << "deviceChanged" << dev->id << "with" << profiles.size() << "profiles";
+    //dbgMinerva << "deviceChanged" << dev->id << "with" << profiles.size() << "profiles";
 
     Q_EMIT changed(dev->id);
 }
@@ -203,7 +203,7 @@ void KisColord::deviceChanged(const QDBusObjectPath &objectPath)
 void KisColord::deviceAdded(const QDBusObjectPath &objectPath, bool emitChanged)
 {
     if (m_devices.contains(objectPath)) {
-        //dbgKrita << "Device is already on the list" << objectPath.path();
+        //dbgMinerva << "Device is already on the list" << objectPath.path();
         return;
     }
 
@@ -211,7 +211,7 @@ void KisColord::deviceAdded(const QDBusObjectPath &objectPath, bool emitChanged)
                              objectPath.path(),
                              QDBusConnection::systemBus());
     if (!device.isValid()) {
-        dbgKrita << "Got an invalid device" << objectPath.path();
+        dbgMinerva << "Got an invalid device" << objectPath.path();
         return;
     }
 
@@ -228,7 +228,7 @@ void KisColord::deviceAdded(const QDBusObjectPath &objectPath, bool emitChanged)
     QList<QDBusObjectPath> profiles = device.profiles();
     addProfilesToDevice(dev, profiles);
 
-//    dbgKrita << "deviceAdded" << dev->id
+//    dbgMinerva << "deviceAdded" << dev->id
 //             << dev->kind
 //             << dev->model
 //             << dev->vendor

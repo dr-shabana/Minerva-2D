@@ -1,0 +1,9 @@
+{
+    "Id": "Default Paint Operations",
+    "Type": "Service",
+    "X-KDE-Library": "kritadefaultpaintops",
+    "X-KDE-ServiceTypes": [
+        "Minerva/Paintop"
+    ],
+    "X-Minerva-Version": "28"
+}

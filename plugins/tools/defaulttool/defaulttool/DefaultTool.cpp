@@ -81,7 +81,7 @@
 #include "kis_assert.h"
 #include "kis_global.h"
 #include "kis_debug.h"
-#include "krita_utils.h"
+#include "minerva2d_utils.h"
 
 #include <QVector2D>
 
@@ -636,7 +636,7 @@ void DefaultTool::slotPutTextOnPath()
    }
 
    /// This will always remove all previous text paths.
-   /// While Krita's layout engine can handle multiple of them, the interaction
+   /// While Minerva's layout engine can handle multiple of them, the interaction
    /// hasn't been fully verified yet. So if someone implements multiple textpaths,
    /// they will also need to check if the cursor interaction makes sense.
    KoSvgTextRemoveShapeCommand::removeContourShapesFromFlow(textShape, parentCommand, true, true);
@@ -1751,7 +1751,7 @@ void DefaultTool::selectionBooleanOp(int booleanOp)
     KisCanvas2 *kisCanvas = static_cast<KisCanvas2 *>(canvas());
     KIS_SAFE_ASSERT_RECOVER_RETURN(kisCanvas);
     const QTransform booleanWorkaroundTransform =
-        KritaUtils::pathShapeBooleanSpaceWorkaround(kisCanvas->image());
+        MinervaUtils::pathShapeBooleanSpaceWorkaround(kisCanvas->image());
 
     Q_FOREACH (KoShape *shape, editableShapes) {
         srcOutlines <<

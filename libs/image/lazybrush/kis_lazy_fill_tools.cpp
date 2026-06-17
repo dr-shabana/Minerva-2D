@@ -28,7 +28,7 @@
 #include "kis_sequential_iterator.h"
 #include <floodfill/kis_scanline_fill.h>
 
-#include "krita_utils.h"
+#include "minerva2d_utils.h"
 
 namespace KisLazyFillTools {
 
@@ -36,7 +36,7 @@ void normalizeAndInvertAlpha8Device(KisPaintDeviceSP dev, const QRect &rect)
 {
     quint8 maxPixel = std::numeric_limits<quint8>::min();
     quint8 minPixel = std::numeric_limits<quint8>::max();
-    KritaUtils::applyToAlpha8Device(dev, rect,
+    MinervaUtils::applyToAlpha8Device(dev, rect,
                                     [&minPixel, &maxPixel](quint8 pixel) {
                                         if (pixel > maxPixel) {
                                             maxPixel = pixel;
@@ -47,7 +47,7 @@ void normalizeAndInvertAlpha8Device(KisPaintDeviceSP dev, const QRect &rect)
                                     });
 
     const qreal scale = 255.0 / (maxPixel - minPixel);
-    KritaUtils::filterAlpha8Device(dev, rect,
+    MinervaUtils::filterAlpha8Device(dev, rect,
                                    [minPixel, scale](quint8 pixel) {
                                        return pow2(255 - quint8((pixel - minPixel) * scale)) / 255;
                                    });
@@ -57,7 +57,7 @@ void normalizeAlpha8Device(KisPaintDeviceSP dev, const QRect &rect)
 {
     quint8 maxPixel = std::numeric_limits<quint8>::min();
     quint8 minPixel = std::numeric_limits<quint8>::max();
-    KritaUtils::applyToAlpha8Device(dev, rect,
+    MinervaUtils::applyToAlpha8Device(dev, rect,
                                     [&minPixel, &maxPixel](quint8 pixel) {
                                         if (pixel > maxPixel) {
                                             maxPixel = pixel;
@@ -68,7 +68,7 @@ void normalizeAlpha8Device(KisPaintDeviceSP dev, const QRect &rect)
                                     });
 
     const qreal scale = 255.0 / (maxPixel - minPixel);
-    KritaUtils::filterAlpha8Device(dev, rect,
+    MinervaUtils::filterAlpha8Device(dev, rect,
                                    [minPixel, scale](quint8 pixel) {
                                        return (quint8((pixel - minPixel) * scale));
                                    });

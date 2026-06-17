@@ -1,0 +1,9 @@
+{
+    "Id": "SmallColorSelector",
+    "Type": "Service",
+    "X-KDE-Library": "kritasmallcolorselector",
+    "X-KDE-ServiceTypes": [
+        "Minerva/Dock"
+    ],
+    "X-Minerva-Version": "28"
+}

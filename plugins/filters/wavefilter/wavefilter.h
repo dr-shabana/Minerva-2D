@@ -1,5 +1,5 @@
 /*
- * This file is part of Krita
+ * This file is part of Minerva
  *
  * SPDX-FileCopyrightText: 2006 Cyrille Berger <cberger@cberger.net>
  *
@@ -15,12 +15,12 @@
 
 class KisConfigWidget;
 
-class KritaWaveFilter : public QObject
+class MinervaWaveFilter : public QObject
 {
     Q_OBJECT
 public:
-    KritaWaveFilter(QObject *parent, const QVariantList &);
-    ~KritaWaveFilter() override;
+    MinervaWaveFilter(QObject *parent, const QVariantList &);
+    ~MinervaWaveFilter() override;
 };
 
 class KisFilterWave : public KisFilter

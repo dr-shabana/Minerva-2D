@@ -1,5 +1,5 @@
 /*
- * This file is part of Krita
+ * This file is part of Minerva
  *
  * SPDX-FileCopyrightText: 2004 Cyrille Berger <cberger@cberger.net>
  *
@@ -12,12 +12,12 @@
 #include <QObject>
 #include <QVariant>
 
-class KritaImageEnhancement : public QObject
+class MinervaImageEnhancement : public QObject
 {
     Q_OBJECT
 public:
-    KritaImageEnhancement(QObject *parent, const QVariantList &);
-    ~KritaImageEnhancement() override;
+    MinervaImageEnhancement(QObject *parent, const QVariantList &);
+    ~MinervaImageEnhancement() override;
 };
 
 #endif

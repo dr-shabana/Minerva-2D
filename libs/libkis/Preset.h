@@ -23,7 +23,7 @@
  * @code
 from krita import *
 
-view = Krita.instance().activeWindow().activeView()
+view = Minerva.instance().activeWindow().activeView()
 preset = Preset(view.currentBrushPreset())
 
 print ( preset.toXML() )

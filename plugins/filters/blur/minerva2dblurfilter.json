@@ -1,0 +1,10 @@
+{
+    "Icon": "",
+    "Id": "Convolution Filters (Extension)",
+    "Type": "Service",
+    "X-KDE-Library": "kritablurfilter",
+    "X-KDE-ServiceTypes": [
+        "Minerva/Filter"
+    ],
+    "X-Minerva-Version": "28"
+}

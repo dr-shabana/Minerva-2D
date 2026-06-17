@@ -50,7 +50,7 @@ using LibraryResourceSP = KisLibraryResourcePointer<LibraryResource, destroyLibr
 
 void TestFontLibraryResourceUtils::initTestCase()
 {
-    qputenv("KRITA_NO_ASSERT_MSG", "1");
+    qputenv("MINERVA2D_NO_ASSERT_MSG", "1");
 }
 
 void TestFontLibraryResourceUtils::testCreation()

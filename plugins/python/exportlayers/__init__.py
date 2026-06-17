@@ -6,4 +6,4 @@ import krita
 from .exportlayers import ExportLayersExtension
 
 
-Scripter.addExtension(ExportLayersExtension(krita.Krita.instance()))
+Scripter.addExtension(ExportLayersExtension(minerva2d.Minerva.instance()))

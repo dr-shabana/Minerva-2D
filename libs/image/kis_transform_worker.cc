@@ -242,7 +242,7 @@ bool KisTransformWorker::runPartial(const QRect &processRect)
     Q_ASSERT_X(m_xscale != 0 && m_xscale_fixedPoint != 0, "KisTransformer::run() validation step", "xscale == 0");
     Q_ASSERT_X(m_yscale != 0 && m_yscale_fixedPoint != 0, "KisTransformer::run() validation step", "yscale == 0");
 
-    // Fallback safety line in case Krita is compiled without ASSERTS
+    // Fallback safety line in case Minerva is compiled without ASSERTS
     if (m_xscale == 0 || m_yscale == 0 || m_xscale_fixedPoint == 0 || m_yscale_fixedPoint == 0) return false;
 
     m_boundRect = processRect;
@@ -260,7 +260,7 @@ bool KisTransformWorker::runPartial(const QRect &processRect)
     qreal xtranslate = m_xtranslate;
     qreal ytranslate = m_ytranslate;
 
-    // Apply shearX/Y separately. In Krita it is demanded separately
+    // Apply shearX/Y separately. In Minerva it is demanded separately
     // most of the times.
     if (m_xshear != 0 || m_yshear != 0) {
         int portion = 50;
@@ -301,7 +301,7 @@ bool KisTransformWorker::runPartial(const QRect &processRect)
      * People who wo pixel art can set scale to something like 99.99% and it should
      * do the trick.
      *
-     * See: https://bugs.kde.org/show_bug.cgi?id=445714
+     * See: https://github.com/dr-shabana/Minerva-2D/issues/show_bug.cgi?id=445714
      */
     const bool simpleTransform =
         !m_forceSubPixelTranslation &&

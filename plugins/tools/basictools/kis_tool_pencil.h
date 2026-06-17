@@ -75,8 +75,8 @@ public:
         : KisToolPaintFactoryBase("KisToolPencil") {
         setToolTip(i18n("Freehand Path Tool"));
         setSection(ToolBoxSection::Shape);
-        setActivationShapeId(KRITA_TOOL_ACTIVATION_ID);
-        setIconName(koIconNameCStr("krita_tool_freehandvector"));
+        setActivationShapeId(MINERVA2D_TOOL_ACTIVATION_ID);
+        setIconName(koIconNameCStr("minerva2d_tool_freehandvector"));
         setPriority(9);
     }
 

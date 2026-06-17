@@ -39,7 +39,7 @@ const QPixmap &KisTemplate::loadPicture()
     if (QFile::exists(m_picture)) {
         QImage img(m_picture);
         if (img.isNull()) {
-            dbgKrita << "Couldn't find icon " << m_picture;
+            dbgMinerva << "Couldn't find icon " << m_picture;
             m_pixmap = QPixmap();
             return m_pixmap;
         }

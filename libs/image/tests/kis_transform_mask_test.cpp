@@ -23,7 +23,7 @@
 #include "kis_group_layer.h"
 #include "kis_paint_device_debug_utils.h"
 
-#include "KritaTransformMaskStubs.h"
+#include "MinervaTransformMaskStubs.h"
 #include "KisDumbTransformMaskParams.h"
 #include "config-limit-long-tests.h"
 
@@ -91,11 +91,11 @@ void KisTransformMaskTest::testSafeTransform()
     gc.setBrush(Qt::green);
     gc.drawPolygon(t2.dstClipPolygon());
 
-    dbgKrita << ppVar(testRect);
-    dbgKrita << ppVar(fwdPoly);
-    dbgKrita << ppVar(fwdRect);
-    dbgKrita << ppVar(bwdPoly);
-    dbgKrita << ppVar(bwdRect);
+    dbgMinerva << ppVar(testRect);
+    dbgMinerva << ppVar(fwdPoly);
+    dbgMinerva << ppVar(fwdRect);
+    dbgMinerva << ppVar(bwdPoly);
+    dbgMinerva << ppVar(bwdRect);
 
     gc.setBrush(Qt::yellow);
     gc.drawPolygon(testRect);
@@ -162,12 +162,12 @@ void KisTransformMaskTest::testSafeTransformSingleVanishingPoint()
     QRectF bwdNastyRect = t2.mapRectBackward(fwdNastyRect);
 
 /*
-    dbgKrita << ppVar(testRect);
-    dbgKrita << ppVar(fwdPoly);
-    dbgKrita << ppVar(fwdRect);
-    dbgKrita << ppVar(bwdPoly);
-    dbgKrita << ppVar(bwdRect);
-    dbgKrita << ppVar(bwdNastyRect);
+    dbgMinerva << ppVar(testRect);
+    dbgMinerva << ppVar(fwdPoly);
+    dbgMinerva << ppVar(fwdRect);
+    dbgMinerva << ppVar(bwdPoly);
+    dbgMinerva << ppVar(bwdRect);
+    dbgMinerva << ppVar(bwdNastyRect);
 */
 
     QPolygon ref;
@@ -228,7 +228,7 @@ bool doPartialTests(const QString &prefix, KisImageSP image, KisLayerSP paintLay
 
     // initial update of the mask to clear the unused portions of the projection
     // (it updates only when we call set dirty on the mask itself, which happens
-    // in Krita right after the addition of the mask onto a layer)
+    // in Minerva right after the addition of the mask onto a layer)
 
     mask->setDirty();
     image->waitForDone();

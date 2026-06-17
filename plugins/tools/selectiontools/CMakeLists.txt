@@ -20,7 +20,7 @@ generate_export_header(kritaselectiontools BASE_NAME kritaselectiontools)
 
 target_link_libraries(kritaselectiontools kritaui kritabasicflakes kritaimage)
 
-install(TARGETS kritaselectiontools  DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
+install(TARGETS kritaselectiontools  DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})
 
 install( FILES
         KisToolSelectPolygonal.action
@@ -31,5 +31,5 @@ install( FILES
         KisToolSelectOutline.action
         KisToolSelectPath.action
         KisToolSelectMagnetic.action
-    DESTINATION  ${KDE_INSTALL_DATADIR}/krita/actions
+    DESTINATION  ${KDE_INSTALL_DATADIR}/minerva2d/actions
 )

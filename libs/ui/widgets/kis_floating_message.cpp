@@ -1,5 +1,5 @@
 /*
- *  This file is part of KimageShop^WKrayon^WKrita
+ *  This file is part of KimageShop^WKrayon^WMinerva
  *
  *  SPDX-FileCopyrightText: 2004 Christian Muehlhaeuser <chris@chris.de>
  *  SPDX-FileCopyrightText: 2004-2006 Seb Ruiz <ruiz@kde.org>
@@ -58,7 +58,7 @@ KisFloatingMessage::KisFloatingMessage(const QString &message, QWidget *parent, 
     , m_priority(priority)
     , m_alignment(alignment)
 {
-    m_icon = KisIconUtils::loadIcon("krita-branding").pixmap(256, 256).toImage();
+    m_icon = KisIconUtils::loadIcon("minerva2d-branding").pixmap(256, 256).toImage();
 
     setWindowFlags(Qt::FramelessWindowHint | Qt::ToolTip | Qt::WindowTransparentForInput);
     setFocusPolicy(Qt::NoFocus);

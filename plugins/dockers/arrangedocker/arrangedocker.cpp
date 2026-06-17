@@ -12,7 +12,7 @@
 #include <KoDockFactoryBase.h>
 #include <KoDockRegistry.h>
 
-K_PLUGIN_FACTORY_WITH_JSON(ArrangeDockerPluginFactory, "krita_arrangedocker.json", registerPlugin<ArrangeDockerPlugin>();)
+K_PLUGIN_FACTORY_WITH_JSON(ArrangeDockerPluginFactory, "minerva2d_arrangedocker.json", registerPlugin<ArrangeDockerPlugin>();)
 
 class ArrangeDockerDockFactory : public KoDockFactoryBase {
 public:

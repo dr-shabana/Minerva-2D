@@ -35,14 +35,14 @@ public:
 
     void savePointState(KoPathPoint *point) {
         savedNodePoint1 = point->point();
-        savedControlPoint11 = KritaUtils::fetchControlPoint(point, true);
-        savedControlPoint12 = KritaUtils::fetchControlPoint(point, false);
+        savedControlPoint11 = MinervaUtils::fetchControlPoint(point, true);
+        savedControlPoint12 = MinervaUtils::fetchControlPoint(point, false);
     }
 
     void restorePointState(KoPathPoint *point) {
         point->setPoint(savedNodePoint1);
-        KritaUtils::restoreControlPoint(point, true, savedControlPoint11);
-        KritaUtils::restoreControlPoint(point, false, savedControlPoint12);
+        MinervaUtils::restoreControlPoint(point, true, savedControlPoint11);
+        MinervaUtils::restoreControlPoint(point, false, savedControlPoint12);
     }
 
     void mergePoints(KoPathPoint * p1, KoPathPoint * p2, KoPathPoint *dstPoint)
@@ -61,8 +61,8 @@ public:
         }
 
         dstPoint->setPoint(mergePosition);
-        KritaUtils::restoreControlPoint(dstPoint, true, mergedControlPoint1);
-        KritaUtils::restoreControlPoint(dstPoint, false, mergedControlPoint2);
+        MinervaUtils::restoreControlPoint(dstPoint, true, mergedControlPoint1);
+        MinervaUtils::restoreControlPoint(dstPoint, false, mergedControlPoint2);
     }
 
     bool closeSubpathMode() const {

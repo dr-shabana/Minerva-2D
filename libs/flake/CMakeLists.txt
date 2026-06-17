@@ -19,8 +19,8 @@ if (APPLE)
     set(DISABLE_CLIP_MASK_PAINTER_ON_MACOS TRUE)
 endif()
 
-# generate krita_xsimd_macos_workaround.h
-configure_file(krita_xsimd_macos_workaround.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/krita_xsimd_macos_workaround.h)
+# generate minerva2d_xsimd_macos_workaround.h
+configure_file(minerva2d_xsimd_macos_workaround.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/minerva2d_xsimd_macos_workaround.h)
 
 if(NOT DISABLE_CLIP_MASK_PAINTER_ON_MACOS)
     ko_compile_for_all_implementations(__per_arch_alpha_applicator_factory_objs xsimd/KoClipMaskApplicatorFactoryImpl.cpp)
@@ -304,7 +304,7 @@ target_link_libraries(kritaflake
 endif()
 
 set_target_properties(kritaflake PROPERTIES
-    VERSION ${GENERIC_KRITA_LIB_VERSION} SOVERSION ${GENERIC_KRITA_LIB_SOVERSION}
+    VERSION ${GENERIC_MINERVA2D_LIB_VERSION} SOVERSION ${GENERIC_MINERVA2D_LIB_SOVERSION}
 )
 
 install(TARGETS kritaflake  ${INSTALL_TARGETS_DEFAULT_ARGS})

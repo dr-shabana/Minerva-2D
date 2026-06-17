@@ -13,9 +13,9 @@ from dataclasses import dataclass
 
 def main_signdmg():
     parser = argparse.ArgumentParser(prog='macos signdmg',
-                                     description='Utility that receives krita.dmg and signs it')
-    parser.add_argument('krita_dmg', metavar='krita.dmg', type=dmgpath,
-                        help='krita.dmg to sign')
+                                     description='Utility that receives minerva2d.dmg and signs it')
+    parser.add_argument('minerva2d_dmg', metavar='minerva2d.dmg', type=dmgpath,
+                        help='minerva2d.dmg to sign')
     parser.add_argument('-s','--sign-identity',dest='sign_identity', metavar='<identity>',
                         help='Apple certificate name to use for signing', required=True)
     parser.add_argument('--store', action='store_true', help="Sign app for store submission")
@@ -30,24 +30,24 @@ def main_signdmg():
         if not args.bundle_version:
             print("## ERROR: if --store is provided, bundle_version is mandatory")
             exit(1)
-        print(f"## Signing {args.krita_dmg.stem} for store submission")
+        print(f"## Signing {args.minerva2d_dmg.stem} for store submission")
 
-    krita_dmg: pathlib.Path = args.krita_dmg
-    print(f'{krita_dmg} - {args.sign_identity}')
+    minerva2d_dmg: pathlib.Path = args.minerva2d_dmg
+    print(f'{minerva2d_dmg} - {args.sign_identity}')
 
-    #### Mount dmg to extract krita.app
-    krita_app = pathlib.Path.cwd().joinpath('krita.app')
-    if krita_app.exists():
-        shutil.rmtree(krita_app)
-    cmd = f"hdiutil attach {krita_dmg} -mountpoint {krita_dmg.stem}".split()
+    #### Mount dmg to extract minerva2d.app
+    minerva2d_app = pathlib.Path.cwd().joinpath('minerva2d.app')
+    if minerva2d_app.exists():
+        shutil.rmtree(minerva2d_app)
+    cmd = f"hdiutil attach {minerva2d_dmg} -mountpoint {minerva2d_dmg.stem}".split()
     subprocess.run(cmd)
-    cmd = f"rsync -prult --delete {krita_dmg.stem + os.sep + krita_app.name + os.sep} krita.app".split()
+    cmd = f"rsync -prult --delete {minerva2d_dmg.stem + os.sep + minerva2d_app.name + os.sep} minerva2d.app".split()
     subprocess.run(cmd)
-    subprocess.run(f"hdiutil detach {krita_dmg.stem}".split())
+    subprocess.run(f"hdiutil detach {minerva2d_dmg.stem}".split())
 
     #### FIX BUNDLE
     print("## Fixing bundle files permissions...")
-    fix_bundle(krita_app, args.bundle_version, args.store)
+    fix_bundle(minerva2d_app, args.bundle_version, args.store)
 
     #### SIGN BUNDLE
     print("## Starting bundle signning...")
@@ -58,16 +58,16 @@ def main_signdmg():
     else:
         entitlements_path = pathlib.Path('bundle_root', '..', '..', 'krita', 'packaging', 'macos').resolve()
 
-    sign_bundle(krita_app, signer, entitlements_path, args.store)
+    sign_bundle(minerva2d_app, signer, entitlements_path, args.store)
 
     #### VERIFY BUNDLE
     print("## Verifying all binary files signatures...")
-    if not verify_bundle(krita_app):
+    if not verify_bundle(minerva2d_app):
         print('Codesign errors!')
         exit(1)
 
     print('## Could not detect codesign problems, app is ready for notarization')
-    print(f"## {krita_app.name} signed")
+    print(f"## {minerva2d_app.name} signed")
 
     return
 
@@ -198,44 +198,44 @@ def fix_bundle(bundle_root: pathlib.Path, bundle_version: str="", for_store: boo
 
     if for_store:
         print("## Modifying bundle for store distribution...")
-        # TODO: store move embedded.provisionprofile to krita.app/Contents/
+        # TODO: store move embedded.provisionprofile to minerva2d.app/Contents/
 
         # get info from the packaged krita
-        # krita_version_full = subprocess.run([bundle_root.joinpath('Contents', 'MacOS', 'krita_version'), 'v']
+        # minerva2d_version_full = subprocess.run([bundle_root.joinpath('Contents', 'MacOS', 'minerva2d_version'), 'v']
         #                                     , capture_output=True, text=True).stdout
-        krita_version_full = subprocess.run([pathlib.Path(os.sep,'usr', 'libexec', 'PListBuddy')
+        minerva2d_version_full = subprocess.run([pathlib.Path(os.sep,'usr', 'libexec', 'PListBuddy')
                                                 , bundle_root.joinpath('Contents','Info.plist')
                                                 , '-c', f'Print :CFBundleLongVersionString']
                                                 , capture_output=True, text=True).stdout
-        krita_version = krita_version_full.replace("-", " ").split()[0]
+        minerva2d_version = minerva2d_version_full.replace("-", " ").split()[0]
 
-        # modify InfoPlist (krita_version, macosx_deployment_target)
-        fix_krita_plists(bundle_root, 'org.kde.krita', krita_version, bundle_version)
+        # modify InfoPlist (minerva2d_version, macosx_deployment_target)
+        fix_minerva2d_plists(bundle_root, 'org.kde.krita', minerva2d_version, bundle_version)
 
-        # clean dmg: removes krita_version, kritarunner fom MacOS
+        # clean dmg: removes minerva2d_version, minerva2drunner fom MacOS
         bundle_macos = bundle_root.joinpath('Contents', 'MacOS')
-        bundle_macos.joinpath('krita_version').unlink()
-        bundle_macos.joinpath('kritarunner').unlink()
+        bundle_macos.joinpath('minerva2d_version').unlink()
+        bundle_macos.joinpath('minerva2drunner').unlink()
 
     return
 
 
-def fix_krita_plists(krita_app: pathlib.Path, bundle_id: str, version: str, build_version: str):
+def fix_minerva2d_plists(minerva2d_app: pathlib.Path, bundle_id: str, version: str, build_version: str):
 
     macosx_deployment_target = '10.14' if version.startswith('5') else '12'
     appex_plugins_deployment_target = '10.15' # if user is in 10.14 the old thumbnailer will be used.
 
-    kritaspotlight = pathlib.Path(krita_app, 'Contents', 'Library','Spotlight', 'kritaspotlight.mdimporter', 'Contents')
-    kritaquicklook = pathlib.Path(krita_app, 'Contents', 'Library', 'Quicklook', 'kritaquicklook.qlgenerator', 'Contents')
-    krita_thumbnailer = pathlib.Path(krita_app, 'Contents', 'Plugins', 'krita-thumbnailer.appex', 'Contents')
-    krita_preview = pathlib.Path(krita_app, 'Contents', 'Plugins', 'krita-preview.appex', 'Contents')
+    kritaspotlight = pathlib.Path(minerva2d_app, 'Contents', 'Library','Spotlight', 'kritaspotlight.mdimporter', 'Contents')
+    kritaquicklook = pathlib.Path(minerva2d_app, 'Contents', 'Library', 'Quicklook', 'kritaquicklook.qlgenerator', 'Contents')
+    minerva2d_thumbnailer = pathlib.Path(minerva2d_app, 'Contents', 'Plugins', 'minerva2d-thumbnailer.appex', 'Contents')
+    minerva2d_preview = pathlib.Path(minerva2d_app, 'Contents', 'Plugins', 'minerva2d-preview.appex', 'Contents')
 
     plists = dict()
-    plists['krita'] = PlistBuddyModifier(pathlib.Path(krita_app, 'Contents', 'Info.plist'))
+    plists['krita'] = PlistBuddyModifier(pathlib.Path(minerva2d_app, 'Contents', 'Info.plist'))
     plists['spotlight'] = PlistBuddyModifier(pathlib.Path(kritaspotlight, 'Info.plist'))
     plists['quicklook'] = PlistBuddyModifier(pathlib.Path(kritaquicklook, 'Info.plist'))
-    plists['thumbnailer'] = PlistBuddyModifier(pathlib.Path(krita_thumbnailer, 'Info.plist'))
-    plists['preview'] = PlistBuddyModifier(pathlib.Path(krita_preview, 'Info.plist'))
+    plists['thumbnailer'] = PlistBuddyModifier(pathlib.Path(minerva2d_thumbnailer, 'Info.plist'))
+    plists['preview'] = PlistBuddyModifier(pathlib.Path(minerva2d_preview, 'Info.plist'))
 
     # modify plist contents
     plists['krita'].set('CFBundleIdentifier', bundle_id)
@@ -244,8 +244,8 @@ def fix_krita_plists(krita_app: pathlib.Path, bundle_id: str, version: str, buil
 
     plists['spotlight'].set('CFBundleIdentifier', bundle_id + '.spotlight')
     plists['quicklook'].set('CFBundleIdentifier', bundle_id + '.kritaquicklook')
-    plists['thumbnailer'].set('CFBundleIdentifier', bundle_id + '.krita-thumbnailer')
-    plists['preview'].set('CFBundleIdentifier', bundle_id + '.krita-preview')
+    plists['thumbnailer'].set('CFBundleIdentifier', bundle_id + '.minerva2d-thumbnailer')
+    plists['preview'].set('CFBundleIdentifier', bundle_id + '.minerva2d-preview')
 
     plists['spotlight'].set('LSMinimumSystemVersion', macosx_deployment_target)
     plists['quicklook'].set('LSMinimumSystemVersion', macosx_deployment_target)
@@ -288,9 +288,9 @@ def sign_bundle(bundle_root: pathlib.Path, signer: Codesigner, entitlements_path
     #       testing showed first find skipped frameworks on the previous script
     targets.extend([f'{f}/Versions/Current' for f in content_root.joinpath('Frameworks').glob('*.framework')])
 
-    # sign krita-python-libs
+    # sign minerva2d-python-libs
     # TODO: test,this should not be necessary as they are signed in the frameworks step
-    # targets.extend([f for f in content_root.joinpath('Frameworks').glob('krita-python-libs')
+    # targets.extend([f for f in content_root.joinpath('Frameworks').glob('minerva2d-python-libs')
 
     plugins_root = content_root.joinpath('PlugIns')
     targets.extend([f for f in plugins_root.rglob('*') if f.is_file()])
@@ -305,8 +305,8 @@ def sign_bundle(bundle_root: pathlib.Path, signer: Codesigner, entitlements_path
     signer.signtargets()
 
     plugin_targets = [
-        plugins_root.joinpath('krita-thumbnailer.appex')
-        ,plugins_root.joinpath('krita-preview.appex')
+        plugins_root.joinpath('minerva2d-thumbnailer.appex')
+        ,plugins_root.joinpath('minerva2d-preview.appex')
     ]
     signer.add(plugin_targets, entitlements.plugins)
 
@@ -319,19 +319,19 @@ def sign_bundle(bundle_root: pathlib.Path, signer: Codesigner, entitlements_path
 
     if not for_store:
         binary_targets = [
-            bundle_macos_root.joinpath('kritarunner')
-            , bundle_macos_root.joinpath('krita_version')
+            bundle_macos_root.joinpath('minerva2drunner')
+            , bundle_macos_root.joinpath('minerva2d_version')
         ]
         signer.add(binary_targets, entitlements.general)
 
     signer.signtargets()
 
-    # Finally sign krita and krita.app
-    krita_targets = [
+    # Finally sign krita and minerva2d.app
+    minerva2d_targets = [
         bundle_macos_root.joinpath('krita')
         , bundle_root
     ]
-    signer.add(krita_targets, entitlements.general)
+    signer.add(minerva2d_targets, entitlements.general)
     signer.signtargets()
 
     return
@@ -352,8 +352,8 @@ def verify_bundle(bundle: pathlib.Path) -> bool:
     check_pkg = [f for f in bundle.rglob('*.framework')]
     check_pkg.append(bundle.joinpath('Contents', 'Library', 'Quicklook', 'kritaquicklook.qlgenerator'))
     check_pkg.append(bundle.joinpath('Contents', 'Library', 'Spotlight', 'kritaspotlight.mdimporter'))
-    check_pkg.append(bundle.joinpath('Contents', 'PlugIns', 'krita-thumbnailer.appex'))
-    check_pkg.append(bundle.joinpath('Contents', 'PlugIns', 'krita-preview.appex'))
+    check_pkg.append(bundle.joinpath('Contents', 'PlugIns', 'minerva2d-thumbnailer.appex'))
+    check_pkg.append(bundle.joinpath('Contents', 'PlugIns', 'minerva2d-preview.appex'))
     check_pkg.append(bundle)
 
     pkg_error = list()

@@ -66,15 +66,15 @@ void adjustIfOnPolygonBoundary(const QPolygonF &poly, int polygonDirection, QPoi
 
 #ifdef SANITY_CHECKS
                 if (kisDistanceToLine(adjustedPoint, QLineF(p0, p1)) < 1e-4) {
-                    dbgKrita << ppVar(*pt);
-                    dbgKrita << ppVar(adjustedPoint);
-                    dbgKrita << ppVar(QLineF(p0, p1));
-                    dbgKrita << ppVar(salt);
+                    dbgMinerva << ppVar(*pt);
+                    dbgMinerva << ppVar(adjustedPoint);
+                    dbgMinerva << ppVar(QLineF(p0, p1));
+                    dbgMinerva << ppVar(salt);
 
-                    dbgKrita << ppVar(poly.containsPoint(*pt, Qt::OddEvenFill));
+                    dbgMinerva << ppVar(poly.containsPoint(*pt, Qt::OddEvenFill));
 
-                    dbgKrita << ppVar(kisDistanceToLine(*pt, QLineF(p0, p1)));
-                    dbgKrita << ppVar(kisDistanceToLine(adjustedPoint, QLineF(p0, p1)));
+                    dbgMinerva << ppVar(kisDistanceToLine(*pt, QLineF(p0, p1)));
+                    dbgMinerva << ppVar(kisDistanceToLine(adjustedPoint, QLineF(p0, p1)));
                 }
 
                 *pt = adjustedPoint;
@@ -650,7 +650,7 @@ QVector<QPointF> intersectTwoCircles(const QPointF &center1, qreal r1,
     if (centerDistance < qAbs(r1 - r2)) return points;
 
     if (centerDistance < qAbs(r1 - r2) + 0.001) {
-        dbgKrita << "Skipping intersection" << ppVar(center1) << ppVar(center2) << ppVar(r1) << ppVar(r2) << ppVar(centerDistance) << ppVar(qAbs(r1-r2));
+        dbgMinerva << "Skipping intersection" << ppVar(center1) << ppVar(center2) << ppVar(r1) << ppVar(r2) << ppVar(centerDistance) << ppVar(qAbs(r1-r2));
         return points;
     }
 

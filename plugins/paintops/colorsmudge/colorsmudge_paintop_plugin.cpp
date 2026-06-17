@@ -27,7 +27,7 @@ ColorSmudgePaintOpPlugin::ColorSmudgePaintOpPlugin(QObject* parent, const QVaria
     QObject(parent)
 {
     KisPaintOpRegistry::instance()->add(new KisSimplePaintOpFactory<KisColorSmudgeOp, KisColorSmudgeOpSettings, KisColorSmudgeOpSettingsWidget>(
-                                            "colorsmudge", i18n("Color Smudge"), KisPaintOpFactory::categoryStable(), "krita-colorsmudge.png",
+                                            "colorsmudge", i18n("Color Smudge"), KisPaintOpFactory::categoryStable(), "minerva2d-colorsmudge.png",
                                             QString(), QStringList(), 2)
                                        );
 }

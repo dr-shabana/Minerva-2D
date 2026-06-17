@@ -126,7 +126,7 @@ QImage KisPaintopPresetIconLibrary::hueTransform(QImage img)
         values[v] = qMax(qMin(int( (128.0 / qreal(255 - level)) *(v - level)+128.0), 255), 0);
     }
 
-    //This is very slow by Krita standards, but we cannot get hsv transforms, ad the image is only 200x200.
+    //This is very slow by Minerva standards, but we cannot get hsv transforms, ad the image is only 200x200.
     for (int x = 0; x < img.width(); x++) {
         for (int y = 0; y < img.height(); y++) {
             QColor c = img.pixelColor(x, y);

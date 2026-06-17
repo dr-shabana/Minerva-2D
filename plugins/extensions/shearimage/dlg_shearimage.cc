@@ -1,5 +1,5 @@
 /*
- *  dlg_shearimage.cc - part of KimageShop^WKrayon^WKrita
+ *  dlg_shearimage.cc - part of KimageShop^WKrayon^WMinerva
  *
  *  SPDX-FileCopyrightText: 2004 Michael Thaler <michael.thaler@physik.tu-muenchen.de>
  *

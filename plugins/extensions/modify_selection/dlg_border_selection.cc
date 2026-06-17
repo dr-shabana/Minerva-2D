@@ -1,5 +1,5 @@
 /*
- *  dlg_border_selection.cc - part of Krita
+ *  dlg_border_selection.cc - part of Minerva
  *
  *  SPDX-FileCopyrightText: 2006 Michael Thaler <michael.thaler@physik.tu-muenchen.de>
  *  SPDX-FileCopyrightText: 2013 Juan Palacios <jpalaciosdev@gmail.com>

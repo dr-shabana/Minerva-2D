@@ -22,7 +22,7 @@
 #include "palettedocker_dock.h"
 #include <KoDockRegistry.h>
 
-K_PLUGIN_FACTORY_WITH_JSON(PaletteDockerPluginFactory, "krita_palettedocker.json", registerPlugin<PaletteDockerPlugin>();)
+K_PLUGIN_FACTORY_WITH_JSON(PaletteDockerPluginFactory, "minerva2d_palettedocker.json", registerPlugin<PaletteDockerPlugin>();)
 
 class PaletteDockerDockFactory : public KoDockFactoryBase {
 public:

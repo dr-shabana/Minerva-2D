@@ -19,7 +19,7 @@
 
 void PRINT_COMPRESSION(const QString &title, quint32 src, quint32 dst) {
 
-    dbgKrita << title << dst << "/" << src << "\t|" << double(dst)/src;
+    dbgMinerva << title << dst << "/" << src << "\t|" << double(dst)/src;
 }
 
 
@@ -188,7 +188,7 @@ void KisCompressionTests::testOverflow(KisAbstractCompression *compression)
                                             output, outputSize);
 
     PRINT_COMPRESSION("Uncompressable:\t", srcSize, compressedBytes);
-    dbgKrita << "Max buffer size:" << outputSize;
+    dbgMinerva << "Max buffer size:" << outputSize;
     QVERIFY(compressedBytes <= outputSize);
 }
 

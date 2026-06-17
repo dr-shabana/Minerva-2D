@@ -1,6 +1,6 @@
-# [MOVED] Krita developer environment Docker image
+# [MOVED] Minerva developer environment Docker image
 
-The official Krita developers docker image has been moved into
+The official Minerva developers docker image has been moved into
 a separate repository:
 
-https://invent.kde.org/dkazakov/krita-docker-env
+https://invent.kde.org/dkazakov/minerva2d-docker-env

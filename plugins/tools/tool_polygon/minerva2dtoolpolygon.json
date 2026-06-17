@@ -1,0 +1,9 @@
+{
+    "Id": "Polygon Tool",
+    "Type": "Service",
+    "X-KDE-Library": "kritatoolpolygon",
+    "X-KDE-ServiceTypes": [
+        "Minerva/Tool"
+    ],
+    "X-Minerva-Version": "28"
+}

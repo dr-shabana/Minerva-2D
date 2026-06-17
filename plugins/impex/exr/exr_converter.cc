@@ -101,7 +101,7 @@ struct ExrPaintLayerInfo : public ExrLayerInfoBase {
         QString current;
     };
 
-    QList< Remap > remappedChannels; ///< this is used to store in the metadata the mapping between exr channel name, and channels used in Krita
+    QList< Remap > remappedChannels; ///< this is used to store in the metadata the mapping between exr channel name, and channels used in Minerva
     void updateImageType(ImageType channelType);
 };
 
@@ -513,7 +513,7 @@ ExrGroupLayerInfo* searchGroup(QList<ExrGroupLayerInfo>* groups, QStringList lis
 QDomDocument EXRConverter::Private::loadExtraLayersInfo(const Imf::Header &header)
 {
     const Imf::StringAttribute *layersInfoAttribute =
-            header.findTypedAttribute<Imf::StringAttribute>(EXR_KRITA_LAYERS);
+            header.findTypedAttribute<Imf::StringAttribute>(EXR_MINERVA2D_LAYERS);
 
     if (!layersInfoAttribute) return QDomDocument();
 
@@ -547,8 +547,8 @@ bool EXRConverter::Private::checkExtraLayersInfoConsistent(const QDomDocument &d
     bool result = (extraInfoLayers == exrLayerNames);
 
     if (!result) {
-        dbgKrita << "WARNING: Krita EXR extra layers info is inconsistent!";
-        dbgKrita << ppVar(extraInfoLayers.size()) << ppVar(exrLayerNames.size());
+        dbgMinerva << "WARNING: Minerva EXR extra layers info is inconsistent!";
+        dbgMinerva << ppVar(extraInfoLayers.size()) << ppVar(exrLayerNames.size());
 
         std::set<std::string>::const_iterator it1 = extraInfoLayers.begin();
         std::set<std::string>::const_iterator it2 = exrLayerNames.begin();
@@ -556,7 +556,7 @@ bool EXRConverter::Private::checkExtraLayersInfoConsistent(const QDomDocument &d
         std::set<std::string>::const_iterator end1 = extraInfoLayers.end();
 
         for (; it1 != end1; ++it1, ++it2) {
-            dbgKrita << it1->c_str() << it2->c_str();
+            dbgMinerva << it1->c_str() << it2->c_str();
         }
 
     }
@@ -583,7 +583,7 @@ KisImportExportErrorCode EXRConverter::decode(const QString &filename)
             dbgFile << "Attribute: " << it.name() << " type: " << it.attribute().typeName();
         }
 
-        // fetch Krita's extra layer info, which might have been stored previously
+        // fetch Minerva's extra layer info, which might have been stored previously
         QDomDocument extraLayersInfo = d->loadExtraLayersInfo(file.header());
 
         // Construct the list of LayerInfo
@@ -658,7 +658,7 @@ KisImportExportErrorCode EXRConverter::decode(const QString &filename)
             else if (!qname.contains('.')
                      || !qname.mid(1).contains('.')
                      || !qname.left(qname.size() - 1).contains('.')) {
-                warnFile << "Found a top-level channel that is not part of the rendered image" << qname << ". Krita will not load this channel.";
+                warnFile << "Found a top-level channel that is not part of the rendered image" << qname << ". Minerva will not load this channel.";
             }
         }
         if (topLevelRGBFound) {
@@ -690,7 +690,7 @@ KisImportExportErrorCode EXRConverter::decode(const QString &filename)
                 dbgFile << "\tchannel " << j.name() << "suffix" << layersuffix << " type = " << channel.type;
 
                 // Nuke writes the channels for sublayers as .red instead of .R, so convert those.
-                // See https://bugs.kde.org/show_bug.cgi?id=393771
+                // See https://github.com/dr-shabana/Minerva-2D/issues/show_bug.cgi?id=393771
                 if (topLevelChannelNames.contains("." + layersuffix)) {
                     layersuffix = layersuffix.at(0).toUpper();
                 }
@@ -834,7 +834,7 @@ KisImportExportErrorCode EXRConverter::decode(const QString &filename)
          *
          * NOTE: We cannot do that automatically, because the EXR may be imported
          * into the image as a layer, in which case the default color will create
-         * major issues. See https://bugs.kde.org/show_bug.cgi?id=427720
+         * major issues. See https://github.com/dr-shabana/Minerva-2D/issues/show_bug.cgi?id=427720
          */
         //d->image->setDefaultProjectionColor(KoColor(Qt::black, colorSpace));
 
@@ -903,7 +903,7 @@ KisImportExportErrorCode EXRConverter::decode(const QString &filename)
                         map["current"] = KisMetaData::Value(remap.current);
                         values.append(map);
                     }
-                    layer->metaData()->addEntry(KisMetaData::Entry(KisMetaData::SchemaRegistry::instance()->create("http://krita.org/exrchannels/1.0/" , "exrchannels"), "channelsmap", values));
+                    layer->metaData()->addEntry(KisMetaData::Entry(KisMetaData::SchemaRegistry::instance()->create("http://minerva2d.org/exrchannels/1.0/" , "exrchannels"), "channelsmap", values));
                 }
                 // Add the layer
                 KisGroupLayerSP groupLayerParent = (info.parent) ? info.parent->groupLayer : d->image->rootLayer();
@@ -918,7 +918,7 @@ KisImportExportErrorCode EXRConverter::decode(const QString &filename)
             QString msg =
                     i18nc("@info",
                           "The image contains pixels with zero alpha channel and non-zero "
-                          "color channels. Krita has modified those pixels to have "
+                          "color channels. Minerva has modified those pixels to have "
                           "at least some alpha. The initial values will <i>not</i> "
                           "be reverted on saving the image back."
                           "<br/><br/>"
@@ -926,7 +926,7 @@ KisImportExportErrorCode EXRConverter::decode(const QString &filename)
             if (d->showNotifications) {
                 QMessageBox::information(qApp->activeWindow(), i18nc("@title:window", "EXR image has been modified"), msg);
             } else {
-                warnKrita << "WARNING:" << msg;
+                warnMinerva << "WARNING:" << msg;
             }
         }
 
@@ -1262,9 +1262,9 @@ void EXRConverter::Private::recBuildPaintLayerSaveInfo(QList<ExrPaintLayerSaveIn
         if (KisPaintLayerSP paintLayer = dynamic_cast<KisPaintLayer*>(node.data())) {
             QMap<QString, QString> current2original;
 
-            if (paintLayer->metaData()->containsEntry(KisMetaData::SchemaRegistry::instance()->create("http://krita.org/exrchannels/1.0/" , "exrchannels"), "channelsmap")) {
+            if (paintLayer->metaData()->containsEntry(KisMetaData::SchemaRegistry::instance()->create("http://minerva2d.org/exrchannels/1.0/" , "exrchannels"), "channelsmap")) {
 
-                const KisMetaData::Entry& entry = paintLayer->metaData()->getEntry(KisMetaData::SchemaRegistry::instance()->create("http://krita.org/exrchannels/1.0/" , "exrchannels"), "channelsmap");
+                const KisMetaData::Entry& entry = paintLayer->metaData()->getEntry(KisMetaData::SchemaRegistry::instance()->create("http://minerva2d.org/exrchannels/1.0/" , "exrchannels"), "channelsmap");
                 QList< KisMetaData::Value> values = entry.value().asArray();
 
                 Q_FOREACH (const KisMetaData::Value& value, values) {
@@ -1370,7 +1370,7 @@ QString EXRConverter::Private::fetchExtraLayersInfo(QList<ExrPaintLayerSaveInfo>
         return QString();
     }
 
-    QDomDocument doc("krita-extra-layers-info");
+    QDomDocument doc("minerva2d-extra-layers-info");
     doc.appendChild(doc.createElement("root"));
     QDomElement rootElement = doc.documentElement();
 
@@ -1422,7 +1422,7 @@ KisImportExportErrorCode EXRConverter::buildFile(const QString &filename, KisGro
 
         QByteArray extraLayersInfo = d->fetchExtraLayersInfo(informationObjects).toUtf8();
         if (!extraLayersInfo.isNull()) {
-            header.insert(EXR_KRITA_LAYERS, Imf::StringAttribute(extraLayersInfo.constData()));
+            header.insert(EXR_MINERVA2D_LAYERS, Imf::StringAttribute(extraLayersInfo.constData()));
         }
         dbgFile << informationObjects.size() << " layers to save";
         Q_FOREACH (const ExrPaintLayerSaveInfo& info, informationObjects) {
@@ -1452,7 +1452,7 @@ KisImportExportErrorCode EXRConverter::buildFile(const QString &filename, KisGro
 
 void EXRConverter::cancel()
 {
-    warnKrita << "WARNING: Cancelling of an EXR loading is not supported!";
+    warnMinerva << "WARNING: Cancelling of an EXR loading is not supported!";
 }
 
 

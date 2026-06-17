@@ -122,7 +122,7 @@ void KisJPEGXLTest::testHDR()
     KisImageSP image = doc1->image();
 
     {
-        const auto outputFileName = TestUtil::fetchDataFileLazy("/results/hdr_cosmos01000_cicp9-16-0_lossless.kra");
+        const auto outputFileName = TestUtil::fetchDataFileLazy("/results/hdr_cosmos01000_cicp9-16-0_lossless.m2d");
 
         KisDocument *doc2 = KisPart::instance()->createDocument();
         doc2->setFileBatchMode(true);
@@ -168,7 +168,7 @@ void KisJPEGXLTest::testCmykWithLayers()
     QVERIFY(black);
 
     {
-        const QString outputFileName = TestUtil::fetchDataFileLazy("/results/cmyk-layers.kra");
+        const QString outputFileName = TestUtil::fetchDataFileLazy("/results/cmyk-layers.m2d");
 
         KisDocument *doc2 = KisPart::instance()->createDocument();
         doc2->setFileBatchMode(true);
@@ -235,7 +235,7 @@ void KisJPEGXLTest::testMultipage()
     QVERIFY(page3);
 
     {
-        const QString outputFileName = TestUtil::fetchDataFileLazy("/results/jxl-multipage.kra");
+        const QString outputFileName = TestUtil::fetchDataFileLazy("/results/jxl-multipage.m2d");
 
         KisDocument *doc2 = KisPart::instance()->createDocument();
         doc2->setFileBatchMode(true);

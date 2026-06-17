@@ -1,5 +1,5 @@
 /*
- * This file is part of Krita
+ * This file is part of Minerva
  *
  * SPDX-FileCopyrightText: Michael Thaler <michael.thaler@physik.tu-muenchen.de>
  *

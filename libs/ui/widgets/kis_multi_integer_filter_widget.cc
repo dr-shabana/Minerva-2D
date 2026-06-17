@@ -173,7 +173,7 @@ qint32 KisMultiIntegerFilterWidget::valueAt(qint32 i) {
         return m_integerWidgets[i]->value();
     }
     else {
-        warnKrita << "Trying to access integer widget" << i << "but there are only" << m_integerWidgets.size() << "widgets";
+        warnMinerva << "Trying to access integer widget" << i << "but there are only" << m_integerWidgets.size() << "widgets";
         return 0;
     }
 }

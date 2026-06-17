@@ -1,5 +1,5 @@
 /*
- *  LayerBox.cc - part of Krita aka Krayon aka KimageShop
+ *  LayerBox.cc - part of Minerva aka Krayon aka KimageShop
  *
  *  SPDX-FileCopyrightText: 2002 Patrick Julien <freak@codepimps.org>
  *  SPDX-FileCopyrightText: 2006 Gábor Lehel <illissius@gmail.com>
@@ -70,7 +70,7 @@
 #include "kis_selection_mask.h"
 #include "kis_config.h"
 #include "KisView.h"
-#include "krita_utils.h"
+#include "minerva2d_utils.h"
 #include "kis_color_label_selector_widget.h"
 #include "kis_signals_blocker.h"
 #include "kis_color_filter_combo.h"
@@ -333,7 +333,7 @@ LayerBox::LayerBox()
     thumbnailSizeSlider->setOrientation(Qt::Horizontal);
     thumbnailSizeSlider->setRange(20, 80);
 
-    thumbnailSizeSlider->setValue(cfg.layerThumbnailSize(false)); // grab this from the kritarc
+    thumbnailSizeSlider->setValue(cfg.layerThumbnailSize(false)); // grab this from the minerva2drc
 
     thumbnailSizeSlider->setMinimumHeight(20);
     thumbnailSizeSlider->setMinimumWidth(40);
@@ -1081,7 +1081,7 @@ void LayerBox::slotAdjustCurrentBeforeRemoveRows(const QModelIndex &parent, int 
      * is called, that is we make sure that Qt will never have to
      * adjust the position of the removed cursor.
      *
-     * See bug: https://bugs.kde.org/show_bug.cgi?id=345601
+     * See bug: https://github.com/dr-shabana/Minerva-2D/issues/show_bug.cgi?id=345601
      */
 
     QModelIndex currentIndex = m_wdgLayerBox->listLayers->currentIndex();
@@ -1115,7 +1115,7 @@ void LayerBox::slotNodeManagerChangedSelection(const KisNodeList &nodes)
 
     QItemSelectionModel *model = m_wdgLayerBox->listLayers->selectionModel();
 
-    if (KritaUtils::compareListsUnordered(newSelection, model->selectedRows())) {
+    if (MinervaUtils::compareListsUnordered(newSelection, model->selectedRows())) {
         return;
     }
 

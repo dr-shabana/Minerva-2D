@@ -1,5 +1,5 @@
 /*
- * This file is part of Krita
+ * This file is part of Minerva
  *
  *  SPDX-FileCopyrightText: 2006 Cyrille Berger <cberger@cberger.net>
  *  SPDX-FileCopyrightText: 2008 Benoit Jacob <jacob.benoit.1@gmail.com>

@@ -4,8 +4,8 @@
  *  SPDX-License-Identifier: GPL-2.0-or-later
  */
 
-#ifndef KRITA_KISCOLORSMUDGEINTERSTROKEDATA_H
-#define KRITA_KISCOLORSMUDGEINTERSTROKEDATA_H
+#ifndef MINERVA2D_KISCOLORSMUDGEINTERSTROKEDATA_H
+#define MINERVA2D_KISCOLORSMUDGEINTERSTROKEDATA_H
 
 #include "kis_types.h"
 #include "KisInterstrokeData.h"
@@ -41,4 +41,4 @@ private:
     QScopedPointer<KisTransaction> m_heightmapDeviceTransaction;
 };
 
-#endif //KRITA_KISCOLORSMUDGEINTERSTROKEDATA_H
+#endif //MINERVA2D_KISCOLORSMUDGEINTERSTROKEDATA_H

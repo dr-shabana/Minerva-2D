@@ -13,7 +13,7 @@
 #include <kis_types.h>
 
 /**
- * Selection represents a selection on Krita. A selection is
+ * Selection represents a selection on Minerva. A selection is
  * not necessarily associated with a particular Node or Image.
  * 
  * @code
@@ -217,7 +217,7 @@ public Q_SLOTS:
      * Selection.
      *
      * @param value the byte array representing the pixels. There must be enough bytes available.
-     * Krita will take the raw pointer from the QByteArray and start reading, not stopping before
+     * Minerva will take the raw pointer from the QByteArray and start reading, not stopping before
      * (w * h) bytes are read.
      *
      * @param x the x position to start writing from

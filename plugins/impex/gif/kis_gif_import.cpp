@@ -27,7 +27,7 @@
 
 #include "qgiflibhandler.h"
 
-K_PLUGIN_FACTORY_WITH_JSON(KisGIFImportFactory, "krita_gif_import.json", registerPlugin<KisGIFImport>();)
+K_PLUGIN_FACTORY_WITH_JSON(KisGIFImportFactory, "minerva2d_gif_import.json", registerPlugin<KisGIFImport>();)
 
 KisGIFImport::KisGIFImport(QObject *parent, const QVariantList &)
     : KisImportExportFilter(parent)

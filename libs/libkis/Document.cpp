@@ -1164,7 +1164,7 @@ bool Document::autosave()
 
 GuidesConfig *Document::guidesConfig()
 {
-    // The way Krita manage guides position is a little bit strange
+    // The way Minerva manage guides position is a little bit strange
     //
     // Let's say, set a guide at a position of 100pixels from UI
     // In KisGuidesConfig, the saved position (using KoUnit 'px') is set taking in account the

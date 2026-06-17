@@ -445,7 +445,7 @@ void PsdAdditionalLayerInfoBlock::writeLfx2BlockExImpl(QIODevice &io, const QDom
         writer.writePsdLfx2SectionEx(io, stylesXmlDoc);
 
     } catch (KisAslWriterUtils::ASLWriteException &e) {
-        warnKrita << "WARNING: Couldn't save layer style lfx2 block:" << PREPEND_METHOD(e.what());
+        warnMinerva << "WARNING: Couldn't save layer style lfx2 block:" << PREPEND_METHOD(e.what());
 
         // TODO: make this error recoverable!
         throw e;
@@ -549,7 +549,7 @@ void PsdAdditionalLayerInfoBlock::writePattBlockExImpl(QIODevice &io, const QDom
         writer.writePatterns();
 
     } catch (KisAslWriterUtils::ASLWriteException &e) {
-        warnKrita << "WARNING: Couldn't save layer style patterns block:" << PREPEND_METHOD(e.what());
+        warnMinerva << "WARNING: Couldn't save layer style patterns block:" << PREPEND_METHOD(e.what());
 
         // TODO: make this error recoverable!
         throw e;
@@ -592,7 +592,7 @@ void PsdAdditionalLayerInfoBlock::writeFillLayerBlockExImpl(QIODevice &io, const
         writer.writeFillLayerSectionEx(io, fillConfig);
 
     } catch (KisAslWriterUtils::ASLWriteException &e) {
-        warnKrita << "WARNING: Couldn't save fill layer block:" << PREPEND_METHOD(e.what());
+        warnMinerva << "WARNING: Couldn't save fill layer block:" << PREPEND_METHOD(e.what());
 
         // TODO: make this error recoverable!
         throw e;
@@ -698,7 +698,7 @@ void PsdAdditionalLayerInfoBlock::writeTypeToolImpl(QIODevice &io, psd_layer_typ
         writer.writeTypeToolObjectSettings(io, tool.textDataASLXML(), tool.textWarpXML(), tool.transform, tool.boundingBox);
 
     } catch (KisAslWriterUtils::ASLWriteException &e) {
-        warnKrita << "WARNING: Couldn't save text layer block:" << PREPEND_METHOD(e.what());
+        warnMinerva << "WARNING: Couldn't save text layer block:" << PREPEND_METHOD(e.what());
 
         // TODO: make this error recoverable!
         throw e;
@@ -717,7 +717,7 @@ void PsdAdditionalLayerInfoBlock::writeVectorStrokeDataImpl(QIODevice &io, const
         writer.writeVectorStrokeDataEx(io, vectorStroke);
 
     } catch (KisAslWriterUtils::ASLWriteException &e) {
-        warnKrita << "WARNING: Couldn't save vector stroke layer block:" << PREPEND_METHOD(e.what());
+        warnMinerva << "WARNING: Couldn't save vector stroke layer block:" << PREPEND_METHOD(e.what());
 
         // TODO: make this error recoverable!
         throw e;
@@ -760,7 +760,7 @@ void PsdAdditionalLayerInfoBlock::writeVectorOriginationDataImpl(QIODevice &io, 
         writer.writeVectorOriginationDataEx(io, vectorOrigination);
 
     } catch (KisAslWriterUtils::ASLWriteException &e) {
-        warnKrita << "WARNING: Couldn't save vector stroke layer block:" << PREPEND_METHOD(e.what());
+        warnMinerva << "WARNING: Couldn't save vector stroke layer block:" << PREPEND_METHOD(e.what());
 
         // TODO: make this error recoverable!
         throw e;

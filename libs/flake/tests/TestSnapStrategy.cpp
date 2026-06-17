@@ -338,7 +338,7 @@ void TestSnapStrategy::testBoundingBoxSnap()
 }
 void TestSnapStrategy::testLineGuideSnap()
 {
-    // KoGuides data has been moved into Krita
+    // KoGuides data has been moved into Minerva
     // 
     // //Testing so the snap does not work without horizontal and vertical lines
     // LineGuideSnapStrategy toTest;
@@ -525,7 +525,7 @@ void TestSnapStrategy::testBoundingBoxDecoration()
 
 void TestSnapStrategy::testLineGuideDecoration()
 {
-    // KoGuides data has been moved into Krita
+    // KoGuides data has been moved into Minerva
     //
     // //tests the decoration by making sure there are horizontal and vertical lines in the guidesData
     // LineGuideSnapStrategy toTest;

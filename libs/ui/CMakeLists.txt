@@ -495,7 +495,7 @@ endif()
 if (Mlt7_FOUND)
     set(kritaui_LIB_SRCS ${kritaui_LIB_SRCS}
         KisPlaybackEngineMLT.cpp
-        KisMLTProducerKrita.cpp
+        KisMLTProducerMinerva.cpp
     )
 endif()
 
@@ -664,7 +664,7 @@ if(WIN32)
     )
 endif()
 
-if (KRITA_USE_SURFACE_COLOR_MANAGEMENT_API)
+if (MINERVA2D_USE_SURFACE_COLOR_MANAGEMENT_API)
     set(kritaui_LIB_SRCS
         ${kritaui_LIB_SRCS}
 
@@ -698,7 +698,7 @@ target_link_libraries(kritaui
         Boost::boost
         ${PNG_LIBRARIES}
 
-        kritaversion
+        minerva2dversion
         kritaimpex
         kritacolor
         kritaimage
@@ -708,7 +708,7 @@ target_link_libraries(kritaui
         kritaresources
 )
 
-if (KRITA_USE_SURFACE_COLOR_MANAGEMENT_API)
+if (MINERVA2D_USE_SURFACE_COLOR_MANAGEMENT_API)
     target_link_libraries(kritaui
         PRIVATE
             kritasurfacecolormanagementapi
@@ -789,13 +789,13 @@ target_include_directories(kritaui
 )
 
 set_target_properties(kritaui
-    PROPERTIES VERSION ${GENERIC_KRITA_LIB_VERSION} SOVERSION ${GENERIC_KRITA_LIB_SOVERSION}
+    PROPERTIES VERSION ${GENERIC_MINERVA2D_LIB_VERSION} SOVERSION ${GENERIC_MINERVA2D_LIB_SOVERSION}
 )
 install(TARGETS kritaui  ${INSTALL_TARGETS_DEFAULT_ARGS})
 
 
 if (APPLE)
-    install(FILES osx.stylesheet DESTINATION ${KDE_INSTALL_DATADIR}/krita)
+    install(FILES osx.stylesheet DESTINATION ${KDE_INSTALL_DATADIR}/minerva2d)
 endif ()
 
 if (UNIX AND BUILD_TESTING AND ENABLE_UPDATERS)

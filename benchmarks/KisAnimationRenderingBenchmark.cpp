@@ -64,7 +64,7 @@ void runRenderingTest(KisImageSP image, int numCores, int numClones)
 
 void KisAnimationRenderingBenchmark::testCacheRendering()
 {
-    const QString fileName = TestUtil::fetchDataFileLazy("miloor_turntable_002.kra", true);
+    const QString fileName = TestUtil::fetchDataFileLazy("miloor_turntable_002.m2d", true);
     QVERIFY(QFileInfo(fileName).exists());
 
 

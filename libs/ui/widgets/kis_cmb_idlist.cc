@@ -1,5 +1,5 @@
 /*
- *  kis_cmb_idlist.cc - part of KImageShop/Krayon/Krita
+ *  kis_cmb_idlist.cc - part of KImageShop/Krayon/Minerva
  *
  *  SPDX-FileCopyrightText: 2005 Boudewijn Rempt (boud@valdyas.org)
  *

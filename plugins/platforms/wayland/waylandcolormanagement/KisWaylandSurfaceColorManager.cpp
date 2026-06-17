@@ -189,14 +189,14 @@ bool KisWaylandSurfaceColorManager::supportsSurfaceDescription(const KisSurfaceC
     }
 
     if (std::holds_alternative<KisSurfaceColorimetry::NamedPrimaries>(desc.colorSpace.primaries)) {
-        auto waylandPrimaries = primariesKritaToWayland(std::get<KisSurfaceColorimetry::NamedPrimaries>(desc.colorSpace.primaries));
+        auto waylandPrimaries = primariesMinervaToWayland(std::get<KisSurfaceColorimetry::NamedPrimaries>(desc.colorSpace.primaries));
 
         if (!m_waylandManager->isPrimariesNamedSupported(waylandPrimaries))
             return false;
     }
 
     if (std::holds_alternative<KisSurfaceColorimetry::NamedTransferFunction>(desc.colorSpace.transferFunction)) {
-        auto waylandTransferFunction = transferFunctionKritaToWayland(std::get<KisSurfaceColorimetry::NamedTransferFunction>(desc.colorSpace.transferFunction));
+        auto waylandTransferFunction = transferFunctionMinervaToWayland(std::get<KisSurfaceColorimetry::NamedTransferFunction>(desc.colorSpace.transferFunction));
 
         /**
          * For some obscure reason Wayland compositors implemented transfer_function_srgb
@@ -220,7 +220,7 @@ bool KisWaylandSurfaceColorManager::supportsSurfaceDescription(const KisSurfaceC
 
 bool KisWaylandSurfaceColorManager::supportsRenderIntent(const KisSurfaceColorimetry::RenderIntent &intent)
 {
-    auto waylandIntent = renderIntentKritaToWayland(intent);
+    auto waylandIntent = renderIntentMinervaToWayland(intent);
     return m_waylandManager->isIntentSupported(waylandIntent);
 }
 
@@ -240,7 +240,7 @@ QFuture<bool> KisWaylandSurfaceColorManager::setSurfaceDescription(const KisSurf
     using KisSurfaceColorimetry::WaylandSurfaceDescription;
 
     auto waylandDescription = WaylandSurfaceDescription::fromSurfaceDescription(desc);
-    auto waylandIntent = renderIntentKritaToWayland(intent);
+    auto waylandIntent = renderIntentMinervaToWayland(intent);
 
     if (!supportsSurfaceDescription(desc)) {
         qWarning() << "ERROR: KisWaylandSurfaceColorManager::setSurfaceDescription: unsupported surface description";
@@ -277,7 +277,7 @@ QFuture<bool> KisWaylandSurfaceColorManager::setSurfaceDescription(const KisSurf
             }
 
 #ifdef USE_KWIN_BUG_WORKAROUND
-            if (qEnvironmentVariableIsSet("KRITA_ENABLE_KWIN_INTENT_WORKAROUND")) {
+            if (qEnvironmentVariableIsSet("MINERVA2D_ENABLE_KWIN_INTENT_WORKAROUND")) {
                 // WARNING: KWin <= 6.4.4 doesn't handle intent changes properly
                 if (m_currentDescription && m_currentDescription == desc &&
                     m_renderingIntent && m_renderingIntent != intent) {

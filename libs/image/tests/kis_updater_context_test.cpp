@@ -231,7 +231,7 @@ void KisUpdaterContextTest::stressTestExclusiveJobs()
     context.waitForDone();
 
     QVERIFY(!counter);
-    dbgKrita << "Concurrency observed:" << hadConcurrency
+    dbgMinerva << "Concurrency observed:" << hadConcurrency
              << "/" << NUM_CHECKS * NUM_JOBS;
 }
 

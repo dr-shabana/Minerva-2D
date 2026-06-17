@@ -4,7 +4,7 @@
 # -----------------------------------------------------------------------------
 # SPDX-License-Identifier: GPL-3.0-or-later
 # -----------------------------------------------------------------------------
-# A Krita plugin designed to split channels from a layer to sub-layers
+# A Minerva plugin designed to split channels from a layer to sub-layers
 # . RGB
 # . CMY
 # . CMYK
@@ -80,7 +80,7 @@ except:
 
 PLUGIN_VERSION = '1.1.0'
 
-EXTENSION_ID = 'pykrita_channels2layers'
+EXTENSION_ID = 'pyminerva2d_channels2layers'
 PLUGIN_MENU_ENTRY = i18n('Channels to layers')
 PLUGIN_DIALOG_TITLE = "{0} - {1}".format(i18n('Channels to layers'), PLUGIN_VERSION)
 
@@ -875,7 +875,7 @@ class ChannelsToLayers(Extension):
 
 
     def translateDictKey(self, key, value):
-        """Translate key from dictionary (mostly internal Krita internal values) to human readable values"""
+        """Translate key from dictionary (mostly internal Minerva internal values) to human readable values"""
         returned = i18n('Unknown')
 
         if key in TRANSLATIONS_DICT.keys():
@@ -1471,5 +1471,5 @@ class ChannelsToLayers(Extension):
         return parentGroupLayer
 
 
-#ChannelsToLayers(Krita.instance()).process(Application.activeDocument(), Application.activeDocument().activeNode(), None)
-#ChannelsToLayers(Krita.instance()).action_triggered()
+#ChannelsToLayers(Minerva.instance()).process(Application.activeDocument(), Application.activeDocument().activeNode(), None)
+#ChannelsToLayers(Minerva.instance()).action_triggered()

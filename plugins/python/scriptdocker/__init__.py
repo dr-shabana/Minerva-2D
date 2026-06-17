@@ -6,7 +6,7 @@ import krita
 from .scriptdocker import ScriptDocker
 
 Application.addDockWidgetFactory(
-    krita.DockWidgetFactory("scriptdocker",
-                            krita.DockWidgetFactoryBase.DockRight,
+    minerva2d.DockWidgetFactory("scriptdocker",
+                            minerva2d.DockWidgetFactoryBase.DockRight,
                             ScriptDocker)
 )

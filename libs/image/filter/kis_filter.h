@@ -21,14 +21,14 @@
 #include "kritaimage_export.h"
 
 /**
- * Basic interface of a Krita filter.
+ * Basic interface of a Minerva filter.
  */
 class KRITAIMAGE_EXPORT KisFilter : public KisBaseProcessor
 {
 public:
 
     /**
-     * Construct a Krita filter
+     * Construct a Minerva filter
      */
     KisFilter(const KoID& id, const KoID & category, const QString & entry);
     ~KisFilter() override;

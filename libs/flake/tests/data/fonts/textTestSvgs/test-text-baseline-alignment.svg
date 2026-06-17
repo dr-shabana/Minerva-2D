@@ -3,7 +3,7 @@
 
     <g id="test">
 
-        <!-- This is the actual bounding box Krita calculates for this line box-->
+        <!-- This is the actual bounding box Minerva calculates for this line box-->
         <rect id="boundingRect" x="6" y="5" width="78" height="41"
             fill="none" stroke="red"/>
 

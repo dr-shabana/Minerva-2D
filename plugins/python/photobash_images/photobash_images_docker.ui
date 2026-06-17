@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>pykrita_plugin_ui</class>
+ <class>pyminerva2d_plugin_ui</class>
  <widget class="QWidget" name="photobashWidget">
   <property name="geometry">
    <rect>

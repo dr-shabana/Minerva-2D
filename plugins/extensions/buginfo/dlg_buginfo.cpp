@@ -9,7 +9,7 @@
 #include <klocalizedstring.h>
 #include <kis_debug.h>
 #include <opengl/kis_opengl.h>
-#include <KritaVersionWrapper.h>
+#include <MinervaVersionWrapper.h>
 #include <QSysInfo>
 #include <kis_image_config.h>
 #include <QScreen>
@@ -64,9 +64,9 @@ void DlgBugInfo::initialize()
 void DlgBugInfo::initializeText()
 {
     const QString configPath = QStandardPaths::writableLocation(QStandardPaths::GenericConfigLocation);
-    QSettings kritarc(configPath + QStringLiteral("/kritadisplayrc"), QSettings::IniFormat);
+    QSettings minerva2drc(configPath + QStringLiteral("/minerva2ddisplayrc"), QSettings::IniFormat);
 
-    QString info = infoText(kritarc);
+    QString info = infoText(minerva2drc);
 
     m_page->txtBugInfo->setText(info);
 }
@@ -107,9 +107,9 @@ QString DlgBugInfo::basicSystemInformationReplacementText()
 {
     QString info;
 
-    // Krita version info
-    info.append("Krita");
-    info.append("\n  Version: ").append(KritaVersionWrapper::versionString(true));
+    // Minerva version info
+    info.append("Minerva");
+    info.append("\n  Version: ").append(MinervaVersionWrapper::versionString(true));
     info.append("\n\n");
 
     info.append("Qt");
@@ -149,11 +149,11 @@ QString DlgBugInfo::basicSystemInformationReplacementText()
     return info;
 }
 
-QString DlgBugInfo::infoText(QSettings& kritarc)
+QString DlgBugInfo::infoText(QSettings& minerva2drc)
 {
     QString info;
 
-    if (!kritarc.value("LogUsage", true).toBool() || !QFileInfo(originalFileName()).exists()) {
+    if (!minerva2drc.value("LogUsage", true).toBool() || !QFileInfo(originalFileName()).exists()) {
 
         // NOTE: This is intentionally not translated!
 

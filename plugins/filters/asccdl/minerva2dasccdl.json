@@ -1,0 +1,9 @@
+{
+    "Id": "ASC CDL Color Balance",
+    "Type": "Service",
+    "X-KDE-Library": "kritaasccdl",
+    "X-KDE-ServiceTypes": [
+        "Minerva/Filter"
+    ],
+    "X-Minerva-Version": "40"
+}

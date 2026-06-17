@@ -24,7 +24,7 @@ target_link_libraries(kritalibkra kritaui)
 generate_export_header(kritalibkra BASE_NAME kritalibkra)
 
 set_target_properties(kritalibkra PROPERTIES
-    VERSION ${GENERIC_KRITA_LIB_VERSION} SOVERSION ${GENERIC_KRITA_LIB_SOVERSION}
+    VERSION ${GENERIC_MINERVA2D_LIB_VERSION} SOVERSION ${GENERIC_MINERVA2D_LIB_SOVERSION}
 )
 install(TARGETS kritalibkra ${INSTALL_TARGETS_DEFAULT_ARGS} )
 

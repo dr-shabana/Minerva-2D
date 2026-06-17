@@ -20,10 +20,10 @@
 #include <KisView.h>
 
 #include <strokes/kis_filter_stroke_strategy.h>
-#include <krita_utils.h>
+#include <minerva2d_utils.h>
 #include <KisGlobalResourcesInterface.h>
 
-#include "Krita.h"
+#include "Minerva.h"
 #include "Document.h"
 #include "InfoObject.h"
 #include "Node.h"
@@ -122,7 +122,7 @@ bool Filter::startFilter(Node *node, int x, int y, int w, int h)
 
     KisResourcesSnapshotSP resources = new KisResourcesSnapshot(image, node->node());
 
-    Document *document = Krita::instance()->activeDocument();
+    Document *document = Minerva::instance()->activeDocument();
     if (document && KisPart::instance()->viewCount(document->document()) > 0) {
         Q_FOREACH (QPointer<KisView> view, KisPart::instance()->views()) {
             if (view && view->document() == document->document()) {

@@ -1,6 +1,6 @@
-<schema prefix="exrchannels" uri="http://krita.org/exrchannels/1.0/">
+<schema prefix="exrchannels" uri="http://minerva2d.org/exrchannels/1.0/">
   <structures>
-    <structure name="channel" prefix="exrchannels" uri="http://krita.org/exrchannels/1.0/">
+    <structure name="channel" prefix="exrchannels" uri="http://minerva2d.org/exrchannels/1.0/">
       <text name="original" />
       <text name="current" />
     </structure>

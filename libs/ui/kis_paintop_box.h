@@ -1,5 +1,5 @@
 /*
- *  kis_paintop_box.h - part of KImageShop/Krayon/Krita
+ *  kis_paintop_box.h - part of KImageShop/Krayon/Minerva
  *
  *  SPDX-FileCopyrightText: 2004-2008 Boudewijn Rempt (boud@valdyas.org)
  *  SPDX-FileCopyrightText: 2011 Silvio Heinrich <plassy@web.de>

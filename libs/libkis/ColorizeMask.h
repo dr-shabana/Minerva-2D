@@ -21,8 +21,8 @@
  * to color in line art.
  *
 @code
-window = Krita.instance().activeWindow()
-doc = Krita.instance().createDocument(10, 3, "Test", "RGBA", "U8", "", 120.0)
+window = Minerva.instance().activeWindow()
+doc = Minerva.instance().createDocument(10, 3, "Test", "RGBA", "U8", "", 120.0)
 window.addView(doc)
 root = doc.rootNode();
 node = doc.createNode("layer", "paintLayer")
@@ -68,12 +68,12 @@ public:
 public Q_SLOTS:
 
     /**
-     * @brief type Krita has several types of nodes, split in layers and masks. Group
+     * @brief type Minerva has several types of nodes, split in layers and masks. Group
      * layers can contain other layers, any layer can contain masks.
      *
      * @return colorizemask
      *
-     * If the Node object isn't wrapping a valid Krita layer or mask object, and
+     * If the Node object isn't wrapping a valid Minerva layer or mask object, and
      * empty string is returned.
      */
     virtual QString type() const override;
@@ -126,7 +126,7 @@ public Q_SLOTS:
      * keystroke, the keystroke's original pixels are overwritten
      *
      * @param value the byte array representing the pixels. There must be enough bytes available.
-     * Krita will take the raw pointer from the QByteArray and start reading, not stopping before
+     * Minerva will take the raw pointer from the QByteArray and start reading, not stopping before
      * (number of channels * size of channel * w * h) bytes are read.
      *
      * @param color a ManagedColor to set keystrokes pixeldata for.

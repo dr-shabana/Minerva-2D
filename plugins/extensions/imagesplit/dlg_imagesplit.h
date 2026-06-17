@@ -1,5 +1,5 @@
 /*
- *  dlg_imagesplit.h -- part of KimageShop^WKrayon^WKrita
+ *  dlg_imagesplit.h -- part of KimageShop^WKrayon^WMinerva
  *
  *  SPDX-FileCopyrightText: 2009 Boudewijn Rempt <boud@valdyas.org>
  *  SPDX-FileCopyrightText: 2011 Srikanth Tiyyagura <srikanth.tulasiram@gmail.com>

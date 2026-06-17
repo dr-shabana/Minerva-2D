@@ -5,7 +5,7 @@
  */
 import QtQuick 2.15
 import QtQuick.Controls 2.15
-import org.krita.flake.text 1.0
+import org.minerva2d.flake.text 1.0
 
 SqueezedComboBox {
     id: root;

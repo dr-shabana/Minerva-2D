@@ -6,7 +6,7 @@
 
 #include "KisAndroidCrashHandler.h"
 
-#include <KritaVersionWrapper.h>
+#include <MinervaVersionWrapper.h>
 
 #include <QDateTime>
 #include <QMap>
@@ -32,7 +32,7 @@ static QMap<int, struct sigaction> g_old_actions;
 
 // we need to have keep this object alive
 static const std::string path =
-    QString(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + "/kritacrashlog.txt").toStdString();
+    QString(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + "/minerva2dcrashlog.txt").toStdString();
 static const char *crashlog_path = path.c_str();
 
 static bool g_handling_crash = false;
@@ -88,7 +88,7 @@ void dump_backtrace(siginfo_t *info, void *ucontext)
            << "Signal: " << info->si_signo << " (" << get_signal_name(info->si_signo) << ")"
            << " (Code: " << info->si_code << ")"
            << " Time: " << QDateTime::currentDateTimeUtc().toString().toStdString().c_str()
-           << " Version: " << KritaVersionWrapper::versionString(true).toStdString().c_str() << "\n";
+           << " Version: " << MinervaVersionWrapper::versionString(true).toStdString().c_str() << "\n";
     write(fd, header.str().c_str(), header.str().size());
 
     for (size_t i = 0; i < frames.size(); ++i) {

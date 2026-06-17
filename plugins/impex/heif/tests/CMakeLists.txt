@@ -1,5 +1,5 @@
 if(APPLE)
-    krita_add_broken_unit_test(
+    minerva2d_add_broken_unit_test(
         KisHeifTest.cpp
         TEST_NAME KisHeifTest
         LINK_LIBRARIES kritaui kritatestsdk

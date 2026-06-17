@@ -80,11 +80,11 @@ struct ShadowRectsData
         spreadNeedRect = spread_size ?
             KisLsUtils::growRectFromRadius(blurNeedRect, spread_size) : blurNeedRect;
 
-        // dbgKrita << ppVar(dstRect);
-        // dbgKrita << ppVar(srcRect);
-        // dbgKrita << ppVar(noiseNeedRect);
-        // dbgKrita << ppVar(blurNeedRect);
-        // dbgKrita << ppVar(spreadNeedRect);
+        // dbgMinerva << ppVar(dstRect);
+        // dbgMinerva << ppVar(srcRect);
+        // dbgMinerva << ppVar(noiseNeedRect);
+        // dbgMinerva << ppVar(blurNeedRect);
+        // dbgMinerva << ppVar(spreadNeedRect);
     }
 
     inline QRect finalNeedRect() const {

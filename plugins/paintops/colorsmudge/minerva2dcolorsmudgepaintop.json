@@ -1,0 +1,9 @@
+{
+    "Id": "Color Smudge Brush",
+    "Type": "Service",
+    "X-KDE-Library": "kritacolorsmudgepaintop",
+    "X-KDE-ServiceTypes": [
+        "Minerva/Paintop"
+    ],
+    "X-Minerva-Version": "28"
+}

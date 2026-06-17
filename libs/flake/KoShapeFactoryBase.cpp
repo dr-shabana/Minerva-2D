@@ -198,7 +198,7 @@ void KoShapeFactoryBase::getDeferredPlugin()
     if (d->deferredFactory) return;
 
     const QList<KoJsonTrader::Plugin> offers =
-        KoJsonTrader::instance()->query("Krita/Deferred", QString());
+        KoJsonTrader::instance()->query("Minerva/Deferred", QString());
     Q_ASSERT(offers.size() > 0);
 
     Q_FOREACH (const KoJsonTrader::Plugin &pluginLoader, offers) {

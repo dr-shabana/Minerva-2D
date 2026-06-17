@@ -4,8 +4,8 @@
  *  SPDX-License-Identifier: GPL-2.0-or-later
  */
 
-#ifndef KRITA_KISCOLORSMUDGESAMPLEUTILS_H
-#define KRITA_KISCOLORSMUDGESAMPLEUTILS_H
+#ifndef MINERVA2D_KISCOLORSMUDGESAMPLEUTILS_H
+#define MINERVA2D_KISCOLORSMUDGESAMPLEUTILS_H
 
 #include "kis_fixed_paint_device.h"
 #include "KoMixColorsOp.h"
@@ -219,4 +219,4 @@ void sampleColor(const QRect &srcRect,
 }
 
 
-#endif //KRITA_KISCOLORSMUDGESAMPLEUTILS_H
+#endif //MINERVA2D_KISCOLORSMUDGESAMPLEUTILS_H

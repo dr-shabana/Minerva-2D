@@ -28,7 +28,7 @@
 #include "kis_outline_generator.h"
 #include <kis_iterator_ng.h>
 #include "kis_lod_transform.h"
-#include "krita_utils.h"
+#include "minerva2d_utils.h"
 #include "kundo2command.h"
 
 
@@ -62,7 +62,7 @@ KisPixelSelection::KisPixelSelection(KisDefaultBoundsBaseSP defaultBounds, KisSe
     m_d->parentSelection = parentSelection;
 }
 
-KisPixelSelection::KisPixelSelection(const KisPixelSelection& rhs, KritaUtils::DeviceCopyMode copyMode)
+KisPixelSelection::KisPixelSelection(const KisPixelSelection& rhs, MinervaUtils::DeviceCopyMode copyMode)
         : KisPaintDevice(rhs, copyMode)
         , KisSelectionComponent(rhs)
         , m_d(new Private)
@@ -76,7 +76,7 @@ KisPixelSelection::KisPixelSelection(const KisPixelSelection& rhs, KritaUtils::D
     m_d->thumbnailImageTransform = rhs.m_d->thumbnailImageTransform;
 }
 
-KisPixelSelection::KisPixelSelection(const KisPaintDeviceSP copySource, KritaUtils::DeviceCopyMode copyMode, KisSelectionWSP parentSelection)
+KisPixelSelection::KisPixelSelection(const KisPaintDeviceSP copySource, MinervaUtils::DeviceCopyMode copyMode, KisSelectionWSP parentSelection)
     : KisPaintDevice(0, KoColorSpaceRegistry::instance()->alpha8(), copySource->defaultBounds())
     , m_d(new Private)
 {
@@ -272,7 +272,7 @@ void KisPixelSelection::intersectSelection(KisPixelSelectionSP selection)
     m_d->outlineCacheValid &= selection->outlineCacheValid();
 
     if (m_d->outlineCacheValid) {
-        m_d->outlineCache = KritaUtils::tryCloseTornSubpathsAfterIntersection(m_d->outlineCache & selection->outlineCache());
+        m_d->outlineCache = MinervaUtils::tryCloseTornSubpathsAfterIntersection(m_d->outlineCache & selection->outlineCache());
     }
 
     m_d->invalidateThumbnailImage();
@@ -438,7 +438,7 @@ QVector<QPolygon> KisPixelSelection::outline() const
     }
     catch(const std::bad_alloc&) {
         // Allocating so much memory failed, so we fall through to the slow option.
-        warnKrita << "KisPixelSelection::outline ran out of memory allocating" << width << "*" << height << "bytes.";
+        warnMinerva << "KisPixelSelection::outline ran out of memory allocating" << width << "*" << height << "bytes.";
     }
 
     return generator.outline(this, xOffset, yOffset, width, height);

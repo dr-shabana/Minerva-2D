@@ -353,14 +353,14 @@ GeneralTab::GeneralTab(QWidget *_parent, const char *_name)
     m_chkCanvasMessages->setChecked(cfg.showCanvasMessages());
 
     const QString configPath = QStandardPaths::writableLocation(QStandardPaths::GenericConfigLocation);
-    QSettings kritarc(configPath + QStringLiteral("/kritadisplayrc"), QSettings::IniFormat);
-    m_chkHiDPI->setChecked(kritarc.value("EnableHiDPI", true).toBool());
+    QSettings minerva2drc(configPath + QStringLiteral("/minerva2ddisplayrc"), QSettings::IniFormat);
+    m_chkHiDPI->setChecked(minerva2drc.value("EnableHiDPI", true).toBool());
 #if defined(Q_OS_WIN) && defined(HAVE_HIGH_DPI_SCALE_FACTOR_ROUNDING_POLICY)
-    m_chkHiDPIFractionalScaling->setChecked(kritarc.value("EnableHiDPIFractionalScaling", false).toBool());
+    m_chkHiDPIFractionalScaling->setChecked(minerva2drc.value("EnableHiDPIFractionalScaling", false).toBool());
 #else
     m_wdgHiDPIFractionalScaling->setEnabled(false);
 #endif
-    chkUsageLogging->setChecked(kritarc.value("LogUsage", true).toBool());
+    chkUsageLogging->setChecked(minerva2drc.value("LogUsage", true).toBool());
 
 
     //
@@ -549,7 +549,7 @@ GeneralTab::GeneralTab(QWidget *_parent, const char *_name)
 
     grpRestartMessage->setPixmap(
         grpRestartMessage->style()->standardIcon(QStyle::SP_MessageBoxWarning).pixmap(QSize(32, 32)));
-    grpRestartMessage->setText(i18n("You will need to Restart Krita for the changes to take an effect."));
+    grpRestartMessage->setText(i18n("You will need to Restart Minerva for the changes to take an effect."));
 
     grpAndroidWarningMessage->setVisible(false);
     grpAndroidWarningMessage->setPixmap(
@@ -692,8 +692,8 @@ GeneralTab::GeneralTab(QWidget *_parent, const char *_name)
             grpWindowsAppData->style()->standardIcon(QStyle::SP_MessageBoxInformation).pixmap(QSize(32, 32)));
         // Similar text is also used in KisViewManager.cpp
         grpWindowsAppData->setText(i18nc("@info resource folder",
-                                         "<p>You are using the Microsoft Store package version of Krita. "
-                                         "Even though Krita can be configured to place resources under the "
+                                         "<p>You are using the Microsoft Store package version of Minerva. "
+                                         "Even though Minerva can be configured to place resources under the "
                                          "user AppData location, Windows may actually store the files "
                                          "inside a private app location.</p>\n"
                                          "<p>You should check both locations to determine where "
@@ -1123,7 +1123,7 @@ void GeneralTab::getBackgroundImage()
 
     QImage image(fn);
     if (image.isNull()) {
-        QMessageBox::warning(this, i18nc("@title:window", "Krita"), i18n("%1 is not a valid image file!", fn));
+        QMessageBox::warning(this, i18nc("@title:window", "Minerva"), i18n("%1 is not a valid image file!", fn));
     }
     else {
         m_backgroundimage->setText(fn);
@@ -1323,7 +1323,7 @@ ColorSettingsTab::ColorSettingsTab(QWidget *parent, const char *name)
                  "a separate native surface for the canvas. It might cause "
                  "performance issues on some systems.</p>"
                  ""
-                 "<p>If color management is disabled, Krita will render "
+                 "<p>If color management is disabled, Minerva will render "
                  "the canvas into the surface of the main window, which "
                  "is considered sRGB. It will cause two limitations:"
                  ""
@@ -1730,17 +1730,17 @@ void TabletSettingsTab::setDefault()
         m_page->grpTabletApi->setVisible(false);
 #endif
 
-#if KRITA_QT_HAS_ANDROID_EMULATE_MOUSE_BUTTONS_FOR_PAGE_UP_DOWN
+#if MINERVA2D_QT_HAS_ANDROID_EMULATE_MOUSE_BUTTONS_FOR_PAGE_UP_DOWN
     m_page->chkUsePageUpDownMouseButtonEmulationWorkaround->setChecked(
         cfg.usePageUpDownMouseButtonEmulationWorkaround(true));
 #endif
 
-#if KRITA_QT_HAS_ANDROID_EMULATE_MOUSE_BUTTONS_FOR_HIGH_FUNCTION_KEYS
+#if MINERVA2D_QT_HAS_ANDROID_EMULATE_MOUSE_BUTTONS_FOR_HIGH_FUNCTION_KEYS
     m_page->chkUseHighFunctionKeyMouseButtonEmulationWorkaround->setChecked(
         cfg.useHighFunctionKeyMouseButtonEmulationWorkaround(true));
 #endif
 
-#if KRITA_QT_HAS_ANDROID_IGNORE_HISTORIC_TABLET_EVENTS
+#if MINERVA2D_QT_HAS_ANDROID_IGNORE_HISTORIC_TABLET_EVENTS
     m_page->chkUseIgnoreHistoricTabletEventsWorkaround->setChecked(cfg.useIgnoreHistoricTabletEventsWorkaround(true));
 #endif
 
@@ -1794,21 +1794,21 @@ TabletSettingsTab::TabletSettingsTab(QWidget* parent, const char* name): QWidget
 #endif
     m_page->chkUseTimestampsForBrushSpeed->setChecked(cfg.readEntry("useTimestampsForBrushSpeed", false));
 
-#if KRITA_QT_HAS_ANDROID_EMULATE_MOUSE_BUTTONS_FOR_PAGE_UP_DOWN
+#if MINERVA2D_QT_HAS_ANDROID_EMULATE_MOUSE_BUTTONS_FOR_PAGE_UP_DOWN
     m_page->chkUsePageUpDownMouseButtonEmulationWorkaround->setChecked(
         cfg.usePageUpDownMouseButtonEmulationWorkaround());
 #else
     m_page->chkUsePageUpDownMouseButtonEmulationWorkaround->hide();
 #endif
 
-#if KRITA_QT_HAS_ANDROID_EMULATE_MOUSE_BUTTONS_FOR_HIGH_FUNCTION_KEYS
+#if MINERVA2D_QT_HAS_ANDROID_EMULATE_MOUSE_BUTTONS_FOR_HIGH_FUNCTION_KEYS
     m_page->chkUseHighFunctionKeyMouseButtonEmulationWorkaround->setChecked(
         cfg.useHighFunctionKeyMouseButtonEmulationWorkaround());
 #else
     m_page->chkUseHighFunctionKeyMouseButtonEmulationWorkaround->hide();
 #endif
 
-#if KRITA_QT_HAS_ANDROID_IGNORE_HISTORIC_TABLET_EVENTS
+#if MINERVA2D_QT_HAS_ANDROID_IGNORE_HISTORIC_TABLET_EVENTS
     m_page->chkUseIgnoreHistoricTabletEventsWorkaround->setChecked(cfg.useIgnoreHistoricTabletEventsWorkaround());
 #else
     m_page->chkUseIgnoreHistoricTabletEventsWorkaround->hide();
@@ -2015,7 +2015,7 @@ void PerformanceTab::load(bool requestDefault)
     sliderThreadsLimit->setValue(m_lastUsedThreadsLimit);
     sliderFrameClonesLimit->setValue(m_lastUsedClonesLimit);
 
-#if KRITA_QT_HAS_UPDATE_COMPRESSION_PATCH
+#if MINERVA2D_QT_HAS_UPDATE_COMPRESSION_PATCH
     m_frameRateModel->data.set(std::make_tuple(cfg.detectFpsLimit(requestDefault), cfg.fpsLimit(requestDefault)));
 #else
     m_frameRateModel->data.set(std::make_tuple(false, cfg.fpsLimit(requestDefault)));
@@ -2054,7 +2054,7 @@ void PerformanceTab::load(bool requestDefault)
     }
 
     {
-        KConfigGroup group = KSharedConfig::openConfig()->group("KritaTransform/KisToolMove");
+        KConfigGroup group = KSharedConfig::openConfig()->group("MinervaTransform/KisToolMove");
         chkMoveToolForceLodMode->setChecked(group.readEntry("forceLodMode", false));
     }
 
@@ -2083,7 +2083,7 @@ void PerformanceTab::save()
     cfg.setFrameRenderingClones(sliderFrameClonesLimit->value());
     cfg.setFrameRenderingTimeout(sliderFrameTimeout->value() * 1000);
     cfg.setFpsLimit(std::get<int>(*m_frameRateModel->data));
-#if KRITA_QT_HAS_UPDATE_COMPRESSION_PATCH
+#if MINERVA2D_QT_HAS_UPDATE_COMPRESSION_PATCH
     cfg.setDetectFpsLimit(std::get<bool>(*m_frameRateModel->data));
 #endif
 
@@ -2113,7 +2113,7 @@ void PerformanceTab::save()
     }
 
     {
-        KConfigGroup group = KSharedConfig::openConfig()->group("KritaTransform/KisToolMove");
+        KConfigGroup group = KSharedConfig::openConfig()->group("MinervaTransform/KisToolMove");
         group.writeEntry("forceLodMode", chkMoveToolForceLodMode->isChecked());
     }
 
@@ -2300,7 +2300,7 @@ DisplaySettingsTab::DisplaySettingsTab(QWidget *parent, const char *name)
             cmbPreferredXcbGlApi->addItem(*currentXcbGlProvider == KisOpenGL::XCB_EGL ? eglCurrent : eglNotCurrent, KisOpenGL::XCB_EGL);
 
             cmbPreferredXcbGlApi->setToolTip(i18nc("@info:tooltip",
-                "<p>If you are using Krita on X11 or XWayland and experience slowness, "
+                "<p>If you are using Minerva on X11 or XWayland and experience slowness, "
                 "try switching between EGL and GLX</p>"));
 
             KisOpenGL::XcbGLProviderProtocol preferredValue =
@@ -2652,7 +2652,7 @@ KisDlgPreferences::KisDlgPreferences(QWidget* parent, const char* name)
     : KPageDialog(parent)
 {
     Q_UNUSED(name);
-    setWindowTitle(i18n("Configure Krita"));
+    setWindowTitle(i18n("Configure Minerva"));
     setStandardButtons(QDialogButtonBox::Ok | QDialogButtonBox::Cancel | QDialogButtonBox::RestoreDefaults);
 
     setFaceType(KPageDialog::List);
@@ -3068,12 +3068,12 @@ bool KisDlgPreferences::editPreferences(std::optional<PageDesc>page)
         cfg.setPasteFormat(m_general->m_pasteFormatGroup.checkedId());
 
         const QString configPath = QStandardPaths::writableLocation(QStandardPaths::GenericConfigLocation);
-        QSettings kritarc(configPath + QStringLiteral("/kritadisplayrc"), QSettings::IniFormat);
-        kritarc.setValue("EnableHiDPI", m_general->m_chkHiDPI->isChecked());
+        QSettings minerva2drc(configPath + QStringLiteral("/minerva2ddisplayrc"), QSettings::IniFormat);
+        minerva2drc.setValue("EnableHiDPI", m_general->m_chkHiDPI->isChecked());
 #if defined(Q_OS_WIN) && defined(HAVE_HIGH_DPI_SCALE_FACTOR_ROUNDING_POLICY)
-        kritarc.setValue("EnableHiDPIFractionalScaling", m_general->m_chkHiDPIFractionalScaling->isChecked());
+        minerva2drc.setValue("EnableHiDPIFractionalScaling", m_general->m_chkHiDPIFractionalScaling->isChecked());
 #endif
-        kritarc.setValue("LogUsage", m_general->chkUsageLogging->isChecked());
+        minerva2drc.setValue("LogUsage", m_general->chkUsageLogging->isChecked());
 
         cfg.setToolOptionsInDocker(m_general->toolOptionsInDocker());
 
@@ -3173,17 +3173,17 @@ bool KisDlgPreferences::editPreferences(std::optional<PageDesc>page)
 #endif
         cfg.writeEntry<bool>("useTimestampsForBrushSpeed", m_tabletSettings->m_page->chkUseTimestampsForBrushSpeed->isChecked());
 
-#if KRITA_QT_HAS_ANDROID_EMULATE_MOUSE_BUTTONS_FOR_PAGE_UP_DOWN
+#if MINERVA2D_QT_HAS_ANDROID_EMULATE_MOUSE_BUTTONS_FOR_PAGE_UP_DOWN
         cfg.setUsePageUpDownMouseButtonEmulationWorkaround(
             m_tabletSettings->m_page->chkUsePageUpDownMouseButtonEmulationWorkaround->isChecked());
 #endif
 
-#if KRITA_QT_HAS_ANDROID_EMULATE_MOUSE_BUTTONS_FOR_HIGH_FUNCTION_KEYS
+#if MINERVA2D_QT_HAS_ANDROID_EMULATE_MOUSE_BUTTONS_FOR_HIGH_FUNCTION_KEYS
         cfg.setUseHighFunctionKeyMouseButtonEmulationWorkaround(
             m_tabletSettings->m_page->chkUseHighFunctionKeyMouseButtonEmulationWorkaround->isChecked());
 #endif
 
-#if KRITA_QT_HAS_ANDROID_IGNORE_HISTORIC_TABLET_EVENTS
+#if MINERVA2D_QT_HAS_ANDROID_IGNORE_HISTORIC_TABLET_EVENTS
         cfg.setUseIgnoreHistoricTabletEventsWorkaround(
             m_tabletSettings->m_page->chkUseIgnoreHistoricTabletEventsWorkaround->isChecked());
 #endif
@@ -3213,7 +3213,7 @@ bool KisDlgPreferences::editPreferences(std::optional<PageDesc>page)
 
         cfg.setUseOpenGLTextureBuffer(m_displaySettings->chkUseTextureBuffer->isChecked());
         cfg.setOpenGLFilteringMode(m_displaySettings->cmbFilterMode->currentIndex());
-        cfg.setRootSurfaceFormat(&kritarc, indexToFormat(m_displaySettings->cmbPreferedRootSurfaceFormat->currentIndex()));
+        cfg.setRootSurfaceFormat(&minerva2drc, indexToFormat(m_displaySettings->cmbPreferedRootSurfaceFormat->currentIndex()));
         cfg.setAssistantsDrawMode(indexToAssistantDrawMode(m_displaySettings->cmbAssistantsDrawMode->currentIndex()));
 
         cfg.setCheckSize(m_displaySettings->intCheckSize->value());

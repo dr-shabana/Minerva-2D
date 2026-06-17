@@ -75,7 +75,7 @@ protected:
  * A "simple" class for ensuring a queued connection is never executed in
  * a recursive event processing loop.
  *
- * In several places in Krita we use queued signals for synchronizing
+ * In several places in Minerva we use queued signals for synchronizing
  * image changes to the GUI. In such cases we use Qt::DirectConnection
  * to fetch some data from the image, wrap that into the signal
  * parameters and post at the events queue as a queued signal. Obviously,

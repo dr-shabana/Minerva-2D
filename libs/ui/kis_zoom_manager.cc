@@ -28,7 +28,7 @@
 #include "kis_image.h"
 #include "kis_statusbar.h"
 #include "kis_config.h"
-#include "krita_utils.h"
+#include "minerva2d_utils.h"
 #include "kis_canvas_resource_provider.h"
 #include "kis_snap_line_strategy.h"
 #include "kis_guides_config.h"
@@ -254,7 +254,7 @@ void KisZoomManager::slotUpdateGuiAfterZoomChange()
         m_view->viewManager()->
                 showFloatingZoomMessage(
                     i18nc("floating message about zoom", "Zoom: %1 %",
-                          KritaUtils::prettyFormatReal(humanZoom)));
+                          MinervaUtils::prettyFormatReal(humanZoom)));
     }
 
     updateCurrentZoomResource();

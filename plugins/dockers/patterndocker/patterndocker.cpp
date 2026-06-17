@@ -12,7 +12,7 @@
 #include <KoDockFactoryBase.h>
 #include <KoDockRegistry.h>
 
-K_PLUGIN_FACTORY_WITH_JSON(PatternDockerPluginFactory, "krita_patterndocker.json", registerPlugin<PatternDockerPlugin>();)
+K_PLUGIN_FACTORY_WITH_JSON(PatternDockerPluginFactory, "minerva2d_patterndocker.json", registerPlugin<PatternDockerPlugin>();)
 
 class PatternDockerDockFactory : public KoDockFactoryBase {
 public:

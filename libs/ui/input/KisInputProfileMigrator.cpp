@@ -26,7 +26,7 @@ KisInputProfileMigrator5To6::KisInputProfileMigrator5To6(KisInputProfileManager 
     // FIXME(sh_zam): Should we declare this as "the default profile" somewhere?
     const QStringList profiles =
         KoResourcePaths::findAllAssets("data", "input/*.profile", KoResourcePaths::Recursive)
-            .filter("kritadefault.profile");
+            .filter("minerva2ddefault.profile");
 
     if (!profiles.empty()) {
         // This will be from the install location, so *has* to be the default, see KoResourcePaths for the

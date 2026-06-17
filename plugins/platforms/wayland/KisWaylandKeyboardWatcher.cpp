@@ -18,7 +18,7 @@
 #include <unistd.h>
 
 
-#if KRITA_QT_HAS_XKB_CONTEXT_IN_NATIVE_INTERFACE
+#if MINERVA2D_QT_HAS_XKB_CONTEXT_IN_NATIVE_INTERFACE
 
 #include <QGuiApplication>
 #include <QtWaylandClient/private/qwaylandintegration_p.h>
@@ -29,10 +29,10 @@
 #include <QtWaylandClient/private/qwaylandintegration_p.h>
 #include <QtWaylandClient/private/qwaylanddisplay_p.h>
 
-#endif /* KRITA_QT_HAS_XKB_CONTEXT_IN_NATIVE_INTERFACE */
+#endif /* MINERVA2D_QT_HAS_XKB_CONTEXT_IN_NATIVE_INTERFACE */
 
 static struct xkb_context *getGlobalXkbContextFromQt() {
-#if KRITA_QT_HAS_XKB_CONTEXT_IN_NATIVE_INTERFACE
+#if MINERVA2D_QT_HAS_XKB_CONTEXT_IN_NATIVE_INTERFACE
     auto waylandApp = qGuiApp->nativeInterface<QNativeInterface::QWaylandApplication>();
     return waylandApp ? waylandApp->xkbContext() : nullptr;
 #else
@@ -43,7 +43,7 @@ static struct xkb_context *getGlobalXkbContextFromQt() {
     QPlatformIntegration *platformIntegration = QGuiApplicationPrivate::platformIntegration();
     auto waylandIntegration = dynamic_cast<QtWaylandClient::QWaylandIntegration *>(platformIntegration);
     return waylandIntegration ? waylandIntegration->display()->xkbContext() : nullptr;
-#endif /* KRITA_QT_HAS_XKB_CONTEXT_IN_NATIVE_INTERFACE */
+#endif /* MINERVA2D_QT_HAS_XKB_CONTEXT_IN_NATIVE_INTERFACE */
 }
 
 /****************************************************************************/

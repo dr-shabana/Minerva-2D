@@ -72,21 +72,21 @@ if (Python_Interpreter_FOUND)
         set(_all_prefix_paths ${CMAKE_PREFIX_PATH})
     endif()
 
-    unset(KRITA_PYTHONPATH_V4 CACHE)
-    unset(KRITA_PYTHONPATH_V5 CACHE)
+    unset(MINERVA2D_PYTHONPATH_V4 CACHE)
+    unset(MINERVA2D_PYTHONPATH_V5 CACHE)
 
     cmake_path(CONVERT "${_all_prefix_paths}" TO_CMAKE_PATH_LIST _python_prefix_path_v4 NORMALIZE)
     list(REMOVE_ITEM _python_prefix_path_v4 "")
-    list(TRANSFORM _python_prefix_path_v4 APPEND "/lib/krita-python-libs")
-    cmake_path(CONVERT "${_python_prefix_path_v4}" TO_NATIVE_PATH_LIST KRITA_PYTHONPATH_V4 NORMALIZE)
+    list(TRANSFORM _python_prefix_path_v4 APPEND "/lib/minerva2d-python-libs")
+    cmake_path(CONVERT "${_python_prefix_path_v4}" TO_NATIVE_PATH_LIST MINERVA2D_PYTHONPATH_V4 NORMALIZE)
 
     cmake_path(CONVERT "${_all_prefix_paths}" TO_CMAKE_PATH_LIST _python_prefix_path_v5 NORMALIZE)
     list(REMOVE_ITEM _python_prefix_path_v5 "")
     list(TRANSFORM _python_prefix_path_v5 APPEND "/lib/python${Python_VERSION_MAJOR}.${Python_VERSION_MINOR}/site-packages")
-    cmake_path(CONVERT "${_python_prefix_path_v5}" TO_NATIVE_PATH_LIST KRITA_PYTHONPATH_V5 NORMALIZE)
+    cmake_path(CONVERT "${_python_prefix_path_v5}" TO_NATIVE_PATH_LIST MINERVA2D_PYTHONPATH_V5 NORMALIZE)
 
-    message(STATUS "Krita site-packages directories for SIP v4: ${KRITA_PYTHONPATH_V4}")
-    message(STATUS "Krita site-packages directories for SIP v5+: ${KRITA_PYTHONPATH_V5}")
+    message(STATUS "Minerva site-packages directories for SIP v4: ${MINERVA2D_PYTHONPATH_V4}")
+    message(STATUS "Minerva site-packages directories for SIP v5+: ${MINERVA2D_PYTHONPATH_V5}")
 endif()
 
 find_package_handle_standard_args(PythonLibrary DEFAULT_MSG PYTHON_LIBRARY PYTHON_INCLUDE_DIRS PYTHON_INCLUDE_PATH)

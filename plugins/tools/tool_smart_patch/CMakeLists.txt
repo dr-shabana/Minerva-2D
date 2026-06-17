@@ -13,5 +13,5 @@ generate_export_header(kritatoolSmartPatch BASE_NAME kritatoolSmartPatch)
 
 target_link_libraries(kritatoolSmartPatch kritaui)
 
-install(TARGETS kritatoolSmartPatch  DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
+install(TARGETS kritatoolSmartPatch  DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})
 

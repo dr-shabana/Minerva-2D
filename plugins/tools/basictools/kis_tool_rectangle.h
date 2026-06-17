@@ -1,5 +1,5 @@
 /*
- *  kis_tool_rectangle.h - part of KImageShop^WKrayon^WKrita
+ *  kis_tool_rectangle.h - part of KImageShop^WKrayon^WMinerva
  *
  *  SPDX-FileCopyrightText: 1999 Michael Koch <koch@kde.org>
  *  SPDX-FileCopyrightText: 2002 Patrick Julien <freak@codepimps.org>
@@ -46,12 +46,12 @@ class KisToolRectangleFactory : public KisToolPaintFactoryBase
 
 public:
     KisToolRectangleFactory()
-            : KisToolPaintFactoryBase("KritaShape/KisToolRectangle") {
+            : KisToolPaintFactoryBase("MinervaShape/KisToolRectangle") {
         setToolTip(i18n("Rectangle Tool"));
 
         setSection(ToolBoxSection::Shape);
-        setActivationShapeId(KRITA_TOOL_ACTIVATION_ID);
-        setIconName(koIconNameCStr("krita_tool_rectangle"));
+        setActivationShapeId(MINERVA2D_TOOL_ACTIVATION_ID);
+        setIconName(koIconNameCStr("minerva2d_tool_rectangle"));
         //setShortcut( Qt::Key_F6 );
         setPriority(2);
     }

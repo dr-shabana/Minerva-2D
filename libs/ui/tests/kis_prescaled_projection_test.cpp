@@ -406,7 +406,7 @@ void KisPrescaledProjectionTest::testUpdates()
         t.projection.recalculateCache(info);
     }
 
-    QEXPECT_FAIL("", "Testcase for bug: https://bugs.kde.org/show_bug.cgi?id=289915", Continue);
+    QEXPECT_FAIL("", "Testcase for bug: https://github.com/dr-shabana/Minerva-2D/issues/show_bug.cgi?id=289915", Continue);
     QVERIFY(TestUtil::checkQImage(t.projection.prescaledQImage(),
                                   "prescaled_projection_test",
                                   "testUpdates",

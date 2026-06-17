@@ -1,5 +1,5 @@
 /*
- *  kis_control_frame.h - part of Krita
+ *  kis_control_frame.h - part of Minerva
  *
  *  SPDX-FileCopyrightText: 1999 Matthias Elter <elter@kde.org>
  *  SPDX-FileCopyrightText: 2003 Patrick Julien <freak@codepimps.org>

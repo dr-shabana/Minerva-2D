@@ -7,7 +7,7 @@
 #include <QColor>
 #include <QVector>
 
-#include <KritaVersionWrapper.h>
+#include <MinervaVersionWrapper.h>
 #include <ManagedColor.h>
 
 #include <KoColorSpaceRegistry.h>

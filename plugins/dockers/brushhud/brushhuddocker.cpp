@@ -13,7 +13,7 @@
 #include <KoDockRegistry.h>
 
 
-K_PLUGIN_FACTORY_WITH_JSON(PresetDockerPluginFactory, "krita_brushhud.json", registerPlugin<BrushHudDockerPlugin>();)
+K_PLUGIN_FACTORY_WITH_JSON(PresetDockerPluginFactory, "minerva2d_brushhud.json", registerPlugin<BrushHudDockerPlugin>();)
 
 class BrushHudDockerDockFactory : public KoDockFactoryBase {
 public:

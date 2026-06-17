@@ -18,7 +18,7 @@
 #include <KoID.h>
 #include <KisMainWindow.h>
 
-// krita/image
+// minerva2d/image
 #include <filter/kis_filter.h>
 #include <filter/kis_filter_registry.h>
 #include <filter/kis_filter_configuration.h>
@@ -30,7 +30,7 @@
 #include <kis_image_config.h>
 #include <KisAnimAutoKey.h>
 
-// krita/ui
+// minerva2d/ui
 #include "KisViewManager.h"
 #include "kis_canvas2.h"
 #include <kis_bookmarked_configuration_manager.h>
@@ -40,7 +40,7 @@
 #include "kis_canvas_resource_provider.h"
 #include "dialogs/kis_dlg_filter.h"
 #include "strokes/kis_filter_stroke_strategy.h"
-#include "krita_utils.h"
+#include "minerva2d_utils.h"
 #include "kis_icon_utils.h"
 #include "kis_layer_utils.h"
 #include <KisGlobalResourcesInterface.h>
@@ -124,7 +124,7 @@ void KisFilterManager::insertFilter(const QString & filterName)
     Q_ASSERT(filter);
 
     if (d->filters2Action.contains(filter.data())) {
-        warnKrita << "Filter" << filterName << " has already been inserted";
+        warnMinerva << "Filter" << filterName << " has already been inserted";
         return;
     }
 
@@ -140,7 +140,7 @@ void KisFilterManager::insertFilter(const QString & filterName)
     action->setDefaultShortcut(filter->shortcut());
     action->setActivationFlags(KisAction::ACTIVE_DEVICE);
 
-    d->actionManager->addAction(QString("krita_filter_%1").arg(filterName), action);
+    d->actionManager->addAction(QString("minerva2d_filter_%1").arg(filterName), action);
     d->filters2Action[filter.data()] = action;
 
     actionMenu->addAction(action);
@@ -221,7 +221,7 @@ void KisFilterManager::showFilterDialog(const QString &filterId, KisFilterConfig
 
     KisPaintDeviceSP dev = d->view->activeNode()->paintDevice();
     if (!dev) {
-        warnKrita << "KisFilterManager::showFilterDialog(): Filtering was requested for illegal active layer!" << d->view->activeNode();
+        warnMinerva << "KisFilterManager::showFilterDialog(): Filtering was requested for illegal active layer!" << d->view->activeNode();
         return;
     }
 
@@ -231,7 +231,7 @@ void KisFilterManager::showFilterDialog(const QString &filterId, KisFilterConfig
         // Warning bells!
         if (filter->colorSpaceIndependence() == TO_LAB16) {
             if (QMessageBox::warning(d->view->mainWindow(),
-                                     i18nc("@title:window", "Krita"),
+                                     i18nc("@title:window", "Minerva"),
                                      i18n("The %1 filter will convert your %2 data to 16-bit L*a*b* and vice versa. ",
                                           filter->name(),
                                           dev->colorSpace()->name()),
@@ -240,7 +240,7 @@ void KisFilterManager::showFilterDialog(const QString &filterId, KisFilterConfig
 
         } else if (filter->colorSpaceIndependence() == TO_RGBA16) {
             if (QMessageBox::warning(d->view->mainWindow(),
-                                     i18nc("@title:window", "Krita"),
+                                     i18nc("@title:window", "Minerva"),
                                      i18n("The %1 filter will convert your %2 data to 16-bit RGBA and vice versa. ",
                                           filter->name() , dev->colorSpace()->name()),
                                      QMessageBox::Ok | QMessageBox::Cancel, QMessageBox::Ok)

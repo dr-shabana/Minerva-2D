@@ -13,7 +13,7 @@
 #include "libkis.h"
 
 /**
- * The GridConfig class encapsulates a Krita Guides configuration.
+ * The GridConfig class encapsulates a Minerva Guides configuration.
  *
  */
 class KRITALIBKIS_EXPORT GridConfig : public QObject

@@ -15,7 +15,7 @@
 
 /**
  * @brief The KisDialogStateSaver class saves state for the specified
- * widget in the kritarc file and restores it. Simply call saveState
+ * widget in the minerva2drc file and restores it. Simply call saveState
  * in your dialog's destructor, and use restoreState in the constructor.
  */
 namespace KisDialogStateSaver

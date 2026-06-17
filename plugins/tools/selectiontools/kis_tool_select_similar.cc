@@ -25,7 +25,7 @@
 #include "kis_iterator_ng.h"
 #include "kis_selection_tool_helper.h"
 #include "kis_slider_spin_box.h"
-#include "krita_utils.h"
+#include "minerva2d_utils.h"
 #include <KoPointerEvent.h>
 #include <kis_cursor.h>
 #include <kis_paint_device.h>

@@ -14,11 +14,11 @@ kis_add_library(kritasketchpaintop MODULE ${kritasketchpaintop_SOURCES})
 
 target_link_libraries(kritasketchpaintop kritalibpaintop)
 
-install(TARGETS kritasketchpaintop  DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
+install(TARGETS kritasketchpaintop  DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})
 
 
 ########### install files ###############
 
-install( FILES  krita-sketch.png DESTINATION ${KDE_INSTALL_DATADIR}/krita/images)
+install( FILES  minerva2d-sketch.png DESTINATION ${KDE_INSTALL_DATADIR}/minerva2d/images)
 
 

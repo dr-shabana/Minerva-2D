@@ -1,5 +1,5 @@
 /*
- * shearimage.cc -- Part of Krita
+ * shearimage.cc -- Part of Minerva
  *
  * SPDX-FileCopyrightText: 2004 Michael Thaler <michael.thaler@physik.tu-muenchen.de>
  *

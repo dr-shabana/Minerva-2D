@@ -9,7 +9,7 @@
 
 #include <kis_paint_device.h>
 #include <kis_painter.h>
-#include "krita_utils.h"
+#include "minerva2d_utils.h"
 #include "kis_transform_worker.h"
 #include "kis_filter_strategy.h"
 #include <KoColorSpaceRegistry.h>
@@ -46,8 +46,8 @@ KisImageThumbnailStrokeStrategyBase::~KisImageThumbnailStrokeStrategyBase()
 
 void KisImageThumbnailStrokeStrategyBase::initStrokeCallback()
 {
-    using KritaUtils::addJobConcurrent;
-    using KritaUtils::addJobSequential;
+    using MinervaUtils::addJobConcurrent;
+    using MinervaUtils::addJobSequential;
     KisIdleTaskStrokeStrategy::initStrokeCallback();
 
     const QRect imageRect = m_device->defaultBounds()->bounds();
@@ -62,7 +62,7 @@ void KisImageThumbnailStrokeStrategyBase::initStrokeCallback()
 
     QVector<KisRunnableStrokeJobData*> jobs;
 
-    QVector<QRect> tileRects = KritaUtils::splitRectIntoPatches(QRect(QPoint(0, 0), m_thumbnailOversampledSize), QSize(thumbnailTileDim, thumbnailTileDim));
+    QVector<QRect> tileRects = MinervaUtils::splitRectIntoPatches(QRect(QPoint(0, 0), m_thumbnailOversampledSize), QSize(thumbnailTileDim, thumbnailTileDim));
     Q_FOREACH (const QRect &rc, tileRects) {
         addJobConcurrent(jobs, [this, tileRect = rc] () {
             //we aren't going to use oversample capability of createThumbnailDevice because it recomputes exact bounds for each small patch, which is

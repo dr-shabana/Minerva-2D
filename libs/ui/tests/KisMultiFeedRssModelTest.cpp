@@ -57,7 +57,7 @@ void KisMultiFeedRssModelTest::testAddFeed_data()
     bool fileOpened = rssFile1.open(QIODevice::ReadOnly | QIODevice::Text);
     QVERIFY(fileOpened);
 
-    QString urlFeed1("https://krita.org/en/feed/");
+    QString urlFeed1("https://minerva2d.org/en/feed/");
 
     // create reply data
     FakeReplyData replyFeed1;
@@ -73,7 +73,7 @@ void KisMultiFeedRssModelTest::testAddFeed_data()
     fileOpened = rssFile2.open(QIODevice::ReadOnly | QIODevice::Text);
     QVERIFY(fileOpened);
 
-    QString urlFeed2("https://krita.org/en/another_feed/");
+    QString urlFeed2("https://minerva2d.org/en/another_feed/");
 
     FakeReplyData replyFeed2;
     replyFeed2.url = QUrl(urlFeed2);
@@ -139,7 +139,7 @@ void KisMultiFeedRssModelTest::testRemoveFeed_data()
     bool fileOpened = rssFile1.open(QIODevice::ReadOnly | QIODevice::Text);
     QVERIFY(fileOpened);
 
-    QString urlFeed1("https://krita.org/en/feed/");
+    QString urlFeed1("https://minerva2d.org/en/feed/");
 
     // create reply data
     FakeReplyData replyFeed1;
@@ -154,7 +154,7 @@ void KisMultiFeedRssModelTest::testRemoveFeed_data()
     fileOpened = rssFile2.open(QIODevice::ReadOnly | QIODevice::Text);
     QVERIFY(fileOpened);
 
-    QString urlFeed2("https://krita.org/en/another_feed/");
+    QString urlFeed2("https://minerva2d.org/en/another_feed/");
 
     FakeReplyData replyFeed2;
     replyFeed2.url = QUrl(urlFeed2);

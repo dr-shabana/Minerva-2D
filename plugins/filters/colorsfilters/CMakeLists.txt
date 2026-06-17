@@ -19,7 +19,7 @@ ki18n_wrap_ui(kritacolorsfilters_SOURCES
 
 kis_add_library(kritacolorsfilters MODULE ${kritacolorsfilters_SOURCES})
 target_link_libraries(kritacolorsfilters kritaui)
-install(TARGETS kritacolorsfilters  DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
+install(TARGETS kritacolorsfilters  DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})
 install( FILES
     colorsfilters.action
-DESTINATION  ${KDE_INSTALL_DATADIR}/krita/actions)
+DESTINATION  ${KDE_INSTALL_DATADIR}/minerva2d/actions)

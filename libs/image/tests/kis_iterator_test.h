@@ -15,7 +15,7 @@ class KisIteratorTest : public QObject
 {
     Q_OBJECT
 
-    /// re-activate once bug https://bugs.kde.org/show_bug.cgi?id=276198 is fixed.
+    /// re-activate once bug https://github.com/dr-shabana/Minerva-2D/issues/show_bug.cgi?id=276198 is fixed.
     void stressTest();
 
 private:

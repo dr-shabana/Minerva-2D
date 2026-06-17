@@ -398,7 +398,7 @@ void KisDlgLayerStyle::slotLoadStyle()
             if (!storage->valid()) {
                 qWarning() << "Attempted to import an invalid layer style library!" << filename;
                 QMessageBox::warning(this,
-                                     i18nc("@title:window", "Krita"),
+                                     i18nc("@title:window", "Minerva"),
                                      i18n("Could not load layer style library %1.", filename));
                 return;
             }
@@ -768,11 +768,11 @@ void StylesSelector::loadCollection(const QString &fileName)
 {
     Q_UNUSED(fileName);
     // TODO: RESOURCES: implement or remove
-    warnKrita << "Collection cannot be loaded, because we do not use collections now; please use KisAslStorage instead.";
+    warnMinerva << "Collection cannot be loaded, because we do not use collections now; please use KisAslStorage instead.";
 
     /*
     if (!QFileInfo(fileName).exists()) {
-        warnKrita << "Loaded style collection doesn't exist!";
+        warnMinerva << "Loaded style collection doesn't exist!";
         return;
     }
 

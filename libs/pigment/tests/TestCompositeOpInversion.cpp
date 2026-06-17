@@ -26,9 +26,9 @@
 
 #include "kis_debug.h"
 
-#include <krita_container_utils.h>
+#include <minerva2d_container_utils.h>
 
-namespace KritaUtils
+namespace MinervaUtils
 {
 template <typename C, typename T>
 bool containerContains(const C &container, T &&value) {
@@ -698,10 +698,10 @@ void TestCompositeOpInversion::testU16ModesConsistent_data()
     skipCompositeOps.push_back(COMPOSITE_ERASE);
     skipCompositeOps.push_back(COMPOSITE_COPY);
 
-    KritaUtils::filterContainer(ids,
+    MinervaUtils::filterContainer(ids,
         [&] (const std::pair<QString, TestFlags> &op) {
             return !op.second.testFlag(HDR) &&
-                !KritaUtils::containerContains(skipCompositeOps, op.first);
+                !MinervaUtils::containerContains(skipCompositeOps, op.first);
     });
 
     addAllOps(ids);
@@ -1160,7 +1160,7 @@ void TestCompositeOpInversion::testPreservesStrictSdrRange_data()
 {
     auto ids = generateCompositeOpIdSet();
 
-    KritaUtils::filterContainer(ids,
+    MinervaUtils::filterContainer(ids,
                                 [&] (const std::pair<QString, TestFlags> &op) {
                                     return op.second.testFlag(SdrRangePreserveStable) ||
                                         op.second.testFlag(SdrRangePreserveUnstable);
@@ -1178,7 +1178,7 @@ void TestCompositeOpInversion::testPreservesLooseSdrRange_data()
 {
     auto ids = generateCompositeOpIdSet();
 
-    KritaUtils::filterContainer(ids,
+    MinervaUtils::filterContainer(ids,
                                 [&] (const std::pair<QString, TestFlags> &op) {
                                     return op.second.testFlag(SdrRangePreserveStable);
                                 });
@@ -1195,7 +1195,7 @@ void TestCompositeOpInversion::testSrcCannotMakeNegative_data()
 {
     auto ids = generateCompositeOpIdSet();
 
-    KritaUtils::filterContainer(ids,
+    MinervaUtils::filterContainer(ids,
                                 [&] (const std::pair<QString, TestFlags> &op) {
                                     return op.second.testFlag(SrcCannotMakeNegative) &&
                                         // we don't test RGB blendmodes for this
@@ -1246,7 +1246,7 @@ void TestCompositeOpInversion::testPreservesStrictNegative_data()
 {
     auto ids = generateCompositeOpIdSet();
 
-    KritaUtils::filterContainer(ids,
+    MinervaUtils::filterContainer(ids,
                                 [&] (const std::pair<QString, TestFlags> &op) {
                                     return op.second.testFlag(PositivePreserveStable) ||
                                         op.second.testFlag(PositivePreserveUnstable);
@@ -1265,7 +1265,7 @@ void TestCompositeOpInversion::testPreservesLooseNegative_data()
 {
     auto ids = generateCompositeOpIdSet();
 
-    KritaUtils::filterContainer(ids,
+    MinervaUtils::filterContainer(ids,
                                 [&] (const std::pair<QString, TestFlags> &op) {
                                     return op.second.testFlag(PositivePreserveStable);
                                 });

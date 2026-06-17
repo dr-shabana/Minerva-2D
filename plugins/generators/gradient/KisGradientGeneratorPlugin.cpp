@@ -1,5 +1,5 @@
 /*
- * KDE. Krita Project.
+ * KDE. Minerva Project.
  *
  * SPDX-FileCopyrightText: 2020 Deif Lou <ginoba@gmail.com>
  *
@@ -12,7 +12,7 @@
 #include "KisGradientGenerator.h"
 #include "KisGradientGeneratorPlugin.h"
 
-K_PLUGIN_FACTORY_WITH_JSON(KritaGradientGeneratorFactory, "KritaGradientGenerator.json", registerPlugin<KisGradientGeneratorPlugin>();)
+K_PLUGIN_FACTORY_WITH_JSON(MinervaGradientGeneratorFactory, "MinervaGradientGenerator.json", registerPlugin<KisGradientGeneratorPlugin>();)
 
 KisGradientGeneratorPlugin::KisGradientGeneratorPlugin(QObject *parent, const QVariantList &)
         : QObject(parent)

@@ -1,5 +1,5 @@
 /*
- *  kis_tool_rectangle.cc - part of Krita
+ *  kis_tool_rectangle.cc - part of Minerva
  *
  *  SPDX-FileCopyrightText: 2000 John Califf <jcaliff@compuzone.net>
  *  SPDX-FileCopyrightText: 2002 Patrick Julien <freak@codepimps.org>

@@ -118,7 +118,7 @@ public:
          *
          * Theoretically, it can cause some version inconsistency problems if
          * the version of fontconfig on the host differs from the version
-         * of fontconfig shipped with Krita. But we estimate such risks as
+         * of fontconfig shipped with Minerva. But we estimate such risks as
          * negligible.
          */
         if (qgetenv("FONTCONFIG_PATH").isEmpty()) {

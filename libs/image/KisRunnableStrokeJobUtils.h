@@ -12,7 +12,7 @@
 #include "kis_stroke_job_strategy.h"
 #include "KisRunnableStrokeJobData.h"
 
-namespace KritaUtils
+namespace MinervaUtils
 {
 
 template <typename Func, typename Job>

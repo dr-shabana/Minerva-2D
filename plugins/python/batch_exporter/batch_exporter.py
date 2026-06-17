@@ -1,14 +1,14 @@
 """
 GDQuest Batch Exporter
 -----------------
-Batch export art assets from Krita using layer metadata.
-Updates and reads metadata in Krita's layer names, and uses it to smartly process and export layers.
+Batch export art assets from Minerva using layer metadata.
+Updates and reads metadata in Minerva's layer names, and uses it to smartly process and export layers.
 Export to the Blender Cut-Out Animation tools for modular 2d game animation.
 SPDX-License-Identifier: GPL-3.0-only
 """
 
 from functools import partial
-from krita import DockWidget, DockWidgetFactory, DockWidgetFactoryBase, Krita
+from krita import DockWidget, DockWidgetFactory, DockWidgetFactoryBase, Minerva
 try:
     from PyQt6.QtWidgets import (
         QPushButton,
@@ -38,7 +38,7 @@ from .COATools import COAToolsFormat
 from .Utils import kickstart, flip
 from .Utils.Tree import iterPre
 
-KI = Krita.instance()
+KI = Minerva.instance()
 
 
 def ensureRGBAU8(doc):
@@ -202,6 +202,6 @@ class GameArtTools(DockWidget):
 
 def registerDocker():
     docker = DockWidgetFactory(
-        "pykrita_gdquest_art_tools", DockWidgetFactoryBase.DockPosition.DockRight, GameArtTools
+        "pyminerva2d_gdquest_art_tools", DockWidgetFactoryBase.DockPosition.DockRight, GameArtTools
     )
     KI.addDockWidgetFactory(docker)

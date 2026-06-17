@@ -1,0 +1,13 @@
+{
+    "Icon": "",
+    "Id": "Minerva Native Import Filter",
+    "NoDisplay": "true",
+    "Type": "Service",
+    "X-KDE-Import": "application/x-krita,application/x-minerva2d-archive",
+    "X-KDE-Library": "kritakraimport",
+    "X-KDE-ServiceTypes": [
+        "Minerva/FileFilter"
+    ],
+    "X-KDE-Weight": 1,
+    "X-KDE-Extensions" : "kra, krz"
+}

@@ -32,8 +32,8 @@
 #include "kis_image_config.h"
 
 #define LOAD_PRESET_OR_RETURN(preset, fileName)                         \
-    if(!preset->load(KisGlobalResourcesInterface::instance())) { dbgKrita << "Preset" << fileName << "was NOT loaded properly. Done."; return; } \
-    else dbgKrita << "Loaded preset:" << fileName
+    if(!preset->load(KisGlobalResourcesInterface::instance())) { dbgMinerva << "Preset" << fileName << "was NOT loaded properly. Done."; return; } \
+    else dbgMinerva << "Loaded preset:" << fileName
 
 #define HUGE_IMAGE_SIZE 8000
 

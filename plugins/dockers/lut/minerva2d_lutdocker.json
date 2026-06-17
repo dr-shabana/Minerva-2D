@@ -1,0 +1,9 @@
+{
+    "Id": "Lut Docker",
+    "Type": "Service",
+    "X-KDE-Library": "kritalutdocker",
+    "X-KDE-ServiceTypes": [
+        "Minerva/Dock"
+    ],
+    "X-Minerva-Version": "28"
+}

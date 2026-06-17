@@ -41,7 +41,7 @@ struct KisAnimationCachePopulator::Private
     QTimer timer;
 
     /**
-     * Counts up the number of subsequent times Krita has been detected idle.
+     * Counts up the number of subsequent times Minerva has been detected idle.
      */
     int idleCounter;
     QStack<QPair<KisImageWSP, int>> priorityFrames;

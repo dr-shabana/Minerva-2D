@@ -562,7 +562,7 @@ namespace KisLsUtils
 
         } else if (config->fillType() == psd_fill_gradient) {
             if (!config->gradient(resourcesInterface)) {
-                warnKrita << "KisLsUtils::applyFinalSelection: Gradient object is null! Skipping...";
+                warnMinerva << "KisLsUtils::applyFinalSelection: Gradient object is null! Skipping...";
                 return;
             }
 

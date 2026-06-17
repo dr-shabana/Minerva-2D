@@ -149,7 +149,7 @@ void ToolReferenceImages::pasteReferenceImage()
         canvas()->addCommand(KisReferenceImagesLayer::addReferenceImages(document(), {reference}));
     } else {
         if (canvas()->canvasWidget()) {
-            QMessageBox::critical(canvas()->canvasWidget(), i18nc("@title:window", "Krita"), i18n("Could not load reference image from clipboard"));
+            QMessageBox::critical(canvas()->canvasWidget(), i18nc("@title:window", "Minerva"), i18n("Could not load reference image from clipboard"));
         }
     }
 }
@@ -178,7 +178,7 @@ void ToolReferenceImages::loadReferenceImages()
     KIS_ASSERT_RECOVER_RETURN(kisCanvas);
 
             KoFileDialog dialog(kisCanvas->viewManager()->mainWindowAsQWidget(), KoFileDialog::OpenFile, "OpenReferenceImageCollection");
-    dialog.setMimeTypeFilters(QStringList() << "application/x-krita-reference-images");
+    dialog.setMimeTypeFilters(QStringList() << "application/x-minerva2d-reference-images");
     dialog.setCaption(i18n("Load Reference Images"));
 
     QStringList locations = QStandardPaths::standardLocations(QStandardPaths::PicturesLocation);
@@ -192,7 +192,7 @@ void ToolReferenceImages::loadReferenceImages()
 
     QFile file(filename);
     if (!file.open(QIODevice::ReadOnly)) {
-        QMessageBox::critical(qApp->activeWindow(), i18nc("@title:window", "Krita"), i18n("Could not open '%1'.", filename));
+        QMessageBox::critical(qApp->activeWindow(), i18nc("@title:window", "Minerva"), i18n("Could not open '%1'.", filename));
         return;
     }
 
@@ -213,7 +213,7 @@ void ToolReferenceImages::loadReferenceImages()
 
         canvas()->addCommand(KisReferenceImagesLayer::addReferenceImages(document(), shapes));
     } else {
-        QMessageBox::critical(qApp->activeWindow(), i18nc("@title:window", "Krita"), i18n("Could not load reference images from '%1'.", filename));
+        QMessageBox::critical(qApp->activeWindow(), i18nc("@title:window", "Minerva"), i18n("Could not load reference images from '%1'.", filename));
     }
     file.close();
 }
@@ -229,7 +229,7 @@ void ToolReferenceImages::saveReferenceImages()
     KIS_ASSERT_RECOVER_RETURN(kisCanvas);
 
             KoFileDialog dialog(kisCanvas->viewManager()->mainWindowAsQWidget(), KoFileDialog::SaveFile, "SaveReferenceImageCollection");
-    QString mimetype = "application/x-krita-reference-images";
+    QString mimetype = "application/x-minerva2d-reference-images";
     dialog.setMimeTypeFilters(QStringList() << mimetype, mimetype);
     dialog.setCaption(i18n("Save Reference Images"));
 
@@ -242,13 +242,13 @@ void ToolReferenceImages::saveReferenceImages()
     if (filename.isEmpty()) return;
 
     QString fileMime = KisMimeDatabase::mimeTypeForFile(filename, false);
-    if (fileMime != "application/x-krita-reference-images") {
+    if (fileMime != "application/x-minerva2d-reference-images") {
         filename.append(filename.endsWith(".") ? "krf" : ".krf");
     }
 
     QFile file(filename);
     if (!file.open(QIODevice::WriteOnly)) {
-        QMessageBox::critical(qApp->activeWindow(), i18nc("@title:window", "Krita"), i18n("Could not open '%1' for saving.", filename));
+        QMessageBox::critical(qApp->activeWindow(), i18nc("@title:window", "Minerva"), i18n("Could not open '%1' for saving.", filename));
         return;
     }
 
@@ -257,7 +257,7 @@ void ToolReferenceImages::saveReferenceImages()
     file.close();
 
     if (!ok) {
-        QMessageBox::critical(qApp->activeWindow(), i18nc("@title:window", "Krita"), i18n("Failed to save reference images."));
+        QMessageBox::critical(qApp->activeWindow(), i18nc("@title:window", "Minerva"), i18n("Failed to save reference images."));
     }
 }
 
@@ -280,7 +280,7 @@ QWidget *ToolReferenceImages::createOptionWidget()
 {
     if (!m_optionsWidget) {
         m_optionsWidget = new ToolReferenceImagesWidget(this);
-        // See https://bugs.kde.org/show_bug.cgi?id=316896
+        // See https://github.com/dr-shabana/Minerva-2D/issues/show_bug.cgi?id=316896
         QWidget *specialSpacer = new QWidget(m_optionsWidget);
         specialSpacer->setObjectName("SpecialSpacer");
         specialSpacer->setFixedSize(0, 0);

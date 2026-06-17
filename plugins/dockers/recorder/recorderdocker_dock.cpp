@@ -372,7 +372,7 @@ public:
 #ifdef Q_OS_ANDROID
     void fixInternalSnapshotDirectory()
     {
-        // Older versions of Krita used an internal directory as the snapshots
+        // Older versions of Minerva used an internal directory as the snapshots
         // directory by default, which is a bogus place to save stuff to because
         // the user can't access it. That means the files stored there are stuck
         // inaccessible and once the user picks a "real" directory, they can no
@@ -759,7 +759,7 @@ void RecorderDockerDock::onWriterFrameWriteFailed()
 void RecorderDockerDock::onRecorderStopWarning()
 {
     QMessageBox::warning(this, i18nc("@title:window", "Recorder"),
-                         i18n("Krita was unable to stop the recorder probably. Please try to restart Krita."));
+                         i18n("Minerva was unable to stop the recorder probably. Please try to restart Minerva."));
 }
 void RecorderDockerDock::onLowPerformanceWarning()
 {

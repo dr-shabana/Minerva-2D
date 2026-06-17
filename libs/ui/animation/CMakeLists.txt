@@ -27,7 +27,7 @@ generate_export_header(kritaanimation BASE_NAME kritaanimation)
 target_link_libraries( kritaanimation PUBLIC kritaui )
 
 set_target_properties(kritaanimation PROPERTIES
-    VERSION ${GENERIC_KRITA_LIB_VERSION} SOVERSION ${GENERIC_KRITA_LIB_SOVERSION}
+    VERSION ${GENERIC_MINERVA2D_LIB_VERSION} SOVERSION ${GENERIC_MINERVA2D_LIB_SOVERSION}
 )
 
 install(TARGETS kritaanimation  ${INSTALL_TARGETS_DEFAULT_ARGS})

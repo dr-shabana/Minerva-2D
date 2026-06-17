@@ -1,0 +1,10 @@
+{
+    "Id": "Propagate Colors Filter",
+    "Type": "Service",
+    "X-KDE-Library": "MinervaPropagateColorsFilter",
+    "X-KDE-ServiceTypes": [
+        "Minerva/Filter"
+    ],
+    "X-Minerva-Version": "28"
+}
+

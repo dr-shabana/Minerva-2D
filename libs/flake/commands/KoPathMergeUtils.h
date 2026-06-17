@@ -13,7 +13,7 @@
 
 class KoPathPoint;
 
-namespace KritaUtils {
+namespace MinervaUtils {
 
 boost::optional<QPointF> fetchControlPoint(KoPathPoint *pt, bool takeFirst);
 void makeSymmetric(KoPathPoint *pt, bool copyFromFirst);

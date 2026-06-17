@@ -356,7 +356,7 @@ private:
 
     QPoint m_offset;
 
-    // Static data. Stored in the Krita config.
+    // Static data. Stored in the Minerva config.
 
     LineTypeInternal m_lineTypeMain;
     LineTypeInternal m_lineTypeSubdivision;

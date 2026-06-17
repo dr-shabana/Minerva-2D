@@ -17,7 +17,7 @@
 #include <QPainterPath>
 
 #include <boost/graph/astar_search.hpp>
-#include <krita_utils.h>
+#include <minerva2d_utils.h>
 
 #include "KisMagneticGraph.h"
 
@@ -139,7 +139,7 @@ KisMagneticLazyTiles::KisMagneticLazyTiles(KisPaintDeviceSP dev)
 {
     m_dev = KisPainter::convertToAlphaAsGray(dev);
     QSize s = dev->defaultBounds()->bounds().size();
-    m_tileSize    = KritaUtils::optimalPatchSize();
+    m_tileSize    = MinervaUtils::optimalPatchSize();
     m_tilesPerRow = (int) std::ceil((double) s.width() / (double) m_tileSize.width());
     int tilesPerColumn = (int) std::ceil((double) s.height() / (double) m_tileSize.height());
     m_dev->setDefaultBounds(dev->defaultBounds());

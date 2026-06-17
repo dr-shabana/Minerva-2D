@@ -44,13 +44,13 @@ void KisActionsSnapshot::addAction(const QString &name, QAction *action)
     KisActionRegistry::ActionCategory cat = KisActionRegistry::instance()->fetchActionCategory(name);
 
     if (!cat.isValid()) {
-        warnKrita << "WARNING: Uncategorized action" << name << "Dropping...";
+        warnMinerva << "WARNING: Uncategorized action" << name << "Dropping...";
         return;
     }
 
 #ifdef ACTIONS_CHECKSUM_SANITY_CHECK
     if (!KisActionRegistry::instance()->sanityCheckPropertized(action->objectName())) {
-        warnKrita << "WARNING: action" << name  << "was not propertized!"  << ppVar(action->property("isShortcutConfigurable").toBool());
+        warnMinerva << "WARNING: action" << name  << "was not propertized!"  << ppVar(action->property("isShortcutConfigurable").toBool());
     }
 #endif /* ACTIONS_CHECKSUM_SANITY_CHECK */
 
@@ -73,12 +73,12 @@ QMap<QString, KisKActionCollection *> KisActionsSnapshot::actionCollections()
     if (m_d->nonRegisteredShortcuts.size() > 4 &&
         m_d->nonRegisteredShortcuts.size() < 160) {
 
-        warnKrita << "WARNING: The following shortcuts are not registered in the collection, "
+        warnMinerva << "WARNING: The following shortcuts are not registered in the collection, "
                      "they might have wrong shortcuts in the end:";
         Q_FOREACH (const QString &str, m_d->nonRegisteredShortcuts) {
-            warnKrita << str;
+            warnMinerva << str;
         }
-        warnKrita << "=== end ===";
+        warnMinerva << "=== end ===";
     }
 
     // try to workaround non-registered shortcuts by faking them manually

@@ -1,5 +1,5 @@
 /*
- *  kis_tool_polyline.h - part of Krita
+ *  kis_tool_polyline.h - part of Minerva
  *
  *  SPDX-FileCopyrightText: 2004 Michael Thaler <michael Thaler@physik.tu-muenchen.de>
  *
@@ -43,7 +43,7 @@ public:
             : KisToolPolyLineFactoryBase("KisToolPolyline") {
         setToolTip(i18n("Polyline Tool: Shift-mouseclick ends the polyline."));
         setSection(ToolBoxSection::Shape);
-        setActivationShapeId(KRITA_TOOL_ACTIVATION_ID);
+        setActivationShapeId(MINERVA2D_TOOL_ACTIVATION_ID);
         setIconName(koIconNameCStr("polyline"));
         setPriority(5);
     }

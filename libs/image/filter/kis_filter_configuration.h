@@ -67,7 +67,7 @@ public:
 public:
 
     /**
-     * This function is use to convert from legacy XML as used in .kra file.
+     * This function is use to convert from legacy XML as used in .m2d file.
      */
     virtual void fromLegacyXML(const QDomElement&);
 

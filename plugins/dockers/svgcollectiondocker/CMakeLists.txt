@@ -14,4 +14,4 @@ kis_add_library(kritasvgcollectiondocker MODULE ${calligradockers_SRCS})
 
 target_link_libraries(kritasvgcollectiondocker kritawidgets kritaui)
 
-install(TARGETS kritasvgcollectiondocker DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
+install(TARGETS kritasvgcollectiondocker DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})

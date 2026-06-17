@@ -10,12 +10,12 @@
 
 #include <Eigen/Core>
 
-class KritaEdgeDetectionFilter : public QObject
+class MinervaEdgeDetectionFilter : public QObject
 {
     Q_OBJECT
 public:
-    KritaEdgeDetectionFilter(QObject *parent, const QVariantList &);
-    ~KritaEdgeDetectionFilter() override;
+    MinervaEdgeDetectionFilter(QObject *parent, const QVariantList &);
+    ~MinervaEdgeDetectionFilter() override;
 };
 
 class KisEdgeDetectionFilter : public KisFilter

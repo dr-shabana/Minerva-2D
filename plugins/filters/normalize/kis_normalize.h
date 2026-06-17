@@ -11,12 +11,12 @@
 #include <QVariant>
 #include "filter/kis_color_transformation_filter.h"
 
-class KritaNormalizeFilter : public QObject
+class MinervaNormalizeFilter : public QObject
 {
     Q_OBJECT
 public:
-    KritaNormalizeFilter(QObject *parent, const QVariantList &);
-    ~KritaNormalizeFilter() override;
+    MinervaNormalizeFilter(QObject *parent, const QVariantList &);
+    ~MinervaNormalizeFilter() override;
 };
 
 class KisFilterNormalize : public KisColorTransformationFilter

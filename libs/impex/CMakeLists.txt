@@ -11,7 +11,7 @@ generate_export_header(kritaimpex BASE_NAME kritaimpex)
 target_link_libraries(kritaimpex KF${KF_MAJOR}::CoreAddons KF${KF_MAJOR}::I18n kritaimage)
 
 set_target_properties(kritaimpex
-    PROPERTIES VERSION ${GENERIC_KRITA_LIB_VERSION} SOVERSION ${GENERIC_KRITA_LIB_SOVERSION}
+    PROPERTIES VERSION ${GENERIC_MINERVA2D_LIB_VERSION} SOVERSION ${GENERIC_MINERVA2D_LIB_SOVERSION}
 )
 
 install(TARGETS kritaimpex  ${INSTALL_TARGETS_DEFAULT_ARGS})

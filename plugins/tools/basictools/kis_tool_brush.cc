@@ -1,5 +1,5 @@
 /*
- *  kis_tool_brush.cc - part of Krita
+ *  kis_tool_brush.cc - part of Minerva
  *
  *  SPDX-FileCopyrightText: 2003-2004 Boudewijn Rempt <boud@valdyas.org>
  *  SPDX-FileCopyrightText: 2015 Moritz Molch <kde@moritzmolch.de>
@@ -403,7 +403,7 @@ QWidget * KisToolBrush::createOptionWidget()
     QWidget *optionsWidget = KisToolFreehand::createOptionWidget();
     optionsWidget->setObjectName(toolId() + "option widget");
 
-    // See https://bugs.kde.org/show_bug.cgi?id=316896
+    // See https://github.com/dr-shabana/Minerva-2D/issues/show_bug.cgi?id=316896
     QWidget *specialSpacer = new QWidget(optionsWidget);
     specialSpacer->setObjectName("SpecialSpacer");
     specialSpacer->setFixedSize(0, 0);

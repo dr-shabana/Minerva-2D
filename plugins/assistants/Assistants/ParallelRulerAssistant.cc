@@ -51,7 +51,7 @@ QPointF ParallelRulerAssistant::project(const QPointF& pt, const QPointF& stroke
         }
     }
 
-    //dbgKrita<<strokeBegin<< ", " <<*handles()[0];
+    //dbgMinerva<<strokeBegin<< ", " <<*handles()[0];
     QLineF snapLine = QLineF(*handles()[0], *handles()[1]);
     QPointF translation = (*handles()[0]-strokeBegin)*-1.0;
     snapLine = snapLine.translated(translation);

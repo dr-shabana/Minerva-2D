@@ -36,15 +36,15 @@
 #include "ui_wdgmultigridpatternoptions.h"
 
 
-K_PLUGIN_FACTORY_WITH_JSON(KritaMultigridPatternGeneratorFactory, "kritamultigridpatterngenerator.json", registerPlugin<KritaMultigridPatternGenerator>();)
+K_PLUGIN_FACTORY_WITH_JSON(MinervaMultigridPatternGeneratorFactory, "kritamultigridpatterngenerator.json", registerPlugin<MinervaMultigridPatternGenerator>();)
 
-KritaMultigridPatternGenerator::KritaMultigridPatternGenerator(QObject *parent, const QVariantList &)
+MinervaMultigridPatternGenerator::MinervaMultigridPatternGenerator(QObject *parent, const QVariantList &)
         : QObject(parent)
 {
     KisGeneratorRegistry::instance()->add(new KisMultigridPatternGenerator());
 }
 
-KritaMultigridPatternGenerator::~KritaMultigridPatternGenerator()
+MinervaMultigridPatternGenerator::~MinervaMultigridPatternGenerator()
 {
 }
 

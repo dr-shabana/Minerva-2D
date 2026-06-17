@@ -8,7 +8,7 @@ import shutil
 import glob
 
 # Capture our command line parameters
-parser = argparse.ArgumentParser(description='A script for building Krita Android package on CI')
+parser = argparse.ArgumentParser(description='A script for building Minerva Android package on CI')
 parser.add_argument('--package-type', type=str, choices=['debug', 'release', 'nightly'], default = 'debug', help='Type of a package to build')
 parser.add_argument('--archive-artifacts', default=False, action='store_true', help='Create an folder with artifacts')
 parser.add_argument('--skip-common-artifacts', default=False, action='store_true', help='Skip artifacts that are the same on all architectures')
@@ -47,7 +47,7 @@ packagingFolder = os.path.join(baseWorkDirectoryPath, '_packaging')
 
 buildEnvironment = dict(os.environ)
 buildEnvironment['ANDROID_ABI'] = os.environ['KDECI_ANDROID_ABI']
-buildEnvironment['KRITA_INSTALL_PREFIX'] = depsPath
+buildEnvironment['MINERVA2D_INSTALL_PREFIX'] = depsPath
 
 if arguments.package_type == 'release':
     unstablePackageSuffix = ''
@@ -64,7 +64,7 @@ else:
 
     unstablePackageSuffix = '-{}'.format(shortSha)
 
-buildEnvironment['KRITA_UNSTABLE_PACKAGE_SUFFIX'] = unstablePackageSuffix
+buildEnvironment['MINERVA2D_UNSTABLE_PACKAGE_SUFFIX'] = unstablePackageSuffix
 
 commandToRun = 'cmake --build . --target create-apk'
 try:
@@ -74,7 +74,7 @@ except Exception:
     print("## Failed to build apk")
     sys.exit(1)
 
-repackagePath = os.path.join(buildPath, 'krita_build_apk')
+repackagePath = os.path.join(buildPath, 'minerva2d_build_apk')
 if arguments.package_type != 'debug':
 
     commandToRun = './gradlew clean'
@@ -112,7 +112,7 @@ for package in glob.glob(os.path.join(repackagePath, 'build', 'outputs', 'apk', 
     shutil.move(package, packagingFolder)
 
 if arguments.archive_artifacts:
-    artifactsFolder = os.path.join(packagingFolder, 'krita_build_apk')
+    artifactsFolder = os.path.join(packagingFolder, 'minerva2d_build_apk')
     xmlFolder = os.path.join(artifactsFolder, 'res/values/')
 
     if os.path.isdir(artifactsFolder):

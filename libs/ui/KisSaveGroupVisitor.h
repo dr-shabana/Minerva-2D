@@ -21,7 +21,7 @@
 
 /**
  * @brief The KisSaveGroupVisitor class saves the groups in
- * a Krita image to separate images.
+ * a Minerva image to separate images.
  */
 class KRITAUI_EXPORT KisSaveGroupVisitor : public KisNodeVisitor
 {

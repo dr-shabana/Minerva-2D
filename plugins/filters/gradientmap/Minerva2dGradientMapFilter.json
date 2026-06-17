@@ -1,0 +1,9 @@
+{
+    "Id": "Gradient Map Filter",
+    "Type": "Service",
+    "X-KDE-Library": "MinervaGradientMapFilter",
+    "X-KDE-ServiceTypes": [
+        "Minerva/Filter"
+    ],
+    "X-Minerva-Version": "30"
+}

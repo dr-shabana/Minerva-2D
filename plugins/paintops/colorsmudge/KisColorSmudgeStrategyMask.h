@@ -4,8 +4,8 @@
  *  SPDX-License-Identifier: GPL-2.0-or-later
  */
 
-#ifndef KRITA_KISCOLORSMUDGESTRATEGYMASK_H
-#define KRITA_KISCOLORSMUDGESTRATEGYMASK_H
+#ifndef MINERVA2D_KISCOLORSMUDGESTRATEGYMASK_H
+#define MINERVA2D_KISCOLORSMUDGESTRATEGYMASK_H
 
 #include "KisColorSmudgeStrategyWithOverlay.h"
 
@@ -31,4 +31,4 @@ private:
     DabColoringStrategyMask m_coloringStrategy;
 };
 
-#endif //KRITA_KISCOLORSMUDGESTRATEGYMASK_H
+#endif //MINERVA2D_KISCOLORSMUDGESTRATEGYMASK_H

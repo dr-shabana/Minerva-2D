@@ -1,5 +1,5 @@
 /*
- *  kis_tool_fill.h - part of Krayon^Krita
+ *  kis_tool_fill.h - part of Krayon^Minerva
  *
  *  SPDX-FileCopyrightText: 2004 Bart Coppens <kde@bartcoppens.be>
  *
@@ -238,12 +238,12 @@ class KisToolFillFactory : public KisToolPaintFactoryBase
 
 public:
     KisToolFillFactory()
-            : KisToolPaintFactoryBase("KritaFill/KisToolFill") {
+            : KisToolPaintFactoryBase("MinervaFill/KisToolFill") {
         setToolTip(i18n("Fill Tool"));
         setSection(ToolBoxSection::Fill);
         setPriority(0);
-        setActivationShapeId(KRITA_TOOL_ACTIVATION_ID);
-        setIconName(koIconNameCStr("krita_tool_color_fill"));
+        setActivationShapeId(MINERVA2D_TOOL_ACTIVATION_ID);
+        setIconName(koIconNameCStr("minerva2d_tool_color_fill"));
         setShortcut( QKeySequence( Qt::Key_F ) );
         setPriority(14);
     }

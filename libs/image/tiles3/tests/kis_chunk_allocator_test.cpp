@@ -84,25 +84,25 @@ void KisChunkAllocatorTest::testFragmentation()
      */
     return;
 
-    dbgKrita << "fragmentation(transactions)";
+    dbgMinerva << "fragmentation(transactions)";
     for(qint32 t = 1; t < NUM_TRANSACTIONS; t += NUM_TRANSACTIONS/7) {
         qreal f = measureFragmentation(t, NUM_CHUNKS_ALLOC,
                                        NUM_CHUNKS_FREE, false);
-        dbgKrita << t << f;
+        dbgMinerva << t << f;
     }
 
-    dbgKrita << "fragmentation(alloc)";
+    dbgMinerva << "fragmentation(alloc)";
     for(qint32 t = 1; t < NUM_CHUNKS_ALLOC; t += NUM_CHUNKS_ALLOC/7) {
         qreal f = measureFragmentation(NUM_TRANSACTIONS,t,
                                        0.8*t, false);
-        dbgKrita << t << f;
+        dbgMinerva << t << f;
     }
 
-    dbgKrita << "fragmentation(free)";
+    dbgMinerva << "fragmentation(free)";
     for(qint32 t = NUM_CHUNKS_ALLOC/7; t < NUM_CHUNKS_ALLOC; t += NUM_CHUNKS_ALLOC/15) {
         qreal f = measureFragmentation(NUM_TRANSACTIONS,NUM_CHUNKS_ALLOC,
                                        t, false);
-        dbgKrita << t << f;
+        dbgMinerva << t << f;
     }
 
 }

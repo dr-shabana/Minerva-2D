@@ -38,7 +38,7 @@
 #include <QQueue>
 #include <KisDeleteLaterWrapper.h>
 #include "transform_transaction_properties.h"
-#include "krita_container_utils.h"
+#include "minerva2d_container_utils.h"
 #include "commands_new/kis_saved_commands.h"
 #include "commands_new/KisLazyCreateTransformMaskKeyframesCommand.h"
 #include "kis_command_ids.h"
@@ -57,7 +57,7 @@
 #include "kis_raster_keyframe_channel.h"
 #include "kis_image_animation_interface.h"
 #include "KisAnimAutoKey.h"
-#include "krita_utils.h"
+#include "minerva2d_utils.h"
 
 
 struct InplaceTransformStrokeStrategy::Private
@@ -257,7 +257,7 @@ void InplaceTransformStrokeStrategy::doCanvasUpdate(bool forceUpdate)
 
     reapplyTransform(args, jobs, m_d->previewLevelOfDetail, false);
 
-    KritaUtils::addJobBarrier(jobs, [this, args]() {
+    MinervaUtils::addJobBarrier(jobs, [this, args]() {
         m_d->currentTransformArgs = args;
         m_d->updateTimer.restart();
         // sanity check that no job has been squeezed in between
@@ -433,7 +433,7 @@ void InplaceTransformStrokeStrategy::initStrokeCallback()
         }
     }
 
-    KritaUtils::addJobBarrier(extraInitJobs, [this]() {
+    MinervaUtils::addJobBarrier(extraInitJobs, [this]() {
         Q_FOREACH (KisNodeSP node, m_d->processedNodes) {
             m_d->prevDirtyRects.addUpdate(node, node->projectionPlane()->tightUserVisibleBounds());
         }
@@ -448,7 +448,7 @@ void InplaceTransformStrokeStrategy::initStrokeCallback()
     extraInitJobs << lastCommandUndoJobs;
 
     if (!lastCommandUndoJobs.isEmpty()) {
-        KritaUtils::addJobBarrier(extraInitJobs, [this]() {
+        MinervaUtils::addJobBarrier(extraInitJobs, [this]() {
             /**
              * In case we are doing a continued action, we need to
              * set initial update to the "very initial" state that
@@ -473,7 +473,7 @@ void InplaceTransformStrokeStrategy::initStrokeCallback()
         });
     }
 
-    KritaUtils::addJobSequential(extraInitJobs, [this]() {
+    MinervaUtils::addJobSequential(extraInitJobs, [this]() {
         // When dealing with animated transform mask layers, create keyframe and save the command for undo.
         // NOTE: for transform masks we create a keyframe no matter what the user
         //       settings are
@@ -495,7 +495,7 @@ void InplaceTransformStrokeStrategy::initStrokeCallback()
         }
     });
 
-    KritaUtils::addJobSequential(extraInitJobs, [this]() {
+    MinervaUtils::addJobSequential(extraInitJobs, [this]() {
         /**
           * We must request shape layers to rerender areas outside image bounds
           */
@@ -504,7 +504,7 @@ void InplaceTransformStrokeStrategy::initStrokeCallback()
         }
     });
 
-    KritaUtils::addJobBarrier(extraInitJobs, [this]() {
+    MinervaUtils::addJobBarrier(extraInitJobs, [this]() {
         /**
           * We must ensure that the currently selected subtree
           * has finished all its updates.
@@ -517,7 +517,7 @@ void InplaceTransformStrokeStrategy::initStrokeCallback()
     /// Disable all decorated nodes to generate outline
     /// and preview correctly. We will enable them back
     /// as soon as preview generation is finished.
-    KritaUtils::addJobBarrier(extraInitJobs, [this]() {
+    MinervaUtils::addJobBarrier(extraInitJobs, [this]() {
         Q_FOREACH (KisNodeSP node, m_d->processedNodes) {
             KisDecoratedNodeInterface *decoratedNode = dynamic_cast<KisDecoratedNodeInterface*>(node.data());
             if (decoratedNode && decoratedNode->decorationsVisible()) {
@@ -527,7 +527,7 @@ void InplaceTransformStrokeStrategy::initStrokeCallback()
         }
     });
 
-    KritaUtils::addJobBarrier(extraInitJobs,
+    MinervaUtils::addJobBarrier(extraInitJobs,
                               [this,
                               argsAreInitialized]() mutable {
         QRect srcRect;
@@ -597,7 +597,7 @@ void InplaceTransformStrokeStrategy::initStrokeCallback()
     });
 
     /// recover back visibility of decorated nodes
-    KritaUtils::addJobBarrier(extraInitJobs, [this]() {
+    MinervaUtils::addJobBarrier(extraInitJobs, [this]() {
         Q_FOREACH (KisDecoratedNodeInterface *decoratedNode, m_d->disabledDecoratedNodes) {
             decoratedNode->setDecorationsVisible(true);
         }
@@ -605,12 +605,12 @@ void InplaceTransformStrokeStrategy::initStrokeCallback()
     });
 
     Q_FOREACH (KisNodeSP node, m_d->processedNodes) {
-        KritaUtils::addJobSequential(extraInitJobs, [this, node]() mutable {
+        MinervaUtils::addJobSequential(extraInitJobs, [this, node]() mutable {
             createCacheAndClearNode(node);
         });
     }
 
-    KritaUtils::addJobBarrier(extraInitJobs, [this]() {
+    MinervaUtils::addJobBarrier(extraInitJobs, [this]() {
         QMutexLocker l(&m_d->dirtyRectsMutex);
 
         executeAndAddCommand(new KisDisableDirtyRequestsCommand(m_d->updatesFacade, KisDisableDirtyRequestsCommand::FINALIZING), Clear, KisStrokeJobData::BARRIER);
@@ -626,7 +626,7 @@ void InplaceTransformStrokeStrategy::initStrokeCallback()
         }
     }
 
-    KritaUtils::addJobBarrier(extraInitJobs, [this]() {
+    MinervaUtils::addJobBarrier(extraInitJobs, [this]() {
         if (m_d->previewLevelOfDetail > 0) {
             QVector<KisStrokeJobData*> lodSyncJobs;
 
@@ -959,7 +959,7 @@ void InplaceTransformStrokeStrategy::reapplyTransform(ToolTransformArgs args,
     CommandGroup commandGroup =
         levelOfDetail > 0 ? TransformLod : Transform;
 
-    KritaUtils::addJobBarrier(mutatedJobs, levelOfDetail,
+    MinervaUtils::addJobBarrier(mutatedJobs, levelOfDetail,
                               [this, args, levelOfDetail, updateData, useHoldUI, commandGroup]() {
 
         // it has its own dirty requests blocking inside
@@ -973,13 +973,13 @@ void InplaceTransformStrokeStrategy::reapplyTransform(ToolTransformArgs args,
     });
 
     Q_FOREACH (KisNodeSP node, m_d->processedNodes) {
-        KritaUtils::addJobConcurrent(mutatedJobs, levelOfDetail,
+        MinervaUtils::addJobConcurrent(mutatedJobs, levelOfDetail,
                                      [this, node, args, levelOfDetail]() {
             transformNode(node, args, levelOfDetail);
         });
     }
 
-    KritaUtils::addJobBarrier(mutatedJobs, levelOfDetail,
+    MinervaUtils::addJobBarrier(mutatedJobs, levelOfDetail,
                               [this, levelOfDetail, updateData, useHoldUI, commandGroup]() {
 
         fetchAllUpdateRequests(levelOfDetail, updateData);
@@ -1014,7 +1014,7 @@ void InplaceTransformStrokeStrategy::reapplyTransform(ToolTransformArgs args,
 
 void InplaceTransformStrokeStrategy::finalizeStrokeImpl(QVector<KisStrokeJobData *> &mutatedJobs, bool saveCommands)
 {
-    KritaUtils::addJobBarrier(mutatedJobs, [this]() {
+    MinervaUtils::addJobBarrier(mutatedJobs, [this]() {
         Q_FOREACH (KisSelectionSP selection, m_d->deactivatedSelections) {
             selection->setVisible(true);
         }
@@ -1029,7 +1029,7 @@ void InplaceTransformStrokeStrategy::finalizeStrokeImpl(QVector<KisStrokeJobData
 
 
     if (saveCommands) {
-        KritaUtils::addJobBarrier(mutatedJobs, [this]() {
+        MinervaUtils::addJobBarrier(mutatedJobs, [this]() {
             notifyAllCommandsDone();
             m_d->commands.clear();
         });
@@ -1039,11 +1039,11 @@ void InplaceTransformStrokeStrategy::finalizeStrokeImpl(QVector<KisStrokeJobData
 void InplaceTransformStrokeStrategy::repopulateUI(QVector<KisStrokeJobData *> &mutatedJobs, KisUpdatesFacade *updatesFacade, const QRect &dirtyRect)
 {
     const QVector<QRect> finalDirtyRects =
-        KritaUtils::splitRectIntoPatchesTight(dirtyRect,
-                                              KritaUtils::optimalPatchSize());
+        MinervaUtils::splitRectIntoPatchesTight(dirtyRect,
+                                              MinervaUtils::optimalPatchSize());
 
     Q_FOREACH (const QRect &rc, finalDirtyRects) {
-        KritaUtils::addJobConcurrent(mutatedJobs, [rc, updatesFacade] () {
+        MinervaUtils::addJobConcurrent(mutatedJobs, [rc, updatesFacade] () {
             updatesFacade->notifyUIUpdateCompleted(rc);
         });
     }
@@ -1073,10 +1073,10 @@ void InplaceTransformStrokeStrategy::finishAction(QVector<KisStrokeJobData *> &m
          * ensure that final update of the mask happens strictly after
          * them.
          */
-        KritaUtils::addJobBarrier(mutatedJobs, [this]() { Q_UNUSED(this) });
+        MinervaUtils::addJobBarrier(mutatedJobs, [this]() { Q_UNUSED(this) });
 
         if (!m_d->transformMaskCacheHash.isEmpty()) {
-            KritaUtils::addJobSequential(mutatedJobs, [this]() {
+            MinervaUtils::addJobSequential(mutatedJobs, [this]() {
                 Q_FOREACH (KisTransformMask *mask, m_d->transformMaskCacheHash.keys()) {
                     mask->overrideStaticCacheDevice(0);
                 }
@@ -1097,7 +1097,7 @@ void InplaceTransformStrokeStrategy::finishAction(QVector<KisStrokeJobData *> &m
          * up in the final lod0 update, so we should reupload lod0 data to
          * the UI part manually.
          */
-        KritaUtils::addJobBarrier(mutatedJobs, [this]() { Q_UNUSED(this) });
+        MinervaUtils::addJobBarrier(mutatedJobs, [this]() { Q_UNUSED(this) });
         repopulateUI(mutatedJobs, m_d->updatesFacade, m_d->updatesFacade->bounds());
 
     } else {
@@ -1110,14 +1110,14 @@ void InplaceTransformStrokeStrategy::finishAction(QVector<KisStrokeJobData *> &m
                                            UpdateTransformData::SELECTION);
 
     // the rest of the transform finishing work cannot be cancelled...
-    KritaUtils::addJobBarrier(mutatedJobs, [this]() {
+    MinervaUtils::addJobBarrier(mutatedJobs, [this]() {
         m_d->strokeCompletionHasBeenStarted = true;
 
         QVector<KisStrokeJobData *> nonCancellableFinishJobs;
 
         finalizeStrokeImpl(nonCancellableFinishJobs, true);
 
-        KritaUtils::addJobBarrier(nonCancellableFinishJobs, [this]() {
+        MinervaUtils::addJobBarrier(nonCancellableFinishJobs, [this]() {
             KisStrokeStrategyUndoCommandBased::finishStrokeCallback();
         });
 
@@ -1146,14 +1146,14 @@ void InplaceTransformStrokeStrategy::cancelAction(QVector<KisStrokeJobData *> &m
     const bool isChangingTransformMask = !m_d->transformMaskCacheHash.isEmpty();
 
     if (m_d->initialTransformArgs.isIdentity()) {
-        KritaUtils::addJobSequential(mutatedJobs, [this]() {
+        MinervaUtils::addJobSequential(mutatedJobs, [this]() {
             Q_FOREACH (KisTransformMask *mask, m_d->transformMaskCacheHash.keys()) {
                 mask->overrideStaticCacheDevice(0);
             }
         });
 
 
-        KritaUtils::addJobBarrier(mutatedJobs, [this]() {
+        MinervaUtils::addJobBarrier(mutatedJobs, [this]() {
             m_d->commandUpdatesBlockerCookie.reset();
             undoTransformCommands(0);
             undoAllCommands();
@@ -1165,25 +1165,25 @@ void InplaceTransformStrokeStrategy::cancelAction(QVector<KisStrokeJobData *> &m
              * up in the final lod0 update, so we should reupload lod0 data to
              * the UI part manually.
              */
-            KritaUtils::addJobBarrier(mutatedJobs, [this]() { Q_UNUSED(this) });
+            MinervaUtils::addJobBarrier(mutatedJobs, [this]() { Q_UNUSED(this) });
             repopulateUI(mutatedJobs, m_d->updatesFacade, m_d->updatesFacade->bounds());
         }
 
         finalizeStrokeImpl(mutatedJobs, false);
 
-        KritaUtils::addJobSequential(mutatedJobs, [this]() {
+        MinervaUtils::addJobSequential(mutatedJobs, [this]() {
             Q_FOREACH (KisTransformMask *mask, m_d->transformMaskCacheHash.keys()) {
                 mask->threadSafeForceStaticImageUpdate();
             }
         });
 
-        KritaUtils::addJobBarrier(mutatedJobs, [this]() {
+        MinervaUtils::addJobBarrier(mutatedJobs, [this]() {
             KisStrokeStrategyUndoCommandBased::cancelStrokeCallback();
         });
     } else {
         KIS_SAFE_ASSERT_RECOVER_NOOP(isChangingTransformMask || m_d->overriddenCommand);
 
-        KritaUtils::addJobSequential(mutatedJobs, [this]() {
+        MinervaUtils::addJobSequential(mutatedJobs, [this]() {
             Q_FOREACH (KisTransformMask *mask, m_d->transformMaskCacheHash.keys()) {
                 mask->overrideStaticCacheDevice(0);
             }
@@ -1197,7 +1197,7 @@ void InplaceTransformStrokeStrategy::cancelAction(QVector<KisStrokeJobData *> &m
              * up in the final lod0 update, so we should reupload lod0 data to
              * the UI part manually.
              */
-            KritaUtils::addJobBarrier(mutatedJobs, [this]() { Q_UNUSED(this) });
+            MinervaUtils::addJobBarrier(mutatedJobs, [this]() { Q_UNUSED(this) });
             repopulateUI(mutatedJobs, m_d->updatesFacade, m_d->updatesFacade->bounds());
         }
 
@@ -1206,19 +1206,19 @@ void InplaceTransformStrokeStrategy::cancelAction(QVector<KisStrokeJobData *> &m
 
         finalizeStrokeImpl(mutatedJobs, bool(m_d->overriddenCommand));
 
-        KritaUtils::addJobSequential(mutatedJobs, [this]() {
+        MinervaUtils::addJobSequential(mutatedJobs, [this]() {
             Q_FOREACH (KisTransformMask *mask, m_d->transformMaskCacheHash.keys()) {
                 mask->threadSafeForceStaticImageUpdate();
             }
         });
 
         if (m_d->overriddenCommand) {
-            KritaUtils::addJobBarrier(mutatedJobs, [this]() {
+            MinervaUtils::addJobBarrier(mutatedJobs, [this]() {
                 m_d->currentTransformArgs = m_d->initialTransformArgs;
                 KisStrokeStrategyUndoCommandBased::finishStrokeCallback();
             });
         } else {
-            KritaUtils::addJobBarrier(mutatedJobs, [this]() {
+            MinervaUtils::addJobBarrier(mutatedJobs, [this]() {
                 KisStrokeStrategyUndoCommandBased::cancelStrokeCallback();
             });
         }

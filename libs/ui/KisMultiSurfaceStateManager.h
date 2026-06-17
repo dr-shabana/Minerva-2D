@@ -12,12 +12,12 @@
 
 #include <config-use-surface-color-management-api.h>
 
-#if KRITA_USE_SURFACE_COLOR_MANAGEMENT_API
+#if MINERVA2D_USE_SURFACE_COLOR_MANAGEMENT_API
 
 #include <QPointer>
 class KisRootSurfaceInfoProxy;
 
-#endif /* KRITA_USE_SURFACE_COLOR_MANAGEMENT_API */
+#endif /* MINERVA2D_USE_SURFACE_COLOR_MANAGEMENT_API */
 
 
 
@@ -76,9 +76,9 @@ public:
     KisMultiSurfaceStateManager();
     ~KisMultiSurfaceStateManager();
 
-#if KRITA_USE_SURFACE_COLOR_MANAGEMENT_API
+#if MINERVA2D_USE_SURFACE_COLOR_MANAGEMENT_API
     void setRootSurfaceInfoProxy(KisRootSurfaceInfoProxy *proxy);
-#endif /* KRITA_USE_SURFACE_COLOR_MANAGEMENT_API */
+#endif /* MINERVA2D_USE_SURFACE_COLOR_MANAGEMENT_API */
 
     State createInitializingConfig(bool isCanvasOpenGL, int screenId, KisProofingConfigurationSP proofingConfig) const;
 
@@ -101,9 +101,9 @@ private:
     KisDisplayConfig::Options overriddenWithProofingConfig(const KisDisplayConfig::Options &options, KisProofingConfigurationSP proofingConfig) const;
 
 private:
-#if KRITA_USE_SURFACE_COLOR_MANAGEMENT_API
+#if MINERVA2D_USE_SURFACE_COLOR_MANAGEMENT_API
     QPointer<KisRootSurfaceInfoProxy> m_rootSurfaceInfoProxy;
-#endif /* KRITA_USE_SURFACE_COLOR_MANAGEMENT_API */
+#endif /* MINERVA2D_USE_SURFACE_COLOR_MANAGEMENT_API */
 };
 
 

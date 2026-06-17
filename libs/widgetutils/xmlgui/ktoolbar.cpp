@@ -556,7 +556,7 @@ void KisToolBar::Private::applyCurrentSettings()
     }
 }
 
-// Krita widget style "hack" setting button palette depending on check state
+// Minerva widget style "hack" setting button palette depending on check state
 void KisToolBar::Private::customizeButtonPalette(QToolButton *button, bool checked)
 {
     QPalette p = button->palette();
@@ -787,7 +787,7 @@ void KisToolBar::Private::slotLockToolBars(bool lock)
     q->setToolBarsLocked(lock);
 }
 
-// Krita widget style "hack" reacting to QToolButton toggles
+// Minerva widget style "hack" reacting to QToolButton toggles
 void KisToolBar::Private::slotToolButtonToggled(bool checked)
 {
     QToolButton *tb = qobject_cast<QToolButton *>(q->sender());
@@ -1348,7 +1348,7 @@ void KisToolBar::actionEvent(QActionEvent *event)
             Q_FOREACH (QWidget *child, widget->findChildren<QWidget *>()) {
                 child->removeEventFilter(this);
             }
-            // Remove Krita's palette manipulation
+            // Remove Minerva's palette manipulation
             QToolButton *tb = qobject_cast<QToolButton *>(widget);
             if (tb) {
                 tb->disconnect(this, SLOT(slotToolButtonToggled(bool)));

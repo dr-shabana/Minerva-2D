@@ -67,7 +67,7 @@ KisConfig::~KisConfig()
     if (m_readOnly) return;
 
     if (qApp && qApp->thread() != QThread::currentThread()) {
-        dbgKrita.noquote() << "WARNING: KisConfig: requested config synchronization from nonGUI thread! Called from:" << kisBacktrace();
+        dbgMinerva.noquote() << "WARNING: KisConfig: requested config synchronization from nonGUI thread! Called from:" << kisBacktrace();
         return;
     }
 
@@ -753,15 +753,15 @@ void KisConfig::setCanvasSurfaceBitDepthMode(QSettings *settings, CanvasSurfaceB
 KisConfig::CanvasSurfaceBitDepthMode KisConfig::canvasSurfaceBitDepthMode(bool defaultValue) const
 {
     const QString configPath = QStandardPaths::writableLocation(QStandardPaths::GenericConfigLocation);
-    QSettings kritarc(configPath + QStringLiteral("/kritadisplayrc"), QSettings::IniFormat);
-    return canvasSurfaceBitDepthMode(&kritarc, defaultValue);
+    QSettings minerva2drc(configPath + QStringLiteral("/minerva2ddisplayrc"), QSettings::IniFormat);
+    return canvasSurfaceBitDepthMode(&minerva2drc, defaultValue);
 }
 
 void KisConfig::setCanvasSurfaceBitDepthMode(CanvasSurfaceBitDepthMode value)
 {
     const QString configPath = QStandardPaths::writableLocation(QStandardPaths::GenericConfigLocation);
-    QSettings kritarc(configPath + QStringLiteral("/kritadisplayrc"), QSettings::IniFormat);
-    setCanvasSurfaceBitDepthMode(&kritarc, value);
+    QSettings minerva2drc(configPath + QStringLiteral("/minerva2ddisplayrc"), QSettings::IniFormat);
+    setCanvasSurfaceBitDepthMode(&minerva2drc, value);
 }
 
 KisConfig::CanvasSurfaceBitDepthMode KisConfig::effectiveCanvasSurfaceBitDepthMode(const QSurfaceFormat &format) const
@@ -803,7 +803,7 @@ QString KisConfig::monitorProfile(int screen) const
         profile = m_cfg.readEntry("monitorProfile" + QString(screen == 0 ? "": QString("_%1").arg(screen)), defaultProfile);
     }
 
-    //dbgKrita << "KisConfig::monitorProfile()" << profile;
+    //dbgMinerva << "KisConfig::monitorProfile()" << profile;
     return profile;
 }
 
@@ -837,7 +837,7 @@ const KoColorProfile *KisConfig::getScreenProfile(int screen)
     if (KisColorManager::instance()->devices().size() > screen) {
         monitorId = cfg.monitorForScreen(screen, KisColorManager::instance()->devices()[screen]);
     }
-    //dbgKrita << "getScreenProfile(). Screen" << screen << "monitor id" << monitorId;
+    //dbgMinerva << "getScreenProfile(). Screen" << screen << "monitor id" << monitorId;
 
     if (monitorId.isEmpty()) {
         return 0;
@@ -845,11 +845,11 @@ const KoColorProfile *KisConfig::getScreenProfile(int screen)
 
     QByteArray bytes = KisColorManager::instance()->displayProfile(monitorId);
 
-    //dbgKrita << "\tgetScreenProfile()" << bytes.size();
+    //dbgMinerva << "\tgetScreenProfile()" << bytes.size();
     const KoColorProfile * profile = 0;
     if (bytes.length() > 0) {
         profile = KoColorSpaceRegistry::instance()->createColorProfile(RGBAColorModelID.id(), Integer8BitsColorDepthID.id(), bytes);
-        //dbgKrita << "\tKisConfig::getScreenProfile for screen" << screen << profile->name();
+        //dbgMinerva << "\tKisConfig::getScreenProfile for screen" << screen << profile->name();
     }
     return profile;
 }
@@ -861,40 +861,40 @@ const KoColorProfile *KisConfig::displayProfile(int screen) const
     // if the user plays with the settings, they can override the display profile, in which case
     // we don't want the system setting.
     bool override = useSystemMonitorProfile();
-    //dbgKrita << "KisConfig::displayProfile(). Override X11:" << override;
+    //dbgMinerva << "KisConfig::displayProfile(). Override X11:" << override;
     const KoColorProfile *profile = 0;
     if (override) {
-        //dbgKrita << "\tGoing to get the screen profile";
+        //dbgMinerva << "\tGoing to get the screen profile";
         profile = KisConfig::getScreenProfile(screen);
     }
 
     // if it fails. check the configuration
     if (!profile || !profile->isSuitableForDisplay()) {
-        //dbgKrita << "\tGoing to get the monitor profile";
+        //dbgMinerva << "\tGoing to get the monitor profile";
         QString monitorProfileName = monitorProfile(screen);
-        //dbgKrita << "\t\tmonitorProfileName:" << monitorProfileName;
+        //dbgMinerva << "\t\tmonitorProfileName:" << monitorProfileName;
         if (!monitorProfileName.isEmpty()) {
             profile = KoColorSpaceRegistry::instance()->profileByName(monitorProfileName);
         }
         if (profile) {
-            //dbgKrita << "\t\tsuitable for display" << profile->isSuitableForDisplay();
+            //dbgMinerva << "\t\tsuitable for display" << profile->isSuitableForDisplay();
         }
         else {
-            //dbgKrita << "\t\tstill no profile";
+            //dbgMinerva << "\t\tstill no profile";
         }
     }
     // if we still don't have a profile, or the profile isn't suitable for display,
     // we need to get a last-resort profile. the built-in sRGB is a good choice then.
     if (!profile || !profile->isSuitableForDisplay()) {
-        //dbgKrita << "\tnothing worked, going to get sRGB built-in";
+        //dbgMinerva << "\tnothing worked, going to get sRGB built-in";
         profile = KoColorSpaceRegistry::instance()->profileByName("sRGB Built-in");
     }
 
     if (profile) {
-        //dbgKrita << "\tKisConfig::displayProfile for screen" << screen << "is" << profile->name();
+        //dbgMinerva << "\tKisConfig::displayProfile for screen" << screen << "is" << profile->name();
     }
     else {
-        //dbgKrita << "\tCouldn't get a display profile at all";
+        //dbgMinerva << "\tCouldn't get a display profile at all";
     }
 
     return profile;
@@ -1070,17 +1070,17 @@ bool KisConfig::useOpenGL(bool defaultValue) const
     }
 
     const QString configPath = QStandardPaths::writableLocation(QStandardPaths::GenericConfigLocation);
-    QSettings kritarc(configPath + QStringLiteral("/kritadisplayrc"), QSettings::IniFormat);
+    QSettings minerva2drc(configPath + QStringLiteral("/minerva2ddisplayrc"), QSettings::IniFormat);
 
-    return kritarc.value("OpenGLRenderer", "auto").toString() != "none";
+    return minerva2drc.value("OpenGLRenderer", "auto").toString() != "none";
 }
 
 void KisConfig::disableOpenGL() const
 {
     const QString configPath = QStandardPaths::writableLocation(QStandardPaths::GenericConfigLocation);
-    QSettings kritarc(configPath + QStringLiteral("/kritadisplayrc"), QSettings::IniFormat);
+    QSettings minerva2drc(configPath + QStringLiteral("/minerva2ddisplayrc"), QSettings::IniFormat);
 
-    kritarc.setValue("OpenGLRenderer", "none");
+    minerva2drc.setValue("OpenGLRenderer", "none");
 }
 
 int KisConfig::openGLFilteringMode(bool defaultValue) const
@@ -1121,15 +1121,15 @@ bool KisConfig::preferXcbEglProvider(const QSettings *settings, bool defaultValu
 bool KisConfig::preferXcbEglProvider(bool defaultValue) const
 {
     const QString configPath = QStandardPaths::writableLocation(QStandardPaths::GenericConfigLocation);
-    QSettings kritarc(configPath + QStringLiteral("/kritadisplayrc"), QSettings::IniFormat);
-    return preferXcbEglProvider(&kritarc, defaultValue);
+    QSettings minerva2drc(configPath + QStringLiteral("/minerva2ddisplayrc"), QSettings::IniFormat);
+    return preferXcbEglProvider(&minerva2drc, defaultValue);
 }
 
 void KisConfig::setPreferXcbEglProvider(bool value)
 {
     const QString configPath = QStandardPaths::writableLocation(QStandardPaths::GenericConfigLocation);
-    QSettings kritarc(configPath + QStringLiteral("/kritadisplayrc"), QSettings::IniFormat);
-    kritarc.setValue("preferXcbEglProvider", value);
+    QSettings minerva2drc(configPath + QStringLiteral("/minerva2ddisplayrc"), QSettings::IniFormat);
+    minerva2drc.setValue("preferXcbEglProvider", value);
 }
 
 int KisConfig::openGLTextureSize(bool defaultValue) const
@@ -1562,8 +1562,8 @@ void KisConfig::setShowFilterGalleryLayerMaskDialog(bool showFilterGallery) cons
 QString KisConfig::canvasState(bool defaultValue) const
 {
     const QString configPath = QStandardPaths::writableLocation(QStandardPaths::GenericConfigLocation);
-    QSettings kritarc(configPath + QStringLiteral("/kritadisplayrc"), QSettings::IniFormat);
-    return (defaultValue ? "OPENGL_NOT_TRIED" : kritarc.value("canvasState", "OPENGL_NOT_TRIED").toString());
+    QSettings minerva2drc(configPath + QStringLiteral("/minerva2ddisplayrc"), QSettings::IniFormat);
+    return (defaultValue ? "OPENGL_NOT_TRIED" : minerva2drc.value("canvasState", "OPENGL_NOT_TRIED").toString());
 }
 
 void KisConfig::setCanvasState(const QString& state) const
@@ -1574,8 +1574,8 @@ void KisConfig::setCanvasState(const QString& state) const
     }
     if (acceptableStates.contains(state)) {
         const QString configPath = QStandardPaths::writableLocation(QStandardPaths::GenericConfigLocation);
-        QSettings kritarc(configPath + QStringLiteral("/kritadisplayrc"), QSettings::IniFormat);
-        kritarc.setValue("canvasState", state);
+        QSettings minerva2drc(configPath + QStringLiteral("/minerva2ddisplayrc"), QSettings::IniFormat);
+        minerva2drc.setValue("canvasState", state);
     }
 }
 
@@ -1626,9 +1626,9 @@ bool KisConfig::useWin8PointerInput(bool defaultValue) const
 {
 #ifdef Q_OS_WIN
     const QString configPath = QStandardPaths::writableLocation(QStandardPaths::GenericConfigLocation);
-    QSettings kritarc(configPath + QStringLiteral("/kritadisplayrc"), QSettings::IniFormat);
+    QSettings minerva2drc(configPath + QStringLiteral("/minerva2ddisplayrc"), QSettings::IniFormat);
 
-    return useWin8PointerInputNoApp(&kritarc, defaultValue);
+    return useWin8PointerInputNoApp(&minerva2drc, defaultValue);
 #else
     Q_UNUSED(defaultValue);
     return false;
@@ -1643,8 +1643,8 @@ void KisConfig::setUseWin8PointerInput(bool value)
     // I don't want it to be set if the user hasn't touched it
     if (useWin8PointerInput() != value) {
         const QString configPath = QStandardPaths::writableLocation(QStandardPaths::GenericConfigLocation);
-        QSettings kritarc(configPath + QStringLiteral("/kritadisplayrc"), QSettings::IniFormat);
-        setUseWin8PointerInputNoApp(&kritarc, value);
+        QSettings minerva2drc(configPath + QStringLiteral("/minerva2ddisplayrc"), QSettings::IniFormat);
+        setUseWin8PointerInputNoApp(&minerva2drc, value);
     }
 
 #else
@@ -1940,7 +1940,7 @@ void KisConfig::setImportConfiguration(const QString &filterId, KisPropertiesCon
 bool KisConfig::useOcio(bool defaultValue) const
 {
 #ifdef HAVE_OCIO
-    return (defaultValue ? false : m_cfg.readEntry("Krita/Ocio/UseOcio", false));
+    return (defaultValue ? false : m_cfg.readEntry("Minerva/Ocio/UseOcio", false));
 #else
     Q_UNUSED(defaultValue);
     return false;
@@ -1949,7 +1949,7 @@ bool KisConfig::useOcio(bool defaultValue) const
 
 void KisConfig::setUseOcio(bool useOCIO) const
 {
-    m_cfg.writeEntry("Krita/Ocio/UseOcio", useOCIO);
+    m_cfg.writeEntry("Minerva/Ocio/UseOcio", useOCIO);
 }
 
 int KisConfig::favoritePresets(bool defaultValue) const
@@ -1977,13 +1977,13 @@ KisOcioConfiguration KisConfig::ocioConfiguration(bool defaultValue) const
     KisOcioConfiguration cfg;
 
     if (!defaultValue) {
-        cfg.mode = (KisOcioConfiguration::Mode)m_cfg.readEntry("Krita/Ocio/OcioColorManagementMode", 0);
-        cfg.configurationPath = m_cfg.readEntry("Krita/Ocio/OcioConfigPath", QString());
-        cfg.lutPath = m_cfg.readEntry("Krita/Ocio/OcioLutPath", QString());
-        cfg.inputColorSpace = m_cfg.readEntry("Krita/Ocio/InputColorSpace", QString());
-        cfg.displayDevice = m_cfg.readEntry("Krita/Ocio/DisplayDevice", QString());
-        cfg.displayView = m_cfg.readEntry("Krita/Ocio/DisplayView", QString());
-        cfg.look = m_cfg.readEntry("Krita/Ocio/DisplayLook", QString());
+        cfg.mode = (KisOcioConfiguration::Mode)m_cfg.readEntry("Minerva/Ocio/OcioColorManagementMode", 0);
+        cfg.configurationPath = m_cfg.readEntry("Minerva/Ocio/OcioConfigPath", QString());
+        cfg.lutPath = m_cfg.readEntry("Minerva/Ocio/OcioLutPath", QString());
+        cfg.inputColorSpace = m_cfg.readEntry("Minerva/Ocio/InputColorSpace", QString());
+        cfg.displayDevice = m_cfg.readEntry("Minerva/Ocio/DisplayDevice", QString());
+        cfg.displayView = m_cfg.readEntry("Minerva/Ocio/DisplayView", QString());
+        cfg.look = m_cfg.readEntry("Minerva/Ocio/DisplayLook", QString());
     }
 
     return cfg;
@@ -1991,13 +1991,13 @@ KisOcioConfiguration KisConfig::ocioConfiguration(bool defaultValue) const
 
 void KisConfig::setOcioConfiguration(const KisOcioConfiguration &cfg)
 {
-    m_cfg.writeEntry("Krita/Ocio/OcioColorManagementMode", (int) cfg.mode);
-    m_cfg.writeEntry("Krita/Ocio/OcioConfigPath", cfg.configurationPath);
-    m_cfg.writeEntry("Krita/Ocio/OcioLutPath", cfg.lutPath);
-    m_cfg.writeEntry("Krita/Ocio/InputColorSpace", cfg.inputColorSpace);
-    m_cfg.writeEntry("Krita/Ocio/DisplayDevice", cfg.displayDevice);
-    m_cfg.writeEntry("Krita/Ocio/DisplayView", cfg.displayView);
-    m_cfg.writeEntry("Krita/Ocio/DisplayLook", cfg.look);
+    m_cfg.writeEntry("Minerva/Ocio/OcioColorManagementMode", (int) cfg.mode);
+    m_cfg.writeEntry("Minerva/Ocio/OcioConfigPath", cfg.configurationPath);
+    m_cfg.writeEntry("Minerva/Ocio/OcioLutPath", cfg.lutPath);
+    m_cfg.writeEntry("Minerva/Ocio/InputColorSpace", cfg.inputColorSpace);
+    m_cfg.writeEntry("Minerva/Ocio/DisplayDevice", cfg.displayDevice);
+    m_cfg.writeEntry("Minerva/Ocio/DisplayView", cfg.displayView);
+    m_cfg.writeEntry("Minerva/Ocio/DisplayLook", cfg.look);
 }
 
 KisConfig::OcioColorManagementMode
@@ -2005,33 +2005,33 @@ KisConfig::ocioColorManagementMode(bool defaultValue) const
 {
     // FIXME: this option duplicates ocioConfiguration(), please deprecate it
     return (OcioColorManagementMode)(defaultValue ? INTERNAL
-                                                  : m_cfg.readEntry("Krita/Ocio/OcioColorManagementMode", (int) INTERNAL));
+                                                  : m_cfg.readEntry("Minerva/Ocio/OcioColorManagementMode", (int) INTERNAL));
 }
 
 void KisConfig::setOcioColorManagementMode(OcioColorManagementMode mode) const
 {
     // FIXME: this option duplicates ocioConfiguration(), please deprecate it
-    m_cfg.writeEntry("Krita/Ocio/OcioColorManagementMode", (int) mode);
+    m_cfg.writeEntry("Minerva/Ocio/OcioColorManagementMode", (int) mode);
 }
 
 int KisConfig::ocioLutEdgeSize(bool defaultValue) const
 {
-    return (defaultValue ? 64 : m_cfg.readEntry("Krita/Ocio/LutEdgeSize", 64));
+    return (defaultValue ? 64 : m_cfg.readEntry("Minerva/Ocio/LutEdgeSize", 64));
 }
 
 void KisConfig::setOcioLutEdgeSize(int value)
 {
-    m_cfg.writeEntry("Krita/Ocio/LutEdgeSize", value);
+    m_cfg.writeEntry("Minerva/Ocio/LutEdgeSize", value);
 }
 
 bool KisConfig::ocioLockColorVisualRepresentation(bool defaultValue) const
 {
-    return (defaultValue ? false : m_cfg.readEntry("Krita/Ocio/OcioLockColorVisualRepresentation", false));
+    return (defaultValue ? false : m_cfg.readEntry("Minerva/Ocio/OcioLockColorVisualRepresentation", false));
 }
 
 void KisConfig::setOcioLockColorVisualRepresentation(bool value)
 {
-    m_cfg.writeEntry("Krita/Ocio/OcioLockColorVisualRepresentation", value);
+    m_cfg.writeEntry("Minerva/Ocio/OcioLockColorVisualRepresentation", value);
 }
 
 QString KisConfig::defaultPalette(bool defaultValue) const
@@ -2807,17 +2807,17 @@ void KisConfig::setSelectionActionBar(bool value)
 KisConfig::RootSurfaceFormat KisConfig::rootSurfaceFormat(bool defaultValue) const
 {
     const QString configPath = QStandardPaths::writableLocation(QStandardPaths::GenericConfigLocation);
-    QSettings kritarc(configPath + QStringLiteral("/kritadisplayrc"), QSettings::IniFormat);
+    QSettings minerva2drc(configPath + QStringLiteral("/minerva2ddisplayrc"), QSettings::IniFormat);
 
-    return rootSurfaceFormat(&kritarc, defaultValue);
+    return rootSurfaceFormat(&minerva2drc, defaultValue);
 }
 
 void KisConfig::setRootSurfaceFormat(KisConfig::RootSurfaceFormat value)
 {
     const QString configPath = QStandardPaths::writableLocation(QStandardPaths::GenericConfigLocation);
-    QSettings kritarc(configPath + QStringLiteral("/kritadisplayrc"), QSettings::IniFormat);
+    QSettings minerva2drc(configPath + QStringLiteral("/minerva2ddisplayrc"), QSettings::IniFormat);
 
-    setRootSurfaceFormat(&kritarc, value);
+    setRootSurfaceFormat(&minerva2drc, value);
 }
 
 KisConfig::RootSurfaceFormat KisConfig::rootSurfaceFormat(QSettings *displayrc, bool defaultValue)

@@ -35,12 +35,12 @@ public:
 public Q_SLOTS:
 
     /**
-     * @brief type Krita has several types of nodes, split in layers and masks. Group
+     * @brief type Minerva has several types of nodes, split in layers and masks. Group
      * layers can contain other layers, any layer can contain masks.
      *
      * @return selectionmask
      *
-     * If the Node object isn't wrapping a valid Krita layer or mask object, and
+     * If the Node object isn't wrapping a valid Minerva layer or mask object, and
      * empty string is returned.
      */
     virtual QString type() const override;

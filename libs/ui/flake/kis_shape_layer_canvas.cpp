@@ -31,7 +31,7 @@
 
 #include <kis_spontaneous_job.h>
 #include "kis_global.h"
-#include "krita_utils.h"
+#include "minerva2d_utils.h"
 #include "kis_image_view_converter.h"
 #include "kis_default_bounds.h"
 #include "kis_do_something_command.h"
@@ -357,7 +357,7 @@ void KisShapeLayerCanvas::slotStartAsyncRepaint()
      */
 
     const QVector<QRect> updateRects =
-        KritaUtils::splitRectIntoPatchesTight(repaintRect,
+        MinervaUtils::splitRectIntoPatchesTight(repaintRect,
                                               QSize(MASK_IMAGE_WIDTH, MASK_IMAGE_HEIGHT));
 
     KoShapeManager::PaintJobsOrder jobsOrder;

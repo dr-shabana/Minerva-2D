@@ -10,14 +10,14 @@ import subprocess
 
 def main():
     parser = argparse.ArgumentParser(prog='macos deploy',
-                                     description='Utility to create the krita.app bundle',
+                                     description='Utility to create the minerva2d.app bundle',
                                      epilog="osxdeploy does not sign the resulting bundle")
 
     parser.add_argument('--buildroot', help="Directory where krita src and _install are located",
                         default=os.getenv("BUILDROOT", False))
     parser.add_argument('--install-dir', dest='install_dir', help="Path of install directory to deploy")
     parser.add_argument('--output-dir', dest='output_dir', help="Destination path to place the app")
-    parser.add_argument('--krita-source', dest='source', help="source location of krita")
+    parser.add_argument('--minerva2d-source', dest='source', help="source location of krita")
     args = parser.parse_args()
 
     # --- Locations
@@ -25,27 +25,27 @@ def main():
         if args.install_dir:
             print("WARNING: --install_dir ignored as --buildroot or env BUILDROOT is present")
         if args.source:
-            print("WARNING: --krita_source ignored as --buildroot or env BUILDROOT is present")
+            print("WARNING: --minerva2d_source ignored as --buildroot or env BUILDROOT is present")
 
-        krita_root =pathlib.Path(args.buildroot).resolve()
-        krita_install_dir = pathlib.Path(os.path.join(krita_root, "_install"))
-        krita_source_dir = pathlib.Path(os.path.join(krita_root, "krita"))
-        krita_dmg = pathlib.Path(os.path.join(krita_root, "_dmg"))
+        minerva2d_root =pathlib.Path(args.buildroot).resolve()
+        minerva2d_install_dir = pathlib.Path(os.path.join(minerva2d_root, "_install"))
+        minerva2d_source_dir = pathlib.Path(os.path.join(minerva2d_root, "krita"))
+        minerva2d_dmg = pathlib.Path(os.path.join(minerva2d_root, "_dmg"))
 
         if args.output_dir:
-            krita_dmg = pathlib.Path(args.output_dir).resolve()
+            minerva2d_dmg = pathlib.Path(args.output_dir).resolve()
 
     else:
         if not args.install_dir or not args.output_dir or not args.source:
-            print("ERROR: if --builroot or env BUILDROOT is missing all --install_dir, --output_dir and --krita_source must be present")
+            print("ERROR: if --builroot or env BUILDROOT is missing all --install_dir, --output_dir and --minerva2d_source must be present")
             exit(1)
 
-        krita_install_dir = pathlib.Path(args.install_dir).resolve()
-        krita_source_dir = pathlib.Path(args.source).resolve()
-        krita_dmg = pathlib.Path(args.output_dir).resolve()
+        minerva2d_install_dir = pathlib.Path(args.install_dir).resolve()
+        minerva2d_source_dir = pathlib.Path(args.source).resolve()
+        minerva2d_dmg = pathlib.Path(args.output_dir).resolve()
 
 
-    kritaDeploy(krita_install_dir, krita_dmg, krita_source_dir)
+    kritaDeploy(minerva2d_install_dir, minerva2d_dmg, minerva2d_source_dir)
 
 
 # --- helpers
@@ -195,35 +195,35 @@ def copyMissingLibs(missingLib: list[str], src: pathlib.Path, dstApp: pathlib.Pa
     return newlibs
 
 
-def kritaCreatePyKrita(src: pathlib.Path, dst: pathlib.Path, version: str):
-    frame_name = "PyKrita"
+def kritaCreatePyMinerva(src: pathlib.Path, dst: pathlib.Path, version: str):
+    frame_name = "PyMinerva"
     frame_version = version
 
     frame_loc = dict()
-    frame_root = dst.joinpath(frame_name + ".framework") # PyKrita.framework
+    frame_root = dst.joinpath(frame_name + ".framework") # PyMinerva.framework
     frame_loc['root'] = frame_root
-    frame_loc['versions'] = frame_root.joinpath('Versions') # PyKrita.framework/Versions
-    frame_loc[frame_version] = frame_loc['versions'].joinpath(frame_version) # PyKrita.framework/Versions/x.y.z
+    frame_loc['versions'] = frame_root.joinpath('Versions') # PyMinerva.framework/Versions
+    frame_loc[frame_version] = frame_loc['versions'].joinpath(frame_version) # PyMinerva.framework/Versions/x.y.z
 
     for key in frame_loc:
         frame_loc[key].mkdir(exist_ok=True)
     for name in ['Resources','lib']:
         frame_loc[frame_version].joinpath(name).mkdir(exist_ok=True)
 
-    copyDirSub(src.joinpath('lib', 'krita-python-libs'),frame_loc[frame_version].joinpath('lib'))
-    krita_so = pathlib.Path('lib', 'PyKrita', 'krita.so')
-    shutil.move(frame_loc[frame_version].joinpath(krita_so),frame_loc[frame_version].joinpath(frame_name))
+    copyDirSub(src.joinpath('lib', 'minerva2d-python-libs'),frame_loc[frame_version].joinpath('lib'))
+    minerva2d_so = pathlib.Path('lib', 'PyMinerva', 'minerva2d.so')
+    shutil.move(frame_loc[frame_version].joinpath(minerva2d_so),frame_loc[frame_version].joinpath(frame_name))
 
     # Create symlinks
-    frame_loc[frame_version].joinpath(krita_so).symlink_to(pathlib.Path('..', '..', frame_name))
+    frame_loc[frame_version].joinpath(minerva2d_so).symlink_to(pathlib.Path('..', '..', frame_name))
     frame_loc['versions'].joinpath('Current').symlink_to(frame_version)
 
     frame_loc['root'].joinpath(frame_name).symlink_to(pathlib.Path('Versions','Current',frame_name))
     frame_loc['root'].joinpath('Resources').symlink_to(pathlib.Path('Versions','Current','Resources'))
 
-    krita_python_lib = dst.joinpath('krita-python-libs')
-    krita_python_link = frame_loc['versions'].joinpath('Current', 'lib').relative_to(dst)
-    krita_python_lib.symlink_to(krita_python_link)
+    minerva2d_python_lib = dst.joinpath('minerva2d-python-libs')
+    minerva2d_python_link = frame_loc['versions'].joinpath('Current', 'lib').relative_to(dst)
+    minerva2d_python_lib.symlink_to(minerva2d_python_link)
 
     info_plist = frame_loc[frame_version].joinpath('Resources', 'Info.plist')
 
@@ -231,7 +231,7 @@ def kritaCreatePyKrita(src: pathlib.Path, dst: pathlib.Path, version: str):
     plistbuddy = lambda key, value: subprocess.run([plistbuddy_loc, info_plist, '-c', f'Add:{key} string {value}'])
 
     plistbuddy("CFBundleExecutable", frame_name)
-    plistbuddy("CFBundleIdentifier", f'org.krita.{frame_name}')
+    plistbuddy("CFBundleIdentifier", f'org.minerva2d.{frame_name}')
     plistbuddy("CFBundlePackageType", "FMWK")
     plistbuddy("CFBundleShortVersionString", f'{frame_version}')
     plistbuddy("CFBundleVersion", f'{frame_version}')
@@ -294,14 +294,14 @@ def kritaFixPython(pyframe: pathlib.Path):
     # Python.app fix
     # pyframe_pyapp_python = pyframe_current.joinpath('Resources', 'Python.app','Contents','MacOS','Python')
     # installNameTool(pyframe_pyapp_python,'-add_rpath @executable_path/../../../../../../../')
-    # installNameTool(pyframe_pyapp_python,f'-change "{krita_install_dir}/lib/Python.framework/Versions/{pyframe_version}/Python" @executable_path/../../../../../../Python')
+    # installNameTool(pyframe_pyapp_python,f'-change "{minerva2d_install_dir}/lib/Python.framework/Versions/{pyframe_version}/Python" @executable_path/../../../../../../Python')
 
     installNameTool(pyframe_current.joinpath('bin', f'python{pyframe_version}'), '-add_rpath @executable_path/../../../../')
 
     # this step is probably already achieved by deleteMissingRpath
     # which is more general and cover all the cases here
     # delete_install_rpath = lambda lib: subprocess.run([
-    #     'install_name_tool', '-delete_rpath', krita_install_dir.joinpath('lib'), lib])
+    #     'install_name_tool', '-delete_rpath', minerva2d_install_dir.joinpath('lib'), lib])
     #
     # filesTofix.clear()
     # filesTofix.append(pythonLib)
@@ -333,21 +333,21 @@ def cleanMissingRpath(rpath: [str|pathlib.Path], libs:list[pathlib.Path]=None):
 
 def kritaDeploy(from_install: pathlib.Path, dst: pathlib.Path, source: pathlib.Path):
 
-    krita_dmg = dst
-    krita_install_dir = from_install
-    krita_source_dir = source
+    minerva2d_dmg = dst
+    minerva2d_install_dir = from_install
+    minerva2d_source_dir = source
 
-    krita_app = dict()
-    krita_app['root'] = pathlib.Path(os.path.join(krita_dmg, "krita.app"))
-    krita_app['contents'] = pathlib.Path(os.path.join(krita_dmg, "krita.app", "Contents"))
-    krita_app['plugins'] = pathlib.Path(os.path.join(krita_app['contents'], 'PlugIns'))
-    krita_app['frameworks'] = pathlib.Path(os.path.join(krita_app['contents'], 'Frameworks'))
-    krita_app['macos'] = pathlib.Path(os.path.join(krita_app['contents'], 'MacOS'))
-    krita_app['resources'] = pathlib.Path(os.path.join(krita_app['contents'], 'Resources'))
+    minerva2d_app = dict()
+    minerva2d_app['root'] = pathlib.Path(os.path.join(minerva2d_dmg, "minerva2d.app"))
+    minerva2d_app['contents'] = pathlib.Path(os.path.join(minerva2d_dmg, "minerva2d.app", "Contents"))
+    minerva2d_app['plugins'] = pathlib.Path(os.path.join(minerva2d_app['contents'], 'PlugIns'))
+    minerva2d_app['frameworks'] = pathlib.Path(os.path.join(minerva2d_app['contents'], 'Frameworks'))
+    minerva2d_app['macos'] = pathlib.Path(os.path.join(minerva2d_app['contents'], 'MacOS'))
+    minerva2d_app['resources'] = pathlib.Path(os.path.join(minerva2d_app['contents'], 'Resources'))
 
     # --- path for subprocess
     kisenv = os.environ.copy()
-    kisenv['PATH'] = f"{os.path.join(krita_install_dir, 'bin')}:{kisenv['PATH']}"
+    kisenv['PATH'] = f"{os.path.join(minerva2d_install_dir, 'bin')}:{kisenv['PATH']}"
 
     # --- Qt version adjustments
     # TODO: probably better to rely on qtdiag
@@ -363,33 +363,33 @@ def kritaDeploy(from_install: pathlib.Path, dst: pathlib.Path, source: pathlib.P
     kisenv['MACOSX_DEPLOYMENT_TARGET'] = osx_deployment_target
     kisenv['QMAKE_MACOSX_DEPLOYMENT_TARGET'] = osx_deployment_target
 
-    # --- Krita version adjustments
+    # --- Minerva version adjustments
     # os.environ['KRITACI_RELEASE_PACKAGE_NAMING'] = "ON"
-    kis_version_full = subprocess.run(['krita_version', '-v'],
+    kis_version_full = subprocess.run(['minerva2d_version', '-v'],
                                       capture_output=True, text=True, env=kisenv).stdout
     kis_version = kis_version_full.replace("-", " ").split()
 
 
-    if krita_dmg.exists():
-        print(f"Deleting previous krita.app run in {krita_dmg}")
-        shutil.rmtree(krita_dmg)
+    if minerva2d_dmg.exists():
+        print(f"Deleting previous minerva2d.app run in {minerva2d_dmg}")
+        shutil.rmtree(minerva2d_dmg)
 
-    print(f"Preparing {krita_install_dir} for deployment")
-    krita_dmg.mkdir(exist_ok=True)
+    print(f"Preparing {minerva2d_install_dir} for deployment")
+    minerva2d_dmg.mkdir(exist_ok=True)
 
-    for key in krita_app:
-        krita_app[key].mkdir(exist_ok=True, parents=True)
+    for key in minerva2d_app:
+        minerva2d_app[key].mkdir(exist_ok=True, parents=True)
 
-    print("copying krita.app...")
-    copyDirSub(krita_install_dir.joinpath('bin', 'krita.app'), krita_dmg, only_contents=False)
-    copyDirSub(krita_install_dir.joinpath('bin', 'kritarunner'), krita_app['macos'], only_contents=False)
-    copyDirSub(krita_install_dir.joinpath('bin', 'krita_version'), krita_app['macos'], only_contents=False)
+    print("copying minerva2d.app...")
+    copyDirSub(minerva2d_install_dir.joinpath('bin', 'minerva2d.app'), minerva2d_dmg, only_contents=False)
+    copyDirSub(minerva2d_install_dir.joinpath('bin', 'minerva2drunner'), minerva2d_app['macos'], only_contents=False)
+    copyDirSub(minerva2d_install_dir.joinpath('bin', 'minerva2d_version'), minerva2d_app['macos'], only_contents=False)
 
     print("Copying share...")
     extra_args = [     '--delete'
-                       ,'--exclude', 'krita.icns'
-                       ,'--exclude', 'krita-krz.icns'
-                       ,'--exclude', 'krita-kra.icns'
+                       ,'--exclude', 'minerva2d.icns'
+                       ,'--exclude', 'minerva2d-krz.icns'
+                       ,'--exclude', 'minerva2d-kra.icns'
                        ,'--exclude', 'Assets.car'
                        ,'--exclude', 'aclocal'
                        ,'--exclude', 'doc'
@@ -408,14 +408,14 @@ def kritaDeploy(from_install: pathlib.Path, dst: pathlib.Path, source: pathlib.P
                        ,'--exclude', 'translations'
                        ,'--exclude', 'qml'
                         ]
-    copyDirSub(krita_install_dir.joinpath('share'), krita_app['resources'], extra_args=extra_args)
+    copyDirSub(minerva2d_install_dir.joinpath('share'), minerva2d_app['resources'], extra_args=extra_args)
 
     print("Copying Qt translations...")
-    copyDirSub(krita_install_dir.joinpath('translations'), krita_app['contents'], only_contents=False)
+    copyDirSub(minerva2d_install_dir.joinpath('translations'), minerva2d_app['contents'], only_contents=False)
 
     symlinks = [('share','Resources'),('lib','Frameworks'),('Resources/translations','translations')]
     for src,dst in symlinks:
-        linkPath = krita_app['contents'].joinpath(src)
+        linkPath = minerva2d_app['contents'].joinpath(src)
         if linkPath.is_symlink():
             linkPath.unlink()
         linkPath.symlink_to(dst)
@@ -424,65 +424,65 @@ def kritaDeploy(from_install: pathlib.Path, dst: pathlib.Path, source: pathlib.P
     pattern = ['libKF5*', 'libkrita*']
     mandatoryLibs = list()
     for pat in pattern:
-        mandatoryLibs.extend(krita_install_dir.joinpath('lib').glob(pat))
+        mandatoryLibs.extend(minerva2d_install_dir.joinpath('lib').glob(pat))
     for file in mandatoryLibs:
-        shutil.copy2(file,krita_app['frameworks'], follow_symlinks=False)
+        shutil.copy2(file,minerva2d_app['frameworks'], follow_symlinks=False)
 
     print("Copying plugins...")
     extra_args = '--delete --delete-excluded --exclude kritaquicklook.qlgenerator --exclude kritaspotlight.mdimporter'
-    copyDirSub(krita_install_dir.joinpath('plugins'), krita_app['plugins'], extra_args=extra_args.split())
+    copyDirSub(minerva2d_install_dir.joinpath('plugins'), minerva2d_app['plugins'], extra_args=extra_args.split())
 
     plugins = []
-    krita_app_qlook = krita_app['contents'].joinpath('Library','QuickLook')
-    krita_app_spotlight = krita_app['contents'].joinpath('Library', 'Spotlight')
+    minerva2d_app_qlook = minerva2d_app['contents'].joinpath('Library','QuickLook')
+    minerva2d_app_spotlight = minerva2d_app['contents'].joinpath('Library', 'Spotlight')
 
-    krita_app_qlook.mkdir(parents=True)
-    krita_app_spotlight.mkdir(parents=True)
+    minerva2d_app_qlook.mkdir(parents=True)
+    minerva2d_app_spotlight.mkdir(parents=True)
 
     plugins.append('QuickLook')
-    copyDirSub(krita_install_dir.joinpath('plugins','kritaquicklook.qlgenerator'),krita_app_qlook,
+    copyDirSub(minerva2d_install_dir.joinpath('plugins','kritaquicklook.qlgenerator'),minerva2d_app_qlook,
                only_contents=False)
     plugins.append('Spotlight')
-    copyDirSub(krita_install_dir.joinpath('plugins', 'kritaspotlight.mdimporter'), krita_app_spotlight,
+    copyDirSub(minerva2d_install_dir.joinpath('plugins', 'kritaspotlight.mdimporter'), minerva2d_app_spotlight,
                only_contents=False)
 
-    plugins.append('krita-thumbnailer')
-    copyDirSub(krita_install_dir.joinpath('plugins', 'krita-thumbnailer.appex'),krita_app['plugins'],
+    plugins.append('minerva2d-thumbnailer')
+    copyDirSub(minerva2d_install_dir.joinpath('plugins', 'minerva2d-thumbnailer.appex'),minerva2d_app['plugins'],
                only_contents=False)
-    plugins.append('krita-preview')
-    copyDirSub(krita_install_dir.joinpath('plugins', 'krita-preview.appex'), krita_app['plugins'],
+    plugins.append('minerva2d-preview')
+    copyDirSub(minerva2d_install_dir.joinpath('plugins', 'minerva2d-preview.appex'), minerva2d_app['plugins'],
                only_contents=False)
     print(f'Copied plugins: {",".join(plugins)}')
 
 
     print("Copying kritaplugins...")
-    copyDirSub(krita_install_dir.joinpath('lib', 'kritaplugins'), krita_app['plugins'])
-    copyDirSub(krita_install_dir.joinpath('lib', 'mlt'), krita_app['plugins'], only_contents=False)
+    copyDirSub(minerva2d_install_dir.joinpath('lib', 'kritaplugins'), minerva2d_app['plugins'])
+    copyDirSub(minerva2d_install_dir.joinpath('lib', 'mlt'), minerva2d_app['plugins'], only_contents=False)
 
     for name in ['ffmpeg', 'ffprobe']:
-        shutil.copy2(krita_install_dir.joinpath('bin', name), krita_app['macos'])
+        shutil.copy2(minerva2d_install_dir.joinpath('bin', name), minerva2d_app['macos'])
         subprocess.run(f"install_name_tool -add_rpath @executable_path/../Frameworks/ "
-                       f"{krita_app['macos'].joinpath(name)}".split())
+                       f"{minerva2d_app['macos'].joinpath(name)}".split())
 
     print("Copying python...")
-    copyDirSub(krita_install_dir.joinpath('lib', 'Python.framework'),krita_app['frameworks'],only_contents=False)
-    kritaCreatePyKrita(krita_install_dir, krita_app['frameworks'], kis_version[0])
+    copyDirSub(minerva2d_install_dir.joinpath('lib', 'Python.framework'),minerva2d_app['frameworks'],only_contents=False)
+    kritaCreatePyMinerva(minerva2d_install_dir, minerva2d_app['frameworks'], kis_version[0])
 
-    DeployCmd.achmod(krita_app['frameworks'].joinpath('Python.framework','Python'), stat.S_IWRITE)
+    DeployCmd.achmod(minerva2d_app['frameworks'].joinpath('Python.framework','Python'), stat.S_IWRITE)
 
-    kritaStripPythonFramework(krita_app['frameworks'].joinpath('Python.framework'))
-    kritaFixPython(krita_app['frameworks'].joinpath('Python.framework'))
+    kritaStripPythonFramework(minerva2d_app['frameworks'].joinpath('Python.framework'))
+    kritaFixPython(minerva2d_app['frameworks'].joinpath('Python.framework'))
     print("precompiling all python files")
-    cmd = f"python -m compileall {krita_app['contents']}".split()
+    cmd = f"python -m compileall {minerva2d_app['contents']}".split()
     cmdLog(cmd)
     subprocess.run(cmd,env=kisenv)
 
     # Remove unnecessary rpaths
-    installNameTool(krita_app['macos'].joinpath('krita_version'), "-delete_rpath @executable_path/../lib")
-    installNameTool(krita_app['macos'].joinpath('kritarunner'), "-delete_rpath @executable_path/../lib")
-    installNameTool(krita_app['macos'].joinpath('krita'), "-delete_rpath @loader_path/../../../../lib")
+    installNameTool(minerva2d_app['macos'].joinpath('minerva2d_version'), "-delete_rpath @executable_path/../lib")
+    installNameTool(minerva2d_app['macos'].joinpath('minerva2drunner'), "-delete_rpath @executable_path/../lib")
+    installNameTool(minerva2d_app['macos'].joinpath('krita'), "-delete_rpath @loader_path/../../../../lib")
 
-    fileToRemove = krita_app['plugins'].joinpath('kf5', 'org.kde.kwindowsystem.platforms')
+    fileToRemove = minerva2d_app['plugins'].joinpath('kf5', 'org.kde.kwindowsystem.platforms')
     if fileToRemove.exists():
         shutil.rmtree(fileToRemove)
 
@@ -490,18 +490,18 @@ def kritaDeploy(from_install: pathlib.Path, dst: pathlib.Path, source: pathlib.P
     # be linked statically into the application and cannot be used on
     # the runtime
     # See: https://github.com/qt/qtbase/commit/f0a7d74e1dd2c1d802aa09d7b8c144599f4a54ce
-    fileToRemove = krita_app['plugins'].joinpath('permissions')
+    fileToRemove = minerva2d_app['plugins'].joinpath('permissions')
     if fileToRemove.exists():
         shutil.rmtree(fileToRemove)
 
     # Fix file permissions
     filesToFix = list()
-    filesToFix.extend(krita_app['contents'].rglob('*.dylib'))
-    filesToFix.extend(krita_app['contents'].rglob('*.so'))
-    filesToFix.extend(krita_app['macos'].rglob('*'))
+    filesToFix.extend(minerva2d_app['contents'].rglob('*.dylib'))
+    filesToFix.extend(minerva2d_app['contents'].rglob('*.so'))
+    filesToFix.extend(minerva2d_app['macos'].rglob('*'))
     for f in filesToFix:
         DeployCmd.achmod(f,0o111)
-    for f in krita_app['resources'].joinpath('applications').rglob('*.desktop'):
+    for f in minerva2d_app['resources'].joinpath('applications').rglob('*.desktop'):
         DeployCmd.xchmod(f,0o111)
 
 
@@ -509,7 +509,7 @@ def kritaDeploy(from_install: pathlib.Path, dst: pathlib.Path, source: pathlib.P
     print("Searching for missing libraries...")
     # Find binary files with execution flags
     # or files name finishing in 'dylib' or 'so'
-    libs = [f for f in krita_app['contents'].rglob('*') if
+    libs = [f for f in minerva2d_app['contents'].rglob('*') if
             (f.is_file() and (stat.S_IMODE(f.stat().st_mode) & 0o111) and f.suffix != '.py')
             or f.suffix == '.dylib'
             or f.suffix == '.so'
@@ -517,10 +517,10 @@ def kritaDeploy(from_install: pathlib.Path, dst: pathlib.Path, source: pathlib.P
     libs = [f for f in libs if isBinary(f)]
 
 
-    missinglibs = findMissingLibs(libs, krita_app['contents'],krita_install_dir)
+    missinglibs = findMissingLibs(libs, minerva2d_app['contents'],minerva2d_install_dir)
     while len(missinglibs) != 0:
-        added_libs = copyMissingLibs(missinglibs, krita_install_dir, krita_app['root'])
-        missinglibs = findMissingLibs(added_libs, krita_app['contents'],krita_install_dir)
+        added_libs = copyMissingLibs(missinglibs, minerva2d_install_dir, minerva2d_app['root'])
+        missinglibs = findMissingLibs(added_libs, minerva2d_app['contents'],minerva2d_install_dir)
 
 
     # Start run macdeployqt
@@ -530,11 +530,11 @@ def kritaDeploy(from_install: pathlib.Path, dst: pathlib.Path, source: pathlib.P
     if exec_path is not None:
         print("Found!")
         cmd = [exec_path
-            ,krita_app['root']
+            ,minerva2d_app['root']
             , '-verbose=0'
-            , f'-executable={krita_app["macos"].joinpath("krita")}'
-            , f'-libpath={krita_install_dir.joinpath("lib")}'
-            , f"-qmldir={krita_source_dir.joinpath('plugins', 'dockers', 'textproperties')}"
+            , f'-executable={minerva2d_app["macos"].joinpath("krita")}'
+            , f'-libpath={minerva2d_install_dir.joinpath("lib")}'
+            , f"-qmldir={minerva2d_source_dir.joinpath('plugins', 'dockers', 'textproperties')}"
             , '-appstore-compliant'
                ]
         cmdLog(cmd)
@@ -555,33 +555,33 @@ def kritaDeploy(from_install: pathlib.Path, dst: pathlib.Path, source: pathlib.P
 
     # TODO: remove after move to Qt6, those plugins are not compatible with macOS>=12
     # fixes kritaspotlight and kritaquicklook binaries
-    filesToFix = [f for f in krita_app['contents'].joinpath('Library').rglob('*/Contents/MacOS/*') if
+    filesToFix = [f for f in minerva2d_app['contents'].joinpath('Library').rglob('*/Contents/MacOS/*') if
                   (f.is_file() and stat.S_IMODE(f.stat().st_mode) & 0o111)]
     for f in filesToFix:
         installNameTool(f, '-add_rpath @loader_path/../../../../../Frameworks')
 
     # Remove broken symlinks if any
-    filesToFix = [f for f in krita_app['contents'].rglob('*') if f.is_symlink() and not f.exists()]
+    filesToFix = [f for f in minerva2d_app['contents'].rglob('*') if f.is_symlink() and not f.exists()]
     for f in filesToFix:
         f.unlink()
 
     # Be extra paranoid about left over absolute paths
     # this may not be needed as macos-fix-rpaths.sh should deliver clean binaries
-    filesToFix =[f for f in krita_app['contents'].rglob('*') if
+    filesToFix =[f for f in minerva2d_app['contents'].rglob('*') if
                   (f.is_file() and (stat.S_IMODE(f.stat().st_mode) & 0o111) and f.suffix != '.py')
                   or f.suffix == '.dylib'
                   or f.suffix == '.so'
                   ]
-    cleanMissingRpath(krita_install_dir,filesToFix)
+    cleanMissingRpath(minerva2d_install_dir,filesToFix)
 
     # remove debug version as both versions can't be signed.
-    # krita_app['frameworks'].joinpath('QtScript.framework', 'Versions', 'Current', 'QtScript_debug').unlink(missing_ok=True)
+    # minerva2d_app['frameworks'].joinpath('QtScript.framework', 'Versions', 'Current', 'QtScript_debug').unlink(missing_ok=True)
 
     # delete .DS_Store if any
-    for f in krita_app['contents'].rglob('*.DS_Store'):
+    for f in minerva2d_app['contents'].rglob('*.DS_Store'):
         f.unlink()
 
-    print("## Finished preparing krita.app bundle!")
+    print("## Finished preparing minerva2d.app bundle!")
 
     return
 

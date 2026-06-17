@@ -28,7 +28,7 @@ target_link_libraries(kritaresourcewidgets
         Qt${QT_MAJOR_VERSION}::Widgets
     PRIVATE
         Qt${QT_MAJOR_VERSION}::Sql
-        kritaversion
+        minerva2dversion
         kritaglobal
         kritaplugin
         kritastore
@@ -41,7 +41,7 @@ target_link_libraries(kritaresourcewidgets
 )
 
 set_target_properties(kritaresourcewidgets PROPERTIES
-    VERSION ${GENERIC_KRITA_LIB_VERSION} SOVERSION ${GENERIC_KRITA_LIB_SOVERSION}
+    VERSION ${GENERIC_MINERVA2D_LIB_VERSION} SOVERSION ${GENERIC_MINERVA2D_LIB_SOVERSION}
 )
 install(TARGETS kritaresourcewidgets ${INSTALL_TARGETS_DEFAULT_ARGS} )
 

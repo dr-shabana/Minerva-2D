@@ -50,7 +50,7 @@ KisHistogram::KisHistogram(const KisPaintDeviceSP paintdev,
     m_selection = false;
     m_channel = 0;
 
-    // TODO: Why does Krita crash when updateHistogram() is *not* called here?
+    // TODO: Why does Minerva crash when updateHistogram() is *not* called here?
     updateHistogram();
 }
 

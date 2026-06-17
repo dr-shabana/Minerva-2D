@@ -3,7 +3,7 @@ include(ECMQmlModule)
 if (QT_MAJOR_VERSION STREQUAL "6")
 
     ecm_add_qml_module(kritaqmlcomponents
-        URI "org.krita.components"
+        URI "org.minerva2d.components"
         VERSION 1.0
         SHARED
         GENERATE_PLUGIN_SOURCE
@@ -32,15 +32,15 @@ if (QT_MAJOR_VERSION STREQUAL "6")
 
 else ()
     ecm_add_qml_module(kritaqmlcomponents
-        URI "org.krita.components"
+        URI "org.minerva2d.components"
         VERSION 1.0
-        CLASSNAME KritaQmlComponentsPlugin
+        CLASSNAME MinervaQmlComponentsPlugin
     )
 
     target_sources(kritaqmlcomponents
         PRIVATE
-            KritaQmlComponentsPlugin.cpp
-            KritaQmlComponentsPlugin.h
+            MinervaQmlComponentsPlugin.cpp
+            MinervaQmlComponentsPlugin.h
             SvgTextLabel.cpp
             SvgTextLabel.h
             KisNumParser.cpp

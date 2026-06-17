@@ -1,5 +1,5 @@
 /*
- * This file is part of Krita
+ * This file is part of Minerva
  *
  * SPDX-FileCopyrightText: 2016 Boudewijn Rempt <boud@valdyas.org>
  *
@@ -23,12 +23,12 @@ class KisHistogram;
 
 
 
-class KritaThreshold : public QObject
+class MinervaThreshold : public QObject
 {
     Q_OBJECT
 public:
-    KritaThreshold(QObject *parent, const QVariantList &);
-    ~KritaThreshold() override;
+    MinervaThreshold(QObject *parent, const QVariantList &);
+    ~MinervaThreshold() override;
 };
 
 class KisFilterThreshold : public KisFilter

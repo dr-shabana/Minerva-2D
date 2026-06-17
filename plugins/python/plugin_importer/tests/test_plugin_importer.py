@@ -35,7 +35,7 @@ class PluginImporterTestCase(TestCase):
 
         We create temporary directories for creating and extracting
         zip files: `resources_dir` will be the destination (a stand-in
-        for Krita's resources dir), `plugin_dir` the source where our
+        for Minerva's resources dir), `plugin_dir` the source where our
         plugin zip is located.
         """
 
@@ -134,10 +134,10 @@ class PluginImporterTestCase(TestCase):
                                   lambda x: True)
         imported = importer.import_all()
         assert len(imported) == 1
-        self.assert_in_resources_dir('pykrita', 'foo')
-        self.assert_in_resources_dir('pykrita', 'foo', '__init__.py')
-        self.assert_in_resources_dir('pykrita', 'foo', 'foo.py')
-        self.assert_in_resources_dir('pykrita', 'foo.desktop')
+        self.assert_in_resources_dir('pyminerva2d', 'foo')
+        self.assert_in_resources_dir('pyminerva2d', 'foo', '__init__.py')
+        self.assert_in_resources_dir('pyminerva2d', 'foo', 'foo.py')
+        self.assert_in_resources_dir('pyminerva2d', 'foo.desktop')
         self.assert_in_resources_dir('actions', 'foo.action')
 
     def test_plugin_different_action_name_success(self):
@@ -149,10 +149,10 @@ class PluginImporterTestCase(TestCase):
                                   lambda x: True)
         imported = importer.import_all()
         assert len(imported) == 1
-        self.assert_in_resources_dir('pykrita', 'foo')
-        self.assert_in_resources_dir('pykrita', 'foo', '__init__.py')
-        self.assert_in_resources_dir('pykrita', 'foo', 'foo.py')
-        self.assert_in_resources_dir('pykrita', 'foo.desktop')
+        self.assert_in_resources_dir('pyminerva2d', 'foo')
+        self.assert_in_resources_dir('pyminerva2d', 'foo', '__init__.py')
+        self.assert_in_resources_dir('pyminerva2d', 'foo', 'foo.py')
+        self.assert_in_resources_dir('pyminerva2d', 'foo.desktop')
         self.assert_in_resources_dir('actions', 'foo.action')
 
     def test_toplevel_plugin_success(self):
@@ -164,10 +164,10 @@ class PluginImporterTestCase(TestCase):
                                   lambda x: True)
         imported = importer.import_all()
         assert len(imported) == 1
-        self.assert_in_resources_dir('pykrita', 'foo')
-        self.assert_in_resources_dir('pykrita', 'foo', '__init__.py')
-        self.assert_in_resources_dir('pykrita', 'foo', 'foo.py')
-        self.assert_in_resources_dir('pykrita', 'foo.desktop')
+        self.assert_in_resources_dir('pyminerva2d', 'foo')
+        self.assert_in_resources_dir('pyminerva2d', 'foo', '__init__.py')
+        self.assert_in_resources_dir('pyminerva2d', 'foo', 'foo.py')
+        self.assert_in_resources_dir('pyminerva2d', 'foo.desktop')
         self.assert_in_resources_dir('actions', 'foo.action')
 
     def test_nested_plugin_success(self):
@@ -179,10 +179,10 @@ class PluginImporterTestCase(TestCase):
                                   lambda x: True)
         imported = importer.import_all()
         assert len(imported) == 1
-        self.assert_in_resources_dir('pykrita', 'foo')
-        self.assert_in_resources_dir('pykrita', 'foo', '__init__.py')
-        self.assert_in_resources_dir('pykrita', 'foo', 'foo.py')
-        self.assert_in_resources_dir('pykrita', 'foo.desktop')
+        self.assert_in_resources_dir('pyminerva2d', 'foo')
+        self.assert_in_resources_dir('pyminerva2d', 'foo', '__init__.py')
+        self.assert_in_resources_dir('pyminerva2d', 'foo', 'foo.py')
+        self.assert_in_resources_dir('pyminerva2d', 'foo.desktop')
         self.assert_in_resources_dir('actions', 'foo.action')
 
     def test_no_action_success(self):
@@ -196,10 +196,10 @@ class PluginImporterTestCase(TestCase):
                                   lambda x: True)
         imported = importer.import_all()
         assert len(imported) == 1
-        self.assert_in_resources_dir('pykrita', 'foo')
-        self.assert_in_resources_dir('pykrita', 'foo', '__init__.py')
-        self.assert_in_resources_dir('pykrita', 'foo', 'foo.py')
-        self.assert_in_resources_dir('pykrita', 'foo.desktop')
+        self.assert_in_resources_dir('pyminerva2d', 'foo')
+        self.assert_in_resources_dir('pyminerva2d', 'foo', '__init__.py')
+        self.assert_in_resources_dir('pyminerva2d', 'foo', 'foo.py')
+        self.assert_in_resources_dir('pyminerva2d', 'foo.desktop')
         self.assert_not_in_resources_dir('actions', 'foo.action')
 
     def test_overwrite_existing(self):
@@ -208,7 +208,7 @@ class PluginImporterTestCase(TestCase):
         self.zip_plugin('success_simple')
 
         # Create an existing python module in the resources directory:
-        plugin_dir = os.path.join(self.resources_dir.name, 'pykrita', 'foo')
+        plugin_dir = os.path.join(self.resources_dir.name, 'pyminerva2d', 'foo')
         os.makedirs(plugin_dir)
         init_file = os.path.join(plugin_dir, '__init__.py')
         with open(init_file, 'w') as f:
@@ -234,7 +234,7 @@ class PluginImporterTestCase(TestCase):
         self.zip_plugin('success_simple')
 
         # Create an existing python module in the resources directory:
-        plugin_dir = os.path.join(self.resources_dir.name, 'pykrita', 'foo')
+        plugin_dir = os.path.join(self.resources_dir.name, 'pyminerva2d', 'foo')
         os.makedirs(plugin_dir)
         init_file = os.path.join(plugin_dir, '__init__.py')
         with open(init_file, 'w') as f:

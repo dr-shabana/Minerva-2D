@@ -5,12 +5,12 @@
 #include "TestFilter.h"
 #include <simpletest.h>
 
-#include <KritaVersionWrapper.h>
+#include <MinervaVersionWrapper.h>
 #include <QColor>
 #include <QDataStream>
 
 #include <Node.h>
-#include <Krita.h>
+#include <Minerva.h>
 #include <Document.h>
 #include <Filter.h>
 

@@ -89,7 +89,7 @@ void KisWarpTransformWorkerTest::testQImage()
     QImage image(TestUtil::fetchDataFileLazy("test_transform_quality_second.png"));
     image.convertTo(QImage::Format_ARGB32);
 
-    dbgKrita << ppVar(image.format());
+    dbgMinerva << ppVar(image.format());
 
 
     QVector<QPointF> origPoints;
@@ -126,7 +126,7 @@ void KisWarpTransformWorkerTest::testQImage()
             image, QPointF(), &newOffset);
     }
 
-    dbgKrita << ppVar(newOffset);
+    dbgMinerva << ppVar(newOffset);
 
     TestUtil::checkQImage(result, "warp_transform_test", "qimage", "tr");
 }
@@ -183,7 +183,7 @@ void KisWarpTransformWorkerTest::testBackwardInterpolatorExtrapolation()
     QCOMPARE(interp.map(QPointF(0,110)), QPointF(110, 100));
     QCOMPARE(interp.map(QPointF(-10,110)), QPointF(110,110));
 }
-#include "krita_utils.h"
+#include "minerva2d_utils.h"
 void KisWarpTransformWorkerTest::testNeedChangeRects()
 {
     WarpTransformWorkerData d;

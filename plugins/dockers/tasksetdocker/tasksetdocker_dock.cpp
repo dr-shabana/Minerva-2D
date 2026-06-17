@@ -241,7 +241,7 @@ void TasksetDockerDock::resourceSelected(KoResourceSP resource)
 
 static void addResourceLoader()
 {
-    KisResourceLoaderRegistry::instance()->registerLoader(new KisResourceLoader<TasksetResource>(ResourceType::TaskSets, ResourceType::TaskSets, i18n("Task sets"), QStringList() << "application/x-krita-taskset"));
+    KisResourceLoaderRegistry::instance()->registerLoader(new KisResourceLoader<TasksetResource>(ResourceType::TaskSets, ResourceType::TaskSets, i18n("Task sets"), QStringList() << "application/x-minerva2d-taskset"));
 }
 
 Q_COREAPP_STARTUP_FUNCTION(addResourceLoader)

@@ -28,7 +28,7 @@ public:
 public:
     QString replacementWarningText() override;
     QString captionText() override;
-    QString infoText(QSettings& kritarc) override;
+    QString infoText(QSettings& minerva2drc) override;
 
 private:
     QScopedPointer<KisOutputColorInfoInterface> m_outputColorInfoInterface;

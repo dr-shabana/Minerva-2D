@@ -103,10 +103,10 @@ void TestSvgText::initTestCase()
     for (const char *const fontFile : {
              "fonts/DejaVuSans.ttf",
              "fonts/FreeSans.ttf",
-             "fonts/Krita_Test_Unicode_Variation_A.ttf",
-             "fonts/Krita_Test_Unicode_Variation_B.ttf",
+             "fonts/Minerva_Test_Unicode_Variation_A.ttf",
+             "fonts/Minerva_Test_Unicode_Variation_B.ttf",
              "fonts/Ahem/ahem.ttf",
-             "fonts/krita-pixel-test.otb",
+             "fonts/minerva2d-pixel-test.otb",
              "fonts/variabletest_matching.ttf",
              "fonts/FontWithFancyFeatures.otf",
              "fonts/testFontsCozens/BaselineTest-Regular-with-BASE.otf",
@@ -1199,7 +1199,7 @@ void TestSvgText::testTextWithMultipleRelativeOffsetsArabic()
 
     // we cannot expect more than one failure
     /*#ifndef USE_ROUND_TRIP
-        QEXPECT_FAIL("", "WARNING: in Krita relative offsets also define a new text chunk, that doesn't comply with SVG standard and must be fixed",
+        QEXPECT_FAIL("", "WARNING: in Minerva relative offsets also define a new text chunk, that doesn't comply with SVG standard and must be fixed",
        Continue);*/
     t.setFuzzyThreshold(5);
     t.test_standard("text_multiple_relative_offsets_arabic", QSize(530, 70), 72.0);
@@ -1584,16 +1584,16 @@ void TestSvgText::testFontSelectionForText()
     // when there's no better font. May not work on non-testing systems?
 
     test = "Ashi:\u82A6\uFE03 or \u82A6";
-    fontFamilies << "Krita_Test_Unicode_Variation_A";
+    fontFamilies << "Minerva_Test_Unicode_Variation_A";
     expectedLengths.clear();
     expectedLengths << 5 << 2 << 4 << 1;
 
     foundFonts.clear();
     expectedFonts.clear();
     expectedFonts << "CSSTest Verify"
-                  << "Krita_Test_Unicode_Variation_A"
+                  << "Minerva_Test_Unicode_Variation_A"
                   << "CSSTest Verify"
-                  << "Krita_Test_Unicode_Variation_A";
+                  << "Minerva_Test_Unicode_Variation_A";
     info.families = fontFamilies;
     const std::vector<FT_FaceSP> faces4 = KoFontRegistry::instance()->facesForCSSValues(lengths, info, test);
     QVERIFY2(lengths == expectedLengths, QString("KoFontRegistry returns the wrong lengths for string %1").arg(test).toLatin1());
@@ -1614,13 +1614,13 @@ void TestSvgText::testFontSelectionForText()
     foundFonts.clear();
     expectedFonts.clear();
     expectedFonts << "CSSTest Verify"
-                  << "Krita_Test_Unicode_Variation_B"
+                  << "Minerva_Test_Unicode_Variation_B"
                   << "CSSTest Verify"
-                  << "Krita_Test_Unicode_Variation_B";
+                  << "Minerva_Test_Unicode_Variation_B";
     fontFamilies.clear();
     fontFamilies << "CSSTest Verify"
-                 << "Krita_Test_Unicode_Variation_B"
-                 << "Krita_Test_Unicode_Variation_A";
+                 << "Minerva_Test_Unicode_Variation_B"
+                 << "Minerva_Test_Unicode_Variation_A";
     
     info.families = fontFamilies;
     const std::vector<FT_FaceSP> faces5 = KoFontRegistry::instance()->facesForCSSValues(lengths, info, test);
@@ -1655,7 +1655,7 @@ void TestSvgText::testFontSelectionForText()
                   << "CSSTest Verify"
                   << "DejaVu Sans"
                   << "CSSTest Verify"
-                  << "Krita_Test_Unicode_Variation_B"
+                  << "Minerva_Test_Unicode_Variation_B"
                   << "CSSTest Verify";
     info.families = fontFamilies;
     const std::vector<FT_FaceSP> faces6 = KoFontRegistry::instance()->facesForCSSValues(lengths, info, test);
@@ -2034,7 +2034,7 @@ void TestSvgText::testFontSizeConfiguration()
     // Test pixel font.
     // The krita test font has support for 4, 8, and 12, so we'll test 4, 8, *10* and 12 :)
 
-    fontName = "krita-pixel-test";
+    fontName = "minerva2d-pixel-test";
 
     {
         QVector<qreal> testSizes;
@@ -2278,7 +2278,7 @@ void TestSvgText::testTextPathBasic()
  * This tests some of the more intricate parts of textPath,
  * some of which don't have a consistent solution (like mixed
  * tspans and textpath, especially rtl), or are unusual
- * to Krita (text-decoration).
+ * to Minerva (text-decoration).
  */
 void TestSvgText::testTextPathComplex()
 {

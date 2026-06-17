@@ -1,5 +1,5 @@
 maintainer: rempt
-description: scripting api for Krita
+description: scripting api for Minerva
 platforms:
     - name: Linux
     - name: FreeBSD

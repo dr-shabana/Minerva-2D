@@ -214,7 +214,7 @@ KisImportExportErrorCode KisJPEGConverter::decode(QIODevice *io)
                 ->createColorConverter(cs, KoColorConversionTransformation::internalRenderingIntent(), KoColorConversionTransformation::internalConversionFlags());
         }
 
-        // Apparently an invalid transform was created from the profile. See bug https://bugs.kde.org/show_bug.cgi?id=255451.
+        // Apparently an invalid transform was created from the profile. See bug https://github.com/dr-shabana/Minerva-2D/issues/show_bug.cgi?id=255451.
         // After 2.3: warn the user!
         if (transform && !transform->isValid()) {
             delete transform;

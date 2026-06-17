@@ -196,7 +196,7 @@ void KisShapeSelection::recalculateOutlineCache()
          * linearize the curves into lines and they use absolute values
          * for thresholds.
          *
-         * See KritaUtils::pathShapeBooleanSpaceWorkaround() for more info
+         * See MinervaUtils::pathShapeBooleanSpaceWorkaround() for more info
          */
         QTransform shapeMatrix = shape->absoluteTransformation();
         outline = outline.united(resolutionMatrix.map(shapeMatrix.map(shape->outline())));

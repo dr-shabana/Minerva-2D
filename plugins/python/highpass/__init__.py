@@ -4,4 +4,4 @@
 
 from .highpass import HighpassExtension
 
-Scripter.addExtension(HighpassExtension(Krita.instance()))
+Scripter.addExtension(HighpassExtension(Minerva.instance()))

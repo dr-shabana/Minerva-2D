@@ -381,7 +381,7 @@ void SvgTextCursorTest::test_set_transforms_on_text_command_data()
                           mapDelta.value(delta).toLatin1().data())  << "<text style=\"font-size:10.0;direction: rtl;text-anchor:end;font-family:Deja Vu Sans\">رسم رقميّ، حريّة إبداعيّة</text>" << 2 << 5 << type << bool(delta);
             QTest::addRow("rtl-unicode-bidi%s%s",
                           mapType.value(type).toLatin1().data(),
-                          mapDelta.value(delta).toLatin1().data())  << "<text style=\"font-size:10.0;direction: rtl;text-anchor:end;font-family:Deja Vu Sans\"><tspan>رسم رقميّ،</tspan><tspan direction=\"ltr\" unicode-bidi=\"isolate\">- Krita - </tspan><tspan> حريّة إبداعيّة</tspan></text></text>" << 14 << 7 << type << bool(delta);
+                          mapDelta.value(delta).toLatin1().data())  << "<text style=\"font-size:10.0;direction: rtl;text-anchor:end;font-family:Deja Vu Sans\"><tspan>رسم رقميّ،</tspan><tspan direction=\"ltr\" unicode-bidi=\"isolate\">- Minerva - </tspan><tspan> حريّة إبداعيّة</tspan></text></text>" << 14 << 7 << type << bool(delta);
         }
     }
 }

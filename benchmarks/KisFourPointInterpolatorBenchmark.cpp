@@ -160,7 +160,7 @@ void KisFourPointInterpolatorBenchmark::testBackwardInterpolatorRoundTrip()
                 QPointF fwdPt = f.map(pt);
                 QPointF bwdPt = b.map(fwdPt);
 
-                //dbgKrita << "R:" << ppVar(pt) << ppVar(fwdPt) << ppVar(bwdPt) << (bwdPt - pt);
+                //dbgMinerva << "R:" << ppVar(pt) << ppVar(fwdPt) << ppVar(bwdPt) << (bwdPt - pt);
                 qreal length = (bwdPt - pt).manhattanLength() < 1e-3;
                 Q_UNUSED(length);
             }
@@ -195,7 +195,7 @@ void KisFourPointInterpolatorBenchmark::testBackwardInterpolatorUnevenlyShearedT
             QPointF fwdPt = f.map(pt);
             QPointF bwdPt = b.map(fwdPt);
 
-            //dbgKrita << "R:" << ppVar(pt) << ppVar(fwdPt) << ppVar(bwdPt) << (bwdPt - pt);
+            //dbgMinerva << "R:" << ppVar(pt) << ppVar(fwdPt) << ppVar(bwdPt) << (bwdPt - pt);
             qreal length = (bwdPt - pt).manhattanLength() < 1e-3;
             Q_UNUSED(length);
         }
@@ -209,7 +209,7 @@ void KisFourPointInterpolatorBenchmark::testBackwardInterpolatorUnevenlyShearedT
                 QPointF fwdPt = f.map(pt);
                 QPointF bwdPt = b.map(fwdPt);
 
-                //dbgKrita << "R:" << ppVar(pt) << ppVar(fwdPt) << ppVar(bwdPt) << (bwdPt - pt);
+                //dbgMinerva << "R:" << ppVar(pt) << ppVar(fwdPt) << ppVar(bwdPt) << (bwdPt - pt);
                 qreal length = (bwdPt - pt).manhattanLength() < 1e-3;
                 Q_UNUSED(length);
             }
@@ -223,7 +223,7 @@ void KisFourPointInterpolatorBenchmark::testBackwardInterpolatorUnevenlyShearedT
                 QPointF fwdPt = f.map(pt);
                 QPointF bwdPt = b.map(fwdPt);
 
-                //dbgKrita << "R:" << ppVar(pt) << ppVar(fwdPt) << ppVar(bwdPt) << (bwdPt - pt);
+                //dbgMinerva << "R:" << ppVar(pt) << ppVar(fwdPt) << ppVar(bwdPt) << (bwdPt - pt);
                 //DBGVERIFY(((bwdPt - pt).manhattanLength() < 1e-3), (QString(pt).append(fwdPt).append(bwdPt)));
                 qreal length = (bwdPt - pt).manhattanLength() < 1e-3;
                 Q_UNUSED(length);
@@ -264,7 +264,7 @@ void KisFourPointInterpolatorBenchmark::testBackwardInterpolatorFoldedTetragon()
             QPointF fwdPt = f.map(pt);
             QPointF bwdPt = b.map(fwdPt);
 
-            //dbgKrita << "R:" << ppVar(pt) << ppVar(fwdPt) << ppVar(bwdPt) << (bwdPt - pt);
+            //dbgMinerva << "R:" << ppVar(pt) << ppVar(fwdPt) << ppVar(bwdPt) << (bwdPt - pt);
             qreal length = (bwdPt - pt).manhattanLength() < 1e-3;
             Q_UNUSED(length);
         }
@@ -278,7 +278,7 @@ void KisFourPointInterpolatorBenchmark::testBackwardInterpolatorFoldedTetragon()
                 QPointF fwdPt = f.map(pt);
                 QPointF bwdPt = b.map(fwdPt);
 
-                //dbgKrita << "R:" << ppVar(pt) << ppVar(fwdPt) << ppVar(bwdPt) << (bwdPt - pt);
+                //dbgMinerva << "R:" << ppVar(pt) << ppVar(fwdPt) << ppVar(bwdPt) << (bwdPt - pt);
                 qreal length = (bwdPt - pt).manhattanLength() < 1e-3;
                 Q_UNUSED(length);
             }
@@ -292,7 +292,7 @@ void KisFourPointInterpolatorBenchmark::testBackwardInterpolatorFoldedTetragon()
                 QPointF fwdPt = f.map(pt);
                 QPointF bwdPt = b.map(fwdPt);
 
-                //dbgKrita << "R:" << ppVar(pt) << ppVar(fwdPt) << ppVar(bwdPt) << (bwdPt - pt);
+                //dbgMinerva << "R:" << ppVar(pt) << ppVar(fwdPt) << ppVar(bwdPt) << (bwdPt - pt);
                 if ((bwdPt - pt).manhattanLength() >= 1e-3) {
                     qCritical() << ppVar(pt) << ppVar(fwdPt) << ppVar(bwdPt) << (bwdPt - pt);
                 }

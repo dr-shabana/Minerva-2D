@@ -1,8 +1,8 @@
 /**
  * \mainpage
  *
- * KritaWidgets is a library which contains common widgets for Krita.
+ * MinervaWidgets is a library which contains common widgets for Minerva.
  */
 
-// DOXYGEN_SET_PROJECT_NAME = KritaWidgets
+// DOXYGEN_SET_PROJECT_NAME = MinervaWidgets
 // DOXYGEN_SET_IGNORE_PREFIX = Ko K

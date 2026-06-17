@@ -41,7 +41,7 @@
 #include <kis_paint_layer.h>
 #include <kis_raster_keyframe_channel.h>
 
-K_PLUGIN_FACTORY_WITH_JSON(ImportFactory, "krita_jxl_import.json", registerPlugin<JPEGXLImport>();)
+K_PLUGIN_FACTORY_WITH_JSON(ImportFactory, "minerva2d_jxl_import.json", registerPlugin<JPEGXLImport>();)
 
 static constexpr std::array<char, 4> exifTag = {'e', 'x', 'i', 'f'};
 static constexpr std::array<char, 4> xmpTag = {'x', 'm', 'l', ' '};
@@ -911,7 +911,7 @@ JPEGXLImport::convert(KisDocument *document, QIODevice *io, KisPropertiesConfigu
                             << d.m_info.animation.tps_denominator;
                     // XXX: How many ticks per second (FPS)?
                     // If > 240, block the derivation-- it's a stock JXL and
-                    // Krita only supports up to 240 FPS.
+                    // Minerva only supports up to 240 FPS.
                     // We'll try to derive the framerate from the first frame
                     // instead.
                     int framerate =

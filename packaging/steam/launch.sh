@@ -1,6 +1,6 @@
 #!/bin/bash
-# Launcher script for running the Krita AppImage inside of the Steam Linux Runtime.
-# Include alongside krita.AppImage (probably in `content/linux/`) and
+# Launcher script for running the Minerva AppImage inside of the Steam Linux Runtime.
+# Include alongside minerva2d.AppImage (probably in `content/linux/`) and
 # configure Steamworks to use this as the default/primary launch option.
 
 # Prevent runtime environment or host system libraries from being used over AppImage packaged ones. 
@@ -12,6 +12,6 @@ LC_ALL=en_US.UTF-8
 # Prevents Auto-Updates.
 STARTED_BY_STEAM=1
 
-# Launch Krita.
+# Launch Minerva.
 appdir=$(dirname "$0")
-$appdir/krita.AppImage
+$appdir/minerva2d.AppImage

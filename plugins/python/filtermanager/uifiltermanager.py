@@ -10,7 +10,7 @@ except:
     from PyQt5.QtCore import Qt
     from PyQt5.QtWidgets import (QFormLayout, QAbstractItemView, QDialogButtonBox,
                                  QVBoxLayout, QFrame, QTreeView)
-from krita import Krita
+from krita import Minerva
 from builtins import i18n, i18nc
 
 
@@ -23,7 +23,7 @@ class UIFilterManager(object):
         self.buttonBox = QDialogButtonBox(
             QDialogButtonBox.StandardButton.Ok | QDialogButtonBox.StandardButton.Cancel)
 
-        self.kritaInstance = Krita.instance()
+        self.kritaInstance = Minerva.instance()
         self._filters = sorted(self.kritaInstance.filters())
         self._documents = self.kritaInstance.documents()
         self.treeModel = filtermanagertreemodel.FilterManagerTreeModel(self)

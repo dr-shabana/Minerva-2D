@@ -645,7 +645,7 @@ KUndo2QStack::KUndo2QStack(QObject *parent)
     Destroys the undo stack, deleting any commands that are on it. If the
     stack is in a KUndo2Group, the stack is automatically removed from the group.
 
-    \sa KUndo2QStack()The number of last strokes which Krita should store separately
+    \sa KUndo2QStack()The number of last strokes which Minerva should store separately
 */
 
 KUndo2QStack::~KUndo2QStack()
@@ -1051,7 +1051,7 @@ void KUndo2QStack::setIndex(int idx)
 
 /**
  * Called by setIndex after every command execution.  It is needed by
- * Krita to insert barriers between different kind of commands
+ * Minerva to insert barriers between different kind of commands
  */
 void KUndo2QStack::notifySetIndexChangedOneCommand()
 {

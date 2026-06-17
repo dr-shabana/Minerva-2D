@@ -238,19 +238,19 @@ QSharedPointer<KisResourceStorage::TagIterator> KisAslStorage::tags(const QStrin
 bool KisAslStorage::saveAsNewVersion(const QString &/*resourceType*/, KoResourceSP /*resource*/)
 {
     // not implemented yet
-    warnKrita << "KisAslStorage::saveAsNewVersion is not implemented yet";
+    warnMinerva << "KisAslStorage::saveAsNewVersion is not implemented yet";
     return false;
 }
 
 bool KisAslStorage::addResource(const QString &/*resourceType*/, KoResourceSP resource)
 {
     if (!resource) {
-        warnKrita << "Trying to add a null resource to KisAslStorage";
+        warnMinerva << "Trying to add a null resource to KisAslStorage";
         return false;
     }
     KisPSDLayerStyleSP layerStyle = resource.dynamicCast<KisPSDLayerStyle>();
     if (!layerStyle) {
-        warnKrita << "Trying to add a resource that is not a layer style to KisAslStorage";
+        warnMinerva << "Trying to add a resource that is not a layer style to KisAslStorage";
         return false;
     }
 

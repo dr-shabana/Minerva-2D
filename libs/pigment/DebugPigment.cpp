@@ -7,7 +7,7 @@
 #include "DebugPigment.h"
 const QLoggingCategory &PIGMENT_log() \
 {
-    static const QLoggingCategory category("krita.lib.pigment", QtInfoMsg);
+    static const QLoggingCategory category("minerva2d.lib.pigment", QtInfoMsg);
     return category;
 }
 

@@ -1,5 +1,5 @@
 /*
- * modify_selection.h -- Part of Krita
+ * modify_selection.h -- Part of Minerva
  *
  * SPDX-FileCopyrightText: 2006 Michael Thaler (michael.thaler@physik.tu-muenchen.de)
  *

@@ -40,7 +40,7 @@
 #include "kis_tiff_converter.h"
 #include "kis_tiff_logger.h"
 
-K_PLUGIN_FACTORY_WITH_JSON(KisTIFFExportFactory, "krita_tiff_export.json", registerPlugin<KisTIFFExport>();)
+K_PLUGIN_FACTORY_WITH_JSON(KisTIFFExportFactory, "minerva2d_tiff_export.json", registerPlugin<KisTIFFExport>();)
 
 KisTIFFExport::KisTIFFExport(QObject *parent, const QVariantList &)
     : KisImportExportFilter(parent)

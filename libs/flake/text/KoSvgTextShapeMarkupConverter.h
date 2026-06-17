@@ -25,7 +25,7 @@ class KoColorSpace;
  * KoSvgTextShape to/from user-editable markup/svg representation.
  *
  * Please note that the converted SVG is **not** the same as when saved into
- * .kra! Some attributes are dropped to make the editing is easier for the
+ * .m2d! Some attributes are dropped to make the editing is easier for the
  * user.
  */
 class KRITAFLAKE_EXPORT KoSvgTextShapeMarkupConverter

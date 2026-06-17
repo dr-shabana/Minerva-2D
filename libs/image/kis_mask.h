@@ -20,7 +20,7 @@
 
 /**
  KisMask is the base class for all single channel
- mask-like paint devices in Krita. Masks can be rendered in different
+ mask-like paint devices in Minerva. Masks can be rendered in different
  ways at different moments during the rendering stack. Masks are
  "owned" by layers (of any type), and cannot occur by themselves on
  themselves.

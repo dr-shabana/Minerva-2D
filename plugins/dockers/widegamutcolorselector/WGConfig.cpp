@@ -35,7 +35,7 @@ WGConfig::~WGConfig()
     if (m_readOnly) return;
 
     if (qApp && qApp->thread() != QThread::currentThread()) {
-        dbgKrita << "WARNING: WGConfig: requested config synchronization from nonGUI thread! Called from:" << kisBacktrace();
+        dbgMinerva << "WARNING: WGConfig: requested config synchronization from nonGUI thread! Called from:" << kisBacktrace();
         return;
     }
 

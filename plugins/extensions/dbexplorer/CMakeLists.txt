@@ -17,6 +17,6 @@ target_link_libraries(kritadbexplorer
         Qt${QT_MAJOR_VERSION}::Widgets
         Qt${QT_MAJOR_VERSION}::Sql
 )
-install(TARGETS kritadbexplorer DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
-install(FILES dbexplorer.xmlgui DESTINATION ${KDE_INSTALL_DATADIR}/kritaplugins)
-install(FILES dbexplorer.action DESTINATION ${KDE_INSTALL_DATADIR}/krita/actions)
+install(TARGETS kritadbexplorer DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})
+install(FILES dbexplorer.xmlgui DESTINATION ${KDE_INSTALL_DATADIR}/minerva2dplugins)
+install(FILES dbexplorer.action DESTINATION ${KDE_INSTALL_DATADIR}/minerva2d/actions)

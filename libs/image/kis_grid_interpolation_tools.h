@@ -775,7 +775,7 @@ struct IncompletePolygonPolicy {
                                                     &dstPoint);
 
                 if (!result) {
-                    //dbgKrita << "*NOT* found any valid point" << allSrcPoints[pointToIndex(cellPt)] << "->" << ppVar(pt);
+                    //dbgMinerva << "*NOT* found any valid point" << allSrcPoints[pointToIndex(cellPt)] << "->" << ppVar(pt);
                     break;
                 } else {
                     srcPolygon << srcPoint;
@@ -869,7 +869,7 @@ struct RegularGridIndexesOp {
  * QRectF() will end exactly on it, but when converting into QRect the last
  * point will not be taken into account. It happens due to the difference
  * between center-point/topleft-point point representation. In many cases
- * the latter is expected, but we don't work with it in Qt/Krita.
+ * the latter is expected, but we don't work with it in Qt/Minerva.
  */
 inline void adjustAlignedPolygon(QPolygonF &polygon)
 {

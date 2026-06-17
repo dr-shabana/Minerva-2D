@@ -1,6 +1,6 @@
 add_subdirectory(tests)
 
-set(KRITA_STORYBOARDDOCKER_SOURCES
+set(MINERVA2D_STORYBOARDDOCKER_SOURCES
     CommentModel.cpp
     StoryboardUtils.cpp
     StoryboardDockerDock.cpp
@@ -14,11 +14,11 @@ set(KRITA_STORYBOARDDOCKER_SOURCES
     KisAddRemoveStoryboardCommand.cpp
     )
 
-ki18n_wrap_ui(KRITA_STORYBOARDDOCKER_SOURCES
+ki18n_wrap_ui(MINERVA2D_STORYBOARDDOCKER_SOURCES
     wdgstoryboarddock.ui wdgarrangemenu.ui wdgcommentmenu.ui wdgexportstoryboard.ui
 )
 
-kis_add_library(kritastoryboarddocker_static STATIC ${KRITA_STORYBOARDDOCKER_SOURCES}
+kis_add_library(kritastoryboarddocker_static STATIC ${MINERVA2D_STORYBOARDDOCKER_SOURCES}
 )
 
 generate_export_header(kritastoryboarddocker_static BASE_NAME kritastoryboarddocker)
@@ -29,4 +29,4 @@ kis_add_library(kritastoryboarddocker MODULE StoryboardDocker.cpp)
 
 target_link_libraries(kritastoryboarddocker kritastoryboarddocker_static)
 
-install(TARGETS kritastoryboarddocker  DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
+install(TARGETS kritastoryboarddocker  DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})

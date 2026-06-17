@@ -11,7 +11,7 @@ set(kritaqmicinterface_SOURCES
 set(kritaqmicinterface_HEADERS
     kis_qmic_interface.h
     kis_qmic_plugin_interface.h
-    ${CMAKE_CURRENT_BINARY_DIR}/kritaqmicinterface_export.h
+    ${CMAKE_CURRENT_BINARY_DIR}/minerva2dqmicinterface_export.h
 )
 
 kis_add_library(kritaqmicinterface SHARED ${kritaqmicinterface_SOURCES})
@@ -24,7 +24,7 @@ set_target_properties(kritaqmicinterface
 )
 
 set_target_properties(kritaqmicinterface PROPERTIES
-    VERSION ${GENERIC_KRITA_LIB_VERSION} SOVERSION ${GENERIC_KRITA_LIB_SOVERSION}
+    VERSION ${GENERIC_MINERVA2D_LIB_VERSION} SOVERSION ${GENERIC_MINERVA2D_LIB_SOVERSION}
 )
 
 install(TARGETS kritaqmicinterface ${INSTALL_TARGETS_DEFAULT_ARGS}
@@ -42,6 +42,6 @@ ki18n_wrap_ui (
 kis_add_library(kritaqmic MODULE ${kritaqmic_SOURCES})
 target_link_libraries(kritaqmic kritaqmicinterface)
 
-install(TARGETS kritaqmic LIBRARY DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
+install(TARGETS kritaqmic LIBRARY DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})
 
 add_subdirectory(tests)

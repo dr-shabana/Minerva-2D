@@ -44,7 +44,7 @@ namespace KisIconUtils
 
     /**
      * Load a themed icon using its base name. Use it in
-     * Krita instead of previous KisIconUtils::loadIcon()
+     * Minerva instead of previous KisIconUtils::loadIcon()
      */
     KRITAWIDGETUTILS_EXPORT QIcon loadIcon(const QString &name);
 

@@ -9,7 +9,7 @@
 #include <KoColorSpace.h>
 #include "kis_grid_interpolation_tools.h"
 #include "kis_dom_utils.h"
-#include "krita_utils.h"
+#include "minerva2d_utils.h"
 #include "KisSpatialContainer.h"
 
 
@@ -612,7 +612,7 @@ KisLiquifyTransformWorker* KisLiquifyTransformWorker::fromXML(const QDomElement 
         KisDomUtils::loadValue(liquifyEl, "gridSize", &gridSize);
 
     if (!result) {
-        warnKrita << "WARNING: Failed to load liquify worker from XML";
+        warnMinerva << "WARNING: Failed to load liquify worker from XML";
         return new KisLiquifyTransformWorker(QRect(0,0,1024, 1024), 0, 8);
     }
 
@@ -624,13 +624,13 @@ KisLiquifyTransformWorker* KisLiquifyTransformWorker::fromXML(const QDomElement 
     if (numPoints != transformedPoints.size() ||
         numPoints != worker->m_d->originalPoints.size() ||
         gridSize != worker->m_d->gridSize) {
-        warnKrita << "WARNING: Inconsistent number of points!";
-        warnKrita << ppVar(originalPoints.size());
-        warnKrita << ppVar(transformedPoints.size());
-        warnKrita << ppVar(gridSize);
-        warnKrita << ppVar(worker->m_d->originalPoints.size());
-        warnKrita << ppVar(worker->m_d->transformedPoints.size());
-        warnKrita << ppVar(worker->m_d->gridSize);
+        warnMinerva << "WARNING: Inconsistent number of points!";
+        warnMinerva << ppVar(originalPoints.size());
+        warnMinerva << ppVar(transformedPoints.size());
+        warnMinerva << ppVar(gridSize);
+        warnMinerva << ppVar(worker->m_d->originalPoints.size());
+        warnMinerva << ppVar(worker->m_d->transformedPoints.size());
+        warnMinerva << ppVar(worker->m_d->gridSize);
 
         return worker;
     }

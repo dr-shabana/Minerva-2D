@@ -106,7 +106,7 @@
 
 #ifdef SANITY_CHECKS
 #define SANITY_CHECK_LOCKED(name)                                       \
-    if (!locked()) warnKrita() << "Locking policy failed:" << name          \
+    if (!locked()) warnMinerva() << "Locking policy failed:" << name          \
                                << "has been called without the image"       \
                                   "being locked";
 #else
@@ -923,8 +923,8 @@ void KisImage::purgeUnusedData(bool isCancellable)
 
             /// make sure we deduplicate the list to avoid
             /// concurrent write access to the devices
-            KritaUtils::makeContainerUnique(paintDevicesList);
-            KritaUtils::makeContainerUnique(projectionsList);
+            MinervaUtils::makeContainerUnique(paintDevicesList);
+            MinervaUtils::makeContainerUnique(projectionsList);
 
             Q_FOREACH(KisPaintDeviceSP dev, paintDevicesList) {
                 projectionsList.removeAll(dev);
@@ -939,7 +939,7 @@ void KisImage::purgeUnusedData(bool isCancellable)
             projectionsList.clear();
 
             Q_FOREACH (KisPaintDeviceSP device, paintDevicesList) {
-                KritaUtils::addJobConcurrent(jobsData,
+                MinervaUtils::addJobConcurrent(jobsData,
                     [device] () {
                         const_cast<KisPaintDevice*>(device.data())->purgeDefaultPixels();
                     });
@@ -1986,7 +1986,7 @@ void KisImage::KisImagePrivate::notifyProjectionUpdatedInPatches(const QRect &rc
             QRect patchRect(x, y, patchWidth, patchHeight);
             patchRect &= rc;
 
-            KritaUtils::addJobConcurrent(jobs, std::bind(&KisImage::notifyProjectionUpdated, q, patchRect));
+            MinervaUtils::addJobConcurrent(jobs, std::bind(&KisImage::notifyProjectionUpdated, q, patchRect));
         }
     }
 }

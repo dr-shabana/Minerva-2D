@@ -1,5 +1,5 @@
 /*
- *  rotation_icons.h -- part of Krita
+ *  rotation_icons.h -- part of Minerva
  *
  *  SPDX-FileCopyrightText: 2010 Marc Pegon <pe.marc@free.fr>
  *

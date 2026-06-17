@@ -60,7 +60,7 @@ void KisHSVOption::apply(KoColorTransformation* transfo, const KisPaintInformati
      * option, but I doubt anyone would complain. See details in the
      * bugreport:
      *
-     * https://bugs.kde.org/show_bug.cgi?id=462193
+     * https://github.com/dr-shabana/Minerva-2D/issues/show_bug.cgi?id=462193
      */
     transfo->setParameter(8, false); //sets the compatibility to false.
 }

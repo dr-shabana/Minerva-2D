@@ -1,5 +1,5 @@
 /*
- *  dlg_layersize.cc - part of Krita
+ *  dlg_layersize.cc - part of Minerva
  *
  *  SPDX-FileCopyrightText: 2004 Boudewijn Rempt <boud@valdyas.org>
  *  SPDX-FileCopyrightText: 2005 Sven Langkamp <sven.langkamp@gmail.com>

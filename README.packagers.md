@@ -1,17 +1,17 @@
-Notes on packaging Krita with G’MIC
+Notes on packaging Minerva with G’MIC
 ==================================
 
-Krita 3 and later are compatible with G’MIC, an open-source digital
+Minerva 3 and later are compatible with G’MIC, an open-source digital
 image processing framework. This support is provided by G’MIC-Qt, a
 Qt-based frontend for G’MIC. Since its inception, G’MIC-Qt was shipped
 as a standalone, externally built executable that is an optional,
-runtime dependency of Krita.
+runtime dependency of Minerva.
 
-Krita 5 changes the way G’MIC-Qt is consumed. In order to support CentOS
+Minerva 5 changes the way G’MIC-Qt is consumed. In order to support CentOS
 and macOS, G’MIC-Qt has been converted into a dynamically loadable
-library that is a dependent of Krita.
+library that is a dependent of Minerva.
 
-This file reviews these changes, and how to package Krita accordingly.
+This file reviews these changes, and how to package Minerva accordingly.
 
 Rationale
 ---------
@@ -19,11 +19,11 @@ Rationale
 We have chosen to ship G’MIC-Qt as a library because of two longstanding
 bugs.
 
-The Krita host for G’MIC-Qt relies on `QSharedMemory`, i.e. a shared
+The Minerva host for G’MIC-Qt relies on `QSharedMemory`, i.e. a shared
 memory segment, on which a pipe is instantiated to pass messages to and
 from the host app. Firstly, this approach made opening two simultaneous
-G’MIC-Qt instances (each paired to its own Krita instance) impossible
-[^1]. Secondly, it also forbade using G’MIC-Qt with Krita on CentOS, as
+G’MIC-Qt instances (each paired to its own Minerva instance) impossible
+[^1]. Secondly, it also forbade using G’MIC-Qt with Minerva on CentOS, as
 well as macOS, because the former doesn’t support `QSharedMemory` [^2],
 and the latter has a meager 4KB as the maximum shared segment size.
 While there’s no workaround (to our knowledge) in CentOS, the only
@@ -45,7 +45,7 @@ How did you fix it?
 -------------------
 
 Due to the above, the only path forward was to fork G’MIC, which we did
-in Krita MR !581 [^10].
+in Minerva MR !581 [^10].
 
 From a source code point of view, our fork is based on top of the latest
 version’s tarball. Each tarball’s contents are committed to the `main`
@@ -56,14 +56,14 @@ doesn’t attempt to overwrite the internal state of the host application;
 namely, `QCoreApplication` settings, widget styles, and the installed
 translators.
 
-From a technical point of view, this library interfaces with Krita
+From a technical point of view, this library interfaces with Minerva
 through a new, purpose specific library, `kisqmicinterface`. This
 library contains nothing more than the previous iteration of the
 communications system, but now exported through namesake APIs [^12].
 
-In short, we have reversed the dependency flow; while in Krita v4 and
+In short, we have reversed the dependency flow; while in Minerva v4 and
 earlier G’MIC-Qt was a runtime dependency, in v5, it’s G’MIC-Qt that
-depends on Krita as a build *and* runtime dependency.
+depends on Minerva as a build *and* runtime dependency.
 
 Getting the source code
 -----------------------
@@ -72,16 +72,16 @@ The patched version’s tarballs are available at the Releases section of
 the GitHub repository [^13]. Alternatively, the tarballs are also
 mirrored at our dependencies stash at files.kde.org [^14].
 
-Building Krita’s G’MIC-Qt library
+Building Minerva’s G’MIC-Qt library
 ---------------------------------
 
-After building Krita with your standard process, the CMake install
+After building Minerva with your standard process, the CMake install
 process should have put `kisqmicinterface.so` in your `lib` folder:
 
-    [2022-01-09T16:21:32.589Z] -- Installing: /home/appimage/appimage-workspace/krita.appdir/usr/lib/x86_64-linux-gnu/libkritaqmicinterface.so.18.0.0
-    [2022-01-09T16:21:32.589Z] -- Installing: /home/appimage/appimage-workspace/krita.appdir/usr/lib/x86_64-linux-gnu/libkritaqmicinterface.so.18
-    [2022-01-09T16:21:32.589Z] -- Set runtime path of "/home/appimage/appimage-workspace/krita.appdir/usr/lib/x86_64-linux-gnu/libkritaqmicinterface.so.18.0.0" to "/home/appimage/appimage-workspace/krita.appdir/usr/lib/x86_64-linux-gnu:/home/appimage/appimage-workspace/deps/usr/lib:/home/appimage/appimage-workspace/deps/usr/lib/x86_64-linux-gnu"
-    [2022-01-09T16:21:32.589Z] -- Installing: /home/appimage/appimage-workspace/krita.appdir/usr/lib/x86_64-linux-gnu/libkritaqmicinterface.so
+    [2022-01-09T16:21:32.589Z] -- Installing: /home/appimage/appimage-workspace/minerva2d.appdir/usr/lib/x86_64-linux-gnu/libkritaqmicinterface.so.18.0.0
+    [2022-01-09T16:21:32.589Z] -- Installing: /home/appimage/appimage-workspace/minerva2d.appdir/usr/lib/x86_64-linux-gnu/libkritaqmicinterface.so.18
+    [2022-01-09T16:21:32.589Z] -- Set runtime path of "/home/appimage/appimage-workspace/minerva2d.appdir/usr/lib/x86_64-linux-gnu/libkritaqmicinterface.so.18.0.0" to "/home/appimage/appimage-workspace/minerva2d.appdir/usr/lib/x86_64-linux-gnu:/home/appimage/appimage-workspace/deps/usr/lib:/home/appimage/appimage-workspace/deps/usr/lib/x86_64-linux-gnu"
+    [2022-01-09T16:21:32.589Z] -- Installing: /home/appimage/appimage-workspace/minerva2d.appdir/usr/lib/x86_64-linux-gnu/libkritaqmicinterface.so
 
 It should also install these headers, as illustrated below:
 
@@ -93,15 +93,15 @@ It should also install these headers, as illustrated below:
 
 <!-- -->
 
-    [2022-01-09T16:21:32.589Z] -- Installing: /home/appimage/appimage-workspace/krita.appdir/usr/include/kis_qmic_interface.h
-    [2022-01-09T16:21:32.589Z] -- Installing: /home/appimage/appimage-workspace/krita.appdir/usr/include/kis_qmic_plugin_interface.h
-    [2022-01-09T16:21:32.589Z] -- Installing: /home/appimage/appimage-workspace/krita.appdir/usr/include/kritaqmicinterface_export.h
+    [2022-01-09T16:21:32.589Z] -- Installing: /home/appimage/appimage-workspace/minerva2d.appdir/usr/include/kis_qmic_interface.h
+    [2022-01-09T16:21:32.589Z] -- Installing: /home/appimage/appimage-workspace/minerva2d.appdir/usr/include/kis_qmic_plugin_interface.h
+    [2022-01-09T16:21:32.589Z] -- Installing: /home/appimage/appimage-workspace/minerva2d.appdir/usr/include/minerva2dqmicinterface_export.h
 
 The three headers, along with the `libkritaqmicinterface.a` archive
-library (if building for Windows under MinGW), comprise a `krita-gmic-dev`
+library (if building for Windows under MinGW), comprise a `minerva2d-gmic-dev`
 package that’ll be a build dependency of the new G’MIC-Qt plugin.
 Please note that `libkritaqmicinterface.so` is consumed
-by Krita and MUST NOT be placed inside this dev package.
+by Minerva and MUST NOT be placed inside this dev package.
 
 Now, download the G’MIC-Qt tarball from one of the sources listed
 previously, and unpack it to an isolated directory. Then, you can build
@@ -110,16 +110,16 @@ it with these lines (adjust them as described):
     mkdir build
     cmake -S ./gmic-$<the tarball's G'MIC version>-patched/gmic-qt \
           -B ./build \
-          -DCMAKE_PREFIX_PATH=$<installation prefix of krita-gmic-dev> \
+          -DCMAKE_PREFIX_PATH=$<installation prefix of minerva2d-gmic-dev> \
           -DCMAKE_INSTALL_PREFIX=$<installation prefix of krita itself> \ 
           -DENABLE_SYSTEM_GMIC=$<false if you don't want to use your system's G'MIC> \
-          -DGMIC_QT_HOST=krita-plugin
+          -DGMIC_QT_HOST=minerva2d-plugin
     cmake --build . --config $<your desired build type> --target install
 
 The changes from a standard G’MIC build are:
 
--   the new `GMIC_QT_HOST` value, `krita-plugin`
--   the requirement for the `krita-gmic-dev` package to be available in
+-   the new `GMIC_QT_HOST` value, `minerva2d-plugin`
+-   the requirement for the `minerva2d-gmic-dev` package to be available in
     `CMAKE_PREFIX_PATH`
 
 This process is illustrated in any of our official build scripts for
@@ -129,12 +129,12 @@ hardening we apply to the build.
 
 ------------------------------------------------------------------------
 
-[^1]: Bug \#44 on c-koi/gmic-qt: “CentOS7: Krita 4.0.4 + gmic\_krita\_qt
+[^1]: Bug \#44 on c-koi/gmic-qt: “CentOS7: Minerva 4.0.4 + gmic\_minerva2d\_qt
     2.3.0/2.2.3 - QSharedMemory::attach”.
     <https://github.com/c-koi/gmic-qt/issues/44>
 
 [^2]: Bug 424514 on krita: “Guaranteed crash when opening 2 G’MIC-qt”.
-    <https://bugs.kde.org/show_bug.cgi?id=424514>
+    <https://github.com/dr-shabana/Minerva-2D/issues/show_bug.cgi?id=424514>
 
 [^3]: <https://www.ssec.wisc.edu/mcidas/doc/users_guide/2017.1/SharedMemory.html>
 
@@ -152,7 +152,7 @@ hardening we apply to the build.
 
 [^9]: <https://github.com/c-koi/gmic-qt/blob/master/NEW_HOST_HOWTO.md>
 
-[^10]: <https://invent.kde.org/graphics/krita/-/merge_requests/581>
+[^10]: <https://invent.kde.org/graphics/minerva2d/-/merge_requests/581>
 
 [^11]: <https://github.com/vanyossi/gmic>
 
@@ -162,10 +162,10 @@ hardening we apply to the build.
 
 [^13]: <https://github.com/vanyossi/gmic/releases>
 
-[^14]: <https://files.kde.org/krita/build/dependencies/>
+[^14]: <https://files.kde.org/minerva2d/build/dependencies/>
 
-[^15]: <https://invent.kde.org/graphics/krita/-/tree/master/build-tools/windows>
+[^15]: <https://invent.kde.org/graphics/minerva2d/-/tree/master/build-tools/windows>
 
-[^16]: <https://invent.kde.org/graphics/krita/-/blob/master/packaging>
+[^16]: <https://invent.kde.org/graphics/minerva2d/-/blob/master/packaging>
 
-[^17]: <https://invent.kde.org/graphics/krita/-/tree/master/3rdparty_plugins>
+[^17]: <https://invent.kde.org/graphics/minerva2d/-/tree/master/3rdparty_plugins>

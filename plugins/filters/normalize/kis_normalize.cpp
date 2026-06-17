@@ -28,15 +28,15 @@
 #include <KoColorSpaceMaths.h>
 #include <filter/kis_color_transformation_configuration.h>
 
-K_PLUGIN_FACTORY_WITH_JSON(KritaNormalizeFilterFactory, "kritanormalize.json", registerPlugin<KritaNormalizeFilter>();)
+K_PLUGIN_FACTORY_WITH_JSON(MinervaNormalizeFilterFactory, "kritanormalize.json", registerPlugin<MinervaNormalizeFilter>();)
 
-KritaNormalizeFilter::KritaNormalizeFilter(QObject *parent, const QVariantList &)
+MinervaNormalizeFilter::MinervaNormalizeFilter(QObject *parent, const QVariantList &)
     : QObject(parent)
 {
     KisFilterRegistry::instance()->add(KisFilterSP(new KisFilterNormalize()));
 }
 
-KritaNormalizeFilter::~KritaNormalizeFilter()
+MinervaNormalizeFilter::~MinervaNormalizeFilter()
 {
 }
 

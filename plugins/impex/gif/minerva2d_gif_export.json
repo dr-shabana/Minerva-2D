@@ -1,0 +1,13 @@
+{
+    "Id": "Minerva GIF Export Filter",
+    "NoDisplay": "true",
+    "Type": "Service",
+    "X-KDE-Export": "image/gif",
+
+    "X-KDE-Library": "kritagifexport",
+    "X-KDE-ServiceTypes": [
+        "Minerva/FileFilter"
+    ],
+    "X-KDE-Weight": 1,
+    "X-KDE-Extensions" : "gif"
+}

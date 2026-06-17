@@ -1,0 +1,9 @@
+{
+    "Id": "Minerva Undo History Docker plugin",
+    "Type": "Service",
+    "X-KDE-Library": "kritahistorydocker",
+    "X-KDE-ServiceTypes": [
+        "Minerva/Dock"
+    ],
+    "X-Minerva-Version": "28"
+}

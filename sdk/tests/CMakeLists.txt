@@ -4,13 +4,13 @@ target_link_libraries(kritatestsdk INTERFACE Qt${QT_MAJOR_VERSION}::Test)
 
 target_compile_definitions(kritatestsdk INTERFACE 
     FILES_DEFAULT_DATA_DIR="${CMAKE_CURRENT_SOURCE_DIR}/data/"
-    SYSTEM_RESOURCES_DATA_DIR="${CMAKE_SOURCE_DIR}/krita/data/"
+    SYSTEM_RESOURCES_DATA_DIR="${CMAKE_SOURCE_DIR}/minerva2d/data/"
 )
 
 add_library(kritatransformmaskstubs STATIC
     KisDumbTransformMaskParams.cpp
     KisDumbAnimatedTransformMaskParamsHolder.cpp
-    KritaTransformMaskStubs.cpp
+    MinervaTransformMaskStubs.cpp
 )
 
 generate_export_header(kritatransformmaskstubs BASE_NAME kritatransformmaskstubs)

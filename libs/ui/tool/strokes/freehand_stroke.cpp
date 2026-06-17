@@ -250,14 +250,14 @@ void FreehandStrokeStrategy::tryDoUpdate(bool forceEnd)
                     maskedPainter->hasDirtyRegion() ||
                     (forceEnd && needsMoreUpdates)) {
 
-                    KritaUtils::addJobSequential(jobs,
+                    MinervaUtils::addJobSequential(jobs,
                         [this] () {
                             this->issueSetDirtySignals();
                         }
                     );
 
                     if (forceEnd && needsMoreUpdates) {
-                        KritaUtils::addJobSequential(jobs,
+                        MinervaUtils::addJobSequential(jobs,
                             [this] () {
                                 this->tryDoUpdate(true);
                             }
@@ -313,7 +313,7 @@ void FreehandStrokeStrategy::issueSetDirtySignals()
 
         QVector<KisRunnableStrokeJobData*> jobs = doMaskingBrushUpdates(dirtyRects);
 
-        KritaUtils::addJobSequential(jobs,
+        MinervaUtils::addJobSequential(jobs,
             [this, dirtyRects] () {
                 this->targetNode()->setDirty(dirtyRects);
             }

@@ -65,7 +65,7 @@ class KisToolKnifeFactory : public KisToolPaintFactoryBase
 
 public:
     KisToolKnifeFactory()
-        : KisToolPaintFactoryBase("KritaShape/KisToolKnife")
+        : KisToolPaintFactoryBase("MinervaShape/KisToolKnife")
     {
 
         setToolTip(i18n("Comic Panel Editing Tool"));

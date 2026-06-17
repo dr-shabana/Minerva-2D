@@ -14,7 +14,7 @@
 #include <QFontMetrics>
 
 #include "kis_debug.h"
-#include "krita_utils.h"
+#include "minerva2d_utils.h"
 
 #include <QGlobalStatic>
 Q_GLOBAL_STATIC(KisAnimTimelineColors, s_instance)

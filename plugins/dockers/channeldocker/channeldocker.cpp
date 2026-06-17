@@ -25,7 +25,7 @@
 #include "channeldocker_dock.h"
 #include <KoDockRegistry.h>
 
-K_PLUGIN_FACTORY_WITH_JSON(ChannelDockerPluginFactory, "krita_channeldocker.json", registerPlugin<ChannelDockerPlugin>();)
+K_PLUGIN_FACTORY_WITH_JSON(ChannelDockerPluginFactory, "minerva2d_channeldocker.json", registerPlugin<ChannelDockerPlugin>();)
 
 class ChannelDockerDockFactory : public KoDockFactoryBase {
 public:

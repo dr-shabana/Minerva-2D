@@ -1,5 +1,5 @@
 /*
- * KDE. Krita Project.
+ * KDE. Minerva Project.
  *
  * SPDX-FileCopyrightText: 2019 Eoin O 'Neill <eoinoneill1991@gmail.com>
  * SPDX-FileCopyrightText: 2019 Emmet O 'Neill <emmetoneill.pdx@gmail.com>

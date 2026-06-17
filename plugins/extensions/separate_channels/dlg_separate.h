@@ -1,5 +1,5 @@
 /*
- *  dlg_imagesize.h -- part of KimageShop^WKrayon^WKrita
+ *  dlg_imagesize.h -- part of KimageShop^WKrayon^WMinerva
  *
  *  SPDX-FileCopyrightText: 2005 Boudewijn Rempt <boud@valdyas.org>
  *

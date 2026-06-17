@@ -265,7 +265,7 @@ void KisColorSelectorSimple::paint(QPainter* painter)
                                         painter->device()->devicePixelRatioF());
 
 //        if (!pixelCacheOffset.isNull()) {
-//            warnKrita << "WARNING: offset of the rectangle selector is not null!";
+//            warnMinerva << "WARNING: offset of the rectangle selector is not null!";
 //        }
     }
 

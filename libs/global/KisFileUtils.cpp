@@ -13,7 +13,7 @@
 #include <KisPortingUtils.h>
 
 
-namespace KritaUtils {
+namespace MinervaUtils {
 
 QString resolveAbsoluteFilePath(const QString &baseDir, const QString &fileName)
 {

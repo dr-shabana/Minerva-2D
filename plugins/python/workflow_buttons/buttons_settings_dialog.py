@@ -15,12 +15,12 @@ except:
     from PyQt5.QtWidgets import (QDialog, QVBoxLayout, QHBoxLayout, QWidget, QScrollArea, QPushButton,
                                  QToolButton, QLabel, QLineEdit, QComboBox, QDialogButtonBox,
                                   QFrame, QWidget, QSizePolicy)
-from krita import Krita, PresetChooser, ManagedColor, FileDialog
+from krita import Minerva, PresetChooser, ManagedColor, FileDialog
 from .flow_layout import FlowLayout
 import copy
 from builtins import i18n, i18nc
 
-INSTANCE = Krita.instance()
+INSTANCE = Minerva.instance()
 
 LISTOFTOOLS = [
     { "toolName": "", "toolIcon": "", "toolString": "" },
@@ -28,28 +28,28 @@ LISTOFTOOLS = [
     { "toolName": "SvgTextTool", "toolIcon": "draw-text", "toolString": i18n("Text Tool") },
     { "toolName": "PathTool", "toolIcon": "shape_handling", "toolString": i18n("Edit Shapes Tool") },
     { "toolName": "KarbonCalligraphyTool", "toolIcon": "calligraphy", "toolString": i18n("Calligraphy") },
-    { "toolName": "KritaShape/KisToolBrush", "toolIcon": "krita_tool_freehand", "toolString": i18n("Freehand Brush Tool") },
-    { "toolName": "KritaShape/KisToolLine", "toolIcon": "krita_tool_line", "toolString": i18n("Line Tool") },
-    { "toolName": "KritaShape/KisToolRectangle", "toolIcon": "krita_tool_rectangle", "toolString": i18n("Rectangle Tool") },
-    { "toolName": "KritaShape/KisToolEllipse", "toolIcon": "krita_tool_ellipse", "toolString": i18n("Ellipse Tool") },
-    { "toolName": "KisToolPolygon", "toolIcon": "krita_tool_polygon", "toolString": i18n("Polygon Tool") },
+    { "toolName": "MinervaShape/KisToolBrush", "toolIcon": "minerva2d_tool_freehand", "toolString": i18n("Freehand Brush Tool") },
+    { "toolName": "MinervaShape/KisToolLine", "toolIcon": "minerva2d_tool_line", "toolString": i18n("Line Tool") },
+    { "toolName": "MinervaShape/KisToolRectangle", "toolIcon": "minerva2d_tool_rectangle", "toolString": i18n("Rectangle Tool") },
+    { "toolName": "MinervaShape/KisToolEllipse", "toolIcon": "minerva2d_tool_ellipse", "toolString": i18n("Ellipse Tool") },
+    { "toolName": "KisToolPolygon", "toolIcon": "minerva2d_tool_polygon", "toolString": i18n("Polygon Tool") },
     { "toolName": "KisToolPolyline", "toolIcon": "polyline", "toolString": i18n("Polyline Tool") },
-    { "toolName": "KisToolPath", "toolIcon": "krita_draw_path", "toolString": i18n("Bezier Curve Tool") },
-    { "toolName": "KisToolPencil", "toolIcon": "krita_tool_freehandvector", "toolString": i18n("Freehand Path Tool") },
-    { "toolName": "KritaShape/KisToolDyna", "toolIcon": "krita_tool_dyna", "toolString": i18n("Dynamic Brush Tool") },
-    { "toolName": "KritaShape/KisToolMultiBrush", "toolIcon": "krita_tool_multihand", "toolString": i18n("Multibrush Tool") },
-    { "toolName": "KisToolTransform", "toolIcon": "krita_tool_transform", "toolString": i18n("Transform Tool") },
-    { "toolName": "KritaTransform/KisToolMove", "toolIcon": "krita_tool_move", "toolString": i18n("Move Tool") },
+    { "toolName": "KisToolPath", "toolIcon": "minerva2d_draw_path", "toolString": i18n("Bezier Curve Tool") },
+    { "toolName": "KisToolPencil", "toolIcon": "minerva2d_tool_freehandvector", "toolString": i18n("Freehand Path Tool") },
+    { "toolName": "MinervaShape/KisToolDyna", "toolIcon": "minerva2d_tool_dyna", "toolString": i18n("Dynamic Brush Tool") },
+    { "toolName": "MinervaShape/KisToolMultiBrush", "toolIcon": "minerva2d_tool_multihand", "toolString": i18n("Multibrush Tool") },
+    { "toolName": "KisToolTransform", "toolIcon": "minerva2d_tool_transform", "toolString": i18n("Transform Tool") },
+    { "toolName": "MinervaTransform/KisToolMove", "toolIcon": "minerva2d_tool_move", "toolString": i18n("Move Tool") },
     { "toolName": "KisToolCrop", "toolIcon": "tool_crop", "toolString": i18n("Crop Tool") },
-    { "toolName": "KritaFill/KisToolGradient", "toolIcon": "krita_tool_gradient", "toolString": i18n("Gradient Tool") },
-    { "toolName": "KritaSelected/KisToolColorSampler", "toolIcon": "krita_tool_color_sampler", "toolString": i18n("Color Sampler") },
-    { "toolName": "KritaShape/KisToolLazyBrush", "toolIcon": "krita_tool_lazybrush", "toolString": i18n("Colorize Mask Tool") },
-    { "toolName": "KritaShape/KisToolSmartPatch", "toolIcon": "krita_tool_smart_patch", "toolString": i18n("Smart Patch Tool") },
-    { "toolName": "KritaFill/KisToolFill", "toolIcon": "krita_tool_color_fill", "toolString": i18n("Fill Tool") },
-    { "toolName": "KisToolEncloseAndFill", "toolIcon": "krita_tool_enclose_and_fill", "toolString": i18n("Enclose and Fill Tool") },
-    { "toolName": "KisAssistantTool", "toolIcon": "krita_tool_assistant", "toolString": i18n("Assistant Tool") },
-    { "toolName": "KritaShape/KisToolMeasure", "toolIcon": "krita_tool_measure", "toolString": i18n("Measurement Tool") },
-    { "toolName": "ToolReferenceImages", "toolIcon": "krita_tool_reference_images", "toolString": i18n("Reference Images Tool") },
+    { "toolName": "MinervaFill/KisToolGradient", "toolIcon": "minerva2d_tool_gradient", "toolString": i18n("Gradient Tool") },
+    { "toolName": "MinervaSelected/KisToolColorSampler", "toolIcon": "minerva2d_tool_color_sampler", "toolString": i18n("Color Sampler") },
+    { "toolName": "MinervaShape/KisToolLazyBrush", "toolIcon": "minerva2d_tool_lazybrush", "toolString": i18n("Colorize Mask Tool") },
+    { "toolName": "MinervaShape/KisToolSmartPatch", "toolIcon": "minerva2d_tool_smart_patch", "toolString": i18n("Smart Patch Tool") },
+    { "toolName": "MinervaFill/KisToolFill", "toolIcon": "minerva2d_tool_color_fill", "toolString": i18n("Fill Tool") },
+    { "toolName": "KisToolEncloseAndFill", "toolIcon": "minerva2d_tool_enclose_and_fill", "toolString": i18n("Enclose and Fill Tool") },
+    { "toolName": "KisAssistantTool", "toolIcon": "minerva2d_tool_assistant", "toolString": i18n("Assistant Tool") },
+    { "toolName": "MinervaShape/KisToolMeasure", "toolIcon": "minerva2d_tool_measure", "toolString": i18n("Measurement Tool") },
+    { "toolName": "ToolReferenceImages", "toolIcon": "minerva2d_tool_reference_images", "toolString": i18n("Reference Images Tool") },
     { "toolName": "KisToolSelectRectangular", "toolIcon": "tool_rect_selection", "toolString": i18n("Rectangular Selection Tool") },
     { "toolName": "KisToolSelectElliptical", "toolIcon": "tool_elliptical_selection", "toolString": i18n("Elliptical Selection Tool") },
     { "toolName": "KisToolSelectPolygonal", "toolIcon": "tool_polygonal_selection", "toolString": i18n("Polygonal Selection Tool") },

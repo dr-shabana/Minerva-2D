@@ -78,7 +78,7 @@ void KisIptcIO::initMappingsTable() const
     // For some reason, initializing the tables in the constructor makes the it crash
     if (d->iptcToKMD.size() == 0) {
         for (int i = 0; !mappings[i].exivTag.isEmpty(); i++) {
-            dbgKrita << "mapping[i] = " << mappings[i].exivTag << " " << mappings[i].namespaceUri << " "
+            dbgMinerva << "mapping[i] = " << mappings[i].exivTag << " " << mappings[i].namespaceUri << " "
                      << mappings[i].name;
             d->iptcToKMD[mappings[i].exivTag] = mappings[i];
             d->kmdToIPTC[KisMetaData::SchemaRegistry::instance()
@@ -98,7 +98,7 @@ bool KisIptcIO::saveTo(const KisMetaData::Store *store, QIODevice *ioDevice, Hea
     for (const KisMetaData::Entry &entry : *store) {
         if (d->kmdToIPTC.contains(entry.qualifiedName())) {
             if (blockedEntries.contains(entry.qualifiedName())) {
-                warnKrita << "skipping" << entry.qualifiedName() << entry.value();
+                warnMinerva << "skipping" << entry.qualifiedName() << entry.value();
                 continue;
             }
             try {

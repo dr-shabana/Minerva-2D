@@ -1,5 +1,5 @@
 /*
- * This file is part of Krita
+ * This file is part of Minerva
  *
  * SPDX-FileCopyrightText: 2021 L. E. Segovia <amy@amyspark.me>
  *
@@ -33,7 +33,7 @@
 
 #include "kis_webp_import.h"
 
-K_PLUGIN_FACTORY_WITH_JSON(KisWebPImportFactory, "krita_webp_import.json", registerPlugin<KisWebPImport>();)
+K_PLUGIN_FACTORY_WITH_JSON(KisWebPImportFactory, "minerva2d_webp_import.json", registerPlugin<KisWebPImport>();)
 
 KisWebPImport::KisWebPImport(QObject *parent, const QVariantList &)
     : KisImportExportFilter(parent)

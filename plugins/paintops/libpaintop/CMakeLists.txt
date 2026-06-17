@@ -15,7 +15,7 @@ set(kritalibpaintop_LIB_SRCS
     KisCurveOptionDataUniformProperty.cpp
     KisSensorData.cpp
     KisSensorPackInterface.cpp
-    KisKritaSensorPack.cpp
+    KisMinervaSensorPack.cpp
     KisCurveOptionDataCommon.cpp
     KisCurveOptionData.cpp
     KisCurveOptionInputControlsStrategyInterface.cpp
@@ -138,7 +138,7 @@ target_link_libraries(kritalibpaintop kritaui kritalibbrush kritawidgetutils)
 target_link_libraries(kritalibpaintop LINK_INTERFACE_LIBRARIES kritaui kritalibbrush)
 
 set_target_properties(kritalibpaintop PROPERTIES
-    VERSION ${GENERIC_KRITA_LIB_VERSION} SOVERSION ${GENERIC_KRITA_LIB_SOVERSION}
+    VERSION ${GENERIC_MINERVA2D_LIB_VERSION} SOVERSION ${GENERIC_MINERVA2D_LIB_SOVERSION}
 )
 
 install(TARGETS kritalibpaintop  ${INSTALL_TARGETS_DEFAULT_ARGS})

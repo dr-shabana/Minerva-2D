@@ -92,7 +92,7 @@ void KisPaintDeviceTest::testStore()
     KisPaintDeviceSP dev = new KisPaintDevice(cs);
 
     KoStore * readStore =
-        KoStore::createStore(QString(FILES_DATA_DIR) + '/' + "store_test.kra", KoStore::Read);
+        KoStore::createStore(QString(FILES_DATA_DIR) + '/' + "store_test.m2d", KoStore::Read);
     readStore->open("built image/layers/layer0");
     QVERIFY(dev->read(readStore->device()));
     readStore->close();
@@ -101,7 +101,7 @@ void KisPaintDeviceTest::testStore()
     QVERIFY(dev->exactBounds() == QRect(0, 0, 100, 100));
 
     KoStore * writeStore =
-        KoStore::createStore(QString(FILES_OUTPUT_DIR) + '/' + "store_test_out.kra", KoStore::Write);
+        KoStore::createStore(QString(FILES_OUTPUT_DIR) + '/' + "store_test_out.m2d", KoStore::Write);
     KisFakePaintDeviceWriter fakeWriter(writeStore);
     writeStore->open("built image/layers/layer0");
     QVERIFY(dev->write(fakeWriter));
@@ -110,7 +110,7 @@ void KisPaintDeviceTest::testStore()
 
     KisPaintDeviceSP dev2 = new KisPaintDevice(cs);
     readStore =
-        KoStore::createStore(QString(FILES_OUTPUT_DIR) + '/' + "store_test_out.kra", KoStore::Read);
+        KoStore::createStore(QString(FILES_OUTPUT_DIR) + '/' + "store_test_out.m2d", KoStore::Read);
     readStore->open("built image/layers/layer0");
     QVERIFY(dev2->read(readStore->device()));
     readStore->close();
@@ -576,7 +576,7 @@ void KisPaintDeviceTest::testBltPerformance()
         gc.bitBlt(QPoint(0, 0), fdev, image.rect());
     }
 
-    dbgKrita << x
+    dbgMinerva << x
     << "blits"
     << " done in "
     << t.elapsed()
@@ -596,14 +596,14 @@ void KisPaintDeviceTest::testDeviceDuplication()
     const KoColorSpace * cs = KoColorSpaceRegistry::instance()->rgb8();
     KisPaintDeviceSP device = new KisPaintDevice(cs);
 
-//    dbgKrita<<"FILLING";
+//    dbgMinerva<<"FILLING";
     device->fill(fillRect.left(), fillRect.top(),
                  fillRect.width(), fillRect.height(),fillPixel);
     referenceImage = device->convertToQImage(0);
 
 
     KisTransaction transaction1(device);
-//    dbgKrita<<"CLEARING";
+//    dbgMinerva<<"CLEARING";
     device->clear(clearRect);
 
     transaction1.revert();
@@ -614,7 +614,7 @@ void KisPaintDeviceTest::testDeviceDuplication()
     KisPaintDeviceSP clone =  new KisPaintDevice(*device);
 
     KisTransaction transaction(clone);
-//    dbgKrita<<"CLEARING";
+//    dbgMinerva<<"CLEARING";
     clone->clear(clearRect);
 
     transaction.revert();
@@ -1443,13 +1443,13 @@ void KisPaintDeviceTest::testLodTransform()
     QCOMPARE(t.alignedRect(rc3, lod), rc1);
 }
 
-#include "krita_utils.h"
+#include "minerva2d_utils.h"
 void syncLodCache(KisPaintDeviceSP dev, int levelOfDetail)
 {
     KisPaintDevice::LodDataStruct* s = dev->createLodDataStruct(levelOfDetail);
 
     KisRegion region = dev->regionForLodSyncing();
-    Q_FOREACH(QRect rect2, KritaUtils::splitRegionIntoPatches(region, KritaUtils::optimalPatchSize())) {
+    Q_FOREACH(QRect rect2, MinervaUtils::splitRegionIntoPatches(region, MinervaUtils::optimalPatchSize())) {
         dev->updateLodDataStruct(s, rect2);
     }
 
@@ -2302,7 +2302,7 @@ void KisPaintDeviceTest::testCopyPaintDeviceWithFrames()
     QCOMPARE(o.m_frames.size(), 2);
     //QVERIFY(o.m_currentData == o.m_frames[0]);
 
-    KisPaintDeviceSP newDev = new KisPaintDevice(*dev, KritaUtils::CopyAllFrames);
+    KisPaintDeviceSP newDev = new KisPaintDevice(*dev, MinervaUtils::CopyAllFrames);
 
     QVERIFY(channel->keyframeAt(0));
     QVERIFY(channel->keyframeAt(10));

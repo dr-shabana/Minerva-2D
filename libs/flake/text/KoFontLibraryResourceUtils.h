@@ -40,7 +40,7 @@ void checkCStyleResultWrapper(T *ptr)
  * Shared pointer that holds a standard allocated resource.
  * We use a wrapper because by C++ standards it calls the deleter
  * unconditionally. This leads to crashes on FontConfig:
- * https://invent.kde.org/graphics/krita/-/merge_requests/1607#note_567848
+ * https://invent.kde.org/graphics/minerva2d/-/merge_requests/1607#note_567848
  */
 template<typename T, void (*P)(T *)>
 struct KisLibraryResourcePointer : private QSharedPointer<T> {

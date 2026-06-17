@@ -19,7 +19,7 @@
 /**
   \mainpage libpaintop: shared functionality for brush engines
 
-libpaintop is meant to share common classes used by Krita brush
+libpaintop is meant to share common classes used by Minerva brush
 engines, suchs as certain configuration widgets.
 
 * Options

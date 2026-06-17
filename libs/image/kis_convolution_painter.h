@@ -23,7 +23,7 @@ enum KisConvolutionBorderOp {
  * @brief The KisConvolutionPainter class applies a convolution kernel to a paint device.
  *
  *
- * Note: https://bugs.kde.org/show_bug.cgi?id=220310 shows that there's something here
+ * Note: https://github.com/dr-shabana/Minerva-2D/issues/show_bug.cgi?id=220310 shows that there's something here
  * that we need to fix...
  */
 class KRITAIMAGE_EXPORT KisConvolutionPainter : public KisPainter

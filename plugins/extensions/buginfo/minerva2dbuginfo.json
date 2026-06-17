@@ -1,0 +1,9 @@
+{
+    "Id": "Buginfo Plugin",
+    "Type": "Service",
+    "X-KDE-Library": "kritabuginfo",
+    "X-KDE-ServiceTypes": [
+        "Minerva/ViewPlugin"
+    ],
+    "X-Minerva-Version": "28"
+}

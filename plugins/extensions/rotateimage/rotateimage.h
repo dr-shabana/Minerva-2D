@@ -1,5 +1,5 @@
 /*
- * rotateimage.h -- Part of Krita
+ * rotateimage.h -- Part of Minerva
  *
  * SPDX-FileCopyrightText: 2004 Michael Thaler (michael.thaler@physik.tu-muenchen.de)
  *

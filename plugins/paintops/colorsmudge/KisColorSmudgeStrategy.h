@@ -4,8 +4,8 @@
  *  SPDX-License-Identifier: GPL-2.0-or-later
  */
 
-#ifndef KRITA_KISCOLORSMUDGESTRATEGY_H
-#define KRITA_KISCOLORSMUDGESTRATEGY_H
+#ifndef MINERVA2D_KISCOLORSMUDGESTRATEGY_H
+#define MINERVA2D_KISCOLORSMUDGESTRATEGY_H
 
 #include <KisOptimizedByteArray.h>
 #include <kis_dab_cache.h>
@@ -42,4 +42,4 @@ protected:
 };
 
 
-#endif //KRITA_KISCOLORSMUDGESTRATEGY_H
+#endif //MINERVA2D_KISCOLORSMUDGESTRATEGY_H

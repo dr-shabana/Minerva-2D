@@ -17,7 +17,7 @@
 #include "kis_coordinates_converter.h"
 #include "tool_transform_args.h"
 #include "transform_transaction_properties.h"
-#include "krita_utils.h"
+#include "minerva2d_utils.h"
 #include "kis_cursor.h"
 #include "kis_transform_utils.h"
 #include "kis_free_transform_strategy_gsl_helpers.h"

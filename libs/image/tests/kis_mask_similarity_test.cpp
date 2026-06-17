@@ -14,7 +14,7 @@
 #include "kis_brush_mask_applicator_base.h"
 #include "kis_mask_generator.h"
 #include "kis_cubic_curve.h"
-#include "krita_utils.h"
+#include "minerva2d_utils.h"
 
 #include "config-limit-long-tests.h"
 

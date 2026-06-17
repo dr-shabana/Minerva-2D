@@ -94,7 +94,7 @@ bool SvgWriter::save(QIODevice &outputDevice, const QSizeF &pageSize)
     svgStream << "\"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd\">" << Qt::endl;
 
     // add some PR.  one line is more than enough.
-    svgStream << "<!-- Created using Krita: https://krita.org -->" << Qt::endl;
+    svgStream << "<!-- Created using Minerva: https://minerva2d.org -->" << Qt::endl;
 
     svgStream << "<svg xmlns=\"http://www.w3.org/2000/svg\" \n";
     svgStream << "    xmlns:xlink=\"http://www.w3.org/1999/xlink\"\n";
@@ -254,7 +254,7 @@ void SvgWriter::saveGeneric(KoShape *shape, SvgSavingContext &context)
     svgGenerator.setOutputDevice(&svgBuffer);
 
     /**
-     * HACK ALERT: Qt (and Krita 3.x) has a weird bug, it assumes that all font sizes are
+     * HACK ALERT: Qt (and Minerva 3.x) has a weird bug, it assumes that all font sizes are
      *             defined in 96 ppi resolution, even though your the resolution in QSvgGenerator
      *             is manually set to 72 ppi. So here we do a tricky thing: we set a fake resolution
      *             to (72 * 72 / 96) = 54 ppi, which guarantees that the text, when painted in 96 ppi,

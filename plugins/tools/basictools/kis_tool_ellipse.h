@@ -43,11 +43,11 @@ class KisToolEllipseFactory : public KisToolPaintFactoryBase
 
 public:
     KisToolEllipseFactory()
-            : KisToolPaintFactoryBase("KritaShape/KisToolEllipse") {
+            : KisToolPaintFactoryBase("MinervaShape/KisToolEllipse") {
         setToolTip(i18n("Ellipse Tool"));
         setSection(ToolBoxSection::Shape);
-        setActivationShapeId(KRITA_TOOL_ACTIVATION_ID);
-        setIconName(koIconNameCStr("krita_tool_ellipse"));
+        setActivationShapeId(MINERVA2D_TOOL_ACTIVATION_ID);
+        setIconName(koIconNameCStr("minerva2d_tool_ellipse"));
         setPriority(3);
     }
 

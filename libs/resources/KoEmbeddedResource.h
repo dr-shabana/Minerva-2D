@@ -12,7 +12,7 @@
 /**
  * A simple wrapper class for a resource that has been embedded into
  * another resource. It stores the buffer with the raw resource data,
- * so that it could be imported into Krita database without any
+ * so that it could be imported into Minerva database without any
  * conversions and/or changing MD5 signature of it.
  */
 class KRITARESOURCES_EXPORT KoEmbeddedResource

@@ -191,7 +191,7 @@ int controlPolygonZeros(const QList<QPointF> &controlPoints);
 /**
  * @brief calculates local (u,v) coordinates of the patch corresponding to \p globalPoint
  *
- * The function uses Krita's own level-based patch interpolation algorithm
+ * The function uses Minerva's own level-based patch interpolation algorithm
  *
  * @param points control points as laid out in KisBezierPatch
  * @param globalPoint point in global coordinates
@@ -204,7 +204,7 @@ QPointF calculateLocalPos(const std::array<QPointF, 12> &points,
 /**
  * @brief calculates global coordinate corresponding to the patch coordinate (u, v)
  *
- * The function uses Krita's own level-based patch interpolation algorithm
+ * The function uses Minerva's own level-based patch interpolation algorithm
  *
  * @param points control points as laid out in KisBezierPatch
  * @param localPoint point in local coordinates

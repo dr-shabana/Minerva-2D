@@ -8,7 +8,7 @@
 #define __EXR_EXTRA_TAGS_H
 
 extern const char EXR_NAME[];
-extern const char EXR_KRITA_LAYERS[];
+extern const char EXR_MINERVA2D_LAYERS[];
 
 
 #endif /* __EXR_EXTRA_TAGS_H */

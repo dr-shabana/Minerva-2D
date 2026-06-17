@@ -12,7 +12,7 @@
 
 #include <KoColorSpaceRegistry.h>
 
-// Includes from krita/image
+// Includes from minerva2d/image
 #include <kis_adjustment_layer.h>
 #include <filter/kis_filter.h>
 #include <filter/kis_filter_registry.h>

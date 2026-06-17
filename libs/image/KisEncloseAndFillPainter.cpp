@@ -1,12 +1,12 @@
 /*
- * KDE. Krita Project.
+ * KDE. Minerva Project.
  *
  * SPDX-FileCopyrightText: 2022 Deif Lou <ginoba@gmail.com>
  *
  * SPDX-License-Identifier: GPL-2.0-or-later
  */
 
-#include <krita_utils.h>
+#include <minerva2d_utils.h>
 #include <floodfill/kis_scanline_fill.h>
 #include <kis_selection_filters.h>
 #include <kis_iterator_ng.h>

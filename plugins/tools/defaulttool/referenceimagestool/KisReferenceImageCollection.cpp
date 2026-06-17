@@ -25,7 +25,7 @@ const QVector<KisReferenceImage*> &KisReferenceImageCollection::referenceImages(
 
 bool KisReferenceImageCollection::save(QIODevice *io)
 {
-    QScopedPointer<KoStore> store(KoStore::createStore(io, KoStore::Write, "application/x-krita-reference-images]", KoStore::Zip));
+    QScopedPointer<KoStore> store(KoStore::createStore(io, KoStore::Write, "application/x-minerva2d-reference-images]", KoStore::Zip));
     if (store.isNull()) return false;
 
     QDomDocument doc;
@@ -58,7 +58,7 @@ bool KisReferenceImageCollection::save(QIODevice *io)
 
 bool KisReferenceImageCollection::load(QIODevice *io)
 {
-    QScopedPointer<KoStore> store(KoStore::createStore(io, KoStore::Read, "application/x-krita-reference-images", KoStore::Zip));
+    QScopedPointer<KoStore> store(KoStore::createStore(io, KoStore::Read, "application/x-minerva2d-reference-images", KoStore::Zip));
     if (!store || store->bad()) {
         return false;
     }
@@ -92,7 +92,7 @@ bool KisReferenceImageCollection::load(QIODevice *io)
     if (!failures.isEmpty()) {
         QMessageBox::warning(
                 0,
-                i18nc("@title:window", "Krita"),
+                i18nc("@title:window", "Minerva"),
                 i18n("The following reference images could not be loaded:\n%1", failures.join('\n')),
                 QMessageBox::Ok, QMessageBox::Ok
         );

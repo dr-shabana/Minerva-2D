@@ -147,7 +147,7 @@ bool KisChunkAllocator::sanityCheck(bool pleaseCrash)
     i = m_list.end();
     if(HAS_PREVIOUS(m_list, i)) {
         if(PEEK_PREVIOUS(i).m_end >= m_storeSize) {
-            warnKrita << "Last chunk exceeds the store size!";
+            warnMinerva << "Last chunk exceeds the store size!";
             failed = true;
         }
     }

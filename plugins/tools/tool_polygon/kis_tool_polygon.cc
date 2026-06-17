@@ -1,5 +1,5 @@
 /*
- *  kis_tool_polygon.cc -- part of Krita
+ *  kis_tool_polygon.cc -- part of Minerva
  *
  *  SPDX-FileCopyrightText: 2004 Michael Thaler <michael.thaler@physik.tu-muenchen.de>
  *  SPDX-FileCopyrightText: 2009 Lukáš Tvrdý <lukast.dev@gmail.com>

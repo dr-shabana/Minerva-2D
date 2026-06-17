@@ -79,7 +79,7 @@ KisKAboutKdeDialog::KisKAboutKdeDialog(QWidget *parent)
                          "If you have a suggestion for improvement then you are welcome to use "
                          "the bug tracking system to register your wish. Make sure you use the "
                          "severity called \"Wishlist\".</html>",
-                         QStringLiteral("https://bugs.kde.org/")));
+                         QStringLiteral("https://github.com/dr-shabana/Minerva-2D/issues/")));
 
     QLabel *join = new QLabel;
     join->setMargin(10);

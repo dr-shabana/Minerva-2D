@@ -114,7 +114,7 @@ inline T fixEndianness(T v, Exiv2::ByteOrder order)
     case Exiv2::bigEndian:
         return qFromBigEndian<T>(v);
     }
-    warnKrita << "KisExifIO: unknown byte order";
+    warnMinerva << "KisExifIO: unknown byte order";
     return v;
 }
 
@@ -126,7 +126,7 @@ Exiv2::ByteOrder invertByteOrder(Exiv2::ByteOrder order)
     case Exiv2::bigEndian:
         return Exiv2::littleEndian;
     case Exiv2::invalidByteOrder:
-        warnKrita << "KisExifIO: Can't invert Exiv2::invalidByteOrder";
+        warnMinerva << "KisExifIO: Can't invert Exiv2::invalidByteOrder";
         return Exiv2::invalidByteOrder;
     }
     return Exiv2::invalidByteOrder;
@@ -572,10 +572,10 @@ bool KisExifIO::loadFrom(KisMetaData::Store *store, QIODevice *ioDevice) const
         byteOrder =
             Exiv2::ExifParser::decode(exifData, (const Exiv2::byte *)arr.data(), static_cast<uint32_t>(arr.size()));
     } catch (const std::exception &ex) {
-        warnKrita << "Received exception trying to parse exiv data" << ex.what();
+        warnMinerva << "Received exception trying to parse exiv data" << ex.what();
         return false;
     } catch (...) {
-        dbgKrita << "Received unknown exception trying to parse exiv data";
+        dbgMinerva << "Received unknown exception trying to parse exiv data";
         return false;
     }
 #endif
@@ -660,7 +660,7 @@ bool KisExifIO::loadFrom(KisMetaData::Store *store, QIODevice *ioDevice) const
                         const QByteArray commentString = commentVar.toByteArray();
                         comment = QString::fromLatin1(commentString.constData(), commentString.size());
                     } else {
-                        warnKrita << "KisExifIO: Unhandled UserComment value type.";
+                        warnMinerva << "KisExifIO: Unhandled UserComment value type.";
                     }
                     KisMetaData::Value vcomment(comment);
                     vcomment.addPropertyQualifier("xml:lang", KisMetaData::Value("x-default"));

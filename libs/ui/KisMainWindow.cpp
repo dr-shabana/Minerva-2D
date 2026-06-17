@@ -61,7 +61,7 @@
 #include "kis_selection_manager.h"
 #include "kis_icon_utils.h"
 #include <krecentfilesaction.h>
-#include "krita_utils.h"
+#include "minerva2d_utils.h"
 #include <ktoggleaction.h>
 #include <ktoolbar.h>
 #include <kmainwindow.h>
@@ -145,7 +145,7 @@
 #include <KisUndoActionsUpdateManager.h>
 #include "KisWelcomePageWidget.h"
 #include "KisRecentDocumentsModelWrapper.h"
-#include <KritaVersionWrapper.h>
+#include <MinervaVersionWrapper.h>
 #include "KisCanvasWindow.h"
 #include "kis_action.h"
 #include <katecommandbar.h>
@@ -357,7 +357,7 @@ KisMainWindow::KisMainWindow(QUuid uuid)
     d->viewManager = new KisViewManager(this, actionCollection());
     KConfigGroup group( KSharedConfig::openConfig(), "theme");
 #ifndef Q_OS_HAIKU
-    d->themeManager = new Digikam::ThemeManager(group.readEntry("Theme", "Krita dark"), this);
+    d->themeManager = new Digikam::ThemeManager(group.readEntry("Theme", "Minerva dark"), this);
 #endif
     d->windowStateConfig = KSharedConfig::openConfig()->group("MainWindow");
 
@@ -384,10 +384,10 @@ KisMainWindow::KisMainWindow(QUuid uuid)
 #endif
 
     actionCollection()->addAssociatedWidget(this);
-    KoPluginLoader::instance()->load("Krita/ViewPlugin", KoPluginLoader::PluginsConfig(), d->viewManager, false);
+    KoPluginLoader::instance()->load("Minerva/ViewPlugin", KoPluginLoader::PluginsConfig(), d->viewManager, false);
 
     // Load the per-application plugins (Right now, only Python) We do this only once, when the first mainwindow is being created.
-    KoPluginLoader::instance()->load("Krita/ApplicationPlugin", KoPluginLoader::PluginsConfig(), qApp, true);
+    KoPluginLoader::instance()->load("Minerva/ApplicationPlugin", KoPluginLoader::PluginsConfig(), qApp, true);
 
     KoToolBoxFactory toolBoxFactory;
     QDockWidget *toolbox = createDockWidget(&toolBoxFactory);
@@ -441,7 +441,7 @@ KisMainWindow::KisMainWindow(QUuid uuid)
             continue;
         }
 #endif
-        if (qgetenv("KRITA_NO_STYLE_OVERRIDE").isEmpty()) {
+        if (qgetenv("MINERVA2D_NO_STYLE_OVERRIDE").isEmpty()) {
             if (!allowableStyles.contains(styleName.toLower())) {
                 continue;
             }
@@ -566,7 +566,7 @@ KisMainWindow::KisMainWindow(QUuid uuid)
         if(action->shortcut() == QKeySequence(0)) {
             continue;
         }
-        dbgKrita << "shortcut " << action->text() << " " << action->shortcut();
+        dbgMinerva << "shortcut " << action->text() << " " << action->shortcut();
         Q_ASSERT(!existingShortcuts.contains(action->shortcut()));
         existingShortcuts.insert(action->shortcut());
     }
@@ -578,8 +578,8 @@ KisMainWindow::KisMainWindow(QUuid uuid)
     KisPart::instance()->notifyMainWindowIsBeingCreated(this);
 
     // If we have customized the toolbars, load that first
-    setLocalXMLFile(KoResourcePaths::locateLocal("data", "krita5.xmlgui"));
-    setXMLFile(":/kxmlgui5/krita5.xmlgui");
+    setLocalXMLFile(KoResourcePaths::locateLocal("data", "minerva2d5.xmlgui"));
+    setXMLFile(":/kxmlgui5/minerva2d5.xmlgui");
 
     guiFactory()->addClient(this);
     applyActionIconOverridesFromLocalXML();
@@ -644,7 +644,7 @@ KisMainWindow::KisMainWindow(QUuid uuid)
     s->setOrientationUpdateMask(Qt::LandscapeOrientation|Qt::InvertedLandscapeOrientation|Qt::PortraitOrientation|Qt::InvertedPortraitOrientation);
     connect(s, SIGNAL(orientationChanged(Qt::ScreenOrientation)), this, SLOT(orientationChanged()));
 
-    // When Krita starts, Java side sends an event to set applicationState() to active. But, before
+    // When Minerva starts, Java side sends an event to set applicationState() to active. But, before
     // the event could reach KisApplication's platform integration, it is cleared by KisOpenGLModeProber::probeFormat.
     // So, we send it manually when MainWindow shows up.
     QAndroidJniObject::callStaticMethod<void>("org/qtproject/qt5/android/QtNative", "setApplicationState", "(I)V", Qt::ApplicationActive);
@@ -682,7 +682,7 @@ KisMainWindow::~KisMainWindow()
     //                 << "\n/>\n"   ;
     //        }
     //        else {
-    //            dbgKrita << "Got a non-qaction:" << ac->objectName();
+    //            dbgMinerva << "Got a non-qaction:" << ac->objectName();
     //        }
     //    }
 
@@ -994,7 +994,7 @@ void KisMainWindow::setCanvasDetached(bool detach)
 {
 #ifdef Q_OS_ANDROID
     if (detach) {
-        QMessageBox::warning(this, i18nc("@title:window", "Krita"),
+        QMessageBox::warning(this, i18nc("@title:window", "Minerva"),
                              "Detach Canvas is unsupported on Android");
     }
 #else
@@ -1064,7 +1064,7 @@ bool KisMainWindow::openDocument(const QString &path, OpenFlags flags)
 
     if (!QFile(path).exists()) {
         if (!(flags & BatchMode)) {
-            QMessageBox::critical(qApp->activeWindow(), i18nc("@title:window", "Krita"), i18n("The file %1 does not exist.", path));
+            QMessageBox::critical(qApp->activeWindow(), i18nc("@title:window", "Minerva"), i18n("The file %1 does not exist.", path));
         }
         KisRecentFilesManager::instance()->remove(QUrl::fromLocalFile(path)); //remove the file from the recent-opened-file-list
         return false;
@@ -1118,7 +1118,7 @@ bool KisMainWindow::openDocumentInternal(const QString &path, OpenFlags flags)
         if (!QFileInfo(path).exists()) {
             path = QStandardPaths::writableLocation(QStandardPaths::HomeLocation);
         }
-        newdoc->setPath(path + "/" + newdoc->objectName() + ".kra");
+        newdoc->setPath(path + "/" + newdoc->objectName() + ".m2d");
     }
 
     return true;
@@ -1213,7 +1213,7 @@ void KisMainWindow::slotSaveCanceled(const QString &errMsg)
 {
     if (!errMsg.isEmpty()) {   // empty when cancelled by user
         KisUsageLogger::log(QString("Saving cancelled. Error:").arg(errMsg));
-        QMessageBox::critical(this, i18nc("@title:window", "Krita"), errMsg);
+        QMessageBox::critical(this, i18nc("@title:window", "Minerva"), errMsg);
     }
     else {
         KisUsageLogger::log(QString("Saving cancelled by the user."));
@@ -1310,7 +1310,7 @@ bool KisMainWindow::saveDocument(KisDocument *document, bool saveas, bool isExpo
     }
     else if (dlg.result() == KisDelayedSaveDialog::Ignored) {
         QMessageBox::critical(qApp->activeWindow(),
-                              i18nc("@title:window", "Krita"),
+                              i18nc("@title:window", "Minerva"),
                               i18n("You are saving a file while the image is "
                                    "still rendering. The saved file may be "
                                    "incomplete or corrupted.\n\n"
@@ -1330,7 +1330,7 @@ bool KisMainWindow::saveDocument(KisDocument *document, bool saveas, bool isExpo
     }
 
     QFile target(document->path());
-    if (!target.exists()) { // Possible when file is moved/unmounted during Krita session.
+    if (!target.exists()) { // Possible when file is moved/unmounted during Minerva session.
         saveas = true;
     }
 
@@ -1354,7 +1354,7 @@ bool KisMainWindow::saveDocument(KisDocument *document, bool saveas, bool isExpo
         // suggest a different filename extension (yes, we fortunately don't all live in a world of magic :))
         QString suggestedFilename = QFileInfo(suggestedURL.toLocalFile()).completeBaseName();
 
-        if (!suggestedFilename.isEmpty()) {  // ".kra" looks strange for a name
+        if (!suggestedFilename.isEmpty()) {  // ".m2d" looks strange for a name
             suggestedFilename = suggestedFilename + "." + KisMimeDatabase::suffixesForMimeType(KIS_MIME_TYPE).first();
             suggestedURL = suggestedURL.adjusted(QUrl::RemoveFilename);
             suggestedURL.setPath(suggestedURL.path() + suggestedFilename);
@@ -1810,7 +1810,7 @@ void KisMainWindow::slotFileOpen(bool isImporting)
             OpenFlags flags = isImporting ? Import : None;
             bool res = openDocument(url, flags);
             if (!res) {
-                warnKrita << "Loading" << url << "failed";
+                warnMinerva << "Loading" << url << "failed";
             }
         }
     }
@@ -1974,8 +1974,8 @@ void KisMainWindow::openCommandBar()
 
     // The following line is needed to work around input method not working
     // on Windows.
-    // See https://bugs.kde.org/show_bug.cgi?id=395598
-    // and https://bugs.kde.org/show_bug.cgi?id=438122
+    // See https://github.com/dr-shabana/Minerva-2D/issues/show_bug.cgi?id=395598
+    // and https://github.com/dr-shabana/Minerva-2D/issues/show_bug.cgi?id=438122
     d->commandBar->activateWindow();
 
     // The following line is present in Kate's version and was ported over
@@ -1994,7 +1994,7 @@ void KisMainWindow::slotStoragesWarning(const QString &/*location*/)
 
     if (!checkPaintOpAvailable()) {
         warning += i18n("\nThere are no brush presets available. Please enable a bundle that has presets before continuing.\n");
-        QMessageBox::critical(this, i18nc("@title:window", "Krita"), warning);
+        QMessageBox::critical(this, i18nc("@title:window", "Minerva"), warning);
 
         QAction *action = actionCollection()->action("manage_bundles");
         if (action) {
@@ -2003,7 +2003,7 @@ void KisMainWindow::slotStoragesWarning(const QString &/*location*/)
     }
 
     if (!checkActiveBundlesAvailable()) {
-        QMessageBox::warning(this, i18nc("@title:window", "Krita"), warning + i18n("\nOnly your local resources are available."));
+        QMessageBox::warning(this, i18nc("@title:window", "Minerva"), warning + i18n("\nOnly your local resources are available."));
     }
 
 }
@@ -2142,7 +2142,7 @@ void KisMainWindow::importAnimation()
         if (!status.isOk() && !status.isInternalError()) {
             QString msg = status.errorMessage();
             if (!msg.isEmpty())
-                QMessageBox::critical(qApp->activeWindow(), i18nc("@title:window", "Krita"), i18n("Could not finish import animation:\n%1", msg));
+                QMessageBox::critical(qApp->activeWindow(), i18nc("@title:window", "Minerva"), i18n("Could not finish import animation:\n%1", msg));
         }
         activeView()->canvasBase()->refetchDataFromImage();
     }
@@ -2203,7 +2203,7 @@ void KisMainWindow::importVideoAnimation()
             KoColor bgColor(qc, cs);
 
             if (!document->newImage(name, width, height, cs, bgColor, KisConfig::RASTER_LAYER, 1, "", double(resolution / 72) )) {
-                QMessageBox::critical(qApp->activeWindow(), i18nc("@title:window", "Krita"), i18n("Failed to create new document. Animation import aborted."));
+                QMessageBox::critical(qApp->activeWindow(), i18nc("@title:window", "Minerva"), i18n("Failed to create new document. Animation import aborted."));
                 return;
             }
 
@@ -2222,7 +2222,7 @@ void KisMainWindow::importVideoAnimation()
         if (!status.isOk() && !status.isInternalError()) {
             QString msg = status.errorMessage();
             if (!msg.isEmpty())
-                QMessageBox::critical(qApp->activeWindow(), i18nc("@title:window", "Krita"), i18n("Could not finish import animation:\n%1", msg));
+                QMessageBox::critical(qApp->activeWindow(), i18nc("@title:window", "Minerva"), i18n("Could not finish import animation:\n%1", msg));
         }
 
         activeView()->canvasBase()->refetchDataFromImage();
@@ -2355,7 +2355,7 @@ QDockWidget* KisMainWindow::createDockWidget(KoDockFactoryBase* factory)
         // It is quite possible that a dock factory cannot create the dock; don't
         // do anything in that case.
         if (!dockWidget) {
-            warnKrita << "Could not create docker for" << factory->id();
+            warnMinerva << "Could not create docker for" << factory->id();
             return 0;
         }
 
@@ -2499,7 +2499,7 @@ QList<KoCanvasObserverBase*> KisMainWindow::canvasObservers() const
             observers << observer;
         }
         else {
-            warnKrita << docker << "is not a canvas observer";
+            warnMinerva << docker << "is not a canvas observer";
         }
     }
 
@@ -2544,9 +2544,9 @@ void KisMainWindow::subWindowActivated()
      * in the window menu. We need to reset the shortcuts for that menu
      * to nothing, otherwise the shortcuts cannot be made configurable.
      *
-     * See: https://bugs.kde.org/show_bug.cgi?id=352205
-     *      https://bugs.kde.org/show_bug.cgi?id=375524
-     *      https://bugs.kde.org/show_bug.cgi?id=398729
+     * See: https://github.com/dr-shabana/Minerva-2D/issues/show_bug.cgi?id=352205
+     *      https://github.com/dr-shabana/Minerva-2D/issues/show_bug.cgi?id=375524
+     *      https://github.com/dr-shabana/Minerva-2D/issues/show_bug.cgi?id=398729
      */
     QMdiSubWindow *subWindow = d->mdiArea->currentSubWindow();
     if (subWindow) {
@@ -2761,11 +2761,11 @@ void KisMainWindow::setActiveSubWindow(QWidget *window)
         return;
     }
     QMdiSubWindow *subwin = qobject_cast<QMdiSubWindow *>(window);
-    //dbgKrita << "setActiveSubWindow();" << subwin << d->activeSubWindow;
+    //dbgMinerva << "setActiveSubWindow();" << subwin << d->activeSubWindow;
 
     if (subwin && subwin != d->activeSubWindow) {
         KisView *view = qobject_cast<KisView *>(subwin->widget());
-        //dbgKrita << "\t" << view << activeView();
+        //dbgMinerva << "\t" << view << activeView();
         if (view && view != activeView()) {
             setActiveView(view);
         }
@@ -2813,7 +2813,7 @@ void KisMainWindow::configChanged()
 
     KConfigGroup group( KSharedConfig::openConfig(), "theme");
 #ifndef Q_OS_HAIKU
-    d->themeManager->setCurrentTheme(group.readEntry("Theme", "Krita dark"));
+    d->themeManager->setCurrentTheme(group.readEntry("Theme", "Minerva dark"));
 #endif
     d->actionManager()->updateGUI();
 
@@ -2855,7 +2855,7 @@ void KisMainWindow::newWindow()
 #ifdef Q_OS_ANDROID
     // Check if current mainwindow exists, just to be sure.
     if (KisPart::instance()->currentMainwindow()) {
-        QMessageBox::warning(this, i18nc("@title:window", "Krita"),
+        QMessageBox::warning(this, i18nc("@title:window", "Minerva"),
                              "Creating a New Main Window is unsupported on Android");
         return;
     }
@@ -2878,7 +2878,7 @@ void KisMainWindow::checkSanity()
     // print error if the lcms engine is not available
     if (!KoColorSpaceEngineRegistry::instance()->contains("icc")) {
         // need to wait 1 event since exiting here would not work.
-        m_errorMessage = i18n("The Krita LittleCMS color management plugin is not installed. Krita will quit now.");
+        m_errorMessage = i18n("The Minerva LittleCMS color management plugin is not installed. Minerva will quit now.");
         m_dieOnError = true;
         QTimer::singleShot(0, this, SLOT(showErrorAndDie()));
         return;
@@ -2910,7 +2910,7 @@ QPointer<KisView> KisMainWindow::activeKisView()
 {
     if (!d->mdiArea) return 0;
     QMdiSubWindow *activeSubWindow = d->mdiArea->activeSubWindow();
-    //dbgKrita << "activeKisView" << activeSubWindow;
+    //dbgMinerva << "activeKisView" << activeSubWindow;
     if (!activeSubWindow) return 0;
     return qobject_cast<KisView*>(activeSubWindow->widget());
 }
@@ -3135,7 +3135,7 @@ void KisMainWindow::initializeGeometry()
 
 void KisMainWindow::showManual()
 {
-    QDesktopServices::openUrl(QUrl("https://docs.krita.org"));
+    QDesktopServices::openUrl(QUrl("https://docs.minerva2d.org"));
 }
 
 void KisMainWindow::showDockerTitleBars(bool show)
@@ -3221,7 +3221,7 @@ bool KisMainWindow::checkPaintOpAvailable()
 // This function will rerender the actions with icons in UI (toolbars, shortcuts options etc.)
 void KisMainWindow::applyActionIconOverridesFromLocalXML()
 {
-    QString xmlPath = KoResourcePaths::locateLocal("data", "krita5.xmlgui");
+    QString xmlPath = KoResourcePaths::locateLocal("data", "minerva2d5.xmlgui");
     QFile file(xmlPath);
     if (!file.exists()) {
         return;

@@ -6,7 +6,7 @@ set(kritalibkis_LIB_SRCS
     Document.cpp
     Filter.cpp
     InfoObject.cpp
-    Krita.cpp
+    Minerva.cpp
     ManagedColor.cpp
     Node.cpp
     Notifier.cpp
@@ -53,11 +53,11 @@ set(kritalibkis_LIB_SRCS
 kis_add_library(kritalibkis SHARED ${kritalibkis_LIB_SRCS})
 generate_export_header(kritalibkis)
 
-target_link_libraries(kritalibkis kritaui kritaimage kritaversion)
+target_link_libraries(kritalibkis kritaui kritaimage minerva2dversion)
 target_link_libraries(kritalibkis LINK_INTERFACE_LIBRARIES kritaimage kritaui)
 
 set_target_properties(kritalibkis PROPERTIES
-    VERSION ${GENERIC_KRITA_LIB_VERSION} SOVERSION ${GENERIC_KRITA_LIB_SOVERSION}
+    VERSION ${GENERIC_MINERVA2D_LIB_VERSION} SOVERSION ${GENERIC_MINERVA2D_LIB_SOVERSION}
 )
 
 install(TARGETS kritalibkis  ${INSTALL_TARGETS_DEFAULT_ARGS})

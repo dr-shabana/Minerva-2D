@@ -44,7 +44,7 @@
 
 class KisExternalLayer;
 
-K_PLUGIN_FACTORY_WITH_JSON(KisJPEGExportFactory, "krita_jpeg_export.json", registerPlugin<KisJPEGExport>();)
+K_PLUGIN_FACTORY_WITH_JSON(KisJPEGExportFactory, "minerva2d_jpeg_export.json", registerPlugin<KisJPEGExport>();)
 
 KisJPEGExport::KisJPEGExport(QObject *parent, const QVariantList &) : KisImportExportFilter(parent)
 {

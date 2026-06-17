@@ -14,7 +14,7 @@
 
 #include "kis_global.h"
 #include "kis_debug.h"
-#include "krita_container_utils.h"
+#include "minerva2d_container_utils.h"
 
 struct KisColorLabelButton::Private
 {
@@ -259,7 +259,7 @@ QSet<int> KisColorLabelFilterGroup::getActiveLabels() const {
 QList<QAbstractButton *> KisColorLabelFilterGroup::checkedViableButtons() const {
     QList<QAbstractButton*> checkedButtons = viableButtons();
 
-    KritaUtils::filterContainer(checkedButtons, [](QAbstractButton* btn){
+    MinervaUtils::filterContainer(checkedButtons, [](QAbstractButton* btn){
        return (btn->isChecked());
     });
 

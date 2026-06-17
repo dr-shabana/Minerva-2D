@@ -66,7 +66,7 @@ void KisLayerStyleProjectionPlaneTest::test(KisPSDLayerStyleSP style, const QStr
     {
         projection->clear();
         const QRect changeRect = plane.changeRect(rFillRect, KisLayer::N_FILTHY);
-        dbgKrita << ppVar(rFillRect) << ppVar(changeRect);
+        dbgMinerva << ppVar(rFillRect) << ppVar(changeRect);
 
         plane.recalculate(changeRect, layer, KisRenderPassFlag::None);
 
@@ -88,7 +88,7 @@ void KisLayerStyleProjectionPlaneTest::test(KisPSDLayerStyleSP style, const QStr
                                                        style));
 
         const QRect changeRect = clonedPlane->changeRect(rFillRect, KisLayer::N_FILTHY);
-        dbgKrita << ppVar(rFillRect) << ppVar(changeRect);
+        dbgMinerva << ppVar(rFillRect) << ppVar(changeRect);
 
         KIS_DUMP_DEVICE_2(clonedLayer->projection(), imageRect, "04L_clone_state_after_copy", testName);
 
@@ -143,7 +143,7 @@ void KisLayerStyleProjectionPlaneTest::test(KisPSDLayerStyleSP style, const QStr
         const QRect changeRect = plane.changeRect(partialSelectionRect, KisLayer::N_FILTHY);
         projection->clear(changeRect);
 
-        dbgKrita << ppVar(partialSelectionRect) << ppVar(changeRect);
+        dbgMinerva << ppVar(partialSelectionRect) << ppVar(changeRect);
 
         plane.recalculate(changeRect, layer, KisRenderPassFlag::None);
 
@@ -162,7 +162,7 @@ void KisLayerStyleProjectionPlaneTest::test(KisPSDLayerStyleSP style, const QStr
         const QRect changeRect = plane.changeRect(updateRect1, KisLayer::N_FILTHY);
         projection->clear(changeRect);
 
-        dbgKrita << ppVar(updateRect1) << ppVar(changeRect);
+        dbgMinerva << ppVar(updateRect1) << ppVar(changeRect);
 
         plane.recalculate(changeRect, layer, KisRenderPassFlag::None);
 
@@ -178,7 +178,7 @@ void KisLayerStyleProjectionPlaneTest::test(KisPSDLayerStyleSP style, const QStr
         const QRect changeRect = plane.changeRect(updateRect2, KisLayer::N_FILTHY);
         projection->clear(changeRect);
 
-        dbgKrita << ppVar(updateRect2) << ppVar(changeRect);
+        dbgMinerva << ppVar(updateRect2) << ppVar(changeRect);
 
         plane.recalculate(changeRect, layer, KisRenderPassFlag::None);
 

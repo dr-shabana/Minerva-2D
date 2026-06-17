@@ -1,4 +1,4 @@
-# Building Krita for Android
+# Building Minerva for Android
 
 First of all, I use linux to do my builds and testing. Although,
 they _should_ work on Windows/macOS, I cannot give any guarantee 
@@ -34,25 +34,25 @@ then run it again.
 
 That's the only dependency we have to manage manually!
 
-## Building Krita
+## Building Minerva
 
-Now, to build krita, run `<krita-source>/packaging/android/androidbuild.sh --help`
+Now, to build krita, run `<minerva2d-source>/packaging/android/androidbuild.sh --help`
 and pass the required arguments.
 
 Example:
 
 ```shell
-./androidbuild.sh -p=all --src=/home/sh_zam/workspace/krita --build-type=Debug --build-root=/home/sh_zam/workspace/build-krita-android --ndk-path=/home/sh_zam/Android/Sdk/ndk-bundle --sdk-path=/home/sh_zam/Android/Sdk --api-level=21 --android-abi=armeabi-v7a
+./androidbuild.sh -p=all --src=/home/sh_zam/workspace/minerva2d --build-type=Debug --build-root=/home/sh_zam/workspace/build-minerva2d-android --ndk-path=/home/sh_zam/Android/Sdk/ndk-bundle --sdk-path=/home/sh_zam/Android/Sdk --api-level=21 --android-abi=armeabi-v7a
 ```
 
 That's all!
 
-## Installing Krita APK
+## Installing Minerva APK
 
-To install run `adb install -d -r <build-root>/krita_build_apk/build/outputs/apk/debug/krita_build_apk-debug.apk`.
+To install run `adb install -d -r <build-root>/minerva2d_build_apk/build/outputs/apk/debug/minerva2d_build_apk-debug.apk`.
 
 `adb` should be in `<sdk-root>/platform-tools/`
 
 ## Crash
 
-If Krita crashes you can look up the logs using `adb logcat`
+If Minerva crashes you can look up the logs using `adb logcat`

@@ -13,7 +13,7 @@
 #include "libkis.h"
 
 /**
- * The GuidesConfig class encapsulates a Krita Guides configuration.
+ * The GuidesConfig class encapsulates a Minerva Guides configuration.
  *
  */
 class KRITALIBKIS_EXPORT GuidesConfig : public QObject

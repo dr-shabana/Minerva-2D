@@ -4,8 +4,8 @@
  *  SPDX-License-Identifier: GPL-2.0-or-later
  */
 
-#ifndef KRITA_KISCOLORSMUDGESOURCE_H
-#define KRITA_KISCOLORSMUDGESOURCE_H
+#ifndef MINERVA2D_KISCOLORSMUDGESOURCE_H
+#define MINERVA2D_KISCOLORSMUDGESOURCE_H
 
 #include <QtGlobal>
 #include <kis_types.h>
@@ -55,4 +55,4 @@ private:
 };
 
 
-#endif //KRITA_KISCOLORSMUDGESOURCE_H
+#endif //MINERVA2D_KISCOLORSMUDGESOURCE_H

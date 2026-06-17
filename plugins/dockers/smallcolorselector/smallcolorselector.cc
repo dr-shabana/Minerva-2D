@@ -16,7 +16,7 @@
 #include "opengl/kis_opengl.h"
 #include "kis_config.h"
 
-K_PLUGIN_FACTORY_WITH_JSON(SmallColorSelectorPluginFactory, "krita_smallcolorselector.json", registerPlugin<SmallColorSelectorPlugin>();)
+K_PLUGIN_FACTORY_WITH_JSON(SmallColorSelectorPluginFactory, "minerva2d_smallcolorselector.json", registerPlugin<SmallColorSelectorPlugin>();)
 
 class SmallColorSelectorDockFactory : public KoDockFactoryBase
 {

@@ -96,9 +96,9 @@ struct WaylandSurfaceDescription : boost::equality_comparable<WaylandSurfaceDesc
 QDebug operator<<(QDebug dbg, const WaylandPrimaries &points);
 QDebug operator<<(QDebug dbg, const WaylandSurfaceDescription &data);
 
-QtWayland::wp_color_manager_v1::primaries primariesKritaToWayland(KisSurfaceColorimetry::NamedPrimaries primaries);
-QtWayland::wp_color_manager_v1::transfer_function transferFunctionKritaToWayland(KisSurfaceColorimetry::NamedTransferFunction transferFunction);
-QtWayland::wp_color_manager_v1::render_intent renderIntentKritaToWayland(KisSurfaceColorimetry::RenderIntent intent);
+QtWayland::wp_color_manager_v1::primaries primariesMinervaToWayland(KisSurfaceColorimetry::NamedPrimaries primaries);
+QtWayland::wp_color_manager_v1::transfer_function transferFunctionMinervaToWayland(KisSurfaceColorimetry::NamedTransferFunction transferFunction);
+QtWayland::wp_color_manager_v1::render_intent renderIntentMinervaToWayland(KisSurfaceColorimetry::RenderIntent intent);
 
 }
 

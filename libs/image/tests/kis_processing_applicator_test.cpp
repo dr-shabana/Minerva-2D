@@ -78,7 +78,7 @@ bool checkLayers(KisImageWSP image,
         QPoint temp;
 
         if(!TestUtil::compareQImages(temp, ref, images[i], 1)) {
-            dbgKrita << "--- Wrong image:" << names[i];
+            dbgMinerva << "--- Wrong image:" << names[i];
             valid = false;
             images[i].save(QString(FILES_OUTPUT_DIR) + '/' + names[i]);
         }

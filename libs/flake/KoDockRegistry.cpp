@@ -27,7 +27,7 @@ void KoDockRegistry::init()
     KoPluginLoader::PluginsConfig config;
     config.blacklist = "DockerPluginsDisabled";
     config.group = "krita";
-    KoPluginLoader::instance()->load(QString::fromLatin1("Krita/Dock"),
+    KoPluginLoader::instance()->load(QString::fromLatin1("Minerva/Dock"),
                                      config);
 }
 

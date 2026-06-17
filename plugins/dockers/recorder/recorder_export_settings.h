@@ -6,8 +6,8 @@
  *  The sourcecode of this file was moved from recorder_export.cpp
  */
 
-#ifndef KRITA_RECORDER_EXPORT_SETTINGS_H
-#define KRITA_RECORDER_EXPORT_SETTINGS_H
+#ifndef MINERVA2D_RECORDER_EXPORT_SETTINGS_H
+#define MINERVA2D_RECORDER_EXPORT_SETTINGS_H
 
 #include <QString>
 #include <QList>
@@ -57,4 +57,4 @@ struct RecorderExportSettings {
 };
 
 
-#endif // KRITA_RECORDER_EXPORT_SETTINGS_H
+#endif // MINERVA2D_RECORDER_EXPORT_SETTINGS_H

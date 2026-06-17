@@ -26,7 +26,7 @@ DeformPaintOpPlugin::DeformPaintOpPlugin(QObject *parent, const QVariantList &)
     : QObject(parent)
 {
     KisPaintOpRegistry *r = KisPaintOpRegistry::instance();
-    r->add(new KisSimplePaintOpFactory<KisDeformPaintOp, KisDeformPaintOpSettings, KisDeformPaintOpSettingsWidget>("deformbrush", i18n("Deform"), KisPaintOpFactory::categoryStable(), "krita-deform.png", QString(), QStringList(COMPOSITE_COPY), 16));
+    r->add(new KisSimplePaintOpFactory<KisDeformPaintOp, KisDeformPaintOpSettings, KisDeformPaintOpSettingsWidget>("deformbrush", i18n("Deform"), KisPaintOpFactory::categoryStable(), "minerva2d-deform.png", QString(), QStringList(COMPOSITE_COPY), 16));
 }
 
 DeformPaintOpPlugin::~DeformPaintOpPlugin()

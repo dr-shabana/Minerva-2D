@@ -13,7 +13,7 @@ BUILDROOT="${BUILDROOT%/}"
 echo "BUILDROOT set to ${BUILDROOT}"
 
 if [[ -z "${KIS_SRC_DIR}" ]]; then
-    KIS_SRC_DIR=${BUILDROOT}/krita
+    KIS_SRC_DIR=${BUILDROOT}/minerva2d
 fi
 if [[ -z "${KIS_BUILD_DIR}" ]]; then
     KIS_BUILD_DIR=${BUILDROOT}/kisbuild
@@ -39,9 +39,9 @@ codesign_sandbox() {
 
 
 # program starts
-# codesign_sandbox "${BUILDROOT}/i/bin/krita.app/Contents/container-migration.plist"
-codesign_sandbox "${BUILDROOT}/i/bin/krita.app/Contents/MacOS/ffprobe" "sandboxdev_sub-entitlements.plist"
-codesign_sandbox "${BUILDROOT}/i/bin/krita.app/Contents/MacOS/ffmpeg" "sandboxdev_sub-entitlements.plist"
-codesign_sandbox "${BUILDROOT}/i/bin/krita.app/Contents/MacOS/krita" "${ENTITLEMENTS}"
+# codesign_sandbox "${BUILDROOT}/i/bin/minerva2d.app/Contents/container-migration.plist"
+codesign_sandbox "${BUILDROOT}/i/bin/minerva2d.app/Contents/MacOS/ffprobe" "sandboxdev_sub-entitlements.plist"
+codesign_sandbox "${BUILDROOT}/i/bin/minerva2d.app/Contents/MacOS/ffmpeg" "sandboxdev_sub-entitlements.plist"
+codesign_sandbox "${BUILDROOT}/i/bin/minerva2d.app/Contents/MacOS/minerva2d" "${ENTITLEMENTS}"
 
 echo "codesign end."

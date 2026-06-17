@@ -1,6 +1,6 @@
 INSERT INTO version_information (
     database_version
-,   krita_version
+,   minerva2d_version
 ,   creation_date )
 VALUES (
      ?

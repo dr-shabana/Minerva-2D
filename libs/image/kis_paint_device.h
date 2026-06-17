@@ -47,7 +47,7 @@ using KisInterstrokeDataSP = QSharedPointer<KisInterstrokeData>;
 
 typedef KisSharedPtr<KisDataManager> KisDataManagerSP;
 
-namespace KritaUtils {
+namespace MinervaUtils {
 enum DeviceCopyMode {
     CopySnapshot = 0,
     CopyAllFrames
@@ -98,10 +98,10 @@ public:
      * behavior). If \p copyFrames is CopyAllFrames, the new device is a deep
      * copy of the source with all the frames included.
      */
-    KisPaintDevice(const KisPaintDevice& rhs, KritaUtils::DeviceCopyMode copyMode = KritaUtils::CopySnapshot, KisNode *newParentNode = 0);
+    KisPaintDevice(const KisPaintDevice& rhs, MinervaUtils::DeviceCopyMode copyMode = MinervaUtils::CopySnapshot, KisNode *newParentNode = 0);
     ~KisPaintDevice() override;
 
-    void makeFullCopyFrom(const KisPaintDevice& rhs, KritaUtils::DeviceCopyMode copyMode = KritaUtils::CopySnapshot, KisNode *newParentNode = 0);
+    void makeFullCopyFrom(const KisPaintDevice& rhs, MinervaUtils::DeviceCopyMode copyMode = MinervaUtils::CopySnapshot, KisNode *newParentNode = 0);
 
 protected:
     /**
@@ -404,7 +404,7 @@ protected:
 public:
     /**
      * Read the bytes representing the rectangle described by x, y, w, h into
-     * data. If data is not big enough, Krita will gladly overwrite the rest
+     * data. If data is not big enough, Minerva will gladly overwrite the rest
      * of your precious memory.
      *
      * Since this is a copy, you need to make sure you have enough memory.
@@ -416,7 +416,7 @@ public:
 
     /**
      * Read the bytes representing the rectangle rect into
-     * data. If data is not big enough, Krita will gladly overwrite the rest
+     * data. If data is not big enough, Minerva will gladly overwrite the rest
      * of your precious memory.
      *
      * Since this is a copy, you need to make sure you have enough memory.
@@ -430,7 +430,7 @@ public:
 
     /**
      * Copy the bytes in data into the rect specified by x, y, w, h. If the
-     * data is too small or uninitialized, Krita will happily read parts of
+     * data is too small or uninitialized, Minerva will happily read parts of
      * memory you never wanted to be read.
      *
      * If the data is written to areas of the paint device not previously initialized,
@@ -440,7 +440,7 @@ public:
 
     /**
      * Copy the bytes in data into the rectangle rect. If the
-     * data is too small or uninitialized, Krita will happily read parts of
+     * data is too small or uninitialized, Minerva will happily read parts of
      * memory you never wanted to be read.
      *
      * If the data is written to areas of the paint device not previously initialized,
@@ -467,7 +467,7 @@ public:
      * extended. There are no guards: if the area covers more pixels
      * than there are bytes in the arrays, krita will happily fill
      * your paint device with areas of memory you never wanted to be
-     * read. Krita may also crash.
+     * read. Minerva may also crash.
      *
      * XXX: what about undo?
      */
@@ -638,7 +638,7 @@ public:
     const KoColorSpace* colorSpace() const;
 
     /**
-     * There is quite a common technique in Krita. It is used in
+     * There is quite a common technique in Minerva. It is used in
      * cases, when we want to paint something over a paint device
      * using the composition, opacity or selection. E.g. painting a
      * dab in a paint op, filling the selection in the Fill Tool.

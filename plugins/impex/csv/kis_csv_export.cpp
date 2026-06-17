@@ -24,7 +24,7 @@
 
 #include "csv_saver.h"
 
-K_PLUGIN_FACTORY_WITH_JSON(KisCSVExportFactory, "krita_csv_export.json", registerPlugin<KisCSVExport>();)
+K_PLUGIN_FACTORY_WITH_JSON(KisCSVExportFactory, "minerva2d_csv_export.json", registerPlugin<KisCSVExport>();)
 
 KisCSVExport::KisCSVExport(QObject *parent, const QVariantList &) : KisImportExportFilter(parent)
 {

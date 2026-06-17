@@ -177,9 +177,9 @@ void KisMyPaintShadeSelector::paintEvent(QPaintEvent *) {
                 else if(shadeMyPaintType=="HSL"){color = converter()->fromHslF(fh, fs, fv);}
                 else if(shadeMyPaintType=="HSI"){color = converter()->fromHsiF(fh, fs, fv);}
                 else if(shadeMyPaintType=="HSY"){color = converter()->fromHsyF(fh, fs, fv, R, G, B);}
-                else{dbgKrita<<"MyPaint Color selector don't work right.";
+                else{dbgMinerva<<"MyPaint Color selector don't work right.";
                 color = converter()->fromHsvF(fh, fs, fv);}
-//dbgKrita<<color->toQcolor();
+//dbgMinerva<<color->toQcolor();
                 color.setOpacity(aaFactor);
                 Acs::setColorWithIterator(borderIt, color, borderPixelSize);
 
@@ -209,7 +209,7 @@ void KisMyPaintShadeSelector::paintEvent(QPaintEvent *) {
         else if(shadeMyPaintType=="HSL"){color = converter()->fromHslF(fh, fs, fv);}
         else if(shadeMyPaintType=="HSI"){color = converter()->fromHsiF(fh, fs, fv);}
         else if(shadeMyPaintType=="HSY"){color = converter()->fromHsyF(fh, fs, fv);}
-        else{dbgKrita<<"MyPaint Color selector don't work right.";
+        else{dbgMinerva<<"MyPaint Color selector don't work right.";
         color = converter()->fromHsvF(fh, fs, fv);}
 
         Acs::setColorWithIterator(it, color, pixelSize);

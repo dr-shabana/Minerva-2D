@@ -1,5 +1,5 @@
 /*
- *  kis_tool_transform.cc -- part of Krita
+ *  kis_tool_transform.cc -- part of Minerva
  *
  *  SPDX-FileCopyrightText: 2004 Boudewijn Rempt <boud@valdyas.org>
  *  SPDX-FileCopyrightText: 2005 C. Boemann <cbo@boemann.dk>
@@ -51,7 +51,7 @@
 #include <kis_pixel_selection.h>
 #include <kis_shape_selection.h>
 #include <kis_selection_manager.h>
-#include <krita_utils.h>
+#include <minerva2d_utils.h>
 #include <kis_resources_snapshot.h>
 #include <KisOptimizedBrushOutline.h>
 
@@ -74,7 +74,7 @@
 #include "kis_transform_mask.h"
 #include "kis_transform_mask_adapter.h"
 
-#include "krita_container_utils.h"
+#include "minerva2d_container_utils.h"
 #include "kis_layer_utils.h"
 #include <KisDelayedUpdateNodeInterface.h>
 #include "kis_config_notifier.h"
@@ -1177,7 +1177,7 @@ QWidget* KisToolTransform::createOptionWidget()
     Q_CHECK_PTR(m_optionsWidget);
     m_optionsWidget->setObjectName(toolId() + " option widget");
 
-    // See https://bugs.kde.org/show_bug.cgi?id=316896
+    // See https://github.com/dr-shabana/Minerva-2D/issues/show_bug.cgi?id=316896
     QWidget *specialSpacer = new QWidget(m_optionsWidget);
     specialSpacer->setObjectName("SpecialSpacer");
     specialSpacer->setFixedSize(0, 0);

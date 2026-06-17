@@ -31,6 +31,6 @@ target_link_libraries(kritaassistanttool_static kritaui kritaflake)
 kis_add_library(kritaassistanttool MODULE assistant_tool.cc)
 target_link_libraries(kritaassistanttool kritaassistanttool_static)
 
-install(TARGETS kritaassistanttool  DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
+install(TARGETS kritaassistanttool  DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})
 
-install( FILES krita_tool_assistant.png dark_krita_tool_assistant.png light_krita_tool_assistant.png DESTINATION ${KDE_INSTALL_DATADIR}/krita/pics)
+install( FILES minerva2d_tool_assistant.png dark_minerva2d_tool_assistant.png light_minerva2d_tool_assistant.png DESTINATION ${KDE_INSTALL_DATADIR}/minerva2d/pics)

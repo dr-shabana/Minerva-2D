@@ -19,7 +19,7 @@
 #include "kis_coordinates_converter.h"
 #include "tool_transform_args.h"
 #include "transform_transaction_properties.h"
-#include "krita_utils.h"
+#include "minerva2d_utils.h"
 #include "kis_cursor.h"
 #include "kis_transform_utils.h"
 #include "kis_free_transform_strategy_gsl_helpers.h"
@@ -424,7 +424,7 @@ void KisPerspectiveTransformStrategy::Private::transformIntoArgs(const Eigen::Ma
 
     /**
      * We disabled decomposed transformation due to bug
-     * https://bugs.kde.org/show_bug.cgi?id=447255
+     * https://github.com/dr-shabana/Minerva-2D/issues/show_bug.cgi?id=447255
      *
      * In some cases decomposed preliminary transformation
      * shrinks the image into a very small size, which is later

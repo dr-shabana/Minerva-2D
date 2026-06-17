@@ -94,7 +94,7 @@ void KisClipboard::setClip(KisPaintDeviceSP dev, const QPoint &topLeft, const Ki
 
     // We'll create a store (ZIP format) in memory
     QBuffer buffer;
-    const auto mimeType = QByteArrayLiteral("application/x-krita-selection");
+    const auto mimeType = QByteArrayLiteral("application/x-minerva2d-selection");
     QScopedPointer<KoStore> store(KoStore::createStore(&buffer, KoStore::Write, mimeType));
     KisStorePaintDeviceWriter writer(store.data());
     Q_ASSERT(store);
@@ -206,10 +206,10 @@ KisPaintDeviceSP KisClipboard::clipFromMimeData(const QMimeData *cbData,
         *clipRange = KisTimeSpan();
     }
 
-    KisPaintDeviceSP clip = clipFromKritaSelection(cbData, imageBounds, clipRange);
+    KisPaintDeviceSP clip = clipFromMinervaSelection(cbData, imageBounds, clipRange);
 
     if (!clip) {
-        clip = clipFromKritaLayers(nullptr);
+        clip = clipFromMinervaLayers(nullptr);
     }
 
     if (!clip) {
@@ -219,9 +219,9 @@ KisPaintDeviceSP KisClipboard::clipFromMimeData(const QMimeData *cbData,
     return clip;
 }
 
-KisPaintDeviceSP KisClipboard::clipFromKritaSelection(const QMimeData *cbData, const QRect &imageBounds, KisTimeSpan *clipRange) const
+KisPaintDeviceSP KisClipboard::clipFromMinervaSelection(const QMimeData *cbData, const QRect &imageBounds, KisTimeSpan *clipRange) const
 {
-    const QByteArray mimeType = QByteArrayLiteral("application/x-krita-selection");
+    const QByteArray mimeType = QByteArrayLiteral("application/x-minerva2d-selection");
 
     KisPaintDeviceSP clip;
 
@@ -311,7 +311,7 @@ KisPaintDeviceSP KisClipboard::clipFromKritaSelection(const QMimeData *cbData, c
     return clip;
 }
 
-KisPaintDeviceSP KisClipboard::clipFromKritaLayers(const KoColorSpace *cs) const
+KisPaintDeviceSP KisClipboard::clipFromMinervaLayers(const KoColorSpace *cs) const
 {
     const QMimeData *data = KisClipboard::instance()->layersMimeData();
 
@@ -510,7 +510,7 @@ KisPaintDeviceSP KisClipboard::clipFromBoardContentsWithData(QImage qimage,
     if (choice == PASTE_FORMAT_CLIP) {
         KIS_SAFE_ASSERT_RECOVER(!qimage.isNull())
         {
-            warnKrita << "Clipboard was cleared before loading image";
+            warnMinerva << "Clipboard was cleared before loading image";
             return nullptr;
         }
 
@@ -586,7 +586,7 @@ void KisClipboard::clipboardDataChanged()
     if (!d->pushedClipboard) {
         const QMimeData *cbData = d->clipboard->mimeData();
         d->hasClip = d->clipboard->mimeData()->hasImage()
-                || (cbData && cbData->hasFormat("application/x-krita-selection"));
+                || (cbData && cbData->hasFormat("application/x-minerva2d-selection"));
     }
     d->pushedClipboard = false;
     Q_EMIT clipChanged();
@@ -610,7 +610,7 @@ bool KisClipboard::hasClip() const
 
 QSize KisClipboard::clipSize() const
 {
-    const auto mimeType = QByteArrayLiteral("application/x-krita-selection");
+    const auto mimeType = QByteArrayLiteral("application/x-minerva2d-selection");
     const QMimeData *cbData = d->clipboard->mimeData();
 
     KisPaintDeviceSP clip;
@@ -679,7 +679,7 @@ void KisClipboard::setLayers(KisNodeList nodes, KisImageSP image, bool forceCopy
 
 bool KisClipboard::hasLayers() const
 {
-    const QByteArray mimeType = QByteArrayLiteral("application/x-krita-node-internal-pointer");
+    const QByteArray mimeType = QByteArrayLiteral("application/x-minerva2d-node-internal-pointer");
     return d->clipboard->mimeData()->hasFormat(mimeType);
 }
 
@@ -689,13 +689,13 @@ bool KisClipboard::hasLayerStyles() const
     //       result of this function, because we allow pasting
     //       of the layer styles as 'text/plain'
 
-    return d->clipboard->mimeData()->hasFormat("application/x-krita-layer-style");
+    return d->clipboard->mimeData()->hasFormat("application/x-minerva2d-layer-style");
 }
 
 const QMimeData *KisClipboard::layersMimeData() const
 {
     const QMimeData *cbData = d->clipboard->mimeData();
-    return cbData->hasFormat("application/x-krita-node-internal-pointer") ? cbData : 0;
+    return cbData->hasFormat("application/x-minerva2d-node-internal-pointer") ? cbData : 0;
 }
 
 bool KisClipboard::hasUrls() const
@@ -776,7 +776,7 @@ KisPaintDeviceSP KisClipboard::fetchImageByURL(const QUrl &originalUrl) const
         if (!mimes.contains(type)) {
             QString msg = KisImportExportErrorCode(ImportExportCodes::FileFormatNotSupported).errorMessage();
             QMessageBox::warning(KisPart::instance()->currentMainwindow(),
-                                 i18nc("@title:window", "Krita"),
+                                 i18nc("@title:window", "Minerva"),
                                  i18n("Could not open %2.\nReason: %1.", msg, url.toDisplayString()));
             return result;
         }

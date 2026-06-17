@@ -1,0 +1,9 @@
+{
+    "Id": "Selection Tools",
+    "Type": "Service",
+    "X-KDE-Library": "kritaselectiontools",
+    "X-KDE-ServiceTypes": [
+        "Minerva/Tool"
+    ],
+    "X-Minerva-Version": "28"
+}

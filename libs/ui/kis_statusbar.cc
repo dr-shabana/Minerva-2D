@@ -1,4 +1,4 @@
-/* This file is part of KimageShop^WKrayon^WKrita
+/* This file is part of KimageShop^WKrayon^WMinerva
  *
  *  SPDX-FileCopyrightText: 2006 Boudewijn Rempt <boud@valdyas.org>
  *
@@ -324,7 +324,7 @@ void KisStatusBar::updateMemoryStatus()
         QString suffix =
                 i18nc("tooltip on statusbar memory reporting button",
                       "\n\nWARNING:\tOut of memory! Swapping has been started.\n"
-                      "\t\tPlease configure more RAM for Krita in Settings dialog");
+                      "\t\tPlease configure more RAM for Minerva in Settings dialog");
         longStats += suffix;
 
 

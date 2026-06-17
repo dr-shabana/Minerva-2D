@@ -26,7 +26,7 @@ public:
 };
 
 /**
- * @brief The KisNewsWidget class shows the latest news from Krita.org
+ * @brief The KisNewsWidget class shows the latest news from Minerva.org
  */
 class KisNewsWidget : public QWidget, public Ui::KisNewsPage
 {

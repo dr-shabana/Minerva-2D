@@ -434,10 +434,10 @@ void KisTileHashTableTraits<T>::sanityChecksumCheck()
     }
 
     if (exactNumTiles != m_numTiles) {
-        dbgKrita << "Sanity check failed!";
-        dbgKrita << ppVar(exactNumTiles);
-        dbgKrita << ppVar(m_numTiles);
-        dbgKrita << "Wrong tiles checksum!";
-        Q_ASSERT(0); // not fatalKrita for a backtrace support
+        dbgMinerva << "Sanity check failed!";
+        dbgMinerva << ppVar(exactNumTiles);
+        dbgMinerva << ppVar(m_numTiles);
+        dbgMinerva << "Wrong tiles checksum!";
+        Q_ASSERT(0); // not fatalMinerva for a backtrace support
     }
 }

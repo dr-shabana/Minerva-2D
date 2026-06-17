@@ -32,7 +32,7 @@ try:
 except:
     from PyQt5.QtGui import QIcon
     from PyQt5.QtWidgets import QWidget, QAction, QVBoxLayout, QSizePolicy, QPushButton
-from krita import Krita, Extension, DockWidget, DockWidgetFactory, SliderSpinBox, ManagedColor
+from krita import Minerva, Extension, DockWidget, DockWidgetFactory, SliderSpinBox, ManagedColor
 from builtins import i18n
 
 # Global mutation settings... 
@@ -62,10 +62,10 @@ valueMutMax = 0.25
 
 
 class Mutator(Extension):
-    ''' Mutator Class - Krita Extension 
-    The Mutator Krita extension script randomly mutates some of the artist's 
+    ''' Mutator Class - Minerva Extension 
+    The Mutator Minerva extension script randomly mutates some of the artist's 
     key brush and color settings by some configurable amount.
-    (When the extension is active settings can be configured in Krita's GUI using sliders in the MutatorDocker.)
+    (When the extension is active settings can be configured in Minerva's GUI using sliders in the MutatorDocker.)
     '''
     def __init__(self,parent):
         super().__init__(parent)
@@ -77,7 +77,7 @@ class Mutator(Extension):
 
     def createActions(self, window):
         '''
-        Adds an "action" to the Krita menus, which connects to the mutate function.
+        Adds an "action" to the Minerva menus, which connects to the mutate function.
         '''
         action = window.createAction("mutate", i18n("Mutate"), "tools/scripting")
         action.triggered.connect(self.mutate)
@@ -90,7 +90,7 @@ class Mutator(Extension):
         Mutation is triggered *manually* by the artist via action, hotkey, or button,
         whenever some randomness or brush/color variation is desired.
         '''
-        window = Krita.instance().activeWindow()
+        window = Minerva.instance().activeWindow()
         if window == None:
             return
         view = window.activeView()
@@ -147,9 +147,9 @@ def clamp(minimum, maximum, input):
 
 #GUI    
 class MutatorDocker(DockWidget):
-    ''' MutatorDocker - Krita DockWidget 
+    ''' MutatorDocker - Minerva DockWidget 
     This class handles the GUI elements that assign mutation values.
-    Can be found inside Krita's Settings>Dockers menu.
+    Can be found inside Minerva's Settings>Dockers menu.
     '''
     def __init__(self):
         super().__init__()
@@ -168,7 +168,7 @@ class MutatorDocker(DockWidget):
         mutationSettings.setLayout(QVBoxLayout())
 
         sizeMutSlider = SliderSpinBox().widget() # Size
-        sizeMutSlider.setToolTip(i18n("Controls the degree to which mutation affects Krita's global brush size."))
+        sizeMutSlider.setToolTip(i18n("Controls the degree to which mutation affects Minerva's global brush size."))
         sizeMutSlider.setRange(0,100)
         sizeMutSlider.setPrefix(i18n("Size Mutation: "))
         sizeMutSlider.setSuffix("%")
@@ -177,7 +177,7 @@ class MutatorDocker(DockWidget):
         mutationSettings.layout().addWidget(sizeMutSlider)
 
         rotationMutSlider = SliderSpinBox().widget() # Rotation
-        rotationMutSlider.setToolTip(i18n("Controls the degree to which mutation affects Krita's global brush rotation."))
+        rotationMutSlider.setToolTip(i18n("Controls the degree to which mutation affects Minerva's global brush rotation."))
         rotationMutSlider.setRange(0, 100)
         rotationMutSlider.setPrefix(i18n("Rotation Mutation: "))
         rotationMutSlider.setSuffix("%")
@@ -186,7 +186,7 @@ class MutatorDocker(DockWidget):
         mutationSettings.layout().addWidget(rotationMutSlider)
         
         opacityMutSlider = SliderSpinBox().widget() # Opacity
-        opacityMutSlider.setToolTip(i18n("Controls the degree to which mutation affects Krita's global brush opacity."))
+        opacityMutSlider.setToolTip(i18n("Controls the degree to which mutation affects Minerva's global brush opacity."))
         opacityMutSlider.setRange(0, 100)
         opacityMutSlider.setPrefix(i18n("Opacity Mutation: "))
         opacityMutSlider.setSuffix("%")
@@ -195,7 +195,7 @@ class MutatorDocker(DockWidget):
         mutationSettings.layout().addWidget(opacityMutSlider)
         
         flowMutSlider = SliderSpinBox().widget() # Flow
-        flowMutSlider.setToolTip(i18n("Controls the degree to which mutation affects Krita's global brush flow."))
+        flowMutSlider.setToolTip(i18n("Controls the degree to which mutation affects Minerva's global brush flow."))
         flowMutSlider.setRange(0, 100)
         flowMutSlider.setPrefix(i18n("Flow Mutation: "))
         flowMutSlider.setSuffix("%")
@@ -204,7 +204,7 @@ class MutatorDocker(DockWidget):
         mutationSettings.layout().addWidget(flowMutSlider)
         
         hueMutSlider = SliderSpinBox().widget() # FGC Hue
-        hueMutSlider.setToolTip(i18n("Controls the degree to which mutation affects Krita's global foreground color hue."))
+        hueMutSlider.setToolTip(i18n("Controls the degree to which mutation affects Minerva's global foreground color hue."))
         hueMutSlider.setRange(0, 100)
         hueMutSlider.setPrefix(i18n("Hue Mutation: "))
         hueMutSlider.setSuffix("%")
@@ -213,7 +213,7 @@ class MutatorDocker(DockWidget):
         mutationSettings.layout().addWidget(hueMutSlider)
         
         saturationMutSlider = SliderSpinBox().widget() # FGC Saturation
-        saturationMutSlider.setToolTip(i18n("Controls the degree to which mutation affects Krita's global foreground color saturation."))
+        saturationMutSlider.setToolTip(i18n("Controls the degree to which mutation affects Minerva's global foreground color saturation."))
         saturationMutSlider.setRange(0, 100)
         saturationMutSlider.setPrefix(i18n("Saturation Mutation: "))
         saturationMutSlider.setSuffix("%")
@@ -222,7 +222,7 @@ class MutatorDocker(DockWidget):
         mutationSettings.layout().addWidget(saturationMutSlider)
         
         valueMutSlider = SliderSpinBox().widget() # FGC Value
-        valueMutSlider.setToolTip(i18n("Controls the degree to which mutation affects Krita's global foreground color value."))
+        valueMutSlider.setToolTip(i18n("Controls the degree to which mutation affects Minerva's global foreground color value."))
         valueMutSlider.setRange(0, 100)
         valueMutSlider.setPrefix(i18n("Value Mutation: "))
         valueMutSlider.setSuffix("%")
@@ -278,13 +278,13 @@ class MutatorDocker(DockWidget):
 
 
     def trigger_mutate(self):
-        Krita.instance().action("mutate").activate(QAction.Trigger)
+        Minerva.instance().action("mutate").activate(QAction.Trigger)
 
 
     def canvasChanged(self, canvas): # Unused
         pass
 
 
-# Krita boilerplate.
-Krita.instance().addExtension(Mutator(Krita.instance()))
-Krita.instance().addDockWidgetFactory(DockWidgetFactory("mutatorDocker", DockWidgetFactory.DockPosition.DockRight, MutatorDocker))
+# Minerva boilerplate.
+Minerva.instance().addExtension(Mutator(Minerva.instance()))
+Minerva.instance().addDockWidgetFactory(DockWidgetFactory("mutatorDocker", DockWidgetFactory.DockPosition.DockRight, MutatorDocker))

@@ -1,0 +1,9 @@
+{
+    "Id": "Colorspace Conversion",
+    "Type": "Service",
+    "X-KDE-Library": "kritacolorspaceconversion",
+    "X-KDE-ServiceTypes": [
+        "Minerva/ViewPlugin"
+    ],
+    "X-Minerva-Version": "28"
+}

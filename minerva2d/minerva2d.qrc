@@ -1,0 +1,12 @@
+<!--
+  SPDX-FileCopyrightText: none
+  SPDX-License-Identifier: CC0-1.0
+-->
+<RCC>
+    <qresource prefix="/kconfig">
+        <file alias="minerva2drc">data/minerva2drc</file>
+    </qresource>
+    <qresource prefix="/kxmlgui5">
+        <file alias="minerva2d5.xmlgui">minerva2d5.xmlgui</file>
+    </qresource>
+</RCC>

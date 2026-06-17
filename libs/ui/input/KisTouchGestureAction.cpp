@@ -67,7 +67,7 @@ void KisTouchGestureAction::end(QEvent *event)
         actionName = QStringLiteral("previous_preset");
         break;
     case ColorSampler:
-        actionName = QStringLiteral("KritaSelected/KisToolColorSampler");
+        actionName = QStringLiteral("MinervaSelected/KisToolColorSampler");
         break;
     case Deselect:
         actionName = QStringLiteral("deselect");
@@ -79,13 +79,13 @@ void KisTouchGestureAction::end(QEvent *event)
         actionName = QStringLiteral("activatePreviousLayer");
         break;
     case FreehandBrush:
-        actionName = QStringLiteral("KritaShape/KisToolBrush");
+        actionName = QStringLiteral("MinervaShape/KisToolBrush");
         break;
     case KisToolSelectContiguous:
         actionName = QStringLiteral("KisToolSelectOutline");
         break;
     case KisToolMove:
-        actionName = QStringLiteral("KritaTransform/KisToolMove");
+        actionName = QStringLiteral("MinervaTransform/KisToolMove");
         break;
     case KisToolTransform:
         actionName = QStringLiteral("KisToolTransform");

@@ -22,7 +22,7 @@
 #include <boost/math/distributions/normal.hpp>
 
 #include <QPainterPath>
-#include "krita_utils.h"
+#include "minerva2d_utils.h"
 
 
 
@@ -283,8 +283,8 @@ namespace Private {
 
             if (status == GSL_SUCCESS)
             {
-                // dbgKrita << "*******Converged to minimum";
-                // dbgKrita << gsl_vector_get (s->x, 0)
+                // dbgMinerva << "*******Converged to minimum";
+                // dbgMinerva << gsl_vector_get (s->x, 0)
                 //          << gsl_vector_get (s->x, 1)
                 //          << "|" << s->fval << size;
 
@@ -329,7 +329,7 @@ QPainterPath simplifyPath(const QPainterPath &path,
 
         const qreal length = p.length();
         const qreal lengthStep =
-            KritaUtils::maxDimensionPortion(poly.boundingRect(),
+            MinervaUtils::maxDimensionPortion(poly.boundingRect(),
                                             sizePortion, minLinearSize);
 
         int numSamples = qMax(qCeil(length / lengthStep), minNumSamples);
@@ -394,11 +394,11 @@ QPointF KisPolygonalGradientShapeStrategy::testingCalculatePathCenter(int numSam
                                                   &result);
 
     if (!success) {
-        dbgKrita << "WARNING: Couldn't calculate findBestStartingPoint for:";
-        dbgKrita << ppVar(numSamples);
-        dbgKrita << ppVar(exponent);
-        dbgKrita << ppVar(searchForMax);
-        dbgKrita << ppVar(path);
+        dbgMinerva << "WARNING: Couldn't calculate findBestStartingPoint for:";
+        dbgMinerva << ppVar(numSamples);
+        dbgMinerva << ppVar(exponent);
+        dbgMinerva << ppVar(searchForMax);
+        dbgMinerva << ppVar(path);
 
     }
 

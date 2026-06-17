@@ -112,13 +112,13 @@ class KisToolLineFactory : public KisToolPaintFactoryBase
 public:
 
     KisToolLineFactory()
-            : KisToolPaintFactoryBase("KritaShape/KisToolLine") {
+            : KisToolPaintFactoryBase("MinervaShape/KisToolLine") {
         setToolTip(i18n("Line Tool"));
         // Temporarily
         setSection(ToolBoxSection::Shape);
-        setActivationShapeId(KRITA_TOOL_ACTIVATION_ID);
+        setActivationShapeId(MINERVA2D_TOOL_ACTIVATION_ID);
         setPriority(1);
-        setIconName(koIconNameCStr("krita_tool_line"));
+        setIconName(koIconNameCStr("minerva2d_tool_line"));
     }
 
     ~KisToolLineFactory() override {}

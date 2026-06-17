@@ -6,7 +6,7 @@ import re
 from functools import partial
 from itertools import groupby, product, starmap, tee
 
-from krita import Krita
+from krita import Minerva
 try:
     from PyQt6.QtCore import QSize, Qt
     from PyQt6.QtGui import QColor, QImage, QPainter
@@ -19,7 +19,7 @@ from .Utils.Export import exportPath, sanitize
 from .Utils.Tree import path, pathFS
 
 RE_QUOTED_PATH = re.compile(r'p="(.*?)"\s*')
-KI = Krita.instance()
+KI = Minerva.instance()
 
 
 def nodeToImage(wnode):
@@ -71,7 +71,7 @@ def expandAndFormat(img, margin=0, is_jpg=False):
 
 class WNode:
     """
-    Wrapper around Krita's Node class, that represents a layer.
+    Wrapper around Minerva's Node class, that represents a layer.
     Adds support for export metadata and methods to export the layer
     based on its metadata.
     See the meta property for a list of supported metadata.

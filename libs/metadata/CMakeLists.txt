@@ -21,10 +21,10 @@ set(kritametadata_LIB_SRCS
 kis_add_library(kritametadata SHARED ${kritametadata_LIB_SRCS})
 generate_export_header(kritametadata)
 
-target_link_libraries(kritametadata kritaversion kritaglobal kritaplugin kritawidgetutils)
+target_link_libraries(kritametadata minerva2dversion kritaglobal kritaplugin kritawidgetutils)
 
 set_target_properties(kritametadata PROPERTIES
-    VERSION ${GENERIC_KRITA_LIB_VERSION} SOVERSION ${GENERIC_KRITA_LIB_SOVERSION}
+    VERSION ${GENERIC_MINERVA2D_LIB_VERSION} SOVERSION ${GENERIC_MINERVA2D_LIB_SOVERSION}
 )
 
 install(TARGETS kritametadata  ${INSTALL_TARGETS_DEFAULT_ARGS})

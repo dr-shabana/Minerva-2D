@@ -1,0 +1,13 @@
+{
+    "Icon": "",
+    "Id": "Minerva JPEG Import Filter",
+    "NoDisplay": "true",
+    "Type": "Service",
+    "X-KDE-Import": "image/jpeg",
+    "X-KDE-Library": "kritajpegimport",
+    "X-KDE-ServiceTypes": [
+        "Minerva/FileFilter"
+    ],
+    "X-KDE-Weight": 1,
+    "X-KDE-Extensions" : "jpg,jpeg"
+}

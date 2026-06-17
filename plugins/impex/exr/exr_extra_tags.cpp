@@ -7,4 +7,4 @@
 #include "exr_extra_tags.h"
 
 const char EXR_NAME[] = "exr_name";
-const char EXR_KRITA_LAYERS[] = "krita_layers_info";
+const char EXR_MINERVA2D_LAYERS[] = "minerva2d_layers_info";

@@ -23,7 +23,7 @@
 #include <ksharedconfig.h>
 #include <klocalizedstring.h>
 
-#include <KritaVersionWrapper.h>
+#include <MinervaVersionWrapper.h>
 #include <KisMimeDatabase.h>
 #include <kis_assert.h>
 #include <kis_debug.h>
@@ -116,14 +116,14 @@ KisResourceLocator::LocatorError KisResourceLocator::initialize(const QString &i
 
     // Check whether we're updating from an older version
     if (initializationStatus != InitializationStatus::FirstRun) {
-        QFile fi(d->resourceLocation + '/' + "KRITA_RESOURCE_VERSION");
+        QFile fi(d->resourceLocation + '/' + "MINERVA2D_RESOURCE_VERSION");
         if (!fi.open(QFile::ReadOnly)) {
             initializationStatus = InitializationStatus::FirstUpdate;
         }
         else {
             QVersionNumber resource_version = QVersionNumber::fromString(QString::fromUtf8(fi.readAll()));
-            QVersionNumber krita_version = QVersionNumber::fromString(KritaVersionWrapper::versionString());
-            if (krita_version > resource_version) {
+            QVersionNumber minerva2d_version = QVersionNumber::fromString(MinervaVersionWrapper::versionString());
+            if (minerva2d_version > resource_version) {
                 initializationStatus = InitializationStatus::Updating;
             }
             else {
@@ -622,7 +622,7 @@ QString findDeduplicatedFileName(const QString &resourceType, const QString &pro
         return !storage->resource(resourceUrl);
     };
 
-    return KritaUtils::deduplicateFileName(proposedFileName, "_embedded_", fileAllowedCallback);
+    return MinervaUtils::deduplicateFileName(proposedFileName, "_embedded_", fileAllowedCallback);
 }
 }
 
@@ -1041,7 +1041,7 @@ void KisResourceLocator::updateFontStorage()
 
 KisResourceLocator::LocatorError KisResourceLocator::firstTimeInstallation(InitializationStatus initializationStatus, const QString &installationResourcesLocation)
 {
-    Q_EMIT progressMessage(i18n("Krita is running for the first time. Initialization will take some time."));
+    Q_EMIT progressMessage(i18n("Minerva is running for the first time. Initialization will take some time."));
     Q_UNUSED(initializationStatus);
 
     Q_FOREACH(const QString &folder, KisResourceLoaderRegistry::instance()->resourceTypes()) {
@@ -1081,9 +1081,9 @@ KisResourceLocator::LocatorError KisResourceLocator::firstTimeInstallation(Initi
         }
     }
 
-    QFile f(d->resourceLocation + '/' + "KRITA_RESOURCE_VERSION");
+    QFile f(d->resourceLocation + '/' + "MINERVA2D_RESOURCE_VERSION");
     if (f.open(QFile::WriteOnly)) {
-        f.write(KritaVersionWrapper::versionString().toUtf8());
+        f.write(MinervaVersionWrapper::versionString().toUtf8());
         f.close();
     } else {
         qWarning() << "Could not open" << f.fileName() << "for writing:" << f.errorString();

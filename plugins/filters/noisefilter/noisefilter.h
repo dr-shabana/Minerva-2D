@@ -1,5 +1,5 @@
 /*
- * This file is part of Krita
+ * This file is part of Minerva
  *
  * SPDX-FileCopyrightText: 2006 Cyrille Berger <cberger@cberger.net>
  *
@@ -15,12 +15,12 @@
 
 class KisConfigWidget;
 
-class KritaNoiseFilter : public QObject
+class MinervaNoiseFilter : public QObject
 {
     Q_OBJECT
 public:
-    KritaNoiseFilter(QObject *parent, const QVariantList &);
-    ~KritaNoiseFilter() override;
+    MinervaNoiseFilter(QObject *parent, const QVariantList &);
+    ~MinervaNoiseFilter() override;
 };
 
 class KisFilterNoise : public KisFilter

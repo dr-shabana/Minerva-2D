@@ -1,5 +1,5 @@
 /*
- * This file is part of Krita
+ * This file is part of Minerva
  *
  * SPDX-FileCopyrightText: 2020 L. E. Segovia <amy@amyspark.me>
  *
@@ -56,15 +56,15 @@ public:
     }
 };
 
-K_PLUGIN_FACTORY_WITH_JSON(KritaSeExprGeneratorFactory, "generator.json", registerPlugin<KritaSeExprGenerator>();)
+K_PLUGIN_FACTORY_WITH_JSON(MinervaSeExprGeneratorFactory, "generator.json", registerPlugin<MinervaSeExprGenerator>();)
 
-KritaSeExprGenerator::KritaSeExprGenerator(QObject *parent, const QVariantList &)
+MinervaSeExprGenerator::MinervaSeExprGenerator(QObject *parent, const QVariantList &)
     : QObject(parent)
 {
     KisGeneratorRegistry::instance()->add(new KisSeExprGenerator());
 }
 
-KritaSeExprGenerator::~KritaSeExprGenerator()
+MinervaSeExprGenerator::~MinervaSeExprGenerator()
 {
 }
 

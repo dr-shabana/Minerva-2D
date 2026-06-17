@@ -1,0 +1,9 @@
+{
+    "Id": "Spray",
+    "Type": "Service",
+    "X-KDE-Library": "kritaspraypaintop",
+    "X-KDE-ServiceTypes": [
+        "Minerva/Paintop"
+    ],
+    "X-Minerva-Version": "28"
+}

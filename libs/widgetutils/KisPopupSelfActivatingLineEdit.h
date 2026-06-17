@@ -15,7 +15,7 @@
 // HACK: This QLineEdit calls `QWidget::activateWindow` on focus if it is
 // housed inside a Qt::Popup, in order to work around a bug causing input
 // methods to not work in it.
-// See https://bugs.kde.org/show_bug.cgi?id=395598
+// See https://github.com/dr-shabana/Minerva-2D/issues/show_bug.cgi?id=395598
 class KRITAWIDGETUTILS_EXPORT KisPopupSelfActivatingLineEdit : public QLineEdit
 {
     Q_OBJECT

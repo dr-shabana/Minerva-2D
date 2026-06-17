@@ -40,8 +40,8 @@ public:
 
             QString msg = QString("Incorrect offset on exit %1, expected %2!").arg(m_device.pos()).arg(m_expectedPos);
 
-            warnKrita << "*** |" << m_objectName << msg;
-            warnKrita << "    |" << m_domain;
+            warnMinerva << "*** |" << m_objectName << msg;
+            warnMinerva << "    |" << m_domain;
 
 #endif /* DEBUG_OFFSET_ON_EXIT */
 

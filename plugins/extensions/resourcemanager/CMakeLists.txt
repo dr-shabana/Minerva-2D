@@ -33,5 +33,5 @@ ki18n_wrap_ui(kritaresourcemanager_SOURCES
 
 kis_add_library(kritaresourcemanager MODULE ${kritaresourcemanager_SOURCES})
 target_link_libraries(kritaresourcemanager kritawidgets kritaui kritalibpaintop kritaresources kritaresourcewidgets)
-install(TARGETS kritaresourcemanager  DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
-install(FILES resourcemanager.xmlgui  DESTINATION ${KDE_INSTALL_DATADIR}/kritaplugins)
+install(TARGETS kritaresourcemanager  DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})
+install(FILES resourcemanager.xmlgui  DESTINATION ${KDE_INSTALL_DATADIR}/minerva2dplugins)

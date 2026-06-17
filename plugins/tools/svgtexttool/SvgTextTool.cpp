@@ -94,7 +94,7 @@ constexpr double INLINE_SIZE_HANDLE_THICKNESS = 1.0; /// Linethickness.
 
 static bool debugEnabled()
 {
-    static const bool debugEnabled = !qEnvironmentVariableIsEmpty("KRITA_DEBUG_TEXTTOOL");
+    static const bool debugEnabled = !qEnvironmentVariableIsEmpty("MINERVA2D_DEBUG_TEXTTOOL");
     return debugEnabled;
 }
 
@@ -312,7 +312,7 @@ void SvgTextTool::showEditor()
 
     if (!m_editor) {
         m_editor = new SvgTextEditor(QApplication::activeWindow());
-        m_editor->setWindowTitle(i18nc("@title:window", "Krita - Edit Text"));
+        m_editor->setWindowTitle(i18nc("@title:window", "Minerva - Edit Text"));
         m_editor->setWindowModality(Qt::ApplicationModal);
         m_editor->setAttribute( Qt::WA_QuitOnClose, false );
 
@@ -639,7 +639,7 @@ void SvgTextTool::slotUpdateTypeSettingMode()
 
 bool SvgTextTool::nodeEditable()
 {
-    KisNodeSP node = canvas()->resourceManager()->resource(KoCanvasResource::CurrentKritaNode).value<KisNodeWSP>();
+    KisNodeSP node = canvas()->resourceManager()->resource(KoCanvasResource::CurrentMinervaNode).value<KisNodeWSP>();
     if (!node->isEditable(true)) {
         KisCanvas2 * kiscanvas = static_cast<KisCanvas2*>(canvas());
         if (kiscanvas) {

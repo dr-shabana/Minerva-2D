@@ -44,7 +44,7 @@ namespace KisToolUtils {
         KIS_ASSERT(dev);
 
         // Bugfix hack forcing pure on first sample to avoid wrong
-        // format blendColor on newly initialized Krita.
+        // format blendColor on newly initialized Minerva.
         static bool firstTime = true;
         if (firstTime == true) {
             pure = true;

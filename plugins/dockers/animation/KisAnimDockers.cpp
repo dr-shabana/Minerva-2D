@@ -16,7 +16,7 @@
 
 #include "KisViewManager.h"
 
-K_PLUGIN_FACTORY_WITH_JSON(AnimationDockersPluginFactory, "krita_animationdocker.json", registerPlugin<AnimationDockersPlugin>();)
+K_PLUGIN_FACTORY_WITH_JSON(AnimationDockersPluginFactory, "minerva2d_animationdocker.json", registerPlugin<AnimationDockersPlugin>();)
 
 class TimelineDockerFactory : public KoDockFactoryBase {
 public:

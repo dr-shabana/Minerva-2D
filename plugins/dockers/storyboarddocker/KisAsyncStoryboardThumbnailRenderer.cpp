@@ -24,7 +24,7 @@ KisAsyncStoryboardThumbnailRenderer::~KisAsyncStoryboardThumbnailRenderer()
 void KisAsyncStoryboardThumbnailRenderer::frameCompletedCallback(int frameTime, const KisRegion &/*requestedRegion*/)
 {
     KisImageSP image = requestedImage();
-    KisPaintDeviceSP requestedFrame = image ? new KisPaintDevice(*image->projection(), KritaUtils::CopySnapshot) : nullptr;
+    KisPaintDeviceSP requestedFrame = image ? new KisPaintDevice(*image->projection(), MinervaUtils::CopySnapshot) : nullptr;
 
     if (requestedFrame) {
         Q_EMIT sigNotifyFrameCompleted(frameTime);

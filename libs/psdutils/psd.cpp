@@ -143,7 +143,7 @@ QString psd_blendmode_to_composite_op(const QString &blendmode)
     if (blendmode == "lum ")
         return COMPOSITE_LUMINIZE;
 
-    dbgKrita << "Unknown blendmode:" << blendmode << ". Returning Normal";
+    dbgMinerva << "Unknown blendmode:" << blendmode << ". Returning Normal";
     return COMPOSITE_OVER;
 }
 
@@ -236,7 +236,7 @@ QString composite_op_to_psd_blendmode(const QString &compositeop)
     if (compositeop == COMPOSITE_LUMINIZE)
         return "lum ";
 
-    dbgKrita << "Krita blending mode" << compositeop << "does not exist in Photoshop, returning Normal";
+    dbgMinerva << "Minerva blending mode" << compositeop << "does not exist in Photoshop, returning Normal";
     return "norm";
 }
 

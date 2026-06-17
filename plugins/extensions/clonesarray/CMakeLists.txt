@@ -6,5 +6,5 @@ set(kritaclonesarray_SOURCES
 ki18n_wrap_ui(kritaclonesarray_SOURCES wdg_clonesarray.ui )
 kis_add_library(kritaclonesarray MODULE ${kritaclonesarray_SOURCES})
 target_link_libraries(kritaclonesarray kritaui)
-install(TARGETS kritaclonesarray  DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
-install( FILES  clonesarray.xmlgui  DESTINATION ${KDE_INSTALL_DATADIR}/kritaplugins)
+install(TARGETS kritaclonesarray  DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})
+install( FILES  clonesarray.xmlgui  DESTINATION ${KDE_INSTALL_DATADIR}/minerva2dplugins)

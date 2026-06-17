@@ -118,7 +118,7 @@ bool KisShortcutsEditorPrivate::addAction(QAction *action, QTreeWidgetItem *hier
     // Don't feed the editor raw QActions. This code requires that the
     // "defaultShortcut" dynamic property be set.
     //
-    // Note: Krita never sets the property "isShortcutConfigurable".
+    // Note: Minerva never sets the property "isShortcutConfigurable".
     // Perhaps it could be useful.
     const QVariant value = action->property("isShortcutConfigurable");
     if (!value.isValid() || value.toBool()) {

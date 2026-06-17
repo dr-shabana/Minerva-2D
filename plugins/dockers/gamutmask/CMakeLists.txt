@@ -10,4 +10,4 @@ ki18n_wrap_ui(kritagamutmask_SOURCES
 
 kis_add_library(kritagamutmask MODULE ${kritagamutmask_SOURCES})
 target_link_libraries(kritagamutmask kritaui)
-install(TARGETS kritagamutmask DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
+install(TARGETS kritagamutmask DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})

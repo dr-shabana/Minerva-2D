@@ -14,7 +14,7 @@
 #include "LogDockerDock.h"
 
 K_PLUGIN_FACTORY_WITH_JSON(LogDockerPluginFactory,
-                           "krita_logdocker.json",
+                           "minerva2d_logdocker.json",
                            registerPlugin<LogDockerPlugin>();)
 
 class LogDockerDockFactory : public KoDockFactoryBase {

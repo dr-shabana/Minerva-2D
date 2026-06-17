@@ -37,7 +37,7 @@ public:
         }
         conversionFlags |= KoColorConversionTransformation::CopyAlpha;
 
-        // unset Krita-only flag
+        // unset Minerva-only flag
         conversionFlags.setFlag(KoColorConversionTransformation::NoAdaptationAbsoluteIntent, false);
 
         m_transform = cmsCreateTransform(srcProfile->lcmsProfile(),
@@ -98,7 +98,7 @@ public:
 
         const double adaptationState = displayConversionFlags.testFlag(KoColorConversionTransformation::NoAdaptationAbsoluteIntent) ? 0.0 : 1.0;
 
-        // unset Krita-only flag
+        // unset Minerva-only flag
         displayConversionFlags.setFlag(KoColorConversionTransformation::NoAdaptationAbsoluteIntent, false);
 
         quint16 alarm[cmsMAXCHANNELS];//this seems to be bgr???

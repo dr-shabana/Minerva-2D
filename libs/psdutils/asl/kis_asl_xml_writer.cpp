@@ -41,7 +41,7 @@ KisAslXmlWriter::~KisAslXmlWriter()
 QDomDocument KisAslXmlWriter::document() const
 {
     if (m_d->document.documentElement() != m_d->currentElement) {
-        warnKrita << "KisAslXmlWriter::document(): unbalanced enter/leave descriptor/array";
+        warnMinerva << "KisAslXmlWriter::document(): unbalanced enter/leave descriptor/array";
     }
 
     return m_d->document;
@@ -68,7 +68,7 @@ void KisAslXmlWriter::leaveDescriptor()
     if (!m_d->currentElement.parentNode().toElement().isNull()) {
         m_d->currentElement = m_d->currentElement.parentNode().toElement();
     } else {
-        warnKrita << "KisAslXmlWriter::leaveDescriptor(): unbalanced enter/leave descriptor";
+        warnMinerva << "KisAslXmlWriter::leaveDescriptor(): unbalanced enter/leave descriptor";
     }
 }
 
@@ -91,7 +91,7 @@ void KisAslXmlWriter::leaveList()
     if (!m_d->currentElement.parentNode().toElement().isNull()) {
         m_d->currentElement = m_d->currentElement.parentNode().toElement();
     } else {
-        warnKrita << "KisAslXmlWriter::leaveList(): unbalanced enter/leave list";
+        warnMinerva << "KisAslXmlWriter::leaveList(): unbalanced enter/leave list";
     }
 }
 
@@ -534,7 +534,7 @@ void KisAslXmlWriter::writeFloatRect(const QString &key, const QRectF &rect)
 void KisAslXmlWriter::writePointRect(const QString &key, const QPolygonF &transformedRect)
 {
     if (transformedRect.size() < 4) {
-        warnKrita << "KisAslXmlWriter::writePointRect(): too few points to write descriptor.";
+        warnMinerva << "KisAslXmlWriter::writePointRect(): too few points to write descriptor.";
         return;
     }
     enterDescriptor(key, "", "null");

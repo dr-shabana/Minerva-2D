@@ -107,7 +107,7 @@ void KisSwappedDataStoreTest::testRandomAccess()
 
     for(qint32 i = 0; i < NUM_CYCLES; i++) {
         if(!(i%5000))
-            dbgKrita << i << "of" << NUM_CYCLES;
+            dbgMinerva << i << "of" << NUM_CYCLES;
 
         qint32 col = rng.bounded(NUM_TILES);
 

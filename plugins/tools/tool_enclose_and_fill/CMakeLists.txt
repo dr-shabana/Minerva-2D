@@ -13,6 +13,6 @@ kis_add_library(kritatoolencloseandfill MODULE ${kritatoolencloseandfill_SOURCES
 
 target_link_libraries(kritatoolencloseandfill kritaui kritabasicflakes)
 
-install(TARGETS kritatoolencloseandfill  DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
+install(TARGETS kritatoolencloseandfill  DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})
 
-install( FILES KisToolEncloseAndFill.action DESTINATION  ${KDE_INSTALL_DATADIR}/krita/actions)
+install( FILES KisToolEncloseAndFill.action DESTINATION  ${KDE_INSTALL_DATADIR}/minerva2d/actions)

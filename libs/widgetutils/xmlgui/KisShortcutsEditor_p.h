@@ -39,7 +39,7 @@ class KisShortcutsEditorPrivate
 public:
 
   //! Represents the three hierarchies the dialog displays.
-  enum hierarchyLevel {Root = 0,  /* Base level node (Tools, Krita...) */
+  enum hierarchyLevel {Root = 0,  /* Base level node (Tools, Minerva...) */
                        Program,   /* We use this like "Path Tool, Default Tool," */
                        Action};   /* Individual actions */
 

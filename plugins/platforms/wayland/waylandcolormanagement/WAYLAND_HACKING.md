@@ -100,7 +100,7 @@ WAYLAND_DEBUG=1 krita | grep -E 'image|color'
 
 Gnome/Mutter refuse to implement server-side window decorations
 (https://gitlab.gnome.org/GNOME/mutter/-/issues/217), so on Gnome
-Krita uses the decorations provided by Qt. To test this codepath
+Minerva uses the decorations provided by Qt. To test this codepath
 on a normal compositor with SSD, one needs to disable the
 corresponding protocol support in Qt and choose the CSD plugin
 name:
@@ -116,16 +116,16 @@ QT_QPA_PLATFORM=wayland QT_WAYLAND_DISABLED_INTERFACES=zxdg_decoration_manager_v
 ## How to test an extension, unsupported in your compositor
 
 If you want to test code related to an extension that your compositor doesn't support,
-you can bypass Krita's checks for the extension by passing the following environment variable:
+you can bypass Minerva's checks for the extension by passing the following environment variable:
 
 ```bash
-KRITA_FORCE_WAYLAND_INTERFACES=*list of extension names*
+MINERVA2D_FORCE_WAYLAND_INTERFACES=*list of extension names*
 ```
 
-For example to force Krita to do wayland color management on an unsupported compositor, you can pass:
+For example to force Minerva to do wayland color management on an unsupported compositor, you can pass:
 
 ```bash
-KRITA_FORCE_WAYLAND_INTERFACES=wp_color_manager_v1
+MINERVA2D_FORCE_WAYLAND_INTERFACES=wp_color_manager_v1
 ```
 
 Note: The extension will **NOT** function properly if you do this.

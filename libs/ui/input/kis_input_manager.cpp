@@ -351,9 +351,9 @@ bool KisInputManager::eventFilterImpl(QEvent * event)
         event->type() == QEvent::Wheel) {
 
         /**
-         * When Krita (as an application) has no input focus, we cannot
+         * When Minerva (as an application) has no input focus, we cannot
          * handle key events. But at the same time, when the user hovers
-         * Krita canvas, we should still show him the correct cursor.
+         * Minerva canvas, we should still show him the correct cursor.
          *
          * So here we just add a simple workaround to resync shortcut
          * matcher's state at least against the basic modifiers, like
@@ -426,7 +426,7 @@ bool KisInputManager::eventFilterImpl(QEvent * event)
         /** See a comment in the handler of KeyRelease event for
          * shouldSynchronizeOnNextKeyPress explanation
          *
-         * There is also a case when Krita gets focus via Win+1 key, then
+         * There is also a case when Minerva gets focus via Win+1 key, then
          * the polled key '1' gets into the matcher, but OS does not deliver any
          * signals for it (see bug 451424)
          */
@@ -492,7 +492,7 @@ bool KisInputManager::eventFilterImpl(QEvent * event)
              * where Qt does auto-key-replace routines when
              * Control modifier is pressed.
              *
-             * https://bugs.kde.org/show_bug.cgi?id=454256
+             * https://github.com/dr-shabana/Minerva-2D/issues/show_bug.cgi?id=454256
              * https://bugreports.qt.io/browse/QTBUG-103868
              */
 
@@ -647,7 +647,7 @@ bool KisInputManager::eventFilterImpl(QEvent * event)
         d->resetCompressor();
 
 
-#if defined Q_OS_LINUX && !KRITA_QT_HAS_ENTER_LEAVE_PATCH
+#if defined Q_OS_LINUX && !MINERVA2D_QT_HAS_ENTER_LEAVE_PATCH
         // remove this hack when this patch is integrated:
         // https://codereview.qt-project.org/#/c/255384/
         event->setAccepted(false);
@@ -681,7 +681,7 @@ bool KisInputManager::eventFilterImpl(QEvent * event)
          */
         d->blockMouseEvents();
 
-#if defined Q_OS_LINUX && !KRITA_QT_HAS_ENTER_LEAVE_PATCH
+#if defined Q_OS_LINUX && !MINERVA2D_QT_HAS_ENTER_LEAVE_PATCH
         // remove this hack when this patch is integrated:
         // https://codereview.qt-project.org/#/c/255384/
         event->setAccepted(false);
@@ -701,7 +701,7 @@ bool KisInputManager::eventFilterImpl(QEvent * event)
         retval = true;
         event->setAccepted(true);
 
-#if defined Q_OS_LINUX && !KRITA_QT_HAS_ENTER_LEAVE_PATCH
+#if defined Q_OS_LINUX && !MINERVA2D_QT_HAS_ENTER_LEAVE_PATCH
         // remove this hack when this patch is integrated:
         // https://codereview.qt-project.org/#/c/255384/
         event->setAccepted(false);
@@ -845,7 +845,7 @@ bool KisInputManager::eventFilterImpl(QEvent * event)
         // disables all gestures related to them in their system settings or
         // uses the game boost mode that is supposed to disable gestures. So we
         // handle those inputs even when they are cancelled, if the user wants
-        // to use it for a system gesture, they can disable the Krita shortcut.
+        // to use it for a system gesture, they can disable the Minerva shortcut.
 #ifdef Q_OS_ANDROID
         bool ignoreCancel = d->lastPointCount > 2;
 #else

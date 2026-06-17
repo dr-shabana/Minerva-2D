@@ -292,7 +292,7 @@ void OcioDisplayFilter::updateProcessor()
         m_processorCPU = m_processor->getDefaultCPUProcessor();
     } catch (OCIO::Exception &e) {
         // XXX: How to not break the OCIO shader now?
-        errKrita << "OCIO exception while parsing the current context:" << e.what();
+        errMinerva << "OCIO exception while parsing the current context:" << e.what();
         m_shaderDirty = false;
         return;
     }
@@ -304,7 +304,7 @@ void OcioDisplayFilter::updateProcessor()
         m_reverseApproximationProcessor = config->getProcessor(approximateTransform, OCIO::TRANSFORM_DIR_INVERSE);
         m_reverseApproximationProcessorCPU = m_reverseApproximationProcessor->getDefaultCPUProcessor();
     } catch (...) {
-        warnKrita << "OCIO inverted matrix does not exist!";
+        warnMinerva << "OCIO inverted matrix does not exist!";
         // m_reverseApproximationProcessor;
     }
 
@@ -331,7 +331,7 @@ bool OcioDisplayFilter::updateShader()
                 return updateShaderImpl(f);
             }
         } else {
-            dbgKrita << "OcioDisplayFilter::updateShader"
+            dbgMinerva << "OcioDisplayFilter::updateShader"
                         << "OpenGL ES v2+ support detected but no OES_texture_float,"
                         "GL_EXT_color_buffer_float or GL_EXT_texture_storage, or GL_OES_texture_float_linear were found";
             return false;
@@ -622,7 +622,7 @@ bool OcioDisplayFilter::updateShaderImpl(F *f)
     // Step 3: Generate the shader text
     QString shaderCacheID = QString::fromLatin1(shaderDesc->getCacheID());
     if (m_program.isEmpty() || shaderCacheID != m_shadercacheid) {
-        // dbgKrita << "Computing Shader " << m_shadercacheid;
+        // dbgMinerva << "Computing Shader " << m_shadercacheid;
 
         m_shadercacheid = shaderCacheID;
 

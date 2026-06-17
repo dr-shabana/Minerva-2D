@@ -52,7 +52,7 @@ void KisOpenRasterStackSaveVisitor::saveLayerInfo(QDomElement& elt, KisLayer* la
     if (layer->inherits("KisGroupLayer")) {
         // Workaround for the issue regarding ora specification.
         // MyPaint treats layer's x and y relative to the group's x and y
-        //  while Gimp and Krita think those are absolute values.
+        //  while Gimp and Minerva think those are absolute values.
         // Hence we set x and y on group layers to always be 0.
         elt.setAttribute("x", QString().setNum(0));
         elt.setAttribute("y", QString().setNum(0));
@@ -94,7 +94,7 @@ void KisOpenRasterStackSaveVisitor::saveLayerInfo(QDomElement& elt, KisLayer* la
     else compop = "krita:" + layer->compositeOpId();
 
     // Alpha preserve has a special case with the Normal blend mode, which is
-    // stored as src-atop for compatibility with previous Krita versions that
+    // stored as src-atop for compatibility with previous Minerva versions that
     // don't understand the alpha-preserve property, as well as other programs
     // like MyPaint that don't support alpha preserve on layers in general.
     if(layer->alphaChannelDisabled()) {

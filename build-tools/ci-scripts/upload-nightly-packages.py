@@ -12,7 +12,7 @@ supportedPlatforms = ['linux', 'windows', 'macos-universal',
     'android-x86_64', 'android-arm64-v8a', 'android-armeabi-v7a']
 
 # Capture our command line parameters
-parser = argparse.ArgumentParser(description='A script for building Krita Windows package on CI')
+parser = argparse.ArgumentParser(description='A script for building Minerva Windows package on CI')
 parser.add_argument('--platform', type=str, choices=supportedPlatforms, required=True, help='The platform package is built for')
 parser.add_argument('--folder', type=str, required=True, help='The folder where to search for packages')
 arguments = parser.parse_args()

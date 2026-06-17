@@ -103,7 +103,7 @@ public:
         setSection(ToolBoxSection::Select);
         setIconName(koIconNameCStr("tool_magnetic_selection"));
         setPriority(8);
-        setActivationShapeId(KRITA_TOOL_ACTIVATION_ID);
+        setActivationShapeId(MINERVA2D_TOOL_ACTIVATION_ID);
     }
 
     ~KisToolSelectMagneticFactory() override { }

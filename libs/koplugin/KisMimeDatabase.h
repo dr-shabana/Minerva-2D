@@ -24,7 +24,7 @@ public:
     static QString mimeTypeForFile(const QString &file, bool checkExistingFiles = true);
     /// Find the mimetype for a given extension. The extension may have the form "*.xxx" or "xxx"
     static QString mimeTypeForSuffix(const QString &suffix);
-    /// Find the mimetype through analyzing the contents. This does not work for Krita's
+    /// Find the mimetype through analyzing the contents. This does not work for Minerva's
     /// extended mimetypes.
     static QString mimeTypeForData(const QByteArray ba);
     /// Find the user-readable description for the given mimetype

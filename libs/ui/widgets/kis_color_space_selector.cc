@@ -208,7 +208,7 @@ void KisColorSpaceSelector::installProfile()
     Q_FOREACH (const QString &profileName, profileNames) {
         QUrl file(profileName);
         if (!QFile::copy(profileName, saveLocation + file.fileName())) {
-            dbgKrita << "Could not install profile!";
+            dbgMinerva << "Could not install profile!";
             return;
         }
         iccEngine->addProfile(saveLocation + file.fileName());

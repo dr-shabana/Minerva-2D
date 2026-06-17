@@ -281,7 +281,7 @@ void KisCanvasResourceProvider::slotNodeActivated(const KisNodeSP node)
 {
     QVariant v;
     v.setValue(KisNodeWSP(node));
-    m_resourceManager->setResource(KoCanvasResource::CurrentKritaNode, v);
+    m_resourceManager->setResource(KoCanvasResource::CurrentMinervaNode, v);
     Q_EMIT sigNodeChanged(currentNode());
 }
 
@@ -330,7 +330,7 @@ void KisCanvasResourceProvider::slotCanvasResourceChanged(int key, const QVarian
     case(KoCanvasResource::CurrentGradient):
         Q_EMIT sigGradientChanged(res.value<KoAbstractGradientSP>());
         break;
-    case(KoCanvasResource::CurrentKritaNode) :
+    case(KoCanvasResource::CurrentMinervaNode) :
         Q_EMIT sigNodeChanged(currentNode());
         break;
     case(KoCanvasResource::CurrentEffectiveCompositeOp) :

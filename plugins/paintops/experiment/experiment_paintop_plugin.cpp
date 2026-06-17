@@ -30,7 +30,7 @@ ExperimentPaintOpPlugin::ExperimentPaintOpPlugin(QObject *parent, const QVariant
            KisExperimentPaintOpSettingsWidget>("experimentbrush",
                                                i18n("Shape"),
                                                KisPaintOpFactory::categoryStable(),
-                                               "krita-experiment.png",
+                                               "minerva2d-experiment.png",
                                                QString(), QStringList(), 5,
                                                false));
 }

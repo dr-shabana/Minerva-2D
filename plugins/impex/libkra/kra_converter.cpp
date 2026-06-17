@@ -17,7 +17,7 @@
 #include <KoXmlWriter.h>
 
 #include <KisDocument.h>
-#include <KritaVersionWrapper.h>
+#include <MinervaVersionWrapper.h>
 #include <kis_clone_layer.h>
 #include <kis_group_layer.h>
 #include <kis_image.h>
@@ -70,7 +70,7 @@ KisImportExportErrorCode KraConverter::buildImage(QIODevice *io)
     m_store = KoStore::createStore(io, KoStore::Read, "", KoStore::Zip);
 
     if (m_store->bad()) {
-        m_doc->setErrorMessage(i18n("Not a valid Krita file"));
+        m_doc->setErrorMessage(i18n("Not a valid Minerva file"));
         return ImportExportCodes::FileFormatIncorrect;
     }
 
@@ -275,9 +275,9 @@ QDomDocument KraConverter::createDomDocument()
     QDomDocument doc = m_doc->createDomDocument("DOC", CURRENT_DTD_VERSION);
     QDomElement root = doc.documentElement();
 
-    root.setAttribute("editor", "Krita");
+    root.setAttribute("editor", "Minerva");
     root.setAttribute("syntaxVersion", CURRENT_DTD_VERSION);
-    root.setAttribute("kritaVersion", KritaVersionWrapper::versionString(false));
+    root.setAttribute("kritaVersion", MinervaVersionWrapper::versionString(false));
 
     root.appendChild(m_kraSaver->saveXML(doc, m_image));
 
@@ -369,8 +369,8 @@ KisImportExportErrorCode KraConverter::loadXML(const QDomDocument &doc, KoStore 
     const int syntaxVersion = parsedVersionNumber.isNull() ? 3 : parsedVersionNumber.majorVersion();
     
     if (syntaxVersion > 2) {
-        errUI << "The file is too new for this version of Krita:" << syntaxVersion;
-        m_doc->setErrorMessage(i18n("The file is too new for this version of Krita (%1).", syntaxVersion));
+        errUI << "The file is too new for this version of Minerva:" << syntaxVersion;
+        m_doc->setErrorMessage(i18n("The file is too new for this version of Minerva (%1).", syntaxVersion));
         return ImportExportCodes::FormatFeaturesUnsupported;
     }
 
@@ -383,7 +383,7 @@ KisImportExportErrorCode KraConverter::loadXML(const QDomDocument &doc, KoStore 
     QString kritaVersionTag = root.attribute("kritaVersion", "6.0");
     QVersionNumber kritaVersionNumber = QVersionNumber::fromString(kritaVersionTag);
     if (kritaVersionNumber.isNull()) {
-        kritaVersionNumber = QVersionNumber::fromString(KritaVersionWrapper::versionString(false));
+        kritaVersionNumber = QVersionNumber::fromString(MinervaVersionWrapper::versionString(false));
     }
 
     m_kraLoader = new KisKraLoader(m_doc, syntaxVersion, kritaVersionNumber);
@@ -398,7 +398,7 @@ KisImportExportErrorCode KraConverter::loadXML(const QDomDocument &doc, KoStore 
                 if (!(m_image = m_kraLoader->loadXML(elem))) {
 
                     if (m_kraLoader->errorMessages().isEmpty()) {
-                        errUI << "Unknown error while opening the .kra file.";
+                        errUI << "Unknown error while opening the .m2d file.";
                         m_doc->setErrorMessage(i18n("Unknown error."));
                     }
                     else {

@@ -243,7 +243,7 @@ private:
             break;
         }
         case psd_bevel_stroke_emboss:
-            warnKrita << "WARNING: Stroke Emboss style is not implemented yet!";
+            warnMinerva << "WARNING: Stroke Emboss style is not implemented yet!";
             return applyRect;
         }
 
@@ -306,7 +306,7 @@ void KisLsBevelEmbossFilter::applyBevelEmboss(KisPaintDeviceSP srcDevice,
         break;
     }
     case psd_bevel_stroke_emboss:
-        warnKrita << "WARNING: Stroke Emboss style is not implemented yet!";
+        warnMinerva << "WARNING: Stroke Emboss style is not implemented yet!";
         return;
     }
 

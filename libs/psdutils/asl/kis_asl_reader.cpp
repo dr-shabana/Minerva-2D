@@ -135,7 +135,7 @@ void readChildObject(QIODevice &device, QDomElement *parent, QDomDocument *doc, 
 
     QString OSType = readFixedString<byteOrder>(device);
 
-    // dbgKrita << "Child" << ppVar(key) << ppVar(OSType);
+    // dbgMinerva << "Child" << ppVar(key) << ppVar(OSType);
 
     if (OSType == "obj ") {
         throw KisAslReaderUtils::ASLParseException("OSType 'obj' not implemented");
@@ -225,7 +225,7 @@ void readDescriptor(QIODevice &device, const QString &key, QDomElement *parent, 
     el.setAttribute("classId", classId);
     el.setAttribute("name", name);
 
-    // dbgKrita << "Descriptor" << ppVar(key) << ppVar(classId) << ppVar(numChildren);
+    // dbgMinerva << "Descriptor" << ppVar(key) << ppVar(classId) << ppVar(numChildren);
 
     for (quint32 i = 0; i < numChildren; i++) {
         readChildObject<byteOrder>(device, &el, doc);
@@ -263,13 +263,13 @@ QImage readVirtualArrayList(QIODevice &device, int numPlanes, const QVector<QRgb
     SAFE_READ_EX(byteOrder, device, numberOfChannels);
 
     if (numberOfChannels != 24) {
-        throw ASLParseException("VAList: Krita doesn't support ASL files with 'numberOfChannels' flag not equal to 24 (it is not documented)!");
+        throw ASLParseException("VAList: Minerva doesn't support ASL files with 'numberOfChannels' flag not equal to 24 (it is not documented)!");
     }
 
-    dbgKrita << ppVar(arrayVersion);
-    dbgKrita << ppVar(arrayLength);
-    dbgKrita << ppVar(arrayRect);
-    dbgKrita << ppVar(numberOfChannels);
+    dbgMinerva << ppVar(arrayVersion);
+    dbgMinerva << ppVar(arrayLength);
+    dbgMinerva << ppVar(arrayRect);
+    dbgMinerva << ppVar(numberOfChannels);
 
     if (numPlanes != 1 && numPlanes != 3) {
         throw ASLParseException("VAList: unsupported number of planes!");
@@ -316,13 +316,13 @@ QImage readVirtualArrayList(QIODevice &device, int numPlanes, const QVector<QRgb
         quint8 useCompression = 9;
         SAFE_READ_EX(byteOrder, device, useCompression);
 
-        // dbgKrita << "plane index:" << ppVar(i);
-        // dbgKrita << ppVar(arrayWritten);
-        // dbgKrita << ppVar(arrayPlaneLength);
-        // dbgKrita << ppVar(pixelDepth1);
-        // dbgKrita << ppVar(planeRect);
-        // dbgKrita << ppVar(pixelDepth2);
-        // dbgKrita << ppVar(useCompression);
+        // dbgMinerva << "plane index:" << ppVar(i);
+        // dbgMinerva << ppVar(arrayWritten);
+        // dbgMinerva << ppVar(arrayPlaneLength);
+        // dbgMinerva << ppVar(pixelDepth1);
+        // dbgMinerva << ppVar(planeRect);
+        // dbgMinerva << ppVar(pixelDepth2);
+        // dbgMinerva << ppVar(useCompression);
 
         if (pixelDepth1 != pixelDepth2) {
             throw ASLParseException("VAList: two pixel depths of the plane are not equal (it is not documented)!");
@@ -453,7 +453,7 @@ QImage readVirtualArrayList(QIODevice &device, int numPlanes, const QVector<QRgb
 
     // static int i = -1; i++;
     // QString filename = QString("pattern_image_%1.png").arg(i);
-    // dbgKrita << "### dumping pattern image" << ppVar(filename);
+    // dbgMinerva << "### dumping pattern image" << ppVar(filename);
     // image.save(filename);
 
     return image.convertToFormat(QImage::Format_ARGB32, Qt::AutoColor | Qt::PreferDither);
@@ -503,13 +503,13 @@ qint64 readPattern(QIODevice &device, QDomElement *parent, QDomDocument *doc)
 
     dbgFile << "Pattern UUID:" << patternUuid << "(" << device.pos() << ")";
 
-    // dbgKrita << "--";
-    // dbgKrita << ppVar(patternSize);
-    // dbgKrita << ppVar(patternImageMode);
-    // dbgKrita << ppVar(patternHeight);
-    // dbgKrita << ppVar(patternWidth);
-    // dbgKrita << ppVar(patternName);
-    // dbgKrita << ppVar(patternUuid);
+    // dbgMinerva << "--";
+    // dbgMinerva << ppVar(patternSize);
+    // dbgMinerva << ppVar(patternImageMode);
+    // dbgMinerva << ppVar(patternHeight);
+    // dbgMinerva << ppVar(patternWidth);
+    // dbgMinerva << ppVar(patternName);
+    // dbgMinerva << ppVar(patternUuid);
 
     int numPlanes = 0;
     psd_color_mode mode = static_cast<psd_color_mode>(patternImageMode);
@@ -650,7 +650,7 @@ QDomDocument readFileImpl(QIODevice &device)
                     bytesRead += chunk;
                 }
             } catch (ASLParseException &e) {
-                warnKrita << "WARNING: ASL (emb. pattern):" << e.what();
+                warnMinerva << "WARNING: ASL (emb. pattern):" << e.what();
             }
         }
     }
@@ -691,7 +691,7 @@ QDomDocument KisAslReader::readFile(QIODevice &device)
     QDomDocument doc;
 
     if (device.isSequential()) {
-        warnKrita << "WARNING: *** KisAslReader::readFile: the supplied"
+        warnMinerva << "WARNING: *** KisAslReader::readFile: the supplied"
                   << "IO device is sequential. Chances are that"
                   << "the layer style will *not* be loaded correctly!";
     }
@@ -699,7 +699,7 @@ QDomDocument KisAslReader::readFile(QIODevice &device)
     try {
         doc = Private::readFileImpl(device);
     } catch (KisAslReaderUtils::ASLParseException &e) {
-        warnKrita << "WARNING: ASL:" << e.what();
+        warnMinerva << "WARNING: ASL:" << e.what();
     }
 
     return doc;
@@ -724,7 +724,7 @@ QDomDocument readLfx2PsdSectionImpl(QIODevice &device)
     QDomDocument doc;
 
     if (device.isSequential()) {
-        warnKrita << "WARNING: *** KisAslReader::readLfx2PsdSection: the supplied"
+        warnMinerva << "WARNING: *** KisAslReader::readLfx2PsdSection: the supplied"
                   << "IO device is sequential. Chances are that"
                   << "the layer style will *not* be loaded correctly!";
     }
@@ -748,7 +748,7 @@ QDomDocument readLfx2PsdSectionImpl(QIODevice &device)
         Private::readDescriptor<byteOrder>(device, "", &root, &doc);
 
     } catch (KisAslReaderUtils::ASLParseException &e) {
-        warnKrita << "WARNING: PSD: lfx2 section:" << e.what();
+        warnMinerva << "WARNING: PSD: lfx2 section:" << e.what();
     }
 
     return doc;
@@ -773,7 +773,7 @@ QDomDocument readFillLayerImpl(QIODevice &device)
     QDomDocument doc;
 
     if (device.isSequential()) {
-        warnKrita << "WARNING: *** KisAslReader::readFillLayerPsdSection: the supplied"
+        warnMinerva << "WARNING: *** KisAslReader::readFillLayerPsdSection: the supplied"
                   << "IO device is sequential. Chances are that"
                   << "the fill config will *not* be loaded correctly!";
     }
@@ -790,7 +790,7 @@ QDomDocument readFillLayerImpl(QIODevice &device)
         Private::readDescriptor<byteOrder>(device, "", &root, &doc);
 
     } catch (KisAslReaderUtils::ASLParseException &e) {
-        warnKrita << "WARNING: PSD: SoCo section:" << e.what();
+        warnMinerva << "WARNING: PSD: SoCo section:" << e.what();
     }
 
     return doc;
@@ -815,7 +815,7 @@ QDomDocument readTypeToolObjectSettingsImpl(QIODevice &device, QTransform &trans
     QDomDocument doc;
 
     if (device.isSequential()) {
-        warnKrita << "WARNING: *** KisAslReader::readTypeToolObjectSettings: the supplied"
+        warnMinerva << "WARNING: *** KisAslReader::readTypeToolObjectSettings: the supplied"
                   << "IO device is sequential. Chances are that"
                   << "the fill config will *not* be loaded correctly!";
     }
@@ -878,7 +878,7 @@ QDomDocument readTypeToolObjectSettingsImpl(QIODevice &device, QTransform &trans
 
 
     } catch (KisAslReaderUtils::ASLParseException &e) {
-        warnKrita << "WARNING: PSD: TySh section:" << e.what();
+        warnMinerva << "WARNING: PSD: TySh section:" << e.what();
     }
 
     return doc;
@@ -903,7 +903,7 @@ QDomDocument readVectorStrokeImpl(QIODevice &device)
     QDomDocument doc;
 
     if (device.isSequential()) {
-        warnKrita << "WARNING: *** KisAslReader::readVectorStroke: the supplied"
+        warnMinerva << "WARNING: *** KisAslReader::readVectorStroke: the supplied"
                   << "IO device is sequential. Chances are that"
                   << "the fill config will *not* be loaded correctly!";
     }
@@ -920,7 +920,7 @@ QDomDocument readVectorStrokeImpl(QIODevice &device)
         Private::readDescriptor<byteOrder>(device, "", &root, &doc);
 
     } catch (KisAslReaderUtils::ASLParseException &e) {
-        warnKrita << "WARNING: PSD: vmsk section:" << e.what();
+        warnMinerva << "WARNING: PSD: vmsk section:" << e.what();
     }
 
     return doc;
@@ -944,7 +944,7 @@ QDomDocument readVectorOriginationDataImpl(QIODevice &device)
     QDomDocument doc;
 
     if (device.isSequential()) {
-        warnKrita << "WARNING: *** KisAslReader::readVectorStroke: the supplied"
+        warnMinerva << "WARNING: *** KisAslReader::readVectorStroke: the supplied"
                   << "IO device is sequential. Chances are that"
                   << "the fill config will *not* be loaded correctly!";
     }
@@ -965,7 +965,7 @@ QDomDocument readVectorOriginationDataImpl(QIODevice &device)
         Private::readDescriptor<byteOrder>(device, "", &root, &doc);
 
     } catch (KisAslReaderUtils::ASLParseException &e) {
-        warnKrita << "WARNING: PSD: vogk section:" << e.what();
+        warnMinerva << "WARNING: PSD: vogk section:" << e.what();
     }
 
     return doc;
@@ -1006,7 +1006,7 @@ QDomDocument readPsdSectionPatternImpl(QIODevice &device, qint64 bytesLeft)
             bytesRead += chunk;
         }
     } catch (KisAslReaderUtils::ASLParseException &e) {
-        warnKrita << "WARNING: PSD (emb. pattern):" << e.what();
+        warnMinerva << "WARNING: PSD (emb. pattern):" << e.what();
     }
 
     return doc;

@@ -1,4 +1,4 @@
-/* This file is part of the Krita project
+/* This file is part of the Minerva project
  *
  * SPDX-FileCopyrightText: 2014 Boudewijn Rempt <boud@valdyas.org>
  *
@@ -75,7 +75,7 @@
 #include <QFutureWatcher>
 #include <QUuid>
 
-// Krita Image
+// Minerva Image
 #include <kis_image_animation_interface.h>
 #include <kis_config.h>
 #include <flake/kis_shape_layer.h>
@@ -407,7 +407,7 @@ public:
     std::unique_ptr<KisDocument> backgroundSaveDocument;
     QPointer<KoUpdater> savingUpdater;
     QFuture<KisImportExportErrorCode> childSavingFuture;
-    KritaUtils::ExportFileJob backgroundSaveJob;
+    MinervaUtils::ExportFileJob backgroundSaveJob;
     QMetaObject::Connection completeSavingConnection;
     KisSignalAutoConnectionsStore referenceLayerConnections;
 
@@ -418,7 +418,7 @@ public:
     bool wasStorageAdded = false;
     bool documentIsClosing = false;
 
-    // Resources saved in the .kra document
+    // Resources saved in the .m2d document
     QString linkedResourcesStorageID;
     KisResourceStorageSP linkedResourceStorage;
 
@@ -737,7 +737,7 @@ KisDocument *KisDocument::clone(bool addStorage)
     return new KisDocument(*this, addStorage);
 }
 
-bool KisDocument::exportDocumentImpl(const KritaUtils::ExportFileJob &job, KisPropertiesConfigurationSP exportConfiguration, bool isAdvancedExporting)
+bool KisDocument::exportDocumentImpl(const MinervaUtils::ExportFileJob &job, KisPropertiesConfigurationSP exportConfiguration, bool isAdvancedExporting)
 {
     // ANDROID NOTES (other comments in this file reference this one!)
     //
@@ -770,7 +770,7 @@ bool KisDocument::exportDocumentImpl(const KritaUtils::ExportFileJob &job, KisPr
     // the file extension of course, because it hates the living. So that's
     // another reason we can't go with the "safer" option of assuming that files
     // aren't writable in some cases, since that would prevent the user from
-    // saving them normally and end up with a lot of "kiki.kra (2)".
+    // saving them normally and end up with a lot of "kiki.m2d (2)".
     //
     // Also, when you request a file from the operating system, it always
     // creates an empty file. That means checking whether a file exists will
@@ -878,40 +878,40 @@ bool KisDocument::exportDocumentImpl(const KritaUtils::ExportFileJob &job, KisPr
     }
 
     const QString actionName =
-            job.flags & KritaUtils::SaveIsExporting ?
+            job.flags & MinervaUtils::SaveIsExporting ?
                 i18n("Exporting Document...") :
                 i18n("Saving Document...");
 
-    KritaUtils::BackgroudSavingStartResult result =
+    MinervaUtils::BackgroudSavingStartResult result =
             initiateSavingInBackground(actionName,
-                                       this, SLOT(slotCompleteSavingDocument(KritaUtils::ExportFileJob, KisImportExportErrorCode, QString, QString)),
+                                       this, SLOT(slotCompleteSavingDocument(MinervaUtils::ExportFileJob, KisImportExportErrorCode, QString, QString)),
                                        job, exportConfiguration, isAdvancedExporting);
 
-    if (result != KritaUtils::BackgroudSavingStartResult::Success) {
+    if (result != MinervaUtils::BackgroudSavingStartResult::Success) {
         QString errorShortLog;
         QString errorMessage;
         ImportExportCodes::ErrorCodeID errorCode = ImportExportCodes::Failure;
 
         switch (result) {
-        case KritaUtils::BackgroudSavingStartResult::AnotherSavingInProgress:
+        case MinervaUtils::BackgroudSavingStartResult::AnotherSavingInProgress:
             errorShortLog = "another save operation is in progress";
             errorMessage = i18n("Could not start saving %1. Wait until the current save operation has finished.", job.filePath);
             errorCode = ImportExportCodes::Failure;
             break;
-        case KritaUtils::BackgroudSavingStartResult::ImageLockFailure:
+        case MinervaUtils::BackgroudSavingStartResult::ImageLockFailure:
             errorShortLog = "failed to lock and clone the image";
             errorMessage = i18n("Could not start saving %1. Image is busy", job.filePath);
             errorCode = ImportExportCodes::Busy;
             break;
-        case KritaUtils::BackgroudSavingStartResult::Failure:
+        case MinervaUtils::BackgroudSavingStartResult::Failure:
             errorShortLog = "failed to start background saving";
             errorMessage = i18n("Could not start saving %1. Unknown failure has happened", job.filePath);
             errorCode = ImportExportCodes::Failure;
             break;
-        case KritaUtils::BackgroudSavingStartResult::Cancelled:
+        case MinervaUtils::BackgroudSavingStartResult::Cancelled:
             errorCode = ImportExportCodes::Cancelled;
             break;
-        case KritaUtils::BackgroudSavingStartResult::Success:
+        case MinervaUtils::BackgroudSavingStartResult::Success:
             // noop, not possible
             break;
         }
@@ -924,12 +924,12 @@ bool KisDocument::exportDocumentImpl(const KritaUtils::ExportFileJob &job, KisPr
         return false;
     }
 
-    return (result == KritaUtils::BackgroudSavingStartResult::Success);
+    return (result == MinervaUtils::BackgroudSavingStartResult::Success);
 }
 
 bool KisDocument::exportDocument(const QString &path, const QByteArray &mimeType, bool isAdvancedExporting, bool showWarnings, KisPropertiesConfigurationSP exportConfiguration)
 {
-    using namespace KritaUtils;
+    using namespace MinervaUtils;
 
     SaveFlags flags = SaveIsExporting;
     if (showWarnings) {
@@ -944,7 +944,7 @@ bool KisDocument::exportDocument(const QString &path, const QByteArray &mimeType
                                  QString::number(d->image->animationInterface()->framerate()),
                                  (exportConfiguration ? exportConfiguration->toXML() : "No configuration")));
 
-    return exportDocumentImpl(KritaUtils::ExportFileJob(path,
+    return exportDocumentImpl(MinervaUtils::ExportFileJob(path,
                                                         mimeType,
                                                         flags),
                               exportConfiguration, isAdvancedExporting);
@@ -952,7 +952,7 @@ bool KisDocument::exportDocument(const QString &path, const QByteArray &mimeType
 
 bool KisDocument::saveAs(const QString &_path, const QByteArray &mimeType, bool showWarnings, KisPropertiesConfigurationSP exportConfiguration)
 {
-    using namespace KritaUtils;
+    using namespace MinervaUtils;
 
     KisUsageLogger::log(QString("Saving Document %9 as %1 (mime: %2). %3 * %4 pixels, %5 layers.  %6 frames, "
                                 "%7 framerate. Export configuration: %8")
@@ -1039,7 +1039,7 @@ private:
     }
 };
 
-void KisDocument::slotCompleteSavingDocument(const KritaUtils::ExportFileJob &job, KisImportExportErrorCode status, const QString &errorMessage, const QString &warningMessage)
+void KisDocument::slotCompleteSavingDocument(const MinervaUtils::ExportFileJob &job, KisImportExportErrorCode status, const QString &errorMessage, const QString &warningMessage)
 {
     if (status.isCancelled())
         return;
@@ -1054,7 +1054,7 @@ void KisDocument::slotCompleteSavingDocument(const KritaUtils::ExportFileJob &jo
 
 
         if (!fileBatchMode()) {
-            DlgLoadMessages dlg(i18nc("@title:window", "Krita"),
+            DlgLoadMessages dlg(i18nc("@title:window", "Minerva"),
                                 i18n("Could not save %1.", job.filePath),
                                 errorMessage.split("\n", Qt::SkipEmptyParts)
                                     + warningMessage.split("\n", Qt::SkipEmptyParts),
@@ -1069,7 +1069,7 @@ void KisDocument::slotCompleteSavingDocument(const KritaUtils::ExportFileJob &jo
             QStringList reasons = warningMessage.split("\n", Qt::SkipEmptyParts);
 
             DlgLoadMessages dlg(
-                i18nc("@title:window", "Krita"),
+                i18nc("@title:window", "Minerva"),
                 i18nc("dialog box shown to the user if there were warnings while saving the document, "
                       "%1 is the file path",
                       "%1 has been saved but is incomplete.",
@@ -1083,7 +1083,7 @@ void KisDocument::slotCompleteSavingDocument(const KritaUtils::ExportFileJob &jo
         }
 
 
-        if (!(job.flags & KritaUtils::SaveIsExporting)) {
+        if (!(job.flags & MinervaUtils::SaveIsExporting)) {
             const QString existingAutoSaveBaseName = localFilePath();
             const bool wasRecovered = isRecovered();
 
@@ -1360,22 +1360,22 @@ bool KisDocument::exportDocumentSync(const QString &path, const QByteArray &mime
 }
 
 
-KritaUtils::BackgroudSavingStartResult KisDocument::initiateSavingInBackground(const QString actionName,
+MinervaUtils::BackgroudSavingStartResult KisDocument::initiateSavingInBackground(const QString actionName,
                                              const QObject *receiverObject, const char *receiverMethod,
-                                             const KritaUtils::ExportFileJob &job,
+                                             const MinervaUtils::ExportFileJob &job,
                                              KisPropertiesConfigurationSP exportConfiguration,bool isAdvancedExporting)
 {
     return initiateSavingInBackground(actionName, receiverObject, receiverMethod,
                                       job, exportConfiguration, std::unique_ptr<KisDocument>(), isAdvancedExporting);
 }
 
-KritaUtils::BackgroudSavingStartResult KisDocument::initiateSavingInBackground(const QString actionName,
+MinervaUtils::BackgroudSavingStartResult KisDocument::initiateSavingInBackground(const QString actionName,
                                              const QObject *receiverObject, const char *receiverMethod,
-                                             const KritaUtils::ExportFileJob &job,
+                                             const MinervaUtils::ExportFileJob &job,
                                              KisPropertiesConfigurationSP exportConfiguration,
                                              std::unique_ptr<KisDocument> &&optionalClonedDocument,bool isAdvancedExporting)
 {
-    KIS_ASSERT_RECOVER_RETURN_VALUE(job.isValid(), KritaUtils::BackgroudSavingStartResult::Failure);
+    KIS_ASSERT_RECOVER_RETURN_VALUE(job.isValid(), MinervaUtils::BackgroudSavingStartResult::Failure);
 
     std::unique_ptr<KisDocument> clonedDocument;
 
@@ -1386,7 +1386,7 @@ KritaUtils::BackgroudSavingStartResult KisDocument::initiateSavingInBackground(c
     }
 
     if (!d->savingMutex.tryLock()){
-        return KritaUtils::BackgroudSavingStartResult::AnotherSavingInProgress;
+        return MinervaUtils::BackgroudSavingStartResult::AnotherSavingInProgress;
     }
 
     /**
@@ -1396,7 +1396,7 @@ KritaUtils::BackgroudSavingStartResult KisDocument::initiateSavingInBackground(c
     std::unique_lock<QMutex> savingMutexLock(d->savingMutex, std::adopt_lock);
 
     if (!clonedDocument) {
-        return KritaUtils::BackgroudSavingStartResult::ImageLockFailure;
+        return MinervaUtils::BackgroudSavingStartResult::ImageLockFailure;
     }
 
     auto waitForImage = [] (KisImageSP image) {
@@ -1432,8 +1432,8 @@ KritaUtils::BackgroudSavingStartResult KisDocument::initiateSavingInBackground(c
         waitForImage(clonedDocument->image());
     }
 
-    KIS_ASSERT_RECOVER_RETURN_VALUE(!d->backgroundSaveDocument, KritaUtils::BackgroudSavingStartResult::Failure);
-    KIS_ASSERT_RECOVER_RETURN_VALUE(!d->backgroundSaveJob.isValid(), KritaUtils::BackgroudSavingStartResult::Failure);
+    KIS_ASSERT_RECOVER_RETURN_VALUE(!d->backgroundSaveDocument, MinervaUtils::BackgroudSavingStartResult::Failure);
+    KIS_ASSERT_RECOVER_RETURN_VALUE(!d->backgroundSaveJob.isValid(), MinervaUtils::BackgroudSavingStartResult::Failure);
 
     /**
      * From now on **no** return statements are allowed, even inside
@@ -1450,7 +1450,7 @@ KritaUtils::BackgroudSavingStartResult KisDocument::initiateSavingInBackground(c
     d->backgroundSaveJob = job;
     d->modifiedWhileSaving = false;
 
-    if (d->backgroundSaveJob.flags & KritaUtils::SaveInAutosaveMode) {
+    if (d->backgroundSaveJob.flags & MinervaUtils::SaveInAutosaveMode) {
         d->backgroundSaveDocument->d->isAutosaving = true;
     }
 
@@ -1464,7 +1464,7 @@ KritaUtils::BackgroudSavingStartResult KisDocument::initiateSavingInBackground(c
         disconnect(d->completeSavingConnection);
     }
     d->completeSavingConnection = connect(
-        this, SIGNAL(sigCompleteBackgroundSaving(KritaUtils::ExportFileJob, KisImportExportErrorCode, QString, QString)),
+        this, SIGNAL(sigCompleteBackgroundSaving(MinervaUtils::ExportFileJob, KisImportExportErrorCode, QString, QString)),
         receiverObject, receiverMethod);
 
     KisImportExportErrorCode error =
@@ -1472,22 +1472,22 @@ KritaUtils::BackgroudSavingStartResult KisDocument::initiateSavingInBackground(c
                                                                job.filePath,
                                                                job.filePath,
                                                                job.mimeType,
-                                                               job.flags & KritaUtils::SaveShowWarnings,
+                                                               job.flags & MinervaUtils::SaveShowWarnings,
                                                                exportConfiguration, isAdvancedExporting);
     if (!error.isOk()) {
         // the state should have been deinitialized in slotChildCompletedSavingInBackground()
         KIS_SAFE_ASSERT_RECOVER (!d->backgroundSaveDocument && !d->backgroundSaveJob.isValid()) {
             d->backgroundSaveDocument.release()->deleteLater();
             d->savingMutex.unlock();
-            d->backgroundSaveJob = KritaUtils::ExportFileJob();
+            d->backgroundSaveJob = MinervaUtils::ExportFileJob();
         }
         if (error.isCancelled()) {
-            return KritaUtils::BackgroudSavingStartResult::Cancelled;
+            return MinervaUtils::BackgroudSavingStartResult::Cancelled;
         }
-        return KritaUtils::BackgroudSavingStartResult::Failure;
+        return MinervaUtils::BackgroudSavingStartResult::Failure;
     }
 
-    return KritaUtils::BackgroudSavingStartResult::Success;
+    return MinervaUtils::BackgroudSavingStartResult::Success;
 }
 
 
@@ -1504,7 +1504,7 @@ void KisDocument::slotChildCompletedSavingInBackground(KisImportExportErrorCode 
 
     KIS_ASSERT_RECOVER_RETURN(d->backgroundSaveDocument);
 
-    if (d->backgroundSaveJob.flags & KritaUtils::SaveInAutosaveMode) {
+    if (d->backgroundSaveJob.flags & MinervaUtils::SaveInAutosaveMode) {
         d->backgroundSaveDocument->d->isAutosaving = false;
     }
 
@@ -1512,8 +1512,8 @@ void KisDocument::slotChildCompletedSavingInBackground(KisImportExportErrorCode 
 
     KIS_ASSERT_RECOVER_RETURN(d->backgroundSaveJob.isValid());
 
-    const KritaUtils::ExportFileJob job = d->backgroundSaveJob;
-    d->backgroundSaveJob = KritaUtils::ExportFileJob();
+    const MinervaUtils::ExportFileJob job = d->backgroundSaveJob;
+    d->backgroundSaveJob = MinervaUtils::ExportFileJob();
 
     // unlock at the very end
     savingMutexLock.unlock();
@@ -1541,19 +1541,19 @@ void KisDocument::slotAutoSaveImpl(std::unique_ptr<KisDocument> &&optionalCloned
     KisUsageLogger::log(QString("Autosaving: %1").arg(autoSaveFileName));
 
     const bool hadClonedDocument = bool(optionalClonedDocument);
-    KritaUtils::BackgroudSavingStartResult result = KritaUtils::BackgroudSavingStartResult::Failure;
+    MinervaUtils::BackgroudSavingStartResult result = MinervaUtils::BackgroudSavingStartResult::Failure;
 
     if (d->image->isIdle() || hadClonedDocument) {
         result = initiateSavingInBackground(i18n("Autosaving..."),
-                                             this, SLOT(slotCompleteAutoSaving(KritaUtils::ExportFileJob, KisImportExportErrorCode, QString, QString)),
-                                             KritaUtils::ExportFileJob(autoSaveFileName, nativeFormatMimeType(), KritaUtils::SaveIsExporting | KritaUtils::SaveInAutosaveMode),
+                                             this, SLOT(slotCompleteAutoSaving(MinervaUtils::ExportFileJob, KisImportExportErrorCode, QString, QString)),
+                                             MinervaUtils::ExportFileJob(autoSaveFileName, nativeFormatMimeType(), MinervaUtils::SaveIsExporting | MinervaUtils::SaveInAutosaveMode),
                                              0,
                                              std::move(optionalClonedDocument));
     } else {
         Q_EMIT statusBarMessage(i18n("Autosaving postponed: document is busy..."), errorMessageTimeout);
     }
 
-    if (result != KritaUtils::BackgroudSavingStartResult::Success && !hadClonedDocument && d->autoSaveFailureCount >= 3) {
+    if (result != MinervaUtils::BackgroudSavingStartResult::Success && !hadClonedDocument && d->autoSaveFailureCount >= 3) {
         KisCloneDocumentStroke *stroke = new KisCloneDocumentStroke(this);
         connect(stroke, SIGNAL(sigDocumentCloned(KisDocument*)),
                 this, SLOT(slotInitiateAsyncAutosaving(KisDocument*)),
@@ -1567,7 +1567,7 @@ void KisDocument::slotAutoSaveImpl(std::unique_ptr<KisDocument> &&optionalCloned
 
         setInfiniteAutoSaveInterval();
 
-    } else if (result != KritaUtils::BackgroudSavingStartResult::Success) {
+    } else if (result != MinervaUtils::BackgroudSavingStartResult::Success) {
         setEmergencyAutoSaveInterval();
     } else {
         d->modifiedAfterAutosave = false;
@@ -1683,7 +1683,7 @@ void KisDocument::slotPerformIdleRoutines()
     // d->image->purgeUnusedData(true);
 }
 
-void KisDocument::slotCompleteAutoSaving(const KritaUtils::ExportFileJob &job, KisImportExportErrorCode status, const QString &errorMessage, const QString &warningMessage)
+void KisDocument::slotCompleteAutoSaving(const MinervaUtils::ExportFileJob &job, KisImportExportErrorCode status, const QString &errorMessage, const QString &warningMessage)
 {
     Q_UNUSED(job);
     Q_UNUSED(warningMessage);
@@ -1899,10 +1899,10 @@ QString KisDocument::generateAutoSaveFileName(const QString & path) const
     QString retval;
 
     // Using the extension allows to avoid relying on the mime magic when opening
-    const QString extension (".kra");
+    const QString extension (".m2d");
     QString prefix = KisConfig(true).readEntry<bool>("autosavefileshidden") ? QString(".") : QString();
-    QRegularExpression autosavePattern1("^\\..+-autosave.kra$");
-    QRegularExpression autosavePattern2("^.+-autosave.kra$");
+    QRegularExpression autosavePattern1("^\\..+-autosave.m2d$");
+    QRegularExpression autosavePattern2("^.+-autosave.m2d$");
 
     QFileInfo fi(path);
     QString dir = fi.absolutePath();
@@ -1929,7 +1929,7 @@ QString KisDocument::generateAutoSaveFileName(const QString & path) const
                      .arg(extension);
     } else {
         // Beware: don't reorder arguments
-        //   otherwise in case of filename = '1-file.kra' it will become '.-file.kra-autosave.kra' instead of '.1-file.kra-autosave.kra'
+        //   otherwise in case of filename = '1-file.m2d' it will become '.-file.m2d-autosave.m2d' instead of '.1-file.m2d-autosave.m2d'
         retval = QString("%1%2%3%4-autosave%5").arg(dir).arg('/').arg(prefix).arg(filename).arg(extension);
     }
 
@@ -2036,7 +2036,7 @@ bool KisDocument::openFile()
 {
     //dbgUI <<"for" << localFilePath();
     if (!QFile::exists(localFilePath()) && !fileBatchMode()) {
-        QMessageBox::critical(qApp->activeWindow(), i18nc("@title:window", "Krita"), i18n("File %1 does not exist.", localFilePath()));
+        QMessageBox::critical(qApp->activeWindow(), i18nc("@title:window", "Minerva"), i18n("File %1 does not exist.", localFilePath()));
         return false;
     }
 
@@ -2079,7 +2079,7 @@ bool KisDocument::openFile()
         KisUsageLogger::log(QString("Loading %1 failed: %2").arg(prettyPath(), msg));
 
         if (!msg.isEmpty() && !fileBatchMode()) {
-            DlgLoadMessages dlg(i18nc("@title:window", "Krita"),
+            DlgLoadMessages dlg(i18nc("@title:window", "Minerva"),
                                 i18n("Could not open %1.", prettyPath()),
                                 errorMessage().split("\n", Qt::SkipEmptyParts)
                                     + warningMessage().split("\n", Qt::SkipEmptyParts),
@@ -2090,7 +2090,7 @@ bool KisDocument::openFile()
         return false;
     }
     else if (!warningMessage().isEmpty() && !fileBatchMode()) {
-        DlgLoadMessages dlg(i18nc("@title:window", "Krita"),
+        DlgLoadMessages dlg(i18nc("@title:window", "Minerva"),
                             i18n("There were problems opening %1.", prettyPath()),
                             warningMessage().split("\n", Qt::SkipEmptyParts));
 
@@ -2302,8 +2302,8 @@ void KisDocument::removeAutoSaveFiles(const QString &autosaveBaseName, bool wasR
 
     QList<QRegularExpression> expressions;
 
-    expressions << QRegularExpression("^\\..+-autosave.kra$")
-                << QRegularExpression("^.+-autosave.kra$");
+    expressions << QRegularExpression("^\\..+-autosave.m2d$")
+                << QRegularExpression("^.+-autosave.m2d$");
 
     Q_FOREACH(const QRegularExpression &rex, expressions) {
         if (wasRecovered &&

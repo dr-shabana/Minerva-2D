@@ -69,7 +69,7 @@ public:
     }
 
     boost::optional<QRect> updateRect;
-#if KRITA_QT_HAS_UPDATE_COMPRESSION_PATCH
+#if MINERVA2D_QT_HAS_UPDATE_COMPRESSION_PATCH
     bool shouldSkipRenderingPass = false;
 #endif
     QRect canvasImageDirtyRect;
@@ -89,7 +89,7 @@ KisOpenGLCanvas2::KisOpenGLCanvas2(KisCanvas2 *canvas,
     , KisCanvasWidgetBase(canvas, coordinatesConverter)
     , d(new Private())
 {
-    setProperty("krita_skip_srgb_surface_manager_assignment", true);
+    setProperty("minerva2d_skip_srgb_surface_manager_assignment", true);
 
     KisConfig cfg(false);
     cfg.setCanvasState("OPENGL_STARTED");
@@ -115,9 +115,9 @@ KisOpenGLCanvas2::KisOpenGLCanvas2(KisCanvas2 *canvas,
 
     const bool osManagedSurfacePresent = KisPlatformPluginInterfaceFactory::instance()->surfaceColorManagedByOS();
     bool useNativeSurfaceForCanvas = osManagedSurfacePresent && cfg.enableCanvasSurfaceColorSpaceManagement();
-    if (qEnvironmentVariableIsSet("KRITA_USE_NATIVE_CANVAS_SURFACE")) {
-        useNativeSurfaceForCanvas = qEnvironmentVariableIntValue("KRITA_USE_NATIVE_CANVAS_SURFACE");
-        qDebug() << "FPS-DEBUG: Krita canvas mode is overridden:" << (useNativeSurfaceForCanvas ? "native surface" : "legacy mode") << useNativeSurfaceForCanvas << qEnvironmentVariableIsSet("KRITA_USE_NATIVE_CANVAS_SURFACE");
+    if (qEnvironmentVariableIsSet("MINERVA2D_USE_NATIVE_CANVAS_SURFACE")) {
+        useNativeSurfaceForCanvas = qEnvironmentVariableIntValue("MINERVA2D_USE_NATIVE_CANVAS_SURFACE");
+        qDebug() << "FPS-DEBUG: Minerva canvas mode is overridden:" << (useNativeSurfaceForCanvas ? "native surface" : "legacy mode") << useNativeSurfaceForCanvas << qEnvironmentVariableIsSet("MINERVA2D_USE_NATIVE_CANVAS_SURFACE");
     }
 
     if (useNativeSurfaceForCanvas) {
@@ -143,7 +143,7 @@ KisOpenGLCanvas2::KisOpenGLCanvas2(KisCanvas2 *canvas,
             /**
              * When in pure OpenGL mode, the canvas surface will have alpha
              * channel. Therefore, if our canvas blending algorithm produces
-             * semi-transparent pixels (and it does), then Krita window itself
+             * semi-transparent pixels (and it does), then Minerva window itself
              * will become transparent. Which is not good.
              *
              * In Angle mode, GL_RGB8 is not available (and the transparence effect
@@ -234,7 +234,7 @@ void KisOpenGLCanvas2::resizeGL(int width, int height)
 
 void KisOpenGLCanvas2::paintGL()
 {
-#if KRITA_QT_HAS_UPDATE_COMPRESSION_PATCH
+#if MINERVA2D_QT_HAS_UPDATE_COMPRESSION_PATCH
     if (d->shouldSkipRenderingPass) {
         return;
     }
@@ -292,14 +292,14 @@ void KisOpenGLCanvas2::paintEvent(QPaintEvent *e)
          * integer scaling. There is a bug in Qt that causes artifacts
          * otherwise:
          *
-         * See https://bugs.kde.org/show_bug.cgi?id=441216
+         * See https://github.com/dr-shabana/Minerva-2D/issues/show_bug.cgi?id=441216
          */
         d->updateRect = e->rect();
     } else {
         d->updateRect = this->rect();
     }
 
-#if KRITA_QT_HAS_UPDATE_COMPRESSION_PATCH
+#if MINERVA2D_QT_HAS_UPDATE_COMPRESSION_PATCH
     /**
      * When using Qt with a proper update paint event compression, then we don't
      * need to implement our own one in KisCanvas2, instead we should just skip

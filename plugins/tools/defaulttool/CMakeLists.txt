@@ -29,6 +29,6 @@ ki18n_wrap_ui(defaulttools_SRCS
 
 qt_add_resources(defaulttools_SRCS defaulttools.qrc)
 
-kis_add_library(krita_flaketools MODULE ${defaulttools_SRCS})
-target_link_libraries(krita_flaketools kritaflake kritawidgets kritaui)
-install(TARGETS krita_flaketools DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
+kis_add_library(minerva2d_flaketools MODULE ${defaulttools_SRCS})
+target_link_libraries(minerva2d_flaketools kritaflake kritawidgets kritaui)
+install(TARGETS minerva2d_flaketools DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})

@@ -1,5 +1,5 @@
 /*
- *  kis_paintop_box.cc - part of KImageShop/Krayon/Krita
+ *  kis_paintop_box.cc - part of KImageShop/Krayon/Minerva
  *
  *  SPDX-FileCopyrightText: 2004 Boudewijn Rempt (boud@valdyas.org)
  *  SPDX-FileCopyrightText: 2009-2011 Sven Langkamp (sven.langkamp@gmail.com)
@@ -725,7 +725,7 @@ void KisPaintopBox::setCurrentPaintop(KisPaintOpPresetSP preset)
     if (m_presetsEditor->currentPaintOpId() != paintop.id()) {
         // Must change the paintop as the current one is not supported
         // by the new colorspace.
-        dbgKrita << "current paintop " << paintop.name() << " was not set, not supported by colorspace";
+        dbgMinerva << "current paintop " << paintop.name() << " was not set, not supported by colorspace";
     }
 
     m_currCompositeOpID = preset->settings()->paintOpCompositeOp();
@@ -970,7 +970,7 @@ void KisPaintopBox::slotToggleEraserPreset(bool usingEraser)
 void KisPaintopBox::slotSelectEraserPreset()
 {
     // automatically select freehand brush tool for these select actions
-    KoToolManager::instance()->switchToolRequested("KritaShape/KisToolBrush");
+    KoToolManager::instance()->switchToolRequested("MinervaShape/KisToolBrush");
 
     KoInputDevice::InputDevice dev = KoInputDevice::InputDevice::Unknown;
     KoInputDevice::Pointer ptr = KoInputDevice::Pointer::Eraser;
@@ -983,7 +983,7 @@ void KisPaintopBox::slotSelectEraserPreset()
 void KisPaintopBox::slotSelectBrushPreset()
 {
     // automatically select freehand brush tool for these select actions
-    KoToolManager::instance()->switchToolRequested("KritaShape/KisToolBrush");
+    KoToolManager::instance()->switchToolRequested("MinervaShape/KisToolBrush");
 
     KoInputDevice::InputDevice dev = KoInputDevice::InputDevice::Unknown;
     KoInputDevice::Pointer ptr = KoInputDevice::Pointer::Pen;

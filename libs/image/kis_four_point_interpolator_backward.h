@@ -97,7 +97,7 @@ public:
 
 
     inline QPointF getValue() const {
-        static const qreal eps = 1e-6; // pixels in Krita only get to 32-33k in every direction
+        static const qreal eps = 1e-6; // pixels in Minerva only get to 32-33k in every direction
 
 
         qreal qB = m_qB_const + m_qB_varX + m_qB_varY;

@@ -14,7 +14,7 @@
 #include "kis_paint_device_debug_utils.h"
 
 #include "kis_gaussian_kernel.h"
-#include "krita_utils.h"
+#include "minerva2d_utils.h"
 
 #include "lazybrush/kis_lazy_fill_tools.h"
 #include "testutil.h"

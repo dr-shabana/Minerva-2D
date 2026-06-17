@@ -1,7 +1,7 @@
 '''
     SPDX-FileCopyrightText: 2019 Tusooa Zhu <tusooa@vista.aero>
 
-    This file is part of Krita-docker-color-slider.
+    This file is part of Minerva-docker-color-slider.
 
     SPDX-License-Identifier: GPL-3.0-or-later
 '''
@@ -12,7 +12,7 @@ except:
     from PyQt5.QtGui import QColor
     from PyQt5.QtWidgets import QWidget, QVBoxLayout, QHBoxLayout, QPushButton
 
-from krita import Krita, DockWidget, ManagedColor, DockWidgetFactory, DockWidgetFactoryBase
+from krita import Minerva, DockWidget, ManagedColor, DockWidgetFactory, DockWidgetFactoryBase
 from builtins import i18n, Application
 
 from .slider_line import SliderLine
@@ -25,7 +25,7 @@ class MixerSliderDocker(DockWidget):
     def __init__(self):
         super(MixerSliderDocker, self).__init__()
 
-        main_program = Krita.instance()
+        main_program = Minerva.instance()
         settings = main_program.readSetting("", "MixerSliderColors",
                                             "RGBA,U8,sRGB-elle-V2-srgbtrc.icc,1,0.8,0.4,1|" +
                                             "RGBA,U8,sRGB-elle-V2-srgbtrc.icc,0,0,0,1")  # alpha=1 == non-transparent
@@ -94,7 +94,7 @@ class MixerSliderDocker(DockWidget):
         self.ui.initialize(self)
 
     def write_settings(self):
-        main_program = Krita.instance()
+        main_program = Minerva.instance()
         setting = ';'.join(
             [self.color_to_settings(line.left) + '|' + self.color_to_settings(line.right)
              for line in self.sliders])

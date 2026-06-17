@@ -3,7 +3,7 @@
 # Add a link to the real home directory of the user
 REALHOME=$(getent passwd $UID | cut -d ':' -f 6)
 home_dirname=$(basename "$REALHOME")
-SNAP_USER_DATA="$REALHOME/snap/krita/current"
+SNAP_USER_DATA="$REALHOME/snap/minerva2d/current"
 [[ -e  "$SNAP_USER_DATA/.shortcut-links" ]] || mkdir -p "$SNAP_USER_DATA/.shortcut-links"
 
 # Add a link to removable media

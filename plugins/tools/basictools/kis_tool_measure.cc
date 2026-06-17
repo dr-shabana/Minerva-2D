@@ -25,7 +25,7 @@
 #include "KoPointerEvent.h"
 #include "KoCanvasBase.h"
 #include <KoViewConverter.h>
-#include "krita_utils.h"
+#include "minerva2d_utils.h"
 #include "kis_floating_message.h"
 #include "kis_canvas2.h"
 #include "KisViewManager.h"
@@ -74,7 +74,7 @@ void KisToolMeasureOptionsWidget::slotSetDistance(double distance)
 
 void KisToolMeasureOptionsWidget::slotSetAngle(double angle)
 {
-    m_angleLabel->setText(i18nc("angle value in degrees", "%1°", KritaUtils::prettyFormatReal(angle)));
+    m_angleLabel->setText(i18nc("angle value in degrees", "%1°", MinervaUtils::prettyFormatReal(angle)));
 }
 
 void KisToolMeasureOptionsWidget::slotUnitChanged(int index)
@@ -92,7 +92,7 @@ void KisToolMeasureOptionsWidget::slotResolutionChanged(double xRes, double /*yR
 void KisToolMeasureOptionsWidget::updateDistance()
 {
     double distance = m_distance / m_resolution;
-    m_distanceLabel->setText(KritaUtils::prettyFormatReal(m_unit.toUserValue(distance)));
+    m_distanceLabel->setText(MinervaUtils::prettyFormatReal(m_unit.toUserValue(distance)));
 }
 
 
@@ -241,7 +241,7 @@ QWidget* KisToolMeasure::createOptionWidget()
         return nullptr;
     m_optionsWidget = new KisToolMeasureOptionsWidget(nullptr, currentImage());
 
-    // See https://bugs.kde.org/show_bug.cgi?id=316896
+    // See https://github.com/dr-shabana/Minerva-2D/issues/show_bug.cgi?id=316896
     QWidget *specialSpacer = new QWidget(m_optionsWidget);
     specialSpacer->setObjectName("SpecialSpacer");
     specialSpacer->setFixedSize(0, 0);

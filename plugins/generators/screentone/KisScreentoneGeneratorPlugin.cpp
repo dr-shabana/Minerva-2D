@@ -1,5 +1,5 @@
 /*
- * KDE. Krita Project.
+ * KDE. Minerva Project.
  *
  * SPDX-FileCopyrightText: 2021 Deif Lou <ginoba@gmail.com>
  *
@@ -12,7 +12,7 @@
 #include "KisScreentoneGenerator.h"
 #include "KisScreentoneGeneratorPlugin.h"
 
-K_PLUGIN_FACTORY_WITH_JSON(KritaScreentoneGeneratorFactory, "KritaScreentoneGenerator.json", registerPlugin<KisScreentoneGeneratorPlugin>();)
+K_PLUGIN_FACTORY_WITH_JSON(MinervaScreentoneGeneratorFactory, "MinervaScreentoneGenerator.json", registerPlugin<KisScreentoneGeneratorPlugin>();)
 
 KisScreentoneGeneratorPlugin::KisScreentoneGeneratorPlugin(QObject *parent, const QVariantList &)
         : QObject(parent)

@@ -12,7 +12,7 @@
 #include <KoDockFactoryBase.h>
 #include <KoDockRegistry.h>
 
-K_PLUGIN_FACTORY_WITH_JSON(DigitalMixerPluginFactory, "krita_digitalmixer.json", registerPlugin<DigitalMixerPlugin>();)
+K_PLUGIN_FACTORY_WITH_JSON(DigitalMixerPluginFactory, "minerva2d_digitalmixer.json", registerPlugin<DigitalMixerPlugin>();)
 
 class DigitalMixerDockFactory : public KoDockFactoryBase {
 public:

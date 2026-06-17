@@ -1,5 +1,5 @@
 /*
- * This file is part of Krita
+ * This file is part of Minerva
  *
  * SPDX-FileCopyrightText: 2006 Cyrille Berger <cberger@cberger.net>
  *
@@ -122,7 +122,7 @@ void KisFilterColorToAlpha::processImpl(KisPaintDeviceSP device,
         if (valueType != KoChannelInfo::OTHER &&
                 valueType != currentValueType) {
 
-            warnKrita << "Cannot apply a Color-to-Alpha filter to a heterogeneous colorspace";
+            warnMinerva << "Cannot apply a Color-to-Alpha filter to a heterogeneous colorspace";
             return;
         } else {
             valueType = currentValueType;
@@ -171,6 +171,6 @@ void KisFilterColorToAlpha::processImpl(KisPaintDeviceSP device,
     case KoChannelInfo::INT16: /* !UNSUPPORTED! */
 
     case KoChannelInfo::OTHER:
-        warnKrita << "Color To Alpha: Unsupported channel type:" << valueType;
+        warnMinerva << "Color To Alpha: Unsupported channel type:" << valueType;
     }
 }

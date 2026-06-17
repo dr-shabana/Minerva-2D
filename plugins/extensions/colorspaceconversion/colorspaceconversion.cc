@@ -1,5 +1,5 @@
 /*
- * colorspaceconversion.cc -- Part of Krita
+ * colorspaceconversion.cc -- Part of Minerva
  *
  * SPDX-FileCopyrightText: 2004 Boudewijn Rempt (boud@valdyas.org)
  *

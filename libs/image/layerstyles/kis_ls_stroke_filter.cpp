@@ -32,7 +32,7 @@
 #include "kis_ls_utils.h"
 #include "kis_multiple_projection.h"
 #include "kis_cached_paint_device.h"
-#include "krita_utils.h"
+#include "minerva2d_utils.h"
 #include "KisLayerStyleKnockoutBlower.h"
 
 
@@ -162,13 +162,13 @@ QRect KisLsStrokeFilter::changedRect(const QRect &rect, KisPSDLayerStyleSP style
     return neededRect(rect, style, env);
 }
 
-KritaUtils::ThresholdMode KisLsStrokeFilter::sourcePlaneOpacityThresholdRequirement(KisPSDLayerStyleSP style) const
+MinervaUtils::ThresholdMode KisLsStrokeFilter::sourcePlaneOpacityThresholdRequirement(KisPSDLayerStyleSP style) const
 {
     const psd_layer_effects_stroke *config = style->stroke();
 
-    if (!config->effectEnabled()) return KritaUtils::ThresholdNone;
+    if (!config->effectEnabled()) return MinervaUtils::ThresholdNone;
 
-    return !config->effectEnabled() || config->position() == psd_stroke_center ? KritaUtils::ThresholdNone :
-        config->position() == psd_stroke_inside ? KritaUtils::ThresholdFloor :
-        KritaUtils::ThresholdCeil;
+    return !config->effectEnabled() || config->position() == psd_stroke_center ? MinervaUtils::ThresholdNone :
+        config->position() == psd_stroke_inside ? MinervaUtils::ThresholdFloor :
+        MinervaUtils::ThresholdCeil;
 }

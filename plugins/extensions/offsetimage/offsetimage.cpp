@@ -64,7 +64,7 @@ void OffsetImage::slotOffsetImage()
     }
     else
     {
-        dbgKrita << "KisImage not available";
+        dbgMinerva << "KisImage not available";
     }
 }
 
@@ -89,7 +89,7 @@ void OffsetImage::slotOffsetLayer()
     }
     else
     {
-        dbgKrita << "KisImage not available";
+        dbgMinerva << "KisImage not available";
     }
 }
 

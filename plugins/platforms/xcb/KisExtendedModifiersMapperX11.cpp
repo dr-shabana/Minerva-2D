@@ -16,7 +16,7 @@
 #include <X11/XKBlib.h>
 #include <X11/Xlib.h>
 #include <X11/keysym.h>
-#include <krita_container_utils.h>
+#include <minerva2d_container_utils.h>
 
 struct KeyMapping {
     KeySym x11KeySym {0};
@@ -167,7 +167,7 @@ KisExtendedModifiersMapperPluginInterface::ExtendedModifiers KisExtendedModifier
 
     // in X11 some keys may have multiple keysyms,
     // (Alt Key == XK_Meta_{L,R}, XK_Meta_{L,R})
-    KritaUtils::makeContainerUnique(modifiers);
+    MinervaUtils::makeContainerUnique(modifiers);
     return modifiers;
 }
 

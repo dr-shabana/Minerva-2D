@@ -16,7 +16,7 @@
 #include "kis_color_selector_settings.h"
 #include "kis_preference_set_registry.h"
 
-K_PLUGIN_FACTORY_WITH_JSON(ColorSelectorNgPluginFactory, "krita_colorselectorng.json", registerPlugin<ColorSelectorNgPlugin>();)
+K_PLUGIN_FACTORY_WITH_JSON(ColorSelectorNgPluginFactory, "minerva2d_colorselectorng.json", registerPlugin<ColorSelectorNgPlugin>();)
 
 
 class ColorSelectorNgDockFactory : public KoDockFactoryBase
@@ -56,7 +56,7 @@ ColorSelectorNgPlugin::ColorSelectorNgPlugin(QObject *parent, const QVariantList
     KisColorSelectorSettingsFactory* settingsFactory = new KisColorSelectorSettingsFactory();
 
     //load and save preferences
-    //if something in kritarc is missing, then the default from this load function will be used and saved back to kconfig.
+    //if something in minerva2drc is missing, then the default from this load function will be used and saved back to kconfig.
     //this way, cfg.readEntry() in any part won't be able to set its own default
     KisPreferenceSet* settings = settingsFactory->createPreferenceSet();
     Q_ASSERT(settings);

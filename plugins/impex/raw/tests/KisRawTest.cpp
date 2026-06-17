@@ -17,7 +17,7 @@
 #endif
 
 
-const QString RawMimetype = "image/x-krita-raw";
+const QString RawMimetype = "image/x-minerva2d-raw";
 
 
 

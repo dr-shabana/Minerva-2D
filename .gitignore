@@ -50,4 +50,7 @@ _staging
 _packaging
 env
 env_deactivate
-krita-deps-management/
+minerva2d-deps-management/
+# Rebranding scripts
+rebrand_krita_to_minerva2d.py
+rename_files_krita_to_minerva2d.py

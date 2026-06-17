@@ -9,25 +9,25 @@
 
 #include <KisWidgetConnectionUtils.h>
 #include <KisSensorWithLengthModel.h>
-#include <KisKritaSensorPack.h>
+#include <KisMinervaSensorPack.h>
 
 namespace {
     auto safeDereferenceTimeSensor = lager::lenses::getset(
     [](const KisCurveOptionDataCommon &data) -> KisSensorWithLengthData {
-        const KisKritaSensorPack *pack = dynamic_cast<const KisKritaSensorPack*>(data.sensorData.constData());
+        const KisMinervaSensorPack *pack = dynamic_cast<const KisMinervaSensorPack*>(data.sensorData.constData());
         if (pack) {
             return pack->constSensorsStruct().sensorTime;
         } else {
-            qWarning() << "safeDereferenceTimeSensor(get): failed to get a Krita sensor data";
+            qWarning() << "safeDereferenceTimeSensor(get): failed to get a Minerva sensor data";
             return KisSensorWithLengthData(FadeId);
         }
     },
     [](KisCurveOptionDataCommon data, KisSensorWithLengthData sensor) -> KisCurveOptionDataCommon {
-        KisKritaSensorPack *pack = dynamic_cast<KisKritaSensorPack*>(data.sensorData.data());
+        KisMinervaSensorPack *pack = dynamic_cast<KisMinervaSensorPack*>(data.sensorData.data());
         if (pack) {
             pack->sensorsStruct().sensorTime = sensor;
         } else {
-            qWarning() << "safeDereferenceTimeSensor(set): failed to get a Krita sensor data";
+            qWarning() << "safeDereferenceTimeSensor(set): failed to get a Minerva sensor data";
         }
         return data;
     });

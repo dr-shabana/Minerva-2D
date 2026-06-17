@@ -1,5 +1,5 @@
 /*
- * This file is part of Krita
+ * This file is part of Minerva
  *
  * SPDX-FileCopyrightText: 2007 Cyrille Berger <cberger@cberger.net>
  *
@@ -132,7 +132,7 @@ const KisFilter* KisFiltersModel::indexToFilter(const QModelIndex& idx)
 
 QModelIndex KisFiltersModel::index(int row, int column, const QModelIndex &parent) const
 {
-//     dbgKrita << parent.isValid() << row << Qt::endl;
+//     dbgMinerva << parent.isValid() << row << Qt::endl;
     if (parent.isValid()) {
         Private::Category* category = static_cast<Private::Category*>(parent.internalPointer());
         return createIndex(row, column, &category->filters[row]);

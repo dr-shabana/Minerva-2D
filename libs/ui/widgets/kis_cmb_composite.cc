@@ -1,5 +1,5 @@
 /*
- *  kis_cmb_composite.cc - part of KImageShop/Krayon/Krita
+ *  kis_cmb_composite.cc - part of KImageShop/Krayon/Minerva
  *
  *  SPDX-FileCopyrightText: 2004 Boudewijn Rempt (boud@valdyas.org)
  *  SPDX-FileCopyrightText: 2011 Silvio Heinrich <plassy@web.de>

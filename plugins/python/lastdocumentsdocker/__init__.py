@@ -7,6 +7,6 @@ from .lastdocumentsdocker import LastDocumentsDocker
 
 
 Application.addDockWidgetFactory(
-    krita.DockWidgetFactory("lastdocumentsdocker",
-                            krita.DockWidgetFactoryBase.DockPosition.DockRight,
+    minerva2d.DockWidgetFactory("lastdocumentsdocker",
+                            minerva2d.DockWidgetFactoryBase.DockPosition.DockRight,
                             LastDocumentsDocker))

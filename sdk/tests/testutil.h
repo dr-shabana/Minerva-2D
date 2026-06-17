@@ -302,9 +302,9 @@ inline bool checkAlphaDeviceFilledWithPixel(KisPaintDeviceSP dev, const QRect &r
         for (int x = rc.x(); x < rc.x() + rc.width(); x++) {
 
             if(*((quint8*)it->rawData()) != expected) {
-                errKrita << "At point:" << x << y;
-                errKrita << "Expected pixel:" << expected;
-                errKrita << "Actual pixel:  " << *((quint8*)it->rawData());
+                errMinerva << "At point:" << x << y;
+                errMinerva << "Expected pixel:" << expected;
+                errMinerva << "Actual pixel:  " << *((quint8*)it->rawData());
                 return false;
             }
             it->nextPixel();

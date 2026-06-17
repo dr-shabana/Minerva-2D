@@ -445,7 +445,7 @@ void CompositionDockerDock::updateComposition()
 
 void CompositionDockerDock::renameComposition()
 {
-    dbgKrita << "rename";
+    dbgMinerva << "rename";
     QModelIndex index = compositionView->currentIndex();
     if (m_canvas && m_canvas->viewManager() && m_canvas->viewManager()->image() && index.isValid()) {
         KisLayerCompositionSP composition = m_model->compositionFromIndex(index);

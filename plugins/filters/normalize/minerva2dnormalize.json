@@ -1,0 +1,9 @@
+{
+    "Id": "Normalize Filter",
+    "Type": "Service",
+    "X-KDE-Library": "kritanormalize",
+    "X-KDE-ServiceTypes": [
+        "Minerva/Filter"
+    ],
+    "X-Minerva-Version": "29"
+}

@@ -10,7 +10,7 @@ if (TIFF_HAS_PSD_TAGS)
     generate_export_header(kritatiffpsd)
 
     set_target_properties(kritatiffpsd PROPERTIES
-        VERSION ${GENERIC_KRITA_LIB_VERSION} SOVERSION ${GENERIC_KRITA_LIB_SOVERSION}
+        VERSION ${GENERIC_MINERVA2D_LIB_VERSION} SOVERSION ${GENERIC_MINERVA2D_LIB_SOVERSION}
     )
 
     target_link_libraries(kritatiffpsd kritapsd ${TIFF_LIBRARIES})
@@ -38,7 +38,7 @@ target_link_libraries(kritatiffimport
     ${TIFF_LIBRARIES}
     )
 
-install(TARGETS kritatiffimport  DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
+install(TARGETS kritatiffimport  DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})
 
 set(kritatiffexport_SOURCES
     kis_tiff_base_writer.cpp
@@ -68,6 +68,6 @@ target_link_libraries(kritatiffexport
     ${TIFF_LIBRARIES}
     )
 
-install(TARGETS kritatiffexport  DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
+install(TARGETS kritatiffexport  DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})
 
-install(FILES krita_tiff.desktop DESTINATION ${KDE_INSTALL_APPDIR})
+install(FILES minerva2d_tiff.desktop DESTINATION ${KDE_INSTALL_APPDIR})

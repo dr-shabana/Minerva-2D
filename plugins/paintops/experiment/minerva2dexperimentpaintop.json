@@ -1,0 +1,9 @@
+{
+    "Id": "Experiment",
+    "Type": "Service",
+    "X-KDE-Library": "kritaexperimentpaintop",
+    "X-KDE-ServiceTypes": [
+        "Minerva/Paintop"
+    ],
+    "X-Minerva-Version": "28"
+}

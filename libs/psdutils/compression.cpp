@@ -291,7 +291,7 @@ QByteArray psd_unzip_with_prediction(const QByteArray &src, int dst_len, int row
 
     if (color_depth == 32) {
         // Placeholded for future implementation.
-        errKrita << "Unsupported bit depth for prediction";
+        errMinerva << "Unsupported bit depth for prediction";
         return {};
     } else if (color_depth == 16) {
         psd_unzip_with_prediction<quint16>(dst_buf, row_size);
@@ -351,7 +351,7 @@ QByteArray psd_zip_with_prediction(const QByteArray &src, int row_size, int colo
     QByteArray dst_buf(src);
     if (color_depth == 32) {
         // Placeholded for future implementation.
-        errKrita << "Unsupported bit depth for prediction";
+        errMinerva << "Unsupported bit depth for prediction";
         return {};
     } else if (color_depth == 16) {
         psd_zip_with_prediction<quint16>(dst_buf, row_size);

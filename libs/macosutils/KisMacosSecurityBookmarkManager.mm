@@ -115,17 +115,17 @@ void KisMacosSecurityBookmarkManager::createBookmarkFromPath(const QString &path
         QString base64Data = QString::fromNSString(bookmarkString);
         // write to file
         const QString configPath = QStandardPaths::writableLocation(QStandardPaths::GenericConfigLocation);
-        QSettings kritarc(configPath + QStringLiteral("/securitybookmarkrc"), QSettings::NativeFormat);
+        QSettings minerva2drc(configPath + QStringLiteral("/securitybookmarkrc"), QSettings::NativeFormat);
 
         // get array current size
-        int size = kritarc.beginReadArray(securityBookmarkTypeToString(type));
-        kritarc.endArray();
+        int size = minerva2drc.beginReadArray(securityBookmarkTypeToString(type));
+        minerva2drc.endArray();
 
-        kritarc.beginWriteArray(securityBookmarkTypeToString(type));
-        kritarc.setArrayIndex(size);
-        kritarc.setValue("path",path);
-        kritarc.setValue("base64", base64Data);
-        kritarc.endArray();
+        minerva2drc.beginWriteArray(securityBookmarkTypeToString(type));
+        minerva2drc.setArrayIndex(size);
+        minerva2drc.setValue("path",path);
+        minerva2drc.setValue("base64", base64Data);
+        minerva2drc.endArray();
 
         // Finally add to hashmap
         m_d->securedFiles[path] = base64Data;
@@ -137,15 +137,15 @@ void KisMacosSecurityBookmarkManager::createBookmarkFromPath(const QString &path
 void KisMacosSecurityBookmarkManager::loadKeysFromArray(SecurityBookmarkType arrayKey)
 {
     const QString configPath = QStandardPaths::writableLocation(QStandardPaths::GenericConfigLocation);
-    QSettings kritarc(configPath + QStringLiteral("/securitybookmarkrc"), QSettings::NativeFormat);
+    QSettings minerva2drc(configPath + QStringLiteral("/securitybookmarkrc"), QSettings::NativeFormat);
 
-    int size = kritarc.beginReadArray(securityBookmarkTypeToString(arrayKey));
+    int size = minerva2drc.beginReadArray(securityBookmarkTypeToString(arrayKey));
     for (int i = 0; i < size; i++) {
-        kritarc.setArrayIndex(i);
-        QString key = kritarc.value("path").toString();
-        m_d->securedFiles[key] = kritarc.value("base64").toString();
+        minerva2drc.setArrayIndex(i);
+        QString key = minerva2drc.value("path").toString();
+        m_d->securedFiles[key] = minerva2drc.value("base64").toString();
     }
-    kritarc.endArray();
+    minerva2drc.endArray();
 }
 
 void KisMacosSecurityBookmarkManager::loadSecurityScopedResources()

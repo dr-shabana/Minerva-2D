@@ -3,7 +3,7 @@
 #  SPDX-License-Identifier: GPL-3.0-or-later
 #
 #
-# Build all Krita's dependencies on Ubuntu 14.04.
+# Build all Minerva's dependencies on Ubuntu 14.04.
 #
 # Prerequisites: cmake git build-essential libxcb-keysyms1-dev plus all deps for Qt5
 #
@@ -14,7 +14,7 @@ set -x
 
 # Read in our parameters
 export BUILD_PREFIX=$1
-export KRITA_SOURCES=$2
+export MINERVA2D_SOURCES=$2
 
 # qjsonparser, used to add metadata to the plugins needs to work in a en_US.UTF-8 environment.
 # That's not always the case, so make sure it is
@@ -32,15 +32,15 @@ export PATH=$DEPS_INSTALL_PREFIX/bin:$PATH
 export PKG_CONFIG_PATH=$DEPS_INSTALL_PREFIX/share/pkgconfig:$DEPS_INSTALL_PREFIX/lib/pkgconfig:/usr/lib/pkgconfig:$PKG_CONFIG_PATH
 export CMAKE_PREFIX_PATH=$DEPS_INSTALL_PREFIX:$CMAKE_PREFIX_PATH
 
-source ${KRITA_SOURCES}/packaging/linux/appimage/override_compiler.sh.inc
+source ${MINERVA2D_SOURCES}/packaging/linux/appimage/override_compiler.sh.inc
 
 # A krita build layout looks like this:
-# krita/ -- the source directory
+# minerva2d/ -- the source directory
 # downloads/ -- downloads of the dependencies from files.kde.org
 # deps-build/ -- build directory for the dependencies
 # deps/ -- the location for the built dependencies
 # build/ -- build directory for krita itself
-# krita.appdir/ -- install directory for krita and the dependencies
+# minerva2d.appdir/ -- install directory for krita and the dependencies
 
 # Make sure our downloads directory exists
 if [ ! -d $DOWNLOADS_DIR ] ; then
@@ -52,7 +52,7 @@ if [ ! -d $BUILD_PREFIX/deps-build/ ] ; then
     mkdir -p $BUILD_PREFIX/deps-build/
 fi
 
-# The 3rdparty dependency handling in Krita also requires the install directory to be pre-created
+# The 3rdparty dependency handling in Minerva also requires the install directory to be pre-created
 if [ ! -d $DEPS_INSTALL_PREFIX ] ; then
     mkdir -p $DEPS_INSTALL_PREFIX
 fi
@@ -107,7 +107,7 @@ if [ $SUBMAKE_JOBS -gt 2 ]; then
 fi
 
 # Configure the dependencies for building
-cmake $KRITA_SOURCES/3rdparty \
+cmake $MINERVA2D_SOURCES/3rdparty \
     -DCMAKE_INSTALL_PREFIX=$DEPS_INSTALL_PREFIX \
     -DINSTALL_ROOT=$DEPS_INSTALL_PREFIX \
     -DEXTERNALS_DOWNLOAD_DIR=$DOWNLOADS_DIR \

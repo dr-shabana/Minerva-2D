@@ -35,7 +35,7 @@ const QString KIS_SHAPE_LAYER_ID = "KisShapeLayer";
 
    The KisShapeLayer has a shapemanager and a canvas of its own. The
    canvas paints onto the projection, and the projection is what we
-   render in Krita. This means that no matter how many views you have,
+   render in Minerva. This means that no matter how many views you have,
    you cannot have a different view on your shapes per view.
 
    XXX: what about removing shapes?

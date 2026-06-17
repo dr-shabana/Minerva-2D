@@ -38,7 +38,7 @@ QRect KisLayerProjectionPlane::recalculate(const QRect& rect, KisNodeSP filthyNo
     return m_d->layer->updateProjection(rect, filthyNode, flags);
 }
 
-void KisLayerProjectionPlane::applyImpl(KisPainter *painter, const QRect &rect, KritaUtils::ThresholdMode thresholdMode)
+void KisLayerProjectionPlane::applyImpl(KisPainter *painter, const QRect &rect, MinervaUtils::ThresholdMode thresholdMode)
 {
     KisPaintDeviceSP device = m_d->layer->projection();
     if (!device) return;
@@ -58,12 +58,12 @@ void KisLayerProjectionPlane::applyImpl(KisPainter *painter, const QRect &rect, 
 
     QScopedPointer<KisCachedPaintDevice::Guard> d1;
 
-    if (thresholdMode != KritaUtils::ThresholdNone) {
+    if (thresholdMode != MinervaUtils::ThresholdNone) {
         d1.reset(new KisCachedPaintDevice::Guard(device, m_d->cachedDevice));
         KisPaintDeviceSP tmp = d1->device();
         tmp->makeCloneFromRough(device, needRect);
 
-        KritaUtils::thresholdOpacity(tmp, needRect, thresholdMode);
+        MinervaUtils::thresholdOpacity(tmp, needRect, thresholdMode);
 
         device = tmp;
     }
@@ -76,10 +76,10 @@ void KisLayerProjectionPlane::applyImpl(KisPainter *painter, const QRect &rect, 
 
 void KisLayerProjectionPlane::apply(KisPainter *painter, const QRect &rect)
 {
-    applyImpl(painter, rect, KritaUtils::ThresholdNone);
+    applyImpl(painter, rect, MinervaUtils::ThresholdNone);
 }
 
-void KisLayerProjectionPlane::applyMaxOutAlpha(KisPainter *painter, const QRect &rect, KritaUtils::ThresholdMode thresholdMode)
+void KisLayerProjectionPlane::applyMaxOutAlpha(KisPainter *painter, const QRect &rect, MinervaUtils::ThresholdMode thresholdMode)
 {
     applyImpl(painter, rect, thresholdMode);
 }

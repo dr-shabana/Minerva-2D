@@ -1,0 +1,9 @@
+{
+    "Id": "Colorrange",
+    "Type": "Service",
+    "X-KDE-Library": "kritacolorrange",
+    "X-KDE-ServiceTypes": [
+        "Minerva/ViewPlugin"
+    ],
+    "X-Minerva-Version": "28"
+}

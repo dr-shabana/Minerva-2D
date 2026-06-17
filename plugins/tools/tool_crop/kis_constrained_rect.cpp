@@ -153,7 +153,7 @@ void KisConstrainedRect::moveHandle(HandleType handle, const QPoint &offset, con
                 newSize.setWidth(widthFromHeightUnsignedRatio(newSize.height(), m_ratio, tempSize.width()));
             }
 
-            // see https://bugs.kde.org/show_bug.cgi?id=432036
+            // see https://github.com/dr-shabana/Minerva-2D/issues/show_bug.cgi?id=432036
             if (!m_canGrow && qAbs(newSize.width()) > m_cropRect.width()) {
                 newSize.setWidth(m_cropRect.width());
                 newSize.setHeight(heightFromWidthUnsignedRatio(newSize.width(), m_ratio, newSize.height()));

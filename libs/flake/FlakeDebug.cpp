@@ -8,7 +8,7 @@
 
 const QLoggingCategory &FLAKE_LOG() \
 {
-    static const QLoggingCategory category("krita.lib.flake", QtInfoMsg);
+    static const QLoggingCategory category("minerva2d.lib.flake", QtInfoMsg);
     return category;
 }
 

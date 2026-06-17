@@ -1,5 +1,5 @@
 /*
- *  kis_warptransform_worker.h - part of Krita
+ *  kis_warptransform_worker.h - part of Minerva
  *
  *  SPDX-FileCopyrightText: 2010 Marc Pegon <pe.marc@free.fr>
  *

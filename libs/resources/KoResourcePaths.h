@@ -21,7 +21,7 @@
  *
  * QStandardPaths::standardLocations(QStandardPaths::AppDataLocation);
  *
- * This can be overridden in Krita's configuration.
+ * This can be overridden in Minerva's configuration.
  *
  * Unfortunately, we are mixing up two things in the appdatalocation:
  *

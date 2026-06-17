@@ -1,5 +1,5 @@
 /*
- * KDE. Krita Project.
+ * KDE. Minerva Project.
  *
  * SPDX-FileCopyrightText: 2020 Deif Lou <ginoba@gmail.com>
  *
@@ -20,12 +20,12 @@
 
 class KisConfigWidget;
 
-class KritaHalftone : public QObject
+class MinervaHalftone : public QObject
 {
     Q_OBJECT
 public:
-    KritaHalftone(QObject *parent, const QVariantList &);
-    ~KritaHalftone() override;
+    MinervaHalftone(QObject *parent, const QVariantList &);
+    ~MinervaHalftone() override;
 };
 
 class KisHalftoneFilter : public KisFilter

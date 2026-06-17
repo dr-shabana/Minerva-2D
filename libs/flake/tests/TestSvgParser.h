@@ -171,7 +171,7 @@ private Q_SLOTS:
 
     void testSodipodiArcShape();
     void testSodipodiArcShapeOpen();
-    void testKritaChordShape();
+    void testMinervaChordShape();
     void testSodipodiChordShape();
 
     void testMarkersFillAsShape();

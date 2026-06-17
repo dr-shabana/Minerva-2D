@@ -27,8 +27,8 @@
     void CONCAT(initializerFunc, uniqueId)()
 
 /**
- * Sometimes we need to declare a static object that performs some actions on Krita
- * loading, e.g. to register Qt's metatype for a Krita type. This macro helps with that:
+ * Sometimes we need to declare a static object that performs some actions on Minerva
+ * loading, e.g. to register Qt's metatype for a Minerva type. This macro helps with that:
  *
  * KIS_DECLARE_STATIC_INITIALIZER {
  *     qRegisterMetaType<KoResourceSP>("KoResourceSP");

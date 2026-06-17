@@ -1,0 +1,9 @@
+{
+    "Id": "Noise Filter",
+    "Type": "Service",
+    "X-KDE-Library": "kritanoisefilter",
+    "X-KDE-ServiceTypes": [
+        "Minerva/Filter"
+    ],
+    "X-Minerva-Version": "28"
+}

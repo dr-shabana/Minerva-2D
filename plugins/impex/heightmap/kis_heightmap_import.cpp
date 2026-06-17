@@ -36,7 +36,7 @@
 #include "kis_wdg_options_heightmap.h"
 #include "kis_heightmap_utils.h"
 
-K_PLUGIN_FACTORY_WITH_JSON(HeightMapImportFactory, "krita_heightmap_import.json", registerPlugin<KisHeightMapImport>();)
+K_PLUGIN_FACTORY_WITH_JSON(HeightMapImportFactory, "minerva2d_heightmap_import.json", registerPlugin<KisHeightMapImport>();)
 
 template<typename T>
 void fillData(KisPaintDeviceSP pd, int w, int h, QDataStream &stream) {

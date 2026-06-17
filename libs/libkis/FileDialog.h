@@ -14,7 +14,7 @@
 /**
  * Wrapper around KoFileDialog, which is a wrapper around QFileDialog,
  * providing native file dialogs on KDE/Gnome/Windows/OSX/etc.
- * FileDialog respects Krita's "Don't use native file dialogs" setting.
+ * FileDialog respects Minerva's "Don't use native file dialogs" setting.
  */
 class KRITALIBKIS_EXPORT FileDialog : public QDialog
 {

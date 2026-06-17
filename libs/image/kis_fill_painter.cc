@@ -43,7 +43,7 @@
 #include <kis_perspectivetransform_worker.h>
 #include <kis_sequential_iterator.h>
 #include <KisColorSelectionPolicies.h>
-#include <krita_utils.h>
+#include <minerva2d_utils.h>
 #include <kis_default_bounds.h>
 #include <KisImageResolutionProxy.h>
 
@@ -239,7 +239,7 @@ void KisFillPainter::fillColor(int startX, int startY, KisPaintDeviceSP sourceDe
             !isOpacityUnit() ||
             sourceDevice != device()) {
 
-            warnKrita << "WARNING: Fast Flood Fill (no compositing mode)"
+            warnMinerva << "WARNING: Fast Flood Fill (no compositing mode)"
                        << "does not support compositeOps, opacity, "
                        << "selection enhancements and separate source "
                        << "devices";
@@ -545,7 +545,7 @@ QVector<KisStrokeJobData*> KisFillPainter::createSimilarColorsSelectionJobs(
 
     QVector<KisStrokeJobData*> jobsData;
     QVector<QRect> fillPatches =
-        KritaUtils::splitRectIntoPatches(rect, KritaUtils::optimalPatchSize());
+        MinervaUtils::splitRectIntoPatches(rect, MinervaUtils::optimalPatchSize());
     const int threshold = fillThreshold();
     const int softness = 100 - opacitySpread();
     const int sizemod = this->sizemod();
@@ -553,10 +553,10 @@ QVector<KisStrokeJobData*> KisFillPainter::createSimilarColorsSelectionJobs(
     const int feather = this->feather();
     const bool antiAlias = this->antiAlias();
 
-    KritaUtils::addJobBarrier(jobsData, nullptr);
+    MinervaUtils::addJobBarrier(jobsData, nullptr);
 
     for (const QRect &patch : fillPatches) {
-        KritaUtils::addJobConcurrent(
+        MinervaUtils::addJobConcurrent(
             jobsData,
             [referenceDevice, outSelection, mask, referenceColor,
              threshold, softness, patch, progressHelper]() mutable
@@ -614,7 +614,7 @@ QVector<KisStrokeJobData*> KisFillPainter::createSimilarColorsSelectionJobs(
         );
     }
 
-    KritaUtils::addJobSequential(
+    MinervaUtils::addJobSequential(
         jobsData,
         [outSelection, referenceDevice, mask,
          sizemod, stopGrowingAtDarkestPixel, feather, antiAlias, progressHelper]() mutable

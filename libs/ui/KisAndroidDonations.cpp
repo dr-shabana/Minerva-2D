@@ -34,7 +34,7 @@ bool KisAndroidDonations::shouldShowSupporterBadge() const
 
 void KisAndroidDonations::slotStartDonationFlow()
 {
-    QAndroidJniObject::callStaticMethod<void>("org/krita/android/DonationHelper", "startBillingFlow", "()V");
+    QAndroidJniObject::callStaticMethod<void>("org/minerva2d/android/DonationHelper", "startBillingFlow", "()V");
 }
 
 void KisAndroidDonations::slotUpdateState(int state)
@@ -54,10 +54,10 @@ KisAndroidDonations::KisAndroidDonations(QObject *parent)
 
 void KisAndroidDonations::syncState()
 {
-    QAndroidJniObject::callStaticMethod<void>("org/krita/android/DonationHelper", "syncState", "()V");
+    QAndroidJniObject::callStaticMethod<void>("org/minerva2d/android/DonationHelper", "syncState", "()V");
 }
 
-extern "C" JNIEXPORT void JNICALL Java_org_krita_android_JNIWrappers_donationStateUpdated(JNIEnv * /*env*/,
+extern "C" JNIEXPORT void JNICALL Java_org_minerva2d_android_JNIWrappers_donationStateUpdated(JNIEnv * /*env*/,
                                                                                           jobject /*obj*/,
                                                                                           jint state)
 {

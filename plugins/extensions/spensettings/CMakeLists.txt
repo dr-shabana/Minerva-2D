@@ -13,10 +13,10 @@ qt_add_resources(kritaspensettings_SOURCES
 
 kis_add_library(kritaspensettings MODULE ${kritaspensettings_SOURCES})
 target_link_libraries(kritaspensettings kritaui)
-install(TARGETS kritaspensettings  DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
+install(TARGETS kritaspensettings  DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})
 
-install( FILES  SPenSettings.action  DESTINATION ${KDE_INSTALL_DATADIR}/krita/actions)
+install( FILES  SPenSettings.action  DESTINATION ${KDE_INSTALL_DATADIR}/minerva2d/actions)
 
 install( FILES  spen-remote.svg
-                DESTINATION ${KDE_INSTALL_DATADIR}/krita/pics)
+                DESTINATION ${KDE_INSTALL_DATADIR}/minerva2d/pics)
 

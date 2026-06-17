@@ -35,7 +35,7 @@
 #include "kis_algebra_2d.h"
 #include "kis_painting_tweaks.h"
 #include "kis_slider_spin_box.h"
-#include "krita_utils.h"
+#include "minerva2d_utils.h"
 #include "kis_spacing_selection_widget.h"
 #include "kis_signals_blocker.h"
 
@@ -142,7 +142,7 @@ void KisBrushDelegate::paint(QPainter * painter, const QStyleOptionViewItem & op
     if (option.state & QStyle::State_Selected) {
         painter->setClipRect(option.rect);
         painter->setPen(QPen(option.palette.highlight(), 2.0));
-        KritaUtils::renderExactRect(painter, itemRect);
+        MinervaUtils::renderExactRect(painter, itemRect);
         painter->setCompositionMode(QPainter::CompositionMode_HardLight);
         painter->setOpacity(0.65);
         painter->fillRect(itemRect, option.palette.highlight());
@@ -398,7 +398,7 @@ lager::reader<bool> KisPredefinedBrushChooser::lightnessModeEnabled() const
 
 void KisPredefinedBrushChooser::slotImportNewBrushResource() {
     // reflects m_itemChooser->slotButtonClicked(KisResourceItemChooser::Button_Import)
-    // but adds the .abr files support, as it was in Krita 4
+    // but adds the .abr files support, as it was in Minerva 4
     QStringList mimeTypes = KisResourceLoaderRegistry::instance()->mimeTypes(ResourceType::Brushes);
     QString abrMimeType = "image/x-adobe-brushlibrary";
     mimeTypes.append(abrMimeType);

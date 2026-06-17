@@ -1,5 +1,5 @@
 /*
- * KDE. Krita Project.
+ * KDE. Minerva Project.
  *
  * SPDX-FileCopyrightText: 2022 Deif Lou <ginoba@gmail.com>
  *
@@ -22,8 +22,8 @@ public:
     {
         setToolTip(i18n("Enclose and Fill Tool"));
         setSection(ToolBoxSection::Fill);
-        setActivationShapeId(KRITA_TOOL_ACTIVATION_ID);
-        setIconName(koIconNameCStr("krita_tool_enclose_and_fill"));
+        setActivationShapeId(MINERVA2D_TOOL_ACTIVATION_ID);
+        setIconName(koIconNameCStr("minerva2d_tool_enclose_and_fill"));
         setPriority(15);
     }
 

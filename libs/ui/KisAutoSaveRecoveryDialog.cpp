@@ -199,7 +199,7 @@ KisAutoSaveRecoveryDialog::KisAutoSaveRecoveryDialog(const QStringList &filename
         file->name = filename;
 
         QString path = autoSaveLocation() + "/" + filename;
-        // get thumbnail -- almost all Krita-supported formats save a thumbnail
+        // get thumbnail -- almost all Minerva-supported formats save a thumbnail
         KoStore* store = KoStore::createStore(path, KoStore::Read);
 
         if (store) {
@@ -274,10 +274,10 @@ QStringList KisAutoSaveRecoveryDialog::recoverableFiles()
 QString KisAutoSaveRecoveryDialog::autoSaveLocation()
 {
 #if defined(Q_OS_WIN)
-    // On Windows, use the temp location (https://bugs.kde.org/show_bug.cgi?id=314921)
+    // On Windows, use the temp location (https://github.com/dr-shabana/Minerva-2D/issues/show_bug.cgi?id=314921)
     return QDir::tempPath();
 #elif defined(Q_OS_ANDROID)
-    QString path = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation).append("/krita-backup");
+    QString path = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation).append("/minerva2d-backup");
     if (!QDir(path).exists()) {
         QDir().mkpath(path);
     }

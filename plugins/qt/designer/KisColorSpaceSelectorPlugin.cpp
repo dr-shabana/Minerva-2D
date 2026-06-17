@@ -39,7 +39,7 @@ QString KisColorSpaceSelectorPlugin::name() const
 
 QString KisColorSpaceSelectorPlugin::group() const
 {
-    return "Krita";
+    return "Minerva";
 }
 
 QIcon KisColorSpaceSelectorPlugin::icon() const
@@ -49,12 +49,12 @@ QIcon KisColorSpaceSelectorPlugin::icon() const
 
 QString KisColorSpaceSelectorPlugin::toolTip() const
 {
-    return tr("Krita widget for selecting color spaces.");
+    return tr("Minerva widget for selecting color spaces.");
 }
 
 QString KisColorSpaceSelectorPlugin::whatsThis() const
 {
-    return tr("Krita widget for selecting color spaces.");
+    return tr("Minerva widget for selecting color spaces.");
 }
 
 bool KisColorSpaceSelectorPlugin::isContainer() const

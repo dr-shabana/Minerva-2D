@@ -270,7 +270,7 @@ KisSelection::KisSelection(const KisSelection& rhs)
     copyFrom(rhs);
 }
 
-KisSelection::KisSelection(const KisPaintDeviceSP source, KritaUtils::DeviceCopyMode copyMode,
+KisSelection::KisSelection(const KisPaintDeviceSP source, MinervaUtils::DeviceCopyMode copyMode,
                            KisDefaultBoundsBaseSP defaultBounds, KisImageResolutionProxySP resolutionProxy)
     : m_d(new Private(this))
 {
@@ -300,7 +300,7 @@ void KisSelection::copyFrom(const KisSelection &rhs)
     m_d->parentNode = 0; // not supposed to be shared
 
     Q_ASSERT(rhs.m_d->pixelSelection);
-    m_d->pixelSelection = new KisPixelSelection(*rhs.m_d->pixelSelection, KritaUtils::CopyAllFrames);
+    m_d->pixelSelection = new KisPixelSelection(*rhs.m_d->pixelSelection, MinervaUtils::CopyAllFrames);
     m_d->pixelSelection->setParentSelection(this);
 
     QReadLocker l1(&rhs.m_d->shapeSelectionPointerLock);

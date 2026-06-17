@@ -39,15 +39,15 @@
 #include <kis_iterator_ng.h>
 #include <KisSequentialIteratorProgress.h>
 
-K_PLUGIN_FACTORY_WITH_JSON(KritaRandomPickFilterFactory, "kritarandompickfilter.json", registerPlugin<KritaRandomPickFilter>();)
+K_PLUGIN_FACTORY_WITH_JSON(MinervaRandomPickFilterFactory, "kritarandompickfilter.json", registerPlugin<MinervaRandomPickFilter>();)
 
-KritaRandomPickFilter::KritaRandomPickFilter(QObject *parent, const QVariantList &)
+MinervaRandomPickFilter::MinervaRandomPickFilter(QObject *parent, const QVariantList &)
         : QObject(parent)
 {
     KisFilterRegistry::instance()->add(new KisFilterRandomPick());
 }
 
-KritaRandomPickFilter::~KritaRandomPickFilter()
+MinervaRandomPickFilter::~MinervaRandomPickFilter()
 {
 }
 

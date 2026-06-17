@@ -10,5 +10,5 @@ ki18n_wrap_ui(kritalayersplit_SOURCES
 
 kis_add_library(kritalayersplit MODULE ${kritalayersplit_SOURCES})
 target_link_libraries(kritalayersplit kritaui)
-install(TARGETS kritalayersplit  DESTINATION ${KRITA_PLUGIN_INSTALL_DIR})
-install( FILES  layersplit.xmlgui  DESTINATION ${KDE_INSTALL_DATADIR}/kritaplugins)
+install(TARGETS kritalayersplit  DESTINATION ${MINERVA2D_PLUGIN_INSTALL_DIR})
+install( FILES  layersplit.xmlgui  DESTINATION ${KDE_INSTALL_DATADIR}/minerva2dplugins)

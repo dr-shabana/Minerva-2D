@@ -1,5 +1,5 @@
 /*
- * This file is part of Krita
+ * This file is part of Minerva
  *
  * SPDX-FileCopyrightText: 2004 Cyrille Berger <cberger@cberger.net>
  *
@@ -94,12 +94,12 @@ public:
     }
 };
 
-class KritaConvolutionFilters : public QObject
+class MinervaConvolutionFilters : public QObject
 {
     Q_OBJECT
 public:
-    KritaConvolutionFilters(QObject *parent, const QVariantList &);
-    ~KritaConvolutionFilters() override;
+    MinervaConvolutionFilters(QObject *parent, const QVariantList &);
+    ~MinervaConvolutionFilters() override;
 };
 
 #endif

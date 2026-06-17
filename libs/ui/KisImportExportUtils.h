@@ -19,7 +19,7 @@
 class KisImportUserFeedbackInterface;
 
 
-namespace KritaUtils {
+namespace MinervaUtils {
 
 enum SaveFlag {
     SaveNone = 0,
@@ -61,7 +61,7 @@ struct ExportFileJob {
 
 /**
  * When the image has a colorspace that is not suitable for displaying,
- * Krita should convert that into something more useful. This tool function
+ * Minerva should convert that into something more useful. This tool function
  * asks the user about the desired working color space and converts into
  * it.
  */

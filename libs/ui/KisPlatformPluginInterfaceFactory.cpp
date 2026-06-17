@@ -15,24 +15,24 @@
 
 #include <input/KisExtendedModifiersMapperPluginInterface.h>
 
-#if KRITA_USE_SURFACE_COLOR_MANAGEMENT_API
+#if MINERVA2D_USE_SURFACE_COLOR_MANAGEMENT_API
 
 #include <KisRootSurfaceInfoProxy.h>
 #include <surfacecolormanagement/KisSurfaceColorManagerInterface.h>
 #include <surfacecolormanagement/KisSurfaceColorManagementInfo.h>
 
-#endif /* KRITA_USE_SURFACE_COLOR_MANAGEMENT_API */
+#endif /* MINERVA2D_USE_SURFACE_COLOR_MANAGEMENT_API */
 
 Q_GLOBAL_STATIC(KisPlatformPluginInterfaceFactory, s_instance)
 
 KisPlatformPluginInterfaceFactory::KisPlatformPluginInterfaceFactory()
 {
-#if KRITA_USE_SURFACE_COLOR_MANAGEMENT_API
+#if MINERVA2D_USE_SURFACE_COLOR_MANAGEMENT_API
 
     auto fetchSurfaceColorManagedByOS = []() {
         KPluginFactory *factory = KoPluginLoader::instance()->loadSinglePlugin(
-            std::make_pair("X-Krita-PlatformId", QApplication::platformName()),
-            "Krita/PlatformPlugin");
+            std::make_pair("X-Minerva-PlatformId", QApplication::platformName()),
+            "Minerva/PlatformPlugin");
 
         if (factory) {
             QScopedPointer<KisSurfaceColorManagementInfo> interface(factory->create<KisSurfaceColorManagementInfo>());
@@ -44,7 +44,7 @@ KisPlatformPluginInterfaceFactory::KisPlatformPluginInterfaceFactory()
 
     m_surfaceColorManagedByOS = fetchSurfaceColorManagedByOS();
 
-#endif /* KRITA_USE_SURFACE_COLOR_MANAGEMENT_API */
+#endif /* MINERVA2D_USE_SURFACE_COLOR_MANAGEMENT_API */
 }
 
 KisPlatformPluginInterfaceFactory* KisPlatformPluginInterfaceFactory::instance()
@@ -52,7 +52,7 @@ KisPlatformPluginInterfaceFactory* KisPlatformPluginInterfaceFactory::instance()
     return s_instance;
 }
 
-#if KRITA_USE_SURFACE_COLOR_MANAGEMENT_API
+#if MINERVA2D_USE_SURFACE_COLOR_MANAGEMENT_API
 
 KisSurfaceColorManagerInterface* KisPlatformPluginInterfaceFactory::createSurfaceColorManager(QWindow *nativeWindow)
 {
@@ -61,8 +61,8 @@ KisSurfaceColorManagerInterface* KisPlatformPluginInterfaceFactory::createSurfac
     }
 
     KPluginFactory *factory = KoPluginLoader::instance()->loadSinglePlugin(
-        std::make_pair("X-Krita-PlatformId", QApplication::platformName()),
-        "Krita/PlatformPlugin");
+        std::make_pair("X-Minerva-PlatformId", QApplication::platformName()),
+        "Minerva/PlatformPlugin");
 
     if (factory) {
         KIS_SAFE_ASSERT_RECOVER_RETURN_VALUE(nativeWindow, nullptr);
@@ -84,7 +84,7 @@ bool KisPlatformPluginInterfaceFactory::surfaceColorManagedByOS()
 
 QString KisPlatformPluginInterfaceFactory::colorManagementReport(QWidget *widget)
 {
-#if KRITA_USE_SURFACE_COLOR_MANAGEMENT_API
+#if MINERVA2D_USE_SURFACE_COLOR_MANAGEMENT_API
     if (KisPlatformPluginInterfaceFactory::instance()->surfaceColorManagedByOS()) {
         KisRootSurfaceInfoProxy proxy(widget);
         KIS_SAFE_ASSERT_RECOVER_NOOP(proxy.isReady());
@@ -100,7 +100,7 @@ QString KisPlatformPluginInterfaceFactory::colorManagementReport(QWidget *widget
 
 QString KisPlatformPluginInterfaceFactory::osPreferredColorSpaceReport(QWidget *widget)
 {
-#if KRITA_USE_SURFACE_COLOR_MANAGEMENT_API
+#if MINERVA2D_USE_SURFACE_COLOR_MANAGEMENT_API
     if (KisPlatformPluginInterfaceFactory::instance()->surfaceColorManagedByOS()) {
         KisRootSurfaceInfoProxy proxy(widget);
         KIS_SAFE_ASSERT_RECOVER_NOOP(proxy.isReady());
@@ -118,8 +118,8 @@ QString KisPlatformPluginInterfaceFactory::osPreferredColorSpaceReport(QWidget *
 KisExtendedModifiersMapperPluginInterface* KisPlatformPluginInterfaceFactory::createExtendedModifiersMapper()
 {
     KPluginFactory *factory = KoPluginLoader::instance()->loadSinglePlugin(
-        std::make_pair("X-Krita-PlatformId", QApplication::platformName()),
-        "Krita/PlatformPlugin");
+        std::make_pair("X-Minerva-PlatformId", QApplication::platformName()),
+        "Minerva/PlatformPlugin");
 
     if (factory) {
         return factory->create<KisExtendedModifiersMapperPluginInterface>();

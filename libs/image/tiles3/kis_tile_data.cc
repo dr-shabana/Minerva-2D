@@ -243,13 +243,13 @@ void KisTileData::releaseInternalPools()
                 item->m_swapLock.unlock();
             }
 
-            warnKrita << "WARNING: Failed to lock the tiles while trying to release the pooled memory";
+            warnMinerva << "WARNING: Failed to lock the tiles while trying to release the pooled memory";
         }
 
         KisTileDataStore::instance()->endIteration(iter);
 
 #ifdef DEBUG_POOL_RELEASE
-        dbgKrita << "After purging unused memory:";
+        dbgMinerva << "After purging unused memory:";
 
         char command[256];
         sprintf(command, "cat /proc/%d/status | grep -i vm", (int)getpid());
@@ -258,7 +258,7 @@ void KisTileData::releaseInternalPools()
 #endif /* DEBUG_POOL_RELEASE */
 
     } else {
-        dbgKrita << "DEBUG: releasing of the pooled memory has been cancelled:"
+        dbgMinerva << "DEBUG: releasing of the pooled memory has been cancelled:"
                  << "there are still"
                  << KisTileDataStore::instance()->numTilesInMemory()
                  << "tiles in memory";

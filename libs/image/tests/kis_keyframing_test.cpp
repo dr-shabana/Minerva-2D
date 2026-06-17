@@ -598,7 +598,7 @@ void KisKeyframingTest::testInterChannelMovement()
     devA->fill(0, 0, 512, 512, blue);
     QImage original_thumbnail_ab50 = devA->createThumbnail(50, 50);
 
-    KisPaintDeviceSP devB = new KisPaintDevice(*devA, KritaUtils::CopyAllFrames);
+    KisPaintDeviceSP devB = new KisPaintDevice(*devA, MinervaUtils::CopyAllFrames);
     devB->setDefaultBounds(bounds);
     KisRasterKeyframeChannel *channelB = devB->keyframeChannel();
 

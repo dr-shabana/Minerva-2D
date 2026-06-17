@@ -12,7 +12,7 @@
 #include "commands_new/kis_update_command.h"
 #include "commands_new/kis_node_move_command2.h"
 #include "kis_layer_utils.h"
-#include "krita_utils.h"
+#include "minerva2d_utils.h"
 
 #include "KisRunnableStrokeJobData.h"
 #include "KisRunnableStrokeJobUtils.h"
@@ -260,7 +260,7 @@ void MoveStrokeStrategy::initStrokeCallback()
             m_nodes = KisLayerUtils::sortAndFilterMergeableInternalNodes(m_nodes, true);
         }
 
-        KritaUtils::filterContainer<KisNodeList>(m_nodes, [this](KisNodeSP node) {
+        MinervaUtils::filterContainer<KisNodeList>(m_nodes, [this](KisNodeSP node) {
             /**
              * We shouldn't try to transform standalone fully empty filter masks. That 
              * just doesn't make sense.
@@ -301,19 +301,19 @@ void MoveStrokeStrategy::initStrokeCallback()
 
     QVector<KisRunnableStrokeJobData*> jobs;
 
-    KritaUtils::addJobBarrier(jobs, [this]() {
+    MinervaUtils::addJobBarrier(jobs, [this]() {
         Q_FOREACH(KisNodeSP node, m_nodes) {
             KisLayerUtils::forceAllHiddenOriginalsUpdate(node);
         }
     });
 
-    KritaUtils::addJobBarrier(jobs, [this]() {
+    MinervaUtils::addJobBarrier(jobs, [this]() {
         Q_FOREACH(KisNodeSP node, m_nodes) {
             KisLayerUtils::forceAllDelayedNodesUpdate(node);
         }
     });
 
-    KritaUtils::addJobBarrier(jobs, [this]() {
+    MinervaUtils::addJobBarrier(jobs, [this]() {
         QRect handlesRect;
 
         /**
@@ -418,7 +418,7 @@ void MoveStrokeStrategy::cancelStrokeCallback()
 
         QVector<KisRunnableStrokeJobData*> jobs;
 
-        KritaUtils::addJobBarrierExclusive(jobs, [this]() {
+        MinervaUtils::addJobBarrierExclusive(jobs, [this]() {
             Q_FOREACH (KisNodeSP node, m_nodes) {
                 QRect dirtyRect;
 

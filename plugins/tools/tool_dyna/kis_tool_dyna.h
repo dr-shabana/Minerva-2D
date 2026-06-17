@@ -134,14 +134,14 @@ class KisToolDynaFactory : public KisToolPaintFactoryBase
 
 public:
     KisToolDynaFactory()
-            : KisToolPaintFactoryBase("KritaShape/KisToolDyna") {
+            : KisToolPaintFactoryBase("MinervaShape/KisToolDyna") {
 
         setToolTip(i18n("Dynamic Brush Tool"));
         setSection(ToolBoxSection::Shape);
-        setIconName(koIconNameCStr("krita_tool_dyna"));
+        setIconName(koIconNameCStr("minerva2d_tool_dyna"));
         //setShortcut(QKeySequence(Qt::Key_F));
         setPriority(10);
-        setActivationShapeId(KRITA_TOOL_ACTIVATION_ID);
+        setActivationShapeId(MINERVA2D_TOOL_ACTIVATION_ID);
     }
 
     ~KisToolDynaFactory() override {}

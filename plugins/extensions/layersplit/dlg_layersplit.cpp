@@ -47,7 +47,7 @@ DlgLayerSplit::DlgLayerSplit()
     defaults[ m_page->chkSortLayers->objectName() ] = QVariant::fromValue<bool>(true);
     defaults[ m_page->chkDisregardOpacity->objectName() ] = QVariant::fromValue<bool>(true);
 
-    KisDialogStateSaver::restoreState(m_page, "krita/layer_split", defaults);
+    KisDialogStateSaver::restoreState(m_page, "minerva2d/layer_split", defaults);
 
     connect(m_page->cmbMode, SIGNAL(currentIndexChanged(int)), this, SLOT(slotChangeMode(int)));
 
@@ -78,7 +78,7 @@ DlgLayerSplit::~DlgLayerSplit()
 void DlgLayerSplit::slotApplyClicked()
 {
     
-    KisDialogStateSaver::saveState(m_page, "krita/layer_split");
+    KisDialogStateSaver::saveState(m_page, "minerva2d/layer_split");
 
     KisConfig cfg(false);
     if (m_palette) {

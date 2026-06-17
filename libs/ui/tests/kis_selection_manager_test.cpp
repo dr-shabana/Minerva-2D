@@ -349,7 +349,7 @@ void KisSelectionManagerTest::testScanline16bit()
 {
     const int THRESHOLD = 20;
 
-    QString fileName = TestUtil::fetchDataFileLazy("flood_fill_16bit.kra");
+    QString fileName = TestUtil::fetchDataFileLazy("flood_fill_16bit.m2d");
     QVERIFY(QFile::exists(fileName));
 
     KisDocument *doc = KisPart::instance()->createDocument();
@@ -358,15 +358,15 @@ void KisSelectionManagerTest::testScanline16bit()
     KisPaintDeviceSP dev = doc->image()->root()->firstChild()->paintDevice();
     QVERIFY(dev);
 
-    dbgKrita << ppVar(dev->colorSpace());
+    dbgMinerva << ppVar(dev->colorSpace());
 
     QRect imageRect = doc->image()->bounds();
 
-    dbgKrita << ppVar(imageRect);
+    dbgMinerva << ppVar(imageRect);
 
     QPoint startPoint = imageRect.center();
 
-    dbgKrita << ppVar(startPoint);
+    dbgMinerva << ppVar(startPoint);
 
     KisPixelSelectionSP pixelSelection = new KisPixelSelection();
 

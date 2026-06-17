@@ -6,7 +6,7 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Shapes 1.15
-import org.krita.components 1.0
+import org.minerva2d.components 1.0
 
 /*
     \qmltype CurveWidget

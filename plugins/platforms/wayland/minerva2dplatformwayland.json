@@ -1,0 +1,11 @@
+{
+    "Id": "kritaplatformwayland",
+    "Type": "Service",
+    "X-KDE-Library": "kritaplatformwayland",
+    "X-KDE-PluginInfo-Name": "Minerva Platform Plugin for Wayland",
+    "X-KDE-ServiceTypes": [
+        "Minerva/PlatformPlugin"
+    ],
+    "X-Minerva-Version": "28",
+    "X-Minerva-PlatformId": "wayland"
+}

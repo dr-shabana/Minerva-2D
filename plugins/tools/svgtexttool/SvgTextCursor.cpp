@@ -1047,7 +1047,7 @@ QVariant SvgTextCursor::inputMethodQuery(Qt::InputMethodQuery query) const
         return Qt::ImhMultiLine;
         break;
     // case Qt::ImPreferredLanguage: // requires access to properties.
-#if defined(Q_OS_ANDROID) && KRITA_QT_HAS_ANDROID_INPUT_PLATFORM_DATA_SOFT_INPUT_ADJUST_NOTHING
+#if defined(Q_OS_ANDROID) && MINERVA2D_QT_HAS_ANDROID_INPUT_PLATFORM_DATA_SOFT_INPUT_ADJUST_NOTHING
     case Qt::ImPlatformData:
         // Platform-specific data. Qt normally only uses this on iOS, but we
         // have a patch that allows us to control the keyboard pan behavior.
@@ -2147,7 +2147,7 @@ void SvgTextCursor::commitIMEPreEdit()
 void SvgTextCursor::updateCanvasResources()
 {
     // Only update canvas resources when there's no selection.
-    // This relies on Krita not setting anything on the text when there's no selection.
+    // This relies on Minerva not setting anything on the text when there's no selection.
     if (d->shape && d->canvas->resourceManager() && d->pos == d->anchor) {
         KoSvgTextProperties props = hasSelection()? d->shape->propertiesForPos(qMin(d->pos, d->anchor), true): d->shape->textProperties();
         KoColorBackground *bg = dynamic_cast<KoColorBackground *>(props.background().data());

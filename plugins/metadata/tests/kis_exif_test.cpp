@@ -49,7 +49,7 @@ void KisExifTest::testExifLoader()
     for (QMap<QString, Validator::Reason>::const_iterator it = validator.invalidEntries().begin();
          it != validator.invalidEntries().end();
          ++it) {
-        dbgKrita << it.key() << " = " << it.value().type() << " entry = " << store->getEntry(it.key());
+        dbgMinerva << it.key() << " = " << it.value().type() << " entry = " << store->getEntry(it.key());
     }
 
     QCOMPARE(validator.countInvalidEntries(), 0);

@@ -40,7 +40,7 @@ class Store;
 }
 
 /**
- * Abstract class that represents the concept of a Layer in Krita. This is not related
+ * Abstract class that represents the concept of a Layer in Minerva. This is not related
  * to the paint devices: this is merely an abstraction of how layers can be stacked and
  * rendered differently.
  * Regarding the previous-, first-, next- and lastChild() calls, first means that it the layer

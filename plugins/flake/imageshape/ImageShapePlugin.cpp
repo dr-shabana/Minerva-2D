@@ -13,7 +13,7 @@
 
 #include "ImageShapeFactory.h"
 
-K_PLUGIN_FACTORY_WITH_JSON(ImageShapePluginFactory, "krita_shape_image.json", registerPlugin<ImageShapePlugin>();)
+K_PLUGIN_FACTORY_WITH_JSON(ImageShapePluginFactory, "minerva2d_shape_image.json", registerPlugin<ImageShapePlugin>();)
 
 ImageShapePlugin::ImageShapePlugin(QObject *parent, const QVariantList &)
     : QObject(parent)

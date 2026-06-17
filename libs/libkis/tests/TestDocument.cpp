@@ -5,7 +5,7 @@
 #include "TestDocument.h"
 #include <simpletest.h>
 
-#include <KritaVersionWrapper.h>
+#include <MinervaVersionWrapper.h>
 #include <QColor>
 #include <QDataStream>
 #include <QDir>
@@ -13,7 +13,7 @@
 #include <QTextStream>
 
 #include <Node.h>
-#include <Krita.h>
+#include <Minerva.h>
 #include <Document.h>
 
 #include <KoColorSpaceRegistry.h>
@@ -41,7 +41,7 @@ void TestDocument::testSetColorSpace()
     kisdoc->setCurrentImage(image);
 
     Document d(kisdoc.data(), false);
-    QStringList profiles = Krita().profiles("GRAYA", "U16");
+    QStringList profiles = Minerva().profiles("GRAYA", "U16");
     d.setColorSpace("GRAYA", "U16", profiles.first());
 
     QVERIFY(layer->colorSpace()->colorModelId().id() == "GRAYA");
@@ -61,7 +61,7 @@ void TestDocument::testSetColorProfile()
 
     Document d(kisdoc.data(), false);
 
-    QStringList profiles = Krita().profiles("RGBA", "U8");
+    QStringList profiles = Minerva().profiles("RGBA", "U8");
     Q_FOREACH(const QString &profileName, profiles) {
         const KoColorProfile *profile = KoColorSpaceRegistry::instance()->profileByName(profileName);
 
@@ -379,15 +379,15 @@ void TestDocument::testAnnotations()
     QVERIFY(d.annotation("test").toHex() == buf.data().toHex());
     QVERIFY(d.annotationDescription("test") == "description");
 
-    d.saveAs("roundtriptest.kra");
+    d.saveAs("roundtriptest.m2d");
 
     d.removeAnnotation("test");
     QVERIFY(d.annotationTypes().isEmpty());
 
     d.close();
 
-    Krita *krita = Krita::instance();
-    Document *d2 = krita->openDocument("roundtriptest.kra");
+    Minerva *krita = Minerva::instance();
+    Document *d2 = minerva2d->openDocument("roundtriptest.m2d");
 
     QVERIFY(d2->annotationTypes().size() == 1);
     QVERIFY(d2->annotationTypes().contains("test"));

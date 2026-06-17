@@ -1,9 +1,9 @@
-project (krita-external-plugins)
+project (minerva2d-external-plugins)
 
-message( STATUS "Preparing Krita external plugins build...")
+message( STATUS "Preparing Minerva external plugins build...")
 
 #
-# Build external Krita plugins.
+# Build external Minerva plugins.
 # Parameters: EXTERNALS_DOWNLOAD_DIR place to download all packages
 #             INSTALL_ROOT place to install everything to
 #             MXE_TOOLCHAIN: the toolchain file to cross-compile using MXE

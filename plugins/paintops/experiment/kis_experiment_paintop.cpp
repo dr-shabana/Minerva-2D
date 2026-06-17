@@ -20,7 +20,7 @@
 #include <kis_painter.h>
 #include <kis_image.h>
 #include <kis_spacing_information.h>
-#include <krita_utils.h>
+#include <minerva2d_utils.h>
 #include <kis_algebra_2d.h>
 
 
@@ -229,14 +229,14 @@ void KisExperimentPaintOp::paintLine(const KisPaintInformation &pi1, const KisPa
                     QPainterPath diff1 = m_path - m_lastPaintedPath;
                     QPainterPath diff2 = m_lastPaintedPath - m_path;
 
-                    changedRegion = KritaUtils::splitPath(diff1 | diff2);
+                    changedRegion = MinervaUtils::splitPath(diff1 | diff2);
                 }
 
                 paintRegion(changedRegion);
                 m_lastPaintedPath = m_path;
             }
             else if (!m_savedPoints.isEmpty()) {
-                KisRegion changedRegion = KritaUtils::splitTriangles(m_center, m_savedPoints);
+                KisRegion changedRegion = MinervaUtils::splitTriangles(m_center, m_savedPoints);
                 paintRegion(changedRegion);
             }
 

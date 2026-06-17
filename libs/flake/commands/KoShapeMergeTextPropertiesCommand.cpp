@@ -8,7 +8,7 @@
 #include <KoSvgTextShape.h>
 #include <KoSvgTextProperties.h>
 #include <kis_command_ids.h>
-#include <krita_container_utils.h>
+#include <minerva2d_container_utils.h>
 #include <KoShapeBulkActionLock.h>
 
 struct KoShapeMergeTextPropertiesCommand::Private {
@@ -68,7 +68,7 @@ bool KoShapeMergeTextPropertiesCommand::mergeWith(const KUndo2Command *other)
 {
     const KoShapeMergeTextPropertiesCommand *command = dynamic_cast<const KoShapeMergeTextPropertiesCommand*>(other);
 
-    if (!command || !KritaUtils::compareListsUnordered(command->d->shapes, d->shapes)) {
+    if (!command || !MinervaUtils::compareListsUnordered(command->d->shapes, d->shapes)) {
         return false;
     }
 

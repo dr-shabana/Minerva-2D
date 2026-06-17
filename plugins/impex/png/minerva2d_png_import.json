@@ -1,0 +1,13 @@
+{
+    "Id": "Minerva PNG Import Filter",
+    "NoDisplay": "true",
+    "Type": "Service",
+    
+    "X-KDE-Import": "image/png,application/x-minerva2d-paintoppreset",
+    "X-KDE-Library": "kritapngimport",
+    "X-KDE-ServiceTypes": [
+        "Minerva/FileFilter"
+    ],
+    "X-KDE-Weight": 1,
+    "X-KDE-Extensions" : "png,kpp"
+}

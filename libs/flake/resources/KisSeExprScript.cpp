@@ -1,5 +1,5 @@
 /*
- * This file is part of Krita
+ * This file is part of Minerva
  *
  * SPDX-FileCopyrightText: 2020 L. E. Segovia <amy@amyspark.me>
  *
@@ -107,7 +107,7 @@ bool KisSeExprScript::loadFromDevice(QIODevice *dev, KisResourcesInterfaceSP res
     QBuffer buf(&d->data);
     buf.open(QBuffer::ReadOnly);
 
-    QScopedPointer<KoStore> store(KoStore::createStore(&buf, KoStore::Read, "application/x-krita-seexpr-script", KoStore::Zip));
+    QScopedPointer<KoStore> store(KoStore::createStore(&buf, KoStore::Read, "application/x-minerva2d-seexpr-script", KoStore::Zip));
     if (!store || store->bad())
         return false;
 
@@ -140,7 +140,7 @@ bool KisSeExprScript::loadFromDevice(QIODevice *dev, KisResourcesInterfaceSP res
 
 bool KisSeExprScript::saveToDevice(QIODevice *dev) const
 {
-    KoStore *store(KoStore::createStore(dev, KoStore::Write, "application/x-krita-seexpr-script", KoStore::Zip));
+    KoStore *store(KoStore::createStore(dev, KoStore::Write, "application/x-minerva2d-seexpr-script", KoStore::Zip));
     if (!store || store->bad())
         return false;
 
