@@ -1,0 +1,118 @@
+name: Minerva 2D CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+  workflow_dispatch:
+
+jobs:
+  # ── Rebrand Audit ──
+  audit:
+    name: Rebrand Audit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check for remaining Krita branding
+        run: |
+          echo "Checking for remaining 'Krita' references..."
+          FOUND=$(grep -rni 'krita' \
+            --include='*.py' --include='*.cpp' --include='*.h' --include='*.hpp' \
+            --include='*.cmake' --include='*.txt' --include='*.md' --include='*.html' \
+            --include='*.xml' --include='*.yaml' --include='*.yml' --include='*.toml' \
+            --include='*.cfg' --include='*.ini' --include='*.conf' --include='*.sh' \
+            --include='*.bat' --include='*.qml' --include='*.qrc' --include='*.desktop' \
+            --exclude-dir=.git --exclude-dir=__pycache__ \
+            --exclude='rebrand_*.py' --exclude='rename_*.py' \
+            . 2>/dev/null | wc -l)
+
+          if [ "$FOUND" -gt 0 ]; then
+            echo "⚠ Found $FOUND remaining 'Krita' references:"
+            grep -rni 'krita' \
+              --include='*.py' --include='*.cpp' --include='*.h' --include='*.hpp' \
+              --include='*.cmake' --include='*.txt' --include='*.md' --include='*.html' \
+              --include='*.xml' --include='*.yaml' --include='*.yml' --include='*.toml' \
+              --include='*.cfg' --include='*.ini' --include='*.conf' --include='*.sh' \
+              --include='*.bat' --include='*.qml' --include='*.qrc' --include='*.desktop' \
+              --exclude-dir=.git --exclude-dir=__pycache__ \
+              --exclude='rebrand_*.py' --exclude='rename_*.py' \
+              . 2>/dev/null | head -20
+            echo ""
+            echo "Note: Some references may be intentional (KDE/Qt framework deps, etc.)"
+          else
+            echo "✓ No remaining 'Krita' references found"
+          fi
+
+      - name: Check file counts
+        run: |
+          echo "Total files: $(find . -type f ! -path './.git/*' | wc -l)"
+          echo "Python files: $(find . -name '*.py' ! -path './.git/*' | wc -l)"
+          echo "C++ files: $(find . -name '*.cpp' -o -name '*.h' -o -name '*.hpp' | wc -l)"
+          echo ".po files: $(find . -name '*.po' | wc -l)"
+
+  # ── Python Syntax Check ──
+  python-check:
+    name: Python Syntax Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Check Python syntax
+        run: |
+          ERRORS=0
+          while IFS= read -r f; do
+            python -m py_compile "$f" 2>/dev/null || {
+              echo "Syntax error: $f"
+              ERRORS=$((ERRORS + 1))
+            }
+          done < <(find . -name '*.py' ! -path './.git/*' ! -path '*/__pycache__/*' ! -name 'rebrand_*.py' ! -name 'rename_*.py')
+          echo "Python syntax check complete. Errors: $ERRORS"
+          if [ "$ERRORS" -gt 0 ]; then exit 1; fi
+
+  # ── Minerva 2D Agent Plugin Check ──
+  agent-check:
+    name: Minerva 2D Agent Plugin Check
+    runs-on: ubuntu-latest
+    needs: python-check
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Check plugin syntax
+        run: |
+          cd plugins/python/minerva2d_agent
+          python -m py_compile __init__.py
+          echo "✓ Minerva 2D Agent plugin syntax OK"
+
+  # ── Build Info ──
+  build-info:
+    name: Build Information
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Display build info
+        run: |
+          echo "Minerva 2D Build Information"
+          echo "============================"
+          echo "Repository: ${{ github.repository }}"
+          echo "Branch: ${{ github.ref_name }}"
+          echo "Commit: ${{ github.sha }}"
+          echo "Triggered by: ${{ github.event_name }}"
+          echo ""
+          echo "Top-level directories:"
+          ls -d */ | head -20
+          echo ""
+          echo "CMake project name:"
+          grep -m1 'project(' CMakeLists.txt 2>/dev/null || echo "Not found"

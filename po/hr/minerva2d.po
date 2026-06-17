@@ -14,7 +14,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: krita 0\n"
+"Project-Id-Version: minerva 0\n"
 "Report-Msgid-Bugs-To: https://github.com/dr-shabana/Minerva-2D/issues\n"
 "POT-Creation-Date: 2026-06-16 00:42+0000\n"
 "PO-Revision-Date: 2011-03-18 18:21+0100\n"

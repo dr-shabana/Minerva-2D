@@ -3593,7 +3593,7 @@ msgstr "A -2 Glitter 3"
 msgctxt ""
 "./minerva2d/data/bundles/Minerva_4_Default_Resources.bundle:brushes/chalk.png"
 msgid "chalk"
-msgstr "krita"
+msgstr "minerva"
 
 #. i18n: Display name of resource, see context: [path-to-resources]/[resource-type]/[resource-filename]
 #, kde-format

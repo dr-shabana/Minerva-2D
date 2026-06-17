@@ -40793,7 +40793,7 @@ msgstr "Pokaži &menijsko vrstico"
 msgid "Show Menubar<p>Shows the menubar again after it has been hidden</p>"
 msgstr ""
 "Pokaži menijsko vrstico<p>Znova prikaže menijsko vrstico, potem ko je bila "
-"skrita</p>"
+"sminerva</p>"
 
 #: libs/widgetutils/config/kstandardaction.cpp:535
 #, kde-format
