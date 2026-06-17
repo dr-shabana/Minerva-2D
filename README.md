@@ -2,17 +2,23 @@
 
 | CI Name     | Master | Stable | Release |
 | ------------------- | ---------------- | ------ | ------- |
-| Pipeline | [![pipeline status](https://invent.kde.org/graphics/minerva2d/badges/master/pipeline.svg)](https://invent.kde.org/graphics/minerva2d/-/commits/master) | [![pipeline status](https://invent.kde.org/graphics/minerva2d/badges/minerva2d/5.2/pipeline.svg)](https://invent.kde.org/graphics/minerva2d/-/commits/minerva2d/5.2) | [![Latest Release](https://invent.kde.org/graphics/minerva2d/-/badges/release.svg)](https://invent.kde.org/graphics/minerva2d/-/releases) |
+| Pipeline | [![pipeline status](https://github.com/dr-shabana/Minerva-2D/actions/workflows/ci.yml/badge.svg)](https://github.com/dr-shabana/Minerva-2D/actions) | [![pipeline status](https://github.com/dr-shabana/Minerva-2D/actions/workflows/ci.yml/badge.svg)](https://github.com/dr-shabana/Minerva-2D/actions) | [![Latest Release](https://github.com/dr-shabana/Minerva-2D/releases/latest)](https://github.com/dr-shabana/Minerva-2D/releases) |
 
 Note: Nightly builds are not covered by this table atm
 
-Minerva is a free and open source digital painting application. It is for artists who want to create professional work from start to end. Minerva is used by comic book artists, illustrators, concept artists, matte and texture painters and in the digital VFX industry.
+Minerva 2D
+==========
 
-If you are reading this on GitHub, be aware that this is just a mirror. Our real code repository is provided by KDE: https://invent.kde.org/graphics/minerva2d.git
+Minerva 2D is a free and open source cross-platform application that offers an end-to-end solution for creating digital art files from scratch built on the KDE and Qt frameworks.
+
+Minerva 2D is for artists who want to create professional work from start to end. It is used by comic book artists, illustrators, concept artists, matte and texture painters and in the digital VFX industry.
+
+Minerva 2D is part of the [Minerva Creative Suite](https://github.com/dr-shabana), which also includes [Minerva 3D](https://github.com/dr-shabana/Minerva-3D) (3D creation suite) and [Minerva Bridge](https://github.com/dr-shabana/Minerva-Bridge) (unified integration layer).
 
 ![Picture](https://minerva2d.org/images/hero-image-50.webp)
 
-### Repository Status
+Repository Status
+-----------------
 
 For branch: `master`
 
@@ -21,11 +27,13 @@ For branch: `master`
 | Feature Freeze | freeze, features are not allowed                                     |
 | String Freeze  | freeze, strings are not allowed                                      |
 
+User Manual
+-----------
 
-### User Manual
 https://docs.minerva2d.org/en/user_manual.html
 
-### Development Notes and Build Instructions
+Development Notes and Build Instructions
+----------------------------------------
 
 Please follow [the online documentation](https://docs.minerva2d.org/en/untranslatable_pages/building_minerva2d.html).
 
@@ -37,25 +45,30 @@ Apidox:
 
 https://api.kde.org/legacy/minerva2d/html/index.html
 
-### Bugs and Wishes
+Bugs and Wishes
+---------------
 
-https://github.com/dr-shabana/Minerva-2D/issues/buglist.cgi?bug_status=UNCONFIRMED&bug_status=CONFIRMED&bug_status=ASSIGNED&bug_status=REOPENED&list_id=1315444&product=krita&query_format=advanced
+https://github.com/dr-shabana/Minerva-2D/issues
 
-### Discussion Forum
+Discussion Forum
+----------------
 
 * https://minerva2d-artists.org/
 
-### IRC channel
+IRC channel
+-----------
 
 Most of the developers hang out here. If you are interested in helping with the project this is a great place to start.
 
-libera.chat, #krita
+libera.chat, #minerva2d
 
-### Project Website
+Project Website
+---------------
 
 https://www.minerva2d.org
 
-### Nightly builds
+Nightly builds
+--------------
 
 #### Unstable
 
@@ -67,16 +80,16 @@ https://www.minerva2d.org
 
 #### Developers builds
 
-##### Linux build with debug symbols in Qt and Minerva
+##### Linux build with debug symbols in Qt and Minerva 2D
 
-1) Go to Jobs section of Minerva's CI: https://invent.kde.org/graphics/minerva2d/-/jobs
+1) Go to Jobs section of Minerva 2D's CI: https://invent.kde.org/graphics/minerva2d/-/jobs
 2) Search for the latest `linux-debug-weekly` job
 3) Enter the job and click on Artifacts->Browse
 4) Download the AppImage
 
-##### Linux build with ASAN in Qt and Minerva
+##### Linux build with ASAN in Qt and Minerva 2D
 
-1) Go to Jobs section of Minerva's CI: https://invent.kde.org/graphics/minerva2d/-/jobs
+1) Go to Jobs section of Minerva 2D's CI: https://invent.kde.org/graphics/minerva2d/-/jobs
 2) Search for the latest `linux-asan-weekly` job
 3) Enter the job and click on Artifacts->Browse
 4) Download the AppImage
@@ -86,9 +99,9 @@ https://www.minerva2d.org
     ```
 6) Run the AppImage in the modified environment
 
-##### Windows build with ASAN in Qt and Minerva
+##### Windows build with ASAN in Qt and Minerva 2D
 
-1) Go to Jobs section of Minerva's CI: https://invent.kde.org/graphics/minerva2d/-/jobs
+1) Go to Jobs section of Minerva 2D's CI: https://invent.kde.org/graphics/minerva2d/-/jobs
 2) Search for the latest `windows-asan-weekly` job
 3) Enter the job and click on Artifacts->Browse
 4) Download the .zip file
@@ -103,18 +116,70 @@ https://www.minerva2d.org
     ```
         cd c:\path\where\you\downloaded\minerva2d-5.3.0-prealpha-git12345\bin
     ```
-8) Run krita
+8) Run Minerva 2D
     ```
         minerva2d.com
     ```
 
-### License
+Building
+--------
 
-Minerva as a whole is licensed under the GNU Public License, Version 3. Individual files may have a different, but compatible license.
+Minerva 2D requires the following to build from source:
 
-### AI Moratorium
+- **Compiler:** MSVC 1928+ (Visual Studio 2019 16.9+ or VS 2022)
+- **CMake:** 3.19+
+- **Qt:** 6.x
+- **KDE Frameworks:** 6.x
+- **Python:** 3.11+
 
-Since the Minerva developer community cannot currently find consensus on whether the use of AI tools to assist development is acceptable or not, we have decided to put a moratorium on the use of these tools until October 2026. 
+```bash
+git clone --depth 1 https://github.com/dr-shabana/Minerva-2D.git
+cd Minerva-2D
+mkdir build
+cd build
+cmake .. -G "Visual Studio 17 2022" -A x64
+cmake --build . --config Release
+```
+
+AI Integration
+--------------
+
+Minerva 2D comes with the **Minerva 2D Agent** — an AI-powered digital painting assistant built as a PyKrita plugin. The agent provides a chat interface inside Minerva 2D's docker system, enabling natural language control over:
+
+- Brush strokes and painting operations
+- Layer management (create, merge, reorder, blend)
+- Filter application and adjustment
+- Color operations and palette management
+- Canvas manipulation
+
+The Minerva 2D Agent connects to the [Minerva Bridge](https://github.com/dr-shabana/Minerva-Bridge) backend via WebSocket for LLM-powered assistance.
+
+For more information, see the [Minerva 2D Agent documentation](https://github.com/dr-shabana/Minerva-2D/tree/master/plugins/python/minerva2d_agent).
+
+Staying Up to Date
+------------------
+
+To sync with the upstream Krita repository:
+
+```bash
+git remote add upstream https://invent.kde.org/graphics/krita.git
+git fetch upstream
+git checkout master
+git merge upstream/master
+git push origin master
+```
+
+License
+-------
+
+Minerva 2D as a whole is licensed under the GNU Public License, Version 3. Individual files may have a different, but compatible license.
+
+Minerva 2D is a fork of [Krita](https://krita.org), originally developed by the KDE community. All original Krita copyrights and attributions are preserved.
+
+AI Moratorium
+-------------
+
+Since the Minerva 2D developer community cannot currently find consensus on whether the use of AI tools to assist development is acceptable or not, we have decided to put a moratorium on the use of these tools until October 2026.
 
 The reason for pushing this off to October are:
 
@@ -122,4 +187,4 @@ The reason for pushing this off to October are:
 2) KDE as a whole does not have a policy in place, and if our policy would conflict with KDE's we'd potentially have to revert contributions made with AI
 3) The development of AI itself might change for the better or the worse in the next period. Microsoft is already backtracking from their CoPilot brand. Acceptance of AI can change for better or worse. The environmental impact of AI could lessen.
 
-Until we make a decision, the use of AI when working on Minerva is not allowed.
+Until we make a decision, the use of AI when working on Minerva 2D is not allowed.
